@@ -1,3 +1,3 @@
-# Woo Quality Insights Tool
+# Woo Quality Insights Toolkit
 
 > An awesome project.
