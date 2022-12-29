@@ -22,7 +22,7 @@ You can also search the tests by providing keywords such as the product, the ver
 
 ![search-tests](_media/search-tests.png)
 
-## Viewing test results
+## Viewing test logs
 
 After a test run completes, you'll be able to view a variety of reports depending on the test type.
 
