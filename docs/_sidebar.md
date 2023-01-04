@@ -1,4 +1,4 @@
-- [About](/)
+- [About](/ "Woo Quality Insights Toolkit")
 
 - QIT Dashboard
 
