@@ -11,7 +11,7 @@ This toolkit is for WooCommerce extension developers that have, or plan to, rele
 Currently there are two tools that are provided as part of this toolkit:
 
 - [QIT Dashboard](dashboard/getting-started.md): A UI-based test runner and test results viewer, available in your WooCommerce dashboard.
-- [QIT Client](client/README.md): A command line interface (CLI) based tool, which allows for running tests against published and development versions of an extension.
+- [QIT Client](client/getting-started.md): A command line interface (CLI) based tool, which allows for running tests against published and development versions of an extension.
 
 ## Why does this toolkit exist?
 
