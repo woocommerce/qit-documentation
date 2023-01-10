@@ -2,7 +2,7 @@
 
 To view the tests that were created and their results, navigate to the `All Tests` page under the `Quality Insights` menu:
 
-![all-tests-menu](_media/all-tests-menu.png ':size=40%')
+![all-tests-menu](_media/all-tests-menu.png ":size=40%")
 
 In the table on this page, all of the tests that you created will be shown in the list, starting with the most recent:
 
@@ -36,15 +36,15 @@ When an end-to-end test passes, you'll be able to view the report and see the te
 
 This will open a modal that you can scroll through and see the results of each test that was ran:
 
-![e2e-results-modal](_media/e2e-results-modal.png ':size=75%')
+![e2e-results-modal](_media/e2e-results-modal.png ":size=75%")
 
 #### Failed test runs
 
 If an end-to-end test run fails, an Allure test report will be generated. Click on the `View Report` button to see the full details of the Allure test report:
 
-![view-report-link](_media/view-report-link.png ':size=70%')
+![view-report-link](_media/view-report-link.png ":size=70%")
 
-For more information on what the Allure test report contains, see [Understanding Allure test results](#understanding-allure-results.md)
+For more information on what the Allure test report contains, see [Understanding Allure test results](understanding-allure-results.md#understanding-allure-test-results)
 
 ### Security, Activation, and PHPStan tests
 
@@ -54,13 +54,12 @@ To view the test logs for these test types, click on `View Log` in the table for
 
 This will open a modal where you can view the test results. For example, a failed Security test would show the following in the modal:
 
-![security-test-result](_media/security-test-result.png ':size=50%')
+![security-test-result](_media/security-test-result.png ":size=50%")
 
 You can also use the filter in the modal to filter down to the specific result set you'd like to see:
 
-![filter-results-modal](_media/filter-results-modal.png ':size=40%')
+![filter-results-modal](_media/filter-results-modal.png ":size=40%")
 
 ?> Note that for these test types, there won't be a log available and instead it will show `No Results` instead.
 
 ![no-results-log](_media/no-results-log.png)
-
