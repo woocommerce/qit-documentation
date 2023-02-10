@@ -6,7 +6,7 @@ For end-to-end test failures, an Allure test report will be generated and is ava
 
 An Allure report is generated for end-to-end test failures and can be viewed by clicking the `View Report` button on the `Quality Insights > All Tests` page in the QIT Dashboard:
 
-Following this link will open the Allure test results in a tab in your browser:
+Following this link will open the Allure test results in a modal:
 
 ![allure-report-home](_media/allure-report-home.png)
 
