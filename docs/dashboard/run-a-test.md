@@ -1,16 +1,16 @@
-# Create a test
+# Run a test
 
-To create a new test, navigate to the `Create a Test` page under the `Quality Insights` menu:
+To start a new test, navigate to the `Run a Test` page under the `Quality Insights` menu:
 
-![create-a-test-menu](_media/create-a-test-menu.png ':size=40%')
+![run-a-test-menu](_media/run-a-test-menu.png ":size=40%")
 
 On this page, you can configure the type of test to run, the product to run the tests against, and which release version:
 
-![create-a-test-page](_media/create-a-test-page.png)
+![run-a-test-page](_media/run-a-test-page.png)
 
 Once you've selected the type of test you'd like to run, the product to run it against, and the release version, click the `Confirm and run test` button at the bottom to queue up the test to be ran:
 
-![create-a-test-start](_media/create-a-test-start.png)
+![run-a-test-start](_media/run-a-test-start.png)
 
 Once the test has been queued up, you'll be redirected to the All Tests page and will see a success notification that the test has been created:
 
@@ -47,5 +47,5 @@ Select the product you'd like to run the tests against. All products that you ha
 
 Select the release versions of WooCommerce and WordPress you'd like to execute the tests against. Currently there are two options available:
 
--  The most recent releases of WordPress and WooCommerce.
--  The most recent release of WordPress and the latest release candidate version of WooCommerce.
+- The most recent releases of WordPress and WooCommerce.
+- The most recent release of WordPress and the latest release candidate version of WooCommerce.
