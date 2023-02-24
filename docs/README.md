@@ -4,7 +4,7 @@ Welcome to the Woo Quality Insights Toolkit (QIT)!
 
 ## Who is this toolkit for?
 
-This toolkit is for WooCommerce extension developers that have, or plan to, release extensions in the [WooCommerce Extension Store](https://woocommerce.com/products/). If you have an extension already published, you can start leveraging these tools right away!
+This toolkit is for WooCommerce extension developers that have, or plan to, release extensions in the [Woo Marketplace](https://woocommerce.com/products/). If you have an extension already published, you can start leveraging these tools right away!
 
 ## What tools are included?
 
