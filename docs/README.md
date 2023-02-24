@@ -21,4 +21,4 @@ The primary goal of these tools is to assist extension developers to easily inte
 
 <p align="center">Made with 💜 by the <a href="https://woocommerce.github.io/">WooCommerce team</a></p>
 
-<p align="center">Documentation powered by <a href="https://docsify.js.org/">doscsify</a></p>
+<p align="center">Documentation powered by <a href="https://docsify.js.org/">docsify</a></p>

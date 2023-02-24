@@ -1,6 +1,6 @@
 # Useful commands
 
-To see the commands that the QIT client provides, you can simply run `./cd-client` to see the full list.
+To see the commands that the QIT client provides, you can simply run `./qit-cli` to see the full list.
 
 Some helpful commands to get started include:
 
@@ -30,12 +30,12 @@ Some helpful commands to get started include:
 - `get <run ID>` - Get a single test run using the run ID from the `list tests` command:
 
 ```bash
-Run Id              344745              
-Test Type           security            
-Wordpress Version   6.1.1               
-Woocommerce Version 7.2.2               
-Status              warning             
-Is Development      Yes                 
+Run Id              344745
+Test Type           security
+Wordpress Version   6.1.1
+Woocommerce Version 7.2.2
+Status              warning
+Is Development      Yes
 Woo Extension       My Extension
 ```
 
@@ -47,6 +47,6 @@ Test Type           e2e
 Wordpress Version   6.1.1
 Woocommerce Version 7.2.2
 Status              failed
-Test Result Aws Url https://testreport.url
+Result Url          https://testreport.url
 Woo Extension       My Extension
 ```
