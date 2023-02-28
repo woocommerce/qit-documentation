@@ -6,7 +6,6 @@ For more information on how [GitHub Actions](https://docs.github.com/en/actions)
 
 The examples below can be tweaked based on your needs, and use a fictional `woocommerce-product-feeds` extension to run the tests against. There's a few [GitHub Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) that need to be configured for this flow (feel free to rename these to whatever makes the most sense for you and your team):
 
-- `QIT_SECRET`: The API key to be able to run tests against QIT.
 - `PARTNER_USER`: Your WooCommerce.com username.
 - `PARTNER_SECRET`: Your [WordPress Application Password](https://make.wordpress.org/core/2020/11/05/application-passwords-integration-guide/).
 
@@ -26,10 +25,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Enable QIT development mode
-        run: ./bin/qit dev
-      - name: Connect to QIT Production
-        run: ./bin/qit env:add --environment=production --manager_url=https://compatibilitydashboard.wpcomstaging.com --qit_secret=${{ secrets.QIT_SECRET }}
       - name: Add Partner
         run: ./bin/qit partner:add --user=${{ secrets.PARTNER_USER }} --application_password=${{ secrets.PARTNER_SECRET }}
       - name: Create Zip.
@@ -61,10 +56,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Enable QIT development mode
-        run: ./bin/qit dev
-      - name: Connect to QIT Production
-        run: ./bin/qit env:add --environment=production --manager_url=https://compatibilitydashboard.wpcomstaging.com --qit_secret=${{ secrets.QIT_SECRET }}
       - name: Add Partner
         run: ./bin/qit partner:add --user=${{ secrets.PARTNER_USER }} --application_password=${{ secrets.PARTNER_SECRET }}
       - name: Create Zip.
