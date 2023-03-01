@@ -34,10 +34,7 @@ More details on each the options available on the `Create a Test` page can be fo
 
 Select the [type of test](test-types.md) you'd like to run. The current options are available:
 
-- End-to-end tests
-- PHPStan tests
-- Activation tests
-- Security tests
+[test-types-list](../test-types-list.md ':include')
 
 ## Product
 

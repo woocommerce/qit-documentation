@@ -22,7 +22,7 @@ More details on each of these options is provided below.
 
 ![all-tests-menu](_media/all-tests-menu.png ":size=40%")
 
-The All Test page gives you insight into the extension the tests were ran against, the version of the extension, and what test type was ran. In addition, you can see what the results of the test runs were (such as failed, success, or pending if they’re currently running) and, in the case of end-to-end tests, view the [Allure test report](understanding-allure-results.md) if the tests fail.
+The All Test page gives you insight into the extension the tests were ran against, the version of the extension, and what test type was ran. In addition, you can see what the results of the test runs were (such as failed, success, or pending if they’re currently running) and, in the case of end-to-end tests, view the Allure test report if the tests fail.
 
 For more insight into the test results, please see [Viewing test results](dashboard/viewing-test-results.md).
 
