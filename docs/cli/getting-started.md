@@ -1,6 +1,6 @@
 # Getting started
 
-The QIT Client is a command line interface tool that allows you to run automated tests in the cloud against extensions available in the WooCommerce Marketplace, powered by the Quality Insights Toolkit test runner.
+The QIT CLI is a command line interface tool that allows you to run automated tests in the cloud against extensions available in the WooCommerce Marketplace, powered by the Quality Insights Toolkit test runner.
 
 ![run-e2e](_media/run-e2e.png)
 
@@ -12,7 +12,7 @@ The QIT Client is a command line interface tool that allows you to run automated
 
 ## Installing
 
-There's two approaches that can be used to install the QIT Client: Composer (recommended) and using a `phar` file
+There's two approaches that can be used to install the QIT CLI: Composer (recommended) and using a `phar` file
 
 ### Composer
 

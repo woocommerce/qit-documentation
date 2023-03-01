@@ -1,6 +1,6 @@
 # Useful commands
 
-To see the commands that the QIT client provides, you can simply run `./qit-cli` to see the full list.
+To see the commands that the QIT CLI provides, you can simply run `./qit` to see the full list.
 
 Some helpful commands to get started include:
 
@@ -16,7 +16,7 @@ Some helpful commands to get started include:
 
 - `list-tests` - Lists the test runs, including details around the results, the versions tested and the test type:
 
-?> `Zip` for the version denotes that the test was ran against a [development version](client/running-tests.md#testing-development-builds) of the plugin.
+?> `Zip` for the version denotes that the test was ran against a [development version](cli/running-tests.md#testing-development-builds) of the plugin.
 
 ```shell
 +--------+------------+-------+------------+---------+-----------+-------------------------------+

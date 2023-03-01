@@ -8,12 +8,12 @@
   - [Configure notifications](dashboard/notifications.md)
   - [Changelog](dashboard/changelog.md)
 
-- QIT Client
+- QIT CLI
 
-  - [Getting started](client/getting-started.md)
-  - [Running tests](client/running-tests.md)
-  - [Useful commands](client/useful-commands.md)
-  - [Changelog](client/changelog.md)
+  - [Getting started](cli/getting-started.md)
+  - [Running tests](cli/running-tests.md)
+  - [Useful commands](cli/useful-commands.md)
+  - [Changelog](cli/changelog.md)
 
 - [Test types](test-types.md)
 
