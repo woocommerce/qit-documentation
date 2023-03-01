@@ -6,12 +6,9 @@ The QIT CLI allows running tests against both extensions that are published and 
 
 The commands to run tests are formatted as `run:<test-type>`. The CLI supports all of the current [test types](test-types.md) using the following commands:
 
-- End-to-end: `run:e2e`
-- Activation: `run:activation`
-- PHPStan: `run:phpstan`
-- Security: `run:security`
+[test-types-list](../test-types-list.md ':include')
 
-For example, to run end-to-end tests, you'd run the following command: `qit-cli run:e2e`.
+For example, to run end-to-end tests, you'd run the following command: `./vendor/bin/qit run:e2e my-plugin-slug`.
 
 ## Testing a published extension
 
@@ -45,6 +42,7 @@ Since the tests are executed in the cloud, you can even close the terminal. You 
 
 - Run `qit-cli list-tests` to see a list of test runs.
 - Run `qit-cli get 123` to get more details about a specific test run, where `123` is the test run ID.
+- Run `qit-cli open 123` to open the report for test run `123` in the browser.
 
 When the test finishes, the status will be updated to `Success`, `Warning`, or `Failed`. For more details on what these commands show, please see [Useful Commands](cli/useful-commands.md).
 

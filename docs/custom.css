@@ -14,6 +14,22 @@ header#qit.mobile {
     display: none;
 }
 
+details summary {
+    cursor: pointer;
+}
+
+.cli-command-example {
+    display: none;
+}
+
+body[data-page="cli/running-tests.md"] .cli-command-example {
+    display: inline-block;
+}
+
+body[data-page="cli/running-tests.md"] li:has(.cli-command-example) {
+    margin-bottom: 5px;
+}
+
 @media screen and (max-width: 800px) {
     header#qit.mobile {
         display: block;
