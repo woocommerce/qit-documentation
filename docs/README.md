@@ -26,7 +26,6 @@ To ensure that all extensions in the Woo Marketplace meet our quality standards,
 - Users can have more assurance that all extensions will continue to work as expected when activated alongside each other, ensuring a seamless experience.
 
 ## Who is this toolkit for? <!-- {docsify-ignore} -->
-- [GitHub Workflows](workflows/getting-started.md): GitHub workflow files that allow running tests regularly with QIT as part of a GitHub development workflow.
 
 This toolkit is for extension developers who are selling their extensions on the WooCommerce Marketplace.
 
@@ -40,6 +39,7 @@ Tests are executed automatically by us whenever you publish a new version of you
 
 - [Dashboard](dashboard/getting-started.md): A UI-based test runner and test results viewer, available in your WooCommerce dashboard.
 - [CLI](cli/getting-started.md): A command line interface (CLI) based tool, which allows for running tests against published and development versions of an extension.
+- [GitHub Workflows](workflows/getting-started.md): GitHub workflow files that allow running tests regularly with QIT as part of a GitHub development workflow.
 
 ## Why does this toolkit exist? <!-- {docsify-ignore} -->
 

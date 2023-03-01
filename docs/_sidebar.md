@@ -20,11 +20,12 @@
   - [Useful commands](cli/useful-commands.md)
 
 * Tests
-- GitHub Workflows
-
-  - [Getting started](workflows/getting-started.md)
 
   - [End-to-End](test-types/e2e.md)
   - [Activation](test-types/activation.md)
   - [Security](test-types/security.md)
   - [PHPStan](test-types/phpstan.md)
+
+- GitHub Workflows
+
+  - [Getting started](workflows/getting-started.md)
