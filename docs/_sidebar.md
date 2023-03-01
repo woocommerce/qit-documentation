@@ -1,6 +1,12 @@
-- [About](/ "Woo Quality Insights Toolkit")
+<header id="qit">
+    <a href="/" data-nosearch>
+      <img src="_media/logo-woocommerce.svg" width="100">
+      <h1>Quality Insights Toolkit</h1>
+    </a>
+</header>
 
-- Dashboard
+* [Introduction](/)
+* Dashboard
 
   - [Getting started](dashboard/getting-started.md)
   - [Run a test](dashboard/run-a-test.md)
@@ -8,15 +14,20 @@
   - [Configure notifications](dashboard/notifications.md)
   - [Changelog](dashboard/changelog.md)
 
-- CLI
+* CLI
 
   - [Getting started](cli/getting-started.md)
   - [Running tests](cli/running-tests.md)
   - [Useful commands](cli/useful-commands.md)
   - [Changelog](cli/changelog.md)
 
-- [Test types](test-types.md)
+* Tests
 
-- [Understanding Allure results](understanding-allure-results.md)
+  - [End-to-End](test-types/e2e.md)
+  - [Activation](test-types/activation.md)
+  - [Security](test-types/security.md)
+  - [PHPStan](test-types/phpstan.md)
 
-- [Changelog](changelog.md)
+* [Understanding Allure results](understanding-allure-results.md)
+
+* [Changelog](changelog.md)
