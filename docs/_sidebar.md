@@ -15,7 +15,7 @@
   - [Useful commands](client/useful-commands.md)
   - [Changelog](client/changelog.md)
 
-- QIT GitHub Workflows
+- GitHub Workflows
 
   - [Getting started](workflows/getting-started.md)
 
