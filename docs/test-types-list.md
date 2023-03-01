@@ -1,3 +1,6 @@
 - [End-to-End Tests](test-types/e2e.md)
 - [Activation Tests](test-types/activation.md)
 - [Security Tests](test-types/security.md)
+- Performance Tests _(Coming soon)_
+- PHP Minimum Version Tests _(Coming soon)_
+- WooCommerce API Tests _(Coming soon)_
