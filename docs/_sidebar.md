@@ -15,6 +15,10 @@
   - [Useful commands](client/useful-commands.md)
   - [Changelog](client/changelog.md)
 
+- GitHub Workflows
+
+  - [Getting started](workflows/getting-started.md)
+
 - [Test types](test-types.md)
 
 - [Understanding Allure results](understanding-allure-results.md)
