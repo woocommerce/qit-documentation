@@ -1,6 +1,6 @@
 - [About](/ "Woo Quality Insights Toolkit")
 
-- QIT Dashboard
+- Dashboard
 
   - [Getting started](dashboard/getting-started.md)
   - [Run a test](dashboard/run-a-test.md)
@@ -8,7 +8,7 @@
   - [Configure notifications](dashboard/notifications.md)
   - [Changelog](dashboard/changelog.md)
 
-- QIT CLI
+- CLI
 
   - [Getting started](cli/getting-started.md)
   - [Running tests](cli/running-tests.md)

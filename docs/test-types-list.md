@@ -1,0 +1,3 @@
+- [End-to-End Tests](test-types/e2e.md)
+- [Activation Tests](test-types/activation.md)
+- [Security Tests](test-types/security.md)
