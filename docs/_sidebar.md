@@ -29,3 +29,7 @@
 - GitHub Workflows
 
   - [Getting started](workflows/getting-started.md)
+
+- Support
+
+  - [Contact us](contact-us.md)
