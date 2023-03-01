@@ -12,14 +12,12 @@
   - [Run a test](dashboard/run-a-test.md)
   - [Viewing test results](dashboard/viewing-test-results.md)
   - [Configure notifications](dashboard/notifications.md)
-  - [Changelog](dashboard/changelog.md)
 
 * CLI
 
   - [Getting started](cli/getting-started.md)
   - [Running tests](cli/running-tests.md)
   - [Useful commands](cli/useful-commands.md)
-  - [Changelog](cli/changelog.md)
 
 * Tests
 
@@ -27,7 +25,3 @@
   - [Activation](test-types/activation.md)
   - [Security](test-types/security.md)
   - [PHPStan](test-types/phpstan.md)
-
-* [Understanding Allure results](understanding-allure-results.md)
-
-* [Changelog](changelog.md)
