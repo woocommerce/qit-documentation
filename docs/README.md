@@ -26,6 +26,7 @@ To ensure that all extensions in the Woo Marketplace meet our quality standards,
 - Users can have more assurance that all extensions will continue to work as expected when activated alongside each other, ensuring a seamless experience.
 
 ## Who is this toolkit for? <!-- {docsify-ignore} -->
+- [GitHub Workflows](workflows/getting-started.md): GitHub workflow files that allow running tests regularly with QIT as part of a GitHub development workflow.
 
 This toolkit is for extension developers who are selling their extensions on the WooCommerce Marketplace.
 
