@@ -18,6 +18,8 @@ In order to be able to use the CLI tool, you'll need to be a vendor admin that c
 
 !> Please note that the application passwords seen on the WooCommerce.com My Account page after logging into your account won't work for the QIT CLI. You need to be have access to the Vendor Dashboard to be able to create these application passwords that can be used instead.
 
-If you work in an organization where you have engineers on your team that aren't vendor admins, and thus don't have access to the Vendor Dashboard, they can still make use of the CLI tool to be able to run tests locally and see the results. To do this, create an application password following the steps when authenticating with the CLI tool (using the `partner:add` workflow) and securely share it with folks on the team. The application passwords that are generated to be used with QIT can only be used for interacting with it, such as running tests and viewing tests results, and do not provide any further permissions for other actions that could be taken on the account.
+If you work in an organization where you have engineers on your team that aren't vendor admins, and thus don't have access to the Vendor Dashboard, they can still make use of the CLI tool to be able to run tests locally and see the results. To do this, create an application password following the steps when authenticating with the CLI tool (using the `partner:add` workflow) and securely share it with folks on the team.
+
+**Rest assured that, the application passwords generated to be used with QIT are limited to only QIT-specific endpoints, such as running and viewing test results. This means, in the event of a breach, the provisioned credentials will not compromise the vendor admin account to which they belong.**
 
 ?> Our roadmap includes plans to add the ability to create and revoke QIT-specific access tokens to make this particular workflow and use-case more manageable.
