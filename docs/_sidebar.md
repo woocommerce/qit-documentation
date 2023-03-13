@@ -5,31 +5,31 @@
     </a>
 </header>
 
-* [Introduction](/)
-* Dashboard
+- [Introduction](/)
+- Dashboard
 
   - [Getting started](dashboard/getting-started.md)
   - [Run a test](dashboard/run-a-test.md)
   - [Viewing test results](dashboard/viewing-test-results.md)
   - [Configure notifications](dashboard/notifications.md)
 
-* CLI
+- CLI
 
   - [Getting started](cli/getting-started.md)
   - [Running tests](cli/running-tests.md)
   - [Useful commands](cli/useful-commands.md)
 
-* Tests
+- Tests
 
   - [End-to-End](test-types/e2e.md)
   - [Activation](test-types/activation.md)
   - [Security](test-types/security.md)
   - [PHPStan](test-types/phpstan.md)
 
-- GitHub Workflows
+* GitHub Workflows
 
   - [Getting started](workflows/getting-started.md)
 
-- Support
-
+* Support
+  - [Authenticating](authenticating.md)
   - [Contact us](contact-us.md)
