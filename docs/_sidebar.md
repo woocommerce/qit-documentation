@@ -26,10 +26,10 @@
   - [Security](test-types/security.md)
   - [PHPStan](test-types/phpstan.md)
 
-* GitHub Workflows
+- GitHub Workflows
 
   - [Getting started](workflows/getting-started.md)
 
-* Support
+- Support
   - [Authenticating](authenticating.md)
   - [Contact us](contact-us.md)
