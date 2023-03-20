@@ -1,5 +1,5 @@
 <header id="qit">
-    <a href="/" data-nosearch>
+    <a href="https://woocommerce.github.io/qit-documentation/#/" data-nosearch>
       <img src="_media/logo-woocommerce.svg" width="100">
       <h1>Quality Insights Toolkit</h1>
     </a>
@@ -25,6 +25,7 @@
   - [Activation](test-types/activation.md)
   - [Security](test-types/security.md)
   - [PHPStan](test-types/phpstan.md)
+  - [API](test-types/api.md)
 
 - GitHub Workflows
 
