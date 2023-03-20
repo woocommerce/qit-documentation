@@ -6,7 +6,7 @@ A vendor admin user is required to be able to view and execute tests using QIT.
 
 For the QIT dashboard:
 
-- Log in wot WooCommerce.com with your vendor account.
+- Log in to WooCommerce.com with your vendor account.
 - Click on `Vendor Dashboard` button to be taken to your vendor dashboard, which can be found on the My Account page once you've logged in:
 
 ![go-to-dashboard](dashboard/_media/go-to-dashboard.png ":size=50%")
