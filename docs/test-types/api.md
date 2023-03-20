@@ -1,6 +1,6 @@
 ### API Tests
 
-This test runs a series of operations using the REST API and asserts that the expected outcomes are true, such as:
+This test runs a series of operations using the [WooCommerce REST API](https://woocommerce.github.io/woocommerce-rest-api-docs/) and asserts that the expected outcomes are true, such as:
 
 - Creating products, customers, orders using the REST API.
 - Validate the created data using REST API.
