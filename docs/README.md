@@ -1,5 +1,5 @@
 <header id="qit" class="mobile">
-    <a href="/" data-nosearch>
+    <a href="https://woocommerce.github.io/qit-documentation/#/" data-nosearch>
       <img src="_media/logo-woocommerce.svg" width="100">
       <h1>Quality Insights Toolkit</h1>
     </a>
