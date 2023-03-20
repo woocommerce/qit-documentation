@@ -8,7 +8,7 @@ This test runs a series of operations using the [WooCommerce REST API](https://w
 ## What to do if it fails
 
 If your API test is failing, please take the following steps:
-- Open the test report
+- Open the test report.
 - Identify the causes of failure and try to reproduce it locally.
 - Fix the issue and re-run the test.
 - If you think the result is incorrect, please email us at qit@woocommerce.com
