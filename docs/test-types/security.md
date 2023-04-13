@@ -7,12 +7,14 @@ This test runs an experimental security scanner against a given extension. It us
 - Failure: One or more PHPCS security issues errors.
 
 ### What rules do have been enabled?
-Below is an example of the ruleset used to run our secutiry test in the QIT.
+Currently, the only rules we've enabled are `OutputEscaped` and `InputSanitzed` and as the QIT matures, the list of enabled rules is subject to change. If you'd like to be apart of the process to define the rules ran against your extensions, feel free to [contact us](https://woocommerce.github.io/qit-documentation/#/contact-us) with your suggestions. 
+
+For a more detailed look on our rulesets, please see the sample below.
 
 ```
 <?xml version="1.0"?>
-<ruleset name="WooCommerce Marketplace PHPCS Security Checks">
-    <description>WooCommerce Marketplace PHPCS Security Checks.</description>
+<ruleset name="Woo Marketplace PHPCS Security Checks">
+    <description>Woo Marketplace PHPCS Security Checks.</description>
 
     <arg value="sp"/>
     <arg name="colors"/>
@@ -65,8 +67,6 @@ Below is an example of the ruleset used to run our secutiry test in the QIT.
 	</rule>
 </ruleset>
 ```
-
-TLDR: Currently, the only rules we've enabled are `OutputEscaped` and `InputSanitzed`. As the QIT matures, the list of enabled rules is subject to change.
 
 ## What to do if it fails
 
