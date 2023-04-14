@@ -7,7 +7,7 @@ This test runs an experimental security scanner against a given extension. It us
 - Failure: One or more PHPCS security issues errors.
 
 ### What rules do have been enabled?
-Currently, the only rules we've enabled are `OutputEscaped` and `InputSanitzed` and as the QIT matures, the list of enabled rules is subject to change. If you'd like to be apart of the process to define the rules ran against your extensions, feel free to [contact us](https://woocommerce.github.io/qit-documentation/#/contact-us) with your suggestions. 
+Currently, the only rules enabled in the Security Scanner is WordPress.Security.EscapeOutput WordPress.Security.ValidatedSanitizedInput. These two rules were chosen as a basic level of security to enforce on all extensions, as they are very accurate and will hardly flag false positives. In the near future, we plan to allow the developer to opt-in to stricter levels of security scans, to show off the good work they do, such as nonce checks, or other security programs, such as generational AI-based scanners that can understand flow of logic, or other third party softwares other than PHPCS. If you'd like to be apart of the process to define the rules ran against your extensions, feel free to [contact us](https://woocommerce.github.io/qit-documentation/#/contact-us) with your suggestions. 
 
 For a more detailed look on our rulesets, please see the sample below.
 
