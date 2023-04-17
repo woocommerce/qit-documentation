@@ -51,6 +51,14 @@ For a more detailed look on our rulesets, please see the sample below.
     <rule ref="WordPress.Security.EscapeOutput.DeprecatedWhitelistCommentFound">
     	<severity>0</severity>
 	</rule>
+	
+    <!-- Warn about usage of potentially dangerous functions. -->
+    <rule ref="Generic.PHP.ForbiddenFunctions">
+      <properties>
+        <property name="error" value="false" />
+        <property name="forbiddenFunctions" type="array" value="wp_set_auth_cookie=>null,wp_set_current_user=>null"/>
+      </properties>
+    </rule>
     
     <rule ref="WordPress.Security.PluginMenuSlug"/>
     
@@ -67,6 +75,12 @@ For a more detailed look on our rulesets, please see the sample below.
 	</rule>
 </ruleset>
 ```
+
+## What to do when encountering a discouraged function?
+
+We identify functions that may lead to potential security vulnerabilities and mark them with a Warning using the `Generic.PHP.ForbiddenFunctions.Discouraged` rule.
+
+While these functions are not inherently unsafe, they frequently contribute to critical vulnerabilities. We flag them to encourage you to review the code for security. If you've confirmed that the code is secure, you can suppress the warning by adding the following comment on the same line as the function: `// phpcs:ignore Generic.PHP.ForbiddenFunctions.Discouraged`
 
 ## What to do if it fails
 
