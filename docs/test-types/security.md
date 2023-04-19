@@ -73,6 +73,8 @@ For a more detailed look on our rulesets, please see the sample below.
 			<property name="customUnslashingSanitizingFunctions" type="array" value="stripslashes"/>
 		</properties>
 	</rule>
+	
+	<rule ref="QITStandard"/>
 </ruleset>
 ```
 
