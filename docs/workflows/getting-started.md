@@ -53,8 +53,8 @@ on:
 permissions:
   pull-requests: write
 jobs:
-  qit_activation:
-    name: QIT Activation
+  qit_security:
+    name: QIT Security Test
     runs-on: ubuntu-20.04
     env:
       NO_COLOR: 1
