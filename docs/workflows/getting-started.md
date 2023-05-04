@@ -22,22 +22,25 @@ jobs:
   qit_activation:
     name: QIT Activation
     runs-on: ubuntu-20.04
+    env:
+      NO_COLOR: 1
+      QIT_DISABLE_ONBOARDING: yes
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Build your plugin zip (Example)
+        run: zip -r my-extension.zip my-extension
       - name: Add Partner
         run: ./bin/qit partner:add --user=${{ secrets.PARTNER_USER }} --application_password=${{ secrets.PARTNER_SECRET }}
-      - name: Create Zip.
-        run: docker run --rm --user $(id -u):$(id -g) -v "$GITHUB_WORKSPACE:/app" -w /app joshkeegan/zip:latest sh -c "zip -r woocommerce-product-feeds.zip woocommerce-product-feeds"
       - name: Run Activation Test
         id: run-activation-test
-        run: ./bin/qit run:activation woocommerce-product-feeds --zip=woocommerce-product-feeds.zip --wait > activation.txt
+        run: ./bin/qit run:activation my-extension --zip=my-extension.zip --wait > result.txt
       - uses: marocchino/sticky-pull-request-comment@v2
         if: failure()
         with:
-          header: QIT Activation Test
+          header: QIT Activation Result
           recreate: true
-          path: activation.txt
+          path: result.txt
 ```
 
 ## Security test example
@@ -51,22 +54,25 @@ permissions:
   pull-requests: write
 jobs:
   qit_activation:
-    name: QIT Security
+    name: QIT Activation
     runs-on: ubuntu-20.04
+    env:
+      NO_COLOR: 1
+      QIT_DISABLE_ONBOARDING: yes
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Build your plugin zip (Example)
+        run: zip -r my-extension.zip my-extension
       - name: Add Partner
         run: ./bin/qit partner:add --user=${{ secrets.PARTNER_USER }} --application_password=${{ secrets.PARTNER_SECRET }}
-      - name: Create Zip.
-        run: docker run --rm --user $(id -u):$(id -g) -v "$GITHUB_WORKSPACE:/app" -w /app joshkeegan/zip:latest sh -c "zip -r woocommerce-product-feeds.zip woocommerce-product-feeds"
-      - name: Run Security Test.
-        id: run-security-test
-        run: ./bin/qit run:security woocommerce-product-feeds --zip=woocommerce-product-feeds.zip --wait > security.txt
+      - name: Run Activation Test
+        id: run-activation-test
+        run: ./bin/qit run:security my-extension --zip=my-extension.zip --wait > result.txt
       - uses: marocchino/sticky-pull-request-comment@v2
         if: failure()
         with:
-          header: QIT Security Test
+          header: QIT Security Result
           recreate: true
-          path: security.txt
+          path: result.txt
 ```
