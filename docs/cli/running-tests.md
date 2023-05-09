@@ -6,7 +6,7 @@ The QIT CLI allows running tests against both extensions that are published and 
 
 The commands to run tests are formatted as `run:<test-type>`. The CLI supports all of the current [test types](test-types.md) using the following commands:
 
-[test-types-list](../test-types-list.md ':include')
+[test-types-list](../test-types-list.md ":include")
 
 For example, to run end-to-end tests, you'd run the following command: `./vendor/bin/qit run:e2e my-plugin-slug`.
 
@@ -62,3 +62,14 @@ For example, to run activation tests against the RC 2 version of WooCommerce 7.0
 For example, if you wanted to run against the latest WordPress but use a different version of WooCommerce, you can do so:
 
 `qit-cli run:e2e my-extension --woocommerce_version=6.0.0`
+
+## Using optional features
+
+You can also enable option features in your test environment by using the `--optional_features` flag. For example, to run an activation test with the High Performance Order Storage feature enabled, you can run the following command:
+
+`qit-cli run:activation my-extension --optional_features=hpos`
+
+Currently, QIT supports enabling the following optional features:
+
+- `hpos`: [High Performance Order Storage (HPOS)](https://developer.woocommerce.com/roadmap/high-performance-order-storage/)
+- `cc_blocks`: Cart and Checkout Blocks

@@ -33,4 +33,5 @@
 
 - Support
   - [Authenticating](authenticating.md)
+  - [Test Options](test-options.md)
   - [Contact us](contact-us.md)
