@@ -11,7 +11,10 @@ The Quality Insights Toolkit (QIT) is an initiative by WooCommerce designed to p
 
 To ensure that all extensions in the Woo Marketplace meet our quality standards, we run a series of automated tests. As part of our commitment to supporting developers, we also provide ways for developers to easily integrate these tests into their development workflows.
 
+[qit_intro](_media/videos/qit_intro.mp4 ":include type=video controls width=100%")
+
 ### Benefits for You as a Developer <!-- {docsify-ignore} -->
+
 - You can enjoy out-of-the-box tests for all the extensions you sell on the Marketplace
 - Your extensions will undergo continuous testing, including against new releases of PHP, WooCommerce, and WordPress
 - You can have increased peace of mind knowing that you'll be alerted if the tests catch anything with a future release or an edge case
@@ -20,6 +23,7 @@ To ensure that all extensions in the Woo Marketplace meet our quality standards,
 - You can run some tests with other extensions active at the same time, including those that may be known to cause issues when activated alongside yours.
 
 ### Benefits for Users of the WooCommerce Ecosystem <!-- {docsify-ignore} -->
+
 - Users can enjoy increased reliability when updating WooCommerce extensions on the Marketplace
 - Users can have confidence to update PHP, WordPress, or WooCommerce versions without fear of breaking their extensions
 - There will be less potential security issues for users of the WooCommerce Ecosystem
@@ -31,7 +35,7 @@ This toolkit is for extension developers who are selling their extensions on the
 
 ## What types of tests are available? <!-- {docsify-ignore} -->
 
-[test-types-list](test-types-list.md ':include')
+[test-types-list](test-types-list.md ":include")
 
 ## How can I use the toolkit? <!-- {docsify-ignore} -->
 
