@@ -13,6 +13,11 @@ To ensure that all extensions in the Woo Marketplace meet our quality standards,
 
 [qit_intro](_media/videos/qit_intro.mp4 ":include type=video controls width=100%")
 
+### Quick Start Guide
+
+1. `composer install woocommerce/qit-cli`
+2. `./vendor/bin/qit` to authenticate with your WooCommerce.com developer account.
+
 ### Benefits for You as a Developer <!-- {docsify-ignore} -->
 
 - You can enjoy out-of-the-box tests for all the extensions you sell on the Marketplace
@@ -42,7 +47,7 @@ This toolkit is for extension developers who are selling their extensions on the
 Tests are executed automatically by us whenever you publish a new version of your extension on the WooCommerce Marketplace. You can also run tests manually using the following tools:
 
 - [Dashboard](dashboard/getting-started.md): A UI-based test runner and test results viewer, available in your WooCommerce dashboard.
-- [CLI](cli/getting-started.md): A command line interface (CLI) based tool, which allows for running tests against published and development versions of an extension.
+- [CLI](cli/getting-started.md): A CLI tool that allows you to run and view tests, including against development builds.
 - [GitHub Workflows](workflows/getting-started.md): GitHub workflow files that allow running tests regularly with QIT as part of a GitHub development workflow.
 
 ## Why does this toolkit exist? <!-- {docsify-ignore} -->
