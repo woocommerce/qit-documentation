@@ -10,40 +10,39 @@ The QIT CLI is a command line interface tool that allows you to run automated te
 - Unix environment (Linux, macOS, Windows WSL)
 - Composer
 
-## Installing
+## Installing QIT
 
-There's two approaches that can be used to install the QIT CLI: Composer (recommended) and using a `phar` file
+You can install QIT in three different ways:
 
-### Composer
+### Per Project
 
-Composer is the recommended approach. This project has zero dependencies.
+1. Run `composer require woocommerce/qit-cli --dev`
+2. Execute `./vendor/bin/qit` to authenticate with your WooCommerce.com Partner Developer account.
 
-_Since this repository is still private, a simple `composer require` is not available for now._
+### Globally Using Composer
 
-1. Place this in your `composer.json`.
+1. Run `composer global require woocommerce/qit-cli`
+2. Execute `qit` to authenticate with your WooCommerce.com Partner Developer account. Ensure that the Composer bin folder is in your PATH. [Example](https://stackoverflow.com/a/64545124).
 
-```json
-{
-  "require-dev": {
-    "woocommerce/qit-cli": "dev-trunk"
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "git@github.com:woocommerce/qit-cli.git"
-    }
-  ]
-}
-```
+### Globally Using `wget`
 
-2. Run `composer update`. It might prompt you for a GitHub Personal Access Token.
-3. Run `./vendor/bin/qit partner:add` to configure your credentials. This authentication flow makes use of [WordPress Application Passwords](https://make.wordpress.org/core/2020/11/05/application-passwords-integration-guide/).
+_(Pro Tip: Opting for the Composer installation method simplifies the process of updating QIT in the future 😉)_
+1. Run `wget https://github.com/woocommerce/qit-cli/raw/trunk/qit`
+2. Execute `chmod +x qit`
+3. Move the file to a directory in your PATH, such as `sudo mv qit /usr/local/bin/qit`
+4. Run `qit` to authenticate with your WooCommerce.com Partner Developer account.
 
-### Phar
+## Updating QIT
 
-1. Download the [qit](https://github.com/woocommerce/qit-cli/releases/latest/) phar directly from the latest release.\*
-2. Make it executable: `chmod +x qit.phar`
-3. Move the binary to a directory in PATH, giving preference for a directory that doesn't require root: `(test -w ~/.local/bin && echo $PATH | grep -q "/.local/bin") && mv qit.phar ~/.local/bin/qit || sudo mv qit.phar /usr/local/bin/qit`
-4. Run `qit partner:add` to configure your credentials. This authentication flow makes use of [WordPress Application Passwords](https://make.wordpress.org/core/2020/11/05/application-passwords-integration-guide/).
+Updating QIT will depend on how you installed it.
 
-_\* Since this is a private repo, downloading with `curl` or `wget`, like WP-CLI, won't work._
+### If you installed it per-project:
+1. Run `composer update woocommerce/qit-cli`
+
+### If you installed it globally using Composer:
+1. Go to your global composer directory `cd $(composer global config bin-dir --absolute)`
+2. Run `composer update woocommerce/qit-cli`
+
+#### If you installed it with `wget`:
+1. Delete the old binary `which qit` then `rm` it.
+2. Repeat the installation steps.
