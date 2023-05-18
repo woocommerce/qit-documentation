@@ -30,11 +30,13 @@ jobs:
         uses: actions/checkout@v3
       - name: Build your plugin zip (Example)
         run: zip -r my-extension.zip my-extension
+      - name: Install QIT via composer
+        run: composer require woocommerce/qit-cli
       - name: Add Partner
-        run: ./bin/qit partner:add --user=${{ secrets.PARTNER_USER }} --application_password=${{ secrets.PARTNER_SECRET }}
+        run: ./vendor/bin/qit partner:add --user='${{ secrets.PARTNER_USER }}' --application_password='${{ secrets.PARTNER_SECRET }}'
       - name: Run Activation Test
         id: run-activation-test
-        run: ./bin/qit run:activation my-extension --zip=my-extension.zip --wait > result.txt
+        run: ./vendor/bin/qit run:activation my-extension --zip=my-extension.zip --wait > result.txt
       - uses: marocchino/sticky-pull-request-comment@v2
         if: failure()
         with:
@@ -64,11 +66,13 @@ jobs:
         uses: actions/checkout@v3
       - name: Build your plugin zip (Example)
         run: zip -r my-extension.zip my-extension
+      - name: Install QIT via composer
+        run: composer require woocommerce/qit-cli
       - name: Add Partner
-        run: ./bin/qit partner:add --user=${{ secrets.PARTNER_USER }} --application_password=${{ secrets.PARTNER_SECRET }}
+        run: ./vendor/bin/qit partner:add --user='${{ secrets.PARTNER_USER }}' --application_password='${{ secrets.PARTNER_SECRET }}'
       - name: Run Activation Test
         id: run-activation-test
-        run: ./bin/qit run:security my-extension --zip=my-extension.zip --wait > result.txt
+        run: ./vendor/bin/qit run:security my-extension --zip=my-extension.zip --wait > result.txt
       - uses: marocchino/sticky-pull-request-comment@v2
         if: failure()
         with:
@@ -76,3 +80,19 @@ jobs:
           recreate: true
           path: result.txt
 ```
+
+## Notes
+
+### Required permissions
+
+Depending on how your repository is set up, you may need to adjust the permissions step to the following:
+
+```yaml
+permissions:
+  contents: read
+  pull-requests: write
+```
+
+### Verify the zip is built correctly
+
+If you see any failures in the pipeline, such as an activation test that fails without a result, it could be due to the way that the GitHub action is building the zip file. Double check that the zip file created by the workflow doesn't add in an extra folder to the file structure. To verify that the zip is valid to be used by QIT, you can test uploading it in the WordPress admin screen under `Plugins > Add new` and test uploading and activating the zip file. If it works, then it will work with QIT.
