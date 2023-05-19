@@ -15,7 +15,7 @@ The table below shows what options are available for each test type. For example
 
 You can specify the last 5 stable releases along with the most recent beta/release candidate to be used in the test environment.
 
-?> Please note that for API and end-to-end tests, these are currently restricted to specific versions as we work to make the tests backwards and forwards compatible. For the most up to date versions that we currently support, you can select the test type in the Viewer under `Run a Test` or, using the QIT CLI, check the help for each test type: `./qit run:api --help` and `./qit run:e2e --help`.
+?> Please note that for API and end-to-end tests, the WooCommrce version is currently restricted to specific versions as we work to make the tests backwards and forwards compatible. For the most up to date versions that we currently support, you can select the test type in the Viewer under `Run a Test` or, using the QIT CLI, check the help for each test type: `./qit run:api --help` and `./qit run:e2e --help`.
 
 ## WooCommerce features
 
