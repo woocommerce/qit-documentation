@@ -105,7 +105,7 @@ False positives, or alerts for security issues that do not exist in actuality, m
 - **Report:** If after careful review, the flag still appears to be a false positive, report it to us. Send an email to qit@woocommerce.com explaining the situation, with the specific test result and the corresponding part of your code. Please make sure to include any additional information that can help us understand why you believe it's a false positive.
 - **Suppression (temporarily):** In the meantime, while we investigate the issue, you might want to suppress the false positive to continue your work without disruption. To do so, add a comment line right before the flagged line in your code.
     - For PHPCS errors, add `// phpcs:ignore Rule.Name` on the line where the error is reported. Replace `Rule.Name` with the rule that has caused the false positive, eg: `// phpcs:ignore WordPress.Security.ValidatedSanitizedInput`
-    - For SemGrep errors, add `// nosem: rule-id` in a similar manner, replacing rule-id with the SemGrep rule identifier, eg: `// nosem: audit.php.wp.security.xss.query-arg`
+    - For SemGrep errors, add `// nosemgrep: rule-id` in a similar manner, replacing rule-id with the SemGrep rule identifier, eg: `// nosemgrep: audit.php.wp.security.xss.query-arg`
 
 Only suppress the error if you are certain that it is a false positive.
 
