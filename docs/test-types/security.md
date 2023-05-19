@@ -15,7 +15,7 @@ Ideally, you should delegate all the testing execution to QIT. We don't support 
 ### Which PHPCS Rules Are Enabled?
 Currently, the only rules enabled in the Security Scanner is `WordPress.Security.EscapeOutput`, and `WordPress.Security.ValidatedSanitizedInput`, with some custom sanitizing and escaping functions whitelisted.
 
-These two rules were chosen as a basic level of security to enforce on all extensions, as they are very accurate and will hardly flag false positives. In the near future, we plan to allow the developer to opt-in to stricter levels of security scans, to show off the good work they do, such as nonce checks, or other security programs, such as generational AI-based scanners that can understand flow of logic, or other third party softwares other than PHPCS and SemGrep. If you'd like to be apart of the process to define the rules ran against your extensions, feel free to [contact us](https://woocommerce.github.io/qit-documentation/#/contact-us) with your suggestions. 
+These two rules were chosen as a basic level of security to enforce on all extensions, as they are very accurate and will hardly flag false positives. In the near future, we plan to allow the developer to opt-in to stricter levels of security scans, to show off the good work they do, such as nonce checks, or other security programs, such as generational AI-based scanners that can understand flow of logic, or other third party software other than PHPCS and SemGrep. If you'd like to be a part of the process to define the rules ran against your extensions, feel free to [contact us](https://woocommerce.github.io/qit-documentation/#/contact-us) with your suggestions. 
 
 For a more detailed look on our PHPCS rulesets, please see the sample below.
 
