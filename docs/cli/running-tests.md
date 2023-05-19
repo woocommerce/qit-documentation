@@ -72,5 +72,3 @@ You can also enable option features in your test environment by using the `--opt
 Currently, QIT supports enabling the following optional features:
 
 - `hpos`: [High Performance Order Storage (HPOS)](https://developer.woocommerce.com/roadmap/high-performance-order-storage/)
-- `cc_blocks`: Cart and Checkout Blocks
-

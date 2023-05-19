@@ -20,7 +20,6 @@ You can specify the last 5 stable releases along with the most recent beta/relea
 QIT currently supports the following option WooCommerce features:
 
 - [High Performance Order Storage (HPOS)](https://developer.woocommerce.com/roadmap/high-performance-order-storage/)
-- Cart and Checkout Blocks
 
 For more information on using optional features in your tests, check out [Testing WooCommerce Optional Features](cli/running-tests?id=using-optional-features).
 
