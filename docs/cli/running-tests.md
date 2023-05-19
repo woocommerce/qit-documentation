@@ -61,13 +61,13 @@ For example, to run activation tests against the RC 2 version of WooCommerce 7.0
 
 For example, if you wanted to run against the latest WordPress but use a different version of WooCommerce, you can do so:
 
-`qit-cli run:e2e my-extension --woocommerce_version=6.0.0`
+`qit run:e2e my-extension --woocommerce_version=6.0.0`
 
 ## Using optional features
 
 You can also enable option features in your test environment by using the `--optional_features` flag. For example, to run an activation test with the High Performance Order Storage feature enabled, you can run the following command:
 
-`qit-cli run:activation my-extension --optional_features=hpos`
+`qit run:activation my-extension --optional_features=hpos`
 
 Currently, QIT supports enabling the following optional features:
 
