@@ -26,7 +26,24 @@ You can install QIT in three different ways:
 
 ### Globally Using `wget`
 
-1. Run `wget https://github.com/woocommerce/qit-cli/blob/trunk/qit`
+_(Pro Tip: Opting for the Composer installation method simplifies the process of updating QIT in the future 😉)_
+1. Run `wget https://github.com/woocommerce/qit-cli/raw/trunk/qit`
 2. Execute `chmod +x qit`
 3. Move the file to a directory in your PATH, such as `sudo mv qit /usr/local/bin/qit`
 4. Run `qit` to authenticate with your WooCommerce.com Partner Developer account.
+
+## Updating QIT
+
+Updating QIT will depend on how you installed it.
+
+### If you installed it per-project:
+1. Run `composer update woocommerce/qit-cli`
+
+### If you installed it globally using Composer:
+1. Go to your global composer directory `cd $(composer global config bin-dir --absolute)`
+2. Run `composer update woocommerce/qit-cli`
+
+#### If you installed it with `wget`:
+1. Delete the old binary `which qit` then `rm` it.
+2. Repeat the installation steps.
+3. 
