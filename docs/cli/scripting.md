@@ -22,7 +22,7 @@ QIT_APP_PASS=bar
 
 ### Bash Script (bin/qit.sh)
 
-This script authenticates the QIT_USER and then runs security tests against the extension build. If the 'partner:remove' command is not available, it adds a partner using `QIT_USER` and `QIT_APP_PASSWORD`.
+This script authenticates the QIT_USER and then runs security tests against the extension build. If the 'partner:remove' command is not available, it adds a partner using `QIT_USER` and `QIT_APP_PASSWORD`. For more information on how authentication works with QIT, see our [documentation around authentication](https://woocommerce.github.io/qit-documentation/#/authenticating).
 
 ```bash
 #!/bin/bash
