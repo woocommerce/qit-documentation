@@ -58,7 +58,7 @@ if [ $? -ne 0 ]; then
 fi
 ```
 
-### Script Configuration
+### Script Runner
 
 Script runners can be used to execute our bash script `qit.sh`. You can choose the script runner that best suits your needs. We'll provide examples for NPM, Composer, and Make.
 
