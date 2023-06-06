@@ -60,7 +60,7 @@ fi
 
 ### Script Runner (Choose between NPM, Composer, Make)
 
-Script runners can be used to execute our bash script `qit.sh`. You can choose the script runner that best suits your needs. We'll provide examples for NPM, Composer, and Make.
+Script runners can be used to execute our bash script `qit.sh`. You can choose the script runner that best suits your needs. Below you can find some examples we've put together for NPM, Composer, and Make.
 
 <p class="warn">The <strong>build</strong> command in this script is just an example, and should be modified to fit your actual build process that generates the plugin zip that can be installed in a WordPress site.</p>
 
