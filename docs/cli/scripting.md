@@ -97,7 +97,7 @@ Usage: `composer run qit-security`
 ```json
 {
   "scripts": {
-    "build": "echo Building...",
+    "build": "zip -r build/extension.zip my-extension",
     "qit-security": "export $(cat .env | xargs) && composer run-script build && ./bin/qit.sh"
   }
 }
