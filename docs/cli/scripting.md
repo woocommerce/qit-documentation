@@ -8,27 +8,10 @@ For this example, we will assume the following directory structure:
 
 - .env
 - bin/qit.sh
-- package.json
 - vendor/bin/qit
 - build/extension.zip _(Assuming this is created by `npm run build`)_
 
-### package.json
-
-In your `package.json`, define the "qit-security" script. This script first builds the project and then executes `qit.sh`, loading environment variables from `.env` using dotenv.
-
-```json
-{
-  "name": "Foo",
-  "scripts": {
-    "qit-security": "npm run build && dotenv -e .env -- bash ./bin/qit.sh"
-  },
-  "devDependencies": {
-    "dotenv-cli": "^7.2.1"
-  }
-}
-```
-
-### .env
+### Environment Variables (.env)
 
 Create a `.env` file in the root directory of your project and add your QIT user and application password:
 
@@ -37,7 +20,7 @@ QIT_USER=foo
 QIT_APP_PASS=bar
 ```
 
-### Bash script (bin/qit.sh)
+### Bash Script (bin/qit.sh)
 
 This script authenticates the QIT_USER and then runs security tests against the extension build. If the 'partner:remove' command is not available, it adds a partner using `QIT_USER` and `QIT_APP_PASSWORD`.
 
@@ -75,4 +58,61 @@ if [ $? -ne 0 ]; then
 fi
 ```
 
-With this setup, you can run the `qit-security` script with the command `npm run qit-security`. This command will build your project, perform the necessary authentication checks, add a partner if required, and finally, run security tests against your extension build.
+### Script Configuration
+
+Script runners can be used to execute our bash script `qit.sh`. You can choose the script runner that best suits your needs. We'll provide examples for NPM, Composer, and Make.
+
+<p class="warn">The <strong>build</strong> command in this script is just an example, and should be modified to fit your actual build process that generates the plugin zip that can be installed in a WordPress site.</p>
+
+#### NPM
+
+<details>
+<summary>package.json</summary>
+
+```json
+{
+  "name": "Project",
+  "version": "1.0.0",
+  "scripts": {
+    "qit-security": "npm run build && dotenv -e .env -- bash ./bin/qit.sh",
+    "build": "zip -r build/extension.zip my-extension"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^7.2.1"
+  }
+}
+```
+
+</details>
+
+### Composer
+
+<details>
+<summary>composer.json</summary>
+
+```json
+{
+  "scripts": {
+    "build": "echo Building...",
+    "qit-security": "export $(cat .env | xargs) && composer run-script build && ./bin/qit.sh"
+  }
+}
+```
+</details>
+
+#### Makefile
+
+<details>
+<summary>Makefile</summary>
+
+```
+include ./.env
+export
+
+build:
+        zip -r build/extension.zip my-extension
+
+qit-security: build
+        bash ./bin/qit.sh
+```
+</details>
