@@ -34,6 +34,7 @@ if [[ -z "${QIT_USER}" ]] || [[ -z "${QIT_APP_PASSWORD}" ]]; then
     exit 1
 fi
 
+# When QIT is run for the first time, it will prompt for onboarding. This will disable that prompt.
 export QIT_DISABLE_ONBOARDING=yes
 
 # If QIT_BINARY is not set, default to ./vendor/bin/qit
