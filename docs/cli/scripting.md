@@ -4,7 +4,7 @@ QIT CLI allows you to create robust scripts that can optimize your development w
 
 ### Directory Structure
 
-For this example, we will assume the following directory structure:
+For this example, we will assume the following directory structure. This can be in the same folder where you develop your plugin or in its own directory:
 
 - .env
 - bin/qit.sh
