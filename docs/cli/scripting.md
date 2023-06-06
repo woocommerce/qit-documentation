@@ -66,6 +66,8 @@ Script runners can be used to execute our bash script `qit.sh`. You can choose t
 
 ### NPM
 
+Usage: `npm run qit-security`
+
 <details>
 <summary>package.json</summary>
 
@@ -87,6 +89,8 @@ Script runners can be used to execute our bash script `qit.sh`. You can choose t
 
 ### Composer
 
+Usage: `composer run qit-security`
+
 <details>
 <summary>composer.json</summary>
 
@@ -101,6 +105,8 @@ Script runners can be used to execute our bash script `qit.sh`. You can choose t
 </details>
 
 ### Makefile
+
+Usage: `make qit-security`
 
 <details>
 <summary>Makefile</summary>
