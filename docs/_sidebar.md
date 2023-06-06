@@ -18,6 +18,7 @@
   - [Getting started](cli/getting-started.md)
   - [Running tests](cli/running-tests.md)
   - [Useful commands](cli/useful-commands.md)
+  - [Scripting](cli/scripting.md)
 
 - Tests
 
