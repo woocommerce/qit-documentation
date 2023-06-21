@@ -7,7 +7,7 @@ This test runs an experimental security scanner against a given extension.
 - Failure: One or more security issues errors.
 
 ### What Tools Are Used?
-The tools used in the Security Scanner are, currently, PHPCS and SemGrep.
+The tools used in the Security Scanner are, currently, [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer) and [SemGrep](https://semgrep.dev/).
 
 ### Can I run it Locally?
 Ideally, you should delegate all the testing execution to QIT. We don't support running the tests outside of QIT, but you can mimick at least the PHPCS rules. The SemGrep rules are not available to be run locally.
