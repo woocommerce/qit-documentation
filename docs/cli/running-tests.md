@@ -30,7 +30,7 @@ The QIT CLI supports testing development builds of extensions, so you can run an
 
 Once you have a zipped up version of your extension you'd like to test with, use the `--zip` argument to pass in a path to the zip file containing your extension.
 
-For example, to run end-to-end tests against your local build, you'd fun the following command:
+For example, to run end-to-end tests against your local build, you'd run the following command:
 
 ```shell
 qit run:e2e my-extension --zip=my-extension.zip
