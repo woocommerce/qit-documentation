@@ -27,6 +27,7 @@
   - [Security](test-types/security.md)
   - [PHPStan](test-types/phpstan.md)
   - [API](test-types/api.md)
+  - [PHPCompatibility](test-types/phpcompatibility.md)
 
 - GitHub Workflows
 
