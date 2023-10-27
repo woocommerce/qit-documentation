@@ -53,15 +53,13 @@ The QIT CLI supports testing against different versions of WooCommerce and WordP
 - `--woocommerce_version`
 - `--wordpress_version`
 
-For example, to run activation tests against the RC 2 version of WooCommerce 7.0.0 and WordPress 6.0.1, you can run the following command:
+For example, to run activation tests against the RC version of WooCommerce and WordPress, you can run the following command:
 
-`qit run:activation my-extension --woocommerce_version=7.0.0-rc.2 --wordpress_version=6.0.1`
+`qit run:activation my-extension --woocommerce_version=rc --wordpress_version=rc`
 
-?> If either these arguments are not supplied, then the tests will just run against the current versions of WooCommerce and WordPress.
+?> If either these arguments are not supplied, then the tests will just run against the current stable versions of WooCommerce and WordPress.
 
-For example, if you wanted to run against the latest WordPress but use a different version of WooCommerce, you can do so:
-
-`qit run:e2e my-extension --woocommerce_version=6.0.0`
+QIT supports the last 4 stable and the latest release-candidate of WooCommerce. You can also run `qit run:e2e --help` to see the available WooCommerce versions available to run tests against.
 
 ## Using optional features
 
