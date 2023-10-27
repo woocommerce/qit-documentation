@@ -15,7 +15,7 @@ To ensure that all extensions in the Woo Marketplace meet our quality standards,
 
 ### Quick Start Guide
 
-1. `composer install woocommerce/qit-cli`
+1. `composer install woocommerce/qit-cli --dev`
 2. `./vendor/bin/qit` to authenticate with your WooCommerce.com developer account.
 
 ### Benefits for You as a Developer <!-- {docsify-ignore} -->
