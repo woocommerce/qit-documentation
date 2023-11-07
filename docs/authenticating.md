@@ -6,7 +6,7 @@ A vendor admin user is required to be able to view and execute tests using QIT.
 
 For the QIT dashboard:
 
-- Log in to WooCommerce.com with your vendor account.
+- Log in to Woo.com with your vendor account.
 - Click on `Vendor Dashboard` button to be taken to your vendor dashboard, which can be found on the My Account page once you've logged in:
 
 ![go-to-dashboard](dashboard/_media/go-to-dashboard.png ":size=50%")
@@ -28,7 +28,7 @@ In order to be able to use the CLI tool, you'll need to be a vendor admin that c
 
 ## Giving access to other developers to use the QIT.
 
-Sometimes you want to give access to other developers in your organization to run tests using the QIT, but you might not want to give them access to the WooCommerce.com account that can manage the extension in the marketplace, as it gives developers access they don't need, such as managing your extensions in the marketplace, etc.
+Sometimes you want to give access to other developers in your organization to run tests using the QIT, but you might not want to give them access to the Woo.com account that can manage the extension in the marketplace, as it gives developers access they don't need, such as managing your extensions in the marketplace, etc.
 
 Luckily, you can share with them the QIT Application Password, as these application passwords are restricted to only run and view test runs. They are special application passwords with limited access that can only run and view tests using QIT.
 

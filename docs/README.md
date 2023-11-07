@@ -7,7 +7,7 @@
 
 ## Introduction <!-- {docsify-ignore} -->
 
-The Quality Insights Toolkit (QIT) is an initiative by WooCommerce designed to provide extension developers in the [Woo Marketplace](https://woocommerce.com/products/) with managed automated tests.
+The Quality Insights Toolkit (QIT) is an initiative by WooCommerce designed to provide extension developers in the [Woo Marketplace](https://woo.com/products/) with managed automated tests.
 
 To ensure that all extensions in the Woo Marketplace meet our quality standards, we run a series of automated tests. As part of our commitment to supporting developers, we also provide ways for developers to easily integrate these tests into their development workflows.
 
@@ -16,7 +16,7 @@ To ensure that all extensions in the Woo Marketplace meet our quality standards,
 ### Quick Start Guide
 
 1. `composer install woocommerce/qit-cli --dev`
-2. `./vendor/bin/qit` to authenticate with your WooCommerce.com developer account.
+2. `./vendor/bin/qit` to authenticate with your Woo.com developer account.
 
 ### Benefits for You as a Developer <!-- {docsify-ignore} -->
 
