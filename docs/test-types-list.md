@@ -4,5 +4,6 @@
 - [PHPStan Tests](test-types/phpstan.md) <code class="cli-command-example">run:phpstan</code>
 - [API Tests](test-types/api.md) <code class="cli-command-example">run:api</code>
 - [PHPCompatibility Tests](test-types/phpcompatibility.md) <code class="cli-command-example">run:phpcompatibility</code>
+- [Malware Tests](test-types/malware.md) <code class="cli-command-example">run:malware</code>
 - Performance Tests _(Coming soon)_
 - PHP Minimum Version Tests _(Coming soon)_

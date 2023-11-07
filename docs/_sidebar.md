@@ -28,6 +28,7 @@
   - [PHPStan](test-types/phpstan.md)
   - [API](test-types/api.md)
   - [PHPCompatibility](test-types/phpcompatibility.md)
+  - [Malware](test-types/malware.md)
 
 - GitHub Workflows
 
