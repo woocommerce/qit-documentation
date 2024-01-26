@@ -16,13 +16,9 @@ QIT is currently exclusive to Partner Developers that sells plugins in the Woo.c
 
 We also provide a user interface to view and start test runs in the Woo.com Vendor Dashboard.
 
-<<<<<<< Updated upstream
-- Log in to Woo.com with your vendor account.
-=======
 To access it:
 
 - Log in to Woo.com with your Partner account.
->>>>>>> Stashed changes
 - Click on `Vendor Dashboard` button to be taken to your vendor dashboard, which can be found on the My Account page once you've logged in:
 
 ![go-to-dashboard](dashboard/_media/go-to-dashboard.png ":size=50%")
@@ -39,11 +35,7 @@ Luckily, you can share with them the QIT Token, as they are restricted to only r
 
 Under the hood, a QIT Token is just an Application Password with a specific App ID.
 
-<<<<<<< Updated upstream
-Sometimes you want to give access to other developers in your organization to run tests using the QIT, but you might not want to give them access to the Woo.com account that can manage the extension in the marketplace, as it gives developers access they don't need, such as managing your extensions in the marketplace, etc.
-=======
 The main difference between a QIT Token and a regular Application Password is that:
->>>>>>> Stashed changes
 
 - The QIT CLI does not accept a generic Application Password as a valid authentication method.
 - A QIT Token can only be used to interact with QIT endpoints.
