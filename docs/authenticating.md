@@ -1,35 +1,51 @@
 # Authenticating
 
-A vendor admin user is required to be able to view and execute tests using QIT.
+QIT is currently exclusive to Partner Developers that sells plugins in the Woo.com Marketplace.
 
-## Dashboard
+## Authenticating using QIT CLI
 
-For the QIT dashboard:
+- Login to Woo.com with your Partner Developer account
+- [Download](https://github.com/woocommerce/qit-cli/releases/latest/) the latest version of QIT CLI and [Install it](/cli/getting-started?id=installing)
+- Depending on how you've installed the QIT CLI, run `./vendor/bin/qit partner:add`
+- Follow the steps to generate a QIT Token
+- Enter the QIT Token and username in the CLI
 
+[filename](_media/qit-cli-auth-flow.mp4 ":include :type=video controls width=100% height=100%")
+
+## Authenticating in the Woo.com Marketplace
+
+We also provide a user interface to view and start test runs in the Woo.com Vendor Dashboard.
+
+<<<<<<< Updated upstream
 - Log in to Woo.com with your vendor account.
+=======
+To access it:
+
+- Log in to Woo.com with your Partner account.
+>>>>>>> Stashed changes
 - Click on `Vendor Dashboard` button to be taken to your vendor dashboard, which can be found on the My Account page once you've logged in:
 
 ![go-to-dashboard](dashboard/_media/go-to-dashboard.png ":size=50%")
 
 - Don't see this button? You may not be the vendor admin on the account. Reach out to someone else in the organization (usually the person that handles uploading the extension for publishing) to see if they have access.
 
-?> Even if you don't have access in the UI, you'll still be able to leverage the CLI. Please see the section below for a guide on how to do this.
-
-## CLI
-
-In order to be able to use the CLI tool, you'll need to be a vendor admin that can create a [WordPress application password](https://make.wordpress.org/core/2020/11/05/application-passwords-integration-guide/) in order to authenticate. Follow the steps below to authenticate with the QIT CLI:
-
-- [Download](https://github.com/woocommerce/qit-cli/releases/latest/) the latest version of QIT CLI and [Install it](/cli/getting-started?id=installing)
-- Depending on how you've installed the QIT CLI, run `./vendor/bin/qit partner:add`
-- Follow the steps to generate an application password
-- Enter the application password and username in the CLI
-
-[filename](_media/qit-cli-auth-flow.mp4 ":include :type=video controls width=100% height=100%")
-
-## Giving access to other developers to use the QIT.
+### Giving access to other developers to use QIT
 
 Sometimes you want to give access to other developers in your organization to run tests using the QIT, but you might not want to give them access to the Woo.com account that can manage the extension in the marketplace, as it gives developers access they don't need, such as managing your extensions in the marketplace, etc.
 
-Luckily, you can share with them the QIT Application Password, as these application passwords are restricted to only run and view test runs. They are special application passwords with limited access that can only run and view tests using QIT.
+Luckily, you can share with them the QIT Token, as they are restricted to only run and view test runs. They are special application passwords with limited access that can only run and view tests using QIT.
 
-?> Our roadmap includes plans to add the ability to create and revoke QIT-specific access tokens to make this particular workflow and use-case more manageable.
+### What's the Difference Between QIT Token and Application Password?
+
+Under the hood, a QIT Token is just an Application Password with a specific App ID.
+
+<<<<<<< Updated upstream
+Sometimes you want to give access to other developers in your organization to run tests using the QIT, but you might not want to give them access to the Woo.com account that can manage the extension in the marketplace, as it gives developers access they don't need, such as managing your extensions in the marketplace, etc.
+=======
+The main difference between a QIT Token and a regular Application Password is that:
+>>>>>>> Stashed changes
+
+- The QIT CLI does not accept a generic Application Password as a valid authentication method.
+- A QIT Token can only be used to interact with QIT endpoints.
+
+This was designed to increase your security in case your QIT Token gets leaked, as an attacker would only be able to start and view test runs with it. It's essentially an Application Password whose scope works only in the context of QIT.
