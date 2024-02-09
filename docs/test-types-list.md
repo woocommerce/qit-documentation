@@ -1,9 +1,9 @@
-- [End-to-End Tests](test-types/e2e.md) <code class="cli-command-example">run:e2e</code>
+- [Woo E2E Tests](test-types/woo-e2e.md) <code class="cli-command-example">run:woo-e2e</code>
+- [Woo API Tests](test-types/woo-api.md) <code class="cli-command-example">run:woo-api</code>
 - [Activation Tests](test-types/activation.md) <code class="cli-command-example">run:activation</code>
 - [Security Tests](test-types/security.md) <code class="cli-command-example">run:security</code>
 - [PHPStan Tests](test-types/phpstan.md) <code class="cli-command-example">run:phpstan</code>
-- [API Tests](test-types/api.md) <code class="cli-command-example">run:api</code>
 - [PHPCompatibility Tests](test-types/phpcompatibility.md) <code class="cli-command-example">run:phpcompatibility</code>
 - [Malware Tests](test-types/malware.md) <code class="cli-command-example">run:malware</code>
 - Performance Tests _(Coming soon)_
-- PHP Minimum Version Tests _(Coming soon)_
+- Custom E2E Tests _(Coming soon)_

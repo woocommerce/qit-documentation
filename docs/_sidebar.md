@@ -22,11 +22,11 @@
 
 - Tests
 
-  - [End-to-End](test-types/e2e.md)
+  - [Woo E2E](test-types/woo-e2e.md)
+  - [Woo API](test-types/woo-api.md)
   - [Activation](test-types/activation.md)
   - [Security](test-types/security.md)
   - [PHPStan](test-types/phpstan.md)
-  - [API](test-types/api.md)
   - [PHPCompatibility](test-types/phpcompatibility.md)
   - [Malware](test-types/malware.md)
 

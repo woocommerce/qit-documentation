@@ -16,7 +16,7 @@ You can filter the test results shown in the table by selecting one of the three
 
 - Product: Filter by the product the tests were ran against.
 - WooCommerce Release: Filter by the WooCommerce release version the tests were ran against.
-- Test Types: Filter by the test type that was ran, such as e2e or activation.
+- Test Types: Filter by the test type that was ran, such as woo-e2e or activation.
 
 You can also search the tests by providing keywords such as the product, the version, the test type, status or release:
 
