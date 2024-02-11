@@ -23,7 +23,7 @@ Some helpful commands to get started include:
 | Run Id | Test       | WP    | WC         | Status  | Report    | Name/Version                  |
 +--------+------------+-------+------------+---------+-----------+-------------------------------+
 | 344745 | security   | 6.1.1 | 7.2.2      | warning |           | My Extension (Zip)            |
-| 344759 | e2e        | 6.1.1 | 7.2.0-rc.2 | failed  | Available | My Extension (1.0.0)          |
+| 344759 | woo-e2e    | 6.1.1 | 7.2.0-rc.2 | failed  | Available | My Extension (1.0.0)          |
 +--------+------------+-------+------------+---------+-----------+-------------------------------+
 ```
 
@@ -43,7 +43,7 @@ Woo Extension       My Extension
 
 ```shell
 Run Id              361745
-Test Type           e2e
+Test Type           woo-e2e
 Wordpress Version   6.1.1
 Woocommerce Version 7.2.2
 Status              failed

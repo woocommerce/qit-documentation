@@ -8,14 +8,14 @@ The commands to run tests are formatted as `run:<test-type>`. The CLI supports a
 
 [test-types-list](../test-types-list.md ":include")
 
-For example, to run end-to-end tests, you'd run the following command: `./vendor/bin/qit run:e2e my-plugin-slug`.
+For example, to run end-to-end tests, you'd run the following command: `./vendor/bin/qit run:woo-e2e my-plugin-slug`.
 
 ## Testing a published extension
 
 For running any kind of tests, you'll need the slug for the given extension you want to run the tests against. For example, to run end-to-end tests against an extension with the slug `my-extension`, you'd run the following command:
 
 ```shell
-qit run:e2e my-extension
+qit run:woo-e2e my-extension
 ```
 
 This will run the [WooCommerce Core E2E Test Suite](https://github.com/woocommerce/woocommerce/tree/trunk/plugins/woocommerce/tests/e2e-pw) against the WooCommerce extension with slug `my-extension` using the latest stable versions of WordPress and WooCommerce.
@@ -33,7 +33,7 @@ Once you have a zipped up version of your extension you'd like to test with, use
 For example, to run end-to-end tests against your local build, you'd run the following command:
 
 ```shell
-qit run:e2e my-extension --zip=my-extension.zip
+qit run:woo-e2e my-extension --zip=my-extension.zip
 ```
 
 ## Seeing test runs and their results
@@ -59,7 +59,7 @@ For example, to run activation tests against the RC version of WooCommerce and W
 
 ?> If either these arguments are not supplied, then the tests will just run against the current stable versions of WooCommerce and WordPress.
 
-QIT supports the last 4 stable and the latest release-candidate of WooCommerce. You can also run `qit run:e2e --help` to see the available WooCommerce versions available to run tests against.
+QIT supports the last 4 stable and the latest release-candidate of WooCommerce. You can also run `qit run:woo-e2e --help` to see the available WooCommerce versions available to run tests against.
 
 ## Using optional features
 
