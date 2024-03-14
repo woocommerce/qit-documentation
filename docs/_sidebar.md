@@ -30,6 +30,21 @@
   - [PHPCompatibility](test-types/phpcompatibility.md)
   - [Malware](test-types/malware.md)
 
+- Local Test Environment
+  - [Getting Started](environment/getting-started.md)
+  - [Installation and Setup](environment/installation-setup.md)
+  - [Configuration Options](environment/configuration-options.md)
+    - [WordPress Version](environment/configuration-options.md#wordpress-version)
+    - [WooCommerce Version](environment/configuration-options.md#woocommerce-version)
+    - [PHP Version](environment/configuration-options.md#php-version)
+    - [Plugins and Themes](environment/configuration-options.md#plugins-and-themes)
+    - [Volume Mapping](environment/configuration-options.md#volume-mapping)
+    - [PHP Extensions](environment/configuration-options.md#php-extensions)
+    - [Object Cache](environment/configuration-options.md#object-cache)
+  - [Using the Command Line](environment/using-command-line.md)
+  - [Creating Config Files](environment/creating-config-files.md)
+  - [Installing Plugins From Other Sources](environment/installing-plugins-other-sources.md)
+
 - GitHub Workflows
 
   - [Getting started](workflows/getting-started.md)

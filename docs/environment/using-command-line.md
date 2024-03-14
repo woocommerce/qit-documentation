@@ -1,0 +1,48 @@
+# Using the Command Line with QIT Local Test Environment
+
+## Introduction
+
+Mastering the command-line interface (CLI) of the QIT Local Test Environment allows you to efficiently manage and customize your WordPress testing environments. This guide details the key CLI commands available in QIT.
+
+## Key Commands
+
+### 1. Starting and Stopping the Environment
+
+- **env:up (env:start)**:
+    - Creates a temporary local test environment. It's ephemeral, so every restart is like starting fresh.
+    - Can be customized with various options like `--wordpress_version`, `--woocommerce_version`, `--php_version`, `--plugins`, and `--themes`.
+
+- **env:down (env:stop)**:
+    - Stops the running local test environment.
+
+### 2. Environment Management
+
+- **env:list**:
+    - Lists all running environments.
+    - Use `-f, --field[=FIELD]` to display specific fields.
+
+- **env:enter**:
+    - Enter the PHP container of a running test environment.
+    - Options include `--user[=USER]` to specify the user and `--dev` to enter as a developer.
+
+- **env:exec**:
+    - Execute a command inside the PHP container.
+    - Accepts arguments like `--env_var[=ENV_VAR]`, `--user[=USER]`, `--timeout[=TIMEOUT]`, and `--image[=IMAGE]`.
+
+### 3. Advanced Configuration and Customization
+
+- Customize your test environment at startup using flags with `env:up`. This includes setting versions, activating plugins/themes, and configuring PHP extensions and volume mappings.
+- For example, to start an environment with specific WordPress and WooCommerce versions, and with a custom plugin, use:
+    ```bash
+    qit env:up --wordpress_version=rc --woocommerce_version=rc --plugins=custom-plugin
+    ```
+
+## Scripting and Automation
+
+- The CLI commands can be used in scripts to automate setting up, running, and tearing down environments, making them ideal for integration in larger automation workflows or CI/CD pipelines.
+
+## Getting Help
+
+- For help with a specific command, append `--help` to it. For example, `qit env:up --help` will display detailed information and options for the `env:up` command.
+
+This guide provides a concise overview of the core CLI functionalities in QIT. For more detailed information or for troubleshooting, refer to the specific command's help option or visit our [Troubleshooting](local-test-environment/troubleshooting.md) guide.
