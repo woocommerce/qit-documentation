@@ -8,13 +8,13 @@ Customizing your QIT Local Test Environment is key to aligning it with your spec
 
 - **Overview**: Choose the specific version of WordPress for your test environment.
 - **Usage**: Specify the version using the `--wordpress_version` flag in the `qit env:up` command.
-- **Example**: To use WordPress version 5.8, run `qit env:up --wordpress_version=5.8`.
+- **Example**: To use WordPress version rc, run `qit env:up --wordpress_version=rc`.
 
 ## WooCommerce Version
 
 - **Overview**: Select the WooCommerce version to test against.
 - **Usage**: Use the `--woocommerce_version` flag with `qit env:up`.
-- **Example**: For WooCommerce version 4.5, use `qit env:up --woocommerce_version=4.5`.
+- **Example**: For WooCommerce version stable, use `qit env:up --woocommerce_version=stable`.
 
 ## PHP Version
 
