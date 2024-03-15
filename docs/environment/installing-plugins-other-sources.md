@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The QIT Local Test Environment offers the flexibility to install plugins and themes from various sources, including private repositories, custom sources, or proprietary marketplaces. This guide outlines the process for extending your environment with these external resources.
+The QIT Local Test Environment offers the flexibility to install plugins and themes from various sources, including private repositories, or other sources. This guide outlines the process for extending your environment with these external resources.
 
 ## Implementing Custom Handlers
 
