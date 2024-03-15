@@ -1,4 +1,4 @@
-# Installation and Setup for QIT Local Test Environment
+# Installation and Setup
 
 ## Overview
 

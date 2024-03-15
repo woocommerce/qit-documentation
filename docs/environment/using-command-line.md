@@ -1,4 +1,4 @@
-# Using the Command Line with QIT Local Test Environment
+# Using the Command Line
 
 ## Introduction
 

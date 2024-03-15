@@ -1,4 +1,4 @@
-# Configuration Options for QIT Local Test Environment
+# Configuration Options
 
 ## Introduction
 

@@ -1,4 +1,4 @@
-# Creating Configuration Files for QIT Local Test Environment
+# Creating Configuration Files
 
 ## Introduction
 

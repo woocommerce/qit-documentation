@@ -1,4 +1,4 @@
-# Installing Plugins and Themes From Other Sources in QIT Local Test Environment
+# Installing Plugins and Themes From Other Sources
 
 ## Introduction
 

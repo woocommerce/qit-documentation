@@ -1,4 +1,4 @@
-# Getting Started with QIT Local Test Environment
+# Getting Started
 
 ## Introduction
 
