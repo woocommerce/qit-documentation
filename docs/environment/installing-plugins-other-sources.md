@@ -22,9 +22,20 @@ You can get really creative with this, and essentially do anything you want. Her
 
 #### Example 1: Fetching from a Public GitHub Repository
 
-Let's implement a custom handler that will "handle" when we call `--plugins my-custom-plugin`.
+This example assumes that you have a public GitHub repository and want to use it as a plugin in your environment.
 
-Assume that we have a GitHub Repository that is a valid WordPress plugin, and it can be cloned as a zip and installed directly into a WordPres site.
+We assume for simplicity purposes, that the GitHub Repository is a WordPress plugin, and that it has a `main` branch.
+
+Example command: `qit env:up --requires=public-handler.php --plugins=my-public-plugin`
+
+Or just `qit env:up` if you have this `qit-env.yml` file:
+
+```yaml
+plugins:
+  - my-public-plugin
+requires:
+  - public-handler.php
+```
 
 ```php
 <?php
@@ -34,7 +45,7 @@ use QIT_CLI\Environment\ExtensionDownload\Extension;
 
 class PublicHandlerExample extends CustomHandler {
 	public function should_handle( Extension $extension ): bool {
-		return strpos( $extension->extension_identifier, 'my-custom-plugin' ) !== false;
+		return strpos( $extension->extension_identifier, 'my-public-plugin' ) !== false;
 	}
 
 	public function populate_extension_versions( array $extensions ): void {
@@ -74,6 +85,17 @@ In this example, we will clone our public repo to a temp directory, create a zip
 
 This example is similar to the previous one, but it assumes that the GitHub repository is private and requires authentication.
 
+Example command: `qit env:up --requires=private-handler.php --plugins=my-private-plugin`
+
+Or just `qit env:up` if you have this `qit-env.yml` file:
+
+```yaml
+plugins:
+  - my-private-plugin
+requires:
+  - private-handler.php
+```
+
 ```php
 <?php
 
@@ -82,7 +104,7 @@ use QIT_CLI\Environment\ExtensionDownload\Extension;
 
 class PrivateGitHubHandler extends CustomHandler {
 	public function should_handle( Extension $extension ): bool {
-		return strpos( $extension->extension_identifier, 'my-custom-plugin' ) !== false;
+		return strpos( $extension->extension_identifier, 'my-private-plugin' ) !== false;
 	}
 
 	public function populate_extension_versions( array $extensions ): void {
@@ -144,6 +166,17 @@ You can get really creative with custom handlers. In this example, we will:
 - Cache the build file for future use
 - Whenever the remote repository changes, we will clone it again, re-build, and re-cache the zip file.
 
+Example command: `qit env:up --requires=advanced-handler.php --plugins=my-advanced-plugin`
+
+Or just `qit env:up` if you have this `qit-env.yml` file:
+
+```yaml
+plugins:
+  - my-advanced-plugin
+requires:
+    - advanced-handler.php
+```
+
 ```php
 <?php
 
@@ -153,7 +186,7 @@ use QIT_CLI\Environment\ExtensionDownload\Extension;
 class AdvancedGitHubHandler extends CustomHandler {
 	public function should_handle( Extension $extension ): bool {
 		// If the plugin slug is "my-custom-plugin", we handle it here.
-		return strpos( $extension->extension_identifier, 'my-custom-plugin' ) !== false;
+		return strpos( $extension->extension_identifier, 'my-advanced-plugin' ) !== false;
 	}
 
 	/**
@@ -277,10 +310,10 @@ class AdvancedGitHubHandler extends CustomHandler {
 
 ## Using the Custom Handler
 
-Once you have implemented your custom handler, you can use it by including it with the `--require` option in the QIT command. Your handler will then be invoked for any plugins or themes that meet its handling criteria, eg:
+Once you have implemented your custom handler, you can use it by including it with the `--requires` option in the QIT command. Your handler will then be invoked for any plugins or themes that meet its handling criteria, eg:
 
 ```shell
-qit env:up --require=my-custom-handler.php --plugins=my-custom-plugin
+qit env:up --requires=my-custom-handler.php --plugins=my-custom-plugin
 ```
 
 Or add to the config File:
@@ -289,15 +322,37 @@ JSON:
     
 ```json
 {
-"require": "my-custom-handler.php"
+    "requires": [
+      "my-custom-handler.php"
+    ]
 }
 ```
 
 YML:
 
 ```yaml
-require: "my-custom-handler.php"
+requires
+  - my-custom-handler.php
 ```
+
+### Using Multiple Custom Handlers
+
+You can use multiple custom handlers by including them in your config files, or at runtime with the `--requires` option in the QIT command. For example:
+
+`qit-env.yml`
+
+```yaml
+plugins:
+    - my-public-plugin
+    - my-private-plugin
+    - my-plugin-that-needs-build
+requires:
+  - public-handler.php
+  - private-handler.php
+  - advanced-handler.php
+```
+
+When you run `qit:up`, QIT will use the custom handlers to fetch the plugins and themes from the specified sources.
 
 ## Tips and Best Practices
 
