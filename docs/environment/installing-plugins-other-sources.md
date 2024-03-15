@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The QIT Local Test Environment offers the flexibility to install plugins and themes from various sources, including private repositories, custom sources, or marketplaces like Envato. This guide outlines the process for extending your environment with these external resources.
+The QIT Local Test Environment offers the flexibility to install plugins and themes from various sources, including private repositories, custom sources, or proprietary marketplaces. This guide outlines the process for extending your environment with these external resources.
 
 ## Implementing Custom Handlers
 
@@ -174,7 +174,7 @@ Or just `qit env:up` if you have this `qit-env.yml` file:
 plugins:
   - my-advanced-plugin
 requires:
-    - advanced-handler.php
+  - advanced-handler.php
 ```
 
 ```php
@@ -331,7 +331,7 @@ JSON:
 YML:
 
 ```yaml
-requires
+requires:
   - my-custom-handler.php
 ```
 
