@@ -12,13 +12,7 @@ Before you begin, ensure that you have the following prerequisites installed:
 
 ## Installation
 
-If you haven't already installed the QIT CLI tool, follow these steps:
-1. **Install via Composer**:
-   Open your terminal and run:
-   ```bash
-   composer require woocommerce/qit-cli --dev
-    ```
-This command installs the QIT CLI tool in your project.
+If you haven't already installed the QIT CLI tool, following the instructions in the [Installation Guide](cli/getting-started.md).
 
 
 ## Setting Up Your Environment
