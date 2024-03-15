@@ -23,7 +23,8 @@ Mastering the command-line interface (CLI) of the QIT Local Test Environment all
 
 - **env:enter**:
     - Enter the PHP container of a running test environment.
-    - Options include `--user[=USER]` to specify the user and `--dev` to enter as a developer.
+    - Options include `--user[=USER]` to specify the user.
+    - Since our Docker images are based on Alpine, which makes them really small and ideal for CI, they lack some basic functionality that are useful for development. That's why when you enter it, we install some quality-of-line tooling inside the container, such as bash, vim and less. You can avoid installing this tooling with `--no-dev` flag when entering.
 
 - **env:exec**:
     - Execute a command inside the PHP container.
