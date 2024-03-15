@@ -10,12 +10,6 @@ Customizing your QIT Local Test Environment is key to aligning it with your spec
 - **Usage**: Specify the version using the `--wordpress_version` flag in the `qit env:up` command.
 - **Example**: To use WordPress version rc, run `qit env:up --wordpress_version=rc`.
 
-## WooCommerce Version
-
-- **Overview**: Select the WooCommerce version to test against.
-- **Usage**: Use the `--woocommerce_version` flag with `qit env:up`.
-- **Example**: For WooCommerce version stable, use `qit env:up --woocommerce_version=stable`.
-
 ## PHP Version
 
 - **Overview**: Test your project with different PHP versions to ensure compatibility.
@@ -51,8 +45,7 @@ Customizing your QIT Local Test Environment is key to aligning it with your spec
 - **Custom Config Files**: Create JSON or YAML config files for preset environment setups. Place these files in your project directory.
 - **Example Config File**:
   ```yaml
-  wordpress_version: "5.8"
-  woocommerce_version: "4.5"
+  wordpress_version: "rc"
   php_version: "7.4"
   plugins:
     - "woocommerce"

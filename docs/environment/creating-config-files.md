@@ -15,7 +15,6 @@ In the QIT Local Test Environment, configuration files are a powerful way to pre
 
 Include any of the following options in your configuration file:
 - `wordpress_version`: Specify the version of WordPress.
-- `woocommerce_version`: Define the WooCommerce version.
 - `php_version`: Set the PHP version.
 - `plugins`: List plugins to be included.
 - `themes`: Specify themes to be used.
@@ -28,8 +27,7 @@ Include any of the following options in your configuration file:
 **JSON Example**:
 ```json
 {
-  "wordpress_version": "5.8",
-  "woocommerce_version": "4.5",
+  "wordpress_version": "rc",
   "php_version": "7.4",
   "plugins": [
     "woocommerce",
@@ -51,8 +49,7 @@ Include any of the following options in your configuration file:
 
 **YAML Example**:
 ```yaml
-wordpress_version: "5.8"
-woocommerce_version: "4.5"
+wordpress_version: "rc"
 php_version: "7.4"
 plugins:
   - "woocommerce"

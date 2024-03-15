@@ -10,7 +10,7 @@ Mastering the command-line interface (CLI) of the QIT Local Test Environment all
 
 - **env:up (env:start)**:
     - Creates a temporary local test environment. It's ephemeral, so every restart is like starting fresh.
-    - Can be customized with various options like `--wordpress_version`, `--woocommerce_version`, `--php_version`, `--plugins`, and `--themes`.
+    - Can be customized with various options like `--wordpress_version`, `--php_version`, `--plugins`, and `--themes`.
 
 - **env:down (env:stop)**:
     - Stops the running local test environment.
@@ -33,9 +33,9 @@ Mastering the command-line interface (CLI) of the QIT Local Test Environment all
 ### 3. Advanced Configuration and Customization
 
 - Customize your test environment at startup using flags with `env:up`. This includes setting versions, activating plugins/themes, and configuring PHP extensions and volume mappings.
-- For example, to start an environment with specific WordPress and WooCommerce versions, and with a custom plugin, use:
+- For example, to start an environment with specific WordPress version, with WooCommerce Nightly and with a custom plugin, use:
     ```bash
-    qit env:up --wordpress_version=rc --woocommerce_version=rc --plugins=custom-plugin
+    qit env:up --wordpress_version=rc --plugins=custom-plugin --plugins=https://github.com/woocommerce/woocommerce/releases/download/nightly/woocommerce-trunk-nightly.zip
     ```
 
 ## Scripting and Automation
