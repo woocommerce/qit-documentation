@@ -19,6 +19,8 @@ Customizing your QIT Local Test Environment is key to aligning it with your spec
 ## Plugins and Themes
 
 - **Overview**: Easily include plugins and themes in your test environment.
+Accepts WordPress.org plugin slugs, Woo.com product slugs, permalinks, IDs, and direct zip URLs.
+You can also download build and install plugins and themes from private GitHub repositories or other marketplaces with [Custom Handlers](installing-plugins-other-sources.md).
 - **Usage**: Add plugins and themes using the `--plugins` and `--themes` flags respectively.
 - **Example**: To include a specific plugin, run `qit env:up --plugins=plugin-slug`.
 
