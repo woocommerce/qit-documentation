@@ -31,7 +31,6 @@ The Local Test Environment is highly customizable. Specify WordPress and PHP ver
 
 - Configure your environment with the [Configuration Options](environment/configuration-options.md).
 - Learn about extending your environment in the [Installing Plugins From Other Sources](environment/installing-plugins-other-sources.md) section.
-- For advanced features, see the [Advanced Usage](environment/advanced-usage.md) section.
 
 ## Support
 

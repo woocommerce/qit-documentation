@@ -49,18 +49,18 @@ Include any of the following options in your configuration file:
 
 **YAML Example**:
 ```yaml
-wordpress_version: "rc"
-php_version: "7.4"
+wordpress_version: rc
+php_version: 7.4
 plugins:
-  - "woocommerce"
-  - "akismet"
+  - woocommerce
+  - akismet
 themes:
-  - "storefront"
+  - storefront
 volumes:
   - "/local/path:/container/path"
 php_extensions:
-  - "gd"
-  - "imagick"
+  - gd
+  - imagick
 object_cache: true
 ```
 

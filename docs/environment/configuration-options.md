@@ -20,7 +20,7 @@ Customizing your QIT Local Test Environment is key to aligning it with your spec
 
 - **Overview**: Easily include plugins and themes in your test environment.
 Accepts WordPress.org plugin slugs, Woo.com product slugs, permalinks, IDs, and direct zip URLs.
-You can also download build and install plugins and themes from private GitHub repositories or other marketplaces with [Custom Handlers](installing-plugins-other-sources.md).
+You can also download build and install plugins and themes from private GitHub repositories or other marketplaces with [Custom Handlers](environment/installing-plugins-other-sources.md).
 - **Usage**: Add plugins and themes using the `--plugins` and `--themes` flags respectively.
 - **Example**: To include a specific plugin, run `qit env:up --plugins=plugin-slug`.
 
@@ -46,15 +46,34 @@ You can also download build and install plugins and themes from private GitHub r
 
 - **Custom Config Files**: Create JSON or YAML config files for preset environment setups. Place these files in your project directory.
 - **Example Config File**:
+ 
+  If you choose to use `qit-env.yml`:
+  
   ```yaml
-  wordpress_version: "rc"
-  php_version: "7.4"
+  wordpress_version: rc
+  php_version: 7.4
   plugins:
-    - "woocommerce"
-    - "akismet"
+    - woocommerce
+    - akismet
   themes:
-    - "storefront"
+    - storefront
     ```
+  
+    If you choose to use `qit-env.json`:
+
+  ```json
+  {
+    "wordpress_version": "rc",
+    "php_version": "7.4",
+    "plugins": [
+      "woocommerce",
+      "akismet"
+    ],
+    "themes": [
+      "storefront"
+    ]
+  }
+  ```
 
 ## Support
 

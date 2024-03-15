@@ -24,11 +24,11 @@ Mastering the command-line interface (CLI) of the QIT Local Test Environment all
 - **env:enter**:
     - Enter the PHP container of a running test environment.
     - Options include `--user[=USER]` to specify the user.
-    - Since our Docker images are based on Alpine, which makes them really small and ideal for CI, they lack some basic functionality that are useful for development. That's why when you enter it, we install some quality-of-line tooling inside the container, such as bash, vim and less. You can avoid installing this tooling with `--no-dev` flag when entering.
+    - Since our Docker images are based on Alpine, which makes them really small and ideal for CI, they lack some basic functionality that are useful for development. That's why when you enter it, we install some quality-of-life tooling inside the container, such as bash, vim and less. You can avoid installing this tooling with `--no-dev` flag when entering.
 
 - **env:exec**:
     - Execute a command inside the PHP container.
-    - Accepts arguments like `--env_var[=ENV_VAR]`, `--user[=USER]`, `--timeout[=TIMEOUT]`, and `--image[=IMAGE]`.
+    - Accepts optional arguments like `--env_var[=ENV_VAR]`, `--user[=USER]`, `--timeout[=TIMEOUT]`, and `--image[=IMAGE]`. Defaults to running as the current user, on the PHP image, with a timeout of 5 minutes.
 
 ### 3. Advanced Configuration and Customization
 
