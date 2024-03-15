@@ -25,13 +25,13 @@ If you haven't already installed the QIT CLI tool, following the instructions in
 
 ## Customization
 
-The Local Test Environment is highly customizable. Specify WordPress, WooCommerce, and PHP versions, and include specific plugins and themes. For details, refer to the Configuration Options section.
+The Local Test Environment is highly customizable. Specify WordPress and PHP versions, and include specific plugins and themes. For details, refer to the Configuration Options section.
 
 ## Next Steps
 
-- Configure your environment with the [Configuration Options](local-test-environment/configuration-options.md).
-- Learn about extending your environment in the [Installing Plugins From Other Sources](local-test-environment/installing-plugins-other-sources.md) section.
-- For advanced features, see the [Advanced Usage](local-test-environment/advanced-usage.md) section.
+- Configure your environment with the [Configuration Options](environment/configuration-options.md).
+- Learn about extending your environment in the [Installing Plugins From Other Sources](environment/installing-plugins-other-sources.md) section.
+- For advanced features, see the [Advanced Usage](environment/advanced-usage.md) section.
 
 ## Support
 
