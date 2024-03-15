@@ -328,6 +328,12 @@ JSON:
 }
 ```
 
+In this example we are using the main branch of the repo, but we could get creative here and use a convention like this: `my-advanced-plugin#fix/my-branch`
+
+Then, we could explode the string using `#`, and use the right side as our branch.
+
+The possibilities are limitless, so these examples are not mean to be exhaustive, but to give you an idea of what you can do.
+
 YML:
 
 ```yaml
