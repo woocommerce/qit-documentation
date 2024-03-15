@@ -30,6 +30,14 @@
   - [PHPCompatibility](test-types/phpcompatibility.md)
   - [Malware](test-types/malware.md)
 
+- Local Test Environment
+  - [Getting Started](environment/getting-started.md)
+  - [Installation and Setup](environment/installation-setup.md)
+  - [Configuration Options](environment/configuration-options.md)
+  - [Using the Command Line](environment/using-command-line.md)
+  - [Creating Config Files](environment/creating-config-files.md)
+  - [Installing Plugins From Other Sources](environment/installing-plugins-other-sources.md)
+
 - GitHub Workflows
 
   - [Getting started](workflows/getting-started.md)
