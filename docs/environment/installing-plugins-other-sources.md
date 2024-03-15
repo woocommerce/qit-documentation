@@ -360,4 +360,6 @@ When you run `qit:up`, QIT will use the custom handlers to fetch the plugins and
 - **Handle Dependencies**: If your plugin or theme has dependencies, ensure your handler can resolve them.
 - **Security**: Always consider security implications when fetching from external sources.
 
-For more advanced usage and customization options, explore our [Advanced Usage](local-test-environment/advanced-usage.md) section or visit the [Troubleshooting](local-test-environment/troubleshooting.md) guide for any issues.
+## Support
+
+For support open an issue on the [QIT GitHub repository](https://github.com/woocommerce/qit-cli/issues).

@@ -45,4 +45,6 @@ Mastering the command-line interface (CLI) of the QIT Local Test Environment all
 
 - For help with a specific command, append `--help` to it. For example, `qit env:up --help` will display detailed information and options for the `env:up` command.
 
-This guide provides a concise overview of the core CLI functionalities in QIT. For more detailed information or for troubleshooting, refer to the specific command's help option or visit our [Troubleshooting](local-test-environment/troubleshooting.md) guide.
+## Support
+
+For support open an issue on the [QIT GitHub repository](https://github.com/woocommerce/qit-cli/issues).

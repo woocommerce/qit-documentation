@@ -77,3 +77,7 @@ object_cache: true
 
 - Use override files for temporary or environment-specific settings.
 - Keep your main config file under version control to maintain consistency across your team.
+
+## Support
+
+For support open an issue on the [QIT GitHub repository](https://github.com/woocommerce/qit-cli/issues).

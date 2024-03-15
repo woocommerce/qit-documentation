@@ -63,4 +63,4 @@ Customizing your QIT Local Test Environment is key to aligning it with your spec
 
 ## Support
 
-For issues or support, refer to the [Troubleshooting](local-test-environment/troubleshooting.md) guide or contact our support team via the [Contact Us](contact-us.md) page.
+For support open an issue on the [QIT GitHub repository](https://github.com/woocommerce/qit-cli/issues).

@@ -22,3 +22,7 @@ QIT's Local Test Environment offers extensive customization to suit your develop
 - Having issues? Our [Troubleshooting](local-test-environment/troubleshooting.md) guide can help.
 
 We're excited to see how QIT Local Test Environment streamlines your WordPress testing. Happy coding!
+
+## Support
+
+For support open an issue on the [QIT GitHub repository](https://github.com/woocommerce/qit-cli/issues).
