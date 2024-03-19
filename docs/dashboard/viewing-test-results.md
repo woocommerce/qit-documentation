@@ -51,7 +51,7 @@ If an end-to-end test run fails, an Allure test report will be generated. Click 
 
 ![failed-e2e-test](_media/failed-e2e.png)
 
-For more information on what the Allure test report contains, see [Understanding Allure test results](test-types/woo-e2e#understanding-allure-test-results)
+For more information on what the Allure test report contains, see [Understanding Allure test results](../test-types/woo-e2e#understanding-allure-test-results)
 
 ### Security, Activation, and PHPStan tests
 

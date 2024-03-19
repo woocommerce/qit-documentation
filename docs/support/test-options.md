@@ -29,7 +29,7 @@ QIT currently supports the following option WooCommerce features:
 
 - [High Performance Order Storage (HPOS)](https://developer.woocommerce.com/roadmap/high-performance-order-storage/)
 
-For more information on using optional features in your tests, check out [Testing WooCommerce Optional Features](cli/running-tests?id=using-optional-features).
+For more information on using optional features in your tests, check out [Testing WooCommerce Optional Features](../cli/running-tests#using-optional-features).
 
 ## PHP versions
 
