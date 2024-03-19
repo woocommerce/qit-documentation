@@ -42,7 +42,7 @@ Woo Extension       My Extension
 ```
 
 :::tip
-If a report is available, you can go into the [QIT Dashboard to view the report](dashboard/viewing-test-results.md#viewing-result-logs) or view the link by running `get` and the test run ID:
+If a report is available, you can go into the [QIT Dashboard to view the report](dashboard/viewing-test-results.md#viewing-test-logs) or view the link by running `get` and the test run ID:
 :::
 
 ```shell
