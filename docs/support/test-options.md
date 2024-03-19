@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Test Options
 
 The table below shows what options are available for each test type. For example, for Activation tests you can supply a WordPress version but for the security tests it isn't supported.
@@ -15,7 +19,9 @@ The table below shows what options are available for each test type. For example
 
 You can specify the last 5 stable releases along with the most recent beta/release candidate to be used in the test environment.
 
-?> Please note that for API and end-to-end tests, the WooCommerce version is currently restricted to specific versions as we work to make the tests backwards and forwards compatible. For the most up to date versions that we currently support, you can select the test type in the Viewer under `Run a Test` or, using the QIT CLI, check the help for each test type: `./qit run:api --help` and `./qit run:woo-e2e --help`.
+:::info
+Please note that for API and end-to-end tests, the WooCommerce version is currently restricted to specific versions as we work to make the tests backwards and forwards compatible. For the most up to date versions that we currently support, you can select the test type in the Viewer under `Run a Test` or, using the QIT CLI, check the help for each test type: `./qit run:api --help` and `./qit run:woo-e2e --help`.
+:::
 
 ## WooCommerce features
 

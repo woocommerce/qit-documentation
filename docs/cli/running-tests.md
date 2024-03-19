@@ -1,12 +1,14 @@
+import TestTypes from '@site/src/components/TestTypes';
+
 # Running tests
 
 The QIT CLI allows running tests against both extensions that are published and available for sale in the WooCommerce Extension Store as well as against development builds of an extension.
 
 ## Choosing the type of test to run
 
-The commands to run tests are formatted as `run:<test-type>`. The CLI supports all of the current [test types](test-types.md) using the following commands:
+The commands to run tests are formatted as `run:<test-type>`. The CLI supports all of the current test types using the following commands:
 
-[test-types-list](../test-types-list.md ":include")
+<TestTypes includeCode="true" />
 
 For example, to run end-to-end tests, you'd run the following command: `./vendor/bin/qit run:woo-e2e my-plugin-slug`.
 
@@ -24,9 +26,11 @@ Since the tests are executed in the cloud, you can even close the terminal if yo
 
 ## Testing development builds
 
-The QIT CLI supports testing development builds of extensions, so you can run any of the [test types](test-types.md) against an unpublished version of your extension in the same QIT environment before publishing it to the WooCommerce Store.
+The QIT CLI supports testing development builds of extensions, so you can run any of the <a href="../category/test-types">test types</a> against an unpublished version of your extension in the same QIT environment before publishing it to the WooCommerce Store.>
 
-!> Make sure the zipped version is a valid plugin. As this is installed on a test WordPress site, an invalid plugin will fail to install and cause the tests to fail.
+:::warning
+Make sure the zipped version is a valid plugin. As this is installed on a test WordPress site, an invalid plugin will fail to install and cause the tests to fail.
+:::
 
 Once you have a zipped up version of your extension you'd like to test with, use the `--zip` argument to pass in a path to the zip file containing your extension.
 

@@ -1,8 +1,11 @@
+import ViewIcon from '@site/static/img/view-icon.png';
+import ShareIcon from '@site/static/img/share-icon.png';
+
 # Viewing test results
 
 To view the tests that were created and their results, navigate to the `All Tests` page under the `Quality Insights` menu:
 
-![all-tests-menu](_media/all-tests-menu.png ":size=40%")
+![all-tests-menu](_media/all-tests-menu.png)
 
 In the table on this page, all of the tests that you created will be shown in the list, starting with the most recent:
 
@@ -26,9 +29,9 @@ You can also search the tests by providing keywords such as the product, the ver
 
 After a test run completes, you'll be able to view a variety of reports depending on the test type, and you can also share the link to the test results:
 
-> ![view-icon](_media/view-icon.png ":size=2%") Click this icon to view the test results report.
+> <img src={ViewIcon} width="18"/> Click this icon to view the test results report.
 
-> ![share-icon](_media/share-icon.png ":size=2%") Click this icon to copy a link to the test results to your clipboard to share with others.
+> <img src={ShareIcon} width="16"/> Click this icon to copy a link to the test results to your clipboard to share with others.
 
 ### End-to-end tests
 
@@ -46,9 +49,9 @@ This will open a modal that you can scroll through and see the results of each t
 
 If an end-to-end test run fails, an Allure test report will be generated. Click on the view icon to see the full details of the Allure test report:
 
-![failed-e2e-test](_media/failed-e2e.png ":size=70%")
+![failed-e2e-test](_media/failed-e2e.png)
 
-For more information on what the Allure test report contains, see [Understanding Allure test results](understanding-allure-results.md#understanding-allure-test-results)
+For more information on what the Allure test report contains, see [Understanding Allure test results](test-types/woo-e2e#understanding-allure-test-results)
 
 ### Security, Activation, and PHPStan tests
 

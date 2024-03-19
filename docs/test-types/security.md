@@ -1,4 +1,4 @@
-### Security Tests (Beta)
+# Security Tests (Beta)
 
 This test runs an experimental security scanner against a given extension.
 
@@ -19,7 +19,7 @@ These two rules were chosen as a basic level of security to enforce on all exten
 
 For a more detailed look on our PHPCS rulesets, please see the sample below.
 
-```
+```xml
 <?xml version="1.0"?>
 <ruleset name="Woo Marketplace PHPCS Security Checks">
     <description>Woo Marketplace PHPCS Security Checks.</description>

@@ -1,4 +1,4 @@
-### PHPCompatibility Tests
+# PHPCompatibility Tests
 
 The PHPCompatibility test is a tool that helps developers assess the compatibility of their extension with different PHP versions. It checks the codebase of a plugin against a set of coding standards and best practices to ensure that it can run on a wide range of PHP versions, ensuring better compatibility and security. The following status will be returned from this test:
 - Success: No WordPress/PHP compatibility warning or errors.

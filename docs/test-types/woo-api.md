@@ -1,4 +1,4 @@
-### Woo API Tests
+# Woo API Tests
 
 API Testing is a crucial part of ensuring the smooth functioning of an application. With Woo API testing, we execute a set of operations using the [WooCommerce REST API](https://woocommerce.github.io/woocommerce-rest-api-docs/) and verify that the API responds in an expected, consistent, way. These operations include creating products, customers, and orders through the REST API and then validating the data that we have created.
 
