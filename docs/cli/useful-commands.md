@@ -27,7 +27,7 @@ Some helpful commands to get started include:
 +--------+------------+-------+------------+---------+-----------+-------------------------------+
 ```
 
-- `get <run ID>` - Get a single test run using the run ID from the `list tests` command:
+- `get <run ID>` - Get a single test run using the run ID from the `list-tests` command:
 
 ```bash
 Run Id              344745
