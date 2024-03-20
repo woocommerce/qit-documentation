@@ -10,8 +10,6 @@ import TestTypes from '@site/src/components/TestTypes';
 
 The Quality Insights Toolkit (QIT) is an initiative by WooCommerce that provides extension developers in the [Woo Marketplace](https://woo.com/products/) with a series of automated tests out-of-the-box.
 
-To ensure that all extensions in the Woo Marketplace meet our quality standards, we run a series of automated tests. As part of our commitment to supporting developers, we also provide ways for developers to easily integrate these tests into their development workflows.
-
 <video controls style={{ width:"100%", height:"100%" }}>
     <source src={QITIntro} />
 </video>
@@ -20,10 +18,8 @@ To ensure that all extensions in the Woo Marketplace meet our quality standards,
 
 To use QIT, you need to have at least one extension listed on the Woo.com Marketplace.
 
-If you do, follow these steps:
-
 1. `composer require woocommerce/qit-cli --dev`
-2. `./vendor/bin/qit` to authenticate with your Woo.com developer account.
+2. `./vendor/bin/qit login` to authenticate with your Woo.com developer account.
 3. `qit run:activation your-extension`, where "your-extension" is the slug of a Woo.com extension you own.
 
 ## What types of tests are available?
