@@ -29,7 +29,7 @@ $docs_upload_id = wp_generate_uuid4();
 while ( $file->valid() ) {
 	$current_chunk ++;
 	$curl = curl_init();
-	curl_setopt_array( $curl, [
+	$args = [
 		CURLOPT_URL            => getenv( 'DEPLOY_ENDPOINT' ),
 		CURLOPT_POST           => true,
 		CURLOPT_RETURNTRANSFER => true,
@@ -46,7 +46,9 @@ while ( $file->valid() ) {
 			'chunk'          => base64_encode( $file->fread( $chunk_size_kb * 1024 ) ),
 			'docs_secret'    => getenv( 'DOCS_SECRET' ),
 		]
-	] );
+	];
+	echo json_encode( $args, JSON_PRETTY_PRINT ) . "\n";
+	curl_setopt_array( $curl, $args );
 	$result = curl_exec( $curl );
 
 	echo sprintf( "(Local) Sending chunks %d\n", $current_chunk );
