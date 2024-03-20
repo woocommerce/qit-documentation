@@ -22,7 +22,7 @@ if ( ! file_exists( getenv( 'FILE' ) ) ) {
 
 $file = new SplFileObject( getenv( 'FILE' ) );
 
-$chunk_size_kb  = 5120;
+$chunk_size_kb  = 1024;
 $current_chunk  = 0;
 $docs_upload_id = wp_generate_uuid4();
 

@@ -5,6 +5,10 @@ on:
     branches:
       - 24-03/doc-suggestions
 
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest  # or another environment of your choice
