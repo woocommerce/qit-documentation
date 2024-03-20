@@ -42,6 +42,5 @@ jobs:
         run: |
           php .github/workflows/scripts/deploy.php
         env:
-          DEPLOY_ENDPOINT: ${{ secrets.DEPLOY_ENDPOINT }}
           DOCS_SECRET: ${{ secrets.DOCS_SECRET }}
           FILE: ${{ github.workspace }}/docs.zip

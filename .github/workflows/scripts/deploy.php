@@ -4,10 +4,6 @@
  * Deploys QIT Docs.
  */
 
-if ( empty( getenv( 'DEPLOY_ENDPOINT' ) ) ) {
-	throw new RuntimeException( "Missing required environment variable: DEPLOY_ENDPOINT" );
-}
-
 if ( empty( getenv( 'DOCS_SECRET' ) ) ) {
 	throw new RuntimeException( "Missing required environment variable: DOCS_SECRET" );
 }
@@ -31,7 +27,7 @@ while ( $file->valid() ) {
 	$current_chunk ++;
 	$curl = curl_init();
 	$args = [
-		CURLOPT_URL            => 'https://stagingcompatibilitydashboard.wpcomstaging.com',
+		CURLOPT_URL            => 'https://qit.woo.com',
 		CURLOPT_POST           => true,
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_FOLLOWLOCATION => true,
