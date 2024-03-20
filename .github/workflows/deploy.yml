@@ -1,9 +1,14 @@
 name: Deploy QIT Docs
 
 on:
+  workflow_dispatch: # Allows manual triggering of the workflow.
   push:
     branches:
       - trunk
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -12,3 +17,31 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          tools: none
+          php-version: '8.2'
+
+      - name: Npm Install
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Zip Build Contents
+        working-directory: ./build
+        run: |
+          zip -r ${{ github.workspace }}/docs.zip .
+
+      - name: List files in the workspace.
+        run: ls -l ${{ github.workspace }}
+
+      - name: Deploy QIT Docs
+        run: |
+          php .github/workflows/scripts/deploy.php
+        env:
+          DEPLOY_ENDPOINT: ${{ secrets.DEPLOY_ENDPOINT }}
+          DOCS_SECRET: ${{ secrets.DOCS_SECRET }}
+          FILE: ${{ github.workspace }}/docs.zip

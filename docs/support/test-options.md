@@ -15,7 +15,7 @@ The table below shows what options are available for each test type. For example
 | Additional Extensions        | ✅         | ✅       | ✅       | ❌       | ❌      |
 | Additional WordPress Plugins | ✅         | ✅       | ✅       | ❌       | ❌      |
 
-## WordPress and WooCommerce versions.
+## WordPress and WooCommerce versions
 
 You can specify the last 5 stable releases along with the most recent beta/release candidate to be used in the test environment.
 
