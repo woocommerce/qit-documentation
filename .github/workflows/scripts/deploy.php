@@ -22,7 +22,7 @@ if ( ! file_exists( getenv( 'FILE' ) ) ) {
 
 $file = new SplFileObject( getenv( 'FILE' ) );
 
-$chunk_size_bytes = 8 * 1024 * 1024; // 8mb
+$chunk_size_bytes = 8 * 1024 * 1024; // 8mb.
 $current_chunk    = 0;
 $docs_upload_id   = wp_generate_uuid4();
 $total_chunks     = ceil( $file->getSize() / ( $chunk_size_bytes ) );
