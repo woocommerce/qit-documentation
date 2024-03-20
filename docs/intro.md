@@ -18,32 +18,28 @@ To ensure that all extensions in the Woo Marketplace meet our quality standards,
 
 ## Quick Start Guide
 
-1. `composer install woocommerce/qit-cli --dev`
+To use QIT, you need to have at least one extension listed on the Woo.com Marketplace.
+
+If you do, follow these steps:
+
+1. `composer require woocommerce/qit-cli --dev`
 2. `./vendor/bin/qit` to authenticate with your Woo.com developer account.
 3. `qit run:activation your-extension`, where "your-extension" is the slug of a Woo.com extension you own.
-
-## What you can do with QIT
-
-- Run tests for your extensions, including development builds
-- Integrate with GitHub Workflows
-- Run tests with other extensions active at the same time
-- Run tests with different versions of PHP, WordPress, and WooCommerce
-
-And coming soon:
-
-- Upload your custom E2E tests to QIT
-- Spin up a local test environment with a single command
-- Run Compatibility tests with other extensions, making sure your plugin continues to work as expected with other extensions installed in the same site
-- Install plugins from both Woo.com Marketplace or the WordPress.org Plugin Repository
-- Configure various parameters of the test environment with config files or arguments
-
-## Who is this toolkit for? 
-
-This toolkit is for extension developers who are selling their extensions on the WooCommerce Marketplace.
 
 ## What types of tests are available?
 
 <TestTypes />
+
+### Coming soon: Local Test Environment and Compatibility Tests
+
+We are working on adding more features to the toolkit, including:
+
+- Upload your custom E2E tests to QIT
+- Spin up a local test environment with a single command
+- Run your E2E tests with other extensions active in the same site, to test that your plugin continues to work as expected with other extensions installed in the same site
+- Run the E2E tests of other extensions with your plugin active to test your changes don't break other extensions
+- Install plugins from both Woo.com Marketplace or the WordPress.org Plugin Repository
+- Configure various parameters of the test environment with config files or arguments
 
 ## How can I use the toolkit? 
 
