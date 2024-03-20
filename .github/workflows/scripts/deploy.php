@@ -48,7 +48,6 @@ while ( $file->valid() ) {
 			'docs_secret'    => getenv( 'DOCS_SECRET' ),
 		]
 	];
-	echo json_encode( $args, JSON_PRETTY_PRINT ) . "\n";
 	curl_setopt_array( $curl, $args );
 	$result = curl_exec( $curl );
 
