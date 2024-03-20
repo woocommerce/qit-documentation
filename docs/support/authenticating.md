@@ -1,3 +1,5 @@
+import CLIAuthVideo from '@site/src/video/qit-cli-auth-flow.mp4';
+
 # Authenticating
 
 QIT is currently exclusive to Partner Developers that sells plugins in the Woo.com Marketplace.
@@ -10,7 +12,9 @@ QIT is currently exclusive to Partner Developers that sells plugins in the Woo.c
 - Follow the steps to generate a QIT Token
 - Enter the QIT Token and username in the CLI
 
-[filename](_media/qit-cli-auth-flow.mp4 ":include :type=video controls width=100% height=100%")
+<video controls style={{ width:"100%", height:"100%" }}>
+    <source src={CLIAuthVideo} />
+</video>
 
 ## Authenticating in the Woo.com Marketplace
 
@@ -21,7 +25,7 @@ To access it:
 - Log in to Woo.com with your Partner account.
 - Click on `Vendor Dashboard` button to be taken to your vendor dashboard, which can be found on the My Account page once you've logged in:
 
-![go-to-dashboard](dashboard/_media/go-to-dashboard.png ":size=50%")
+![go-to-dashboard](../dashboard/_media/go-to-dashboard.png)
 
 - Don't see this button? You may not be the vendor admin on the account. Reach out to someone else in the organization (usually the person that handles uploading the extension for publishing) to see if they have access.
 

@@ -1,9 +1,10 @@
+import TestTypes from '@site/src/components/TestTypes';
+
 # Run a test
 
 To start a new test, navigate to the `Run a Test` page under the `Quality Insights` menu:
 
-![run-a-test-menu](_media/run-a-test-menu.png ":size=40%")
-
+![run-a-test-menu](_media/run-a-test-menu.png
 On this page, you can configure the type of test to run, the product to run the tests against, and which release version:
 
 ![run-a-test-page](_media/run-a-test-page.png)
@@ -16,7 +17,9 @@ Once the test has been queued up, you'll be redirected to the All Tests page and
 
 ![test-created-notification](_media/test-created-notification.png)
 
-!> Note that it may take a moment before the test shows in the table. You can refresh the page or wait for the table to automatically refresh.
+:::tip
+Note that it may take a moment before the test shows in the table. You can refresh the page or wait for the table to automatically refresh.
+:::
 
 The test will then be displayed in the table, showing the version of the extension, the selected test type, the selected WooCommerce Release version with a `Pending` status:
 
@@ -32,9 +35,9 @@ More details on each the options available on the `Create a Test` page can be fo
 
 ## Test type
 
-Select the [type of test](test-types.md) you'd like to run. The current options are available:
+Select the <a href="../category/test-types">type of test</a> you'd like to run. The current options are available:
 
-[test-types-list](../test-types-list.md ':include')
+<TestTypes />
 
 ## Product
 
