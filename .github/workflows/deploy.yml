@@ -22,7 +22,7 @@ jobs:
         run: |
           zip -r ${{ github.workspace }}/docs.zip . -x "*.git*"
 
-      - name: List files in the workspace
+      - name: List files in the workspace.
         run: ls -l ${{ github.workspace }}
 
       - name: Deploy QIT Docs
