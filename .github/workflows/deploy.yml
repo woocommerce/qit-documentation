@@ -22,9 +22,15 @@ jobs:
         with:
           php-version: '7.4'  # specify your PHP version here
 
-      - name: Zip Project Contents
+      - name: Npm Install
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Zip Build Contents
         run: |
-          zip -r ${{ github.workspace }}/docs.zip . -x "*.git*"
+          zip -r ${{ github.workspace }}/docs.zip ./build
 
       - name: List files in the workspace.
         run: ls -l ${{ github.workspace }}
