@@ -49,7 +49,7 @@ while ( $file->valid() ) {
 	] );
 	$result = curl_exec( $curl );
 
-	echo sprintf( "(Local) Sending chunk %d\n", $current_chunk );
+	echo sprintf( "(Local) Sending chunks %d\n", $current_chunk );
 
 	// Get curl body:
 	echo sprintf( "(Remote) %d: %s\n", curl_getinfo( $curl, CURLINFO_HTTP_CODE ), substr( $result, curl_getinfo( $curl, CURLINFO_HEADER_SIZE ) ) );
