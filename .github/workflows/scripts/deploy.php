@@ -4,9 +4,19 @@
  * Deploys QIT Docs.
  */
 
-$env = getenv();
+if ( empty( getenv( 'DEPLOY_ENDPOINT' ) ) ) {
+	throw new RuntimeException( "Missing required environment variable: DEPLOY_ENDPOINT" );
+}
 
-if ( empty( getenv( 'DEPLOY_ENDPOINT' ) ) || empty( getenv( 'DOCS_SECRET' ) ) || empty( getenv( 'FILE' ) ) || ! file_exists( getenv( 'FILE' ) ) ) {
+if ( empty( getenv( 'DOCS_SECRET' ) ) ) {
+	throw new RuntimeException( "Missing required environment variable: DOCS_SECRET" );
+}
+
+if ( empty( getenv( 'FILE' ) ) ) {
+	throw new RuntimeException( "Missing required environment variable: FILE" );
+}
+
+if ( ! file_exists( getenv( 'FILE' ) ) ) {
 	throw new RuntimeException( sprintf( "File %s does not exist", getenv( 'FILE' ) ) );
 }
 
