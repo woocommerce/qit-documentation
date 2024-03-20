@@ -4,7 +4,7 @@ on:
   workflow_dispatch: # Allows manual triggering of the workflow.
   push:
     branches:
-      - trunk
+      - 24-03/doc-suggestions
 
 concurrency:
   group: ${{ github.workflow }}
