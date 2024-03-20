@@ -3,7 +3,7 @@ name: Deploy QIT Docs
 on:
   push:
     branches:
-      - trunk
+      - 24-03/doc-suggestions
 
 jobs:
   deploy:
