@@ -1,9 +1,10 @@
 name: Deploy QIT Docs
 
 on:
+  workflow_dispatch: # Allows manual triggering of the workflow.
   push:
     branches:
-      - 24-03/doc-suggestions
+      - trunk
 
 concurrency:
   group: ${{ github.workflow }}
@@ -11,7 +12,7 @@ concurrency:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # or another environment of your choice
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
