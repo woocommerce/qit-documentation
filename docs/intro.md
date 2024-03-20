@@ -8,7 +8,7 @@ import TestTypes from '@site/src/components/TestTypes';
 
 # Introduction 
 
-The Quality Insights Toolkit (QIT) is an initiative by WooCommerce designed to provide extension developers in the [Woo Marketplace](https://woo.com/products/) with managed automated tests.
+The Quality Insights Toolkit (QIT) is an initiative by WooCommerce that provides extension developers in the [Woo Marketplace](https://woo.com/products/) with a series of automated tests out-of-the-box.
 
 To ensure that all extensions in the Woo Marketplace meet our quality standards, we run a series of automated tests. As part of our commitment to supporting developers, we also provide ways for developers to easily integrate these tests into their development workflows.
 
@@ -20,22 +20,22 @@ To ensure that all extensions in the Woo Marketplace meet our quality standards,
 
 1. `composer install woocommerce/qit-cli --dev`
 2. `./vendor/bin/qit` to authenticate with your Woo.com developer account.
+3. `qit run:activation your-extension`, where "your-extension" is the slug of a Woo.com extension you own.
 
-## Benefits for You as a Developer 
+## What you can do with QIT
 
-- You can enjoy out-of-the-box tests for all the extensions you sell on the Marketplace
-- Your extensions will undergo continuous testing, including against new releases of PHP, WooCommerce, and WordPress
-- You can have increased peace of mind knowing that you'll be alerted if the tests catch anything with a future release or an edge case
-- You can take advantage of integration with GitHub Workflows
-- You can easily integrate the testing tool with your development workflow using the terminal tool
-- You can run some tests with other extensions active at the same time, including those that may be known to cause issues when activated alongside yours.
+- Run tests for your extensions, including development builds
+- Integrate with GitHub Workflows
+- Run tests with other extensions active at the same time
+- Run tests with different versions of PHP, WordPress, and WooCommerce
 
-## Benefits for Users of the WooCommerce Ecosystem 
+And coming soon:
 
-- Users can enjoy increased reliability when updating WooCommerce extensions on the Marketplace
-- Users can have confidence to update PHP, WordPress, or WooCommerce versions without fear of breaking their extensions
-- There will be less potential security issues for users of the WooCommerce Ecosystem
-- Users can have more assurance that all extensions will continue to work as expected when activated alongside each other, ensuring a seamless experience.
+- Upload your custom E2E tests to QIT
+- Spin up a local test environment with a single command
+- Run Compatibility tests with other extensions, making sure your plugin continues to work as expected with other extensions installed in the same site
+- Install plugins from both Woo.com Marketplace or the WordPress.org Plugin Repository
+- Configure various parameters of the test environment with config files or arguments
 
 ## Who is this toolkit for? 
 
@@ -49,8 +49,8 @@ This toolkit is for extension developers who are selling their extensions on the
 
 Tests are executed automatically by us whenever you publish a new version of your extension on the WooCommerce Marketplace. You can also run tests manually using the following tools:
 
-- [Dashboard](dashboard/getting-started.md): A UI-based test runner and test results viewer, available in your WooCommerce dashboard.
 - [CLI](cli/getting-started.md): A CLI tool that allows you to run and view tests, including against development builds.
+- [Dashboard](dashboard/getting-started.md): A UI-based test runner and test results viewer, available in your WooCommerce dashboard.
 - [GitHub Workflows](workflows/getting-started.md): GitHub workflow files that allow running tests regularly with QIT as part of a GitHub development workflow.
 
 ## Why does this toolkit exist? 
