@@ -27,19 +27,11 @@ $current_chunk = 0;
 $cd_upload_id  = wp_generate_uuid4();
 $expected_size = $file->getSize();
 
-$parse_argv = static function ( $env_value ) {
-	// Remove surrounding single/double quotes.
-	return preg_replace( '#^(\'(.*)\'|"(.*)")$#', '$2$3', $env_value );
-};
-
-$url            = $parse_argv( getenv( 'DEPLOY_ENDPOINT' ) );
-$manager_secret = $parse_argv( getenv( 'DOCS_SECRET' ) );
-
 while ( $file->valid() ) {
 	$current_chunk ++;
 	$curl = curl_init();
 	curl_setopt_array( $curl, [
-		CURLOPT_URL            => $url,
+		CURLOPT_URL            => getenv( 'DEPLOY_ENDPOINT' ),
 		CURLOPT_POST           => true,
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_FOLLOWLOCATION => true,
@@ -53,7 +45,7 @@ while ( $file->valid() ) {
 			'expected_size'  => $expected_size,
 			'total_chunks'   => ceil( $file->getSize() / ( $chunk_size_kb * 1024 ) ),
 			'chunk'          => base64_encode( $file->fread( $chunk_size_kb * 1024 ) ),
-			'docs_secret' => $manager_secret,
+			'docs_secret'    => getenv( 'DOCS_SECRET' ),
 		]
 	] );
 	$result = curl_exec( $curl );
