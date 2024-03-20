@@ -22,9 +22,10 @@ if ( ! file_exists( getenv( 'FILE' ) ) ) {
 
 $file = new SplFileObject( getenv( 'FILE' ) );
 
-$chunk_size_kb  = 1024;
-$current_chunk  = 0;
-$docs_upload_id = wp_generate_uuid4();
+$chunk_size_bytes = 64 * 1024; // 64kb
+$current_chunk    = 0;
+$docs_upload_id   = wp_generate_uuid4();
+$total_chunks     = ceil( $file->getSize() / ( $chunk_size_bytes ) );
 
 while ( $file->valid() ) {
 	$current_chunk ++;
@@ -42,8 +43,8 @@ while ( $file->valid() ) {
 			'docs_upload_id' => $docs_upload_id,
 			'current_chunk'  => $current_chunk,
 			'expected_size'  => $file->getSize(),
-			'total_chunks'   => ceil( $file->getSize() / ( $chunk_size_kb * 1024 ) ),
-			'chunk'          => base64_encode( $file->fread( $chunk_size_kb * 1024 ) ),
+			'total_chunks'   => $total_chunks,
+			'chunk'          => base64_encode( $file->fread( $chunk_size_bytes ) ),
 			'docs_secret'    => getenv( 'DOCS_SECRET' ),
 		]
 	];
