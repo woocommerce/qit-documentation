@@ -36,7 +36,7 @@ while ( $file->valid() ) {
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_FOLLOWLOCATION => true,
 		CURLOPT_HEADER         => true,
-		// Unproxied because we are deploying from GitHub, not local.
+		// Unproxied because we are deploying from GitHub, not local. 
 		// CURLOPT_PROXY          => 'host.docker.internal:8080',
 		// CURLOPT_PROXYTYPE      => CURLPROXY_SOCKS5,
 		CURLOPT_POSTFIELDS     => [
