@@ -1,4 +1,4 @@
-import CLIAuthVideo from '@site/static/video/qit-cli-auth-flow.mp4';
+import CLIAuthVideo from '@site/src/video/qit-cli-auth-flow.mp4';
 
 # Authenticating
 

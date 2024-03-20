@@ -3,7 +3,7 @@ sidebar_position: 1
 slug: /
 ---
 
-import QITIntro from '@site/static/video/qit_intro.mp4';
+import QITIntro from '@site/src/video/qit_intro.mp4';
 import TestTypes from '@site/src/components/TestTypes';
 
 # Introduction 

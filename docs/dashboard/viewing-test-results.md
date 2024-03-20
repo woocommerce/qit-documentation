@@ -1,5 +1,5 @@
-import ViewIcon from '@site/static/img/view-icon.png';
-import ShareIcon from '@site/static/img/share-icon.png';
+import ViewIcon from '@site/src/img/view-icon.png';
+import ShareIcon from '@site/src/img/share-icon.png';
 
 # Viewing test results
 
