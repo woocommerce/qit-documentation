@@ -22,7 +22,7 @@ if ( ! file_exists( getenv( 'FILE' ) ) ) {
 
 $file = new SplFileObject( getenv( 'FILE' ) );
 
-$chunk_size_bytes = 64 * 1024; // 64kb
+$chunk_size_bytes = 1024 * 1024; // 1mb
 $current_chunk    = 0;
 $docs_upload_id   = wp_generate_uuid4();
 $total_chunks     = ceil( $file->getSize() / ( $chunk_size_bytes ) );
@@ -31,7 +31,7 @@ while ( $file->valid() ) {
 	$current_chunk ++;
 	$curl = curl_init();
 	$args = [
-		CURLOPT_URL            => getenv( 'DEPLOY_ENDPOINT' ),
+		CURLOPT_URL            => 'https://stagingcompatibilitydashboard.wpcomstaging.com/wp-content/plugins/deploy-docs.php',
 		CURLOPT_POST           => true,
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_FOLLOWLOCATION => true,
