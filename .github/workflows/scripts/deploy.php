@@ -64,7 +64,7 @@ while ( $file->valid() ) {
 	echo sprintf( "(Remote) %d: %s\n", curl_getinfo( $curl, CURLINFO_HTTP_CODE ), substr( $result, curl_getinfo( $curl, CURLINFO_HEADER_SIZE ) ) );
 
 	if ( curl_getinfo( $curl, CURLINFO_HTTP_CODE ) !== 200 ) {
-		echo sprintf( "Could not upload the deploy.\nResponse status code: %s (Expected 200)\nResponse body: %s\nCurl Error: %s\nAre you connected to Automattic Proxy?\n", curl_getinfo( $curl, CURLINFO_HTTP_CODE ), $result, curl_error( $curl ) );
+		echo sprintf( "Could not upload the deploy.\nResponse status code: %s (Expected 200)\nResponse body: %s\nCurl Error: %s\n", curl_getinfo( $curl, CURLINFO_HTTP_CODE ), $result, curl_error( $curl ) );
 		exit( 1 );
 	}
 
