@@ -22,10 +22,9 @@ if ( ! file_exists( getenv( 'FILE' ) ) ) {
 
 $file = new SplFileObject( getenv( 'FILE' ) );
 
-$chunk_size_kb = 5120;
-$current_chunk = 0;
-$cd_upload_id  = wp_generate_uuid4();
-$expected_size = $file->getSize();
+$chunk_size_kb  = 5120;
+$current_chunk  = 0;
+$docs_upload_id = wp_generate_uuid4();
 
 while ( $file->valid() ) {
 	$current_chunk ++;
@@ -40,9 +39,9 @@ while ( $file->valid() ) {
 		// CURLOPT_PROXY          => 'host.docker.internal:8080',
 		// CURLOPT_PROXYTYPE      => CURLPROXY_SOCKS5,
 		CURLOPT_POSTFIELDS     => [
-			'docs_upload_id' => $cd_upload_id,
+			'docs_upload_id' => $docs_upload_id,
 			'current_chunk'  => $current_chunk,
-			'expected_size'  => $expected_size,
+			'expected_size'  => $file->getSize(),
 			'total_chunks'   => ceil( $file->getSize() / ( $chunk_size_kb * 1024 ) ),
 			'chunk'          => base64_encode( $file->fread( $chunk_size_kb * 1024 ) ),
 			'docs_secret'    => getenv( 'DOCS_SECRET' ),
