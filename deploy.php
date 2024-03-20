@@ -1,28 +1,18 @@
 <?php
 
-/*
- * Deploys QIT Docs.
- */
-
-if ( empty( getenv( 'DEPLOY_ENDPOINT' ) ) ) {
-	throw new RuntimeException( "Missing required environment variable: DEPLOY_ENDPOINT" );
-}
+// Run this as "make deploy_docs"
 
 if ( empty( getenv( 'DOCS_SECRET' ) ) ) {
 	throw new RuntimeException( "Missing required environment variable: DOCS_SECRET" );
 }
 
-if ( empty( getenv( 'FILE' ) ) ) {
-	throw new RuntimeException( "Missing required environment variable: FILE" );
+if ( ! file_exists( '/deploy/docs.zip' ) ) {
+	throw new RuntimeException( sprintf( "Run this as 'make deploy_docs'. File %s does not exist", getenv( 'FILE' ) ) );
 }
 
-if ( ! file_exists( getenv( 'FILE' ) ) ) {
-	throw new RuntimeException( sprintf( "File %s does not exist", getenv( 'FILE' ) ) );
-}
+$file = new SplFileObject( '/deploy/docs.zip' );
 
-$file = new SplFileObject( getenv( 'FILE' ) );
-
-$chunk_size_bytes = 1024 * 1024; // 1mb
+$chunk_size_bytes = 16 * 1024; // 1mb
 $current_chunk    = 0;
 $docs_upload_id   = wp_generate_uuid4();
 $total_chunks     = ceil( $file->getSize() / ( $chunk_size_bytes ) );
@@ -31,14 +21,14 @@ while ( $file->valid() ) {
 	$current_chunk ++;
 	$curl = curl_init();
 	$args = [
-		CURLOPT_URL            => 'https://stagingcompatibilitydashboard.wpcomstaging.com/wp-content/plugins/deploy-docs.php',
+		#CURLOPT_URL            => 'https://stagingcompatibilitydashboard.wpcomstaging.com/wp-content/mu-plugins/deploy-docs.php',
+		CURLOPT_URL            => 'http://host.docker.internal:8081',
 		CURLOPT_POST           => true,
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_FOLLOWLOCATION => true,
 		CURLOPT_HEADER         => true,
-		// Unproxied because we are deploying from GitHub, not local. 
-		// CURLOPT_PROXY          => 'host.docker.internal:8080',
-		// CURLOPT_PROXYTYPE      => CURLPROXY_SOCKS5,
+		#CURLOPT_PROXY          => 'host.docker.internal:8080',
+		#CURLOPT_PROXYTYPE      => CURLPROXY_SOCKS5,
 		CURLOPT_POSTFIELDS     => [
 			'docs_upload_id' => $docs_upload_id,
 			'current_chunk'  => $current_chunk,
