@@ -27,15 +27,11 @@ $current_chunk    = 0;
 $docs_upload_id   = wp_generate_uuid4();
 $total_chunks     = ceil( $file->getSize() / ( $chunk_size_bytes ) );
 
-
-var_dump(file_get_contents('https://stagingcompatibilitydashboard.wpcomstaging.com/foo.txt'));
-var_dump(file_get_contents('https://stagingcompatibilitydashboard.wpcomstaging.com/wp-content/mu-plugins/bar.txt'));
-
 while ( $file->valid() ) {
 	$current_chunk ++;
 	$curl = curl_init();
 	$args = [
-		CURLOPT_URL            => 'https://stagingcompatibilitydashboard.wpcomstaging.com/wp-content/mu-plugins/deploy-docs.php',
+		CURLOPT_URL            => getenv( 'DEPLOY_ENDPOINT' ),
 		CURLOPT_POST           => true,
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_FOLLOWLOCATION => true,
