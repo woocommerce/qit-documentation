@@ -30,8 +30,9 @@ jobs:
         run: npm run build
 
       - name: Zip Build Contents
+        working-directory: ./build
         run: |
-          zip -r ${{ github.workspace }}/docs.zip ./build
+          zip -r ${{ github.workspace }}/docs.zip .
 
       - name: List files in the workspace.
         run: ls -l ${{ github.workspace }}
