@@ -1,14 +1,14 @@
 # Introduction
 
-All QIT tests are Managed by QIT. We have one exception, which is the Custom E2E tests: `run:e2e`
+Welcome to the most dynamic and developer-driven aspect of Quality Insights Toolkit (QIT): Custom End-to-End (E2E) Testing. At QIT, we understand that every plugin has unique functionalities and requirements. That's why we empower you, the developers, to take the reins in testing the specific behaviors and features of your plugins.
 
-This is the only type of test in QIT that the developers write the tests themselves.
+## The Power of Customization: `run:e2e`
 
-It's essentially an end-to-end test that asserts that the custom behavior of your plugin is working as expected.
+While QIT provides various managed tests, Custom E2E tests stand out as the sole category where you, the developer, are the architect of the tests. These are not just any tests; they are comprehensive end-to-end tests designed to ensure your plugin's custom behavior functions flawlessly in real-world scenarios.
 
-## Example: "QIT the Beaver" Publishes a Plugin
+## Case Study: "QIT the Beaver" Tackles Plugin Challenges
 
-Picture this scenario: QIT the Beaver, the beloved mascot of QIT, steps into the shoes of a developer and launches a plugin in the Woo.com Marketplace. Initially, it's a hit, with glowing reviews. But soon, mixed feedback begins to surface, highlighting compatibility issues with different PHP versions and conflicts with other plugins.
+Imagine "QIT the Beaver," our beloved mascot, stepping into a developer's shoes. He launches a plugin on the Woo.com Marketplace, and while it initially receives high praise, soon users report issues related to compatibility and conflicts with other plugins and PHP versions.
 
 > ⭐⭐⭐⭐⭐ Works great
 > 
@@ -28,60 +28,99 @@ What does _QIT the Beaver_ do? Even though he tries very hard, he can't possibly
 
 To bring some peace of mind, he finally decides it's time to write some end-to-end tests.
 
+
+### Generating the Tests
+
 So he pulls up the QIT CLI and run:
 
-- `qit run:e2e qit-the-beaver-plugin --codegen`
+```qitbash
+qit run:e2e qit-the-beaver-plugin --codegen
+```
 
-This will create a test environment for him to connect with [Playwright Codegen](https://playwright.dev/docs/codegen), to generate his tests just by navigating around and with some small tweaks to the generated code.
+This will spin up a local test environment for him to connect with [Playwright Codegen](https://playwright.dev/docs/codegen), to generate his tests just by navigating around and with some small tweaks to the generated code.
 
 It's not 100% copy and paste, but after some tinkering it turned out to be much easier than he thought!
 
-Once he generates the tests, he saves them to `my-plugins/tests/qit-e2e` for example, like this:
+Once he generates the tests, he saves them to `beaver-plugin/tests/qit` for example, like this:
 
 ```
 .
 ├── tests
-│    └── qit
+│    └── qit-e2e
 │        └── tests
 │            └── first-test.spec.js
 └── qit-the-beaver-plugin.php
 ```
 
-Now he can run his tests locally with:
+### Running the Tests Locally
 
-- `qit run:e2e qit-the-beaver-plugin /path-to/my-plugins/tests/qit-e2e`
+First things first, QIT the Beaver tests the waters by running the tests locally. A simple command does the trick:
 
-He can even start the tests manually and view them running in a browser with:
-
-- `qit run:e2e qit-the-beaver-plugin /path-to/my-plugins/tests/qit-e2e --ui`
-
-QIT the Beaver is happy with his tests, so he publishes it, with:
-
-- `qit upload:test qit-the-beaver-plugin /path-to/my-plugins/tests/qit-e2e`
-
-This will upload his tests to the testing platform, which allows him to ommit the path from now on:
-
-- `qit run:e2e qit-the-beaver-plugin`
-
-He's happy with the current coverage so far, so he decides to start tinkering with the environment:
-
+```qitbash
+qit run:e2e qit-the-beaver-plugin /path-to/tests/qit-e2e
 ```
+
+### Viewing the Test Running
+
+To see the magic in action, he opts for an interactive test session, which opens a browser window where he can watch the tests unfold:
+
+```qitbash
+qit run:e2e qit-the-beaver-plugin \--plugins cat-picturespath-to/tests/qit-e2e --ui
+```
+
+### Publishing the Tests
+
+Satisfied with the results, QIT decides it's showtime. He uploads the tests to QIT’s platform, a move that simplifies future test runs:
+
+```qitbash
+qit upload:test qit-the-beaver-plugin /path-to/tests/qit-e2e
+```
+
+### Running published tests
+
+Post-upload, running the tests becomes even easier, without needing to specify the path:
+
+```qitbash
+qit run:e2e qit-the-beaver-plugin
+```
+
+To ensure his plugin thrives in diverse environments, QIT experiments with different configurations, replicating conditions reported by users:
+
+```qitbash
 qit run:e2e qit-the-beaver-plugin \
-    --php_version=8.3 \
-    --wordpress_version=rc \
-    --woocommerce_version=nightly \
-    --plugins cat-pictures \
-    --plugins contact-form-7 \
-    --themes storefront
+            --php_version=8.3 \
+            --wordpress_version=rc \
+            --woocommerce_version=nightly \
+            --plugins cat-pictures \
+            --plugins contact-form-7 \
+            --themes storefront
 ```
 
-Now he's running a test trying to replicate his customer's complaints, with:
+This comprehensive command allows him to test with PHP 8.3, the latest WordPress release candidate, the nightly WooCommerce version, and alongside popular plugins and themes.
 
-- PHP 8.3
-- WordPress RC
-- WooCommerce Nightly
-- With both "Cat Pictures" and "Contact Form 7" plugins installed, and Storefront theme
 
-Now, QIT the Beaver can come up with a few different scenarios to run his tests on CI to make sure everything is covered!
+### Running Tests from Different Plugins
 
-He tackled all scenarios with a few parameters and his customers are happier than ever!
+The maker or `Cat Pictures` also uploaded their tests to QIT, which means that QIT the Beaver can integrate the tests from the "Cat Pictures" plugin in his test runs. This is done by passing the plugin slug to the `--plugins` flag:
+
+```qitbash
+qit run:e2e qit-the-beaver-plugin --plugins cat-pictures
+```
+
+This will:
+
+- Run the "bootstrap" phase of all plugins, which takes care of all the mocking and setup needed.
+- And the "test" phase of `qit-beaver-plugin`
+
+This asserts that his plugin continues to work as expected when Cat Pictures is active and fully configured in a site.
+
+Alternatively, he could also run a full compatibility test:
+
+
+```qitbash
+qit run:e2e qit-the-beaver-plugin --plugins cat-pictures --compatibility=full
+```
+
+With this, it runs the bootstrap and test phases of all plugins, which asserts that not only his plugin continues to work, but that he is also not breaking any expected behavior from others.
+
+With this approach, QIT the Beaver covers a multitude of scenarios, ensuring his plugin performs seamlessly across various setups. It's a win for his peace-of-mind, and most importantly, for his ever-growing base of satisfied customers!

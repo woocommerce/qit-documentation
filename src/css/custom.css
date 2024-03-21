@@ -32,3 +32,18 @@
 .hidden {
   display: none !important;
 }
+
+
+[data-theme='light'] .token.qit_command.keyword { color: #e67e22; }
+[data-theme='light'] .token.qit_subcommand { color: #d31bc8; }
+[data-theme='light'] .token.qit_option.option-name { color: #8e44ad; }
+[data-theme='light'] .token.qit_option.option-value { color: #c0392b; }
+[data-theme='light'] .token.qit_argument.variable { color: #1737b0 !important; }
+
+[data-theme='dark'] .token.qit_command.keyword { color: #FFB088 !important; }
+[data-theme='dark'] .token.qit_subcommand { color: #FFF; }
+[data-theme='dark'] .token.qit_option.option-name { color: #FFF1D6; }
+[data-theme='dark'] .token.qit_option.option-value { color: #FFA6B8; }
+[data-theme='dark'] .token.qit_argument.variable { color: #89E2FF !important;}
+
+
