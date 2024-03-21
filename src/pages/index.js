@@ -6,14 +6,14 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
-import QITImageURL from '@site/static/img/qit.webp';
+import QITImageURL from '@site/static/img/qit-left.webp';
 
 function HomepageHeader() {
     const {siteConfig} = useDocusaurusContext();
     return (
         <header className={clsx('hero hero--primary', styles.heroBanner)}>
             <div className="container">
-                <img src={QITImageURL} width={250}/>
+                <img src={QITImageURL} width={200}/>
                 <Heading as="h1" className="hero__title">
                     <span>Quality Insights Toolkit, or just QIT.</span>
                 </Heading>

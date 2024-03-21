@@ -5,14 +5,26 @@ slug: /
 
 import QITIntro from '@site/src/video/qit_intro.mp4';
 import TestTypes from '@site/src/components/TestTypes';
+import QITImageURL from '@site/static/img/qit-right.webp';
 
-# What is QIT? 
+# What is QIT?
 
 QIT is a testing platform for Wordpress Plugins and Themes developed by WooCommerce that allows developers to run a series of managed tests out-of-the-box. We are currently in closed beta operating only in the [Woo Marketplace](https://woo.com/products/) .
 
 <video controls style={{ width:"100%", height:"100%" }}>
-    <source src={QITIntro} />
+    <source src={QITIntro} type="video/mp4"/>
+    Your browser does not support the video tag.
 </video>
+
+<div style={{ display: 'flex', alignItems: 'center', margin: '30px 0' }}>
+  <img src={QITImageURL} alt="QIT the Beaver" width={175} style={{ marginRight: '20px' }}/>
+  <div>
+    <h2>Meet QIT the Beaver</h2>
+    <p>
+        QIT the Beaver is here to guide you through your testing journey. As the cheerful mascot of our platform, QIT represents the simplicity, efficiency, and fun of testing with QIT. Let him lead the way to flawless plugins and themes!
+    </p>
+  </div>
+</div>
 
 
 ## Requirements

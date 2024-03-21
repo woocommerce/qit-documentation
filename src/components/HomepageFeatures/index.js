@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 
 const FeatureList = [
     {
-        title: 'Easy Tests',
+        title: 'Managed Tests',
         Svg: require('@site/static/img/managed_tests.svg').default,
         description: (
             <>
@@ -13,12 +13,11 @@ const FeatureList = [
         ),
     },
     {
-        title: 'Integrated Tests',
+        title: 'Custom E2E Tests',
         Svg: require('@site/static/img/integrated_e2e.svg').default,
         description: (
             <>
-                Integrate the end-to-end tests of other plugins to keep track of compatibility,
-                and upload your own to contribute to the ecosystem.
+                Write your custom E2E tests with our toolkit, and even integrate with the tests of other plugins to keep track of compatibility.
             </>
         ),
     },
