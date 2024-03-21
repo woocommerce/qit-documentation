@@ -1,8 +1,10 @@
 # Introduction
 
-All QIT tests are Managed by QIT. We have one exception, which is the Custom E2E tests.
+All QIT tests are Managed by QIT. We have one exception, which is the Custom E2E tests: `run:e2e`
 
-This test type is the only one that the developers write the tests themselves.
+This is the only type of test in QIT that the developers write the tests themselves.
+
+It's essentially an end-to-end test that asserts that the custom behavior of your plugin is working as expected.
 
 ## Example: "QIT the Beaver" Publishes a Plugin
 
@@ -39,7 +41,8 @@ Once he generates the tests, he saves them to `my-plugins/tests/qit-e2e` for exa
 ```
 .
 ├── tests
-│      └── qit-e2e
+│    └── qit
+│        └── tests
 │            └── first-test.spec.js
 └── qit-the-beaver-plugin.php
 ```
