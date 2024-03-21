@@ -21,7 +21,7 @@ QIT is a testing platform for Wordpress Plugins and Themes developed by WooComme
   <div>
     <h2>Meet QIT the Beaver</h2>
     <p>
-        QIT the Beaver is here to guide you through your testing journey. As the cheerful mascot of our platform, QIT represents the simplicity, efficiency, and fun of testing with QIT. Let him lead the way to flawless plugins and themes!
+        QIT the Beaver is here to guide you through your testing journey. As the cheerful mascot of our platform, QIT represents the simplicity, efficiency, and fun of testing with our toolkit. Let him lead the way to flawless plugins and themes!
     </p>
   </div>
 </div>
