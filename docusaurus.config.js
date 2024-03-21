@@ -4,23 +4,23 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
-import {themes as prismThemes} from 'prism-react-renderer';
+import {duotoneDark, jettwaveDark, nightOwl, oneDark, themes as prismThemes, vsDark} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Quality Insights Toolkit',
+  title: 'Easy automated tests for WordPress plugins and themes - QIT',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://qit.woo.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/docs',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'woocommerce', // Usually your GitHub org/user name.
-  projectName: 'qit-cli', // Usually your repo name.
+  organizationName: '', // Usually your GitHub org/user name.
+  projectName: '', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -39,7 +39,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          routeBasePath: '/',
+          routeBasePath: '/docs/',
           sidebarPath: './sidebars.js',
         },
         blog: {
@@ -75,7 +75,7 @@ const config = {
           {to: '/changelog', label: 'Changelog', position: 'right'},
           {
             href: 'https://github.com/woocommerce/qit-cli',
-            label: 'GitHub',
+            label: 'QIT CLI',
             position: 'right',
           },
         ],
@@ -87,6 +87,7 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+        additionalLanguages: ['php', 'bash', 'json', 'yaml', 'makefile'],
       },
     }),
 };

@@ -112,7 +112,7 @@ Usage: `make qit-security`
 <details>
 <summary>Makefile</summary>
 
-```
+```makefile
 include ./.env
 export
 

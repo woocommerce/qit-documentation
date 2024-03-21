@@ -1,4 +1,4 @@
-# Getting started
+# GitHub Workflows
 
 The QIT GitHub Workflows are examples of integrating the Quality Insights Toolkit into GitHub. You can delegate tests to the QIT and integrate it as part of your PR approval process, when a release is created, and more.
 

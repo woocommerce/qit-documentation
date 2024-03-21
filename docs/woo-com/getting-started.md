@@ -1,4 +1,4 @@
-# Getting started
+# QIT in Woo.com
 
 The QIT Dashboard is a tool available to extension developers in the Woo administrative interface. This tool allows developers to run a variety of tests with their extension installed in a test environment, configured with the latest version of WordPress and either the release candidate or latest version of WooCommerce. If you have multiple extensions, you can select the extension you’d like to run the tests against.
 

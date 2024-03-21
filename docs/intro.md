@@ -6,21 +6,24 @@ slug: /
 import QITIntro from '@site/src/video/qit_intro.mp4';
 import TestTypes from '@site/src/components/TestTypes';
 
-# Introduction 
+# What is QIT? 
 
-The Quality Insights Toolkit (QIT) is an initiative by WooCommerce that provides extension developers in the [Woo Marketplace](https://woo.com/products/) with a series of automated tests out-of-the-box.
+QIT is a testing platform for Wordpress Plugins and Themes developed by WooCommerce that allows developers to run a series of managed tests out-of-the-box. We are currently in closed beta operating only in the [Woo Marketplace](https://woo.com/products/) .
 
 <video controls style={{ width:"100%", height:"100%" }}>
     <source src={QITIntro} />
 </video>
 
+
+## Requirements
+
+Currently, to use QIT you need to have at least one extension listed on the Woo.com Marketplace.
+
 ## Quick Start Guide
 
-To use QIT, you need to have at least one extension listed on the Woo.com Marketplace.
-
 1. `composer require woocommerce/qit-cli --dev`
-2. `./vendor/bin/qit login` to authenticate with your Woo.com developer account.
-3. `qit run:activation your-extension`, where "your-extension" is the slug of a Woo.com extension you own.
+2. `./vendor/bin/qit connect` to generate a QIT Token and [authenticate](/docs/support/authenticating) using your Woo.com developer account.
+4. `./vendor/bin/qit run:activation your-extension`, where "your-extension" is the slug of a Woo.com extension you own.
 
 ## What types of tests are available?
 
@@ -37,14 +40,14 @@ We are working on adding more features to the toolkit, including:
 - Install plugins from both Woo.com Marketplace or the WordPress.org Plugin Repository
 - Configure various parameters of the test environment with config files or arguments
 
-## How can I use the toolkit? 
+## QIT and Woo.com Marketplace
+Partner Developers at Woo.com can use the Quality Insights Toolkit (QIT) to test extensions for the marketplace. This includes running tests on local development builds or as part of CI workflows.
 
-Tests are executed automatically by us whenever you publish a new version of your extension on the WooCommerce Marketplace. You can also run tests manually using the following tools:
+## Can I use QIT if I'm not a Developer on Woo.com?
+While the full QIT is exclusive to Woo.com Partner Developers, non-partners can use the local test environment. Full access is planned for the public in the future.
 
-- [CLI](cli/getting-started.md): A CLI tool that allows you to run and view tests, including against development builds.
-- [Dashboard](dashboard/getting-started.md): A UI-based test runner and test results viewer, available in your WooCommerce dashboard.
-- [GitHub Workflows](workflows/getting-started.md): GitHub workflow files that allow running tests regularly with QIT as part of a GitHub development workflow.
-
-## Why does this toolkit exist? 
-
-The primary goal of these tools is to assist extension developers to easily integrate a variety of tests into their development workflows, and promote and encourage quality around WooCommerce extensions available in the marketplace.
+## Ways to Use QIT
+QIT automatically runs tests for new Woo Marketplace extension versions. Additionally, developers can manually run tests using:
+- **CLI**: For running and viewing tests, including development builds. [Getting Started with CLI](cli/getting-started).
+- **Dashboard**: UI-based test runner and results viewer in your Woo.com dashboard. [Dashboard Guide](woo-com/getting-started).
+- **GitHub Workflows**: To integrate QIT tests in GitHub development workflows. [Setting Up Workflows](workflows/getting-started).

@@ -25,7 +25,7 @@ To access it:
 - Log in to Woo.com with your Partner account.
 - Click on `Vendor Dashboard` button to be taken to your vendor dashboard, which can be found on the My Account page once you've logged in:
 
-![go-to-dashboard](../dashboard/_media/go-to-dashboard.png)
+![go-to-dashboard](../woo-com/_media/go-to-dashboard.png)
 
 - Don't see this button? You may not be the vendor admin on the account. Reach out to someone else in the organization (usually the person that handles uploading the extension for publishing) to see if they have access.
 

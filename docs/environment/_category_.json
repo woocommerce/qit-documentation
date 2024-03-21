@@ -1,7 +1,6 @@
 {
     "label": "Local Test Environment",
     "position": 5,
-    "className": "hidden",
     "link": {
         "type": "generated-index"
     }
