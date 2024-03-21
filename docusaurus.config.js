@@ -41,6 +41,8 @@ const config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.js',
+          editUrl:
+          'https://github.com/woocommerce/qit-documentation/tree/main',
         },
         blog: {
           routeBasePath: 'changelog',
