@@ -9,7 +9,7 @@ import QITImageURL from '@site/static/img/qit-right.webp';
 
 # What is QIT?
 
-QIT is a testing platform for Wordpress Plugins and Themes developed by WooCommerce that allows developers to run a series of managed tests out-of-the-box. We are currently in closed beta operating only in the [Woo Marketplace](https://woo.com/products/) .
+QIT is a testing platform for WordPress Plugins and Themes developed by WooCommerce that allows developers to run a series of managed tests out-of-the-box. We are currently in closed beta operating only in the [Woo Marketplace](https://woo.com/products/) .
 
 <video controls style={{ width:"100%", height:"100%" }}>
     <source src={QITIntro} type="video/mp4"/>
