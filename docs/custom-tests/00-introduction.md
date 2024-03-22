@@ -31,7 +31,7 @@ To bring some peace of mind, he finally decides it's time to write some end-to-e
 
 ### Generating the Tests
 
-So he pulls up the QIT CLI and run:
+So he pulls up the QIT CLI and runs:
 
 ```qitbash
 qit run:e2e qit-the-beaver-plugin --codegen
