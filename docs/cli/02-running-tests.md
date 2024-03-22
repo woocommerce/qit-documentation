@@ -22,7 +22,7 @@ qit run:woo-e2e my-extension
 
 This will run the [WooCommerce Core E2E Test Suite](https://github.com/woocommerce/woocommerce/tree/trunk/plugins/woocommerce/tests/e2e-pw) against the WooCommerce extension with slug `my-extension` using the latest stable versions of WordPress and WooCommerce.
 
-Since the tests are executed in the cloud, you can even close the terminal if you wish. You can see the result of this test after a while running `qit list-tests`, or `qit get 123`, where `123` is the test run ID. When the test finishes, the status will be updated to `Success`, `Warning`, or `Failed`. For more details on these commands, please see [Useful Commands](cli/useful-commands.md).
+Since the tests are executed in the cloud, you can even close the terminal if you wish. You can see the result of this test after a while running `qit list-tests`, or `qit get 123`, where `123` is the test run ID. When the test finishes, the status will be updated to `Success`, `Warning`, or `Failed`. For more details on these commands, please see [Useful Commands](cli/03-useful-commands.md).
 
 ## Testing development builds
 
@@ -48,7 +48,7 @@ Since the tests are executed in the cloud, you can even close the terminal. You 
 - Run `qit get 123` to get more details about a specific test run, where `123` is the test run ID.
 - Run `qit open 123` to open the report for test run `123` in the browser.
 
-When the test finishes, the status will be updated to `Success`, `Warning`, or `Failed`. For more details on what these commands show, please see [Useful Commands](cli/useful-commands.md).
+When the test finishes, the status will be updated to `Success`, `Warning`, or `Failed`. For more details on what these commands show, please see [Useful Commands](cli/03-useful-commands.md).
 
 ## Specifying WooCommerce and WordPress versions
 

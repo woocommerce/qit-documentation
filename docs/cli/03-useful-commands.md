@@ -17,7 +17,7 @@ Some helpful commands to get started include:
 - `qit list-tests` - Lists the test runs, including details around the results, the versions tested and the test type:
 
 :::tip
-`Zip` for the version denotes that the test was ran against a [development version](cli/running-tests.md#testing-development-builds) of the plugin.
+`Zip` for the version denotes that the test was ran against a [development version](cli/02-running-tests.md#testing-development-builds) of the plugin.
 :::
 
 ```
@@ -42,7 +42,7 @@ Woo Extension       My Extension
 ```
 
 :::tip
-If a report is available, you can go into the [QIT Dashboard to view the report](dashboard/viewing-test-results.md#viewing-test-logs) or view the link by running `get` and the test run ID:
+If a report is available, you can go into the [QIT Dashboard to view the report](woo-com/viewing-test-results.md#viewing-test-logs) or view the link by running `get` and the test run ID:
 :::
 
 ```

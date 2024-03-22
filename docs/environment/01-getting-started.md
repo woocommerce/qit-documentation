@@ -14,7 +14,7 @@ It allows you to create a local WordPress environment with a single command. The
 
 Before you begin, ensure that you have the following prerequisites installed:
 
-- **QIT CLI**: If you haven't already installed the QIT CLI tool, follow the instructions in the [Installation Guide](cli/getting-started.md).
+- **QIT CLI**: If you haven't already installed the QIT CLI tool, follow the instructions in the [Installation Guide](cli/01-installation.md).
 - **Docker**: QIT relies on Docker for creating isolated environments. Make sure Docker is installed and running on your system. [Download Docker here](https://www.docker.com/get-started).
 
 ## Getting Started
@@ -70,17 +70,3 @@ Now you just do `qit env:up`, without any additional parameters, and you get the
 - **--volumes**: Map local directories to your test environment, useful for plugin/theme development.
 - **--php_extensions**: Customize the PHP environment with necessary extensions.
 - **--object_cache**: Enable Redis Object Cache for advanced testing scenarios.
-
-
-
-## Next Steps
-
-- Learn how to create and use configuration files in [Creating Configuration Files](environment/creating-config-files.md).
-- Configure your environment with the [Configuration Options](environment/configuration-options.md).
-- Learn how to extend your environment with premium plugins and themes in [Installing Plugins From Other Sources](environment/installing-plugins-other-sources.md).
-
-We're excited to see how QIT Local Test Environment streamlines your WordPress testing. Happy coding!
-
-## Support
-
-For support open an issue on the [QIT GitHub repository](https://github.com/woocommerce/qit-cli/issues).

@@ -60,6 +60,6 @@ While the full QIT is exclusive to Woo.com Partner Developers, non-partners can 
 
 ## Ways to Use QIT
 QIT automatically runs tests for new Woo Marketplace extension versions. Additionally, developers can manually run tests using:
-- **CLI**: For running and viewing tests, including development builds. [Getting Started with CLI](cli/getting-started).
+- **CLI**: For running and viewing tests, including development builds. [Getting Started with CLI](cli/01-installation.md).
 - **Dashboard**: UI-based test runner and results viewer in your Woo.com dashboard. [Dashboard Guide](woo-com/getting-started).
-- **GitHub Workflows**: To integrate QIT tests in GitHub development workflows. [Setting Up Workflows](workflows/getting-started).
+- **GitHub Workflows**: To integrate QIT tests in GitHub development workflows. [Setting Up Workflows](cli/05-github-workflows.md).

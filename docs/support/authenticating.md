@@ -7,7 +7,7 @@ QIT is currently exclusive to Partner Developers that sells plugins in the Woo.c
 ## Authenticating using QIT CLI
 
 - Login to Woo.com with your Partner Developer account
-- [Download](https://github.com/woocommerce/qit-cli/releases/latest/) the latest version of QIT CLI and [Install it](/cli/getting-started?id=installing)
+- [Download](https://github.com/woocommerce/qit-cli/releases/latest/) the latest version of QIT CLI and [Install it](/cli/01-installation.md)
 - Depending on how you've installed the QIT CLI, run `./vendor/bin/qit partner:add`
 - Follow the steps to generate a QIT Token
 - Enter the QIT Token and username in the CLI
