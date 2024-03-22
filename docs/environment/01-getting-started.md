@@ -6,7 +6,9 @@ sidebar_position: 1
 
 ## Introduction
 
-The QIT Local Test Environment is a disposable local test environment for automated tests. It allows you to create a local WordPress environment with a single command, and it's designed to be disposable, meaning that whatever changes you do in it do not persist across runs. So if you do `qit env:up`, and you delete the database of that site entirely, and then do `qit env:up` again, you will get a fresh new site with no trace of the previous one.
+The QIT Local Test Environment was engineered to do one thing, and one thing well: Running Automated Tests.
+
+It allows you to create a local WordPress environment with a single command. These environments are disposable, meaning that whatever changes you do in it do not persist across runs. So if you do `qit env:up`, and you delete the database of that site entirely, and then do `qit env:up` again, you will get a fresh new site with no trace of the previous one.
 
 ## Prerequisites
 
@@ -27,7 +29,13 @@ Creating a local test environment with QIT is straightforward:
 
 Now let's spin up a customized local test environment with a few options:
 
-`qit env:up --php_version=8.3 --plugins gutenberg --plugins contact-form-7 --wordpress_version=rc`
+```qitbash
+qit env:up \
+    --php_version=8.3 \
+    --plugins gutenberg \
+    --plugins contact-form-7 \
+    --wordpress_version=rc
+```
 
 This will create an environment with PHP 8.3 on WordPress RC version, with Gutenberg, and Contact Form 7.
 
@@ -45,10 +53,29 @@ plugins:
 
 Now you just do `qit env:up`, without any additional parameters, and you get the same environment as before, as well as anyone on your team.
 
+## Managing Environments
+
+- **env:up**: Creates a Local Test Environment
+- **env:down**: Stops a running local test environment.
+- **env:list**: Lists all running environments.
+- **env:enter**: Enters the PHP container of a running test environment.
+- **env:exec**: Execute a command inside the PHP container.
+
+## `env:up` Options
+
+- **--wordpress_version**: Choose the specific version of WordPress for your test environment.
+- **--php_version**: Test your project with different PHP versions to ensure compatibility.
+- **--plugins**: Easily include plugins in your test environment.
+- **--themes**: Specify themes to be used.
+- **--volumes**: Map local directories to your test environment, useful for plugin/theme development.
+- **--php_extensions**: Customize the PHP environment with necessary extensions.
+- **--object_cache**: Enable Redis Object Cache for advanced testing scenarios.
+
+
+
 ## Next Steps
 
 - Learn how to create and use configuration files in [Creating Configuration Files](environment/creating-config-files.md).
-- Lean how to use the command-line to interact with your environment in [Using the Command Line](environment/using-command-line.md).
 - Configure your environment with the [Configuration Options](environment/configuration-options.md).
 - Learn how to extend your environment with premium plugins and themes in [Installing Plugins From Other Sources](environment/installing-plugins-other-sources.md).
 
