@@ -16,7 +16,7 @@ If you run this command: `qit run:e2e qit-beaver-plugin --plugins cat-pictures`,
 - Run the bootstrap phases of all the plugins
 - **Run the test phase of `qit-beaver-plugin`**
 
-If instead your un with compatibility mode full, `qiit run:e2e qit-beaver-plugin --plugins cat-pictures --compatibility_mode=full`, it will:
+If instead you run with compatibility mode full, `qiit run:e2e qit-beaver-plugin --plugins cat-pictures --compatibility_mode=full`, it will:
 
 - Spin up the environment
 - Run the bootstrap phases of all the plugins
