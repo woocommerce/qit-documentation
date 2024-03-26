@@ -17,16 +17,16 @@ const FeatureList = [
         Svg: require('@site/static/img/integrated_e2e.svg').default,
         description: (
             <>
-                Write your custom E2E tests with our toolkit, and even integrate with the tests of other plugins to keep track of compatibility.
+                Write your custom E2E tests with our toolkit, and even integrate with the tests of other plugins to keep track of compatibility. (Coming soon)
             </>
         ),
     },
     {
-        title: 'Get fancy with our Local Test Environment',
+        title: 'Local Test Environment',
         Svg: require('@site/static/img/local_environment.svg').default,
         description: (
             <>
-                Configurable, disposable environment, engineered to do one thing well: Run tests on your local machine or on CI.
+                Fast, disposable environment, engineered to do one thing well: Run tests on your local machine or on CI. (Coming soon)
             </>
         ),
     },

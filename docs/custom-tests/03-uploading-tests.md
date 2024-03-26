@@ -1,5 +1,9 @@
 # Uploading Tests
 
+:::info
+The Custom Tests feature is coming soon.
+:::
+
 ## Introduction
 
 To upload tests, you will need to have a directory with the following structure:

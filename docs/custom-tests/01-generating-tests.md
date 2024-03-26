@@ -1,5 +1,9 @@
 # Generating Tests
 
+:::info
+The Custom Tests feature is coming soon.
+:::
+
 ## Introduction
 
 The QIT Local Test Environment allows you to generate custom end-to-end tests for your plugins. These tests are written using Playwright, a Node.js library for automating browsers.

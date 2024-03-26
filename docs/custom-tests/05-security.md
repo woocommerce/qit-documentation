@@ -1,5 +1,9 @@
 # The Security Architecture of the Custom Tests
 
+:::info
+The Custom Tests feature is coming soon.
+:::
+
 ## Containerized Test Environments
 
 All test code runs only on containerized Docker Environments meticulously designed for maximum isolation. This advanced engineering at both high and low levels guarantees that the test code execution remains completely segregated from the rest of the system.

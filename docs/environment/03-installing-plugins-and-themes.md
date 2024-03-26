@@ -1,5 +1,9 @@
 # Installing Plugins and Themes
 
+:::info
+The Local Test Environment is coming soon.
+:::
+
 ## Introduction
 
 When starting an environment you can choose to install different plugins and themes with `--plugins`, `--themes` or through the config files.

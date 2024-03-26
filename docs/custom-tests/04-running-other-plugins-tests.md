@@ -1,5 +1,9 @@
 # Running Tests from Other Plugins
 
+:::info
+The Custom Tests feature is coming soon.
+:::
+
 ## Introduction
 
 As we've seen in the Introduction guide, it's possible to install additional plugins when running a test.

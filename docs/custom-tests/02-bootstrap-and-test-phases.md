@@ -1,5 +1,9 @@
 # Bootstrap and Test Phases
 
+:::info
+The Custom Tests feature is coming soon.
+:::
+
 ## Introduction
 
 The Custom E2E Tests have two phases: the **Bootstrap Phase** and the **Test Phase**.
