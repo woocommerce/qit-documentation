@@ -69,7 +69,7 @@ qit run:e2e qit-the-beaver-plugin /path-to/tests/qit-e2e
 To see the magic in action, he opts for an interactive test session, which opens a browser window where he can watch the tests unfold:
 
 ```qitbash
-qit run:e2e qit-the-beaver-plugin \--plugins cat-picturespath-to/tests/qit-e2e --ui
+qit run:e2e qit-the-beaver-plugin --plugins cat-picturespath-to/tests/qit-e2e --ui
 ```
 
 ### Publishing the Tests
