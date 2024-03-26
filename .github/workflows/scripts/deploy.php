@@ -27,7 +27,7 @@ while ( $file->valid() ) {
 	$current_chunk ++;
 	$curl = curl_init();
 	$args = [
-		CURLOPT_URL            => 'https://stagingcompatibilitydashboard.wpcomstaging.com/',
+		CURLOPT_URL            => 'https://qit.woo.com',
 		CURLOPT_POST           => true,
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_FOLLOWLOCATION => true,
