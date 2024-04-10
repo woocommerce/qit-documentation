@@ -38,46 +38,33 @@ To bring some peace of mind, he finally decides it's time to write some end-to-e
 So he pulls up the QIT CLI and runs:
 
 ```qitbash
-qit run:e2e qit-the-beaver-plugin --codegen
+qit scaffold:e2e ./e2e
 ```
 
-This will spin up a local test environment for him to connect with [Playwright Codegen](https://playwright.dev/docs/codegen), to generate his tests just by navigating around and with some small tweaks to the generated code.
-
-It's not 100% copy and paste, but after some tinkering it turned out to be much easier than he thought!
-
-Once he generates the tests, he saves them to `beaver-plugin/tests/qit` for example, like this:
+To generate a basic E2E test structure in the `e2e` directory:
 
 ```
-.
-├── tests
-│    └── qit-e2e
-│        └── tests
-│            └── first-test.spec.js
-└── qit-the-beaver-plugin.php
+qit run:e2e --codegen
 ```
 
-### Running the Tests Locally
+To spin up a local test environment and start a [Playwright Codegen](https://playwright.dev/docs/codegen) session, which generates tests by recording his interactions with the browser.
 
-First things first, QIT the Beaver tests the waters by running the tests locally. A simple command does the trick:
+He records some interactions with his plugin, copies the generated code, and pastes it into his test file.
+
+**It's not 100% copy and paste, but after understanding the workflow with codegen, including what he needs to change in the generated code, it turned out to be much easier than he thought!**
+
+Then he runs the tests and sees them running in a browser:
 
 ```qitbash
-qit run:e2e qit-the-beaver-plugin /path-to/tests/qit-e2e
-```
-
-### Viewing the Test Running
-
-To see the magic in action, he opts for an interactive test session, which opens a browser window where he can watch the tests unfold:
-
-```qitbash
-qit run:e2e qit-the-beaver-plugin --plugins cat-picturespath-to/tests/qit-e2e --ui
+qit run:e2e qit-the-beaver ./e2e --ui
 ```
 
 ### Publishing the Tests
 
-Satisfied with the results, QIT decides it's showtime. He uploads the tests to QIT’s platform, a move that simplifies future test runs:
+Satisfied with the results, Beaver decides it's showtime. He uploads the tests to QIT’s platform, a move that simplifies future test runs:
 
 ```qitbash
-qit upload:test qit-the-beaver-plugin /path-to/tests/qit-e2e
+qit upload:test qit-the-beaver ./e2e
 ```
 
 ### Running published tests
@@ -85,46 +72,88 @@ qit upload:test qit-the-beaver-plugin /path-to/tests/qit-e2e
 Post-upload, running the tests becomes even easier, without needing to specify the path:
 
 ```qitbash
-qit run:e2e qit-the-beaver-plugin
+qit run:e2e qit-the-beaver
 ```
 
 To ensure his plugin thrives in diverse environments, QIT experiments with different configurations, replicating conditions reported by users:
 
 ```qitbash
-qit run:e2e qit-the-beaver-plugin \
-            --php_version=8.3 \
-            --wordpress_version=rc \
-            --woocommerce_version=nightly \
-            --plugins cat-pictures \
-            --plugins contact-form-7 \
-            --themes storefront
+qit run:e2e qit-the-beaver \
+            --php_version 8.3 \
+            --wp rc \
+            --woo nightly \
+            --plugin cat-pictures \
+            --plugin contact-form-7:activate \
+            --theme storefront
 ```
 
 This comprehensive command allows him to test with PHP 8.3, the latest WordPress release candidate, the nightly WooCommerce version, and alongside popular plugins and themes.
-
 
 ### Running Tests from Different Plugins
 
 The maker or `Cat Pictures` also uploaded their tests to QIT, which means that QIT the Beaver can integrate the tests from the "Cat Pictures" plugin in his test runs. This is done by passing the plugin slug to the `--plugins` flag:
 
 ```qitbash
-qit run:e2e qit-the-beaver-plugin --plugins cat-pictures
+qit run:e2e qit-the-beaver --plugin cat-pictures
 ```
 
 This will:
 
 - Run the "bootstrap" phase of all plugins, which takes care of all the mocking and setup needed.
-- And the "test" phase of `qit-beaver-plugin`
+- And the "test phase" of `qit-the-beaver`
 
 This asserts that his plugin continues to work as expected when Cat Pictures is active and fully configured in a site.
 
-Alternatively, he could also run a full compatibility test:
-
+Alternatively, he could also run `cat-pictures` test phase, too:
 
 ```qitbash
-qit run:e2e qit-the-beaver-plugin --plugins cat-pictures --compatibility=full
+qit run:e2e qit-the-beaver --plugin cat-pictures:test
 ```
 
 With this, it runs the bootstrap and test phases of all plugins, which asserts that not only his plugin continues to work, but that he is also not breaking any expected behavior from others.
 
 With this approach, QIT the Beaver covers a multitude of scenarios, ensuring his plugin performs seamlessly across various setups. It's a win for his peace-of-mind, and most importantly, for his ever-growing base of satisfied customers!
+
+### Publishing a test tag
+
+After his plugin grows and he matures his release strategy, he decides to create a few test tags. This way, he can run different tests for different versions of his plugin.:
+
+```qitbash
+qit upload:test qit-the-beaver ./e2e --tag nightly
+qit upload:test qit-the-beaver ./e2e/foo-feature --tag feature-xyz
+qit upload:test qit-the-beaver ./e2e/fast --tag fast
+```
+
+### Using test tags
+
+Now he can use his tags:
+
+```qitbash
+qit run:e2e qit-the-beaver:test:nightly,foo-feature
+```
+
+Or if they want to use a nightly build from a URL:
+
+```qitbash
+qit run:e2e cat-pictures --plugins https://github.com/woocommerce/qit-the-beaver/releases/tag/nightly.zip:test:nightly,foo-feature
+```
+
+Or in a config file:
+
+```yaml
+plugins:
+  - qit-the-beaver:
+        tests:
+            - nightly
+        source: https://github.com/woocommerce/qit-the-beaver/releases/tag/nightly.zip
+```
+
+To wrap up, he adds tagging as part of his GitHub workflows, which fully automates the process for him.
+
+### Using test tags from other plugins
+
+Other plugins can also leverage the test tags `qit-the-beaver` published:
+
+```qitbash
+qit run:e2e cat-pictures --plugin qit-the-beaver:test:fast,foo-feature
+```
