@@ -5,46 +5,50 @@ slug: /
 
 import QITIntro from '@site/src/video/qit_intro.mp4';
 import TestTypes from '@site/src/components/TestTypes';
+import QITImageURL from '@site/static/img/qit-right.webp';
 
-# Introduction 
+# What is QIT?
 
-The Quality Insights Toolkit (QIT) is an initiative by WooCommerce that provides extension developers in the [Woo Marketplace](https://woo.com/products/) with a series of automated tests out-of-the-box.
+QIT is a testing platform for WordPress Plugins and Themes developed by WooCommerce that allows developers to run a series of managed tests out-of-the-box. We are currently in closed beta operating only in the [Woo Marketplace](https://woo.com/products/) .
 
 <video controls style={{ width:"100%", height:"100%" }}>
-    <source src={QITIntro} />
+    <source src={QITIntro} type="video/mp4"/>
+    Your browser does not support the video tag.
 </video>
+
+<div style={{ display: 'flex', alignItems: 'center', margin: '30px 0' }}>
+  <img src={QITImageURL} alt="QIT the Beaver" width={175} style={{ marginRight: '20px' }}/>
+  <div>
+    <h2>And there's QIT the Beaver</h2>
+    <p>
+        He's our adorable mascot. He's here to show you that tests can be fun and easy!
+    </p>
+  </div>
+</div>
+
+
+## Requirements
+
+Currently, to use QIT you need to have at least one extension listed on the Woo.com Marketplace.
 
 ## Quick Start Guide
 
-To use QIT, you need to have at least one extension listed on the Woo.com Marketplace.
-
 1. `composer require woocommerce/qit-cli --dev`
-2. `./vendor/bin/qit login` to authenticate with your Woo.com developer account.
-3. `qit run:activation your-extension`, where "your-extension" is the slug of a Woo.com extension you own.
+2. `./vendor/bin/qit connect` to generate a QIT Token and [authenticate](/docs/support/authenticating) using your Woo.com developer account.
+4. `./vendor/bin/qit run:activation your-extension`, where "your-extension" is the slug of a Woo.com extension you own.
 
 ## What types of tests are available?
 
 <TestTypes />
 
-### Coming soon: Local Test Environment and Compatibility Tests
+## QIT and the Woo.com Marketplace
+QIT automatically runs tests for every new release on the Woo Marketplace. Additionally, Partner Developers can
+run tests on-demand using our CLI tool.
 
-We are working on adding more features to the toolkit, including:
+## Can I use QIT if I'm not a Developer on Woo.com?
+While the full QIT is exclusive to Woo.com Partner Developers, non-partners can use the local test environment. Full access is planned for the public in the future.
 
-- Upload your custom E2E tests to QIT
-- Spin up a local test environment with a single command
-- Run your E2E tests with other extensions active in the same site, to test that your plugin continues to work as expected with other extensions installed in the same site
-- Run the E2E tests of other extensions with your plugin active to test your changes don't break other extensions
-- Install plugins from both Woo.com Marketplace or the WordPress.org Plugin Repository
-- Configure various parameters of the test environment with config files or arguments
-
-## How can I use the toolkit? 
-
-Tests are executed automatically by us whenever you publish a new version of your extension on the WooCommerce Marketplace. You can also run tests manually using the following tools:
-
-- [CLI](cli/getting-started.md): A CLI tool that allows you to run and view tests, including against development builds.
-- [Dashboard](dashboard/getting-started.md): A UI-based test runner and test results viewer, available in your WooCommerce dashboard.
-- [GitHub Workflows](workflows/getting-started.md): GitHub workflow files that allow running tests regularly with QIT as part of a GitHub development workflow.
-
-## Why does this toolkit exist? 
-
-The primary goal of these tools is to assist extension developers to easily integrate a variety of tests into their development workflows, and promote and encourage quality around WooCommerce extensions available in the marketplace.
+## Ways to Use QIT
+- **CLI**: For running and viewing tests, including development builds. [Getting Started with CLI](cli/01-installation.md).
+- **Dashboard**: UI-based test runner and results viewer in your Woo.com dashboard. [Dashboard Guide](woo-com/getting-started).
+- **GitHub Workflows**: To integrate QIT tests in GitHub development workflows. [Setting Up Workflows](cli/05-github-workflows.md).

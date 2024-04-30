@@ -29,7 +29,7 @@ If your end-to-end test is failing, please take the following steps:
 
 ## Understanding Allure Reports
 
-For end-to-end test failures, an Allure test report will be generated and is available on the [All Test page](../dashboard/viewing-test-results.md). Allure reports provide a lot of great information to help troubleshoot and diagnose any test failures. For failures, screenshots and a stacktrace is provided. This section provides an overview of a report and where to go to view results. For a more detailed overview, see the official Allure documentation under [Report Structure](https://docs.qameta.io/allure-report/#_report_structure).
+For end-to-end test failures, an Allure test report will be generated and is available on the [All Test page](../woo-com/viewing-test-results.md). Allure reports provide a lot of great information to help troubleshoot and diagnose any test failures. For failures, screenshots and a stacktrace is provided. This section provides an overview of a report and where to go to view results. For a more detailed overview, see the official Allure documentation under [Report Structure](https://docs.qameta.io/allure-report/#_report_structure).
 
 ## Viewing a report
 

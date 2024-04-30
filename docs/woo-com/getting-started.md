@@ -1,4 +1,4 @@
-# Getting started
+# QIT in Woo.com
 
 The QIT Dashboard is a tool available to extension developers in the Woo administrative interface. This tool allows developers to run a variety of tests with their extension installed in a test environment, configured with the latest version of WordPress and either the release candidate or latest version of WooCommerce. If you have multiple extensions, you can select the extension you’d like to run the tests against.
 
@@ -24,7 +24,7 @@ More details on each of these options is provided below.
 
 The All Test page gives you insight into the extension the tests were ran against, the version of the extension, and what test type was ran. In addition, you can see what the results of the test runs were (such as failed, success, or pending if they’re currently running) and, in the case of end-to-end tests, view the Allure test report if the tests fail.
 
-For more insight into the test results, please see [Viewing test results](dashboard/viewing-test-results.md).
+For more insight into the test results, please see [Viewing test results](woo-com/viewing-test-results.md).
 
 ## Run a test
 
@@ -32,7 +32,7 @@ For more insight into the test results, please see [Viewing test results](dashbo
 
 On this page, you can select <a href="../category/test-types">the type of test</a> you'd like to run, which extension to test, and choose the versions of WooCommerce and WordPress to run the tests against.
 
-For more details around creating a test, please see [Run a test](dashboard/run-a-test.md).
+For more details around creating a test, please see [Run a test](woo-com/run-a-test.md).
 
 ## Notification settings
 
@@ -40,4 +40,4 @@ For more details around creating a test, please see [Run a test](dashboard/run-a
 
 If any of the tests result in a failed test result, we will send out an email that contains details on the test type that failed and the versions of the extension, WooCommerce, and WordPress that the test failed for. Email notifications can be enabled or disabled for each test type. By default, emails will be sent to your account email address.
 
-For more information around configuring notifications, see [Configure notifications](dashboard/notifications.md).
+For more information around configuring notifications, see [Configure notifications](woo-com/notifications.md).

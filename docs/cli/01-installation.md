@@ -1,6 +1,6 @@
-# Getting started
+# Installation
 
-The QIT CLI is a command line interface tool that allows you to run automated tests in the cloud against extensions available in the WooCommerce Marketplace, powered by the Quality Insights Toolkit test runner.
+The QIT CLI is a command line interface tool that allows you to run automated tests in the cloud against extensions available in the Woo Marketplace, powered by the QIT Test Runner.
 
 ![run-e2e](_media/run-e2e.png)
 

@@ -1,5 +1,9 @@
 # Creating Configuration Files
 
+:::info
+The Local Test Environment is coming soon.
+:::
+
 ## Introduction
 
 In the QIT Local Test Environment, configuration files are a powerful way to predefine and standardize environment settings. This guide explains how to create and use JSON or YAML configuration files for your testing environments.

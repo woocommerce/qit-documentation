@@ -1,5 +1,9 @@
 # Installing Plugins and Themes From Other Sources
 
+:::info
+The Local Test Environment is coming soon.
+:::
+
 ## Introduction
 
 The QIT Local Test Environment offers the flexibility to install plugins and themes from various sources, including private repositories. This guide outlines the process for extending your environment with these external resources.
