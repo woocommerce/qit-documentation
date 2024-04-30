@@ -61,7 +61,9 @@ For example, to run activation tests against the RC version of WooCommerce and W
 
 `qit run:activation my-extension --woocommerce_version=rc --wordpress_version=rc`
 
-?> If either these arguments are not supplied, then the tests will just run against the current stable versions of WooCommerce and WordPress.
+:::info
+If either these arguments are not supplied, then the tests will just run against the current stable versions of WooCommerce and WordPress.
+:::
 
 QIT supports the last 4 stable and the latest release-candidate of WooCommerce. You can also run `qit run:woo-e2e --help` to see the available WooCommerce versions available to run tests against.
 
