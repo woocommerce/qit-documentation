@@ -6,7 +6,7 @@ The Local Test Environment is coming soon.
 
 ## Introduction
 
-When starting an environment you can choose to install different plugins and themes with `--plugins`, `--themes` or through the config files.
+When starting an environment you can choose to install different plugins and themes with `--plugin`, `--themes` or through the config files.
 
 You can install any plugins from WordPress.org, and any plugins from Woo.com that you have access to.
 
