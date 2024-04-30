@@ -97,7 +97,7 @@ If you run this command: `qit run:e2e qit-the-beaver --plugin cat-pictures`:
 
 ### Compatibility Test
 
-If instead you run with compatibility mode full, `qiit run:e2e qit-the-beaver --plugins cat-pictures --compatibility_mode=full`, it will:
+If instead you run with compatibility mode full, `qiit run:e2e qit-the-beaver --plugin cat-pictures --compatibility_mode=full`, it will:
 
 - Run the bootstrap phases of all the plugins
 - **Run the test phase of all plugins**
