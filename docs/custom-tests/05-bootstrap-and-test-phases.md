@@ -22,7 +22,7 @@ In this phase, set up everything your tests needs, and do the initial setup of y
 
 If you plugin has an onboarding wizard, this is where you need to configure it so that it doesn't show up anymore. Get rid of any data consent forms, or any other setup that needs to be done before the tests run.
 
-If your plugin integrates with an external service, here's where you can configure mock responses, enable a development mode.
+If your plugin integrates with an external service, here's where you can configure mock responses, enable a development mode or anything else you need.
 
 If your tests expects a specific theme to be active, you **install** them in this step so that they are available on your Test Phase, and you **activate it** in the beginning of your Test Phase eg:
 
