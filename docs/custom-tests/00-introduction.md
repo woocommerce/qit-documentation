@@ -91,7 +91,7 @@ This comprehensive command allows him to test with PHP 8.3, the latest WordPress
 
 ### Running Tests from Different Plugins
 
-The maker or `Cat Pictures` also uploaded their tests to QIT, which means that QIT the Beaver can integrate the tests from the "Cat Pictures" plugin in his test runs. This is done by passing the plugin slug to the `--plugins` flag:
+The maker of `Cat Pictures` also uploaded their tests to QIT, which means that QIT the Beaver can integrate the tests from the "Cat Pictures" plugin in his test runs. This is done by passing the plugin slug to the `--plugin` flag:
 
 ```qitbash
 qit run:e2e qit-the-beaver --plugin cat-pictures
