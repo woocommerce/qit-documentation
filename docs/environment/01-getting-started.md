@@ -69,7 +69,7 @@ Now you just do `qit env:up`, without any additional parameters, and you get the
 
 - **--wordpress_version**: Choose the specific version of WordPress for your test environment.
 - **--php_version**: Test your project with different PHP versions to ensure compatibility.
-- **--plugins**: Easily include plugins in your test environment.
+- **--plugin**: Easily include plugins in your test environment.
 - **--themes**: Specify themes to be used.
 - **--volumes**: Map local directories to your test environment, useful for plugin/theme development.
 - **--php_extensions**: Customize the PHP environment with necessary extensions.
