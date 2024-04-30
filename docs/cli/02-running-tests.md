@@ -26,7 +26,7 @@ Since the tests are executed in the cloud, you can even close the terminal if yo
 
 ## Testing development builds
 
-The QIT CLI supports testing development builds of extensions, so you can run any of the <a href="../category/test-types">test types</a> against an unpublished version of your extension in the same QIT environment before publishing it to the WooCommerce Store.>
+The QIT CLI supports testing development builds of extensions, so you can run any of the <a href="../category/managed-tests">test types</a> against an unpublished version of your extension in the same QIT environment before publishing it to the WooCommerce Store.
 
 :::warning
 Make sure the zipped version is a valid plugin. As this is installed on a test WordPress site, an invalid plugin will fail to install and cause the tests to fail.
@@ -61,7 +61,9 @@ For example, to run activation tests against the RC version of WooCommerce and W
 
 `qit run:activation my-extension --woocommerce_version=rc --wordpress_version=rc`
 
-?> If either these arguments are not supplied, then the tests will just run against the current stable versions of WooCommerce and WordPress.
+:::info
+If either these arguments are not supplied, then the tests will just run against the current stable versions of WooCommerce and WordPress.
+:::
 
 QIT supports the last 4 stable and the latest release-candidate of WooCommerce. You can also run `qit run:woo-e2e --help` to see the available WooCommerce versions available to run tests against.
 
