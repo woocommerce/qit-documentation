@@ -49,7 +49,7 @@ values={[
       "action": "test",
       "source": "~/my-plugins/qit-beaver",
       "test_tags": [
-        "~/my-plugins/qit-beaver/tests",
+        "~/my-plugins/qit-beaver/tests"
       ]
     },
     "woocommerce": {
