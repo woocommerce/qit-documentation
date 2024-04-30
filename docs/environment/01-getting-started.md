@@ -37,7 +37,7 @@ Now let's spin up a customized local test environment with a few options:
 qit env:up \
     --php_version=8.3 \
     --plugins gutenberg \
-    --plugins contact-form-7 \
+    --plugin contact-form-7 \
     --wordpress_version=rc
 ```
 
