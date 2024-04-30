@@ -30,7 +30,7 @@ For more insight into the test results, please see [Viewing test results](woo-co
 
 ![run-a-test-menu](_media/run-a-test-menu.png)
 
-On this page, you can select <a href="../category/test-types">the type of test</a> you'd like to run, which extension to test, and choose the versions of WooCommerce and WordPress to run the tests against.
+On this page, you can select [the type of test](/docs/managed-tests/introduction) you'd like to run, which extension to test, and choose the versions of WooCommerce and WordPress to run the tests against.
 
 For more details around creating a test, please see [Run a test](woo-com/run-a-test.md).
 

@@ -35,7 +35,7 @@ More details on each the options available on the `Create a Test` page can be fo
 
 ## Test type
 
-Select the <a href="../category/test-types">type of test</a> you'd like to run. The current options are available:
+Select the [type of test](/docs/managed-tests/introduction) you'd like to run. The current options are available:
 
 <TestTypes />
 

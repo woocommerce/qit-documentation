@@ -16,7 +16,7 @@ Notifications can be enabled and disabled both on a per-product basis as well as
 
 ## Notifications by test type
 
-You can enable and disable notifications for each <a href="../category/test-types">test types</a> that is available by clicking on the toggle:
+You can enable and disable notifications for each test types that is available by clicking on the toggle:
 
 ![test-notification-settings](_media/test-notification-settings.png)
 
