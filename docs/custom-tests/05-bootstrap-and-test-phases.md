@@ -20,7 +20,7 @@ This is the flow of execution:
 
 In this phase, set up everything your tests needs, and do the initial setup of your plugin.
 
-If you plugin have an onboarding wizard, this is where you need to configure it so that it doesn't show up anymore. Get rid of any data consent forms, or any other setup that needs to be done before the tests run.
+If you plugin has an onboarding wizard, this is where you need to configure it so that it doesn't show up anymore. Get rid of any data consent forms, or any other setup that needs to be done before the tests run.
 
 If your plugin integrates with an external service, here's where you can configure mock responses, enable a development mode.
 
