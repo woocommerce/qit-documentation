@@ -82,7 +82,7 @@ The `entrypoint.spec.js` is a file that, if present, will be called when your **
 
 ## The Test Phase
 
-This is where the actual testing happens. We utilize Playwright to interact with the browser and verify your plugin's functionality. By default, the only test phase that gets executes is the one from the plugin you are running the tests from.
+This is where the actual testing happens. We utilize Playwright to interact with the browser and verify your plugin's functionality. By default, the only test phase that gets executed is the one from the plugin you are running the tests from.
 
 :::tip
 When running with the test phase of other plugins, any flakiness in the tests of other plugins can cause your tests to fail.
