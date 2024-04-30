@@ -77,7 +77,7 @@ await page.goto('/wp-admin');
 
 ## Using QIT Helpers
 
-We have a set of helpers that you can use in your tests to make your life easier. You can find them in the [QIT Helpers](/docs/qit-helpers) documentation.
+We have a set of helpers that you can use in your tests to make your life easier. You can find them in the QIT Helpers documentation _(Coming soon)_.
 
 ```js
 // Add this to the top of a test file.
