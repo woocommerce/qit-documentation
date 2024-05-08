@@ -31,7 +31,7 @@ Assuming you have Docker, preferably the most up-to-date version, with Composer 
 
 ### Getting Started - Windows
 
-The QIT Local Test Environment works on Mac and Linux natively, but for Windows, **you have to use Windows WSL**. We initially tried to support native Windows, but the performance was much better on WSL. 
+The QIT Local Test Environment works on Mac and Linux natively, but for Windows, **you have to use Windows WSL**. 
 
 - Use WSL 2, as it is faster and easier to install than WSL 1.
 - On the latest version of Windows, simply open PowerShell and run `wsl --install`
