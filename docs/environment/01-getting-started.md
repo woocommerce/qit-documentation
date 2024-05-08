@@ -21,7 +21,25 @@ Before you begin, ensure that you have the following prerequisites installed:
 - **QIT CLI**: If you haven't already installed the QIT CLI tool, follow the instructions in the [Installation Guide](cli/01-installation.md).
 - **Docker**: QIT relies on Docker for creating isolated environments. Make sure Docker is installed and running on your system. [Download Docker here](https://www.docker.com/get-started).
 
-## Getting Started
+### Getting Started - Mac
+
+Assuming you have [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/) or [OrbStack](https://orbstack.dev/) installed, you can start using the QIT Local Test Environment right away. For the best experience, we recommend OrbStack, as it can be **much faster** than Docker Desktop.
+
+### Getting Started - Linux
+
+Assuming you have Docker, preferably the most up-to-date version, with Composer V2, you can start using the QIT Local Test Environment right away.
+
+### Getting Started - Windows
+
+The QIT Local Test Environment works on Mac and Linux natively, but for Windows, **you have to use Windows WSL**. 
+
+- Use WSL 2, as it is faster and easier to install than WSL 1.
+- On the latest version of Windows, simply open PowerShell and run `wsl --install`
+- For older versions like Windows 10, refer to [YouTube installation videos](https://www.youtube.com/results?search_query=windows+wsl+install) or Microsoft's [official guide](https://learn.microsoft.com/en-us/windows/wsl/install). 
+
+Ensure that Windows Features such as Virtual Machine Platform, Windows Subsystem for Linux, and Hyper-V are enabled, and that Virtualization is enabled in the BIOS. 
+
+## Starting your first environment
 
 Creating a local test environment with QIT is straightforward:
 
