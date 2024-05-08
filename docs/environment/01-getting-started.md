@@ -35,7 +35,7 @@ The QIT Local Test Environment works on Mac and Linux natively, but for Windows,
 
 - Use WSL 2, as it is faster and easier to install than WSL 1.
 - On the latest version of Windows, simply open PowerShell and run `wsl --install`
-- For older versions like Windows 10, refer to [YouTube installation videos](https://www.youtube.com/results?search_query=windows+wsl+install) or Microsoft's [official guide](https://learn.microsoft.com/en-us/windows/wsl/install. 
+- For older versions like Windows 10, refer to [YouTube installation videos](https://www.youtube.com/results?search_query=windows+wsl+install) or Microsoft's [official guide](https://learn.microsoft.com/en-us/windows/wsl/install). 
 
 Ensure that Windows Features such as Virtual Machine Platform, Windows Subsystem for Linux, and Hyper-V are enabled, and that Virtualization is enabled in the BIOS. 
 
