@@ -80,7 +80,7 @@ To ensure his plugin thrives in diverse environments, QIT experiments with diffe
 ```qitbash
 qit run:e2e qit-the-beaver \
             --php_version 8.3 \
-            --wp rc \
+            --wp nightly \
             --woo nightly \
             --plugin cat-pictures \
             --plugin contact-form-7:activate \

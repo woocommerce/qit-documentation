@@ -41,7 +41,7 @@ values={[
 <TabItem value="json">
 ```json
 {
-  "wordpress_version": "rc",
+  "wordpress_version": "nightly",
   "php_version": "8.3",
   "object_cache": true,
   "plugins": {
@@ -76,7 +76,7 @@ values={[
 
 <TabItem value="yml">
 ```yml
-wordpress_version: rc
+wordpress_version: nightly
 php_version: 8.3
 object_cache: true
 plugins:
@@ -110,7 +110,7 @@ Suppose you are scripting a test run and want to pass everything as parameters:
 
 ```qitbash
 qit run:e2e ~/.qit/plugins/qit-beaver:test:~/my-plugins/qit-beaver/tests \
-  --wordpress-version rc \
+  --wp nightly \
   --php-version 8.3 \
   --object-cache \
   --plugin woocommerce:bootstrap \
