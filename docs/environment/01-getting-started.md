@@ -23,9 +23,7 @@ Before you begin, ensure that you have the following prerequisites installed:
 
 ### Getting Started - Mac
 
-Assuming you have [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/) or [OrbStack](https://orbstack.dev/) installed, you can start using the QIT Local Test Environment right away.
-
-For the best experience, we recommend OrbStack, **as it can be much faster** than Docker Desktop.
+Assuming you have [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/) or [OrbStack](https://orbstack.dev/) installed, you can start using the QIT Local Test Environment right away. For the best experience, we recommend OrbStack, as it can be **much faster** than Docker Desktop.
 
 ### Getting Started - Linux
 
@@ -33,12 +31,13 @@ Assuming you have Docker, preferably the most up-to-date version, with Composer 
 
 ### Getting Started - Windows
 
-The QIT Local Test Environment works on Mac and Linux natively, but for Windows, **you have to use Windows WSL**. We initially tried to support native Windows, but the performance was much better on WSL, amongst other reasons. 
+The QIT Local Test Environment works on Mac and Linux natively, but for Windows, **you have to use Windows WSL**. We initially tried to support native Windows, but the performance was much better on WSL. 
 
-- We strongly recommend using WSL 2, as it is faster and more reliable than WSL 1. **It's also much easier to install.**
-- If you are on the latest version of Windows, you can open PowerShell and run `wsl --install` and that should get you started.
-- If you are on an older version, such as Windows 10, WSL 1 can be trickier to install. We recommend searching for [YouTube videos](https://www.youtube.com/results?search_query=windows+wsl+install) on how to install WSL 1 on your version of Windows. You can also find the official WSL Installation Guide from Microsoft [here](https://learn.microsoft.com/en-us/windows/wsl/install.
-- You might need to enable some features in Windows Features, such as Virtual Machine Platform, Windows Subsystem for Linux, and Hyper-V. You might also need to enable Virtualization on BIOS. 
+- Use WSL 2, as it is faster and easier to install than WSL 1.
+- On the latest version of Windows, simply open PowerShell and run `wsl --install`
+- For older versions like Windows 10, refer to [YouTube installation videos](https://www.youtube.com/results?search_query=windows+wsl+install) or Microsoft's [official guide](https://learn.microsoft.com/en-us/windows/wsl/install. 
+
+Ensure that Windows Features such as Virtual Machine Platform, Windows Subsystem for Linux, and Hyper-V are enabled, and that Virtualization is enabled in the BIOS. 
 
 ## Starting your first environment
 
