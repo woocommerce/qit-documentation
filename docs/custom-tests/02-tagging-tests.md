@@ -6,9 +6,9 @@ The Custom Tests feature is coming soon.
 
 ## Introduction
 
-You can use test tags to run specific tests from a plugin.
+You can use test tags to run specific tests from a plugin/theme.
 
-Each plugin can have one or multiple test tags, and we also offer some generic tests that can be used by any extensions.
+Each extension can have one or multiple test tags, and we also offer some generic tests that can be used by any plugin/theme.
 
 ## Listing available test tags
 
@@ -18,7 +18,7 @@ To list all the available test tags you can use:
 qit tag:list
 ```
 
-To list the test tags for a specific plugin:
+To list the test tags for a specific plugin/theme:
 
 ```qitbash
 qit tag:list qit-beaver
