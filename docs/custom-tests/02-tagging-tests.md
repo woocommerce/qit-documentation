@@ -71,3 +71,11 @@ You can also compose multiple tags by passing a comma-separated list of test tag
 ```qitbash
 qit run:e2e qit-beaver:test:default,rc --plugin qit-dog:test:feature-dog-pictures
 ```
+
+## Deleting Test Tags
+
+You can delete test tags that you have previously published:
+
+```qitbash
+qit tag:delete qit-beaver:my-tag
+```
