@@ -16,7 +16,7 @@ On your Bootstrap Phase, you can install the theme:
 
 `bootstrap.sh`
 ```
-wp install theme storefront
+wp install theme deli
 ```
 
 And on your Entrypoint, you can activate it.
