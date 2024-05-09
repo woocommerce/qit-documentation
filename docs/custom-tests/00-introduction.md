@@ -4,7 +4,13 @@
 The Custom Tests feature is available as early-access.
 :::
 
-Welcome to the most dynamic and developer-driven aspect of Quality Insights Toolkit (QIT): Custom End-to-End (E2E) Testing. At QIT, we understand that every plugin has unique functionalities and requirements. That's why we empower you, the developers, to take the reins in testing the specific behaviors and features of your plugins.
+The Custom E2E tests allows you to easily write and share E2E tests with other developers.
+
+It provides you with a dockerized development environment, and a ready-to-go example test that you can run with one command.
+
+Customize the test to your needs, then share it with other developers, or run it in your CI/CD pipeline.
+
+Or, just use one of our pre-built generic tests to get you started. (Coming soon)
 
 ## The Power of Customization: `run:e2e`
 
