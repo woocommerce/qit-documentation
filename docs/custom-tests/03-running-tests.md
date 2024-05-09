@@ -4,7 +4,7 @@ import TabItem from '@theme/TabItem';
 # Running Tests
 
 :::info
-The Custom Tests feature is coming soon.
+The Custom Tests feature is available as early-access.
 :::
 
 ## Running a Basic Test

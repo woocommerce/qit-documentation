@@ -1,7 +1,7 @@
 # Themes
 
 :::info
-The Custom Tests feature is coming soon.
+The Custom Tests feature is available as early-access.
 :::
 
 ## Introduction

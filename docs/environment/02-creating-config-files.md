@@ -1,7 +1,7 @@
 # Creating Configuration Files
 
 :::info
-The Local Test Environment is coming soon.
+The Local Test Environment is available as early-access.
 :::
 
 ## Introduction

@@ -5,7 +5,7 @@ sidebar_position: 1
 # Local Test Environment
 
 :::info
-The Local Test Environment is coming soon.
+The Local Test Environment is available as early-access.
 :::
 
 ## Introduction

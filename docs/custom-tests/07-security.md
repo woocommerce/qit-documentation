@@ -1,7 +1,7 @@
 # The Security Architecture of the Custom Tests
 
 :::info
-The Custom Tests feature is coming soon.
+The Custom Tests feature is available as early-access.
 :::
 
 ## Containerized Test Environments
