@@ -97,15 +97,14 @@ If you run this command: `qit run:e2e qit-the-beaver --plugin cat-pictures`:
 
 ### Compatibility Test
 
-If instead you run with compatibility mode full, `qiit run:e2e qit-the-beaver --plugin cat-pictures --compatibility_mode=full`, it will:
+If instead you want to run a full compatibility test, you can run, `qit run:e2e qit-the-beaver --plugin cat-pictures:test`, it will:
 
-- Run the bootstrap phases of all the plugins
-- **Run the test phase of all plugins**
+- Run the bootstrap phases of the `default` test tag of all the plugins
+- **Run the test phase of the `default` test tag all plugins, if they have tests published to QIT**
 
-Essentially, when you run in with the default compatibility mode, you are asserting that your plugin continues to behave as expected
-when other plugins are installed and configured in a site.
+Essentially, when you run your test phase and other plugin's bootstrap phases, you are asserting that your plugin continues to behave as expected when other plugins are installed and configured in a site.
 
-In "full" compatibility mode, you have the coverage above, plus you are asserting that your plugin does not break other plugins.
+When you run other plugin's test phases as well, you have the coverage above, plus you are asserting that your plugin does not break other plugins.
 
 The test phase is composed of 4 sub-phases:
 

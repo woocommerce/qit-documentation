@@ -70,7 +70,7 @@ qit run:e2e qit-the-beaver ./e2e --ui
 Satisfied with the results, Beaver decides it's showtime. He uploads the tests to QIT’s platform, a move that simplifies future test runs:
 
 ```qitbash
-qit upload:test qit-the-beaver ./e2e
+qit tag:upload qit-the-beaver ./e2e
 ```
 
 ### Running published tests
@@ -125,20 +125,20 @@ With this approach, QIT the Beaver covers a multitude of scenarios, ensuring his
 After his plugin grows and he matures his release strategy, he decides to create a few test tags. This way, he can run different tests for different versions of his plugin.:
 
 ```qitbash
-qit upload:test qit-the-beaver ./e2e --tag nightly
-qit upload:test qit-the-beaver ./e2e/foo-feature --tag feature-xyz
-qit upload:test qit-the-beaver ./e2e/fast --tag fast
+qit tag:upload qit-the-beaver ./e2e --tag nightly
+qit tag:upload qit-the-beaver ./e2e/foo-feature --tag feature-xyz
+qit tag:upload qit-the-beaver ./e2e/fast --tag fast
 ```
 
 ### Using test tags
 
-Now he can use his tags:
+Now QIT can use his tags like this:
 
 ```qitbash
 qit run:e2e qit-the-beaver:test:nightly,foo-feature
 ```
 
-Or if they want to use a nightly build from a URL:
+Or if he wants to use a nightly build from a URL:
 
 ```qitbash
 qit run:e2e cat-pictures --plugins https://github.com/woocommerce/qit-the-beaver/releases/tag/nightly.zip:test:nightly,foo-feature

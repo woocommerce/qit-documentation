@@ -35,7 +35,7 @@ Now the test phases of both plugins are run. This is useful for ensuring that yo
 You can see all the test tags you have access to by running:
 
 ```qitbash
-qit test-tags
+qit tag:list
 ```
 
 This will print a table like this:
