@@ -4,10 +4,22 @@ To see the commands that the QIT CLI provides, you can simply run `./qit` to see
 
 Some helpful commands to get started include:
 
-- `qit extensions` - Lists the WooExtensions you have access to test. The list includes the ID of the extension and the
-  slug:
+## List extensions
+
+Lists the WooExtensions you have access to test. The list includes the ID of the extension and the
+slug:
+
+### Command usage
+
+```shell
+qit extensions
+```
+
+### Example
 
 ```
+qit extensions
+
 +----------------+--------------+
 | ID             | Slug         |
 +----------------+--------------+
@@ -15,14 +27,21 @@ Some helpful commands to get started include:
 +----------------+--------------+
 ```
 
-- `qit list-tests` - Lists the test runs, including details around the results, the versions tested and the test type:
+## List tests
 
-:::tip
-`Zip` for the version denotes that the test was ran against
-a [development version](cli/02-running-tests.md#testing-development-builds) of the plugin.
-:::
+Lists the test runs, including details around the results, the versions tested and the test type:
+
+### Command usage
+
+```shell
+qit list-tests
+```
+
+### Example
 
 ```
+qit list-tests
+
 +--------+------------+-------+------------+---------+-----------+----------------------+
 | Run Id | Test       | WP    | WC         | Status  | Report    | Name/Version         |
 +--------+------------+-------+------------+---------+-----------+----------------------+
@@ -31,9 +50,26 @@ a [development version](cli/02-running-tests.md#testing-development-builds) of t
 +--------+------------+-------+------------+---------+-----------+----------------------+
 ```
 
-- `qit get <run ID>` - Get a single test run using the run ID from the `list-tests` command:
+:::tip
+`Zip` for the version denotes that the test was ran against
+a [development version](cli/02-running-tests.md#testing-development-builds) of the plugin.
+:::
 
+## View a single test
+
+Get a single test run using the run ID from the `list-tests` command:
+
+### Command usage
+
+```shell
+qit get <run ID>
 ```
+
+### Examples
+
+```shell
+qit get 344745
+
 Run Id              344745
 Test Type           security
 Wordpress Version   6.1.1
@@ -49,7 +85,9 @@ the [QIT Dashboard to view the report](woo-com/viewing-test-results.md#viewing-t
 running `get` and the test run ID:
 :::
 
-```
+```shell
+qit get 344745
+
 Run Id              361745
 Test Type           woo-e2e
 Wordpress Version   6.1.1
@@ -63,19 +101,19 @@ Woo Extension       My Extension
 
 The `woo:validate-zip` command ensures the contents of a local ZIP file meet specific criteria.
 
-### Command Usage:
+### Command usage
 
-```bash
+```shell
 qit woo:validate-zip <path-to-zip-file>
 ```
 
-### Example:
+### Example
 
-```bash
+```shell
 qit woo:validate-zip /path/to/my-extension.zip
 ```
 
-### Validation Criteria:
+### Validation criteria
 
 `woo:validate-zip` command checks the following:
 
@@ -88,7 +126,7 @@ qit woo:validate-zip /path/to/my-extension.zip
 	- .`DS_Store`, `.AppleDouble`, `.LSOverride`, `.Spotlight-V100`, `.Trashes`, `.fseventsd`
 - Ensures that the ZIP file is not corrupted or generated incorrectly (e.g., by macOS Archive Utility).
 
-### Example Folder Structure
+### Example folder structure
 
 Here is an example of a valid folder structure for a ZIP file:
 
