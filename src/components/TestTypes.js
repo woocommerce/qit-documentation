@@ -28,7 +28,7 @@ export default function TestTypes({ includeCode = false }) {
             <li>
                 Custom Tests
                 <ul>
-                    <li><a href="/docs/custom-tests/introduction">Custom E2E Tests (Coming soon)</a> <code
+                    <li><a href="/docs/custom-tests/introduction">Custom E2E Tests</a> <code
                         style={{display: includeCode ? 'inline-block' : 'none'}}>run:e2e</code></li>
                 </ul>
             </li>
