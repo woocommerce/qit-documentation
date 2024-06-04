@@ -28,6 +28,18 @@ If your security test is failing, please take the following steps:
 - Identify the causes of failure. The test will log any security issues that our scanner identifies
 - Fix the issue and re-run the test
 
+### Request AI-assisted recommendations
+
+Below the list of the found issues from the security audit, there is the option to generate a list of AI-assisted recommendations on how to fix the issues:
+
+![request-ai-recommendations](_media/request-ai-recommendations.png)
+
+After a few minutes, this will generate a report of suggested fixes for the results from the security audit to help provide guidance on how to fix them.
+
+:::info
+Our AI-assisted recommendations are still in the early stages of training, so it is expected that it produces some invalid suggestions. **Please use these suggestions carefully.** We trained this model on a large dataset of insecure and secure code, specializing it to convert insecure code into secure code. Your help to train this AI is paramount. Please provide feedback about the suggestions, your feedback is used to constantly improve the models.
+:::
+
 ### Handling False Positives
 
 False positives, or alerts for security issues that do not exist in actuality, may occasionally arise during security testing. Though we've chosen PHPCS and SemGrep rules to minimize such occurrences, it's important to address these false positives in a systematic way.

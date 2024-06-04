@@ -34,10 +34,10 @@ qit tag:upload qit-beaver /path/to/tests
 
 By default, the test will be uploaded as the `default` tag.
 
-If you want to specify a test tag, you can use the `--tag <tag-name>` flag:
+If you want to specify a test tag, you can add the tag in this format: `extension:tag`:
 
 ```qitbash
-qit tag:upload qit-beaver /path/to/tests --tag my-tag
+qit tag:upload qit-beaver:my-tag /path/to/tests
 ```
 
 ## Running Test Tags
@@ -51,7 +51,7 @@ qit run:e2e qit-beaver
 Or, if it's a specific tag:
 
 ```qitbash
-qit run:e2e qit-beaver:test:my-tag
+qit run:e2e qit-beaver my-tag
 ```
 
 ## Running Test Tags from Other Plugins
@@ -69,7 +69,7 @@ qit run:e2e qit-beaver --plugin qit-dog:test
 You can also compose multiple tags by passing a comma-separated list of test tags:
 
 ```qitbash
-qit run:e2e qit-beaver:test:default,rc --plugin qit-dog:test:feature-dog-pictures
+qit run:e2e qit-beaver default,rc --plugin qit-dog:test:feature-dog-pictures
 ```
 
 ## Deleting Test Tags

@@ -125,9 +125,9 @@ With this approach, QIT the Beaver covers a multitude of scenarios, ensuring his
 After his plugin grows and he matures his release strategy, he decides to create a few test tags. This way, he can run different tests for different versions of his plugin.:
 
 ```qitbash
-qit tag:upload qit-the-beaver ./e2e --tag nightly
-qit tag:upload qit-the-beaver ./e2e/foo-feature --tag feature-xyz
-qit tag:upload qit-the-beaver ./e2e/fast --tag fast
+qit tag:upload qit-the-beaver:nightly ./e2e
+qit tag:upload qit-the-beaver:feature-xyz ./e2e/foo-feature
+qit tag:upload qit-the-beaver:fast ./e2e/fast
 ```
 
 ### Using test tags
@@ -135,13 +135,13 @@ qit tag:upload qit-the-beaver ./e2e/fast --tag fast
 Now QIT can use his tags like this:
 
 ```qitbash
-qit run:e2e qit-the-beaver:test:nightly,foo-feature
+qit run:e2e qit-the-beaver nightly,foo-feature
 ```
 
 Or if he wants to use a nightly build from a URL:
 
 ```qitbash
-qit run:e2e cat-pictures --plugins https://github.com/woocommerce/qit-the-beaver/releases/tag/nightly.zip:test:nightly,foo-feature
+qit run:e2e qit-the-beaver nightly,foo-feature --source https://github.com/woocommerce/qit-the-beaver/releases/tag/nightly.zip
 ```
 
 Or in a config file:
@@ -151,6 +151,7 @@ plugins:
   - qit-the-beaver:
         tests:
             - nightly
+            - foo-feature
         source: https://github.com/woocommerce/qit-the-beaver/releases/tag/nightly.zip
 ```
 
