@@ -6,14 +6,14 @@ sidebar_position: 1
 
 The table below shows what options are available for each test type. For example, for Activation tests you can supply a WordPress version but for the security tests it isn't supported.
 
-|                              | Activation | Woo E2E | Woo API | Security | PHPStan |
-| ---------------------------- | ---------- |---------|---------| -------- | ------- |
-| WordPress Versions           | ✅         | ✅       | ✅       | ❌       | ❌      |
-| WooCommerce Versions         | ✅         | ✅       | ✅       | ❌       | ❌      |
-| WooCommerce Features         | ✅         | ✅       | ✅       | ❌       | ❌      |
-| PHP Version                  | ✅         | ✅       | ✅       | ❌       | ❌      |
-| Additional Extensions        | ✅         | ✅       | ✅       | ❌       | ❌      |
-| Additional WordPress Plugins | ✅         | ✅       | ✅       | ❌       | ❌      |
+|                              | Activation | Woo E2E | Woo API | Security | PHPStan | Validation |
+| ---------------------------- | ---------- |---------|---------| -------- | ------- | ---------- |
+| WordPress Versions           | ✅         | ✅       | ✅       | ❌       | ❌      | ❌        |
+| WooCommerce Versions         | ✅         | ✅       | ✅       | ❌       | ❌      | ❌        |
+| WooCommerce Features         | ✅         | ✅       | ✅       | ❌       | ❌      | ❌        |
+| PHP Version                  | ✅         | ✅       | ✅       | ❌       | ❌      | ❌        |
+| Additional Extensions        | ✅         | ✅       | ✅       | ❌       | ❌      | ❌        |
+| Additional WordPress Plugins | ✅         | ✅       | ✅       | ❌       | ❌      | ❌        |
 
 ## WordPress and WooCommerce versions
 
