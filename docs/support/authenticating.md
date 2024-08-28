@@ -2,11 +2,11 @@ import CLIAuthVideo from '@site/src/video/qit-cli-auth-flow.mp4';
 
 # Authenticating
 
-QIT is currently exclusive to Partner Developers that sells plugins in the Woo.com Marketplace.
+QIT is currently exclusive to Partner Developers that sell plugins in the WooCommerce.com Marketplace.
 
 ## Authenticating using QIT CLI
 
-- Login to Woo.com with your Partner Developer account
+- Login to WooCommerce.com with your Partner Developer account
 - [Download](https://github.com/woocommerce/qit-cli/releases/latest/) the latest version of QIT CLI and [Install it](/cli/01-installation.md)
 - Depending on how you've installed the QIT CLI, run `./vendor/bin/qit partner:add`
 - Follow the steps to generate a QIT Token
@@ -16,13 +16,13 @@ QIT is currently exclusive to Partner Developers that sells plugins in the Woo.c
     <source src={CLIAuthVideo} />
 </video>
 
-## Authenticating in the Woo.com Marketplace
+## Authenticating in the WooCommerce.com Marketplace
 
-We also provide a user interface to view and start test runs in the Woo.com Vendor Dashboard.
+We also provide a user interface to view and start test runs in the WooCommerce.com Vendor Dashboard.
 
 To access it:
 
-- Log in to Woo.com with your Partner account.
+- Log in to WooCommerce.com with your Partner account.
 - Click on `Vendor Dashboard` button to be taken to your vendor dashboard, which can be found on the My Account page once you've logged in:
 
 ![go-to-dashboard](../woo-com/_media/go-to-dashboard.png)
@@ -31,11 +31,11 @@ To access it:
 
 ### Giving access to other developers to use QIT
 
-Sometimes you want to give access to other developers in your organization to run tests using the QIT, but you might not want to give them access to the Woo.com account that can manage the extension in the marketplace, as it gives developers access they don't need, such as managing your extensions in the marketplace, etc.
+Sometimes you want to give access to other developers in your organization to run tests using the QIT, but you might not want to give them access to the WooCommerce.com account that can manage the extension in the marketplace, as it gives developers access they don't need, such as managing your extensions in the marketplace, etc.
 
 Luckily, you can share with them the QIT Token, as they are restricted to only run and view test runs. They are special application passwords with limited access that can only run and view tests using QIT.
 
-### What's the Difference Between QIT Token and Application Password?
+### What's the difference between a QIT Token and an Application Password?
 
 Under the hood, a QIT Token is just an Application Password with a specific App ID.
 

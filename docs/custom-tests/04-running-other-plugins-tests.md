@@ -1,7 +1,7 @@
-# Running Tests from Other Plugins
+# Running tests from other plugins
 
 :::info
-The Custom Tests feature is available as early-access.
+The custom tests feature is available as early-access.
 :::
 
 ## Introduction
@@ -10,7 +10,7 @@ You can run tests from other plugins that you have access to.
 
 This is useful for compatibility testing, or to run tests that are not part of your plugin, such as getting cheap coverage for your own plugin by leveraging tests that are already written.
 
-## Running a Test from Another Plugin
+## Running a test from another plugin
 
 To run a test from another plugin, you can use the `--plugin` flag:
 
@@ -30,7 +30,7 @@ qit run:e2e qit-beaver --plugin cat-pictures:test
 
 Now the test phases of both plugins are run. This is useful for ensuring that your plugin does not break the expected behavior of other plugins.
 
-## Discovering Available Tests
+## Discovering available tests
 
 You can see all the test tags you have access to by running:
 
@@ -51,7 +51,7 @@ This will print a table like this:
 
 This table shows the available test tags for each plugin. You can use these tags to run specific tests.
 
-## Compositing Tests
+## Compositing tests
 
 You can run multiple tests by passing a comma-separated list of tags:
 

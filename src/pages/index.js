@@ -9,15 +9,15 @@ import styles from './index.module.css';
 import QITImageURL from '@site/static/img/qit-left.webp';
 
 function HomepageHeader() {
-    const {siteConfig} = useDocusaurusContext();
+    const { siteConfig } = useDocusaurusContext();
     return (
         <header className={clsx('hero hero--primary', styles.heroBanner)}>
             <div className="container">
-                <img src={QITImageURL} width={200}/>
+                <img src={QITImageURL} width={200} />
                 <Heading as="h1" className="hero__title">
                     <span>Quality Insights Toolkit, or just QIT.</span>
                 </Heading>
-                <p className="hero__subtitle">A Testing Platform for WordPress Plugins and Themes.</p>
+                <p className="hero__subtitle">A testing platform for WordPress plugins and themes.</p>
                 <div className={styles.buttons}>
                     <Link
                         className="button button--secondary button--lg"
@@ -31,7 +31,7 @@ function HomepageHeader() {
 }
 
 export default function Home() {
-    const {siteConfig} = useDocusaurusContext();
+    const { siteConfig } = useDocusaurusContext();
     return (
         <Layout
             title=""

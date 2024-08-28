@@ -2,7 +2,7 @@
 
 QIT CLI allows you to create robust scripts that can optimize your development workflow. Here is an example of a bash script used for authentication and running tests against a development build.
 
-### Directory Structure
+### Directory structure
 
 For this example, we will assume the following directory structure. This can be in the same folder where you develop your plugin or in its own directory:
 
@@ -11,7 +11,7 @@ For this example, we will assume the following directory structure. This can be 
 - vendor/bin/qit
 - build/extension.zip _(Assuming this is created by `npm run build`)_
 
-### Environment Variables (.env)
+### Environment variables (.env)
 
 Create a `.env` file in the root directory of your project and add your QIT user and application password:
 
@@ -20,7 +20,7 @@ QIT_USER=foo
 QIT_APP_PASS=bar
 ```
 
-### Bash Script (bin/qit.sh)
+### Bash script (bin/qit.sh)
 
 This script authenticates the QIT_USER and then runs security tests against the extension build. If the 'partner:remove' command is not available, it adds a partner using `QIT_USER` and `QIT_APP_PASSWORD`. For more information on how authentication works with QIT, see our [documentation around authentication](https://woocommerce.github.io/qit-documentation/#/authenticating).
 
@@ -59,7 +59,7 @@ if [ $? -ne 0 ]; then
 fi
 ```
 
-### Script Runner (Choose between NPM, Composer, Make)
+### Script runner (Choose between NPM, Composer, Make)
 
 Script runners can be used to execute our bash script `qit.sh`. You can choose the script runner that best suits your needs. Below you can find some examples we've put together for NPM, Composer, and Make.
 

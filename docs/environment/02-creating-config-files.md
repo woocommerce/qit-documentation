@@ -1,21 +1,21 @@
-# Creating Configuration Files
+# Creating configuration files
 
 :::info
-The Local Test Environment is available as early-access.
+The local test environment is available as early-access.
 :::
 
 ## Introduction
 
 In the QIT Local Test Environment, configuration files are a powerful way to predefine and standardize environment settings. This guide explains how to create and use JSON or YAML configuration files for your testing environments.
 
-## Creating a Configuration File
+## Creating a configuration file
 
-### 1. File Format
+### 1. File format
 
 - **JSON or YAML**: You can create configuration files in either JSON or YAML format.
 - **Naming**: Name your file `qit-env.json` or `qit-env.yml`. For overrides, use `qit-env.override.json` or `qit-env.override.yml`.
 
-### 2. Configuration Options
+### 2. Configuration options
 
 Include any of the following options in your configuration file:
 - `wordpress_version`: Specify the version of WordPress.
@@ -26,7 +26,7 @@ Include any of the following options in your configuration file:
 - `php_extensions`: List any PHP extensions needed.
 - `object_cache`: Enable or disable Redis Object Cache.
 
-### 3. Example Configurations
+### 3. Example configurations
 
 **JSON Example**:
 ```json
@@ -68,7 +68,7 @@ php_extensions:
 object_cache: true
 ```
 
-## Using Configuration Files
+## Using configuration files
 
 1. **Place the File**: Put your configuration file in the root of your project directory, or in the directory where you run QIT commands.
 2. **Run QIT**: When you start QIT (`qit env:up`), it automatically detects the config file in the current directory and applies settings from your configuration file.

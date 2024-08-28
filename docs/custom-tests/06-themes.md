@@ -1,14 +1,14 @@
 # Themes
 
 :::info
-The Custom Tests feature is available as early-access.
+The custom tests feature is available as early-access.
 :::
 
 ## Introduction
 
 You can use the Custom Tests to test both plugins and themes.
 
-## Using a specific Theme on your Tests
+## Using a specific theme on your tests
 
 If you are developing a plugin, and you write E2E tests that interact with the front-end, you will want to make sure that a specific theme is active when the tests run.
 
@@ -41,7 +41,7 @@ test('I can activate my theme', async ({ page }) => {
 
 This entrypoint was generated with Codegen. The easiest way is to start a codegen session, activate the theme, and use the generated code on your entrypoint.
 
-## Testing a Theme
+## Testing a theme
 
 If you are developing a theme, the previous section applies as well. And when you run it, be sure to add the `--testing_theme` flag:
 

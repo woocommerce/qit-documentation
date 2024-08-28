@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Test Options
+# Test options
 
 The table below shows what options are available for each test type. For example, for Activation tests you can supply a WordPress version but for the security tests it isn't supported.
 
