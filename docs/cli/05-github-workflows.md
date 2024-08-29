@@ -6,7 +6,7 @@ For more information on how [GitHub Actions](https://docs.github.com/en/actions)
 
 The examples below can be tweaked based on your needs, and use a fictional `woocommerce-product-feeds` extension to run the tests against. There's a few [GitHub Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) that need to be configured for this flow (feel free to rename these to whatever makes the most sense for you and your team):
 
-- `PARTNER_USER`: Your Woo.com username.
+- `PARTNER_USER`: Your WooCommerce.com username.
 - `PARTNER_SECRET`: Your [WordPress Application Password](https://make.wordpress.org/core/2020/11/05/application-passwords-integration-guide/).
 
 ## Activation test example

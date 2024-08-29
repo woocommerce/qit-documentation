@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 
 const FeatureList = [
     {
-        title: 'Managed Tests',
+        title: 'Managed tests',
         Svg: require('@site/static/img/managed_tests.svg').default,
         description: (
             <>
@@ -13,7 +13,7 @@ const FeatureList = [
         ),
     },
     {
-        title: 'Custom E2E Tests',
+        title: 'Custom E2E tests',
         Svg: require('@site/static/img/integrated_e2e.svg').default,
         description: (
             <>
@@ -22,7 +22,7 @@ const FeatureList = [
         ),
     },
     {
-        title: 'Local Test Environment',
+        title: 'Local test environment',
         Svg: require('@site/static/img/local_environment.svg').default,
         description: (
             <>
@@ -32,7 +32,7 @@ const FeatureList = [
     },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({ Svg, title, description }) {
     return (
         <div className={clsx('col col--4')}>
             <div className="text--center">

@@ -1,7 +1,7 @@
-# Generating Tests
+# Generating tests
 
 :::info
-The Custom Tests feature is available as early-access.
+The custom tests feature is available as early-access.
 :::
 
 ## Introduction
@@ -55,7 +55,7 @@ It essentially records your interactions with the browser and generates the code
 When you generate tests with `--codegen`, they will be generated with the URLs you visited during the recording, eg:
 
 
-#### How Codegen Generates It:
+#### How Codegen generates it:
 
 ```js
 await page.goto('http://localhost:32456');
@@ -66,7 +66,7 @@ await page.goto('http://localhost:32456/wp-admin');
 
 After pasting it in a test file, remove the URLs, as the test run uses a `baseURL`.
 
-#### How it should look like in your test file:
+#### How it should look in your test file:
 
 ```js
 await page.goto('/');
@@ -75,7 +75,7 @@ await page.goto('/my-page');
 await page.goto('/wp-admin');
 ```
 
-## Using QIT Helpers
+## Using QIT helpers
 
 We have a set of helpers that you can use in your tests to make your life easier. You can find them in the QIT Helpers documentation _(Coming soon)_.
 
