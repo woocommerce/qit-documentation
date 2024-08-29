@@ -1,4 +1,4 @@
-# PHPCompatibility Tests
+# PHPCompatibility tests
 
 The PHPCompatibility test is a tool that helps developers assess the compatibility of their extension with different PHP versions. It checks the codebase of a plugin against a set of coding standards and best practices to ensure that it can run on a wide range of PHP versions, ensuring better compatibility and security. The following status will be returned from this test:
 - Success: No WordPress/PHP compatibility warning or errors.
@@ -12,7 +12,7 @@ If your phpcompatibility test is failing, please take the following steps:
 - Identify the causes of failure. The test will log any security issues that our scanner identifies
 - Fix the issue and re-run the test
 
-### Handling False Positives
+### Handling false positives
 
 We have chosen to utilize the `develop` branch of the PHPCompatibility project rather than version `9`. The reason for this choice is that the develop branch offers partial support for PHP 8+ syntax, which is essential for maintaining compatibility with modern PHP versions. However, it's important to note that this partial support may occasionally lead to false positives in the test results against codebases using 8+ syntax. 
 

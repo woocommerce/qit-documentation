@@ -1,13 +1,13 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Running Tests
+# Running tests
 
 :::info
-The Custom Tests feature is available as early-access.
+The custom tests feature is available as early-access.
 :::
 
-## Running a Basic Test
+## Running a basic test
 
 Assuming you have generated and uploaded a E2E test, the basic syntax for running a test is:
 
@@ -25,7 +25,7 @@ qit run:e2e qit-beaver ~/my-plugins/qit-beaver/tests
 Replace "qit-beaver" with the slug of an extension you own.
 :::
 
-## Using a Config File
+## Using a config file
 
 Place a `qit-env.json` or `qit-env.yml` file in the directory you run `qit run:e2e` from.
 
@@ -102,7 +102,7 @@ plugins:
 
 </Tabs>
 
-## Using Parameters
+## Using parameters
 
 You can also mimick this entire config file using only runtime parameters.
 
@@ -118,7 +118,7 @@ qit run:e2e qit-the-beaver ~/my-plugins/qit-beaver/tests --source ~/.qit/plugins
   --plugin https://github.com/qit-plugins/qit-dog/releases/tag/nightly.zip:test:nightly,feature-dog-pictures:qit-dog
 ```
 
-## The Plugin Syntax
+## The plugin syntax
 
 As you can see, defining how a plugin should be used in our test can be complex, as we need to account for different ways to use it.
 
@@ -130,14 +130,14 @@ qit run:e2e <main-extension> --plugin <plugin-syntax>
 
 Where:
 
-- `source` can be a slug, a Zip URL, a local path, or a Woo.com ID.
+- `source` can be a slug, a Zip URL, a local path, or a WooCommerce.com ID.
 - `action` can be `activate`, `bootstrap` or `test` (default is `bootstrap`. They are cumulative, so if you pass `test`, it will also activate and bootstrap the plugin)
 - `test-tags` is a comma-separated list of test tags to run, or a local directory (default is `default`)
 - `slug` is the plugin slug. This is only needed if using a `source` other than a slug, and the slug can't be inferred.
 
 ### Inferring `slug` from `source`
 
-If you are using a local path, a Zip URL, or a Woo.com ID, we will try to infer the `slug` from the basename of the file or directory.
+If you are using a local path, a Zip URL, or a WooCommerce.com ID, we will try to infer the `slug` from the basename of the file or directory.
 
 Examples:
 

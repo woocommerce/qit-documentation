@@ -1,10 +1,10 @@
 # Introduction
 
 :::info
-The Custom Tests feature is available as early-access.
+The custom tests feature is available as early-access.
 :::
 
-The Custom E2E tests allows you to easily write and share E2E tests with other developers.
+The custom E2E tests allows you to easily write and share E2E tests with other developers.
 
 It provides you with a dockerized development environment, and a ready-to-go example test that you can run with one command.
 
@@ -12,13 +12,13 @@ Customize the test to your needs, then share it with other developers, or run it
 
 Or, just use one of our pre-built generic tests to get you started. (Coming soon)
 
-## The Power of Customization: `run:e2e`
+## The power of customization: `run:e2e`
 
-While QIT provides various managed tests, Custom E2E tests stand out as the sole category where you, the developer, are the architect of the tests. These are not just any tests; they are comprehensive end-to-end tests designed to ensure your plugin's custom behavior functions flawlessly in real-world scenarios.
+While QIT provides various managed tests, custom E2E tests stand out as the sole category where you, the developer, are the architect of the tests. These are not just any tests; they are comprehensive end-to-end tests designed to ensure your plugin's custom behavior functions flawlessly in real-world scenarios.
 
-## Case Study: "QIT the Beaver" Tackles Plugin Challenges
+## Case study: "QIT the Beaver" tackles plugin challenges
 
-Imagine "QIT the Beaver," our beloved mascot, stepping into a developer's shoes. He launches a plugin on the Woo.com Marketplace, and while it initially receives high praise, soon users report issues related to compatibility and conflicts with other plugins and PHP versions.
+Imagine "QIT the Beaver," our beloved mascot, stepping into a developer's shoes. He launches a plugin on the WooCommerce.com Marketplace, and while it initially receives high praise, soon users report issues related to compatibility and conflicts with other plugins and PHP versions.
 
 > ⭐⭐⭐⭐⭐ Works great
 > 
@@ -38,8 +38,7 @@ What does _QIT the Beaver_ do? Even though he tries very hard, he can't possibly
 
 To bring some peace of mind, he finally decides it's time to write some end-to-end tests.
 
-
-### Generating the Tests
+### Generating the tests
 
 So he pulls up the QIT CLI and runs:
 
@@ -65,7 +64,7 @@ Then he runs the tests and sees them running in a browser:
 qit run:e2e qit-the-beaver ./e2e --ui
 ```
 
-### Publishing the Tests
+### Publishing the tests
 
 Satisfied with the results, Beaver decides it's showtime. He uploads the tests to QIT’s platform, a move that simplifies future test runs:
 
@@ -95,7 +94,7 @@ qit run:e2e qit-the-beaver \
 
 This comprehensive command allows him to test with PHP 8.3, the latest WordPress release candidate, the nightly WooCommerce version, and alongside popular plugins and themes.
 
-### Running Tests from Different Plugins
+### Running tests from different plugins
 
 The maker of `Cat Pictures` also uploaded their tests to QIT, which means that QIT the Beaver can integrate the tests from the "Cat Pictures" plugin in his test runs. This is done by passing the plugin slug to the `--plugin` flag:
 

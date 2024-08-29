@@ -1,14 +1,14 @@
-# The Security Architecture of the Custom Tests
+# The security architecture of the custom tests
 
 :::info
-The Custom Tests feature is available as early-access.
+The custom tests feature is available as early-access.
 :::
 
-## Containerized Test Environments
+## Containerized test environments
 
-All test code runs only on containerized Docker Environments meticulously designed for maximum isolation. This advanced engineering at both high and low levels guarantees that the test code execution remains completely segregated from the rest of the system.
+All test code runs only on containerized Docker environments meticulously designed for maximum isolation. This advanced engineering at both high and low levels guarantees that the test code execution remains completely segregated from the rest of the system.
 
-Every volume mount was carefully considered, and by default, only the directories within the disposable test directory are mounted into the Docker Environments. The only exception is if you choose to mount additional volumes with the `--volumes` parameter or config file, in which case the volumes will be mounted in read-only mode.
+Every volume mount was carefully considered, and by default, only the directories within the disposable test directory are mounted into the Docker environments. The only exception is if you choose to mount additional volumes with the `--volumes` parameter or config file, in which case the volumes will be mounted in read-only mode.
 
 The tests are executed as a non-root user, defaulting to UID/GID of your currently logged-in user.
 

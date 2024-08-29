@@ -1,11 +1,11 @@
-# Contact Us  
+# Contact us
 
 We're here to help! If you have any questions, comments, or concerns, please don't hesitate to reach out to us. You can contact us by sending an email to [qit@woocommerce.com](mailto:qit@woocommerce.com).
 
-## Report Issues  
+## Report issues
 
 If you encounter any issues with our QIT CLI tool, please let us know by opening an issue on our GitHub repository. You can access the repository here: https://github.com/woocommerce/qit-cli/issues
 
-## Provide Feedback  
+## Provide feedback
 
 We value your feedback and suggestions. Please take a moment to let us know how we're doing by filling out [this feedback form](#). Your input will help us continue to improve.

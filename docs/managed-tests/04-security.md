@@ -1,4 +1,4 @@
-# Security Tests
+# Security tests
 
 This test runs an experimental security scanner against a given extension.
 
@@ -6,22 +6,22 @@ This test runs an experimental security scanner against a given extension.
 - Warning: Only security issues warnings.
 - Failure: One or more security issues errors.
 
-### What Tools Are Used?
+### What tools are used?
 The tools used in the Security Scanner are, currently, [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer) and [SemGrep](https://semgrep.dev/).
 
-### Can I run it Locally?
+### Can I run it locally?
 Ideally, you should delegate all the testing execution to QIT. We don't support running the tests outside of QIT, but you can mimick at least the PHPCS rules. The SemGrep rules are not available to be run locally.
 
-### Which PHPCS Rules Are Enabled?
+### Which PHPCS rules are enabled?
 We use the WordPress Coding Style Standards project. Apart from SemGrep, the Security Tests runs all rules of the `WordPress.Security` namespace, and of `WordPress.DB`.
 
-## What to do When Encountering a Discouraged Function?
+## What to do when encountering a discouraged function?
 
 We identify functions that may lead to potential security vulnerabilities and mark them with a Warning using the `Generic.PHP.ForbiddenFunctions.Discouraged` rule.
 
 While these functions are not inherently unsafe, they frequently contribute to critical vulnerabilities. We flag them to encourage you to review the code for security. If you've confirmed that the code is secure, you can suppress the warning by adding the following comment on the same line as the function: `// phpcs:ignore Generic.PHP.ForbiddenFunctions.Discouraged`
 
-## What to do if it Fails
+## What to do if it fails
 
 If your security test is failing, please take the following steps:
 - Open the test report
@@ -40,7 +40,7 @@ After a few minutes, this will generate a report of suggested fixes for the resu
 Our AI-assisted recommendations are still in the early stages of training, so it is expected that it produces some invalid suggestions. **Please use these suggestions carefully.** We trained this model on a large dataset of insecure and secure code, specializing it to convert insecure code into secure code. Your help to train this AI is paramount. Please provide feedback about the suggestions, your feedback is used to constantly improve the models.
 :::
 
-### Handling False Positives
+### Handling false positives
 
 False positives, or alerts for security issues that do not exist in actuality, may occasionally arise during security testing. Though we've chosen PHPCS and SemGrep rules to minimize such occurrences, it's important to address these false positives in a systematic way.
 

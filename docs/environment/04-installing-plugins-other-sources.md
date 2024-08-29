@@ -1,34 +1,34 @@
-# Installing Plugins and Themes From Other Sources
+# Installing plugins and themes from other sources
 
 :::info
-The Local Test Environment is available as early-access.
+The local test environment is available as early-access.
 :::
 
 ## Introduction
 
-The QIT Local Test Environment offers the flexibility to install plugins and themes from various sources, including private repositories. This guide outlines the process for extending your environment with these external resources.
+The QIT local test environment offers the flexibility to install plugins and themes from various sources, including private repositories. This guide outlines the process for extending your environment with these external resources.
 
-## Implementing Custom Handlers
+## Implementing custom handlers
 
-### Understanding Custom Handlers
+### Understanding custom handlers
 
 Custom handlers allow QIT to integrate with external sources for plugin and theme installation. They are particularly useful for fetching extensions from premium marketplaces or private repositories that QIT does not support natively.
 
-### Creating a Custom Handler
+### Creating a custom handler
 
 - **Extend the CustomHandler Class**: Create a new class that extends the `CustomHandler` abstract class provided by QIT.
 - **Implement Required Methods**: Your custom handler must implement methods like `should_handle`, `populate_extension_versions`, and `maybe_download_extensions`.
 - **Use the Custom Handler**: Include your custom handler file using the `--require` flag when starting QIT. For example, `qit env:up --require=my-custom-handler.php`.
 
-### Example Custom Handlers
+### Example custom handlers
 
 You can get really creative with this, and essentially do anything you want. Here are a few examples to get you started:
 
-#### Example 1: Fetching from a Public GitHub Repository
+#### Example 1: fetching from a public GitHub repository
 
 This example assumes that you have a public GitHub repository and want to use it as a plugin in your environment.
 
-We assume for simplicity purposes, that the GitHub Repository is a WordPress plugin, and that it has a `main` branch.
+We assume for the purposes of simplicity that the GitHub pepository is a WordPress plugin, and that it has a `main` branch.
 
 Example command: `qit env:up --requires=public-handler.php --plugins=my-public-plugin`
 
@@ -85,7 +85,7 @@ class PublicHandlerExample extends CustomHandler {
 
 In this example, we will clone our public repo to a temp directory, create a zip of it and use the zip as a plugin in our environment.
 
-#### Example 2: Fetching from a Private GitHub Repository
+#### Example 2: fetching from a private GitHub repository
 
 This example is similar to the previous one, but it assumes that the GitHub repository is private and requires authentication.
 
@@ -160,7 +160,7 @@ class PrivateGitHubHandler extends CustomHandler {
 }
 ```
 
-#### Example 3: Fetching from a Private GitHub Repository, building it, and caching the build file
+#### Example 3: Fetching from a private GitHub repository, building it, and caching the build file
 
 You can get really creative with custom handlers. In this example, we will:
 
@@ -312,7 +312,7 @@ class AdvancedGitHubHandler extends CustomHandler {
 }
 ```
 
-## Using the Custom Handler
+## Using the custom handler
 
 Once you have implemented your custom handler, you can use it by including it with the `--requires` option in the QIT command. Your handler will then be invoked for any plugins or themes that meet its handling criteria, eg:
 
@@ -345,7 +345,7 @@ requires:
   - my-custom-handler.php
 ```
 
-### Using Multiple Custom Handlers
+### Using multiple custom handlers
 
 You can use multiple custom handlers by including them in your config files, or at runtime with the `--requires` option in the QIT command. For example:
 
@@ -364,10 +364,10 @@ requires:
 
 When you run `qit:up`, QIT will use the custom handlers to fetch the plugins and themes from the specified sources.
 
-## Tips and Best Practices
+## Tips and best practices
 
-- **Test Your Handler**: Ensure your custom handler works as expected in various scenarios.
-- **Handle Dependencies**: If your plugin or theme has dependencies, ensure your handler can resolve them.
+- **Test your handler**: Ensure your custom handler works as expected in various scenarios.
+- **Handle dependencies**: If your plugin or theme has dependencies, ensure your handler can resolve them.
 - **Security**: Always consider security implications when fetching from external sources.
 
 ## Support

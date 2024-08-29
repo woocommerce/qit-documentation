@@ -1,4 +1,4 @@
-# Tagging Tests
+# Tagging tests
 
 :::info
 The Custom Tests feature is available as early-access.
@@ -24,7 +24,7 @@ To list the test tags for a specific plugin/theme:
 qit tag:list qit-beaver
 ```
 
-## Uploading Tests
+## Uploading tests
 
 You can upload your tests and make them available as a tag with the command:
 
@@ -40,7 +40,7 @@ If you want to specify a test tag, you can add the tag in this format: `extensio
 qit tag:upload qit-beaver:my-tag /path/to/tests
 ```
 
-## Running Test Tags
+## Running test tags
 
 Now you can run your test both locally and in CI using the `default` tag:
 
@@ -54,7 +54,7 @@ Or, if it's a specific tag:
 qit run:e2e qit-beaver my-tag
 ```
 
-## Running Test Tags from Other Plugins
+## Running test tags from other plugins
 
 Other developers that have access to your extension can also use your tests for compatibility testing.
 
@@ -64,7 +64,7 @@ Let's suppose that `qit-dog` has published their tests. You can run your tests a
 qit run:e2e qit-beaver --plugin qit-dog:test
 ```
 
-## Running Multiple Tags
+## Running multiple tags
 
 You can also compose multiple tags by passing a comma-separated list of test tags:
 
@@ -72,7 +72,7 @@ You can also compose multiple tags by passing a comma-separated list of test tag
 qit run:e2e qit-beaver default,rc --plugin qit-dog:test:feature-dog-pictures
 ```
 
-## Deleting Test Tags
+## Deleting test tags
 
 You can delete test tags that you have previously published:
 
