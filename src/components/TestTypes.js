@@ -22,6 +22,8 @@ export default function TestTypes({ includeCode = false }) {
                         style={{ display: includeCode ? 'inline-block' : 'none' }}>run:phpcompatibility</code></li>
                     <li><a href="/docs/managed-tests/malware">Malware tests</a> <code
                         style={{ display: includeCode ? 'inline-block' : 'none' }}>run:malware</code></li>
+                    <li><a href="/docs/managed-tests/validation">Validation Tests</a> <code
+                        style={{ display: includeCode ? 'inline-block' : 'none' }}>run:validation</code></li>
                     <li>Performance tests <i>(Coming soon)</i></li>
                 </ul>
             </li>
