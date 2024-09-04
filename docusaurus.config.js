@@ -45,13 +45,6 @@ const config = {
           editUrl:
           'https://github.com/woocommerce/qit-documentation/tree/trunk',
         },
-        blog: {
-          routeBasePath: 'changelog',
-          path: './changelog',
-          showReadingTime: false,
-          blogSidebarTitle: 'Version history',
-          blogSidebarCount: 'ALL',
-        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -75,7 +68,6 @@ const config = {
             position: 'right',
             label: 'Documentation',
           },
-          {to: '/changelog', label: 'Changelog', position: 'right'},
           {
             href: 'https://github.com/woocommerce/qit-cli',
             label: 'QIT CLI',
