@@ -41,7 +41,7 @@ This is a bash script that, if present, will be called. Here you can use `wp` (W
 
 This is a PHP file that, if present, will be called. WordPress is NOT loaded on the context of this file.
 
-### `must-use-plugin.php`
+### `mu-plugin.php`
 
 This is a file that, if present, will be copied to the `wp-content/mu-plugins` directory and will run on ALL requests on the E2E test. WordPress is loaded on the context of this file.
 
@@ -55,7 +55,7 @@ Place them in the bootstrap directory within your E2E test suite. Here’s how y
 bootstrap             (Optional)
   bootstrap.php       (Optional)
   bootstrap.sh        (Optional)
-  must-use-plugin.php (Optional)
+  mu-plugin.php (Optional)
 entrypoint.qit.js     (Optional)
 example.spec.js
 ```
@@ -69,7 +69,7 @@ example.spec.js
 │        ├── bootstrap               # Bootstrap files for setting up tests
 │        │   ├── bootstrap.php       
 │        │   ├── bootstrap.sh        
-│        │   └── must-use-plugin.php
+│        │   └── mu-plugin.php
 │        ├── entrypoint.qit.js       # The Test Phase entrypoint 
 │        └── example.spec.js         # E2E test file
 ├── src                              # QIT Beaver Source code

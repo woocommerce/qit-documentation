@@ -18,7 +18,7 @@ This will create a basic E2E test in the `e2e` directory with essentially a `exa
 bootstrap (Optional)
     bootstrap.sh
     bootstrap.php
-    must-use-plugin.php
+    mu-plugin.php
 example.spec.js
 ```
 
