@@ -1,12 +1,12 @@
 # Themes
 
 :::info
-The custom tests feature is available as early-access.
+The custom E2E tests feature is available as early-access.
 :::
 
 ## Introduction
 
-You can use the Custom Tests to test both plugins and themes.
+You can use the custom E2E tests to test both plugins and themes.
 
 ## Using a specific theme on your tests
 

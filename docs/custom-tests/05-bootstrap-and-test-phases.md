@@ -5,7 +5,7 @@ import TabItem from '@theme/TabItem';
 # Bootstrap and test phases
 
 :::info
-The custom tests feature is available as early-access.
+The custom E2E tests feature is available as early-access.
 :::
 
 ## Introduction

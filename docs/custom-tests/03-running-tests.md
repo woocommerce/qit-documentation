@@ -4,7 +4,7 @@ import TabItem from '@theme/TabItem';
 # Running tests
 
 :::info
-The custom tests feature is available as early-access.
+The custom E2E tests feature is available as early-access.
 :::
 
 ## Running a basic test

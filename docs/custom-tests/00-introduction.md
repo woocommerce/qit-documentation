@@ -1,7 +1,7 @@
 # Introduction
 
 :::info
-The custom tests feature is available as early-access.
+The custom E2E tests feature is available as early-access.
 :::
 
 The custom E2E tests allows you to easily write and share E2E tests with other developers.
