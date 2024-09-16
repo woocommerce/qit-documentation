@@ -10,23 +10,16 @@ Custom E2E tests allow you to generate, write, and run end-to-end tests for Word
 - A managed test environment for executing your tests.
 - A platform to share your tests with other developers and to run tests from other plugins and themes.
 
-## Benefits of Writing Custom E2E Tests
-
-- **Improved Extension Ranking:** In the future, WooCommerce.com might use your tests as a ranking factor for your extension.
-- **Compatibility Assurance:** Ensure that your plugin or theme works as expected in different environments.
-- **Early Bug Detection:** Catch bugs before they reach your users.
-- **Interoperability Testing:** Test the compatibility of your plugin with other plugins.
-
 ## Getting Started
 
-- **Install the QIT CLI Tool:** See [Installation](cli/01-installation.md).
-- **Connect Your Account:** Follow the CLI instructions to connect _(you must have at least one extension listed on WooCommerce.com)._
-- **List Available Extensions:** Check which extensions you have access to test using `qit extensions`.
-- **Generate Test Scaffolding:** Run `qit scaffold:e2e my-test` to create a basic E2E test structure.
-- **Run Your First Test:** Execute `qit run:e2e your-extension-slug my-test` (replace "your-extension-slug" with the slug of an extension you own).
-- **Generate Custom Tests:** See [Generating Tests](01-generating-tests.md) to create your own tests.
+1. **Install the QIT CLI Tool:** See [Installation](cli/01-installation.md).
+2. **Connect Your Account:** Follow the CLI instructions to connect _(you must have at least one extension listed on WooCommerce.com)._
+3. **List Available Extensions:** Check which extensions you have access to test using `qit extensions`.
+4. **Generate Test Scaffolding:** Run `qit scaffold:e2e my-test` to create a basic E2E test structure.
+5. **Run Your First Test:** Execute `qit run:e2e your-extension-slug my-test` (replace "your-extension-slug" with the slug of an extension you own).
+6. **Generate Custom Tests:** See [Generating Tests](01-generating-tests.md) to create your own tests.
 
-## Additional Features of Custom E2E Tests
+### Additional Features of Custom E2E Tests
 
 - **Environment Configuration**: Choose different PHP, WordPress, and WooCommerce versions.
 - **Plugin and Theme Compatibility**: Install plugins and themes to check for compatibility issues.
