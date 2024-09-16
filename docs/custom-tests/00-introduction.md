@@ -1,39 +1,39 @@
 # Introduction
 
 :::info
-The custom E2E tests feature is available as early-access.
+The custom E2E tests feature is available as early access.
 :::
 
-The custom E2E tests allows you to generate, write, and run end-to-end tests for WordPress Plugins and Themes.
+Custom E2E tests allow you to generate, write, and run end-to-end tests for WordPress plugins and themes. They aim to eliminate barriers to writing and running E2E tests by providing:
 
-It aims to remove most barriers to writing and running E2E tests, by providing a simple CLI tool that generates test scaffolding, and a managed test environment that you can run your tests in.
+- A simple CLI tool that generates test scaffolding.
+- A managed test environment for executing your tests.
+- A platform to share your tests with other developers and to run tests from other plugins and themes.
 
-It also provides a platform where you can share your tests with other developers, and run tests from other plugins and themes.
+## Benefits of Writing Custom E2E Tests
 
-## What is the benefit of writing custom E2E tests?
-
-- WooCommerce.com might use your tests as a ranking factor for your extension.
-- You can ensure that your plugin or theme works as expected in different environments.
-- You can catch bugs before they reach your users.
-- You can test the compatibility of your plugin with other plugins.
+- **Improved Extension Ranking:** In the future, WooCommerce.com might use your tests as a ranking factor for your extension.
+- **Compatibility Assurance:** Ensure that your plugin or theme works as expected in different environments.
+- **Early Bug Detection:** Catch bugs before they reach your users.
+- **Interoperability Testing:** Test the compatibility of your plugin with other plugins.
 
 ## Getting Started
 
-1. Download the QIT CLI tool. See [Installation](cli/01-installation.md).
-2. Follow the CLI instructions to connect _(You must have at least one extension listed in WooCommerce.com)_
-3. Check what extensions you have access to test, with `qit extensions`
-4. Run `qit scaffold:e2e my-test` to generate a basic E2E test structure
-5. Run your first test: `qit run:e2e slug-or-id-here my-test` (Replace "slug-or-id-here" with the slug of an extension you own)
-6. See [Generating Tests](01-generating-tests.md) to generate your tests.
+- **Install the QIT CLI Tool:** See [Installation](cli/01-installation.md).
+- **Connect Your Account:** Follow the CLI instructions to connect _(you must have at least one extension listed on WooCommerce.com)._
+- **List Available Extensions:** Check which extensions you have access to test using `qit extensions`.
+- **Generate Test Scaffolding:** Run `qit scaffold:e2e my-test` to create a basic E2E test structure.
+- **Run Your First Test:** Execute `qit run:e2e your-extension-slug my-test` (replace "your-extension-slug" with the slug of an extension you own).
+- **Generate Custom Tests:** See [Generating Tests](01-generating-tests.md) to create your own tests.
 
-## What else can you do with the custom E2E tests?
+## Additional Features of Custom E2E Tests
 
-- Choose different PHP, WordPress and WooCommerce versions.
-- Install plugins and themes to check for compatibility.
-- View your tests running with `--ui` flag.
-- Generate tests with Playwright Codegen. See [Generating Tests](01-generating-tests.md).
-- Run tests from other plugins/themes to do compatibility testing. See [Running Tests from Other Plugins](04-running-other-plugins-tests.md).
-- Publish your tests to QIT, and run specific tests from a plugin/theme.
-- Use a config file to run tests with a complex configuration.
-- After each test, you will have a shareable URL with the test results, including screenshots, videos and traces of the failures.
-- Run tests in your local environment, or in CI.
+- Environment Configuration: Choose different PHP, WordPress, and WooCommerce versions.
+- Plugin and Theme Compatibility: Install plugins and themes to check for compatibility issues.
+- Visual Test Execution: Use the --ui flag to view your tests running in a browser.
+- Test Generation with Playwright Codegen: Refer to Generating Tests.
+- Cross-Plugin Testing: Run tests from other plugins and themes for compatibility (see Running Tests from Other Plugins).
+- Test Publishing: Publish your tests to QIT and run specific tests from a plugin or theme.
+- Complex Configurations: Use a config file to run tests with complex setups.
+- Detailed Test Reports: After each test, access a shareable URL with results, including screenshots, videos, and failure traces.
+- Flexible Execution Environments: Run tests locally or integrate them into your CI pipeline.
