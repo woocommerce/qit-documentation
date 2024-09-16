@@ -9,23 +9,16 @@ import QITImageURL from '@site/static/img/qit-right.webp';
 
 # What is QIT?
 
-QIT is a testing platform, developed by WooCommerce, for WordPress plugins and themes that allows developers to run a series of managed tests out-of-the-box. It is currently in closed beta operating only in the [WooCommerce Marketplace](https://woocommerce.com/products/) .
+QIT is a testing platform, developed by WooCommerce, for WordPress plugins and themes, that allows developers to run a series of managed tests out-of-the-box, and also supports custom E2E tests.
+
+The custom E2E tests is a superset of Playwright that defines a minimal structured format for E2E tests, that makes it possible to do compatibility testing between extensions.
+
+QIT is currently in closed beta operating only in the [WooCommerce Marketplace](https://woocommerce.com/products/) .
 
 <video controls style={{ width:"100%", height:"100%" }}>
     <source src={QITIntro} type="video/mp4"/>
     Your browser does not support the video tag.
 </video>
-
-<div style={{ display: 'flex', alignItems: 'center', margin: '30px 0' }}>
-  <img src={QITImageURL} alt="QIT the Beaver" width={175} style={{ marginRight: '20px' }}/>
-  <div>
-    <h2>And there's QIT the Beaver</h2>
-    <p>
-        He's our adorable mascot. He's here to show you that tests can be fun and easy!
-    </p>
-  </div>
-</div>
-
 
 ## Requirements
 

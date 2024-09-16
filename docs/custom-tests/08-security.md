@@ -1,7 +1,7 @@
-# The security architecture of the custom tests
+# The security architecture of the custom E2E tests
 
 :::info
-The custom tests feature is available as early-access.
+The custom E2E tests feature is available as early-access.
 :::
 
 ## Containerized test environments
