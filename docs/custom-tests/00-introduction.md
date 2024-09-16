@@ -28,12 +28,12 @@ Custom E2E tests allow you to generate, write, and run end-to-end tests for Word
 
 ## Additional Features of Custom E2E Tests
 
-- Environment Configuration: Choose different PHP, WordPress, and WooCommerce versions.
-- Plugin and Theme Compatibility: Install plugins and themes to check for compatibility issues.
-- Visual Test Execution: Use the --ui flag to view your tests running in a browser.
-- Test Generation with Playwright Codegen: Refer to Generating Tests.
-- Cross-Plugin Testing: Run tests from other plugins and themes for compatibility (see Running Tests from Other Plugins).
-- Test Publishing: Publish your tests to QIT and run specific tests from a plugin or theme.
-- Complex Configurations: Use a config file to run tests with complex setups.
-- Detailed Test Reports: After each test, access a shareable URL with results, including screenshots, videos, and failure traces.
-- Flexible Execution Environments: Run tests locally or integrate them into your CI pipeline.
+- **Environment Configuration**: Choose different PHP, WordPress, and WooCommerce versions.
+- **Plugin and Theme Compatibility**: Install plugins and themes to check for compatibility issues.
+- **Visual Test Execution**: Use the `--ui` flag to view your tests running in a browser.
+- **Test Generation with Playwright Codegen**: Refer to [Generating Tests](01-generating-tests.md).
+- **Cross-Plugin Testing**: Run tests from other plugins and themes for compatibility.
+- **Test Publishing**: Publish your tests to QIT and run specific tests from a plugin or theme.
+- **Complex Configurations**: Use a config file to run tests with complex setups.
+- **Detailed Test Reports**: After each test, access a shareable URL with results, including screenshots, videos, and failure traces.
+- **Flexible Execution Environments**: Run tests locally or integrate them into your CI pipeline.

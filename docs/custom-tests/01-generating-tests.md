@@ -77,15 +77,15 @@ await page.goto('/wp-admin');
 
 ## Using QIT helpers
 
-We have a set of helpers that you can use in your tests to make your life easier. You can find them in the QIT Helpers documentation _(Coming soon)_.
+We have a set of helpers that you can use in your tests to make your life easier. You can find them in the [QIT Helpers](qit-helpers). documentation.
 
 ```js
 // Add this to the top of a test file.
-const qit = require('qitHelpers');
+import qit from '/qitHelpers';
 
 // Example: Login as an admin and navigate to /wp-admin.
-qit.loginAsAdmin();
+await qit.loginAsAdmin();
 
 // Example: Login as the "customer" user.
-qit.loginAs('customer', 'password');
+await qit.loginAs('customer', 'password');
 ```
