@@ -47,14 +47,16 @@ If you want the Activation test to skip specific pages added by your plugin, you
 
 ### Visiting a specific page
 
-Similarly, you can define specific pages to be visited, that might not be visible from the sidebar menu. It only accepts relative URLs.
+You can also define specific pages to be visited, that might not be visible from the sidebar menu.
+
+It **uses a slightly different syntax**, as it takes a page title and a URL. It only accepts relative URLs.
 
 ```json
 {
   "activation": {
-    "visitPages": [
-      "wp-admin/admin.php?page=visit-this"
-    ]
+    "visitPages": {
+      "Visit This": "wp-admin/admin.php?page=do-visit-this"
+    }
   }
 }
 ```
