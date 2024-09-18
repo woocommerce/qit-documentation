@@ -26,6 +26,39 @@ The Activation test type performs basic operations on a test site with your plug
 
 You can tweak several parameters in the Activation Test, such as Woo, WP, and PHP versions, etc. You can see all options by running `qit run:activation --help` in the QIT CLI.
 
+### Skipping Visited Pages
+
+If you want the Activation test to skip specific pages added by your plugin, you can add a `qit.json` file to your plugin's root directory (the same directory as your plugin entrypoint) with the following content:
+
+```json
+{
+  "activation": {
+    "skipVisitPages": [
+      "wp-admin/admin.php?page=skip-visiting-this"
+    ]
+  }
+}
+```
+  - **Automatic Page Discovery:** By default, the test suite will visit all pages accessible from the WordPress admin sidebar menu that are added by your plugin.
+  - **skipVisitPages Array:** The `skipVisitPages` array in the `qit.json` file specifies the URLs of pages you want to exclude from being visited during the tests.
+  - **Substring Matching:** The skipping mechanism works based on substring matching. This means that if any part of a page's URL contains a string listed in the skipVisitPages array, that page will be skipped during the tests.
+    
+    For example, if you include "wp-admin/admin.php?page=skip-visiting-this" in the `skipVisitPages` array, any admin page URL containing that substring will not be visited during the E2E tests.
+
+### Visiting a specific page
+
+Similarly, you can define specific pages to be visited, that might not be visible from the sidebar menu. It only accepts relative URLs.
+
+```json
+{
+  "activation": {
+    "visitPages": [
+      "wp-admin/admin.php?page=visit-this"
+    ]
+  }
+}
+```
+
 ### How to run the test
 
 You can run the activation test with the following command:
