@@ -24,7 +24,7 @@ The following headers should not be present when submitted, and will result in a
 
 The plugin will be loaded along with WooCommerce and the WooCommerce features API will be used to check for declared incompatibility with the following features:
 
-- `custom_order_tables` - also known as HPOS; this is now the default for new WooCommerce stores, and all extensions [should be compatible with it](https://developer.woocommerce.com/docs/hpos-extension-recipe-book/#2-supporting-high-performance-order-storage-in-your-extension).
+- `custom_order_tables` - also known as High Performance Order Storage (HPOS); this is now the default for new WooCommerce stores, and all extensions [should be compatible with it](https://developer.woocommerce.com/docs/hpos-extension-recipe-book/#2-supporting-high-performance-order-storage-in-your-extension).
 - `cart_checkout_blocks` - extensions that modify the cart or checkout experience [should be compatible with this feature](https://developer.woocommerce.com/2023/11/06/faq-extending-cart-and-checkout-blocks/).
 
 Because not all extensions are required to declare explicit compatibility for all features (i.e. an extension that does not modify the cart or checkout experience doesn't need to declare compatibility with the blocks feature), only an explicit declaration of incompatibility will be flagged as a warning.
