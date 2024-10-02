@@ -69,6 +69,10 @@ You can run the activation test with the following command:
 qit run:activation <your-plugin>
 ```
 
+### Tunnel
+
+Some plugins might need an actual live site URL to work properly, such as payment gateways and SaaS. For those, you can use our [built-in tunnel feature]To test these plugins, you can use our [built-in tunnel feature](/docs/environment/tunnel). to expose the test site to the web.
+
 ## What to do if it fails
 
 If your activation test is failing, please take the following steps:

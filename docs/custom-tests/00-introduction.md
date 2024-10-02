@@ -30,3 +30,4 @@ Custom E2E tests allow you to generate, write, and run end-to-end tests for Word
 - **Complex Configurations**: Use a config file to run tests with complex setups.
 - **Detailed Test Reports**: After each test, access a shareable URL with results, including screenshots, videos, and failure traces.
 - **Flexible Execution Environments**: Run tests locally or integrate them into your CI pipeline.
+- **Tunnel**: Use our built-in [tunnel](/docs/environment/tunnel) to expose your local environment to the internet.

@@ -233,3 +233,9 @@ And even run a local test in the mix:
 ```qitbash
 qit run:e2e qit-the-beaver ~/my-plugins/qit-beaver/tests,nightly,foo-feature --source ~/my-plugins/qit-beaver
 ```
+
+## Testing plugins that require a live site
+
+Some plugins require a live site to work properly, such as payment gateways or SaaS.
+
+To test these plugins, you can use our [built-in tunnel feature](/docs/environment/tunnel).
