@@ -8,6 +8,13 @@ The local test environment is available as early-access.
 
 Tunnelling allows to expose your test environment to the web. This is useful to test plugins that require a valid URL with HTTPS, such as payment gateways or SaaS.
 
+## Requirements
+
+For the best performance, you should change your DNS to `1.1.1.1`, which is managed by Cloudflare.
+
+- [How to setup the DNS on Mac](https://developers.cloudflare.com/1.1.1.1/setup/macos/)
+- [How to setup the DNS on Linux](https://developers.cloudflare.com/1.1.1.1/setup/linux/)
+
 ## Starting a tunnel
 
 To start a tunnel, pass the `--tunnel` flag to the `qit env:up` command:
@@ -23,7 +30,6 @@ This will start the test environment and expose it to the web. You will see a UR
 On Macs, there are two requirements for tunnels to work out-of-the-box:
 
 - You need to install `cloudflared` with `brew install cloudflared`.
-- For the best performance, you should also change your DNS to `1.1.1.1`, which is managed by Cloudflare. [How to setup the DNS on Mac](https://developers.cloudflare.com/1.1.1.1/setup/macos/).
 
 No additional configuration is needed, this will work out-of-the-box.
 
