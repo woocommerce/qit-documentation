@@ -1,4 +1,4 @@
-# Tunneling in QIT CLI
+# Tunneling
 
 Tunneling allows your local development environment to be accessible over the internet. This is useful for testing webhooks, integrations, or sharing your work with others. QIT CLI supports multiple tunneling methods, and the optimal choice depends on your operating system and requirements.
 
@@ -243,7 +243,7 @@ This will remove all configured tunneling methods and unset the default tunnel.
 
 ## Implementing a Custom Tunnel
 
-If you need to use a custom tunnelling method, refer to the [Custom Tunneling Methods](custom-tunnel) section for instructions on how to create and use a custom tunneling method.
+If you need to use a custom tunnelling method, refer to the [Custom Tunneling Methods](./custom-tunnel) section for instructions on how to create and use a custom tunneling method.
 
 ## Additional Tips
 
