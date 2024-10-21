@@ -12,7 +12,7 @@ To use tunneling on macOS, you need to have the `cloudflared` binary installed. 
 brew install cloudflared
 ```
 
-### Tunnelling on Linux
+### Tunneling on Linux
 
 No additional requirements are needed for tunneling on Linux.
 
