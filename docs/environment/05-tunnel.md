@@ -18,7 +18,7 @@ No additional requirements are needed for tunneling on Linux.
 
 ### Tunneling on WSL
 
-Tunneling on Windows Subsystem for Linux (WSL) is currently not supported. Let us know if you need this feature by [opening an issue](https://github.com/woocommerce/qit-cli/issues).
+Tunneling on WSL is currently not supported. Let us know if you need this feature by [opening an issue](https://github.com/woocommerce/qit-cli/issues).
 
 ## Using Tunneling with QIT CLI Commands
 
@@ -41,22 +41,26 @@ This command starts your environment with tunneling enabled, using the default m
 - **cloudflared-docker**: Cloudflare Tunnel via Docker container.
 - **cloudflared-binary**: Cloudflare Tunnel using the local binary.
 - **cloudflared-persistent**: Pre-configured persistent Cloudflare Tunnel.
-- **jurassictube**: JurassicTube Tunnel (Automattic employees only).
 - **custom**: Custom tunneling method via a user-implemented class.
+
+If you are an Automattician, there might be an additional tunneling method available for you.
 
 # Comparison Table
 
-| Feature                          | cloudflared-docker | cloudflared-binary | cloudflared-persistent | jurassictube | custom  |
-|----------------------------------|--------------------|--------------------|------------------------|--------------|---------|
-| **Linux/CI**                     | ✅                  | ✅                  | ✅                      | ✅            | Depends |
-| **macOS**                        | ❌                  | ✅                  | ✅                      | ✅            | Depends |
-| **WSL**                          | ❌                  | ❌                  | ❌                      | ❌            | Depends |
-| **Requires Cloudflare Account**  | ❌                | ❌                  | ✅                      | ❌            | Depends |
-| **Requires Additional Setup**    | ❌                  | ❌                  | ✅                      | ✅            | Depends |
-| **Requires Binary Installation** | ❌    | ✅                  | ✅                      | ✅            | Depends |
-| **Uses Temporary Subdomains**    | ✅                  | ✅                  | ❌                      | ❌            | Depends |
-| **Supports Parallel Tunnelling** | ✅    | ✅                  | ❌                      | ❌            | Depends |
-| **Automattic Only**              | ❌                  | ❌                  | ❌                      | ✅            | Depends |
+| Feature*                         | cloudflared-docker | cloudflared-binary | cloudflared-persistent |
+|----------------------------------|--------------------|--------------------|------------------------|
+| **Linux/CI**                     | ✅                  | ✅                  | ✅                      |
+| **macOS**                        | ❌                  | ✅                  | ✅                      |
+| **WSL****                        | ❌                  | ❌                  | ❌                      |
+| **Uses Temporary Subdomains**    | ✅                  | ✅                  | ❌                      |
+| **Supports Parallel Tunnelling** | ✅    | ✅                  | ❌                      |
+| **Requires Cloudflare Account**  | ❌                | ❌                  | ✅                      |
+| **Requires Additional Setup**    | ❌                  | ❌                  | ✅                      |
+| **Requires Binary Installation** | ❌    | ✅                  | ✅                      |
+
+\* If you implement a Custom tunnel, the capabilities will depend on your implementation.
+
+\*\* WSL support is not available at the moment due to priorities. Let us know if you need this feature by [opening an issue](https://github.com/woocommerce/qit-cli/issues).
 
 ### Using Different Tunnels
 
@@ -68,7 +72,6 @@ By default, QIT CLI will use the best tunneling method for your operating system
   - `cloudflared-docker`
   - `cloudflared-binary`
   - `cloudflared-persistent`
-  - `jurassictube`
   - `custom`
 
 ## Detailed explanation of each Tunnel Method
@@ -116,17 +119,6 @@ By default, QIT CLI will use the best tunneling method for your operating system
 
        Provide the tunnel name and URL when prompted.
 
-### jurassictube
-
-- **Description**: Uses JurassicTube Tunnel.
-- **Best For**: Automattic employees only.
-- **Advantages**:
-  - Integrates with existing JurassicTube configurations.
-- **Considerations**:
-  - Requires an existing JurassicTube connection configured outside of QIT CLI.
-  - Not available for users outside of Automattic.
-  - Configure in QIT CLI using `qit tunnel:setup`.
-
 ### custom
 
 - **Description**: Allows you to use a custom tunneling method by implementing a `CustomTunnel` class.
@@ -168,7 +160,7 @@ Most tunneling methods work out-of-the-box and do not require additional setup. 
 
 You only need to run `tunnel:setup` if:
 
-- You want to use a tunneling method that requires authentication or additional configuration, such as `cloudflared-persistent` or `jurassictube`.
+- You want to use a tunneling method that requires authentication or additional configuration, such as `cloudflared-persistent` or a custom tunnel.
 - You want to configure multiple tunneling methods and switch between them.
 - You want to set a specific tunneling method as your default.
 
@@ -193,7 +185,6 @@ Select the tunneling method you wish to configure:
 [cloudflared-docker] Cloudflare Tunnel via Docker container
 [cloudflared-binary] Cloudflare Tunnel using the local binary
 [cloudflared-persistent] Persistent Cloudflared Tunnel
-[jurassictube] JurassicTube Tunnel (Automattic employees only)
 
     cloudflared-persistent
 
@@ -223,7 +214,6 @@ Select the tunneling method you wish to set as default:
 [cloudflared-docker] Cloudflare Tunnel via Docker container
 [cloudflared-binary] Cloudflare Tunnel using the local binary
 [cloudflared-persistent] cloudflared-persistent
-[jurassictube] jurassictube
 
     cloudflared-persistent
 
@@ -256,7 +246,7 @@ If you need to use a custom tunneling method, refer to the [Custom Tunneling Met
 
 - **DNS Propagation Issues**: If you experience delays accessing your tunnel, it may be due to DNS propagation. Consider using a persistent tunnel, using Cloudflare DNS, or waiting a few moments.
 - **Tunnel Not Usable**: If you receive an error stating that a tunneling method is not usable, verify that all prerequisites for that method are met (e.g., required binaries are installed).
-- **Tunnel Not Configured**: If you receive an error stating that a tunneling method is not configured, it means the method requires setup (e.g., `cloudflared-persistent` or `jurassictube`). Run `qit tunnel:setup [method]` to configure it.
+- **Tunnel Not Configured**: If you receive an error stating that a tunneling method is not configured, it means the method requires setup (e.g., `cloudflared-persistent`). Run `qit tunnel:setup [method]` to configure it.
 - **Custom Tunnel Issues**: Ensure your custom tunnel class correctly implements all required methods and handles configuration appropriately.
 - **Default Tunnel Fallback**: If you haven't configured a default tunnel and use `--tunnel` without specifying a method, QIT CLI will automatically select the default tunneling method based on your operating system.
 
