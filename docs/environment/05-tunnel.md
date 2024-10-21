@@ -22,7 +22,7 @@ Tunneling on Windows Subsystem for Linux (WSL) is currently not supported. Let u
 
 ## Using Tunneling with QIT CLI Commands
 
-You can use tunnelling in the commands that utilize the QIT CLI environment capabilities. Currently, the following commands support tunneling:
+You can use tunneling in the commands that utilize the QIT CLI environment capabilities. Currently, the following commands support tunneling:
 
 - **env:up**: Start up the environment.
 - **test:e2e**: Run end-to-end tests that require an environment.
