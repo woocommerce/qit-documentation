@@ -243,7 +243,7 @@ This will remove all configured tunneling methods and unset the default tunnel.
 
 ## Implementing a Custom Tunnel
 
-If you need to use a custom tunnelling method, refer to the [Custom Tunneling Methods](./custom-tunnel) section for instructions on how to create and use a custom tunneling method.
+If you need to use a custom tunneling method, refer to the [Custom Tunneling Methods](./custom-tunnel) section for instructions on how to create and use a custom tunneling method.
 
 ## Additional Tips
 
