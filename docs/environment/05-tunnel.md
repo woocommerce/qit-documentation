@@ -18,7 +18,7 @@ No additional requirements are needed for tunneling on Linux.
 
 ### Tunneling on WSL
 
-Tunnelling on Windows Subsystem for Linux (WSL) is currently not supported. Let us know if you need this feature by [opening an issue](https://github.com/woocommerce/qit-cli/issues).
+Tunneling on Windows Subsystem for Linux (WSL) is currently not supported. Let us know if you need this feature by [opening an issue](https://github.com/woocommerce/qit-cli/issues).
 
 ## Using Tunneling with QIT CLI Commands
 
