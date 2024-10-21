@@ -1,238 +1,265 @@
-# Tunnels - Exposing your site to the web
+# Tunneling in QIT CLI
 
-:::info
-The local test environment is available as early-access.
-:::
-
-## Introduction
-
-Tunnelling allows to expose your test environment to the web. This is useful to test plugins that require a valid URL with HTTPS, such as payment gateways or SaaS.
+Tunneling allows your local development environment to be accessible over the internet. This is useful for testing webhooks, integrations, or sharing your work with others. QIT CLI supports multiple tunneling methods, and the optimal choice depends on your operating system and requirements.
 
 ## Requirements
 
-For the best performance, you should change your DNS to `1.1.1.1`, which is managed by Cloudflare.
+### Tunneling on Mac
 
-- [How to setup the DNS on Mac](https://developers.cloudflare.com/1.1.1.1/setup/macos/)
-- [How to setup the DNS on Linux](https://developers.cloudflare.com/1.1.1.1/setup/linux/)
+To use tunneling on macOS, you need to have the `cloudflared` binary installed. You can install it using Homebrew:
 
-## Starting a tunnel
+```qitbash
+brew install cloudflared
+```
 
-To start a tunnel, pass the `--tunnel` flag to the `qit env:up` command:
+### Tunnelling on Linux
+
+No additional requirements are needed for tunneling on Linux.
+
+### Tunnelling on WSL
+
+Tunnelling on Windows Subsystem for Linux (WSL) is currently not supported. Let us know if you need this feature by [opening an issue](https://github.com/woocommerce/qit-cli/issues).
+
+## Using Tunneling with QIT CLI Commands
+
+You can use tunnelling in the commands that utilize the QIT CLI environment capabilities. Currently, the following commands support tunneling:
+
+- **env:up**: Start up the environment.
+- **test:e2e**: Run end-to-end tests that require an environment.
+- **test:activation**: Run activation tests that require an environment.
+
+## Basic Example
 
 ```qitbash
 qit env:up --tunnel
 ```
 
-This will start the test environment and expose it to the web. You will see a URL in the terminal that you can use to access the test environment.
+This command starts your environment with tunneling enabled, using the default method for your OS.
 
-## Tunnels on Mac
+## Available Tunneling Methods
 
-On Macs, there are two requirements for tunnels to work out-of-the-box:
+- **cloudflared-docker**: Cloudflare Tunnel via Docker container.
+- **cloudflared-binary**: Cloudflare Tunnel using the local binary.
+- **cloudflared-persistent**: Pre-configured persistent Cloudflare Tunnel.
+- **jurassictube**: JurassicTube Tunnel (Automattic employees only).
+- **custom**: Custom tunneling method via a user-implemented class.
 
-- You need to install `cloudflared` with `brew install cloudflared`.
+# Comparison Table
 
-No additional configuration is needed, this will work out-of-the-box.
+| Feature                          | cloudflared-docker | cloudflared-binary | cloudflared-persistent | jurassictube | custom  |
+|----------------------------------|--------------------|--------------------|------------------------|--------------|---------|
+| **Linux/CI**                     | ✅                  | ✅                  | ✅                      | ✅            | Depends |
+| **macOS**                        | ❌                  | ✅                  | ✅                      | ✅            | Depends |
+| **WSL**                          | ❌                  | ❌                  | ❌                      | ❌            | Depends |
+| **Requires Cloudflare Account**  | ❌                | ❌                  | ✅                      | ❌            | Depends |
+| **Requires Additional Setup**    | ❌                  | ❌                  | ✅                      | ✅            | Depends |
+| **Requires Binary Installation** | ❌    | ✅                  | ✅                      | ✅            | Depends |
+| **Uses Temporary Subdomains**    | ✅                  | ✅                  | ❌                      | ❌            | Depends |
+| **Supports Parallel Tunnelling** | ✅    | ✅                  | ❌                      | ❌            | Depends |
+| **Automattic Only**              | ❌                  | ❌                  | ❌                      | ✅            | Depends |
 
-You can also run `cloudflared login` to connect to your Cloudflare account if you want. **This is optional.**
+### Using Different Tunnels
 
-## Tunnels on Linux
+By default, QIT CLI will use the best tunneling method for your operating system.
 
-On Linux, you don't need to install anything, just pass `--tunnel` and it will work out-of-the-box, as it uses a dockerized version of the Cloudflare tunnel.
+- **`--tunnel` without a value**: Uses the default tunneling method. If a default is set via `tunnel:set-default`, it will use that. Otherwise, it selects a tunneling method based on your operating system.
+- **`--tunnel <method>`**: Specify a tunneling method to use. Available methods are:
 
-This is especially useful for running tunneled tests in CI - no configuration needed.
+  - `cloudflared-docker`
+  - `cloudflared-binary`
+  - `cloudflared-persistent`
+  - `jurassictube`
+  - `custom`
 
-## Tunnels on WSL
+## Detailed explanation of each Tunnel Method
 
-Unfortunately, tunnels are not supported in WSL at this moment.
+### cloudflared-docker
 
-## Using a local tunnel on Linux
+- **Description**: Uses Cloudflare Tunnel via a Docker container.
+- **Best For**: Linux systems and CI environments.
+- **Advantages**:
+  - Works out of the box without additional setup.
+- **Considerations**:
+  - Deals with temporary subdomains.
+  - May experience delays due to DNS propagation times when starting the tunnel.
+  - You can use Cloudflare DNS (1.1.1.1) to speed up the DNS resolution process. 
 
-On Linux, you have the option to use a local `cloudflared` binary if you prefer, just pass `--tunnel local` and it will use the local binary instead of the dockerized version.
+### cloudflared-binary
 
-## Running a test with tunnel
+- **Description**: Uses the Cloudflare Tunnel local binary installed on your system.
+- **Best For**: macOS systems (default on macOS) and Linux.
+- **Advantages**:
+  - Works out of the box if the `cloudflared` binary is installed.
+- **Considerations**:
+  - Similar to `cloudflared-docker`, it uses temporary subdomains.
+  - May experience DNS propagation delays when initiating the tunnel.
+  - You can use Cloudflare DNS (1.1.1.1) to speed up the DNS resolution process.
 
-Some test types have support for tunnels, such as `e2e` and `activation`. To run a test with tunnel, just pass the `--tunnel` flag.
+### cloudflared-persistent
+
+- **Description**: Uses a pre-configured persistent Cloudflare Tunnel.
+- **Best For**: Situations where immediate DNS resolution is required and you have a Cloudflare account.
+- **Advantages**:
+  - Does not have DNS propagation issues since it uses a persistent subdomain.
+- **Considerations**:
+  - Requires a Cloudflare account and a site registered on Cloudflare.
+  - Requires additional setup steps:
+    1. **Install the `cloudflared` binary on your system.**
+    2. **Authenticate with `cloudflared tunnel login`.**
+    3. **Create a tunnel with: `cloudflared tunnel create <tunnel-name>`
+    4. **Route DNS with:** `cloudflared tunnel route dns <tunnel-uuid> <tunnel-name>`
+
+       Replace `<tunnel-uuid>` with the UUID generated from the previous step.
+    5. **Test the tunnel with:** `cloudflared tunnel run <tunnel-name> --hello-world`
+
+    6. **Configure in QIT CLI:** `qit tunnel:setup`
+
+       Provide the tunnel name and URL when prompted.
+
+### jurassictube
+
+- **Description**: Uses JurassicTube Tunnel.
+- **Best For**: Automattic employees only.
+- **Advantages**:
+  - Integrates with existing JurassicTube configurations.
+- **Considerations**:
+  - Requires an existing JurassicTube connection configured outside of QIT CLI.
+  - Not available for users outside of Automattic.
+  - Configure in QIT CLI using `qit tunnel:setup`.
+
+### custom
+
+- **Description**: Allows you to use a custom tunneling method by implementing a `CustomTunnel` class.
+- **Best For**: Advanced users who need a custom tunneling solution.
+- **Considerations**:
+  - Requires custom implementation and configuration.
+
+### Examples
+
+#### Start Environment with a Specific Tunneling Method
 
 ```qitbash
-qit run:e2e example-extension --tunnel
+qit env:up --tunnel cloudflared-docker
 ```
+
+This will use the `cloudflared-docker` tunneling method.
+
+#### Run E2E Tests with Tunneling
 
 ```qitbash
-qit run:activation example-extension --tunnel
+qit run:e2e my-plugin --tunnel
 ```
 
-To know if a test type supports tunnelling or now, check the help, eg: `qit run:e2e --help`.
+Enables tunneling while running end-to-end tests. Useful when tests require external access to the local environment.
 
-## Stopping a tunnel
+#### Run Activation Tests with a Specific Tunneling Method
 
-The tunnel stops automatically when you shut down the environment, or when the test ends.
-
-# Using Custom Tunnels
-
-If you want to use your own tunnel, you can use `--tunnel custom` and `--require my-custom-tunnel.php`.
-
-`my-custom-tunnel.php` should be a class that extends `\QIT_CLI\Tunnel\CustomTunnel`:
-
-```php
-<?php
-
-class MyCustomTunnel extends \QIT_CLI\Tunnel\CustomTunnel {
-	public static function connect_tunnel( string $site_url, string $env_id ): string {
-		// TODO: Implement connect_tunnel() method.
-	}
-}
+```qitbash
+qit run:activation my-plugin --tunnel cloudflared-binary
 ```
 
-The lifecycle of the tunnel is managed externally so you are responsible for starting and stopping the tunnel.
+Runs activation tests with tunneling enabled using the `cloudflared-binary` method.
 
-## Persistent Cloudflare tunnel:
+## Setting Up Tunneling Methods
 
-It's also possible to use a persistent Cloudflare tunnel to get around the DNS delay when starting a new randomized tunnel.
+Most tunneling methods work out-of-the-box and do not require additional setup. If you don't call `tunnel:setup`, QIT CLI will use the default tunneling method based on your operating system when you enable tunneling.
 
-**Requirements:**
+### When to Use `tunnel:setup`
 
-- For this type of tunnel, you need to have a Cloudflare account and a website registered in it.
-- `cloudflared login` and choose a website to use.
-- `cloudflared tunnel create your-tunnel-name` to create a tunnel.
-- `cloudflared tunnel list` to get the UID of your newly created tunnel.
-- `cloudflared tunnel route dns UUID_HERE` paste the UUID of your tunnel to route the DNS.
+You only need to run `tunnel:setup` if:
 
-Now you should be able to create a tunnel using your domain:
+- You want to use a tunneling method that requires authentication or additional configuration, such as `cloudflared-persistent` or `jurassictube`.
+- You want to configure multiple tunneling methods and switch between them.
+- You want to set a specific tunneling method as your default.
 
-`cloudflared tunnel run --hello-world your-tunnel-name`
+### Configuring a Tunneling Method
 
-Assuming this is working, just use the script below, replacing `your-tunnel-name` with your actual tunnel name, and `your-domain.com` with your actual domain.
+To configure a tunneling method that requires setup, run:
 
-Usage:
-- `qit env:up --tunnel custom --require PersistentCloudFlareTunnel.php`
-- Or in a test: `qit run:e2e example-extension --tunnel custom --require PersistentCloudFlareTunnel.php`
-
-```php
-<?php
-
-class PersistentCloudFlareTunnel extends \QIT_CLI\Tunnel\CustomTunnel {
-	public static function connect_tunnel( string $site_url, string $env_id ): string {
-		// When the environment is destroyed, we will try to kill the process with this PID.
-		$pid_file = sys_get_temp_dir() . "/qit_env_tunnel_{$env_id}.pid";
-
-		$cloudflare_tunnel_name = 'your-tunnel-name';
-		$cloudflare_tunnel_url  = 'https://your-tunnel-name.your-domain.com';
-
-		$command_parts = [
-			'nohup',
-			'cloudflared',
-			'tunnel',
-			'--no-autoupdate',
-			'--pidfile',
-			escapeshellarg( $pid_file ),
-			'--url',
-			escapeshellarg( $site_url ),
-			'run',
-			$cloudflare_tunnel_name,
-		];
-
-		$command = implode( ' ', $command_parts ) . ' > /dev/null 2>&1 &';
-
-		exec( $command, $output, $return_var );
-
-		$start_time = time();
-		$timeout    = 10; // seconds.
-
-		// Wait for the PID file to be created.
-		while ( ! file_exists( $pid_file ) && ( time() - $start_time ) < $timeout ) {
-			usleep( 100000 ); // 0.1 seconds.
-		}
-
-		if ( ! file_exists( $pid_file ) ) {
-			// Optionally log the output for debugging
-			if ( ! empty( $output ) ) {
-				echo implode( "\n", $output );
-			}
-
-			throw new \RuntimeException( 'Timed out waiting for PID file creation.' );
-		}
-
-		static::test_connection( $cloudflare_tunnel_url );
-
-		return $cloudflare_tunnel_url;
-	}
-}
+```qitbash
+qit tunnel:setup
 ```
 
-## Jurassic Tunnel
 
-Automatticians can also use Jurassic Tunnel in a similar way.
+You will be prompted to select a tunneling method to configure. Follow the on-screen instructions to complete the setup.
 
-Requirements:
+#### Example:
 
-- Follow the installation/setup instructions of the Jurassic Tube Field Guied
-  - Download and install Jurassic Tube
-  - Register a key, and add a subdomain in Jurassic Tube
+```qitbash
+$ qit tunnel
 
-Now, you can use the following script to start a Jurassic Tube tunnel:
+Select the tunneling method you wish to configure:
 
-Just replace `your-username` and `your-subdomain` with your actual username and subdomain.
+[cloudflared-docker] Cloudflare Tunnel via Docker container
+[cloudflared-binary] Cloudflare Tunnel using the local binary
+[cloudflared-persistent] Persistent Cloudflared Tunnel
+[jurassictube] JurassicTube Tunnel (Automattic employees only)
 
-Usage:
-- `qit env:up --tunnel custom --require JurassicTubeTunnel.php`
-- Or in a test: `qit run:e2e example-extension --tunnel custom --require JurassicTubeTunnel.php`
+    cloudflared-persistent
 
-```php
-<?php
+Enter your Cloudflare Tunnel name: my-tunnel
+Enter your Cloudflare Tunnel URL: https://my-tunnel.example.com
 
-class JurassicTubeTunnel extends \QIT_CLI\Tunnel\CustomTunnel {
-	public static function connect_tunnel( string $site_url, string $env_id ): string {
-		// When the environment is destroyed, we will try to kill the process with this PID.
-		$pid_file = sys_get_temp_dir() . "/qit_env_tunnel_{$env_id}.pid";
+Do you want to set this tunneling method as your default? (yes/no) [yes]: Yes
 
-		$jurassic_tube_user      = 'your-username';
-		$jurassic_tube_subdomain = 'your-subdomain';
-
-		// Extract host and port from $site_url
-		$parsed_url = parse_url( $site_url );
-
-		if ( ! isset( $parsed_url['host'] ) ) {
-			throw new \InvalidArgumentException( "Invalid site URL provided." );
-		}
-
-		$host = $parsed_url['host'];
-		$port = isset( $parsed_url['port'] ) ? ':' . $parsed_url['port'] : '';
-
-		$host_and_port = $host . $port;
-
-		// Construct the JurassicTube command
-		$command_parts = [
-			'nohup',
-			'jurassictube',
-			'-u',
-			escapeshellarg( $jurassic_tube_user ), // Replace with your username if necessary
-			'-s',
-			escapeshellarg( $jurassic_tube_subdomain ), // Replace with your subdomain if necessary
-			'-h',
-			escapeshellarg( $host_and_port ),
-		];
-
-		$command = implode( ' ', $command_parts ) . ' > /dev/null 2>&1 & echo $!';
-
-		// Start the process and capture the PID
-		$output = [];
-		exec( $command, $output );
-
-		if ( empty( $output ) ) {
-			throw new \RuntimeException( 'Failed to start JurassicTube process.' );
-		}
-
-		$pid = (int) $output[0];
-
-		// Save the PID to the pid file
-		file_put_contents( $pid_file, $pid );
-
-		// Construct the tunnel URL
-		$tunnel_url = "https://$jurassic_tube_subdomain.jurassic.tube/";
-
-		static::test_connection( $tunnel_url );
-
-		return $tunnel_url;
-	}
-}
+Default tunneling method set to: cloudflared-persistent Configuration successful! Your cloudflared-persistent tunnel is now set up.
 ```
+
+### Configuring Multiple Tunnels
+
+You can configure multiple tunneling methods, especially if you need to switch between them. Simply run `qit tunnel:setup` again and select another method to configure.
+
+### Setting a Default Tunneling Method
+
+After configuring tunneling methods, you can set one as your default using the `tunnel:set-default` command.
+
+#### Example:
+
+```qitbash
+$ qit tunnel:set-default
+
+Select the tunneling method you wish to set as default: 
+
+[cloudflared-docker] Cloudflare Tunnel via Docker container
+[cloudflared-binary] Cloudflare Tunnel using the local binary
+[cloudflared-persistent] cloudflared-persistent
+[jurassictube] jurassictube
+
+    cloudflared-persistent
+
+Default tunneling method set to: cloudflared-persistent
+```
+
+
+### Resetting Tunneling Configurations
+
+To reset all tunneling configurations to defaults:
+
+```qitbash
+qit tunnel:setup --reset
+```
+
+This will remove all configured tunneling methods and unset the default tunnel.
+
+## Implementing a Custom Tunnel
+
+If you need to use a custom tunnelling method, refer to the [Custom Tunneling Methods](custom-tunnel) section for instructions on how to create and use a custom tunneling method.
+
+## Additional Tips
+
+- **No Setup Needed for Default Tunnels**: For `cloudflared-docker` and `cloudflared-binary`, you don't need to run `tunnel:setup` unless you want to set one as your default or configure multiple tunnels.
+- **Checking Tunnel Usability**: Before using a tunneling method, ensure it is usable on your system. Some tunnels may not be compatible with certain operating systems or environments (e.g., WSL).
+- **Configuration Persistence**: Tunneling configurations are stored persistently. You only need to configure a tunneling method once unless you need to change it.
+- **Verbose Output**: Use the `-v` or `-vv` option with commands to get more detailed output. This can be helpful for troubleshooting.
+
+## Troubleshooting
+
+- **DNS Propagation Issues**: If you experience delays accessing your tunnel, it may be due to DNS propagation. Consider using a persistent tunnel, using Cloudflare DNS, or waiting a few moments.
+- **Tunnel Not Usable**: If you receive an error stating that a tunneling method is not usable, verify that all prerequisites for that method are met (e.g., required binaries are installed).
+- **Tunnel Not Configured**: If you receive an error stating that a tunneling method is not configured, it means the method requires setup (e.g., `cloudflared-persistent` or `jurassictube`). Run `qit tunnel:setup [method]` to configure it.
+- **Custom Tunnel Issues**: Ensure your custom tunnel class correctly implements all required methods and handles configuration appropriately.
+- **Default Tunnel Fallback**: If you haven't configured a default tunnel and use `--tunnel` without specifying a method, QIT CLI will automatically select the default tunneling method based on your operating system.
+
+## Conclusion
+
+Tunneling in QIT CLI is a powerful feature that enhances your development workflow by making your local environment accessible externally. By default, QIT CLI provides tunneling methods that work without additional setup, allowing you to start using tunneling immediately. If you need to use a tunneling method that requires authentication or additional configuration, you can easily set it up using the provided commands.
