@@ -1,4 +1,4 @@
-# Custom Tunneling Methods
+# Using a Custom Tunnel
 
 If you need to use a custom tunneling method, you need to:
 - Create a PHP file with a class that extends `\QIT_CLI\Tunnel\CustomTunnel`

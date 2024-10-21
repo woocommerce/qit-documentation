@@ -106,18 +106,7 @@ By default, QIT CLI will use the best tunneling method for your operating system
   - Does not have DNS propagation issues since it uses a persistent subdomain.
 - **Considerations**:
   - Requires a Cloudflare account and a site registered on Cloudflare.
-  - Requires additional setup steps:
-    1. **Install the `cloudflared` binary on your system.**
-    2. **Authenticate with**: `cloudflared tunnel login`.
-    3. **Create a tunnel with**: `cloudflared tunnel create <tunnel-name>`
-    4. **Route DNS with:** `cloudflared tunnel route dns <tunnel-uuid> <tunnel-name>`
-
-       Replace `<tunnel-uuid>` with the UUID generated from the previous step.
-    5. **Test the tunnel with:** `cloudflared tunnel run <tunnel-name> --hello-world`
-
-    6. **Configure in QIT CLI:** `qit tunnel:setup`
-
-       Provide the tunnel name and URL when prompted.
+  - Requires additional setup steps, which can be found in the [Persistent Tunnel](./persistent-tunnel) page.
 
 ### custom
 
@@ -173,7 +162,11 @@ qit tunnel:setup
 ```
 
 
-You will be prompted to select a tunneling method to configure. Follow the on-screen instructions to complete the setup.
+You will be prompted to select a tunneling method to configure.
+
+Check the [Persistent Tunnel](./persistent-tunnel) page for additional setup steps if you choose `cloudflared-persistent`.
+
+Follow the on-screen instructions to complete the setup.
 
 #### Example:
 
