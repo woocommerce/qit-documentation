@@ -1,6 +1,6 @@
 # Tunneling
 
-Tunneling allows your local development environment to be accessible over the internet. This is useful for testing plugins that requires a live URL with a HTTPS, such as payment gateways, SaaS, webhooks, integrations, etc. QIT CLI supports multiple tunneling methods, and the optimal choice depends on your operating system and requirements.
+Tunneling allows your local development environment to be accessible over the internet. This is useful for testing plugins that requires a live URL with valid HTTPS, such as payment gateways, SaaS, webhooks, integrations, etc. QIT CLI supports multiple tunneling methods, and the optimal choice depends on your operating system and requirements.
 
 ## Requirements
 
