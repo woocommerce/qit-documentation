@@ -56,7 +56,7 @@ bootstrap             (Optional)
   bootstrap.php       (Optional)
   bootstrap.sh        (Optional)
   mu-plugin.php (Optional)
-entrypoint.qit.js     (Optional)
+entrypoint.js     (Optional)
 example.spec.js
 ```
 
@@ -70,7 +70,7 @@ example.spec.js
 │        │   ├── bootstrap.php       
 │        │   ├── bootstrap.sh        
 │        │   └── mu-plugin.php
-│        ├── entrypoint.qit.js       # The Test Phase entrypoint 
+│        ├── entrypoint.js       # The Test Phase entrypoint 
 │        └── example.spec.js         # E2E test file
 ├── src                              # QIT Beaver Source code
 └── qit-beaver.php                   # Main plugin file
@@ -78,7 +78,7 @@ example.spec.js
 
 ## The entrypoint
 
-The `entrypoint.spec.js` is a file that, if present, will be called when your **Test Phase** starts. This is a good place to put any setup logic, such as **activating** a theme that you have previously **installed** in the Bootstrap Phase.
+The `entrypoint.js` is a file that, if present, will be called when your **Test Phase** starts. This is a good place to put any setup logic, such as **activating** a theme that you have previously **installed** in the Bootstrap Phase.
 
 ## The test phase
 
@@ -114,7 +114,7 @@ A database dump that was generated after the bootstrap phase is imported, which 
 
 ### 2. Entrypoint
 
-The `entrypoint.spec.js` is executed, if it exists.
+The `entrypoint.js` is executed, if it exists.
 
 ### 3. Tests
 
@@ -126,6 +126,6 @@ If you have installed a Theme in the Bootstrap Phase, you can activate it here:
 tests
     bootstrap
         bootstrap.sh
-    entrypoint.qit.js
+    entrypoint.js
     example.spec.js
 ```
