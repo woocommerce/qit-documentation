@@ -12,4 +12,4 @@ If your plugin check test is failing, please review the following steps:
 - Open the test report.
 - Identify the causes of the failure and remedy it.
 - Please note that QIT does not control the underlying rules or engine for this test; if you believe you have found an issue with the check itself, you can [open an issue](https://github.com/WordPress/plugin-check/issues) for the `plugin-check` tool.
-- If instead you believe you've run across a bug in the QIT infrastrucutre around the test, please email us at qit@woocommerce.com so we can review and make the necessary adjustments.
+- If instead you believe you've run across a bug in the QIT infrastructure around the test, please email us at qit@woocommerce.com so we can review and make the necessary adjustments.
