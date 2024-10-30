@@ -129,3 +129,9 @@ tests
     entrypoint.js
     example.spec.js
 ```
+
+## Environment Variables
+
+You can use environment variables in your tests, for passing secrets or configuration that you don't want to hardcode in your tests.
+
+Refer to the [Environment Variables](/docs/environment/environment-variables) documentation for more information.
