@@ -2,31 +2,34 @@
 
 This test runs an experimental security scanner against a given extension.
 
-- Success: No security issues errors or warnings.
-- Warning: Only security issues warnings.
-- Failure: One or more security issues errors.
+- Success: No security issues, errors or warnings.
+- Warning: Only security warnings.
+- Failure: One or more security errors.
 
 ### What tools are used?
-The tools used in the Security Scanner are, currently, [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer) and [SemGrep](https://semgrep.dev/).
+The tools used in the security test currently are [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer), [SemGrep](https://semgrep.dev/), and 3rd-party package audit tools (i.e. [composer audit](https://getcomposer.org/doc/03-cli.md#audit)).
 
 ### Can I run it locally?
-Ideally, you should delegate all the testing execution to QIT. We don't support running the tests outside of QIT, but you can mimick at least the PHPCS rules. The SemGrep rules are not available to be run locally.
+Ideally, you should delegate all the test execution to QIT. We don't support running the tests outside of QIT, but you can mimick at least the PHPCS rules. The SemGrep rules are not available to be run locally. Auditing your 3rd-party packages can be done locally via your package manager commands.
 
 ### Which PHPCS rules are enabled?
-We use the WordPress Coding Style Standards project. Apart from SemGrep, the Security Tests runs all rules of the `WordPress.Security` namespace, and of `WordPress.DB`.
+We use the WordPress Coding Style Standards project. Apart from SemGrep, the security test runs all rules of the `WordPress.Security` and `WordPress.DB` namespaces.
+
+### What do the audit results mean?
+If your extension uses 3rd-party packages (for example, PHP packages via composer), the security test will use the built-in tools from that package manager to audit them for known vulnerabilities. This is done by checking the versions of installed packages against a database of known vulnerabilities. Remediation typically involves either upgrading the version of the package in use, or in some cases switching to an actively maintained alternative. Running the relevant command on your extension locally should produce more detailed output that can guide you in next steps.
 
 ## What to do when encountering a discouraged function?
 
-We identify functions that may lead to potential security vulnerabilities and mark them with a Warning using the `Generic.PHP.ForbiddenFunctions.Discouraged` rule.
+We identify functions that may lead to potential security vulnerabilities and mark them with a warning using the `Generic.PHP.ForbiddenFunctions.Discouraged` rule.
 
 While these functions are not inherently unsafe, they frequently contribute to critical vulnerabilities. We flag them to encourage you to review the code for security. If you've confirmed that the code is secure, you can suppress the warning by adding the following comment on the same line as the function: `// phpcs:ignore Generic.PHP.ForbiddenFunctions.Discouraged`
 
 ## What to do if it fails
 
 If your security test is failing, please take the following steps:
-- Open the test report
-- Identify the causes of failure. The test will log any security issues that our scanner identifies
-- Fix the issue and re-run the test
+- Open the test report.
+- Identify the causes of failure. The test will log any security issues that our scanner identifies.
+- Fix the issue and re-run the test.
 
 ### Request AI-assisted recommendations
 
