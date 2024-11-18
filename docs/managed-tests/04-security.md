@@ -7,16 +7,18 @@ This test runs an experimental security scanner against a given extension.
 - Failure: One or more security errors.
 
 ### What tools are used?
-The tools used in the security test currently are [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer), [SemGrep](https://semgrep.dev/), and 3rd-party package audit tools (i.e. [composer audit](https://getcomposer.org/doc/03-cli.md#audit)).
+The tools used in the security test currently are [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer), [SemGrep](https://semgrep.dev/), 3rd-party package audit tools (i.e. [composer audit](https://getcomposer.org/doc/03-cli.md#audit)), and the [WPScan vulnerability database](https://wpscan.com).
 
 ### Can I run it locally?
-Ideally, you should delegate all the test execution to QIT. We don't support running the tests outside of QIT, but you can mimick at least the PHPCS rules. The SemGrep rules are not available to be run locally. Auditing your 3rd-party packages can be done locally via your package manager commands.
+Ideally, you should delegate all the test execution to QIT. We don't support running the tests outside of QIT, but you can mimick at least the PHPCS rules. The SemGrep rules are not available to be run locally. Auditing your 3rd-party packages can be done locally via your package manager commands. Checking WPScan for your extension can also be done manually.
 
 ### Which PHPCS rules are enabled?
 We use the WordPress Coding Style Standards project. Apart from SemGrep, the security test runs all rules of the `WordPress.Security` and `WordPress.DB` namespaces.
 
 ### What do the audit results mean?
 If your extension uses 3rd-party packages (for example, PHP packages via composer), the security test will use the built-in tools from that package manager to audit them for known vulnerabilities. This is done by checking the versions of installed packages against a database of known vulnerabilities. Remediation typically involves either upgrading the version of the package in use, or in some cases switching to an actively maintained alternative. Running the relevant command on your extension locally should produce more detailed output that can guide you in next steps.
+
+The test will also check the WPScan database for any unfixed vulnerabilities for your extension; if any are present, the test will flag them as an error. If you believe the data that WPScan has is incorrect (i.e. you have already released a fix, but this is not reflected in the vulnerabiltiy entry), please [contact](https://wpscan.com/contact/) them directly; if you need further guidance reproducing or fixing a vulnerability, please reach out to the original researcher, who should be listed in the vulnerability information.
 
 ## What to do when encountering a discouraged function?
 
