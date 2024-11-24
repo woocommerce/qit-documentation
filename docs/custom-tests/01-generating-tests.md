@@ -59,7 +59,7 @@ When you generate tests with `--codegen`, they will be generated with the URLs y
 
 ```js
 await page.goto('http://localhost:32456');
-await page.goto('http://localhost:32456?cat=pictures');
+await page.goto('http://localhost:32456?action=foo');
 await page.goto('http://localhost:32456/my-page');
 await page.goto('http://localhost:32456/wp-admin');
 ```
@@ -70,7 +70,7 @@ After pasting it in a test file, remove the URLs, as the test run uses a `baseUR
 
 ```js
 await page.goto('/');
-await page.goto('/?cat=pictures');
+await page.goto('/?action=foo');
 await page.goto('/my-page');
 await page.goto('/wp-admin');
 ```

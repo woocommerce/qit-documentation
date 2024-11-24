@@ -46,5 +46,5 @@ This entrypoint was generated with Codegen. The easiest way is to start a codege
 If you are developing a theme, the previous section applies as well. And when you run it, be sure to add the `--testing_theme` flag:
 
 ```qitbash
-qit run:e2e qit-beaver-theme --testing_theme
+qit run:e2e example-plugin-theme --testing_theme
 ```
