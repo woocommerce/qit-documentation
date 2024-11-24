@@ -16,14 +16,15 @@ This will create a basic E2E test in the `e2e` directory with essentially a `exa
 
 ```
 bootstrap (Optional)
-    bootstrap.sh
-    bootstrap.php
+    setup.js
+    setup.sh
+    dependencies.json
     mu-plugin.php
 example.spec.js
 ```
 
 :::tip
-Bootstrap files are optional and can be removed if not needed. [Learn more about bootstrapping](/docs/custom-tests/bootstrap-and-test-phases) and its use cases.
+Bootstrap files are optional and can be removed if not needed. [Learn more about bootstrapping](/docs/custom-tests/understanding-lifecycle) and its use cases.
 :::
 
 You can run your first test locally with:
@@ -35,6 +36,33 @@ qit run:e2e <your-plugin> ./e2e
 ```
 
 You can then expand it with more tests, or even generate tests with Playwright Codegen.
+
+## Advanced Scaffolding
+
+When scaffolding, you can also include shared setups and teardowns. Refer to the [Understanding Lifecycle](/docs/custom-tests/understanding-lifecycle) documentation for more information.
+
+```qitbash
+qit scaffold:e2e ./e2e --with-shared --with-teardown
+```
+
+This will give you the following structure:
+
+```
+bootstrap
+    setup.js (Playwright file that runs in isolation before your tests)
+    setup.sh (Bash file that runs in isolation before your tests)
+    shared-setup.js (Playwright file that runs before all tests in a compatibility test)
+    shared-setup.sh (Bash file that runs before all tests in a compatibility test)
+    shared-teardown.js (Playwright file that runs after all tests in a compatibility test)
+    shared-teardown.sh (Bash file that runs after all tests in a compatibility test)
+    teardown.js (Playwright file that runs in isolation after your tests)
+    teardown.sh (Bash file that runs in isolation after your tests)
+example.spec.js
+```
+
+When you run a compatibility test (eg: `qit run:e2e example-plugin --plugin example-plugin:test`), a database snapshot is taken after the shared setup, and restored for each plugin test. The shared teardown is run after all tests are done.
+
+Anything you do in your isolated setup and teardown files will only affect your plugin's test environment. Anything you do in the shared setup and teardown files will affect all tests in the compatibility test.
 
 ## Codegen
 
@@ -53,7 +81,6 @@ It essentially records your interactions with the browser and generates the code
 ### Adjusting Codegen URLs
 
 When you generate tests with `--codegen`, they will be generated with the URLs you visited during the recording, eg:
-
 
 #### How Codegen generates it:
 

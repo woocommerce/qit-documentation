@@ -32,7 +32,7 @@ We assume for the purposes of simplicity that the GitHub pepository is a WordPre
 
 Example command: `qit env:up --requires=public-handler.php --plugins=my-public-plugin`
 
-Or just `qit env:up` if you have this `qit-env.yml` file:
+Or just `qit env:up` if you have this `qit.yml` file:
 
 ```yaml
 plugins:
@@ -91,7 +91,7 @@ This example is similar to the previous one, but it assumes that the GitHub repo
 
 Example command: `qit env:up --requires=private-handler.php --plugins=my-private-plugin`
 
-Or just `qit env:up` if you have this `qit-env.yml` file:
+Or just `qit env:up` if you have this `qit.yml` file:
 
 ```yaml
 plugins:
@@ -172,7 +172,7 @@ You can get really creative with custom handlers. In this example, we will:
 
 Example command: `qit env:up --requires=advanced-handler.php --plugins=my-advanced-plugin`
 
-Or just `qit env:up` if you have this `qit-env.yml` file:
+Or just `qit env:up` if you have this `qit.yml` file:
 
 ```yaml
 plugins:
@@ -349,7 +349,7 @@ requires:
 
 You can use multiple custom handlers by including them in your config files, or at runtime with the `--requires` option in the QIT command. For example:
 
-`qit-env.yml`
+`qit.yml`
 
 ```yaml
 plugins:

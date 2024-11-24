@@ -6,9 +6,11 @@ The custom E2E tests feature is available as early-access.
 
 ## Introduction
 
-You can use test tags to run specific tests from a plugin/theme.
+You can publish your tests to QIT so that other developers can use it to run compatibility tests with their own extensions.
 
-Each extension can have one or multiple test tags, and we also offer some generic tests that can be used by any plugin/theme.
+Similarly, you can run other developers' tests to ensure that your extension is compatible with theirs.
+
+One plugin can have multiple test tags, which can be used to run different sets of tests.
 
 ## Listing available test tags
 

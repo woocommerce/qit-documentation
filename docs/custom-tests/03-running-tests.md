@@ -27,7 +27,7 @@ Replace "example-plugin" with the slug of an extension you own.
 
 ## Using a config file
 
-Place a `qit-env.json` or `qit-env.yml` file in the directory you run `qit run:e2e` from.
+Place a `qit.json` or `qit.yml` file in the directory you run `qit run:e2e example-plugin` from.
 
 Here's an example of a complex config file:
 
@@ -109,7 +109,7 @@ You can also mimick this entire config file using only runtime parameters.
 Suppose you are scripting a test run and want to pass everything as parameters:
 
 ```qitbash
-qit run:e2e qit-the-beaver ~/my-plugins/example-plugin/tests --source ~/.qit/plugins/example-plugin \
+qit run:e2e example-plugin ~/my-plugins/example-plugin/tests --source ~/.qit/plugins/example-plugin \
   --wp nightly \
   --php-version 8.3 \
   --object-cache \
@@ -156,19 +156,19 @@ qit run:e2e example-plugin --plugin https://github.com/woocommerce/example-plugi
 Directory as `source`:
 
 ```qitbash
-qit run:e2e qit-the-beaver --source ~/my-plugins/example-plugin
+qit run:e2e example-plugin --source ~/my-plugins/example-plugin
 ```
 
 Zip file as `source`:
 
 ```qitbash
-qit run:e2e qit-the-beaver --source ~/my-plugins/example-plugin/example-plugin.zip
+qit run:e2e example-plugin --source ~/my-plugins/example-plugin/example-plugin.zip
 ```
 
 URL as `source`:
 
 ```qitbash
-qit run:e2e qit-the-beaver --source https://github.com/woocommerce/example-plugin/releases/tag/example-plugin.zip
+qit run:e2e example-plugin --source https://github.com/woocommerce/example-plugin/releases/tag/example-plugin.zip
 ```
 
 
@@ -179,25 +179,25 @@ If you have a test that you haven't uploaded yet, you can run it directly:
 Slug as `source`, directory as `test-tags`:
 
 ```qitbash
-qit run:e2e qit-the-beaver ~/my-plugins/example-plugin/tests
+qit run:e2e example-plugin ~/my-plugins/example-plugin/tests
 ```
 
 Directory as `source`, directory as `test-tags`:
 
 ```qitbash
-qit run:e2e qit-the-beaver ~/my-plugins/example-plugin/tests --source ~/my-plugins/example-plugin
+qit run:e2e example-plugin ~/my-plugins/example-plugin/tests --source ~/my-plugins/example-plugin
 ```
 
 Zip file as `source`, directory as `test-tags`:
 
 ```qitbash
-qit run:e2e qit-the-beaver ~/my-plugins/example-plugin/tests --source ~/my-plugins/example-plugin/build.zip
+qit run:e2e example-plugin ~/my-plugins/example-plugin/tests --source ~/my-plugins/example-plugin/build.zip
 ```
 
 URL as `source`, directory as `test-tags`:
 
 ```qitbash
-qit run:e2e qit-the-beaver ~/my-plugins/example-plugin/tests --source https://github.com/woocommerce/example-plugin/releases/tag/nightly.zip
+qit run:e2e example-plugin ~/my-plugins/example-plugin/tests --source https://github.com/woocommerce/example-plugin/releases/tag/nightly.zip
 ```
 
 ## Using test tags
@@ -217,21 +217,21 @@ qit run:e2e example-plugin nightly,foo-feature
 And you can run a test with a tag from a local directory, file, or URL:
 
 ```qitbash
-qit run:e2e qit-the-beaver nightly,foo-feature --source ~/my-plugins/example-plugin
+qit run:e2e example-plugin nightly,foo-feature --source ~/my-plugins/example-plugin
 ```
 
 ```qitbash
-qit run:e2e qit-the-beaver nightly,foo-feature --source ~/my-plugins/example-plugin/example-plugin.zip
+qit run:e2e example-plugin nightly,foo-feature --source ~/my-plugins/example-plugin/example-plugin.zip
 ```
 
 ```qitbash
-qit run:e2e qit-the-beaver nightly,foo-feature --source https://github.com/woocommerce/example-plugin/releases/tag/example-plugin.zip
+qit run:e2e example-plugin nightly,foo-feature --source https://github.com/woocommerce/example-plugin/releases/tag/example-plugin.zip
 ```
 
 And even run a local test in the mix:
 
 ```qitbash
-qit run:e2e qit-the-beaver ~/my-plugins/example-plugin/tests,nightly,foo-feature --source ~/my-plugins/example-plugin
+qit run:e2e example-plugin ~/my-plugins/example-plugin/tests,nightly,foo-feature --source ~/my-plugins/example-plugin
 ```
 
 ## Testing plugins that require a live site
