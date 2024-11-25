@@ -18,10 +18,10 @@ The lifecycle of a custom E2E test can be broken down into several phases:
 2. **Installing Additional Dependencies**
 3. **Shared Setup**
 4. **DB Export** 
-5. **(Foreach plugin) DB Import** 
-6. **(Foreach plugin) Isolated Setup**
-7. **(Foreach plugin) Test Phase**
-8. **(Foreach plugin) Teardown Phase**
+5. **DB Import (foreach plugin)** 
+6. **Isolated Setup (foreach plugin)**
+7. **Test Phase (foreach plugin)**
+8. **Teardown Phase (foreach plugin)**
 9. **Shared Teardown**
 10. **Post-Processing, reports, etc**
 
