@@ -31,7 +31,7 @@ Because not all extensions are required to declare explicit compatibility for al
 
 ### Outdated theme templates
 
-Themes will be checked for outdated templates, as determined by WooCommerce itself. If any are found, this will result in a warning; to resolve it, follow the [guide in the developer documentation](https://developer.woocommerce.com/docs/how-to-fix-outdated-woocommerce-templates/).
+Themes will be checked for outdated templates, as determined by WooCommerce itself. If any are found, this will result in a warning; to resolve it, follow the [guide in the WooCommerce developer documentation](https://developer.woocommerce.com/docs/how-to-fix-outdated-woocommerce-templates/).
 
 ## What to do if it fails
 
