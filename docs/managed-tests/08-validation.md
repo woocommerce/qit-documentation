@@ -29,6 +29,10 @@ The plugin will be loaded along with WooCommerce and the WooCommerce features AP
 
 Because not all extensions are required to declare explicit compatibility for all features (i.e. an extension that does not modify the cart or checkout experience doesn't need to declare compatibility with the blocks feature), only an explicit declaration of incompatibility will be flagged as a warning.
 
+### Outdated theme templates
+
+Themes will be checked for outdated templates, as determined by WooCommerce itself. If any are found, this will result in a warning; to resolve it, follow the [guide in the WooCommerce developer documentation](https://developer.woocommerce.com/docs/how-to-fix-outdated-woocommerce-templates/).
+
 ## What to do if it fails
 
 If your validation test is failing, please review the following steps:
