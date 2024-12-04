@@ -63,7 +63,7 @@ This will create an environment with PHP 8.3 on WordPress RC version, with Guten
 
 ## Using configuration files
 
-Create a `qit-env.yml` file in your project directory with the following content:
+Create a `qit.yml` file in your project directory with the following content:
 
 ```yaml
 wordpress_version: rc

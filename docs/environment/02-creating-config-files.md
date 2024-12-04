@@ -13,7 +13,7 @@ In the QIT Local Test Environment, configuration files are a powerful way to pre
 ### 1. File format
 
 - **JSON or YAML**: You can create configuration files in either JSON or YAML format.
-- **Naming**: Name your file `qit-env.json` or `qit-env.yml`. For overrides, use `qit-env.override.json` or `qit-env.override.yml`.
+- **Naming**: Name your file `qit.json` or `qit.yml`. For overrides, use `qit.override.json` or `qit.override.yml`.
 
 ### 2. Configuration options
 
