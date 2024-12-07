@@ -49,6 +49,7 @@ const sidebars = {
                 'managed-tests/woo-e2e',
                 'managed-tests/woo-api',
                 'managed-tests/security',
+                'managed-tests/phpcompatibility',
                 'managed-tests/phpstan',
                 'managed-tests/malware',
                 'managed-tests/validation',
