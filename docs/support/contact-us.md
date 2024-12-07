@@ -4,7 +4,7 @@ If you have questions, need help with QIT, or want to share feedback, we encoura
 
 ## Email Support
 
-Send an email to 'qit@woocommerce.com' for inquiries related to QIT usage, troubleshooting, or feature requests. Provide as many details as possible—such as the test run ID, relevant logs, or steps to reproduce issues—to help us assist you more effectively.
+Send an email to `qit@woocommerce.com` for inquiries related to QIT usage, troubleshooting, or feature requests. Provide as many details as possible—such as the test run ID, relevant logs, or steps to reproduce issues—to help us assist you more effectively.
 
 ## GitHub Issues
 
@@ -31,7 +31,7 @@ You can use GitHub issues, email, or the WooCommerce Vendor Dashboard feedback f
 ## Security and Vulnerability Reports
 
 If you discover a security vulnerability related to QIT:
-- Email 'qit@woocommerce.com' with 'Security Issue' in the subject line.
+- Email `qit@woocommerce.com` with `Security Issue` in the subject line.
 - Do not publicly disclose details before receiving a response.
 - Include steps to reproduce and the scope of the vulnerability.
 
