@@ -39,7 +39,6 @@ const sidebars = {
                 'using-qit/notifications-results',
             ],
         },
-        /*
         {
             type: 'category',
             label: 'Managed Tests',
@@ -67,11 +66,11 @@ const sidebars = {
                 'custom-tests/running-tests',
                 'custom-tests/understanding-lifecycle',
                 'custom-tests/themes',
-                'custom-tests/architecture',
                 'custom-tests/security-architecture',
                 'custom-tests/qit-helpers',
             ],
         },
+        /*
         {
             type: 'category',
             label: 'Environment & Configuration',

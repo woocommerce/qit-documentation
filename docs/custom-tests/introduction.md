@@ -1,0 +1,45 @@
+# Introduction to Custom E2E Tests
+
+:::info
+The custom E2E tests feature is available as early access.
+:::
+
+While managed tests provide a strong baseline for quality, compatibility, and security, your extension may include unique features or workflows that require specialized validation. Custom E2E (end-to-end) tests fill this gap. They enable you to write tailored test scenarios that simulate real-world usage patterns, integrate with other plugins and themes, and run complex workflows that managed tests might not cover.
+
+In this section, you'll learn how to generate, structure, and run custom E2E tests, as well as how to share them with other developers and incorporate them into your continuous integration (CI) pipeline.
+
+## Why Custom E2E Tests?
+
+- **Unique User Flows:** Verify custom checkout fields, specialized product types, or complex discount logic that generic tests won’t catch.
+- **Integration Checks:** Ensure your extension remains compatible when used alongside other plugins or themes.
+- **Early Feedback:** Run tests locally for instant validation during development, reducing the time spent debugging issues in production.
+- **Scalability and Collaboration:** Publish and tag your tests, allowing others to run them and ensuring consistency across development teams.
+
+## Getting Started
+
+1. **Install and Authenticate QIT CLI:** Already installed the QIT CLI and connected your account? See [Installation & Setup](#) and [Authenticating](#) if you haven’t.
+2. **List Available Extensions:** Run `qit extensions` to confirm which extensions you can test.
+3. **Generate a Test Scaffold:** `qit scaffold:e2e my-test` creates a starter template, including a basic test file and optional bootstrap scripts.
+4. **Run an Initial Test:** `qit run:e2e your-extension-slug my-test` executes the generated test against a local or cloud environment.
+5. **Refine and Expand:** Learn how to add more tests, use codegen tools, and adjust environments as you progress.
+
+## What’s Next?
+
+This introduction is the first step. Custom E2E testing involves several moving parts, and the following pages will guide you through each phase:
+
+- [Generating Tests](#): Learn how to scaffold tests, use Playwright codegen, and set up shared bootstrap files.
+- [Tagging Tests](#): Organize, publish, and share your tests with other developers or use tests published by others.
+- [Running Tests](#): Understand how to run custom tests locally and in QIT’s cloud environment, including selecting versions and enabling optional features.
+- [Understanding the Lifecycle](#): Dive deeper into the lifecycle of a test run, including shared setups, isolated setups, and teardown phases.
+- [Themes](#): Ensure that your tests are compatible with different themes, or enforce a specific theme for front-end verification.
+- [Architecture & Security](#): Explore how QIT’s custom E2E architecture ensures isolation, security, and easy integration with various stacks.
+- [QIT Helpers](#): Utilize QIT’s built-in helpers to simplify test writing, handle authentication, or manage WP-CLI commands within tests.
+
+## Additional Capabilities
+
+- **Complex Environment Configurations:** Use a config file (qit.json or qit.yml) to set up multiple plugins, advanced PHP versions, feature flags, and environment variables.
+- **Visual Test Execution:** Run `qit run:e2e your-extension --ui` to observe the tests in a browser, improving debugging and communication with your team.
+- **Publishing and Sharing:** Once you’ve perfected your tests, publish them so that other developers (or future you) can run these scenarios easily.
+- **CI Integration:** Integrate custom E2E tests into your CI pipelines for continuous feedback, ensuring your extension’s quality at every commit.
+
+By following this guide and exploring the linked topics, you’ll gain the confidence and tools needed to create comprehensive, reliable tests tailored to your extension’s unique behavior. With custom E2E testing, you can proactively address regressions, maintain compatibility, and deliver a seamless experience to merchants and customers alike.
