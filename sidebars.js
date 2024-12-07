@@ -11,7 +11,7 @@ const sidebars = {
         {
             type: 'category',
             label: 'Core Concepts',
-            collapsed: false,
+            collapsed: true,
             items: [
                 'core-concepts/how-qit-works',
                 'core-concepts/test-types-overview',
@@ -21,7 +21,7 @@ const sidebars = {
         {
             type: 'category',
             label: 'Installation & Setup',
-            collapsed: false,
+            collapsed: true,
             items: [
                 'installation-setup/cli-installation',
                 'installation-setup/authenticating',
@@ -31,7 +31,7 @@ const sidebars = {
         {
             type: 'category',
             label: 'Using QIT',
-            collapsed: false,
+            collapsed: true,
             items: [
                 'using-qit/running-tests-cli',
                 'using-qit/running-tests-dashboard',
@@ -42,7 +42,7 @@ const sidebars = {
         {
             type: 'category',
             label: 'Managed Tests',
-            collapsed: false,
+            collapsed: true,
             items: [
                 'managed-tests/introduction',
                 'managed-tests/activation',
@@ -58,7 +58,7 @@ const sidebars = {
         {
             type: 'category',
             label: 'Custom E2E Tests',
-            collapsed: false,
+            collapsed: true,
             items: [
                 'custom-tests/introduction',
                 'custom-tests/generating-tests',
@@ -70,12 +70,12 @@ const sidebars = {
                 'custom-tests/qit-helpers',
             ],
         },
-        /*
         {
             type: 'category',
             label: 'Environment & Configuration',
-            collapsed: false,
+            collapsed: true,
             items: [
+                'environment/introduction',
                 'environment/creating-config-files',
                 'environment/installing-plugins-and-themes',
                 'environment/installing-from-other-sources',
@@ -88,7 +88,7 @@ const sidebars = {
         {
             type: 'category',
             label: 'Test Execution & Reporting',
-            collapsed: false,
+            collapsed: true,
             items: [
                 'test-execution/useful-commands',
                 'test-execution/viewing-allure-reports',
@@ -98,7 +98,7 @@ const sidebars = {
         {
             type: 'category',
             label: 'Advanced Usage',
-            collapsed: false,
+            collapsed: true,
             items: [
                 'advanced-usage/scripting',
                 'advanced-usage/advanced-config-handlers',
@@ -107,14 +107,13 @@ const sidebars = {
         {
             type: 'category',
             label: 'Support & Resources',
-            collapsed: false,
+            collapsed: true,
             items: [
                 'support/contact-us',
                 'support/test-options',
                 'support/faqs',
             ],
         },
-         */
     ],
 };
 
