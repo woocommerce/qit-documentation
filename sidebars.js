@@ -65,6 +65,7 @@ const sidebars = {
                 'custom-tests/tagging-tests',
                 'custom-tests/running-tests',
                 'custom-tests/understanding-lifecycle',
+                'custom-tests/orchestration',
                 'custom-tests/themes',
                 'custom-tests/security-architecture',
                 'custom-tests/qit-helpers',

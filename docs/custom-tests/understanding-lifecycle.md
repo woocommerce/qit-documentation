@@ -60,8 +60,9 @@ This structure allows fine-grained control:
 
 ## Next Steps
 
-- [Themes](#): Explore how to test with different themes or enforce a specific theme in the lifecycle.
-- [Architecture & Security](#): Learn about QIT’s architecture to understand how isolation and security are enforced throughout the lifecycle.
-- [QIT Helpers](#): Use built-in helpers to simplify actions during setup, test, or teardown phases.
+- [Orchestration](./orchestration): Learn how QIT manages multiple plugins and shared states within a single test run, ensuring that each plugin’s tests run in isolation while benefiting from shared setup and teardown steps.
+- [Themes](./themes): Explore how to test with different themes or enforce a specific theme during setup phases.
+- [Architecture & Security](./security-architecture): Discover how QIT enforces isolation, security, and reliability in custom E2E test runs.
+- [QIT Helpers](./qit-helpers): Simplify test scripting by using built-in helpers for common tasks.
 
 By mastering the lifecycle, you’ll write more predictable, maintainable, and reliable custom E2E tests. This ensures consistent results, faster debugging, and higher confidence in your extension’s compatibility and quality.
