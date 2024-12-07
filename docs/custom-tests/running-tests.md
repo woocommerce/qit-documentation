@@ -73,9 +73,9 @@ If a test fails, use the CLI output and any provided URLs for logs, screenshots,
 
 ## Next Steps
 
-- [Understanding the Lifecycle](#): Learn how shared setup, isolated setup, and teardown phases affect your tests.
-- [Themes](#): Enforce a specific theme or test with multiple themes for front-end validation.
-- [Architecture & Security](#): Gain insights into how QIT ensures test isolation, security, and reliable reporting.
-- [QIT Helpers](#): Explore built-in functions to simplify test writing, like logging in as admin or running WP-CLI commands.
+- [Understanding the Lifecycle](./understanding-lifecycle.md): Learn how shared setup, isolated setup, and teardown phases affect your tests.
+- [Themes](./themes.md): Enforce a specific theme or test with multiple themes for front-end validation.
+- [Architecture & Security](./security-architecture.md): Gain insights into how QIT ensures test isolation, security, and reliable reporting.
+- [QIT Helpers](./qit-helpers.md): Explore built-in functions to simplify test writing, like logging in as admin or running WP-CLI commands.
 
 By leveraging local and cloud environments, tags, configuration files, and optional features, you can run custom E2E tests in a manner that perfectly suits your development workflow. This flexibility ensures comprehensive coverage, early detection of issues, and a smoother path to delivering stable, high-quality extensions.

@@ -88,8 +88,8 @@ Follow prompts to configure and authenticate with Cloudflare or other services.
 
 ## Next Steps
 
-- [Persistent Tunnel](#): Set up a stable Cloudflare Tunnel.
-- [Custom Tunnel](#): Implement your own tunneling solution.
-- [Environment & Configuration](#): Explore more options for customizing your environment setup.
+- [Persistent Tunnel](./persistent-tunnel.md): Set up a stable Cloudflare Tunnel.
+- [Custom Tunnel](./custom-tunnel.md): Implement your own tunneling solution.
+- [Environment & Configuration](../environment/introduction.md): Explore more options for customizing your environment setup.
 
 By leveraging QIT's tunneling capabilities, you can easily test integrations and external callbacks as if your site were live, ensuring more realistic testing conditions and fewer surprises when deploying to production.

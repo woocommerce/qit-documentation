@@ -29,6 +29,6 @@ If you receive warnings or failures:
 
 ## Next Steps
 
-- [Managed Tests Introduction](#): Understand how validation tests fit within the broader suite of managed tests.
-- [WooCommerce.com Marketplace](#): Review how Marketplace requirements intersect with validation checks.
-- [Notifications and Results](#): Set up alerts and track test outcomes to ensure quick remediation of flagged issues.
+- [Managed Tests Introduction](./introduction.md): Understand how validation tests fit within the broader suite of managed tests.
+- [WooCommerce.com Marketplace](../core-concepts/marketplace-overview.md): Review how Marketplace requirements intersect with validation checks.
+- [Notifications and Results](../using-qit/notifications-results.md): Set up alerts and view logs for continuous feedback.

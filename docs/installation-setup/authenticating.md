@@ -6,7 +6,7 @@ Before you can start running tests or interacting with QIT's cloud-based service
 
 - A WooCommerce.com Partner Developer account.
 - At least one extension listed on the WooCommerce Marketplace.
-- The QIT CLI installed and available on your system. Refer to [Installing the QIT CLI](#).
+- The QIT CLI installed and available on your system. Refer to [Installing the QIT CLI](../installation-setup/cli-installation.md).
 
 ## Generating a QIT Token
 
@@ -34,6 +34,6 @@ The QIT Token you obtain through `qit connect` functions similarly to an applica
 
 ## Next Steps
 
-- [Running Tests](#): Once authenticated, start by running a basic managed test against one of your extensions.
-- [Introduction to QIT](#): Review the fundamentals if you haven't already.
-- [Notifications and Results](#): Learn how QIT communicates test results and how you can review logs and reports.  
+- [Running Tests](../using-qit/running-tests-cli.md): Once authenticated, start by running a basic managed test against one of your extensions.
+- [Introduction to QIT](../intro.md): Review the fundamentals if you haven't already.
+- [Notifications and Results](../using-qit/notifications-results.md): Learn how QIT communicates test results and how you can review logs and reports.

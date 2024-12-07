@@ -5,7 +5,7 @@ The local test environment allows you to run and debug **custom E2E tests** dire
 ## Prerequisites
 
 - **Docker:** Ensure that Docker (or a compatible container runtime) is installed and running on your machine.
-- **QIT CLI Authenticated:** Confirm that the QIT CLI is authenticated with your WooCommerce Marketplace account. Refer to [Authenticating with QIT](#).
+
 
 ## When to Use the Local Test Environment
 
@@ -33,7 +33,7 @@ You can customize the environment by specifying versions, plugins, and features.
 
 `qit env:up --php_version=8.0 --wordpress_version=rc --plugin=woocommerce`
 
-This command sets PHP 8.0, uses the latest release candidate of WordPress, and installs WooCommerce. For more details on customization, see [Environment & Configuration](#).
+- [Environment & Configuration](../environment/introduction.md): Dive deeper into configuring your local test environment and advanced features.
 
 ## Key Benefits for Custom E2E Testing
 
@@ -43,6 +43,6 @@ This command sets PHP 8.0, uses the latest release candidate of WordPress, and i
 
 ## Next Steps
 
-- [Creating Custom E2E Tests](#): Learn how to scaffold and write your own tests to run in this environment.
-- [Running Tests Locally](#): Integrate custom tests into your workflow for continuous development and refinement.
-- [Advanced Configuration](#): Explore tunnels, custom handlers, and other advanced features for more complex test scenarios.
+- [Creating Custom E2E Tests](../custom-tests/introduction.md): Learn how to scaffold and write your own tests to run in this environment.
+- [Running Tests Locally](../using-qit/running-tests-cli.md): Integrate custom tests into your workflow for continuous development and refinement.
+- [Advanced Configuration](../advanced-usage/advanced-config-handlers.md): Explore tunnels, custom handlers, and other advanced features.

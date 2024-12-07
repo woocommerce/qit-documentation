@@ -79,8 +79,8 @@ Running `qit run:activation my-extension` applies these settings automatically.
 
 ## Next Steps
 
-- [Useful Commands](#): Learn how to list and view test runs for different configurations.
-- [Troubleshooting](#): If tests fail under certain versions or features, see the troubleshooting guide.
-- [Environment & Configuration](#): Explore how to combine test options with environment variables and custom handlers for even more control.
+- [Useful Commands](../test-execution/useful-commands.md): Learn how to list and view test runs for different configurations.
+- [Troubleshooting](../test-execution/troubleshooting.md): If tests fail under certain versions or features, see the troubleshooting guide.
+- [Environment & Configuration](../environment/introduction.md): Dive deeper into configuring your local test environment and advanced features.
 
 By understanding and using test options, you can confidently ensure that your extension remains reliable and compatible across a wide range of WordPress, WooCommerce, and PHP versions, as well as various optional features and integrations.

@@ -43,6 +43,6 @@ Replace `your-extension` with your plugin’s slug. The tests will run in QIT’
 
 ## Next Steps
 
-- [Woo E2E Tests](#): Validate essential storefront flows in addition to confirming API integrity.
-- [Security Tests](#): Ensure that your extension meets security and coding standards.
-- [Notifications and Results](#): Learn how to stay informed about test outcomes and access detailed reports.
+- [Woo E2E Tests](./woo-e2e.md): Validate essential storefront flows in addition to confirming API integrity.
+- [Security Tests](./security.md): Ensure that your extension meets security and coding standards.
+- [Notifications and Results](../using-qit/notifications-results.md): Learn how to stay informed about test outcomes and access detailed reports.

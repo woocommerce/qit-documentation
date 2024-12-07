@@ -90,8 +90,8 @@ Your tests and plugin code can now reference `API_URL` and `API_KEY` from `proce
 
 ## Next Steps
 
-- [Creating Config Files](#): Combine environment variables with config files for a fully parameterized setup.
-- [Tunneling](#): Use environment variables to pass tokens or credentials to a custom tunneling solution.
-- [Advanced Usage](#): Explore scripting and CI integration, where environment variables can drive dynamic test configurations.
+- [Creating Config Files](./creating-config-files.md): Combine environment variables with config files for a fully parameterized setup.
+- [Tunneling](./tunnel.md): Use environment variables to pass tokens or credentials to a custom tunneling solution.
+- [Advanced Usage](../advanced-usage/scripting.md): Explore scripting and CI integration, where environment variables can drive dynamic test configurations.
 
 By leveraging environment variables, you maintain cleaner, more secure, and more flexible testing workflows, adapting your QIT environment on the fly without altering code.

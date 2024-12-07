@@ -95,8 +95,8 @@ ensures that the Woo E2E tests run against the publicly accessible URL your tunn
 
 ## Next Steps
 
-- [Tunneling](#): Review other tunneling methods to see if a simpler solution works before building a custom one.
-- [Persistent Tunnel](#): If you prefer a stable, well-known subdomain, consider the persistent tunnel setup first.
-- [Environment & Configuration](#): Explore advanced configurations, environment variables, and other features to enhance your testing workflow.
+- [Tunneling](./tunnel.md): Review other tunneling methods and their trade-offs.
+- [Persistent Tunnel](./persistent-tunnel.md): If you prefer a stable, well-known subdomain, consider the persistent tunnel setup first.
+- [Environment & Configuration](../environment/introduction.md): Explore advanced configurations, environment variables, and other features to enhance your testing workflow.
 
 By creating a custom tunnel, you unlock the flexibility to integrate any tunneling solution into QIT's local environment, ensuring that all testing scenarios—even the most unique—can be properly validated.

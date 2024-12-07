@@ -44,8 +44,8 @@ We appreciate responsible disclosure and will work to resolve issues promptly.
 
 ## Next Steps
 
-- [Troubleshooting](#): Consult the troubleshooting guide for immediate self-help.
-- [Useful Commands](#): Use CLI commands to gather logs and test run details before contacting support.
-- [Environment & Configuration](#): Review documentation to ensure your environment is set up correctly, reducing support needs.
+- [Troubleshooting](../test-execution/troubleshooting.md): Consult the troubleshooting guide for immediate self-help.
+- [Useful Commands](../test-execution/useful-commands.md): Use CLI commands to gather logs and test run details before contacting support.
+- [Environment & Configuration](../environment/introduction.md): Dive deeper into configuring your local test environment and advanced features.
 
 By leveraging these support channels, you can resolve issues, contribute feedback, and help us improve QIT, fostering a robust and user-centric testing ecosystem.

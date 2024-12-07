@@ -34,7 +34,7 @@ QIT (Quality Insights Toolkit) is a testing platform developed by WooCommerce fo
 
 2. **Authenticate with QIT:**  
    `./vendor/bin/qit connect`
-   This generates a QIT Token and prompts you to [authenticate](#) with your WooCommerce.com developer account.
+This generates a QIT Token and prompts you to [authenticate](./installation-setup/authenticating.md) with your WooCommerce.com developer account.
 
 3. **Run Your First Test:**  
    `./vendor/bin/qit run:activation your-extension`
@@ -58,15 +58,15 @@ While full QIT access is currently exclusive to WooCommerce.com Partner Develope
 
 ## Ways to Use QIT
 
-- **Command Line (CLI):** Perfect for integrating into your local development workflow or CI pipelines. See [CLI Getting Started](#).
-- **WooCommerce.com Dashboard:** Run and view tests directly in the vendor dashboard UI. See [Getting Started with Dashboard](#).
-- **GitHub Actions:** Integrate QIT tests into your GitHub workflows. See [GitHub Workflows Setup](#).
+- **Command Line (CLI):** Perfect for integrating into your local development workflow or CI pipelines. See [CLI Getting Started](./installation-setup/cli-installation.md).
+- **WooCommerce.com Dashboard:** Run and view tests directly in the vendor dashboard UI. See [Getting Started with Dashboard](./using-qit/running-tests-dashboard.md).
+- **GitHub Actions:** Integrate QIT tests into your GitHub workflows. See [GitHub Workflows Setup](./using-qit/github-workflows.md).
 
 ## Next Steps
 
-- **Want to learn more about authenticating?** Check out [Authentication](#).
-- **Ready to run more tests?** See [Running Tests with QIT CLI](#).
-- **Curious about Custom E2E Tests?** Visit the [Custom Tests Introduction](#).
+- **Want to learn more about authenticating?** Check out [Authentication](./installation-setup/authenticating.md).
+- **Ready to run more tests?** See [Running Tests with QIT CLI](./using-qit/running-tests-cli.md).
+- **Curious about Custom E2E Tests?** Visit the [Custom Tests Introduction](./custom-tests/introduction.md).
 
 :::info  
 If you encounter any issues or have questions, feel free to [contact us](mailto:qit@woocommerce.com) or open an issue on [GitHub](https://github.com/woocommerce/qit-cli/issues).  

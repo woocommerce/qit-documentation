@@ -75,6 +75,6 @@ In this example, if the test fails, the `Notify on Failure` step can trigger you
 
 ## Next Steps
 
-- [Running Tests via the CLI](#): Explore how to get instant feedback locally.
-- [Using the Vendor Dashboard](#): Learn how to run tests and view results directly in a UI.
-- [Custom E2E Tests](#): Consider writing custom tests that produce results tailored to your unique scenarios.  
+- [Running Tests via the CLI](./running-tests-cli.md): Explore how to get instant feedback locally.
+- [Using the Vendor Dashboard](./running-tests-dashboard.md): Learn how to run tests and view results directly in a UI.
+- [Custom E2E Tests](../custom-tests/introduction.md): Consider writing custom tests that produce results tailored to your unique scenarios.

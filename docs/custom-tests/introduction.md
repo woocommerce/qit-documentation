@@ -17,7 +17,7 @@ In this section, you'll learn how to generate, structure, and run custom E2E tes
 
 ## Getting Started
 
-1. **Install and Authenticate QIT CLI:** Already installed the QIT CLI and connected your account? See [Installation & Setup](#) and [Authenticating](#) if you haven’t.
+See [Installation & Setup](../installation-setup/cli-installation.md) and [Authenticating](../installation-setup/authenticating.md) if you haven’t.
 2. **List Available Extensions:** Run `qit extensions` to confirm which extensions you can test.
 3. **Generate a Test Scaffold:** `qit scaffold:e2e my-test` creates a starter template, including a basic test file and optional bootstrap scripts.
 4. **Run an Initial Test:** `qit run:e2e your-extension-slug my-test` executes the generated test against a local or cloud environment.
@@ -27,13 +27,13 @@ In this section, you'll learn how to generate, structure, and run custom E2E tes
 
 This introduction is the first step. Custom E2E testing involves several moving parts, and the following pages will guide you through each phase:
 
-- [Generating Tests](#): Learn how to scaffold tests, use Playwright codegen, and set up shared bootstrap files.
-- [Tagging Tests](#): Organize, publish, and share your tests with other developers or use tests published by others.
-- [Running Tests](#): Understand how to run custom tests locally and in QIT’s cloud environment, including selecting versions and enabling optional features.
-- [Understanding the Lifecycle](#): Dive deeper into the lifecycle of a test run, including shared setups, isolated setups, and teardown phases.
-- [Themes](#): Ensure that your tests are compatible with different themes, or enforce a specific theme for front-end verification.
-- [Architecture & Security](#): Explore how QIT’s custom E2E architecture ensures isolation, security, and easy integration with various stacks.
-- [QIT Helpers](#): Utilize QIT’s built-in helpers to simplify test writing, handle authentication, or manage WP-CLI commands within tests.
+- [Generating Tests](./generating-tests.md): Learn how to scaffold tests, use Playwright codegen, and set up shared bootstrap files.
+- [Tagging Tests](./tagging-tests.md): Organize, publish, and share your tests with other developers or use tests published by others.
+- [Running Tests](./running-tests.md): Understand how to run custom tests locally and in QIT’s cloud environment, including selecting versions and enabling optional features.
+- [Understanding the Lifecycle](./understanding-lifecycle.md): Dive deeper into the sequence of events and environment changes that occur before, during, and after test execution.
+- [Themes](./themes.md): Ensure that your tests are compatible with different themes, or enforce a specific theme for front-end verification.
+- [Architecture & Security](./security-architecture.md): Explore how QIT’s custom E2E architecture ensures isolation, security, and easy integration with various stacks.
+- [QIT Helpers](./qit-helpers.md): Utilize QIT’s built-in helpers to simplify test writing, handle authentication, or manage WP-CLI commands within tests.
 
 ## Additional Capabilities
 

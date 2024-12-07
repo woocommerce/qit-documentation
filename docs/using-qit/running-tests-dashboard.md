@@ -40,7 +40,7 @@ When you publish a new version of your extension on the WooCommerce Marketplace,
 
 ## Notifications and Alerts
 
-If you have enabled email notifications, you will receive an email when a test completes if it results in warnings or failures. For more information on setting up notifications, see [Notifications and Results](#).
+If you have enabled email notifications, you will receive an email when a test completes if it results in warnings or failures. For more information on setting up notifications, see [Notifications and Results](./notifications-results.md).
 
 ## Why Use the Dashboard?
 
@@ -50,6 +50,6 @@ If you have enabled email notifications, you will receive an email when a test c
 
 ## Next Steps
 
-- [Running Tests via the CLI](#): If you need scripting or integration with CI pipelines, consider using the CLI.
-- [Managed Tests](#): Learn about each managed test type available.
-- [Custom E2E Tests](#): Explore creating custom tests that you can run locally for deeper coverage.
+- [Running Tests via the CLI](./running-tests-cli.md): If you need scripting or integration with CI pipelines, consider using the CLI.
+- [Managed Tests](../managed-tests/introduction.md): Learn about each managed test type available.
+- [Custom E2E Tests](../custom-tests/introduction.md): Explore creating custom tests that you can run locally for deeper coverage.

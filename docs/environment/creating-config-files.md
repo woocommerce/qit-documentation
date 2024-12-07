@@ -86,6 +86,6 @@ This allows you to temporarily test different conditions without permanently alt
 
 ## Next Steps
 
-- [Installing Plugins and Themes](#): Learn how to specify additional plugins or themes directly in your configuration files.
-- [Tunnel Options](#): Explore how to configure tunnels and advanced options for more complex testing scenarios.
-- [Environment & Configuration](#): Dive deeper into customizing every aspect of your test environment for maximum flexibility and reliability.
+- [Installing Plugins and Themes](./installing-plugins-and-themes.md): Learn how to specify additional plugins or themes directly in your configuration files.
+- [Tunnel Options](../environment/tunnel.md): Explore how to configure tunnels and advanced options for more complex testing scenarios.
+- [Environment & Configuration](../environment/introduction.md): Dive deeper into customizing every aspect of your test environment for maximum flexibility and reliability.

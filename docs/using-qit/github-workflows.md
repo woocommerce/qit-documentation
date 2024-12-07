@@ -5,7 +5,7 @@ By integrating QIT into your GitHub Actions workflows, you can automatically tes
 ## Prerequisites
 
 - **GitHub Repository:** Your extension should be in a GitHub repository where you can configure workflows.
-- **QIT CLI Authentication:** Ensure you have a QIT Token or appropriate credentials available as GitHub Secrets. Refer to [Authenticating with QIT](#).
+
 
 ## Example GitHub Workflow
 
@@ -62,6 +62,6 @@ Store your QIT credentials as GitHub Secrets to avoid exposing them in the repos
 
 ## Next Steps
 
-- [Running Tests via the CLI](#): Learn how to run tests locally before pushing changes to GitHub.
-- [Notifications and Results](#): Configure notifications for failed tests triggered by GitHub Actions.
-- [Custom E2E Tests](#): Integrate your custom tests into the workflow for full coverage.
+- [Running Tests via the CLI](./running-tests-cli.md): Learn how to run tests locally before pushing changes to GitHub.
+- [Notifications and Results](./notifications-results.md): Configure notifications for failed tests triggered by GitHub Actions.
+- [Custom E2E Tests](../custom-tests/introduction.md): Integrate your custom tests into the workflow for full coverage.

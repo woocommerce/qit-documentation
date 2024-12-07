@@ -76,7 +76,7 @@ Replace `your-extension` with the slug of your plugin.
 
 ## Using a Tunnel
 
-Some plugins might need an actual live site URL to work properly (for example, payment gateways or SaaS solutions). In these cases, you can use our [built-in tunnel feature](#) to expose the test site to the internet, ensuring all external integrations work as intended.
+... you can use our [built-in tunnel feature](../environment/tunnel.md) to expose the test site to the internet ...
 
 ## What to Do if It Fails
 

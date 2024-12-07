@@ -66,6 +66,6 @@ We've done our best to reduce test flakiness, but it can still happen. If you're
 
 ## Next Steps
 
-- [Activation Tests](#): Verify that your plugin activates without errors before testing complex flows.
-- [Woo API Tests](#): Complement E2E tests with API-level checks for robust coverage.
-- [Notifications and Results](#): Learn how to configure alerts and review logs for better issue tracking.
+- [Activation Tests](./activation.md): Verify that your plugin activates without errors before testing complex flows.
+- [Woo API Tests](./woo-api.md): Complement E2E tests with API-level checks for robust coverage.
+- [Notifications and Results](../using-qit/notifications-results.md): Learn how to configure alerts and review logs for better issue tracking.

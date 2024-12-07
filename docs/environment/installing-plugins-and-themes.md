@@ -68,6 +68,6 @@ to see active environments and `qit env:enter` to inspect the WordPress installa
 
 ## Next Steps
 
-- [Installing from Other Sources](#): If you need to fetch plugins or themes from non-standard repositories, explore how to implement custom handlers.
-- [Tunneling](#): If testing external integrations (like SaaS services or APIs), consider using a tunnel to make your local environment accessible over the internet.
-- [Environment & Configuration](#): Learn more about refining your test environment setup and integrating advanced features.
+- [Installing from Other Sources](./installing-from-other-sources.md): If you need to fetch plugins or themes from non-standard repositories, explore how to implement custom handlers.
+- [Tunneling](./tunnel.md): If testing external integrations (like SaaS services or APIs), consider using a tunnel to make your local environment accessible over the internet.
+- [Environment & Configuration](../environment/introduction.md): Learn more about refining your test environment setup and integrating advanced features.

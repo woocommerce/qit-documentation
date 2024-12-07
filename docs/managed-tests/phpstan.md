@@ -31,6 +31,6 @@ Tackling PHPStan warnings often results in clearer code and fewer hidden issues.
 
 ## Next Steps
 
-- [Managed Tests Introduction](#): Review other managed tests and how they complement PHPStan analysis.
-- [PHPCompatibility Tests](#): Ensure that your code is compatible with supported PHP versions for broader audience appeal.
-- [Notifications and Results](#): Learn how to access detailed logs and configure alerts for detected issues.
+- [Managed Tests Introduction](./introduction.md): Review other managed tests and how they complement PHPStan analysis.
+- [PHPCompatibility Tests](./validation.md): Ensure that your code is compatible with supported PHP versions for broader audience appeal.
+- [Notifications and Results](../using-qit/notifications-results.md): Learn how to access detailed logs and configure alerts for detected issues.

@@ -4,7 +4,7 @@ The QIT CLI allows you to run both managed and custom tests directly from your t
 
 ## Prerequisites
 
-- **QIT CLI Installed and Authenticated:** Make sure you've set up the CLI and authenticated it with your WooCommerce Marketplace account. Refer to [Installing the QIT CLI](#) and [Authenticating with QIT](#).
+
 - **Extension Slug:** Know the slug of your WooCommerce Marketplace extension. You'll need it when running tests.
 
 ## Running Managed Tests
@@ -25,7 +25,7 @@ This sends the request to QIT's cloud infrastructure, sets up a clean environmen
 - `qit run:security your-extension`
 - `qit run:phpstan your-extension`
 
-Check [Managed Tests](#) for a full list and their use cases.
+- [Managed Tests](../managed-tests/introduction.md): Learn about each managed test type available.
 
 ## Running Custom E2E Tests Locally
 
@@ -61,11 +61,11 @@ When tests complete, QIT CLI provides a summary of the results:
 - **Failed:** A critical error or incompatibility was detected.
 
 For more detailed insights:
-- [Viewing Test Results](#): Learn how to access logs, screenshots, and detailed reports.
-- [Notifications and Results](#): Configure email notifications and review test histories in the Vendor Dashboard.
+- [Viewing Test Results](./notifications-results.md): Learn how to access logs, screenshots, and detailed reports.
+If you have enabled email notifications, you will receive an email when a test completes if it results in warnings or failures. For more information on setting up notifications, see [Notifications and Results](./notifications-results.md).
 
 ## Next Steps
 
-- [Using QIT via the Dashboard](#): If you prefer a UI, trigger tests and review results from the WooCommerce Vendor Dashboard.
-- [Advanced CLI Commands](#): Explore scripting and GitHub workflows to integrate QIT tests into your CI/CD pipeline.
-- [Environment & Configuration](#): Dive deeper into configuring your local test environment and advanced features.
+- [Using QIT via the Dashboard](./running-tests-dashboard.md): If you prefer a UI, trigger tests and review results from the WooCommerce Vendor Dashboard.
+- [Advanced CLI Commands](../advanced-usage/scripting.md): Explore scripting and GitHub workflows to integrate QIT tests into your CI/CD pipeline.
+- [Environment & Configuration](../environment/introduction.md): Dive deeper into configuring your local test environment and advanced features.

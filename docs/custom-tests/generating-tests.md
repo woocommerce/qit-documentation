@@ -53,14 +53,14 @@ Don’t forget to leverage QIT’s built-in helpers to simplify test writing. Fo
 - `qit.loginAsAdmin(page);`
 - `qit.wp("plugin list");`
 
-These helpers streamline common tasks, like logging in or running WP-CLI commands, letting you focus on your extension’s unique logic rather than boilerplate setup steps. See [QIT Helpers](#) for a detailed list of available functions.
+See [QIT Helpers](./qit-helpers.md) for a detailed list of available functions.
 
 ## Next Steps
 
 With your test structure in place and a handle on generating scenarios, you’re ready to:
-- [Tag and Publish Tests](#): Organize, upload, and share tests with others or run tests published by different plugins.
-- [Running Tests](#): Learn how to run these tests locally for rapid feedback or in the QIT cloud for compatibility verification.
-- [Understanding the Lifecycle](#): Dive deeper into the sequence of events and environment changes that occur before, during, and after test execution.
-- [Themes and Complex Configurations](#): Explore how to enforce specific themes, run compatibility tests with multiple plugins, and tweak environment settings for advanced cases.
+- [Tag and Publish Tests](./tagging-tests.md): Organize, upload, and share tests with others or run tests published by different plugins.
+- [Running Tests](./running-tests.md): Learn how to run these tests locally for rapid feedback or in the QIT cloud for compatibility verification.
+- [Understanding the Lifecycle](./understanding-lifecycle.md): Dive deeper into the sequence of events and environment changes that occur before, during, and after test execution.
+- [Themes and Complex Configurations](./themes.md): Explore how to enforce specific themes, run compatibility tests with multiple plugins, and tweak environment settings for advanced cases.
 
 By taking advantage of codegen, shared setups, teardown files, and QIT helpers, you can build robust, maintainable E2E tests that provide meaningful insights into your extension’s behavior under various conditions.

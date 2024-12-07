@@ -45,6 +45,6 @@ False positives can sometimes occur. If you’re confident an issue is not a rea
 
 ## Next Steps
 
-- [Managed Tests Introduction](#): Learn about other built-in tests provided by QIT.
-- [PHPStan and PHPCompatibility Tests](#): Ensure code quality and compatibility alongside security checks.
-- [Notifications and Results](#): Set up alerts and view detailed logs to stay on top of security issues.
+- [Managed Tests Introduction](./introduction.md): Learn about other built-in tests provided by QIT.
+- [PHPStan and PHPCompatibility Tests](./phpstan.md): Ensure code quality and compatibility alongside security checks.
+- [Notifications and Results](../using-qit/notifications-results.md): Set up alerts and view logs for continuous feedback.

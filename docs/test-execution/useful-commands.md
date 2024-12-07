@@ -93,8 +93,8 @@ qit run:e2e my-extension --zip=my-extension.zip
 
 ## Next Steps
 
-- [Running Tests](#): Learn more about executing tests via CLI or dashboard.
-- [Notifications and Results](#): Set up alerts and view logs for continuous feedback.
-- [Configuration Files](#): Integrate useful commands with custom environment configurations for a smooth testing pipeline.
+- [Running Tests](../using-qit/running-tests-cli.md): Learn more about executing tests via CLI or dashboard.
+- [Notifications and Results](../using-qit/notifications-results.md): Set up alerts and view logs for continuous feedback.
+- [Configuration Files](../environment/creating-config-files.md): Integrate useful commands with custom environment configurations for a smooth testing pipeline.
 
 By mastering these useful commands, you streamline your test execution process, ensuring you can quickly find, review, and troubleshoot test results without sifting through complex outputs.

@@ -30,6 +30,6 @@ If the test fails or reports warnings:
 
 ## Next Steps
 
-- [Managed Tests Introduction](#): Explore other managed tests that focus on WooCommerce-specific criteria.
-- [Security Tests](#): Pairing plugin checks with security audits ensures code not only meets guidelines but is also safe.
-- [Notifications and Results](#): Configure alerts and review logs to stay informed about any flagged issues.  
+- [Managed Tests Introduction](./introduction.md): Explore other managed tests that focus on WooCommerce-specific criteria.
+- [Security Tests](./security.md): Pairing plugin checks with security audits ensures code not only meets guidelines but is also safe.
+- [Notifications and Results](../using-qit/notifications-results.md): Configure alerts and review logs to stay informed about any flagged issues.
