@@ -69,5 +69,3 @@ If you find flakiness or difficulties reproducing the issue, try re-running the 
 - [Useful Commands](./useful-commands.md): Learn about commands to list tests and get their run IDs.
 - [Notifications and Results](../using-qit/notifications-results.md): Configure email alerts or other notifications to know when to view reports.
 - [Managed Tests and Custom E2E Tests](../core-concepts/test-types-overview.md): Explore how to generate and interpret Allure reports for both default and custom scenarios.
-
-By leveraging Allure reports, you gain a powerful debugging and verification tool that transforms raw test data into actionable insights, ensuring faster resolution of issues and higher-quality extensions.

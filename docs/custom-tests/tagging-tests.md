@@ -68,5 +68,3 @@ This removes that tag from your listing, keeping your environment clean and redu
 - [Running Tests](./running-tests.md): Learn more about executing tagged tests locally or in the QIT cloud environment.
 - [Understanding the Lifecycle](./understanding-lifecycle.md): Delve into how tagging interacts with the shared setup, isolated setup, and teardown stages.
 - [Publishing Tests](./tagging-tests.md): Explore advanced scenarios like publishing tests publicly or integrating with CI for ongoing quality assurance.
-
-By effectively tagging and organizing your tests, you create a more manageable, sharable, and efficient testing ecosystem, ensuring that all your custom E2E scenarios remain readily accessible and easy to run.

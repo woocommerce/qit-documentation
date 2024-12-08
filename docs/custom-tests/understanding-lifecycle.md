@@ -66,5 +66,3 @@ Note: Different plugin actions (`test`, `bootstrap`, `activate`) influence wheth
 - [Themes](./themes): Explore how to test with different themes or enforce a specific theme during setup phases.
 - [Architecture & Security](./security-architecture): Discover how QIT enforces isolation, security, and reliability in custom E2E test runs.
 - [QIT Helpers](./qit-helpers): Simplify test scripting by using built-in helpers for common tasks.
-
-By mastering the lifecycle, you’ll write more predictable, maintainable, and reliable custom E2E tests. This ensures consistent results, faster debugging, and higher confidence in your extension’s compatibility and quality.

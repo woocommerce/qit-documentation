@@ -79,5 +79,3 @@ Adjusting the code to use relative URLs and environment variables ensures portab
 - [Understanding the Lifecycle](./understanding-lifecycle.md): See how helpers fit into different lifecycle phases (e.g., setup, test, teardown).
 - [Architecture & Security](#): Discover how QIT's underlying architecture supports secure and isolated test runs while using helpers.
 - [Running Tests](./running-tests.md): Practice using helpers in both local and cloud test environments for rapid feedback and continuous integration.
-
-By incorporating QIT Helpers into your E2E tests, you streamline the testing process, reduce duplication, and produce cleaner, more maintainable code. In turn, this leads to quicker iteration, better reliability, and increased confidence in your extension's quality.

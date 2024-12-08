@@ -132,5 +132,3 @@ The possibilities are limited only by your scripting and environment logic.
 - [Custom Tunnels](../environment/custom-tunnel.md): Combine custom handlers with tunnels if you need external integrations during the build or fetch process.
 - [Environment Variables](../environment/environment-variables.md): Leverage env variables to adjust logic dynamically.
 - [Scripting](./scripting.md): Automate your advanced handler workflows in CI pipelines or local development scripts.
-
-By using advanced configuration handlers, you gain unparalleled flexibility, enabling QIT to handle even the most intricate and dynamic test environment setups. This ensures that your testing process remains agile, adaptive, and fully aligned with your project's evolving needs.

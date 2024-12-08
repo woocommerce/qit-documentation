@@ -129,5 +129,3 @@ make qit-security
 - [GitHub Workflows](../using-qit/github-workflows.md): Integrate QIT tests into GitHub Actions for automated QA on pull requests and pushes.
 - [Using QIT via the CLI](../using-qit/running-tests-cli.md): Refine your understanding of CLI commands before scripting more complex workflows.
 - [Environment & Configuration](../environment/introduction.md): Combine scripting with custom configurations, tunneling, and handlers to build a robust testing ecosystem.
-
-By scripting QIT commands, you create a flexible, repeatable testing process that adapts to your team's changing needs, streamlines continuous integration, and ensures consistent quality checks for your extension.

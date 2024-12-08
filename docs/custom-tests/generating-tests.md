@@ -78,5 +78,3 @@ With your test structure in place and a handle on generating scenarios, you’re
 - [Running Tests](./running-tests.md): Learn how to run these tests locally for rapid feedback or in the QIT cloud for compatibility verification.
 - [Understanding the Lifecycle](./understanding-lifecycle.md): Dive deeper into the sequence of events and environment changes that occur before, during, and after test execution.
 - [Themes and Complex Configurations](./themes.md): Explore how to enforce specific themes, run compatibility tests with multiple plugins, and tweak environment settings for advanced cases.
-
-By taking advantage of codegen, shared setups, teardown files, and QIT helpers, you can build robust, maintainable E2E tests that provide meaningful insights into your extension’s behavior under various conditions.

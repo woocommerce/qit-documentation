@@ -44,5 +44,3 @@ When running `qit run:e2e your-extension --codegen`, consider switching themes b
 - [Understanding the Lifecycle](./understanding-lifecycle.md): Review how and when to activate themes within shared or isolated setups.
 - [Architecture & Security](./security-architecture.md): Learn about the underlying architecture that ensures clean environments and prevents cross-test interference, even when switching themes.
 - [QIT Helpers](./qit-helpers.md): Explore QIT’s helpers for simplifying test scripting, including actions like logging in as admin or running WP-CLI commands to switch themes.
-
-By integrating theme changes into your custom E2E tests, you ensure that your extension delivers a consistent, high-quality user experience, regardless of the visual presentation merchants choose for their stores.

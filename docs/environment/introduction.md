@@ -79,5 +79,3 @@ Now running `qit env:up` without extra parameters uses these configurations, ens
 - `--volumes`: Map local directories into the environment, useful for plugin or theme development.
 - `--php_extensions`: Add necessary PHP extensions.
 - `--object_cache`: Enable Redis Object Cache for advanced performance testing scenarios.
-
-By understanding and leveraging these options, you can tailor the local test environment to match your exact testing needs, ensuring you get reliable and actionable feedback on your extension’s behavior.

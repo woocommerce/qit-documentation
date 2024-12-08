@@ -60,5 +60,3 @@ If you've tried the suggestions above and still encounter issues:
 - [Viewing Allure Reports](./viewing-allure-reports.md): Dive deeper into failure details.
 - [Useful Commands](./useful-commands.md): Identify test runs, view logs, and retrieve reports efficiently.
 - [Customizing Environments](../environment/introduction.md): Adjust versions, tunnels, and handlers to create a more stable and controlled testing environment.
-
-By following these troubleshooting steps, you can quickly isolate problems, refine your tests, and maintain a stable and productive development workflow.

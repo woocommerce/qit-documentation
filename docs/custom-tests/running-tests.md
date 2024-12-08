@@ -117,5 +117,3 @@ If a test fails, use the CLI output and any provided URLs for logs, screenshots,
 - [Themes](./themes.md): Enforce a specific theme or test with multiple themes for front-end validation.
 - [Architecture & Security](./security-architecture.md): Gain insights into how QIT ensures test isolation, security, and reliable reporting.
 - [QIT Helpers](./qit-helpers.md): Explore built-in functions to simplify test writing, like logging in as admin or running WP-CLI commands.
-
-By relying on local execution and taking advantage of configuration files, tags, parameters, and QIT’s automatic environment management (`env:up` and `env:down` within `run:e2e`), you can tailor your testing process to match your development workflow. The WCCOM marketplace may also run these tests in a cloud environment during submission or update processes, ensuring your extension meets quality standards before distribution.

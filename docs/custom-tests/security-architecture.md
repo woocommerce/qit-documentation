@@ -56,5 +56,3 @@ All communication between QIT CLI, the QIT cloud environment, and any external s
 - [QIT Helpers](./qit-helpers.md): Utilize built-in helpers to run commands and interact with WordPress securely.
 - [Understanding the Lifecycle](./understanding-lifecycle.md): Learn how the lifecycle phases contribute to test isolation and data integrity.
 - [Advanced Configuration](../advanced-usage/advanced-config-handlers.md): Explore configuration files and tunneling options to enhance security and control.
-
-By understanding QIT’s security architecture and following best practices, you can confidently create and run custom E2E tests, knowing your code and data remain protected throughout the testing process.

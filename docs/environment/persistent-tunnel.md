@@ -90,5 +90,3 @@ QIT uses the persistent tunnel you configured, ensuring immediate DNS resolution
 - [Custom Tunnel](./custom-tunnel.md): If persistent tunnels do not meet your needs, consider implementing a custom tunneling solution.
 - [Environment & Configuration](../environment/introduction.md): Explore more advanced environment customizations to match your development workflow.
 - [Tunneling](./tunnel.md): Review other tunneling methods and their trade-offs.
-
-By setting up a persistent tunnel, you create a stable, always-accessible endpoint for your QIT local test environment, making external integration testing easier and more reliable.
