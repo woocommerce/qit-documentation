@@ -2,7 +2,7 @@
 
 In addition to testing individual extensions, QIT supports complex **compatibility testing** scenarios involving multiple plugins. By carefully assigning `action` values (`test`, `bootstrap`, or `activate`) to each plugin and leveraging QIT’s lifecycle phases (shared and isolated setups/teardowns, DB export/import), you can confirm that your extension works smoothly in a multi-plugin environment. This approach ensures stable and reliable experiences for merchants running diverse sets of plugins.
 
-## Key Concepts (Refined)
+## Key Concepts
 
 When including multiple plugins in a single test run, their actions determine which lifecycle phases they participate in. QIT’s lifecycle phases include:
 
