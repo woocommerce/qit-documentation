@@ -50,6 +50,15 @@ You can run tests from multiple plugins and tags simultaneously:
 
 This command runs a combination of tests from multiple sources, validating cross-plugin compatibility. Useful for ensuring that your extension plays well with other known integrations or related tools.
 
+**Compatibility and Lifecycle Integration:**
+
+When running compatibility tests involving multiple plugins and dependencies:
+- **SUT and Additional Plugins**: The SUT is always tested (`action: test`), while additional plugins may be set to `test`, `bootstrap`, or `activate`.
+- **Shared Setup/Teardown**: Shared scripts run once for all plugins, ensuring a global baseline. After shared setup finishes, QIT exports a DB snapshot. Each plugin that undergoes isolated testing (`test` action) will restore this snapshot before its isolated setup and after its isolated teardown, ensuring consistent conditions. Plugins in `bootstrap` or `activate` mode do not receive isolated phases; however, they still benefit from the shared setup conditions and remain active in the environment throughout the test run.
+- **Predictable Teardown**: By the time shared teardown scripts run, QIT restores the environment to the baseline snapshot, ensuring a consistent and predictable state for cleanup operations.For instance:Here, `woocommerce-amazon-s3-storage` and `woocommerce-progressive-discounts` receive isolated phases and tests, while `woocommerce-extra-plugin` is simply activated and benefits from the shared lifecycle steps without isolated runs. This approach allows you to test real-world compatibility scenarios where certain plugins provide baseline functionality (bootstrap/activate) while others are fully tested.
+
+Each plugin’s `action` (whether `test`, `bootstrap`, or `activate`) determines its participation in shared and isolated phases. For a refresher on these distinctions, see [Compatibility Testing with Custom E2E Tests](./compatibility-tests.md).
+
 ## Understanding the SUT, Additional Plugins, and Dependencies
 
 When running tests, QIT distinguishes between three key concepts in your test environment configuration:

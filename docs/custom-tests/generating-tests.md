@@ -27,6 +27,22 @@ This will create:
 
 These files help you configure the environment precisely before tests run and clean up afterward, streamlining complex test flows like multi-step onboarding sequences or compatibility checks between multiple extensions.
 
+**Lifecycle and Compatibility Notes:**
+
+When you include shared setup and teardown scripts, QIT’s lifecycle ensures that:
+
+- **Shared Setup/Teardown**: Runs once before and after all plugins’ tests in a given run. After shared setup completes, QIT exports a baseline database snapshot. All plugins that `test` or `bootstrap` will start from this snapshot. By the time you reach the shared teardown, the environment is restored to a known consistent state, ensuring that the shared teardown scripts always run in a predictable environment.
+- **Compatibility Tests**: In scenarios where multiple plugins are tested together (some with `test` actions, others `bootstrap` or `activate`), the shared setup and teardown scripts apply globally. Additional plugins and dependencies in `bootstrap` mode benefit from the shared setup steps (e.g., disabling wizards) without undergoing their own isolated setup or teardown phases. This allows for a stable, uniform baseline when testing compatibility among multiple extensions.
+
+For example:
+```bash
+qit scaffold:e2e ./e2e --with-shared --with-teardown
+```
+
+This command creates shared setup/teardown files that can help orchestrate complex compatibility scenarios from the get-go, ensuring every plugin’s test or bootstrap phase starts and ends on even footing.
+
+When setting up multiple plugins, remember that their `action` values (`test`, `bootstrap`, `activate`) affect how they participate in shared and isolated phases. For a detailed breakdown of these actions, see [Compatibility Testing with Custom E2E Tests](./compatibility-tests.md).
+
 ## Using Codegen for Test Generation
 
 QIT integrates with Playwright’s codegen feature to expedite test creation:

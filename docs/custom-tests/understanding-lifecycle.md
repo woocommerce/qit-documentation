@@ -52,6 +52,8 @@ This structure allows fine-grained control:
 - **Shared Setup/Teardown:** Affects all tests in a compatibility test scenario.
 - **Isolated Setup/Teardown:** Affects only individual plugin tests, ensuring that each plugin test scenario is isolated and reproducible.
 
+Note: Different plugin actions (`test`, `bootstrap`, `activate`) influence whether plugins appear in shared phases, isolated phases, or neither. For a full explanation of these actions, see [Compatibility Testing with Custom E2E Tests](./compatibility-tests.md).
+
 ## Practical Tips
 
 - **Use Shared Setup Wisely:** Common tasks (e.g., disabling onboarding wizards) belong in shared setup, so you don’t repeat them in every test.

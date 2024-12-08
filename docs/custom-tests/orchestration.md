@@ -80,6 +80,8 @@ Imagine running compatibility tests between two plugins: **Plugin A** and **Plug
 5. **Shared Teardown:**
     - Cleanup any global mocks or settings applied in the shared setup.
 
+Orchestration handles multiple plugins with different actions. If you need to recall how `test`, `bootstrap`, and `activate` differ in their lifecycle participation, revisit [Compatibility Testing with Custom E2E Tests](./compatibility-tests.md).
+
 ## Next Steps
 
 - Review the [Understanding the Lifecycle](./understanding-lifecycle) page for baseline concepts.

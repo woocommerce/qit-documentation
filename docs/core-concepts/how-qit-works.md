@@ -26,7 +26,8 @@ automatically when new releases are published to the Marketplace.
 Developers can create and maintain their own Playwright-based E2E tests tailored to their extension’s unique features.
 These tests are uploaded and stored within QIT’s infrastructure. The architecture supports running these custom tests
 locally or in the cloud environment, enabling compatibility testing between multiple extensions and scenarios that
-managed tests don’t cover.
+managed tests don’t cover. For detailed guidance on setting up multi-plugin compatibility tests, see
+[Compatibility Testing with Custom E2E Tests](./../custom-tests/compatibility-tests.md).
 
 **4. Cloud-based Test Runner and Environment**
 When a test run is triggered, QIT provisions a clean, isolated environment—complete with the specified WordPress,

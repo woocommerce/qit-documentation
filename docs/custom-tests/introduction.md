@@ -11,7 +11,9 @@ In this section, you'll learn how to generate, structure, and run custom E2E tes
 ## Why Custom E2E Tests?
 
 - **Unique User Flows:** Verify custom checkout fields, specialized product types, or complex discount logic that generic tests won’t catch.
-- **Integration Checks:** Ensure your extension remains compatible when used alongside other plugins or themes.
+- **Compatibility Tests:** Ensure your extension remains compatible when used alongside other plugins or themes.
+  For more complex multi-plugin testing scenarios, including how to manage actions like `test`, `bootstrap`, and
+  `activate` across multiple plugins, see [Compatibility Testing with Custom E2E Tests](./compatibility-tests).
 - **Early Feedback:** Run tests locally for instant validation during development, reducing the time spent debugging issues in production.
 - **Scalability and Collaboration:** Publish and tag your tests, allowing others to run them and ensuring consistency across development teams.
 
