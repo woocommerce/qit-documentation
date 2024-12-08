@@ -1,13 +1,13 @@
 # Running Custom E2E Tests
 
-Once you have generated, tagged, and refined your custom E2E tests, the next step is running them. QIT offers flexibility in how and where you execute tests. You can run them locally for rapid iteration or let QIT handle the process in the cloud, ensuring a clean and isolated environment every time.
+Once you have generated, tagged, and refined your custom E2E tests, the next step is running them. Typically, you will run these tests **locally** for rapid iteration and debugging. In some cases, the WooCommerce.com (WCCOM) marketplace may initiate these tests in a cloud environment as part of their quality control checks when a new plugin update or extension is added to the marketplace. However, from a developer’s perspective, you’ll primarily run tests locally.
 
 ## Basic Command
 
-The general command for running custom E2E tests is:
+The general command for running custom E2E tests locally is:
 `qit run:e2e your-extension`
 
-This runs the default test tag for the specified extension in QIT’s cloud environment. If you have uploaded tests and tagged them, you can specify tags:
+This runs the default test tag for the specified extension. If you have uploaded tests and tagged them, you can specify tags:
 `qit run:e2e your-extension my-tag`
 
 Multiple tags can be combined:
@@ -21,21 +21,17 @@ You can even pass a zipped version of your plugin to test an unpublished build:
 
 This installs your unpublished extension into the test environment before running the tests.
 
-## Running Locally vs. Cloud
+## Running Locally
 
-- **Local Environment:**  
-  Use `qit env:up` to spin up a disposable environment, then run:
-  `qit run:e2e your-extension ./e2e`
+When you run `qit run:e2e`, QIT automatically handles the `env:up` and `env:down` steps for you. This means a disposable environment is created before the tests start and torn down afterward—no extra commands are needed. This approach ensures a clean slate for each run and reduces manual setup overhead.
 
-  Running tests locally gives you immediate feedback, making it easier to debug and refine tests quickly. Once done, tear down the environment:
-  `qit env:down`
+## Marketplace (Cloud) Environment
 
-- **Cloud Environment:**  
-  Omit local paths or the zip argument to run tests in QIT’s cloud. This ensures a consistently fresh, isolated environment and is ideal for integration or compatibility checks before releasing updates.
+When the WCCOM marketplace triggers these tests—such as after submitting a new plugin or update—QIT runs them in a cloud environment. This ensures a consistently fresh, isolated environment without any local setup. However, this process is automatic and initiated by WCCOM, not the developer. For your day-to-day development, you’ll rely on local testing.
 
 ## Visual UI Mode
 
-For debugging complex scenarios, run:
+For debugging complex scenarios locally, run:
 `qit run:e2e your-extension --ui`
 
 This launches a browser so you can watch the tests execute step-by-step. Visual mode helps identify subtle issues, like incorrect selectors or unexpected UI states.
@@ -53,6 +49,41 @@ You can run tests from multiple plugins and tags simultaneously:
 `qit run:e2e example-plugin default,rc --plugin another-plugin:test-scenarios`
 
 This command runs a combination of tests from multiple sources, validating cross-plugin compatibility. Useful for ensuring that your extension plays well with other known integrations or related tools.
+
+## Understanding the SUT, Additional Plugins, and Dependencies
+
+When running tests, QIT distinguishes between three key concepts in your test environment configuration:
+
+1. **SUT (System Under Test)**:  
+   The main extension you’re validating. By default, the SUT is set to `action: test`, ensuring that QIT runs tests specifically for this extension. If you’ve defined a `qit.yml` or passed arguments like `woo_extension` or `--source`, QIT identifies the SUT and tests it accordingly.
+
+2. **Additional Plugins**:  
+   These are plugins you explicitly add to the environment using `--plugin` arguments (e.g., `--plugin woocommerce-extra-plugin:activate`). By default, if you don’t specify an action, additional plugins are set to `action: bootstrap`. This means they are installed and activated but not tested individually. If you need to test them, append `:test` to the plugin’s argument (e.g., `--plugin my-plugin:test`).
+
+3. **Dependencies**:  
+   Dependencies are critical requirements needed to activate the SUT or other plugins. These often come from the product metadata on WooCommerce.com (WCCOM) or, in the future, the “Requires Plugins” header in WordPress core. Dependencies can have their own dependencies, forming a chain of requirements that must be met before the SUT can run.
+
+   By default, dependencies are handled with `--dependencies=bootstrap`. This ensures that all required dependencies are installed and activated before the tests begin, providing a stable baseline. If you need a different action for dependencies (e.g., testing them as well), adjust the `--dependencies` parameter accordingly.
+
+**Where to Configure These Settings**
+
+- **SUT**: Usually defined by specifying a `woo_extension` argument, using a local `qit.yml`, or providing a `--source` parameter. QIT infers which extension is the primary one to test.
+- **Additional Plugins**: Declared via CLI arguments (e.g., `--plugin some-other-plugin`) or in `qit.yml`. Adjust their actions by appending `:test`, `:bootstrap`, or `:activate`.
+- **Dependencies**: Controlled via `--dependencies` parameter and by including them in `qit.yml` or ensuring they’re known to QIT through WCCOM metadata. QIT then installs and bootstraps these plugins so the SUT can run successfully.
+
+**Example:**
+
+```bash
+qit run:e2e woocommerce-amazon-s3-storage \
+--dependencies=bootstrap \
+--plugin woocommerce-extra-plugin:test \
+--plugin my-analytics-plugin
+```
+
+- The SUT (`woocommerce-amazon-s3-storage`) is tested by default.
+- `woocommerce-extra-plugin` is explicitly set to `test`.
+- `my-analytics-plugin` defaults to `bootstrap`.
+- Dependencies required by the SUT or these plugins are also bootstrapped according to `--dependencies=bootstrap`.
 
 ## Using a Configuration File
 
@@ -78,4 +109,4 @@ If a test fails, use the CLI output and any provided URLs for logs, screenshots,
 - [Architecture & Security](./security-architecture.md): Gain insights into how QIT ensures test isolation, security, and reliable reporting.
 - [QIT Helpers](./qit-helpers.md): Explore built-in functions to simplify test writing, like logging in as admin or running WP-CLI commands.
 
-By leveraging local and cloud environments, tags, configuration files, and optional features, you can run custom E2E tests in a manner that perfectly suits your development workflow. This flexibility ensures comprehensive coverage, early detection of issues, and a smoother path to delivering stable, high-quality extensions.
+By relying on local execution and taking advantage of configuration files, tags, parameters, and QIT’s automatic environment management (`env:up` and `env:down` within `run:e2e`), you can tailor your testing process to match your development workflow. The WCCOM marketplace may also run these tests in a cloud environment during submission or update processes, ensuring your extension meets quality standards before distribution.
