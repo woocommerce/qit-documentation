@@ -69,11 +69,17 @@ source: ./woocommerce-extra-plugin
 
 **Running the Test:**
 
-```bash
+```qitbash
+qit run:e2e woocommerce-amazon-s3-storage
+```
+
+Or, if you prefer CLI parameters:
+
+```qitbash
 qit run:e2e woocommerce-amazon-s3-storage \
---plugin woocommerce-progressive-discounts:test \
---plugin woocommerce-extra-plugin:activate \
---dependencies=bootstrap
+    --plugin woocommerce-progressive-discounts:test \
+    --plugin woocommerce-extra-plugin:activate \
+    --dependencies=bootstrap
 ```
 
 **What Happens Internally:**
