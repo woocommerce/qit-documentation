@@ -29,16 +29,43 @@ QIT (Quality Insights Toolkit) is a testing platform developed by WooCommerce fo
 
 ## Quick Start Guide
 
-1. **Install QIT CLI:**  
-   `composer require woocommerce/qit-cli --dev`
+**Recommended Approach: Global Installation via Composer**
+
+For the simplest and most consistent experience, install QIT CLI globally. This ensures QIT is readily available across all your projects without repeated per-project installations.
+
+1. **Install QIT CLI Globally:**  
+   ```bash
+   composer global require woocommerce/qit-cli
+   ```
+   Make sure your global Composer `bin` directory is in your `PATH`.  
+   Example:  
+   ```bash
+   export PATH="$PATH:$HOME/.composer/vendor/bin"
+   ```
 
 2. **Authenticate with QIT:**  
-   `./vendor/bin/qit connect`
-This generates a QIT Token and prompts you to [authenticate](./installation-setup/authenticating.md) with your WooCommerce.com developer account.
+   ```bash
+   qit connect
+   ```
+   This generates a QIT Token and prompts you to [authenticate](./installation-setup/authenticating.md) with your WooCommerce.com developer account.
 
 3. **Run Your First Test:**  
-   `./vendor/bin/qit run:activation your-extension`
+   ```bash
+   qit run:activation your-extension
+   ```
    Replace 'your-extension' with the slug of a WooCommerce.com extension you own. This runs a simple activation test to ensure your plugin can be activated without errors.
+
+**Alternative: Per-Project Installation (If Preferred)**  
+If you prefer isolating QIT to a single project, you can still install it locally using:
+```bash
+composer require woocommerce/qit-cli --dev
+```
+And run commands via:
+```bash
+./vendor/bin/qit connect
+./vendor/bin/qit run:activation your-extension
+```
+However, the global installation approach is recommended for most developers.
 
 ## What Tests Are Available?
 
@@ -52,7 +79,7 @@ Each test type runs in a controlled environment, providing consistent, reproduci
 
 QIT automatically runs tests for every new release published on the WooCommerce Marketplace. Partner Developers can also run tests on-demand using the CLI or the WooCommerce.com Vendor Dashboard.
 
-'## Non-Partner Developers
+## Non-Partner Developers
 
 While full QIT access is currently exclusive to WooCommerce.com Partner Developers, a local test environment is available for non-partners. We plan to open full access publicly in the future. Stay tuned!
 
