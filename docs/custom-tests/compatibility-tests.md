@@ -98,12 +98,8 @@ For more intricate scenarios (multiple `test` plugins, advanced dependencies, in
 - **Dedicated Configs:** Maintain separate qit.yml or test tags for multi-plugin scenarios.
 - **Enhanced Lifecycle Scripts:** Add custom shell/JS steps in shared/isolated phases to fine-tune conditions.
 
-If complexity grows, consider creating an advanced guide and linking it from here.
-
 ## Next Steps
 
 - **Review Custom E2E Basics:** Understand writing and running tests before tackling multi-plugin compatibility.
 - **Iterate and Refine:** Experiment with different plugin actions (`test`, `bootstrap`, `activate`) to find the right balance for your compatibility scenarios.
 - **Scale Up:** As your extension and ecosystem evolve, refine your compatibility testing strategies to ensure ongoing stability.
-
-By understanding the nuances between `test`, `bootstrap`, and `activate`, and how each action intersects with shared and isolated phases, you can confidently handle complex compatibility testing. This proactive approach ensures your extensions remain robust, stable, and merchant-friendly, even in diverse plugin environments.
