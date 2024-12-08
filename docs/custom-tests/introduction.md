@@ -43,5 +43,6 @@ This introduction is the first step. Custom E2E testing involves several moving 
 - **Visual Test Execution:** Run `qit run:e2e your-extension --ui` to observe the tests in a browser, improving debugging and communication with your team.
 - **Publishing and Sharing:** Once you’ve perfected your tests, publish them so that other developers (or future you) can run these scenarios easily.
 - **CI Integration:** Integrate custom E2E tests into your CI pipelines for continuous feedback, ensuring your extension’s quality at every commit.
+- **Compatibility Tests:** Leveraging shared setup and teardown scripts, orchestrate complex compatibility scenarios across multiple plugins, ensuring consistent test environments and results.
 
 By following this guide and exploring the linked topics, you’ll gain the confidence and tools needed to create comprehensive, reliable tests tailored to your extension’s unique behavior. With custom E2E testing, you can proactively address regressions, maintain compatibility, and deliver a seamless experience to merchants and customers alike.
