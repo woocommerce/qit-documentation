@@ -57,6 +57,6 @@ By combining both types of tests, you get a thorough quality assurance process:
 
 ## Next Steps
 
-- **Learn How QIT Works:** If you haven’t yet, see 'core-concepts/how-qit-works' to understand how these test types fit into the overall QIT architecture.
-- **Managed Tests in Detail:** Dive deeper into each managed test type in 'managed-tests/introduction'.
-- **Getting Started with Custom E2E Tests:** Explore how to scaffold, write, and run your own tests in 'custom-tests/introduction'.
+- **Learn How QIT Works:** If you haven’t yet, see [How QIT Works](./how-qit-works) to understand how these test types fit into the overall QIT architecture.
+- **Managed Tests in Detail:** Dive deeper into each managed test type in [Managed Tests Introduction](./../managed-tests/introduction).
+- **Getting Started with Custom E2E Tests:** Explore how to scaffold, write, and run your own tests in [Custom E2E Tests Introduction](./../custom-tests/introduction).

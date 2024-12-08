@@ -44,13 +44,13 @@ For the simplest and most consistent experience, install QIT CLI globally. This 
    ```
 
 2. **Authenticate with QIT:**  
-   ```bash
+   ```qitbash
    qit connect
    ```
    This generates a QIT Token and prompts you to [authenticate](./installation-setup/authenticating.md) with your WooCommerce.com developer account.
 
 3. **Run Your First Test:**  
-   ```bash
+   ```qitbash
    qit run:activation your-extension
    ```
    Replace 'your-extension' with the slug of a WooCommerce.com extension you own. This runs a simple activation test to ensure your plugin can be activated without errors.
