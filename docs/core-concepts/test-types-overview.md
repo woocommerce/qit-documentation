@@ -2,12 +2,10 @@
 
 QIT supports multiple kinds of tests designed to ensure the quality, compatibility, and security of WooCommerce extensions. These tests fall into two main categories: **Managed Tests** and **Custom E2E Tests**.
 
-Why does this matter?  
-By familiarizing yourself with these test types, you can leverage QIT to catch issues early, maintain compatibility with evolving WordPress and WooCommerce versions, and deliver a reliable experience to merchants and their customers.
+By utilizing these test types, you can leverage QIT to catch issues early, maintain compatibility with evolving WordPress and WooCommerce versions, and deliver a reliable experience to merchants and their customers.
 
 ## Managed Tests
 
-Definition:  
 Managed tests are a suite of pre-built, standardized test scenarios maintained by the QIT team. They require no additional setup from you—just run them against your extension, and QIT will handle the rest.
 
 Key Characteristics:
@@ -28,7 +26,6 @@ By relying on these managed tests, you inherit the cumulative knowledge and stan
 
 ## Custom E2E Tests
 
-Definition:  
 Custom E2E (End-to-End) tests are scenarios you design, write, and maintain yourself. They let you test unique plugin-specific features and user journeys that managed tests don’t cover.
 
 Key Characteristics:
