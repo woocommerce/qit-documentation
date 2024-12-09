@@ -76,13 +76,13 @@ Replace `your-extension` with the slug of your plugin.
 
 ## Using a Tunnel
 
-... you can use our [built-in tunnel feature](../environment/tunnel.md) to expose the test site to the internet ...
+Some plugins might need an actual live site URL to work properly, such as payment gateways and SaaS. For those, you can use our [built-in tunnel feature](../environment/tunnel.md) to test these plugins.
 
 ## What to Do if It Fails
 
 If your Activation test fails:
 
 - Open the test report to review logs and identify the root cause.
-- Check for PHP notices, warnings, or errors triggered during activation and subsequent flows.
+- Identify the causes of failure. The test will log PHP notices, warnings, and errors that happens when activating your plugin.
 - Reproduce the issue locally and fix it in your code.
 - If you believe the result is incorrect, please email us at qit@woocommerce.com for further assistance.
