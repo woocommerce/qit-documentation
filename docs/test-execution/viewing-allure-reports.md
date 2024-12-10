@@ -1,4 +1,4 @@
-# Viewing allure reports
+# Viewing Allure reports
 
 Allure reports provide a rich, visual interface to understand the results of your end-to-end tests, including steps, screenshots, stack traces, and overall test statuses. When a test fails, QIT often generates an Allure report that you can review directly from the QIT CLI or the WooCommerce Vendor Dashboard.
 

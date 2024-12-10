@@ -11,7 +11,7 @@ If you prefer a user interface (UI) over the command line, the WooCommerce Vendo
 
 1. Log in to your WooCommerce.com account.
 2. Navigate to the `Vendor Dashboard` section.
-3. Look for the `Quality Insights` or `QIT` menu item to access the testing tools.
+3. Look for the `Quality Insights` menu item to access the testing tools.
 
 ## Running a test
 
@@ -36,14 +36,8 @@ By clicking the `View Report` option, you can access more in-depth information, 
 
 ## Triggering tests for new releases
 
-When you publish a new version of your extension on the WooCommerce Marketplace, QIT may automatically trigger managed tests. However, you can also run tests on-demand from the dashboard before publishing, ensuring any issues are caught early.
+When you publish a new version of your extension on the WooCommerce Marketplace, QIT will automatically trigger managed tests. However, you can also run tests on-demand from the dashboard before publishing, ensuring any issues are caught early.
 
 ## Notifications and alerts
 
 If you have enabled email notifications, you will receive an email when a test completes if it results in warnings or failures. For more information on setting up notifications, see [Notifications and Results](./notifications-results.md).
-
-## Why use the dashboard?
-
-- **Non-technical access:** Team members not comfortable with the CLI can still manage tests and review results.
-- **On-demand testing:** Quickly rerun tests after making changes without setting up a local environment.
-- **Unified interface:** All test management and result review happen in one place, integrated with the WooCommerce Marketplace workflow.

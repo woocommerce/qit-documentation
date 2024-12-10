@@ -80,6 +80,6 @@ When tests complete, QIT CLI provides a summary of the results:
 - **Warning:** The test completed, but with non-fatal errors or notices.
 - **Failed:** A critical error or incompatibility was detected.
 
-For more detailed insights:
-- [Viewing Test Results](./notifications-results.md): Learn how to access logs, screenshots, and detailed reports.
+For more detailed insights see [Viewing Test Results](./notifications-results.md) which details how to access logs, screenshots, and detailed reports.
+
 If you have enabled email notifications, you will receive an email when a test completes if it results in warnings or failures. For more information on setting up notifications, see [Notifications and Results](./notifications-results.md).
