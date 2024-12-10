@@ -1,35 +1,37 @@
-# Plugin check tests
+# Plugin Check tests
 
-Plugin Check tests run the [wordpress.org automated plugin check](https://wordpress.org/plugins/plugin-check) tool against your extension. This tool helps identify issues and guidelines violations aligned with the WordPress.org plugin directory standards. While this test is optional and not automatically triggered by QIT for WooCommerce Marketplace submissions, it can be valuable if you also distribute your extension on wordpress.org or simply want to align with broader WordPress best practices.
+**Plugin Check tests** run the [wordpress.org automated plugin check](https://wordpress.org/plugins/plugin-check) tool against your extension. This optional test focuses on guidelines and patterns important for submitting plugins to the WordPress.org directory.
 
-## What the plugin check tool evaluates
+**Note:** Currently, these checks are not automatically triggered for WooCommerce Marketplace submissions. They are available for developers who also distribute on wordpress.org or wish to maintain broader WordPress best-practices.
 
-- **Core guidelines compliance:** Flags code patterns that violate WordPress.org plugin review guidelines.
-- **Repository readiness:** Ensures that the extension meets baseline directory requirements, such as proper file structures and absence of known problematic patterns.
-- **General code hygiene:** May highlight deprecated functions, insecure code, or other areas of improvement, even if not strictly required by WooCommerce Marketplace standards.
+## What is evaluated
+
+The tool currently runs checks from the `plugin_repo` category, which helps identify violations of the [WordPress.org Plugin Review Guidelines](https://make.wordpress.org/plugins/handbook/performing-reviews/review-checklist/). These may include:
+
+- **Core guideline compliance:** Detects code that violates mandatory directory rules.
+- **Repository readiness:** Flags improper file structures, disallowed functions, or patterns that could prevent listing on wordpress.org.
+- **General code health:** May highlight deprecated functions, insecure code usage, or general best-practice concerns.
 
 ## Interpreting results
 
-- **Success:** The plugin passes the checks with no major issues detected.
-- **Warnings/Failures:** The tool flags potential guideline violations or best-practice deviations that may prevent approval on wordpress.org or indicate general quality concerns.
+- **Success:** No major issues detected.
+- **Warnings/Failures:** Potential guideline violations or best-practice deviations are highlighted. While not necessarily blocking for WooCommerce Marketplace, they could impact your plugin’s acceptability on wordpress.org.
 
-If the test fails or reports warnings:
-- Review each flagged issue and consider whether it affects your distribution channels (e.g., wordpress.org).
-- Update code, remove non-compliant functions, or adjust file structures as recommended.
-- Rerun the test to confirm that the flagged issues have been resolved.
+## Next steps if it fails
 
-## Scope and caveats
+1. **Review the flagged issues:** Open the test report and note the specific areas of concern.
+2. **Address the problems:** Update your code, remove non-compliant functions, or adjust file structures as needed.
+3. **Rerun the test:** Confirm that the issues have been resolved.
+4. **Consider reporting issues:** If you believe the check is producing a false positive or that the tool itself has a bug, [open an issue with Plugin Check](https://github.com/WordPress/plugin-check/issues). If you suspect a QIT-specific issue, email us at qit@woocommerce.com.
 
-- **Not mandatory for WooCommerce marketplace:** Currently, QIT does not require you to pass these plugin check tests to publish on the WooCommerce Marketplace. They are offered as an additional safeguard and resource.
-- **False positives or strict rules:** If the tool flags something you believe is a false positive, review the relevant WordPress.org guidelines. You may choose to ignore or bypass these warnings if not applicable, or consider reaching out to the WordPress.org plugin review team for clarification.
+## Scope and best practices
 
-## Best practices
+- **Optional for WooCommerce Marketplace:** Passing Plugin Check is not currently required for publishing on the WooCommerce Marketplace.
+- **Future-proofing your code:** Running these tests periodically helps ensure that your plugin remains compatible and well-structured for multiple distribution channels.
+- **Combine with other tests:** Plugin Check complements managed tests, security scans, and E2E tests, offering a broader quality overview of your extension.
 
-- **Regular reviews:** Running plugin check tests occasionally ensures you maintain compatibility with broader WordPress standards, improving extensibility and future-proofing your code.
-- **Combine with other tests:** Plugin check results can complement managed tests, security scans, and E2E tests, providing a holistic view of your extension’s quality.
+## Further resources
 
-## Next steps
-
-- [Managed Tests Introduction](./introduction.md): Explore other managed tests that focus on WooCommerce-specific criteria.
-- [Security Tests](./security.md): Pairing plugin checks with security audits ensures code not only meets guidelines but is also safe.
-- [Notifications and Results](../using-qit/notifications-results.md): Configure alerts and review logs to stay informed about any flagged issues.
+- [Security Tests](./security.md)
+- [Notifications and Results](../using-qit/notifications-results.md)
+- [Managed Tests Introduction](./introduction.md)
