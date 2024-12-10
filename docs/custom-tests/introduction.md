@@ -15,7 +15,7 @@ In this section, you'll learn how to generate, structure, and run custom E2E tes
 
 ## Getting started
 
-See [Installation & Setup](../installation-setup/cli-installation.md) and [Authenticating](../installation-setup/authenticating.md) if you haven’t.
+1. See [Installation & Setup](../installation-setup/cli-installation.md) and [Authenticating](../installation-setup/authenticating.md) if you haven’t.
 2. **List Available Extensions:** Run `qit extensions` to confirm which extensions you can test.
 3. **Generate a Test Scaffold:** `qit scaffold:e2e my-test` creates a starter template, including a basic test file and optional bootstrap scripts.
 4. **Run an Initial Test:** `qit run:e2e your-extension-slug my-test` executes the generated test against a local or cloud environment.
