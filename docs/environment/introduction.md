@@ -1,9 +1,5 @@
 # Local test environment introduction
 
-:::info
-The local test environment is available as early-access.
-:::
-
 ## Introduction
 
 The QIT local test environment is designed with a single purpose: running automated tests in a clean, disposable WordPress environment. With one command, you can spin up a temporary WordPress and WooCommerce setup, perform tests, and tear it down—leaving no trace behind. This ensures consistency, reproducibility, and minimal clutter in your development workflow.

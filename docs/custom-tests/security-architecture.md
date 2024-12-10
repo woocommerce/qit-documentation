@@ -1,9 +1,5 @@
 # The security architecture of custom E2E tests
 
-:::info
-The custom E2E tests feature is available as early access.
-:::
-
 Security is central to QIT’s approach for running custom E2E tests. When you execute tests—either locally or in QIT’s cloud environment—they run in tightly controlled, containerized environments engineered to isolate and protect your code, data, and infrastructure. Understanding this security architecture helps you trust that your tests run safely and predictably, without risking leaks, unauthorized access, or interference.
 
 ## Containerized, disposable environments

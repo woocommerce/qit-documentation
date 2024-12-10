@@ -1,7 +1,5 @@
 # Using a custom tunnel
 
-`The local test environment is available as early-access.`
-
 While QIT provides built-in tunneling methods—such as `cloudflared-docker`, `cloudflared-binary`, and `cloudflared-persistent`—there may be scenarios where none of the default options suit your needs. In these cases, you can implement your own custom tunneling method by creating a class that extends `CustomTunnel`.
 
 ## Why a custom tunnel?
@@ -15,6 +13,7 @@ While QIT provides built-in tunneling methods—such as `cloudflared-docker`, `c
 Create a PHP file that defines a class extending `QIT_CLI\Tunnel\CustomTunnel` and implement the required static methods. For example:
 
 `custom-tunnel.php`:
+
 ```php
 <?php
 
@@ -70,7 +69,8 @@ This custom class:
 Include the custom tunnel class via the `qit tunnel:setup` command and follow prompts to select `custom` as your tunnel type. Alternatively, specify it directly in your qit config.
 
 For example:
-```bash
+
+```qitbash
 qit env:up --tunnel custom
 ```
 
@@ -87,8 +87,8 @@ When you run this command, QIT calls `MyCustomTunnel::connect_tunnel`, retrieves
 A custom tunnel integrates seamlessly with QIT's environment configuration. Run tests that rely on external callbacks or payments through your custom tunnel just like you would with any built-in method.
 
 For example:
-```bash
+```qitbash
 qit run:woo-e2e your-extension --tunnel custom
 ```
 
-ensures that the Woo E2E tests run against the publicly accessible URL your tunnel provides.
+Ensures that the Woo E2E tests run against the publicly accessible URL your tunnel provides.

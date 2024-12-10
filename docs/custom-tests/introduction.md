@@ -1,9 +1,5 @@
 # Introduction to custom E2E tests
 
-:::info
-The custom E2E tests feature is available as early access.
-:::
-
 While managed tests provide a strong baseline for quality, compatibility, and security, your extension may include unique features or workflows that require specialized validation. Custom E2E (end-to-end) tests fill this gap. They enable you to write tailored test scenarios that simulate real-world usage patterns, integrate with other plugins and themes, and run complex workflows that managed tests might not cover.
 
 In this section, you'll learn how to generate, structure, and run custom E2E tests, as well as how to share them with other developers and incorporate them into your continuous integration (CI) pipeline.

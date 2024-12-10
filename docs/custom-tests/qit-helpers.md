@@ -1,9 +1,5 @@
 # QIT helpers
 
-:::info
-The custom E2E tests feature is available as early access.
-:::
-
 QIT provides a set of built-in helper functions to simplify common tasks in your custom E2E tests. These helpers eliminate the need to re-invent wheels, letting you focus on validating your extension's unique functionality rather than boilerplate setup steps.
 
 ## Why use helpers?

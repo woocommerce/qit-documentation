@@ -1,9 +1,5 @@
 # Installing plugins and themes from other sources
 
-:::info
-The local test environment is available as early-access.
-:::
-
 ## Introduction
 
 While QIT supports installing plugins and themes from WordPress.org and local zip files, you may need to fetch extensions from premium marketplaces, private repositories, or other specialized sources that QIT does not natively support. Custom handlers allow you to define exactly how QIT should retrieve, build, and prepare these extensions before installing them into your test environment.

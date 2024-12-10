@@ -1,7 +1,5 @@
 # Using a persistent tunnel
 
-`The local test environment is available as early-access.`
-
 When testing plugins that rely on a stable, publicly accessible URL—such as payment gateways, API callbacks, or SaaS integrations—a persistent tunnel provides a permanent, predictable address. Unlike temporary tunnels, which may suffer from DNS propagation delays and variable URLs, persistent tunnels rely on a pre-configured Cloudflare Tunnel that you set up once and reuse indefinitely.
 
 ## Requirements

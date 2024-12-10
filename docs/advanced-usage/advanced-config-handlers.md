@@ -1,9 +1,5 @@
 # Advanced configuration with custom handlers
 
-:::info
-The local test environment is available as early-access.
-:::
-
 ## Introduction
 
 While custom handlers primarily focus on fetching and preparing plugins or themes from external sources, you can also leverage them for advanced configuration scenarios. By extending the capabilities of custom handlers and combining them with environment configuration files (qit.yml or qit.json), you gain fine-grained control over how your test environment is built and tailored.

@@ -1,9 +1,5 @@
 # Installing plugins and themes
 
-:::info
-The local test environment is available as early-access.
-:::
-
 ## Introduction
 
 When setting up your local test environment, you often need specific plugins or themes to replicate real-world conditions. Whether testing your extension’s compatibility with WooCommerce, Gutenberg, or a popular theme, QIT makes it easy to install these components as part of your test environment setup.

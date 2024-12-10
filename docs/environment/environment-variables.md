@@ -1,7 +1,5 @@
 # Environment variables
 
-`The local test environment is available as early-access.`
-
 ## Introduction
 
 Environment variables let you pass configuration values, secrets, or feature flags into your QIT test environment without hardcoding them in your tests or code. By injecting environment variables at runtime, you can easily adjust behavior, supply API keys, toggle features, or run tests under different conditions.
@@ -10,13 +8,13 @@ Environment variables let you pass configuration values, secrets, or feature fla
 
 You can set environment variables directly via the CLI using the `--env` option:
 
-```bash
+```qitbash
 qit run:e2e your-extension --env FOO=FOO_VALUE
 ```
 
 You can specify multiple variables:
 
-```bash
+```qitbash
 qit run:e2e your-extension --env FOO=FOO_VALUE --env BAR=BAR_VALUE
 ```
 
@@ -24,11 +22,12 @@ qit run:e2e your-extension --env FOO=FOO_VALUE --env BAR=BAR_VALUE
 
 If you have many environment variables or prefer keeping them organized in a file, use the `--env_file` option:
 
-```bash
+```qitbash
 qit run:e2e your-extension --env_file .env
 ```
 
 In the `.env` file:
+
 ```env
 FOO=FOO_VALUE
 BAR=BAR_VALUE
@@ -76,13 +75,15 @@ If a variable is set in both the CLI and an `.env` file, the CLI argument takes 
 ## Example scenario
 
 1. Create a `.env` file:
+2. 
 ```env
 API_URL=https://staging.api.example.com
 API_KEY=12345
 ```
 
 2. Run tests:
-```bash
+
+```qitbash
 qit run:e2e your-extension --env_file .env
 ```
 

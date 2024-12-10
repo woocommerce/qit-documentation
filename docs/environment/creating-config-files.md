@@ -1,9 +1,5 @@
 # Creating configuration files
 
-:::info
-The local test environment is available as early-access.
-:::
-
 ## Introduction
 
 While you can customize your test environment through CLI parameters, configuration files offer a more scalable and team-friendly approach. By defining your WordPress, WooCommerce, PHP versions, and additional plugins or themes in a JSON or YAML file, you ensure consistent setups for every team member without relying on lengthy command-line arguments.

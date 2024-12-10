@@ -1,9 +1,5 @@
 # Themes
 
-:::info
-The custom E2E tests feature is available as early access.
-:::
-
 When writing custom E2E tests that interact with the front-end, the active theme can influence the layout, markup, and behavior of your store. Testing under different themes helps ensure your extension works smoothly in various visual and structural environments. For example, a checkout customization might look great on Storefront but fail on another theme with different template overrides.
 
 ## Why test with different themes?
