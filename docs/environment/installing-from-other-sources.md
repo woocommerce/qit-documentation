@@ -16,9 +16,9 @@ Custom handlers integrate QIT with external sources, making it possible to insta
    Create a new class that extends `CustomHandler` provided by QIT.
 
 2. `Implement Required Methods:`
-    - `should_handle`: Determine if the given extension slug should be handled by this class.
-    - `populate_extension_versions`: Optionally define a version or commit hash for caching.
-    - `maybe_download_extensions`: Fetch, build, or download the extension and set its `path` attribute to the resulting file.
+   - `should_handle`: Determine if the given extension slug should be handled by this class.
+   - `populate_extension_versions`: Optionally define a version or commit hash for caching.
+   - `maybe_download_extensions`: Fetch, build, or download the extension and set its `path` attribute to the resulting file.
 
 3. `Use the Custom Handler:`  
    Include the custom handler file with `qit env:up --require=my-custom-handler.php` or specify it in `qit.yml`. QIT will then invoke your handler to fetch the specified extensions.
@@ -32,7 +32,9 @@ Below are several examples to illustrate different scenarios. Adjust them to mee
 Assume you have a public GitHub repo hosting a WordPress plugin on the 'main' branch.
 
 Command:
-`qit env:up --requires=public-handler.php --plugins=my-public-plugin`
+```qitbash
+qit env:up --requires=public-handler.php --plugins=my-public-plugin
+```
 
 Or in `qit.yml`:
 ```yaml
@@ -83,7 +85,9 @@ class PublicHandlerExample extends CustomHandler {
 For private repositories requiring authentication, you can use git clone and git archive commands to fetch and zip the code before installation.
 
 Command:
-`qit env:up --requires=private-handler.php --plugins=my-private-plugin`
+```qitbash
+qit env:up --requires=private-handler.php --plugins=my-private-plugin
+```
 
 Or in `qit.yml`:
 ```yaml
@@ -150,7 +154,9 @@ This example:
 - Caches the built zip for future runs unless the commit changes.
 
 Command:
-`qit env:up --requires=advanced-handler.php --plugins=my-advanced-plugin`
+```qitbash
+qit env:up --requires=advanced-handler.php --plugins=my-advanced-plugin
+```
 
 Or in `qit.yml`:
 ```yaml
@@ -249,7 +255,9 @@ class AdvancedGitHubHandler extends CustomHandler {
 ## Using the custom handler
 
 Include your handler using:
-`qit env:up --requires=my-custom-handler.php --plugins=my-custom-plugin`
+```qitbash
+qit env:up --requires=my-custom-handler.php --plugins=my-custom-plugin
+```
 
 Or in `qit.yml`:
 ```yaml
