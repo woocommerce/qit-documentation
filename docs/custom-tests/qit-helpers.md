@@ -1,4 +1,4 @@
-# QIT Helpers
+# QIT helpers
 
 :::info
 The custom E2E tests feature is available as early access.
@@ -6,15 +6,15 @@ The custom E2E tests feature is available as early access.
 
 QIT provides a set of built-in helper functions to simplify common tasks in your custom E2E tests. These helpers eliminate the need to re-invent wheels, letting you focus on validating your extension's unique functionality rather than boilerplate setup steps.
 
-## Why Use Helpers?
+## Why use helpers?
 
 - **Less Boilerplate:** Quickly log in as an admin or run WP-CLI commands without manually writing those steps every time.
 - **Consistent Operations:** Helpers ensure that tasks like user authentication or database manipulation are handled consistently, reducing flakiness and errors.
 - **Faster Iteration:** Spend more time refining your test scenarios rather than dealing with repetitive, low-level details.
 
-## Available Helpers
+## Available helpers
 
-### Authentication Helpers
+### Authentication helpers
 
 - `qit.loginAsAdmin(page)`:  
   Logs into wp-admin as an administrator user. Useful for tests that require administrative actions before running front-end scenarios.
@@ -22,17 +22,17 @@ QIT provides a set of built-in helper functions to simplify common tasks in your
 - `qit.loginAs(page, "username", "password")`:  
   Logs in as a specific user, allowing you to test scenarios that depend on particular user roles or capabilities.
 
-### WP-CLI Helpers
+### WP-CLI helpers
 
 - `qit.wp("plugin list")`:  
   Runs a WP-CLI command directly in the PHP container, enabling you to manipulate the WordPress installation on-the-fly (e.g., installing a plugin or changing a setting).
 
-### Reporting Helpers
+### Reporting helpers
 
 - `qit.attachScreenshot("name", context, page, testInfo)`:  
   Attaches a screenshot to the test context, enabling better visual debugging in reports. Add optional contextual data to help trace issues.
 
-### Environment Helpers
+### Environment helpers
 
 - `qit.getEnv("MY_ENV_VAR")`:  
   Retrieves an environment variable value, letting you pass sensitive data into your tests without hardcoding them.
@@ -40,7 +40,7 @@ QIT provides a set of built-in helper functions to simplify common tasks in your
 - `qit.setEnv("MY_ENV_VAR", "my-value")`:  
   Sets environment variables dynamically, allowing you to adjust configurations or test conditions on the fly.
 
-## Example Usage
+## Example usage
 
 Imagine a test that needs to install and activate a plugin via WP-CLI, then log in as admin and navigate to an admin page:
 
@@ -68,13 +68,13 @@ test("My custom scenario", async ({ page, testInfo }) => {
 
 Adjusting the code to use relative URLs and environment variables ensures portability and flexibility. The helpers handle repetitive tasks, freeing you to focus on the scenario's logic.
 
-## Best Practices
+## Best practices
 
 - **Use loginAsAdmin at the Start:** Keep authentication steps at the beginning of a test, so subsequent actions assume a stable, known state.
 - **Prefer qit.wp Over Direct DB Access:** Rely on WP-CLI for database or configuration changes. It maintains WordPress standards and reduces the risk of introducing instability.
 - **Leverage Screenshots and Env Variables:** Attach screenshots at key steps for visual confirmation. Use environment variables for sensitive data or toggling test modes without editing the test code itself.
 
-## Next Steps
+## Next steps
 
 - [Understanding the Lifecycle](./understanding-lifecycle.md): See how helpers fit into different lifecycle phases (e.g., setup, test, teardown).
 - [Architecture & Security](./security-architecture.md): Discover how QIT's underlying architecture supports secure and isolated test runs while using helpers.

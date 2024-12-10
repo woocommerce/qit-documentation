@@ -1,12 +1,12 @@
-# Contact Us
+# Contact us
 
 If you have questions, need help with QIT, or want to share feedback, we encourage you to reach out.
 
-## Email Support
+## Email support
 
 Send an email to `qit@woocommerce.com` for inquiries related to QIT usage, troubleshooting, or feature requests. Provide as many details as possible—such as the test run ID, relevant logs, or steps to reproduce issues—to help us assist you more effectively.
 
-## GitHub Issues
+## GitHub issues
 
 If you encounter bugs or have improvement suggestions:
 1. Visit the QIT CLI GitHub repository: [https://github.com/woocommerce/qit-cli/issues](https://github.com/woocommerce/qit-cli/issues)
@@ -19,7 +19,7 @@ If you encounter bugs or have improvement suggestions:
 
 GitHub issues help the community track and discuss problems and enhancements, enabling more collaborative solutions.
 
-## Feedback and Suggestions
+## Feedback and suggestions
 
 QIT is evolving, and your input is valuable. Consider:
 - Sharing feedback on specific tests or workflows.
@@ -28,7 +28,7 @@ QIT is evolving, and your input is valuable. Consider:
 
 You can use GitHub issues, email, or the WooCommerce Vendor Dashboard feedback form (if available) to submit ideas.
 
-## Security and Vulnerability Reports
+## Security and vulnerability reports
 
 If you discover a security vulnerability related to QIT:
 - Email `qit@woocommerce.com` with `Security Issue` in the subject line.
@@ -37,12 +37,12 @@ If you discover a security vulnerability related to QIT:
 
 We appreciate responsible disclosure and will work to resolve issues promptly.
 
-## Stay Updated
+## Stay updated
 
 - Check the QIT GitHub repository’s README or releases page for announcements.
 - Watch the repository to get notified of new releases or issues.
 
-## Next Steps
+## Next steps
 
 - [Troubleshooting](../test-execution/troubleshooting.md): Consult the troubleshooting guide for immediate self-help.
 - [Useful Commands](../test-execution/useful-commands.md): Use CLI commands to gather logs and test run details before contacting support.

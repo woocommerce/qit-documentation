@@ -1,4 +1,4 @@
-# Introduction to Custom E2E Tests
+# Introduction to custom E2E tests
 
 :::info
 The custom E2E tests feature is available as early access.
@@ -8,7 +8,7 @@ While managed tests provide a strong baseline for quality, compatibility, and se
 
 In this section, you'll learn how to generate, structure, and run custom E2E tests, as well as how to share them with other developers and incorporate them into your continuous integration (CI) pipeline.
 
-## Why Custom E2E Tests?
+## Why custom E2E tests?
 
 - **Unique User Flows:** Verify custom checkout fields, specialized product types, or complex discount logic that generic tests won’t catch.
 - **Compatibility Tests:** Ensure your extension remains compatible when used alongside other plugins or themes.
@@ -17,7 +17,7 @@ In this section, you'll learn how to generate, structure, and run custom E2E tes
 - **Early Feedback:** Run tests locally for instant validation during development, reducing the time spent debugging issues in production.
 - **Scalability and Collaboration:** Publish and tag your tests, allowing others to run them and ensuring consistency across development teams.
 
-## Getting Started
+## Getting started
 
 See [Installation & Setup](../installation-setup/cli-installation.md) and [Authenticating](../installation-setup/authenticating.md) if you haven’t.
 2. **List Available Extensions:** Run `qit extensions` to confirm which extensions you can test.
@@ -25,7 +25,7 @@ See [Installation & Setup](../installation-setup/cli-installation.md) and [Authe
 4. **Run an Initial Test:** `qit run:e2e your-extension-slug my-test` executes the generated test against a local or cloud environment.
 5. **Refine and Expand:** Learn how to add more tests, use codegen tools, and adjust environments as you progress.
 
-## What’s Next?
+## What’s next?
 
 This introduction is the first step. Custom E2E testing involves several moving parts, and the following pages will guide you through each phase:
 
@@ -37,7 +37,7 @@ This introduction is the first step. Custom E2E testing involves several moving 
 - [Architecture & Security](./security-architecture.md): Explore how QIT’s custom E2E architecture ensures isolation, security, and easy integration with various stacks.
 - [QIT Helpers](./qit-helpers.md): Utilize QIT’s built-in helpers to simplify test writing, handle authentication, or manage WP-CLI commands within tests.
 
-## Additional Capabilities
+## Additional capabilities
 
 - **Complex Environment Configurations:** Use a config file (qit.json or qit.yml) to set up multiple plugins, advanced PHP versions, feature flags, and environment variables.
 - **Visual Test Execution:** Run `qit run:e2e your-extension --ui` to observe the tests in a browser, improving debugging and communication with your team.

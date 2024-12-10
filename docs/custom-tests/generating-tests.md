@@ -1,8 +1,8 @@
-# Generating Custom E2E Tests
+# Generating custom E2E tests
 
 After setting up your environment and understanding the basics of custom E2E tests, the next step is to generate your initial test scaffolding. QIT provides a CLI command to create a starter structure, making it easy to begin writing tests tailored to your extension’s unique features and workflows.
 
-## Basic Scaffolding
+## Basic scaffolding
 
 To create a simple test setup:
 `qit scaffold:e2e ./e2e`
@@ -16,7 +16,7 @@ Running:
 `qit run:e2e your-extension ./e2e`
 executes this basic test against your environment (local or cloud), providing an initial proof of concept and confirming that everything is connected properly.
 
-## Advanced Scaffolding
+## Advanced scaffolding
 
 You can include additional setup and teardown files for more complex scenarios. For example:
 `qit scaffold:e2e ./e2e --with-shared --with-teardown`
@@ -43,7 +43,7 @@ This command creates shared setup/teardown files that can help orchestrate compl
 
 When setting up multiple plugins, remember that their `action` values (`test`, `bootstrap`, `activate`) affect how they participate in shared and isolated phases. For a detailed breakdown of these actions, see [Compatibility Testing with Custom E2E Tests](./compatibility-tests.md).
 
-## Using Codegen for Test Generation
+## Using codegen for test generation
 
 QIT integrates with Playwright’s codegen feature to expedite test creation:
 `qit run:e2e your-extension --codegen`
@@ -53,7 +53,7 @@ This launches a browser session that records your interactions. As you navigate,
 - Replace hardcoded URLs with relative paths, ensuring your tests remain environment-agnostic.
 - Refine the assertions to match your exact validation criteria.
 
-## Adjusting URLs and Hardcoding
+## Adjusting URLs and hardcoding
 
 During codegen, absolute URLs are recorded. After pasting the code, remove or adjust these URLs:
 From:
@@ -63,7 +63,7 @@ to:
 
 By using relative paths, your tests become portable and can run in different environments (local, staging, or cloud) without changes.
 
-## QIT Helpers
+## QIT helpers
 
 Don’t forget to leverage QIT’s built-in helpers to simplify test writing. For instance:
 - `qit.loginAsAdmin(page);`
@@ -71,7 +71,7 @@ Don’t forget to leverage QIT’s built-in helpers to simplify test writing. Fo
 
 See [QIT Helpers](./qit-helpers.md) for a detailed list of available functions.
 
-## Next Steps
+## Next steps
 
 With your test structure in place and a handle on generating scenarios, you’re ready to:
 - [Tag and Publish Tests](./tagging-tests.md): Organize, upload, and share tests with others or run tests published by different plugins.

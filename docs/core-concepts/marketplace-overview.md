@@ -2,7 +2,7 @@
 
 The WooCommerce Marketplace is a central hub where merchants discover, purchase, and manage extensions for their online stores. When your extension is listed on the Marketplace, QIT (Quality Insights Toolkit) becomes an integral part of the release lifecycle, ensuring that new versions meet quality standards before reaching merchants.
 
-## How QIT Integrates with the Marketplace
+## How QIT integrates with the Marketplace
 
 **1. Automatic Test Runs on New Releases**  
 When you publish a new version of your extension to the WooCommerce Marketplace, QIT automatically triggers a set of managed tests. These tests verify that your extension maintains baseline compatibility, security, and functionality standards.
@@ -18,18 +18,18 @@ Beyond automated runs, the Marketplace’s Vendor Dashboard allows developers to
 
 This flexibility empowers developers to iterate rapidly, catch potential problems early, and ensure stable and polished releases.
 
-## Benefits for Developers
+## Benefits for developers
 
 - **Streamlined Quality Assurance:** With QIT tests integrated into the Marketplace’s workflows, you don’t have to rely solely on manual testing. The system checks core functionalities and security measures out-of-the-box.
 - **Faster Release Cycles:** Automated tests reduce the time and effort needed to verify compatibility after changes. This helps you release updates confidently and more frequently.
 - **Direct Insights in One Place:** The Vendor Dashboard consolidates test triggers, results, and logs, making it easier to monitor extension quality throughout the development and release process.
 
-## Benefits for Merchants
+## Benefits for merchants
 
 - **Trust and Reliability:** Merchants know that extensions listed in the WooCommerce Marketplace are regularly tested, reducing the risk of installing faulty or insecure updates.
 - **More Consistent Experiences:** As developers leverage QIT to maintain a higher standard of quality, merchants enjoy fewer disruptions, smoother functionality, and better overall store performance.
 
-## Marketplace and QIT in Your Workflow
+## Marketplace and QIT in your workflow
 
 1. **Develop Locally:**  
    Use QIT CLI and local environments to test features and fixes.

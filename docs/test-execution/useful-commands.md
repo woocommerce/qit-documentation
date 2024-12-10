@@ -1,8 +1,8 @@
-# Useful Commands
+# Useful commands
 
 Whether you are running tests locally or in QIT's cloud, certain CLI commands streamline test execution and reporting. These commands help you list extensions, view test runs and their results, and validate local zip files before testing.
 
-## Listing Extensions
+## Listing extensions
 
 If you need to confirm which extensions you have access to, use:
 ```bash
@@ -20,7 +20,7 @@ This command shows a table of extensions including their ID and slug. For exampl
 
 This quick reference helps you ensure you have the correct slug when running tests.
 
-## Listing Test Runs
+## Listing test runs
 
 To see a history of tests you've run and their outcomes:
 ```bash
@@ -39,7 +39,7 @@ This displays a table with run IDs, test types, the WordPress and WooCommerce ve
 
 This helps you quickly find runs that failed or produced warnings and review their details.
 
-## Viewing a Single Test Run
+## Viewing a single test run
 
 To get detailed information about a specific test run, use:
 ```bash
@@ -64,7 +64,7 @@ Woo Extension       My Extension
 
 If a report is available, it will also show a 'Result Url' linking to more detailed logs and screenshots.
 
-## Opening a Test Report
+## Opening a test report
 
 For tests that have a detailed report available, you can open it in your browser:
 ```bash
@@ -73,7 +73,7 @@ qit open <run ID>
 
 This launches the test's report page, making it easier to review results, download logs, and examine screenshots.
 
-## Validating ZIP Files
+## Validating ZIP files
 
 Before running tests on a local zip, ensure it meets QIT's criteria:
 ```bash
@@ -91,7 +91,7 @@ qit run:e2e my-extension --zip=my-extension.zip
 - Use `qit extensions` before running tests if you're unsure of the correct extension slug.
 - Validate zips before testing to avoid issues related to malformed packages.
 
-## Next Steps
+## Next steps
 
 - [Running Tests](../using-qit/running-tests-cli.md): Learn more about executing tests via CLI or dashboard.
 - [Notifications and Results](../using-qit/notifications-results.md): Set up alerts and view logs for continuous feedback.

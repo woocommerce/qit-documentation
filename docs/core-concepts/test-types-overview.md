@@ -1,10 +1,10 @@
-# Understanding Test Types in QIT
+# Understanding test types in QIT
 
 QIT supports multiple kinds of tests designed to ensure the quality, compatibility, and security of WooCommerce extensions. These tests fall into two main categories: **Managed Tests** and **Custom E2E Tests**.
 
 By utilizing these test types, you can leverage QIT to catch issues early, maintain compatibility with evolving WordPress and WooCommerce versions, and deliver a reliable experience to merchants and their customers.
 
-## Managed Tests
+## Managed tests
 
 Managed tests are a suite of pre-built, standardized test scenarios maintained by the QIT team. They require no additional setup from you—just run them against your extension, and QIT will handle the rest.
 
@@ -24,7 +24,7 @@ Examples of Managed Tests:
 
 By relying on these managed tests, you inherit the cumulative knowledge and standards enforced by the QIT team, ensuring a strong baseline of reliability and compatibility.
 
-## Custom E2E Tests
+## Custom E2E tests
 
 Custom E2E (End-to-End) tests are scenarios you design, write, and maintain yourself. They let you test unique plugin-specific features and user journeys that managed tests don’t cover.
 
@@ -40,7 +40,7 @@ Examples of Custom Tests:
 
 Custom E2E tests help you tailor QIT’s capabilities to your plugin’s distinct functionality, catching issues that managed tests might overlook.
 
-## Complementary Roles
+## Complementary roles
 
 Managed Tests provide a broad, standardized safety net—critical core flows, general security checks, and baseline compliance. This ensures that every extension meets essential quality criteria.
 
@@ -52,7 +52,7 @@ By combining both types of tests, you get a thorough quality assurance process:
 - **During Development:** Custom tests verify new features and custom behaviors.
 - **Ongoing Maintenance:** Regularly running both test suites helps ensure continuous stability and compatibility as WordPress, WooCommerce, and your extension evolve.
 
-## Next Steps
+## Next steps
 
 - **Learn How QIT Works:** If you haven’t yet, see [How QIT Works](./how-qit-works) to understand how these test types fit into the overall QIT architecture.
 - **Managed Tests in Detail:** Dive deeper into each managed test type in [Managed Tests Introduction](./../managed-tests/introduction).

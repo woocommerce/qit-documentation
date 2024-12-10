@@ -8,7 +8,7 @@ Before you can start running tests or interacting with QIT's cloud-based service
 - At least one extension listed on the WooCommerce Marketplace.
 - The QIT CLI installed and available on your system. Refer to [Installing the QIT CLI](../installation-setup/cli-installation.md).
 
-## Generating a QIT Token
+## Generating a QIT token
 
 1. Run:
    `qit connect`
@@ -21,18 +21,18 @@ Before you can start running tests or interacting with QIT's cloud-based service
 
 When the process finishes, the CLI will confirm that you are now authenticated.
 
-## Verifying Authentication
+## Verifying authentication
 
 Run:
 `qit extensions`
 
 If authenticated, you`ll see a list of extensions you have access to. This confirms that QIT recognizes your account and grants you the ability to run tests against these extensions.
 
-## Understanding the QIT Token
+## Understanding the QIT token
 
 The QIT Token you obtain through `qit connect` functions similarly to an application password but is scoped only to QIT actions. If you already have a WordPress Application Password from WooCommerce.com, it will not work with QIT for security reasons. It is required to generate a QIT Token through the `qit connect` flow, as it ensures the correct permissions and scope.
 
-## Next Steps
+## Next steps
 
 - [Running Tests](../using-qit/running-tests-cli.md): Once authenticated, start by running a basic managed test against one of your extensions.
 - [Introduction to QIT](../intro.md): Review the fundamentals if you haven't already.

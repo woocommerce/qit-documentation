@@ -1,4 +1,4 @@
-# Integrating QIT with GitHub Workflows
+# Integrating QIT with GitHub workflows
 
 By integrating QIT into your GitHub Actions workflows, you can automatically test your extension whenever changes are pushed, pull requests are opened, or releases are created. This tight integration helps you detect issues earlier, streamline your CI/CD pipeline, and maintain consistent code quality over time.
 
@@ -7,7 +7,7 @@ By integrating QIT into your GitHub Actions workflows, you can automatically tes
 - **GitHub Repository:** Your extension should be in a GitHub repository where you can configure workflows.
 
 
-## Example GitHub Workflow
+## Example GitHub workflow
 
 Below is a simplified GitHub Actions workflow example. Adapt it to your extension's requirements.
 
@@ -50,17 +50,17 @@ jobs:
 - **Trigger on PR & Push:** The workflow runs on pull requests and pushes to the main branch.
 - **Wait for Completion:** The `--wait` flag ensures the workflow waits for test completion before proceeding.
 
-## Storing Credentials Securely
+## Storing credentials securely
 
 Store your QIT credentials as GitHub Secrets to avoid exposing them in the repository. For example, go to your repository settings, add `QIT_USER` and `QIT_APP_PASS` as secrets, and reference them in the workflow.
 
-## Benefits of CI Integration
+## Benefits of CI integration
 
 - **Early Detection:** Catch regressions, security issues, or compatibility problems before merging changes.
 - **Automated Validation:** Ensure that all commits passing through your main branch are tested and meet quality standards.
 - **Faster Feedback Loop:** Developers receive immediate feedback, reducing the time spent manually verifying code changes.
 
-## Next Steps
+## Next steps
 
 - [Running Tests via the CLI](./running-tests-cli.md): Learn how to run tests locally before pushing changes to GitHub.
 - [Notifications and Results](./notifications-results.md): Configure notifications for failed tests triggered by GitHub Actions.

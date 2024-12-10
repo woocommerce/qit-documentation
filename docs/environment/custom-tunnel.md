@@ -1,16 +1,16 @@
-# Using a Custom Tunnel
+# Using a custom tunnel
 
 `The local test environment is available as early-access.`
 
 While QIT provides built-in tunneling methods—such as `cloudflared-docker`, `cloudflared-binary`, and `cloudflared-persistent`—there may be scenarios where none of the default options suit your needs. In these cases, you can implement your own custom tunneling method by creating a class that extends `CustomTunnel`.
 
-## Why a Custom Tunnel?
+## Why a custom tunnel?
 
 - **Non-Standard Tunneling Solutions:** If you rely on a proprietary or internal tool not supported by QIT, a custom tunnel bridges that gap.
 - **Advanced Use Cases:** Implement unique authentication flows, complex routing, or integrate with special infrastructure that isn't handled by default tunnels.
 - **Fine-Grained Control:** Tailor every aspect of your tunneling process, from how the tunnel is started to how URLs are managed and reported back to QIT.
 
-## Implementing a Custom Tunnel
+## Implementing a custom tunnel
 
 Create a PHP file that defines a class extending `QIT_CLI\Tunnel\CustomTunnel` and implement the required static methods. For example:
 
@@ -65,7 +65,7 @@ This custom class:
 - Implements `check_is_installed`: Verify dependencies or prerequisites.
 - Implements `is_configured`: Confirm that the tunnel can run with the current setup.
 
-## Using the Custom Tunnel
+## Using the custom tunnel
 
 Include the custom tunnel class via the `qit tunnel:setup` command and follow prompts to select `custom` as your tunnel type. Alternatively, specify it directly in your qit config.
 
@@ -82,7 +82,7 @@ When you run this command, QIT calls `MyCustomTunnel::connect_tunnel`, retrieves
 - **Check Dependencies:** If your custom tunnel relies on a binary, environment variable, or network service, verify these conditions in `check_is_installed`.
 - **Persistent Config:** Like other tunnels, you can store configuration details (like authentication tokens or endpoint URLs) in environment variables or QIT config files.
 
-## Combining with Other Features
+## Combining with other features
 
 A custom tunnel integrates seamlessly with QIT's environment configuration. Run tests that rely on external callbacks or payments through your custom tunnel just like you would with any built-in method.
 
@@ -93,7 +93,7 @@ qit run:woo-e2e your-extension --tunnel custom
 
 ensures that the Woo E2E tests run against the publicly accessible URL your tunnel provides.
 
-## Next Steps
+## Next steps
 
 - [Tunneling](./tunnel.md): Review other tunneling methods and their trade-offs.
 - [Persistent Tunnel](./persistent-tunnel.md): If you prefer a stable, well-known subdomain, consider the persistent tunnel setup first.

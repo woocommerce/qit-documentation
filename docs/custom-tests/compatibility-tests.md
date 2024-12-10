@@ -1,8 +1,8 @@
-# Compatibility Testing with Custom E2E Tests
+# Compatibility testing with custom E2E tests
 
 In addition to testing individual extensions, QIT supports complex **compatibility testing** scenarios involving multiple plugins. By carefully assigning `action` values (`test`, `bootstrap`, or `activate`) to each plugin and leveraging QIT’s lifecycle phases (shared and isolated setups/teardowns, DB export/import), you can confirm that your extension works smoothly in a multi-plugin environment. This approach ensures stable and reliable experiences for merchants running diverse sets of plugins.
 
-## Key Concepts
+## Key concepts
 
 When including multiple plugins in a single test run, their actions determine which lifecycle phases they participate in. QIT’s lifecycle phases include:
 
@@ -35,13 +35,13 @@ When including multiple plugins in a single test run, their actions determine wh
 
 This detailed breakdown clarifies the subtle but important distinctions between `test`, `bootstrap`, and `activate`.
 
-## Lifecycle Management for Compatibility
+## Lifecycle management for compatibility
 
 - **Shared Setup/Teardown:** Establishes a global baseline. All `test` and `bootstrap` plugins appear here with their own shared steps. `activate` plugins do not have dedicated shared steps but remain active in the background.
 - **DB Export/Import:** After shared setup, QIT exports a baseline DB snapshot. Each `test` plugin’s isolated testing cycle begins with this snapshot, ensuring consistent conditions.
 - **Isolated Phases:** Only `test` plugins (including the SUT) get isolated setup/teardown and tests. `bootstrap` and `activate` plugins remain stable in the background, influencing but not altering the snapshot cycle.
 
-## Example Scenario
+## Example scenario
 
 **Scenario:**
 - **SUT:** `woocommerce-amazon-s3-storage` (`action: test`)
@@ -92,13 +92,13 @@ qit run:e2e woocommerce-amazon-s3-storage
 
 If a compatibility issue arises only when all three plugins are present—some tested (`test`), some just present (`activate`), and dependencies `bootstrap`ed—you’ll catch it before release. You can adjust code or tests and re-run to confirm the fix.
 
-## When to Add More Detail
+## When to add more detail
 
 For more intricate scenarios (multiple `test` plugins, advanced dependencies, intricate states):
 - **Dedicated Configs:** Maintain separate qit.yml or test tags for multi-plugin scenarios.
 - **Enhanced Lifecycle Scripts:** Add custom shell/JS steps in shared/isolated phases to fine-tune conditions.
 
-## Next Steps
+## Next steps
 
 - **Review Custom E2E Basics:** Understand writing and running tests before tackling multi-plugin compatibility.
 - **Iterate and Refine:** Experiment with different plugin actions (`test`, `bootstrap`, `activate`) to find the right balance for your compatibility scenarios.

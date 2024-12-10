@@ -1,4 +1,4 @@
-# Advanced Configuration with Custom Handlers
+# Advanced configuration with custom handlers
 
 :::info
 The local test environment is available as early-access.
@@ -8,14 +8,14 @@ The local test environment is available as early-access.
 
 While custom handlers primarily focus on fetching and preparing plugins or themes from external sources, you can also leverage them for advanced configuration scenarios. By extending the capabilities of custom handlers and combining them with environment configuration files (qit.yml or qit.json), you gain fine-grained control over how your test environment is built and tailored.
 
-## When to Use Advanced Config Handlers
+## When to use advanced config handlers
 
 - **Complex Dependency Graphs:** If your plugin relies on multiple external sources or must be built from several repositories, an advanced config handler can sequentially fetch and prepare each component.
 - **Conditional Logic:** Implement logic based on environment variables, branch names, or feature flags. For instance, use a different repository branch or build step depending on the test scenario.
 - **Integration with Private Artifact Repositories:** Combine authentication tokens, environment variables, and handler logic to fetch code from private registries or services like AWS S3, GCP, or Azure Storage.
 - **Version Pinning and Rollbacks:** Detect version changes (using `populate_extension_versions`) and decide which artifact to use. Allow easy rollbacks by referencing a previous commit or build artifact based on conditions defined in your config.
 
-## Example: Dynamic Branch Selection
+## Example: dynamic branch selection
 
 Suppose you want to dynamically choose a Git branch based on an environment variable set by your CI pipeline. In your `advanced-handler.php`:
 
@@ -98,7 +98,7 @@ qit run:e2e my-dynamic-plugin --env TEST_BRANCH=feature-branch
 
 The handler picks the correct branch and commits, ensuring the environment reflects the desired configuration.
 
-## Integrating with Configuration Files
+## Integrating with configuration files
 
 Define your `my-dynamic-plugin` in `qit.yml`:
 ```yaml
@@ -111,7 +111,7 @@ plugins:
 
 Now, running `qit env:up` or `qit run:e2e my-dynamic-plugin` will automatically invoke the advanced handler, selecting branches, versions, or artifacts based on environment variables or other logic you implement.
 
-## Handling Multiple Extensions and Conditional Logic
+## Handling multiple extensions and conditional logic
 
 You can extend the logic in `should_handle` to manage multiple extensions, each with its own fetching and build strategies. For example:
 - Use different branches for different plugins.
@@ -120,14 +120,14 @@ You can extend the logic in `should_handle` to manage multiple extensions, each 
 
 The possibilities are limited only by your scripting and environment logic.
 
-## Tips and Best Practices
+## Tips and best practices
 
 - **Keep It Modular:** Break down complex logic into smaller functions within your handler to maintain readability.
 - **Verbose Logging:** Use `$this->output->isVerbose()` or `$this->output->isVeryVerbose()` checks to print debug information. This helps diagnose issues in complex setups.
 - **Secure Credentials:** If you need authentication tokens for private repositories, store them in environment variables rather than code.
 - **Test Incrementally:** Start with a simple scenario and add complexity step by step. Validate each new piece of logic before moving on.
 
-## Next Steps
+## Next steps
 
 - [Custom Tunnels](../environment/custom-tunnel.md): Combine custom handlers with tunnels if you need external integrations during the build or fetch process.
 - [Environment Variables](../environment/environment-variables.md): Leverage env variables to adjust logic dynamically.

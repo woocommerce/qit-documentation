@@ -27,7 +27,7 @@ QIT (Quality Insights Toolkit) is a testing platform developed by WooCommerce fo
 - **WooCommerce.com Partner Developer Account:** You must have at least one extension listed on the WooCommerce.com Marketplace to access QIT.
 - **PHP 7.2.5+ and Composer:** Required if you plan to use QIT locally via the CLI.
 
-## Quick Start Guide
+## Quick start guide
 
 **Recommended Approach: Global Installation via Composer**
 
@@ -67,7 +67,7 @@ And run commands via:
 ```
 However, the global installation approach is recommended for most developers.
 
-## What Tests Are Available?
+## What tests are available?
 
 QIT provides multiple managed test types right out of the box:
 
@@ -79,17 +79,17 @@ Each test type runs in a controlled environment, providing consistent, reproduci
 
 QIT automatically runs tests for every new release published on the WooCommerce Marketplace. Partner Developers can also run tests on-demand using the CLI or the WooCommerce.com Vendor Dashboard.
 
-## Non-Partner Developers
+## Non-partner developers
 
 While full QIT access is currently exclusive to WooCommerce.com Partner Developers, a local test environment is available for non-partners. We plan to open full access publicly in the future. Stay tuned!
 
-## Ways to Use QIT
+## Ways to use QIT
 
 - **Command Line (CLI):** Perfect for integrating into your local development workflow or CI pipelines. See [CLI Getting Started](./installation-setup/cli-installation.md).
 - **WooCommerce.com Dashboard:** Run and view tests directly in the vendor dashboard UI. See [Getting Started with Dashboard](./using-qit/running-tests-dashboard.md).
 - **GitHub Actions:** Integrate QIT tests into your GitHub workflows. See [GitHub Workflows Setup](./using-qit/github-workflows.md).
 
-## Next Steps
+## Next steps
 
 - **Want to learn more about authenticating?** Check out [Authentication](./installation-setup/authenticating.md).
 - **Ready to run more tests?** See [Running Tests with QIT CLI](./using-qit/running-tests-cli.md).

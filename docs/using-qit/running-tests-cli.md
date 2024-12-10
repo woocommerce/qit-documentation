@@ -1,4 +1,4 @@
-# Running Tests via the CLI
+# Running tests via the CLI
 
 The QIT CLI allows you to run both managed and custom tests directly from your terminal. By using simple commands, you can quickly validate your extension against the latest WordPress and WooCommerce versions, or test your custom scenarios in a local environment.
 
@@ -7,7 +7,7 @@ The QIT CLI allows you to run both managed and custom tests directly from your t
 
 - **Extension Slug:** Know the slug of your WooCommerce Marketplace extension. You'll need it when running tests.
 
-## Running Managed Tests
+## Running managed tests
 
 Managed tests, such as activation, Woo E2E, and security tests, run in QIT's cloud environment. To execute a managed test, use the following command pattern:
 
@@ -27,7 +27,7 @@ This sends the request to QIT's cloud infrastructure, sets up a clean environmen
 
 - [Managed Tests](../managed-tests/introduction.md): Learn about each managed test type available.
 
-## Running Custom E2E Tests Locally
+## Running custom E2E tests locally
 
 To develop and debug your custom E2E tests efficiently, use the QIT local environment. First, spin up a local environment:
 
@@ -45,7 +45,7 @@ If you've uploaded your custom tests to QIT's cloud, you can omit the `--zip` ar
 
 Note that while you can run custom tests locally for quick iteration, you can also execute them in the cloud environment for integration or compatibility checks.
 
-## Specifying Versions and Features
+## Specifying versions and features
 
 Both managed and custom test commands support parameters for selecting WordPress, WooCommerce, and PHP versions, as well as enabling optional WooCommerce features like HPOS:
 
@@ -53,7 +53,7 @@ Both managed and custom test commands support parameters for selecting WordPress
 
 This level of customization ensures you can test under various configurations to maintain broad compatibility.
 
-## Viewing Results and Logs
+## Viewing results and logs
 
 When tests complete, QIT CLI provides a summary of the results:
 - **Success:** Everything passed without issues.
@@ -64,7 +64,7 @@ For more detailed insights:
 - [Viewing Test Results](./notifications-results.md): Learn how to access logs, screenshots, and detailed reports.
 If you have enabled email notifications, you will receive an email when a test completes if it results in warnings or failures. For more information on setting up notifications, see [Notifications and Results](./notifications-results.md).
 
-## Next Steps
+## Next steps
 
 - [Using QIT via the Dashboard](./running-tests-dashboard.md): If you prefer a UI, trigger tests and review results from the WooCommerce Vendor Dashboard.
 - [Advanced CLI Commands](../advanced-usage/scripting.md): Explore scripting and GitHub workflows to integrate QIT tests into your CI/CD pipeline.

@@ -8,13 +8,13 @@ The local test environment is available as early-access.
 
 While QIT supports installing plugins and themes from WordPress.org and local zip files, you may need to fetch extensions from premium marketplaces, private repositories, or other specialized sources that QIT does not natively support. Custom handlers allow you to define exactly how QIT should retrieve, build, and prepare these extensions before installing them into your test environment.
 
-## Implementing Custom Handlers
+## Implementing custom handlers
 
-### Understanding Custom Handlers
+### Understanding custom handlers
 
 Custom handlers integrate QIT with external sources, making it possible to install plugins or themes from places like private GitHub repositories, premium marketplaces, or artifact registries. By customizing their behavior, you can implement additional build steps, authentication, or caching logic.
 
-### Creating a Custom Handler
+### Creating a custom handler
 
 1. `Extend the CustomHandler Class:`  
    Create a new class that extends `CustomHandler` provided by QIT.
@@ -27,11 +27,11 @@ Custom handlers integrate QIT with external sources, making it possible to insta
 3. `Use the Custom Handler:`  
    Include the custom handler file with `qit env:up --require=my-custom-handler.php` or specify it in `qit.yml`. QIT will then invoke your handler to fetch the specified extensions.
 
-### Example Custom Handlers
+### Example custom handlers
 
 Below are several examples to illustrate different scenarios. Adjust them to meet your project's needs.
 
-#### Example 1: Fetching from a Public GitHub Repository
+#### Example 1: fetching from a public GitHub repository
 
 Assume you have a public GitHub repo hosting a WordPress plugin on the 'main' branch.
 
@@ -82,7 +82,7 @@ class PublicHandlerExample extends CustomHandler {
 }
 ```
 
-#### Example 2: Fetching from a Private GitHub Repository
+#### Example 2: fetching from a private GitHub repository
 
 For private repositories requiring authentication, you can use git clone and git archive commands to fetch and zip the code before installation.
 
@@ -145,7 +145,7 @@ class PrivateGitHubHandler extends CustomHandler {
 }
 ```
 
-#### Example 3: Building, Caching, and Using a Specific Commit
+#### Example 3: building, caching, and using a specific commit
 
 This example:
 - Clones a private repo.
@@ -250,7 +250,7 @@ class AdvancedGitHubHandler extends CustomHandler {
 }
 ```
 
-## Using the Custom Handler
+## Using the custom handler
 
 Include your handler using:
 `qit env:up --requires=my-custom-handler.php --plugins=my-custom-plugin`
@@ -263,7 +263,7 @@ requires:
 
 QIT will invoke your handler for the specified plugin.
 
-### Multiple Custom Handlers
+### Multiple custom handlers
 
 You can define multiple handlers:
 ```yaml
@@ -280,7 +280,7 @@ plugins:
 
 QIT attempts each handler until it finds one that can handle the specified plugin.
 
-## Tips and Best Practices
+## Tips and best practices
 
 - `Test Your Handler`: Ensure it correctly downloads and sets up plugins in various scenarios.
 - `Handle Dependencies`: Resolve plugin dependencies (like submodules or external packages).

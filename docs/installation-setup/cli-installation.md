@@ -8,7 +8,7 @@ The QIT Command Line Interface (CLI) is your primary tool for running tests loca
 - **Unix-like environment** (Linux, macOS, Windows WSL)
 - **Composer** (for installation and updates)
 
-## Recommended Installation: Global via Composer
+## Recommended installation: global via composer
 
 By installing the QIT CLI globally, you can access it from any project directory on your system. This approach simplifies your workflow if you work on multiple extensions or projects.
 
@@ -36,7 +36,7 @@ To update the QIT CLI when installed globally via Composer:
 
 This will fetch and install the latest version, ensuring you always have the newest features and fixes.
 
-## Next Steps
+## Next steps
 
 - **Authenticate with QIT:** After installing, connect the CLI to your WooCommerce Marketplace account. See [Authenticating](./authenticating.md) for details.
 - **Run Your First Test:** Once authenticated, try running a basic test:

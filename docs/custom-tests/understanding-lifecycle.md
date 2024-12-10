@@ -1,8 +1,8 @@
-# Understanding the Lifecycle
+# Understanding the lifecycle
 
 Custom E2E tests in QIT follow a structured lifecycle to ensure consistency, isolation, and reproducibility. By understanding the order of operations, you can write more effective tests and leverage shared setups, teardowns, and database snapshots to streamline your workflows.
 
-## Lifecycle Phases Overview
+## Lifecycle phases overview
 
 1. **Starting the Environment**  
    QIT provisions a test environment (WordPress, WooCommerce, PHP) based on your specified versions and configurations. It installs and activates plugins, including your extension, ensuring a clean slate for every run.
@@ -40,7 +40,7 @@ Custom E2E tests in QIT follow a structured lifecycle to ensure consistency, iso
 10. **Post-Processing and Reporting**  
     Once all tests are done, QIT compiles logs, screenshots, and results. These outputs are made available through the CLI, dashboard, or shareable URLs, helping you analyze outcomes and improve test quality.
 
-## Files and Directories Involved
+## Files and directories involved
 
 The `bootstrap` directory may contain:
 - `setup.js` or `setup.sh`: Run before your tests.
@@ -54,13 +54,13 @@ This structure allows fine-grained control:
 
 Note: Different plugin actions (`test`, `bootstrap`, `activate`) influence whether plugins appear in shared phases, isolated phases, or neither. For a full explanation of these actions, see [Compatibility Testing with Custom E2E Tests](./compatibility-tests.md).
 
-## Practical Tips
+## Practical tips
 
 - **Use Shared Setup Wisely:** Common tasks (e.g., disabling onboarding wizards) belong in shared setup, so you don’t repeat them in every test.
 - **Keep Tests Independent:** Rely on database snapshots to ensure each test runs in a controlled state. Avoid depending on changes made by previous tests.
 - **Employ Teardown Scripts:** Clean up after tests to prevent side effects that might affect later runs or consume unnecessary resources.
 
-## Next Steps
+## Next steps
 
 - [Orchestration](./orchestration): Learn how QIT manages multiple plugins and shared states within a single test run, ensuring that each plugin’s tests run in isolation while benefiting from shared setup and teardown steps.
 - [Themes](./themes): Explore how to test with different themes or enforce a specific theme during setup phases.

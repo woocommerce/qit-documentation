@@ -1,20 +1,20 @@
-# Introduction to Managed Tests
+# Introduction to managed tests
 
 Managed tests are a collection of standardized test suites maintained by the QIT team. They are designed to ensure your extension meets baseline criteria for stability, compatibility, and security. By running these tests, you gain quick, reliable feedback on potential issues, all without having to write or maintain your own scenarios.
 
-## Key Characteristics of Managed Tests
+## Key characteristics of managed tests
 
 - **Maintained by QIT:** QIT handles updates and improvements to these tests, reflecting the latest best practices, WordPress and WooCommerce changes, and evolving security standards.
 - **Zero Setup Needed:** Simply run the managed tests against your extension, and QIT will provision the environment, perform the checks, and return results.
 - **Broad Coverage:** Managed tests verify critical functionalities such as plugin activation, WooCommerce checkout flows, REST API endpoints, security audits, PHP compatibility, and more.
 
-## When to Use Managed Tests
+## When to use managed tests
 
 - **Before a Release:** Run managed tests on new versions of your extension to catch issues early and maintain quality.
 - **Continuous Verification:** Integrate managed tests into your CI/CD pipeline (e.g., with GitHub Workflows) to ensure each commit or pull request maintains the extension's compatibility and security standards.
 - **Compliance and Confidence:** Managed tests provide a baseline assurance of quality for both developers and merchants, reducing the risk of unexpected issues after deployment.
 
-## Types of Managed Tests
+## Types of managed tests
 
 Different managed tests address specific aspects of extension quality. Some examples include:
 
@@ -25,7 +25,7 @@ Different managed tests address specific aspects of extension quality. Some exam
 - **PHPStan and PHPCompatibility Tests:** Analyzes code quality and compatibility with supported PHP versions.
 - **Validation, Plugin Check, and Malware Tests:** Confirm that your extension's metadata, codebase, and file structure adhere to guidelines and remain free of malicious code.
 
-## Interpreting Results
+## Interpreting results
 
 Managed tests often return three possible outcomes:
 - **Success:** No issues detected.
@@ -34,7 +34,7 @@ Managed tests often return three possible outcomes:
 
 If you have enabled email notifications, you will receive an email when a test completes if it results in warnings or failures. For more information on setting up notifications, see [Notifications and Results](../using-qit/notifications-results.md).
 
-## Next Steps
+## Next steps
 
 - [Test Types Overview](../core-concepts/test-types-overview.md): Understand how managed tests fit alongside custom E2E tests.
 - [Using QIT via the CLI](../using-qit/running-tests-cli.md): Learn how to run managed tests from your terminal.

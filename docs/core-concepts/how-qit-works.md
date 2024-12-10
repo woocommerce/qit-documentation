@@ -1,4 +1,4 @@
-# How QIT Works
+# How QIT works
 
 The Quality Insights Toolkit (QIT) is designed to streamline and standardize the testing of WooCommerce extensions. Its
 architecture brings together multiple components—local tools, cloud-based services, managed test suites, custom E2E
@@ -6,7 +6,7 @@ tests, and the WooCommerce Marketplace itself—to create a cohesive, automated 
 big picture of how QIT is structured, developers can better appreciate the role of each component and how they all work
 together to ensure quality, compatibility, and reliability.
 
-## Key Components
+## Key components
 
 **1. QIT CLI**
 The QIT Command Line Interface is the primary tool developers use locally. Through simple commands, a developer can:
@@ -47,7 +47,7 @@ Dashboard. Developers can view logs, screenshots, and reports. Failed tests high
 developers on what to fix. Merchants benefit indirectly, as problematic updates are caught early, ensuring stable and
 secure extensions.
 
-## Architectural Flow
+## Architectural flow
 
 1. **Triggering a Test**:
    A developer initiates a test run—either by a CLI command locally or by using the Vendor Dashboard on WooCommerce.com.
@@ -68,7 +68,7 @@ secure extensions.
    With immediate feedback, developers refine their code or add more custom tests. Over time, this leads to
    higher-quality extensions and a more trusted WooCommerce ecosystem.
 
-## Why This Matters
+## Why this matters
 
 For developers, the QIT architecture minimizes guesswork and manual testing by providing a consistent, reproducible
 testing process. For merchants, it means confidence that extensions meet rigorous standards. Ultimately, the QIT

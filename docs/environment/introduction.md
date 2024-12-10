@@ -1,4 +1,4 @@
-# Local Test Environment Introduction
+# Local test environment introduction
 
 :::info
 The local test environment is available as early-access.
@@ -15,7 +15,7 @@ Every time you run `qit env:up`, a fresh environment is created. Any changes you
 Refer to [Installation](../installation-setup/cli-installation.md) if needed.
 - **Docker:** QIT relies on Docker to create isolated environments. Make sure Docker is installed and running. For more information, see [Docker documentation](https://docs.docker.com/compose/install/).
 
-### Platform-Specific Notes
+### Platform-specific notes
 
 - **Mac:** If you have Docker Desktop or OrbStack installed, you can start using the QIT Local Test Environment right away. OrbStack can offer improved performance over Docker Desktop.
 - **Linux:** With Docker and Composer V2 installed, you can begin testing immediately.
@@ -26,7 +26,7 @@ Refer to [Installation](../installation-setup/cli-installation.md) if needed.
 
 Verify that essential Windows features like Virtual Machine Platform, Windows Subsystem for Linux, and Hyper-V are enabled, and confirm that Virtualization is active in the BIOS.
 
-## Starting Your First Environment
+## Starting your first environment
 
 1. `qit env:up` to start a basic WordPress environment.
 2. Access your site at the URL provided in the CLI output.
@@ -34,7 +34,7 @@ Verify that essential Windows features like Virtual Machine Platform, Windows Su
 
 Every time you run `qit env:up`, you get a fresh, predictable environment with no lingering changes.
 
-## Customizing Your Environment
+## Customizing your environment
 
 You can specify PHP, WordPress, and WooCommerce versions, as well as plugins and themes:
 
@@ -48,7 +48,7 @@ qit env:up \
 
 This command creates an environment running PHP 8.3, the latest release candidate of WordPress, and includes Gutenberg and Contact Form 7 plugins by default.
 
-## Using Configuration Files
+## Using configuration files
 
 Create a `qit.yml` file in your project directory:
 
@@ -62,7 +62,7 @@ plugins:
 
 Now running `qit env:up` without extra parameters uses these configurations, ensuring consistency across your team and simplifying setup.
 
-## Managing Environments
+## Managing environments
 
 - `qit env:up`: Creates a local test environment.
 - `qit env:down`: Stops and removes the running environment.
@@ -70,7 +70,7 @@ Now running `qit env:up` without extra parameters uses these configurations, ens
 - `qit env:enter`: Enters the PHP container for debugging or manual operations.
 - `qit env:exec`: Executes a command inside the PHP container.
 
-## env:up Options
+## Env:up options
 
 - `--wordpress_version`: Choose a specific WordPress version.
 - `--php_version`: Test across different PHP versions for better compatibility coverage.

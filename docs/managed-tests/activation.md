@@ -1,8 +1,8 @@
-# Activation Tests
+# Activation tests
 
 The Activation test type performs basic operations on a test site with your plugin activated. It simulates essential workflows that a merchant might perform, ensuring your plugin behaves correctly throughout the entire process, from activation to order placement and deactivation.
 
-## Operations Performed
+## Operations performed
 
 - Log in as admin
 - Activate any dependencies that your plugin has (e.g., WooCommerce)
@@ -16,7 +16,7 @@ The Activation test type performs basic operations on a test site with your plug
 - Place an order as a guest
 - Deactivate your plugin
 
-## Test Outcomes
+## Test outcomes
 
 The status of the test is determined by the following:
 
@@ -24,7 +24,7 @@ The status of the test is determined by the following:
 - **Warning:** All flows were completed, but a non-fatal PHP error was triggered.
 - **Failed:** One of the flows failed, or a fatal PHP error was triggered.
 
-## Configurable Options
+## Configurable options
 
 You can tweak several parameters in the Activation Test, such as WordPress, WooCommerce, and PHP versions. To see all available options, run:
 ```qitbash
@@ -33,7 +33,7 @@ qit run:activation --help
 
 This command displays a list of configurable parameters, enabling you to test under various conditions.
 
-## Skipping Visited Pages
+## Skipping visited pages
 
 If you want the Activation test to skip specific pages added by your plugin, add a `qit.json` file to your plugin's root directory (the same directory as your plugin entrypoint) with the following content:
 
@@ -53,7 +53,7 @@ If you want the Activation test to skip specific pages added by your plugin, add
 
 For example, if you include `wp-admin/admin.php?page=skip-visiting-this` in the array, any admin page URL containing that substring will be skipped.
 
-## Visiting a Specific Page
+## Visiting a specific page
 
 You can also define specific pages to be visited that might not be visible from the sidebar menu. This uses a slightly different syntax, as it takes a page title and a URL. It only accepts relative URLs.
 
@@ -67,7 +67,7 @@ You can also define specific pages to be visited that might not be visible from 
 }
 ```
 
-## Running the Activation Test
+## Running the activation test
 
 Run the activation test with:
 ```qitbash
@@ -76,11 +76,11 @@ qit run:activation your-extension
 
 Replace `your-extension` with the slug of your plugin.
 
-## Using a Tunnel
+## Using a tunnel
 
 Some plugins might need an actual live site URL to work properly, such as payment gateways and SaaS. For those, you can use our [built-in tunnel feature](../environment/tunnel.md) to test these plugins.
 
-## What to Do if It Fails
+## What to do if it fails
 
 If your Activation test fails:
 

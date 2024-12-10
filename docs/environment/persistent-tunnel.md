@@ -1,4 +1,4 @@
-# Using a Persistent Tunnel
+# Using a persistent tunnel
 
 `The local test environment is available as early-access.`
 
@@ -10,7 +10,7 @@ When testing plugins that rely on a stable, publicly accessible URL—such as pa
 - **cloudflared Binary Installed:** Ensure you have the `cloudflared` binary on your system.
 - **Tunnel Configuration:** Follow the steps below to create and configure your persistent tunnel.
 
-## Steps to Create a Persistent Tunnel
+## Steps to create a persistent tunnel
 
 1. **Install cloudflared:**
    On macOS, for example:
@@ -49,7 +49,7 @@ When testing plugins that rely on a stable, publicly accessible URL—such as pa
 
    Visit the URL provided to confirm the tunnel is working.
 
-## Configuring QIT for a Persistent Tunnel
+## Configuring QIT for a persistent tunnel
 
 Once the persistent tunnel is set up, run:
 ```bash
@@ -69,13 +69,13 @@ qit env:up --tunnel
 ```
 QIT uses the persistent tunnel you configured, ensuring immediate DNS resolution and a stable public URL.
 
-## Why Use a Persistent Tunnel?
+## Why use a persistent tunnel?
 
 - **No DNS Propagation Delays:** Stable, pre-configured subdomain ensures external integrations can reach your test site immediately.
 - **Consistent URL:** No need to share a new URL each time you run `qit env:up`.
 - **Ideal for CI and Teams:** Developers, QA, or CI pipelines can rely on the same URL, streamlining integration tests and demonstrations.
 
-## Combining Persistent Tunnels with Other Features
+## Combining persistent tunnels with other features
 
 - Use persistent tunnels in conjunction with environment configuration files (qit.yml) and custom handlers for a fully automated and reproducible setup.
 - Perfect for testing payment gateways, webhooks, and other features that require a publicly accessible endpoint.
@@ -85,7 +85,7 @@ QIT uses the persistent tunnel you configured, ensuring immediate DNS resolution
 - Ensure your Cloudflare DNS and tunnel configurations are correct. If something fails, check the Cloudflare dashboard or run `cloudflared tunnel run <tunnel-name>` directly to diagnose issues.
 - If you encounter permission or authentication errors, re-run `cloudflared tunnel login` or verify your Cloudflare account permissions.
 
-## Next Steps
+## Next steps
 
 - [Custom Tunnel](./custom-tunnel.md): If persistent tunnels do not meet your needs, consider implementing a custom tunneling solution.
 - [Environment & Configuration](../environment/introduction.md): Explore more advanced environment customizations to match your development workflow.

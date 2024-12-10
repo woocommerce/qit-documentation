@@ -1,4 +1,4 @@
-# Creating Configuration Files
+# Creating configuration files
 
 :::info
 The local test environment is available as early-access.
@@ -8,13 +8,13 @@ The local test environment is available as early-access.
 
 While you can customize your test environment through CLI parameters, configuration files offer a more scalable and team-friendly approach. By defining your WordPress, WooCommerce, PHP versions, and additional plugins or themes in a JSON or YAML file, you ensure consistent setups for every team member without relying on lengthy command-line arguments.
 
-## Benefits of Configuration Files
+## Benefits of configuration files
 
 - **Consistency:** Store environment options in version-controlled files, ensuring each developer runs tests in the same conditions.
 - **Maintainability:** Update a single file rather than editing multiple CLI commands or scripts.
 - **Portability:** New team members can spin up the exact environment by simply running 'qit env:up' after pulling the repository.
 
-## Supported Formats
+## Supported formats
 
 QIT accepts both JSON and YAML files named 'qit.json' or 'qit.yml'. For example:
 - 'qit.json'
@@ -22,9 +22,9 @@ QIT accepts both JSON and YAML files named 'qit.json' or 'qit.yml'. For example:
 
 If both are present, QIT will prioritize one format (YAML typically has priority if both exist). Check QIT’s documentation or run 'qit env:up --help' for details.
 
-## Example Configurations
+## Example configurations
 
-### JSON Example
+### JSON example
 
 ```json
 {
@@ -48,7 +48,7 @@ If both are present, QIT will prioritize one format (YAML typically has priority
 }
 ```
 
-### YAML Example
+### YAML example
 
 ```yaml
 wordpress_version: rc
@@ -66,11 +66,11 @@ php_extensions:
 object_cache: true
 ```
 
-## Using the Config File
+## Using the config file
 
 Place the file (`qit.json` or `qit.yml`) in the root of your project directory. Running `qit env:up` uses the settings automatically. If you previously passed parameters via the CLI, consider removing them from scripts and rely on the config file for a cleaner, more maintainable setup.
 
-## Overriding with Command-Line Arguments
+## Overriding with command-line arguments
 
 Command-line flags override config file settings. For example, if `qit.yml` sets `php_version: 7.4` but you run:
 `qit env:up --php_version=8.0`
@@ -84,7 +84,7 @@ This allows you to temporarily test different conditions without permanently alt
 - **Version Control:** Commit `qit.json` or `qit.yml` to your repository. Other team members can run `qit env:up` immediately, ensuring consistent environments.
 - **Iterate as Needed:** As you discover new requirements, update the config file and share it with your team.
 
-## Next Steps
+## Next steps
 
 - [Installing Plugins and Themes](./installing-plugins-and-themes.md): Learn how to specify additional plugins or themes directly in your configuration files.
 - [Tunnel Options](../environment/tunnel.md): Explore how to configure tunnels and advanced options for more complex testing scenarios.
