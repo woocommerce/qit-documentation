@@ -31,7 +31,7 @@ Use CLI flags like `--wordpress_version=rc` or `--woocommerce_version=7.0` to to
 ## WooCommerce features
 
 Some tests (Activation, Woo E2E, Woo API) let you enable or disable WooCommerce features like High Performance Order Storage (HPOS):
-```bash
+```qitbash
 qit run:activation my-extension --optional_features=hpos
 ```
 
@@ -49,7 +49,7 @@ This helps identify PHP-specific compatibility issues or deprecation notices.
 ## Additional extensions and plugins
 
 If your extension relies on or interacts with other plugins, you can include them in supported tests. For example, to run an Activation test with WooCommerce and another plugin:
-```bash
+```qitbash
 qit run:activation my-extension --plugin=woocommerce --plugin=my-other-plugin
 ```
 

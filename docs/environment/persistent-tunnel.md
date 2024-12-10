@@ -50,19 +50,19 @@ When testing plugins that rely on a stable, publicly accessible URL—such as pa
 ## Configuring QIT for a persistent tunnel
 
 Once the persistent tunnel is set up, run:
-```bash
+```qitbash
 qit tunnel:setup
 ```
 
 Follow the prompts to select `cloudflared-persistent` and provide your tunnel name and URL (e.g., `tunnel.example.com`).
 
 If asked, set it as the default tunneling method:
-```bash
+```qitbash
 qit tunnel:set-default cloudflared-persistent
 ```
 
 Now, whenever you run:
-```bash
+```qitbash
 qit env:up --tunnel
 ```
 QIT uses the persistent tunnel you configured, ensuring immediate DNS resolution and a stable public URL.

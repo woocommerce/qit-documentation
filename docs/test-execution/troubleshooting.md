@@ -37,7 +37,7 @@ When running tests with QIT, you may occasionally encounter errors, unexpected f
 ## Debugging tools
 
 - **Verbose mode:** Add `-v` or `-vv` to QIT commands for more detailed output. For example:
-  ```bash
+  ```qitbash
   qit run:e2e your-extension -vv
   ```
 - **Allure reports:** For end-to-end test failures, review Allure reports to see screenshots, stack traces, and step-by-step failures.

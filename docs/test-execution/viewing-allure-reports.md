@@ -15,12 +15,12 @@ For custom E2E tests, QIT may also produce Allure reports if configured to do so
 ## Accessing reports via CLI
 
 If you know the test run ID, you can open the Allure report with:
-```bash
+```qitbash
 qit open <run ID>
 ```
 
 For example:
-```bash
+```qitbash
 qit open 344759
 ```
 

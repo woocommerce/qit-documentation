@@ -27,7 +27,7 @@ You can use tunneling in commands that utilize the QIT CLI environment capabilit
 - `run:activation`
 
 For example, to start your environment with tunneling enabled:
-```bash
+```qitbash
 qit env:up --tunnel
 ```
 
@@ -75,7 +75,7 @@ If none of the built-in methods suit your needs, implement a custom tunnel class
 ## Setup and configuration
 
 For most tunnels, no extra setup is needed. Just run with `--tunnel`. For methods requiring configuration (like `cloudflared-persistent`), run:
-```bash
+```qitbash
 qit tunnel:setup
 ```
 

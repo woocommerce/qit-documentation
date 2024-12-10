@@ -5,7 +5,7 @@ Whether you are running tests locally or in QIT's cloud, certain CLI commands st
 ## Listing extensions
 
 If you need to confirm which extensions you have access to, use:
-```bash
+```qitbash
 qit extensions
 ```
 
@@ -23,7 +23,7 @@ This quick reference helps you ensure you have the correct slug when running tes
 ## Listing test runs
 
 To see a history of tests you've run and their outcomes:
-```bash
+```qitbash
 qit list-tests
 ```
 
@@ -42,12 +42,12 @@ This helps you quickly find runs that failed or produced warnings and review the
 ## Viewing a single test run
 
 To get detailed information about a specific test run, use:
-```bash
+```qitbash
 qit get <run ID>
 ```
 
 Replace `<run ID>` with the numeric ID from `qit list-tests`. For example:
-```bash
+```qitbash
 qit get 344745
 ```
 
@@ -67,7 +67,7 @@ If a report is available, it will also show a 'Result Url' linking to more detai
 ## Opening a test report
 
 For tests that have a detailed report available, you can open it in your browser:
-```bash
+```qitbash
 qit open <run ID>
 ```
 
@@ -76,12 +76,12 @@ This launches the test's report page, making it easier to review results, downlo
 ## Validating ZIP files
 
 Before running tests on a local zip, ensure it meets QIT's criteria:
-```bash
+```qitbash
 qit woo:validate-zip <path-to-zip-file>
 ```
 
 This checks for invalid files (like `Thumbs.db`, `.DS_Store`) and ensures the zip is structured correctly. If it passes validation, you can confidently run tests against it:
-```bash
+```qitbash
 qit run:e2e my-extension --zip=my-extension.zip
 ```
 

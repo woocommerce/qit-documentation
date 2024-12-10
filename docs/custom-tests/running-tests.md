@@ -82,7 +82,7 @@ When running tests, QIT distinguishes between three key concepts in your test en
 
 **Example:**
 
-```bash
+```qitbash
 qit run:e2e woocommerce-amazon-s3-storage \
 --dependencies=bootstrap \
 --plugin woocommerce-extra-plugin:test \

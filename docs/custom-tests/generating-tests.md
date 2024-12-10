@@ -35,7 +35,7 @@ When you include shared setup and teardown scripts, QIT’s lifecycle ensures th
 - **Compatibility tests**: In scenarios where multiple plugins are tested together (some with `test` actions, others `bootstrap` or `activate`), the shared setup and teardown scripts apply globally. Additional plugins and dependencies in `bootstrap` mode benefit from the shared setup steps (e.g., disabling wizards) without undergoing their own isolated setup or teardown phases. This allows for a stable, uniform baseline when testing compatibility among multiple extensions.
 
 For example:
-```bash
+```qitbash
 qit scaffold:e2e ./e2e --with-shared --with-teardown
 ```
 

@@ -88,7 +88,7 @@ class DynamicBranchHandler extends CustomHandler {
 ```
 
 By referencing `TEST_BRANCH` as an environment variable, you can set this in your CI pipeline:
-```bash
+```qitbash
 qit run:e2e my-dynamic-plugin --env TEST_BRANCH=feature-branch
 ```
 
