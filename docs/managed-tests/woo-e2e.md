@@ -2,7 +2,7 @@
 
 The Woo E2E (end-to-end) test suite creates a temporary WordPress installation with WooCommerce and your extension installed, then uses a scripted browser to simulate essential store operations. This includes completing the WooCommerce onboarding wizard, creating a product, making a purchase as a customer, verifying order details as an admin, adjusting tax settings, and more.
 
-After setting up the environment and your extension, QIT runs the [WooCommerce Core end-to-end tests](https://github.com/woocommerce/woocommerce/tree/trunk/plugins/woocommerce/tests/e2e-pw). These tests cover the [WooCommerce Core Critical Flows](https://github.com/woocommerce/woocommerce/wiki/Critical-Flows) to verify that your extension does not break the default WooCommerce behaviors. Once the tests complete, you will see a success or failure result. For failures, a link to an Allure test report is provided, allowing you to dig into what went wrong.
+After setting up the environment and your extension, QIT runs the [WooCommerce Core end-to-end tests](https://github.com/woocommerce/woocommerce/tree/trunk/plugins/woocommerce/tests/e2e-pw). These tests cover the [WooCommerce Core Critical Flows](https://developer.woocommerce.com/docs/woocommerce-core-critical-flows/) to verify that your extension does not break the default WooCommerce behaviors. Once the tests complete, you will see a success or failure result. For failures, a link to an Allure test report is provided, allowing you to dig into what went wrong.
 
 :::info
 Currently, QIT can only run the WooCommerce Core E2E test suite. Future support for running your own E2E tests is planned.
