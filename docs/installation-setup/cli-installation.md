@@ -26,7 +26,7 @@ By installing the QIT CLI globally, you can access it from any project directory
 **Why Global Installation?**
 - **Consistency:** Have a single version of QIT CLI across all your projects.
 - **Convenience:** No need to re-install QIT CLI per project.
-- **Easy Updates:** A single `composer global update` keeps QIT CLI current.
+- **Easy updates:** A single `composer global update` keeps QIT CLI current.
 
 ## Updating the QIT CLI
 
@@ -39,6 +39,6 @@ This will fetch and install the latest version, ensuring you always have the new
 ## Next steps
 
 - **Authenticate with QIT:** After installing, connect the CLI to your WooCommerce Marketplace account. See [Authenticating](./authenticating.md) for details.
-- **Run Your First Test:** Once authenticated, try running a basic test:
+- **Run your first test:** Once authenticated, try running a basic test:
   `qit run:activation your-extension`
-- **Learn More:** Check out [Running Tests](./../using-qit/running-tests-cli.md) to discover how to integrate QIT CLI commands into your development process and CI pipelines.
+- **Learn more:** Check out [Running Tests](./../using-qit/running-tests-cli.md) to discover how to integrate QIT CLI commands into your development process and CI pipelines.

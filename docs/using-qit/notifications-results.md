@@ -69,9 +69,9 @@ In this example, if the test fails, the `Notify on Failure` step can trigger you
 
 ## Benefits of notifications and detailed reporting
 
-- **Proactive Issue Resolution:** Immediate alerts allow you to fix problems before merchants encounter them.
+- **Proactive issue resolution:** Immediate alerts allow you to fix problems before merchants encounter them.
 - **Efficiency:** Consolidated test logs and reports help you pinpoint issues quickly.
-- **Confidence in Releases:** Knowing that test failures or warnings won't go unnoticed builds trust in your continuous integration and deployment practices.
+- **Confidence in releases:** Knowing that test failures or warnings won't go unnoticed builds trust in your continuous integration and deployment practices.
 
 ## Next steps
 

@@ -47,9 +47,9 @@ All communication between QIT CLI, the QIT cloud environment, and any external s
 
 ## Best practices for test security
 
-- **Avoid Hardcoding Secrets:** Use environment variables or QIT configuration files to manage sensitive data. Never commit secrets directly into test code.
-- **Isolate External Dependencies:** If your plugin relies on external APIs, consider using QIT’s built-in tunnel feature or local mocks to prevent external exposure during tests.
-- **Review Third-Party Code:** If you install additional dependencies or run scripts within the environment, ensure they come from trusted sources.
+- **Avoid hardcoding secrets:** Use environment variables or QIT configuration files to manage sensitive data. Never commit secrets directly into test code.
+- **Isolate external dependencies:** If your plugin relies on external APIs, consider using QIT’s built-in tunnel feature or local mocks to prevent external exposure during tests.
+- **Review third-party code:** If you install additional dependencies or run scripts within the environment, ensure they come from trusted sources.
 
 ## Next steps
 

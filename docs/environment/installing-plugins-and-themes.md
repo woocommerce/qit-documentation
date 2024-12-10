@@ -11,10 +11,10 @@ When setting up your local test environment, you often need specific plugins or 
 ## Installing from wordpress.org
 
 If the plugin or theme is available on WordPress.org:
-- **CLI Flags:** Use `--plugin` or `--themes` with `qit env:up`:
+- **CLI flags:** Use `--plugin` or `--themes` with `qit env:up`:
   `qit env:up --plugin=woocommerce --plugin=contact-form-7 --themes=storefront`
 
-- **Configuration File:** Add them to 'qit.yml':
+- **Configuration file:** Add them to 'qit.yml':
   ```yaml
   wordpress_version: rc
   php_version: 8.0

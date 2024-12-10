@@ -8,9 +8,9 @@ QIT provides a set of built-in helper functions to simplify common tasks in your
 
 ## Why use helpers?
 
-- **Less Boilerplate:** Quickly log in as an admin or run WP-CLI commands without manually writing those steps every time.
-- **Consistent Operations:** Helpers ensure that tasks like user authentication or database manipulation are handled consistently, reducing flakiness and errors.
-- **Faster Iteration:** Spend more time refining your test scenarios rather than dealing with repetitive, low-level details.
+- **Less boilerplate:** Quickly log in as an admin or run WP-CLI commands without manually writing those steps every time.
+- **Consistent operations:** Helpers ensure that tasks like user authentication or database manipulation are handled consistently, reducing flakiness and errors.
+- **Faster iteration:** Spend more time refining your test scenarios rather than dealing with repetitive, low-level details.
 
 ## Available helpers
 
@@ -70,9 +70,9 @@ Adjusting the code to use relative URLs and environment variables ensures portab
 
 ## Best practices
 
-- **Use loginAsAdmin at the Start:** Keep authentication steps at the beginning of a test, so subsequent actions assume a stable, known state.
-- **Prefer qit.wp Over Direct DB Access:** Rely on WP-CLI for database or configuration changes. It maintains WordPress standards and reduces the risk of introducing instability.
-- **Leverage Screenshots and Env Variables:** Attach screenshots at key steps for visual confirmation. Use environment variables for sensitive data or toggling test modes without editing the test code itself.
+- **Use loginasadmin at the start:** Keep authentication steps at the beginning of a test, so subsequent actions assume a stable, known state.
+- **Prefer qit.wp over direct DB access:** Rely on WP-CLI for database or configuration changes. It maintains WordPress standards and reduces the risk of introducing instability.
+- **Leverage screenshots and env variables:** Attach screenshots at key steps for visual confirmation. Use environment variables for sensitive data or toggling test modes without editing the test code itself.
 
 ## Next steps
 

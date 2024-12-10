@@ -10,12 +10,12 @@ In this section, you'll learn how to generate, structure, and run custom E2E tes
 
 ## Why custom E2E tests?
 
-- **Unique User Flows:** Verify custom checkout fields, specialized product types, or complex discount logic that generic tests won’t catch.
-- **Compatibility Tests:** Ensure your extension remains compatible when used alongside other plugins or themes.
+- **Unique user flows:** Verify custom checkout fields, specialized product types, or complex discount logic that generic tests won’t catch.
+- **Compatibility tests:** Ensure your extension remains compatible when used alongside other plugins or themes.
   For more complex multi-plugin testing scenarios, including how to manage actions like `test`, `bootstrap`, and
   `activate` across multiple plugins, see [Compatibility Testing with Custom E2E Tests](./compatibility-tests).
-- **Early Feedback:** Run tests locally for instant validation during development, reducing the time spent debugging issues in production.
-- **Scalability and Collaboration:** Publish and tag your tests, allowing others to run them and ensuring consistency across development teams.
+- **Early feedback:** Run tests locally for instant validation during development, reducing the time spent debugging issues in production.
+- **Scalability and collaboration:** Publish and tag your tests, allowing others to run them and ensuring consistency across development teams.
 
 ## Getting started
 
@@ -39,8 +39,8 @@ This introduction is the first step. Custom E2E testing involves several moving 
 
 ## Additional capabilities
 
-- **Complex Environment Configurations:** Use a config file (qit.json or qit.yml) to set up multiple plugins, advanced PHP versions, feature flags, and environment variables.
-- **Visual Test Execution:** Run `qit run:e2e your-extension --ui` to observe the tests in a browser, improving debugging and communication with your team.
-- **Publishing and Sharing:** Once you’ve perfected your tests, publish them so that other developers (or future you) can run these scenarios easily.
-- **CI Integration:** Integrate custom E2E tests into your CI pipelines for continuous feedback, ensuring your extension’s quality at every commit.
-- **Compatibility Tests:** Leveraging shared setup and teardown scripts, orchestrate complex compatibility scenarios across multiple plugins, ensuring consistent test environments and results.
+- **Complex environment configurations:** Use a config file (qit.json or qit.yml) to set up multiple plugins, advanced PHP versions, feature flags, and environment variables.
+- **Visual test execution:** Run `qit run:e2e your-extension --ui` to observe the tests in a browser, improving debugging and communication with your team.
+- **Publishing and sharing:** Once you’ve perfected your tests, publish them so that other developers (or future you) can run these scenarios easily.
+- **CI integration:** Integrate custom E2E tests into your CI pipelines for continuous feedback, ensuring your extension’s quality at every commit.
+- **Compatibility tests:** Leveraging shared setup and teardown scripts, orchestrate complex compatibility scenarios across multiple plugins, ensuring consistent test environments and results.

@@ -39,8 +39,8 @@ This approach provides a UI-driven method, perfect for team members who prefer n
 
 Once you open the report, you may see:
 
-- **Overview Page**: Summarizes passed, failed, or skipped tests.
-- **Suites Section**: Organizes tests by browser or scenario. Drilling down shows each test's steps.
+- **Overview page**: Summarizes passed, failed, or skipped tests.
+- **Suites section**: Organizes tests by browser or scenario. Drilling down shows each test's steps.
 - **Categories**: Groups failures by error type. For example, "Product defects" or "Test defects".
 - **Timeline**: Some reports include a timeline view of tests run in parallel.
 - **Graphs**: Charts and graphs showing distribution of test results.
@@ -60,8 +60,8 @@ If you find flakiness or difficulties reproducing the issue, try re-running the 
 
 ## Tips for using allure reports
 
-- **Take Notes**: Make note of recurring issues. If the same failure mode appears across multiple runs, investigate deeper.
-- **Cross-Reference with Logs**: Combine Allure details with logs or CLI output. This holistic approach accelerates debugging.
+- **Take notes**: Make note of recurring issues. If the same failure mode appears across multiple runs, investigate deeper.
+- **Cross-reference with logs**: Combine Allure details with logs or CLI output. This holistic approach accelerates debugging.
 - **Share URLs**: If the report URL is shareable, send it to teammates for collaborative troubleshooting.
 
 ## Next steps

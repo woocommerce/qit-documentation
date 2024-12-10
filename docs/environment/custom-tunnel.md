@@ -6,9 +6,9 @@ While QIT provides built-in tunneling methods—such as `cloudflared-docker`, `c
 
 ## Why a custom tunnel?
 
-- **Non-Standard Tunneling Solutions:** If you rely on a proprietary or internal tool not supported by QIT, a custom tunnel bridges that gap.
-- **Advanced Use Cases:** Implement unique authentication flows, complex routing, or integrate with special infrastructure that isn't handled by default tunnels.
-- **Fine-Grained Control:** Tailor every aspect of your tunneling process, from how the tunnel is started to how URLs are managed and reported back to QIT.
+- **Non-standard tunneling solutions:** If you rely on a proprietary or internal tool not supported by QIT, a custom tunnel bridges that gap.
+- **Advanced use cases:** Implement unique authentication flows, complex routing, or integrate with special infrastructure that isn't handled by default tunnels.
+- **Fine-grained control:** Tailor every aspect of your tunneling process, from how the tunnel is started to how URLs are managed and reported back to QIT.
 
 ## Implementing a custom tunnel
 
@@ -79,8 +79,8 @@ When you run this command, QIT calls `MyCustomTunnel::connect_tunnel`, retrieves
 ## Tips
 
 - **Debugging:** If the tunnel fails, add verbose output, log commands, or throw exceptions with clear messages.
-- **Check Dependencies:** If your custom tunnel relies on a binary, environment variable, or network service, verify these conditions in `check_is_installed`.
-- **Persistent Config:** Like other tunnels, you can store configuration details (like authentication tokens or endpoint URLs) in environment variables or QIT config files.
+- **Check dependencies:** If your custom tunnel relies on a binary, environment variable, or network service, verify these conditions in `check_is_installed`.
+- **Persistent config:** Like other tunnels, you can store configuration details (like authentication tokens or endpoint URLs) in environment variables or QIT config files.
 
 ## Combining with other features
 

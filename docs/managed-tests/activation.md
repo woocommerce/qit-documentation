@@ -47,9 +47,9 @@ If you want the Activation test to skip specific pages added by your plugin, add
 }
 ```
 
-- **Automatic Page Discovery:** By default, the test suite visits all pages accessible from the WordPress admin sidebar menu that are added by your plugin.
-- **skipVisitPages Array:** The `skipVisitPages` array specifies the URLs of pages you want to exclude from visits during the tests.
-- **Substring Matching:** The skipping mechanism is substring-based. If any part of a page's URL contains a string listed in `skipVisitPages`, that page will not be visited.
+- **Automatic page discovery:** By default, the test suite visits all pages accessible from the WordPress admin sidebar menu that are added by your plugin.
+- **Skipvisitpages array:** The `skipVisitPages` array specifies the URLs of pages you want to exclude from visits during the tests.
+- **Substring matching:** The skipping mechanism is substring-based. If any part of a page's URL contains a string listed in `skipVisitPages`, that page will not be visited.
 
 For example, if you include `wp-admin/admin.php?page=skip-visiting-this` in the array, any admin page URL containing that substring will be skipped.
 

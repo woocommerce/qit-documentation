@@ -27,13 +27,13 @@ qit run:phpcompatibility your-extension
 ## Interpreting results
 
 - **Success:** No compatibility issues found. Your code is likely stable across multiple PHP versions.
-- **Warning/Failure:** One or more compatibility issues detected. Review the reported lines and fix them as recommended, then rerun the tests to confirm the changes.
+- **Warning/Failed:** One or more compatibility issues detected. Review the reported lines and fix them as recommended, then rerun the tests to confirm the changes.
 
 ## Best practices
 
-- **Test Early and Often:** Run PHPCompatibility tests during development, not just before release, to catch issues as soon as they appear.
-- **Stay Current:** Keep track of minimum PHP version requirements and ensure that your code doesn’t rely on deprecated features.
-- **Combine with Other Tests:** PHPCompatibility tests complement Security, PHPStan, and other managed tests, providing a holistic view of your extension’s quality and longevity.
+- **Test early and often:** Run PHPCompatibility tests during development, not just before release, to catch issues as soon as they appear.
+- **Stay current:** Keep track of minimum PHP version requirements and ensure that your code doesn’t rely on deprecated features.
+- **Combine with other tests:** PHPCompatibility tests complement Security, PHPStan, and other managed tests, providing a holistic view of your extension’s quality and longevity.
 
 ## Next steps
 

@@ -65,9 +65,9 @@ If you're using QIT Helpers in your tests:
 
 ## Best practices
 
-- **Keep Secrets Out of Code:** Store API keys, tokens, or other sensitive data in environment variables rather than committing them to your repository.
-- **Use .env Files for Collaboration:** By versioning a template `.env.example` (without sensitive values), team members can create their own `.env` files, ensuring consistency.
-- **Combine with Config Files:** Use environment variables alongside config files (qit.yml or qit.json) to handle dynamic values that should not be hardcoded.
+- **Keep secrets out of code:** Store API keys, tokens, or other sensitive data in environment variables rather than committing them to your repository.
+- **Use .env files for collaboration:** By versioning a template `.env.example` (without sensitive values), team members can create their own `.env` files, ensuring consistency.
+- **Combine with config files:** Use environment variables alongside config files (qit.yml or qit.json) to handle dynamic values that should not be hardcoded.
 
 ## Overriding variables
 

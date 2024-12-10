@@ -10,10 +10,10 @@ While custom handlers primarily focus on fetching and preparing plugins or theme
 
 ## When to use advanced config handlers
 
-- **Complex Dependency Graphs:** If your plugin relies on multiple external sources or must be built from several repositories, an advanced config handler can sequentially fetch and prepare each component.
-- **Conditional Logic:** Implement logic based on environment variables, branch names, or feature flags. For instance, use a different repository branch or build step depending on the test scenario.
-- **Integration with Private Artifact Repositories:** Combine authentication tokens, environment variables, and handler logic to fetch code from private registries or services like AWS S3, GCP, or Azure Storage.
-- **Version Pinning and Rollbacks:** Detect version changes (using `populate_extension_versions`) and decide which artifact to use. Allow easy rollbacks by referencing a previous commit or build artifact based on conditions defined in your config.
+- **Complex dependency graphs:** If your plugin relies on multiple external sources or must be built from several repositories, an advanced config handler can sequentially fetch and prepare each component.
+- **Conditional logic:** Implement logic based on environment variables, branch names, or feature flags. For instance, use a different repository branch or build step depending on the test scenario.
+- **Integration with private artifact repositories:** Combine authentication tokens, environment variables, and handler logic to fetch code from private registries or services like AWS S3, GCP, or Azure Storage.
+- **Version pinning and rollbacks:** Detect version changes (using `populate_extension_versions`) and decide which artifact to use. Allow easy rollbacks by referencing a previous commit or build artifact based on conditions defined in your config.
 
 ## Example: dynamic branch selection
 
@@ -122,10 +122,10 @@ The possibilities are limited only by your scripting and environment logic.
 
 ## Tips and best practices
 
-- **Keep It Modular:** Break down complex logic into smaller functions within your handler to maintain readability.
-- **Verbose Logging:** Use `$this->output->isVerbose()` or `$this->output->isVeryVerbose()` checks to print debug information. This helps diagnose issues in complex setups.
-- **Secure Credentials:** If you need authentication tokens for private repositories, store them in environment variables rather than code.
-- **Test Incrementally:** Start with a simple scenario and add complexity step by step. Validate each new piece of logic before moving on.
+- **Keep it modular:** Break down complex logic into smaller functions within your handler to maintain readability.
+- **Verbose logging:** Use `$this->output->isVerbose()` or `$this->output->isVeryVerbose()` checks to print debug information. This helps diagnose issues in complex setups.
+- **Secure credentials:** If you need authentication tokens for private repositories, store them in environment variables rather than code.
+- **Test incrementally:** Start with a simple scenario and add complexity step by step. Validate each new piece of logic before moving on.
 
 ## Next steps
 

@@ -6,24 +6,24 @@ In addition to testing individual extensions, QIT supports complex **compatibili
 
 When including multiple plugins in a single test run, their actions determine which lifecycle phases they participate in. QIT’s lifecycle phases include:
 
-- **Shared Setup/Teardown:** Runs once before/after **all** plugins. Establishes a global baseline (shared setup), then cleans up globally at the end (shared teardown). After shared setup finishes, QIT exports a DB snapshot that serves as the starting point for any plugin’s isolated testing.
-- **Isolated Setup/Teardown (Per Plugin):** If a plugin is tested (`action: test`), it receives its own isolated phases and tests. Before its isolated setup runs, QIT imports the baseline DB snapshot, ensuring a consistent state. After its tests complete, isolated teardown returns the environment to the baseline, preventing side effects from carrying over.
-- **Test Phase (Per Plugin):** For `action: test` plugins, QIT runs the actual E2E tests in this phase.
+- **Shared setup/teardown:** Runs once before/after **all** plugins. Establishes a global baseline (shared setup), then cleans up globally at the end (shared teardown). After shared setup finishes, QIT exports a DB snapshot that serves as the starting point for any plugin’s isolated testing.
+- **Isolated setup/teardown (per plugin):** If a plugin is tested (`action: test`), it receives its own isolated phases and tests. Before its isolated setup runs, QIT imports the baseline DB snapshot, ensuring a consistent state. After its tests complete, isolated teardown returns the environment to the baseline, preventing side effects from carrying over.
+- **Test phase (per plugin):** For `action: test` plugins, QIT runs the actual E2E tests in this phase.
 
 **Actions:**
 
 1. **`test` (SUT or Additional Plugins):**
-   - **Shared Setup/Teardown:** This plugin participates fully, meaning QIT runs shared setup and teardown steps specifically for it (you’ll see `setup:shared` and `teardown:shared` entries in the logs for this plugin).
-   - **Isolated Setup/Teardown:** The plugin also gets isolated phases. Each time it’s tested, QIT imports the baseline DB, runs isolated setup, executes its tests, then isolated teardown restores the environment.
-   - **Test Phase:** The plugin runs its own tests, just like the SUT. This is a full participation mode, suitable for plugins you want to thoroughly validate.
+   - **Shared setup/teardown:** This plugin participates fully, meaning QIT runs shared setup and teardown steps specifically for it (you’ll see `setup:shared` and `teardown:shared` entries in the logs for this plugin).
+   - **Isolated setup/teardown:** The plugin also gets isolated phases. Each time it’s tested, QIT imports the baseline DB, runs isolated setup, executes its tests, then isolated teardown restores the environment.
+   - **Test phase:** The plugin runs its own tests, just like the SUT. This is a full participation mode, suitable for plugins you want to thoroughly validate.
 
 2. **`bootstrap`:**
-   - **Shared Setup/Teardown:** A `bootstrap` plugin is included in shared setup and teardown. You’ll see `setup:shared` and `teardown:shared` steps for it, just as you do for `test` plugins. However, it does **not** get isolated phases or run its own tests.
-   - **No Isolated or Test Phase:** The `bootstrap` plugin is active throughout the entire run and benefits from the global conditions set by shared setup, but it never undergoes isolated setup/teardown nor does it run tests. This mode is ideal for plugins that need to be present (e.g., to provide certain functionalities or conditions) but don’t require direct testing.
+   - **Shared setup/teardown:** A `bootstrap` plugin is included in shared setup and teardown. You’ll see `setup:shared` and `teardown:shared` steps for it, just as you do for `test` plugins. However, it does **not** get isolated phases or run its own tests.
+   - **No isolated or test phase:** The `bootstrap` plugin is active throughout the entire run and benefits from the global conditions set by shared setup, but it never undergoes isolated setup/teardown nor does it run tests. This mode is ideal for plugins that need to be present (e.g., to provide certain functionalities or conditions) but don’t require direct testing.
 
 3. **`activate`:**
-   - **Activated Only:** A plugin with `action: activate` is simply activated and remains active throughout the run. It does **not** participate in shared setup/teardown steps individually (no `setup:shared` or `teardown:shared` lines in the logs for this plugin), nor does it have isolated phases or a test phase.
-   - **Background Presence:** Use `activate` for plugins that must be present in the environment but don’t need configuration or test validations. They influence conditions passively.
+   - **Activated only:** A plugin with `action: activate` is simply activated and remains active throughout the run. It does **not** participate in shared setup/teardown steps individually (no `setup:shared` or `teardown:shared` lines in the logs for this plugin), nor does it have isolated phases or a test phase.
+   - **Background presence:** Use `activate` for plugins that must be present in the environment but don’t need configuration or test validations. They influence conditions passively.
 
 **Summary of Differences:**
 
@@ -37,16 +37,16 @@ This detailed breakdown clarifies the subtle but important distinctions between 
 
 ## Lifecycle management for compatibility
 
-- **Shared Setup/Teardown:** Establishes a global baseline. All `test` and `bootstrap` plugins appear here with their own shared steps. `activate` plugins do not have dedicated shared steps but remain active in the background.
-- **DB Export/Import:** After shared setup, QIT exports a baseline DB snapshot. Each `test` plugin’s isolated testing cycle begins with this snapshot, ensuring consistent conditions.
-- **Isolated Phases:** Only `test` plugins (including the SUT) get isolated setup/teardown and tests. `bootstrap` and `activate` plugins remain stable in the background, influencing but not altering the snapshot cycle.
+- **Shared setup/teardown:** Establishes a global baseline. All `test` and `bootstrap` plugins appear here with their own shared steps. `activate` plugins do not have dedicated shared steps but remain active in the background.
+- **DB export/import:** After shared setup, QIT exports a baseline DB snapshot. Each `test` plugin’s isolated testing cycle begins with this snapshot, ensuring consistent conditions.
+- **Isolated phases:** Only `test` plugins (including the SUT) get isolated setup/teardown and tests. `bootstrap` and `activate` plugins remain stable in the background, influencing but not altering the snapshot cycle.
 
 ## Example scenario
 
 **Scenario:**
 - **SUT:** `woocommerce-amazon-s3-storage` (`action: test`)
-- **Additional Plugin 1:** `woocommerce-progressive-discounts` (`action: test`)
-- **Additional Plugin 2:** `woocommerce-extra-plugin` (`action: activate`)
+- **Additional plugin 1:** `woocommerce-progressive-discounts` (`action: test`)
+- **Additional plugin 2:** `woocommerce-extra-plugin` (`action: activate`)
 - **Dependencies:** Handled automatically via `--dependencies=bootstrap`
 
 Your `qit.yml` might be:
@@ -95,11 +95,11 @@ If a compatibility issue arises only when all three plugins are present—some t
 ## When to add more detail
 
 For more intricate scenarios (multiple `test` plugins, advanced dependencies, intricate states):
-- **Dedicated Configs:** Maintain separate qit.yml or test tags for multi-plugin scenarios.
-- **Enhanced Lifecycle Scripts:** Add custom shell/JS steps in shared/isolated phases to fine-tune conditions.
+- **Dedicated configs:** Maintain separate qit.yml or test tags for multi-plugin scenarios.
+- **Enhanced lifecycle scripts:** Add custom shell/JS steps in shared/isolated phases to fine-tune conditions.
 
 ## Next steps
 
-- **Review Custom E2E Basics:** Understand writing and running tests before tackling multi-plugin compatibility.
-- **Iterate and Refine:** Experiment with different plugin actions (`test`, `bootstrap`, `activate`) to find the right balance for your compatibility scenarios.
-- **Scale Up:** As your extension and ecosystem evolve, refine your compatibility testing strategies to ensure ongoing stability.
+- **Review custom E2E basics:** Understand writing and running tests before tackling multi-plugin compatibility.
+- **Iterate and refine:** Experiment with different plugin actions (`test`, `bootstrap`, `activate`) to find the right balance for your compatibility scenarios.
+- **Scale up:** As your extension and ecosystem evolve, refine your compatibility testing strategies to ensure ongoing stability.

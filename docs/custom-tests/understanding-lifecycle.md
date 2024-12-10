@@ -49,16 +49,16 @@ The `bootstrap` directory may contain:
 - `teardown.js` or `teardown.sh`: Clean up after your plugin’s individual tests.
 
 This structure allows fine-grained control:
-- **Shared Setup/Teardown:** Affects all tests in a compatibility test scenario.
-- **Isolated Setup/Teardown:** Affects only individual plugin tests, ensuring that each plugin test scenario is isolated and reproducible.
+- **Shared setup/teardown:** Affects all tests in a compatibility test scenario.
+- **Isolated setup/teardown:** Affects only individual plugin tests, ensuring that each plugin test scenario is isolated and reproducible.
 
 Note: Different plugin actions (`test`, `bootstrap`, `activate`) influence whether plugins appear in shared phases, isolated phases, or neither. For a full explanation of these actions, see [Compatibility Testing with Custom E2E Tests](./compatibility-tests.md).
 
 ## Practical tips
 
-- **Use Shared Setup Wisely:** Common tasks (e.g., disabling onboarding wizards) belong in shared setup, so you don’t repeat them in every test.
-- **Keep Tests Independent:** Rely on database snapshots to ensure each test runs in a controlled state. Avoid depending on changes made by previous tests.
-- **Employ Teardown Scripts:** Clean up after tests to prevent side effects that might affect later runs or consume unnecessary resources.
+- **Use shared setup wisely:** Common tasks (e.g., disabling onboarding wizards) belong in shared setup, so you don’t repeat them in every test.
+- **Keep tests independent:** Rely on database snapshots to ensure each test runs in a controlled state. Avoid depending on changes made by previous tests.
+- **Employ teardown scripts:** Clean up after tests to prevent side effects that might affect later runs or consume unnecessary resources.
 
 ## Next steps
 

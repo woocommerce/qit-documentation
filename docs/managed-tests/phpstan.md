@@ -4,9 +4,9 @@ PHPStan is a static code analysis tool designed to catch errors, type issues, an
 
 ## What PHPStan checks
 
-- **Level 0 Analysis:** QIT runs PHPStan at level 0 by default, focusing on basic checks like undefined variables or incorrect function calls.
-- **Type Safety and Consistency:** PHPStan attempts to ensure that the code meets a baseline of type consistency and logic correctness.
-- **Code Quality Signals:** While not strictly about security or performance, PHPStan flags patterns that, if addressed, can result in clearer, more robust code.
+- **Level 0 analysis:** QIT runs PHPStan at level 0 by default, focusing on basic checks like undefined variables or incorrect function calls.
+- **Type safety and consistency:** PHPStan attempts to ensure that the code meets a baseline of type consistency and logic correctness.
+- **Code quality signals:** While not strictly about security or performance, PHPStan flags patterns that, if addressed, can result in clearer, more robust code.
 
 ## Potential false positives
 

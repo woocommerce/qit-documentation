@@ -30,9 +30,9 @@ For failed tests, QIT provides logs and, when applicable, links to detailed repo
 
 ## Best practices
 
-- **Maintain Backwards Compatibility:** Keep your extension updated as WooCommerce evolves, ensuring your API integrations remain valid and stable.
-- **Test Complex Scenarios:** If you rely on custom data fields or extensive use of filters and hooks, run tests after any significant change to confirm the API still responds correctly.
-- **Combine with Other Tests:** Running Woo API tests alongside Woo E2E and Security tests provides a comprehensive picture of your extension’s quality and stability.
+- **Maintain backwards compatibility:** Keep your extension updated as WooCommerce evolves, ensuring your API integrations remain valid and stable.
+- **Test complex scenarios:** If you rely on custom data fields or extensive use of filters and hooks, run tests after any significant change to confirm the API still responds correctly.
+- **Combine with other tests:** Running Woo API tests alongside Woo E2E and Security tests provides a comprehensive picture of your extension’s quality and stability.
 
 ## Running woo API tests
 

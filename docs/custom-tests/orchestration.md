@@ -8,17 +8,17 @@ When working on complex E2E testing scenarios—especially those that involve te
 
 Orchestration manages the order and context in which tests for multiple plugins are executed within a single run. It ensures that:
 
-- **Shared States Are Applied Once:** Steps needed by all plugins under test (e.g., disabling onboarding wizards, applying global settings) occur in a shared setup phase.
-- **Isolated States Remain Independent:** Each plugin’s tests run with a clean, predictable baseline, ensuring no plugin’s tests interfere with another’s state.
-- **Consistent Test Runs:** By carefully restoring database snapshots and running isolated setup/teardown phases per plugin, orchestration guarantees repeatable results for compatibility tests.
+- **Shared states are applied once:** Steps needed by all plugins under test (e.g., disabling onboarding wizards, applying global settings) occur in a shared setup phase.
+- **Isolated states remain independent:** Each plugin’s tests run with a clean, predictable baseline, ensuring no plugin’s tests interfere with another’s state.
+- **Consistent test runs:** By carefully restoring database snapshots and running isolated setup/teardown phases per plugin, orchestration guarantees repeatable results for compatibility tests.
 
 ## Key concepts
 
 ### Shared vs. isolated
 
-- **Shared Setup/Teardown:** Executed once before and after *all* plugins’ tests run. This phase is ideal for establishing a global baseline, such as turning off onboarding screens or applying universal configurations.
+- **Shared setup/teardown:** Executed once before and after *all* plugins’ tests run. This phase is ideal for establishing a global baseline, such as turning off onboarding screens or applying universal configurations.
 
-- **Isolated Setup/Teardown:** Executed before and after *each plugin’s individual tests*. This ensures that when one plugin’s tests start, they do so from a known, standardized database state. When these tests finish, their changes are undone, leaving the environment ready for the next plugin.
+- **Isolated setup/teardown:** Executed before and after *each plugin’s individual tests*. This ensures that when one plugin’s tests start, they do so from a known, standardized database state. When these tests finish, their changes are undone, leaving the environment ready for the next plugin.
 
 ### Database snapshots
 
@@ -32,17 +32,17 @@ A typical orchestrated run might look like this:
    Runs once, preparing global conditions. Results are saved in a DB snapshot.
 
 2. **For Each Plugin:**
-    - **DB Import:** Restore the saved snapshot, ensuring a consistent baseline.
-    - **Isolated Setup:** Configure the environment uniquely for that plugin’s tests—activate a feature flag, set an option, or install a particular theme.
-    - **Test Execution:** Run the plugin’s tests.
-    - **Isolated Teardown:** Clean up after the tests (e.g., remove temp data, revert plugin-specific settings).
+    - **DB import:** Restore the saved snapshot, ensuring a consistent baseline.
+    - **Isolated setup:** Configure the environment uniquely for that plugin’s tests—activate a feature flag, set an option, or install a particular theme.
+    - **Test execution:** Run the plugin’s tests.
+    - **Isolated teardown:** Clean up after the tests (e.g., remove temp data, revert plugin-specific settings).
 
 3. **Shared Teardown:**  
    Once all plugins have been tested, run shared teardown steps. This phase cleans up any global state introduced during the shared setup, ensuring no residual side effects remain.
 
 ### Understanding vs. orchestration
 
-- **Understanding the Lifecycle:** Focuses on what happens during a single test run—shared setup, isolated setup, tests, teardown—primarily considering one plugin at a time.
+- **Understanding the lifecycle:** Focuses on what happens during a single test run—shared setup, isolated setup, tests, teardown—primarily considering one plugin at a time.
 
 - **Orchestration:** Introduces multiple plugins and manages their runs within the same environment. It ensures that each plugin’s tests remain isolated from each other while still allowing shared phases to run once at the start and end.
 

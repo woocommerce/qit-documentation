@@ -12,10 +12,10 @@ import QITImageURL from '@site/static/img/qit-right.webp';
 QIT (Quality Insights Toolkit) is a testing platform developed by WooCommerce for WordPress plugins and themes. It allows developers to quickly run a variety of managed tests out-of-the-box, as well as integrate their own custom E2E tests to ensure their extensions are reliable, secure, and compatible.
 
 **Key Features:**
-- **Managed Test Suites:** Run pre-configured end-to-end tests, activation tests, security scans, PHPStan analysis, API tests, and more.
-- **Custom E2E Testing:** Write and run your own Playwright-based E2E tests directly through QIT.
-- **Continuous Quality Checks:** Easily integrate QIT with your development workflows (CLI, GitHub Actions, etc.).
-- **Marketplace Integration:** Currently in closed beta for extensions listed on the WooCommerce Marketplace.
+- **Managed test suites:** Run pre-configured end-to-end tests, activation tests, security scans, PHPStan analysis, API tests, and more.
+- **Custom E2E testing:** Write and run your own Playwright-based E2E tests directly through QIT.
+- **Continuous quality checks:** Easily integrate QIT with your development workflows (CLI, GitHub Actions, etc.).
+- **Marketplace integration:** Currently in closed beta for extensions listed on the WooCommerce Marketplace.
 
 <video controls style={{ width:"100%", height:"100%" }}>
   <source src={QITIntro} type="video/mp4"/>  
@@ -24,8 +24,8 @@ QIT (Quality Insights Toolkit) is a testing platform developed by WooCommerce fo
 
 ## Requirements
 
-- **WooCommerce.com Partner Developer Account:** You must have at least one extension listed on the WooCommerce.com Marketplace to access QIT.
-- **PHP 7.2.5+ and Composer:** Required if you plan to use QIT locally via the CLI.
+- **Woocommerce.com partner developer account:** You must have at least one extension listed on the WooCommerce.com Marketplace to access QIT.
+- **PHP 7.2.5+ and composer:** Required if you plan to use QIT locally via the CLI.
 
 ## Quick start guide
 
@@ -85,15 +85,15 @@ While full QIT access is currently exclusive to WooCommerce.com Partner Develope
 
 ## Ways to use QIT
 
-- **Command Line (CLI):** Perfect for integrating into your local development workflow or CI pipelines. See [CLI Getting Started](./installation-setup/cli-installation.md).
-- **WooCommerce.com Dashboard:** Run and view tests directly in the vendor dashboard UI. See [Getting Started with Dashboard](./using-qit/running-tests-dashboard.md).
-- **GitHub Actions:** Integrate QIT tests into your GitHub workflows. See [GitHub Workflows Setup](./using-qit/github-workflows.md).
+- **Command line (CLI):** Perfect for integrating into your local development workflow or CI pipelines. See [CLI Getting Started](./installation-setup/cli-installation.md).
+- **Woocommerce.com dashboard:** Run and view tests directly in the vendor dashboard UI. See [Getting Started with Dashboard](./using-qit/running-tests-dashboard.md).
+- **GitHub actions:** Integrate QIT tests into your GitHub workflows. See [GitHub Workflows Setup](./using-qit/github-workflows.md).
 
 ## Next steps
 
 - **Want to learn more about authenticating?** Check out [Authentication](./installation-setup/authenticating.md).
 - **Ready to run more tests?** See [Running Tests with QIT CLI](./using-qit/running-tests-cli.md).
-- **Curious about Custom E2E Tests?** Visit the [Custom Tests Introduction](./custom-tests/introduction.md).
+- **Curious about custom E2E tests?** Visit the [Custom Tests Introduction](./custom-tests/introduction.md).
 
 :::info  
 If you encounter any issues or have questions, feel free to [contact us](mailto:qit@woocommerce.com) or open an issue on [GitHub](https://github.com/woocommerce/qit-cli/issues).  

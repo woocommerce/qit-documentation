@@ -4,8 +4,8 @@ If you prefer a user interface (UI) over the command line, the WooCommerce Vendo
 
 ## Prerequisites
 
-- **WooCommerce.com Partner Developer Account:** Ensure you are logged in with the vendor account associated with your extension.
-- **Extension Listed on the WooCommerce Marketplace:** The dashboard features are only available for extensions listed on WooCommerce.com.
+- **Woocommerce.com partner developer account:** Ensure you are logged in with the vendor account associated with your extension.
+- **Extension listed on the WooCommerce marketplace:** The dashboard features are only available for extensions listed on WooCommerce.com.
 
 ## Accessing the vendor dashboard
 
@@ -27,9 +27,9 @@ The dashboard will display a status such as `Pending`, `Running`, or `Complete`.
 
 After a test completes, navigate to the `All Tests` page in the QIT menu. You will see:
 
-- **Test Type:** The kind of test run (e.g., Activation, Woo E2E).
+- **Test type:** The kind of test run (e.g., Activation, Woo E2E).
 - **Status:** Whether the test passed, failed, or produced warnings.
-- **Version Information:** The WordPress, WooCommerce, and PHP versions used.
+- **Version information:** The WordPress, WooCommerce, and PHP versions used.
 - **Actions:** Links to detailed logs, screenshots, or reports if available.
 
 By clicking the `View Report` option, you can access more in-depth information, including step-by-step test actions, error logs, and screenshots.
@@ -44,9 +44,9 @@ If you have enabled email notifications, you will receive an email when a test c
 
 ## Why use the dashboard?
 
-- **Non-Technical Access:** Team members not comfortable with the CLI can still manage tests and review results.
-- **On-Demand Testing:** Quickly rerun tests after making changes without setting up a local environment.
-- **Unified Interface:** All test management and result review happen in one place, integrated with the WooCommerce Marketplace workflow.
+- **Non-technical access:** Team members not comfortable with the CLI can still manage tests and review results.
+- **On-demand testing:** Quickly rerun tests after making changes without setting up a local environment.
+- **Unified interface:** All test management and result review happen in one place, integrated with the WooCommerce Marketplace workflow.
 
 ## Next steps
 

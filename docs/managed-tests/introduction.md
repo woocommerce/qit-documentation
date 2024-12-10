@@ -5,25 +5,25 @@ Managed tests are a collection of standardized test suites maintained by the QIT
 ## Key characteristics of managed tests
 
 - **Maintained by QIT:** QIT handles updates and improvements to these tests, reflecting the latest best practices, WordPress and WooCommerce changes, and evolving security standards.
-- **Zero Setup Needed:** Simply run the managed tests against your extension, and QIT will provision the environment, perform the checks, and return results.
-- **Broad Coverage:** Managed tests verify critical functionalities such as plugin activation, WooCommerce checkout flows, REST API endpoints, security audits, PHP compatibility, and more.
+- **Zero setup needed:** Simply run the managed tests against your extension, and QIT will provision the environment, perform the checks, and return results.
+- **Broad coverage:** Managed tests verify critical functionalities such as plugin activation, WooCommerce checkout flows, REST API endpoints, security audits, PHP compatibility, and more.
 
 ## When to use managed tests
 
-- **Before a Release:** Run managed tests on new versions of your extension to catch issues early and maintain quality.
-- **Continuous Verification:** Integrate managed tests into your CI/CD pipeline (e.g., with GitHub Workflows) to ensure each commit or pull request maintains the extension's compatibility and security standards.
-- **Compliance and Confidence:** Managed tests provide a baseline assurance of quality for both developers and merchants, reducing the risk of unexpected issues after deployment.
+- **Before a release:** Run managed tests on new versions of your extension to catch issues early and maintain quality.
+- **Continuous verification:** Integrate managed tests into your CI/CD pipeline (e.g., with GitHub Workflows) to ensure each commit or pull request maintains the extension's compatibility and security standards.
+- **Compliance and confidence:** Managed tests provide a baseline assurance of quality for both developers and merchants, reducing the risk of unexpected issues after deployment.
 
 ## Types of managed tests
 
 Different managed tests address specific aspects of extension quality. Some examples include:
 
-- **Activation Test:** Ensures that your plugin activates without errors.
-- **Woo E2E Test:** Simulates key WooCommerce customer journeys, verifying that your extension does not break core store flows.
-- **Woo API Test:** Validates API endpoints and their responses under various conditions.
-- **Security Test:** Checks for known security risks, vulnerabilities, and coding standards violations.
-- **PHPStan and PHPCompatibility Tests:** Analyzes code quality and compatibility with supported PHP versions.
-- **Validation, Plugin Check, and Malware Tests:** Confirm that your extension's metadata, codebase, and file structure adhere to guidelines and remain free of malicious code.
+- **Activation test:** Ensures that your plugin activates without errors.
+- **Woo E2E test:** Simulates key WooCommerce customer journeys, verifying that your extension does not break core store flows.
+- **Woo API test:** Validates API endpoints and their responses under various conditions.
+- **Security test:** Checks for known security risks, vulnerabilities, and coding standards violations.
+- **PHPStan and PHPCompatibility tests:** Analyzes code quality and compatibility with supported PHP versions.
+- **Validation, plugin check, and malware tests:** Confirm that your extension's metadata, codebase, and file structure adhere to guidelines and remain free of malicious code.
 
 ## Interpreting results
 

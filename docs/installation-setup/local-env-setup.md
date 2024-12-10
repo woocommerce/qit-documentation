@@ -9,8 +9,8 @@ The local test environment allows you to run and debug **custom E2E tests** dire
 
 ## When to use the local test environment
 
-- **Custom E2E Tests:** If you are writing and maintaining your own end-to-end tests, the local environment is perfect for rapid iteration. It lets you validate new scenarios, fix issues, and experiment without waiting for cloud runs.
-- **Not for Managed Tests:** Managed tests, such as activation, Woo E2E, or security tests, always run in QIT’s cloud environment. The local environment will not affect these tests.
+- **Custom E2E tests:** If you are writing and maintaining your own end-to-end tests, the local environment is perfect for rapid iteration. It lets you validate new scenarios, fix issues, and experiment without waiting for cloud runs.
+- **Not for managed tests:** Managed tests, such as activation, Woo E2E, or security tests, always run in QIT’s cloud environment. The local environment will not affect these tests.
 
 ## Getting started
 
@@ -37,9 +37,9 @@ You can customize the environment by specifying versions, plugins, and features.
 
 ## Key benefits for custom E2E testing
 
-- **Immediate Feedback:** Quickly run and debug custom tests without waiting for cloud execution.
-- **Isolated Setup:** Each run is clean and reproducible, eliminating confusion about test state or data leftovers.
-- **Faster Iteration:** Experiment with new test scenarios and code changes locally before committing to the repository.
+- **Immediate feedback:** Quickly run and debug custom tests without waiting for cloud execution.
+- **Isolated setup:** Each run is clean and reproducible, eliminating confusion about test state or data leftovers.
+- **Faster iteration:** Experiment with new test scenarios and code changes locally before committing to the repository.
 
 ## Next steps
 

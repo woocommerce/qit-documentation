@@ -6,9 +6,9 @@ When testing plugins that rely on a stable, publicly accessible URL—such as pa
 
 ## Requirements
 
-- **Cloudflare Account:** You must have a Cloudflare account and access to a domain managed by Cloudflare.
-- **cloudflared Binary Installed:** Ensure you have the `cloudflared` binary on your system.
-- **Tunnel Configuration:** Follow the steps below to create and configure your persistent tunnel.
+- **Cloudflare account:** You must have a Cloudflare account and access to a domain managed by Cloudflare.
+- **Cloudflared binary installed:** Ensure you have the `cloudflared` binary on your system.
+- **Tunnel configuration:** Follow the steps below to create and configure your persistent tunnel.
 
 ## Steps to create a persistent tunnel
 
@@ -71,9 +71,9 @@ QIT uses the persistent tunnel you configured, ensuring immediate DNS resolution
 
 ## Why use a persistent tunnel?
 
-- **No DNS Propagation Delays:** Stable, pre-configured subdomain ensures external integrations can reach your test site immediately.
+- **No DNS propagation delays:** Stable, pre-configured subdomain ensures external integrations can reach your test site immediately.
 - **Consistent URL:** No need to share a new URL each time you run `qit env:up`.
-- **Ideal for CI and Teams:** Developers, QA, or CI pipelines can rely on the same URL, streamlining integration tests and demonstrations.
+- **Ideal for CI and teams:** Developers, QA, or CI pipelines can rely on the same URL, streamlining integration tests and demonstrations.
 
 ## Combining persistent tunnels with other features
 

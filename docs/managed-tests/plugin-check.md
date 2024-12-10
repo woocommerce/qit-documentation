@@ -4,9 +4,9 @@ Plugin Check tests run the [wordpress.org automated plugin check](https://wordpr
 
 ## What the plugin check tool evaluates
 
-- **Core Guidelines Compliance:** Flags code patterns that violate WordPress.org plugin review guidelines.
-- **Repository Readiness:** Ensures that the extension meets baseline directory requirements, such as proper file structures and absence of known problematic patterns.
-- **General Code Hygiene:** May highlight deprecated functions, insecure code, or other areas of improvement, even if not strictly required by WooCommerce Marketplace standards.
+- **Core guidelines compliance:** Flags code patterns that violate WordPress.org plugin review guidelines.
+- **Repository readiness:** Ensures that the extension meets baseline directory requirements, such as proper file structures and absence of known problematic patterns.
+- **General code hygiene:** May highlight deprecated functions, insecure code, or other areas of improvement, even if not strictly required by WooCommerce Marketplace standards.
 
 ## Interpreting results
 
@@ -20,13 +20,13 @@ If the test fails or reports warnings:
 
 ## Scope and caveats
 
-- **Not Mandatory for WooCommerce Marketplace:** Currently, QIT does not require you to pass these plugin check tests to publish on the WooCommerce Marketplace. They are offered as an additional safeguard and resource.
-- **False Positives or Strict Rules:** If the tool flags something you believe is a false positive, review the relevant WordPress.org guidelines. You may choose to ignore or bypass these warnings if not applicable, or consider reaching out to the WordPress.org plugin review team for clarification.
+- **Not mandatory for WooCommerce marketplace:** Currently, QIT does not require you to pass these plugin check tests to publish on the WooCommerce Marketplace. They are offered as an additional safeguard and resource.
+- **False positives or strict rules:** If the tool flags something you believe is a false positive, review the relevant WordPress.org guidelines. You may choose to ignore or bypass these warnings if not applicable, or consider reaching out to the WordPress.org plugin review team for clarification.
 
 ## Best practices
 
-- **Regular Reviews:** Running plugin check tests occasionally ensures you maintain compatibility with broader WordPress standards, improving extensibility and future-proofing your code.
-- **Combine with Other Tests:** Plugin check results can complement managed tests, security scans, and E2E tests, providing a holistic view of your extension’s quality.
+- **Regular reviews:** Running plugin check tests occasionally ensures you maintain compatibility with broader WordPress standards, improving extensibility and future-proofing your code.
+- **Combine with other tests:** Plugin check results can complement managed tests, security scans, and E2E tests, providing a holistic view of your extension’s quality.
 
 ## Next steps
 

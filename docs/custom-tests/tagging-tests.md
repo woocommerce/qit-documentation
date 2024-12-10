@@ -5,8 +5,8 @@ As you expand your suite of custom E2E tests, organizing and sharing them become
 ## Why tag tests?
 
 - **Organization:** Categorize tests by feature, scenario, or complexity. For example, assign `checkout` to tests that focus on the cart and payment flow, or `compatibility` for those verifying your plugin alongside another.
-- **Targeted Execution:** Instead of running all tests at once, run specific tags to focus on a particular area. This speeds up debugging and reduces noise.
-- **Collaboration and Sharing:** Publish tagged tests to QIT so other developers can run them. This is especially useful for verifying compatibility across multiple plugins in the WooCommerce ecosystem.
+- **Targeted execution:** Instead of running all tests at once, run specific tags to focus on a particular area. This speeds up debugging and reduces noise.
+- **Collaboration and sharing:** Publish tagged tests to QIT so other developers can run them. This is especially useful for verifying compatibility across multiple plugins in the WooCommerce ecosystem.
 
 ## Listing available tags
 

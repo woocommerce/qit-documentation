@@ -5,7 +5,7 @@ The QIT CLI allows you to run both managed and custom tests directly from your t
 ## Prerequisites
 
 
-- **Extension Slug:** Know the slug of your WooCommerce Marketplace extension. You'll need it when running tests.
+- **Extension slug:** Know the slug of your WooCommerce Marketplace extension. You'll need it when running tests.
 
 ## Running managed tests
 

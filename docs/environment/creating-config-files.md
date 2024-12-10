@@ -80,9 +80,9 @@ This allows you to temporarily test different conditions without permanently alt
 
 ## Tips
 
-- **Start Simple:** Begin with essential settings (WordPress version, PHP version, plugins) before adding complex setups.
-- **Version Control:** Commit `qit.json` or `qit.yml` to your repository. Other team members can run `qit env:up` immediately, ensuring consistent environments.
-- **Iterate as Needed:** As you discover new requirements, update the config file and share it with your team.
+- **Start simple:** Begin with essential settings (WordPress version, PHP version, plugins) before adding complex setups.
+- **Version control:** Commit `qit.json` or `qit.yml` to your repository. Other team members can run `qit env:up` immediately, ensuring consistent environments.
+- **Iterate as needed:** As you discover new requirements, update the config file and share it with your team.
 
 ## Next steps
 

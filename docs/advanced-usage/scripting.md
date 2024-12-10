@@ -114,15 +114,15 @@ make qit-security
 
 ## Tips for scripting
 
-- **Check Exit Codes:** Your scripts should check the exit code of QIT commands and handle failures appropriately, for instance by failing the CI job or sending notifications.
-- **Use Environment Variables:** Pass credentials, tokens, or feature flags via environment variables instead of hardcoding them.
-- **Combine with Config Files:** Store stable configuration (WP, WC versions) in qit.yml, while using scripting for tasks that vary per run.
+- **Check exit codes:** Your scripts should check the exit code of QIT commands and handle failures appropriately, for instance by failing the CI job or sending notifications.
+- **Use environment variables:** Pass credentials, tokens, or feature flags via environment variables instead of hardcoding them.
+- **Combine with config files:** Store stable configuration (WP, WC versions) in qit.yml, while using scripting for tasks that vary per run.
 
 ## Advanced scenarios
 
-- **Multi-Step CI Pipelines:** A CI pipeline might authenticate QIT, run activation tests, security tests, and E2E tests in parallel, and aggregate results.
-- **Conditional Logic:** Scripts can run different sets of tests based on branch name, tag, or commit message.
-- **Failure Hooks:** If a test fails, the script can post a message to Slack, create a GitHub issue, or revert a commit automatically.
+- **Multi-step CI pipelines:** A CI pipeline might authenticate QIT, run activation tests, security tests, and E2E tests in parallel, and aggregate results.
+- **Conditional logic:** Scripts can run different sets of tests based on branch name, tag, or commit message.
+- **Failure hooks:** If a test fails, the script can post a message to Slack, create a GitHub issue, or revert a commit automatically.
 
 ## Next steps
 

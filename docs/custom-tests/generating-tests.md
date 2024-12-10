@@ -31,8 +31,8 @@ These files help you configure the environment precisely before tests run and cl
 
 When you include shared setup and teardown scripts, QIT’s lifecycle ensures that:
 
-- **Shared Setup/Teardown**: Runs once before and after all plugins’ tests in a given run. After shared setup completes, QIT exports a baseline database snapshot. All plugins that `test` or `bootstrap` will start from this snapshot. By the time you reach the shared teardown, the environment is restored to a known consistent state, ensuring that the shared teardown scripts always run in a predictable environment.
-- **Compatibility Tests**: In scenarios where multiple plugins are tested together (some with `test` actions, others `bootstrap` or `activate`), the shared setup and teardown scripts apply globally. Additional plugins and dependencies in `bootstrap` mode benefit from the shared setup steps (e.g., disabling wizards) without undergoing their own isolated setup or teardown phases. This allows for a stable, uniform baseline when testing compatibility among multiple extensions.
+- **Shared setup/teardown**: Runs once before and after all plugins’ tests in a given run. After shared setup completes, QIT exports a baseline database snapshot. All plugins that `test` or `bootstrap` will start from this snapshot. By the time you reach the shared teardown, the environment is restored to a known consistent state, ensuring that the shared teardown scripts always run in a predictable environment.
+- **Compatibility tests**: In scenarios where multiple plugins are tested together (some with `test` actions, others `bootstrap` or `activate`), the shared setup and teardown scripts apply globally. Additional plugins and dependencies in `bootstrap` mode benefit from the shared setup steps (e.g., disabling wizards) without undergoing their own isolated setup or teardown phases. This allows for a stable, uniform baseline when testing compatibility among multiple extensions.
 
 For example:
 ```bash

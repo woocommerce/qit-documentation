@@ -4,7 +4,7 @@ By integrating QIT into your GitHub Actions workflows, you can automatically tes
 
 ## Prerequisites
 
-- **GitHub Repository:** Your extension should be in a GitHub repository where you can configure workflows.
+- **GitHub repository:** Your extension should be in a GitHub repository where you can configure workflows.
 
 
 ## Example GitHub workflow
@@ -47,8 +47,8 @@ jobs:
 
 **Key Points in this Example:**
 - **Authenticate QIT:** Use secrets to store QIT credentials (QIT_USER and QIT_APP_PASS) securely.
-- **Trigger on PR & Push:** The workflow runs on pull requests and pushes to the main branch.
-- **Wait for Completion:** The `--wait` flag ensures the workflow waits for test completion before proceeding.
+- **Trigger on PR & push:** The workflow runs on pull requests and pushes to the main branch.
+- **Wait for completion:** The `--wait` flag ensures the workflow waits for test completion before proceeding.
 
 ## Storing credentials securely
 
@@ -56,9 +56,9 @@ Store your QIT credentials as GitHub Secrets to avoid exposing them in the repos
 
 ## Benefits of CI integration
 
-- **Early Detection:** Catch regressions, security issues, or compatibility problems before merging changes.
-- **Automated Validation:** Ensure that all commits passing through your main branch are tested and meet quality standards.
-- **Faster Feedback Loop:** Developers receive immediate feedback, reducing the time spent manually verifying code changes.
+- **Early detection:** Catch regressions, security issues, or compatibility problems before merging changes.
+- **Automated validation:** Ensure that all commits passing through your main branch are tested and meet quality standards.
+- **Faster feedback loop:** Developers receive immediate feedback, reducing the time spent manually verifying code changes.
 
 ## Next steps
 

@@ -8,9 +8,9 @@ When writing custom E2E tests that interact with the front-end, the active theme
 
 ## Why test with different themes?
 
-- **Front-End Consistency:** Confirm that front-end features, such as custom product displays or specialized cart interactions, remain functional under diverse themes.
-- **Prevent CSS or Layout Breakage:** Some themes reorder elements, use different selectors, or apply unique CSS rules. By testing under multiple themes, you catch visual and structural issues early.
-- **Wider Compatibility:** If you recommend certain themes or know that merchants often use popular third-party themes, ensuring compatibility can boost merchant confidence and reduce support overhead.
+- **Front-end consistency:** Confirm that front-end features, such as custom product displays or specialized cart interactions, remain functional under diverse themes.
+- **Prevent CSS or layout breakage:** Some themes reorder elements, use different selectors, or apply unique CSS rules. By testing under multiple themes, you catch visual and structural issues early.
+- **Wider compatibility:** If you recommend certain themes or know that merchants often use popular third-party themes, ensuring compatibility can boost merchant confidence and reduce support overhead.
 
 ## Activating a theme
 
@@ -35,9 +35,9 @@ When running `qit run:e2e your-extension --codegen`, consider switching themes b
 
 ## Tips for managing themes
 
-- **Keep Themes in Version Control:** If using custom themes or child themes, maintain them in a repository. This ensures consistent installations and updates during the test lifecycle.
-- **Use Config Files:** Leverage qit.json or qit.yml to specify which themes to install and activate for certain test runs, making it easy to toggle between themes without rewriting scripts.
-- **Focus on Selectors and Markup:** Keep an eye on HTML selectors and markup differences. Write tests that rely on stable identifiers when possible, such as `data-test` attributes, to minimize theme-related flakiness.
+- **Keep themes in version control:** If using custom themes or child themes, maintain them in a repository. This ensures consistent installations and updates during the test lifecycle.
+- **Use config files:** Leverage qit.json or qit.yml to specify which themes to install and activate for certain test runs, making it easy to toggle between themes without rewriting scripts.
+- **Focus on selectors and markup:** Keep an eye on HTML selectors and markup differences. Write tests that rely on stable identifiers when possible, such as `data-test` attributes, to minimize theme-related flakiness.
 
 ## Next steps
 
