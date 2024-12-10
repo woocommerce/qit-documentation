@@ -19,6 +19,7 @@ PHPCompatibility tests use the [PHPCompatibility](https://github.com/PHPCompatib
 You can trigger the PHPCompatibility tests through the QIT CLI or via the WooCommerce Vendor Dashboard. QIT automatically provisions the environment and runs the tests against your extension’s codebase, reporting any compatibility issues.
 
 For example, from the CLI:
+
 ```qitbash
 qit run:phpcompatibility your-extension
 ```

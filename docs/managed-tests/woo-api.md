@@ -37,7 +37,10 @@ For failed tests, QIT provides logs and, when applicable, links to detailed repo
 ## Running Woo API Tests
 
 To run the Woo API tests:
-`qit run:woo-api your-extension`
+
+```qitbash
+qit run:woo-api your-extension
+```
 
 Replace `your-extension` with your plugin’s slug. The tests will run in QIT’s cloud environment, and the CLI or Vendor Dashboard will display the results.
 

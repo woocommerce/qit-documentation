@@ -27,7 +27,9 @@ The status of the test is determined by the following:
 ## Configurable Options
 
 You can tweak several parameters in the Activation Test, such as WordPress, WooCommerce, and PHP versions. To see all available options, run:
-`qit run:activation --help`
+```qitbash
+qit run:activation --help
+```
 
 This command displays a list of configurable parameters, enabling you to test under various conditions.
 
