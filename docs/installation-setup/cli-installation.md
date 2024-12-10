@@ -38,7 +38,7 @@ This will fetch and install the latest version, ensuring you always have the new
 
 ## Next Steps
 
-- **Authenticate with QIT:** After installing, connect the CLI to your WooCommerce Marketplace account. See [Authenticating](#) for details.
+- **Authenticate with QIT:** After installing, connect the CLI to your WooCommerce Marketplace account. See [Authenticating](./authenticating.md) for details.
 - **Run Your First Test:** Once authenticated, try running a basic test:
   `qit run:activation your-extension`
-- **Learn More:** Check out [Running Tests](#) to discover how to integrate QIT CLI commands into your development process and CI pipelines.
+- **Learn More:** Check out [Running Tests](./../using-qit/running-tests-cli.md) to discover how to integrate QIT CLI commands into your development process and CI pipelines.

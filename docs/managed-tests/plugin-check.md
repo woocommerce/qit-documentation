@@ -1,6 +1,6 @@
 # Plugin Check Tests
 
-Plugin Check tests run the [wordpress.org automated plugin check](#) tool against your extension. This tool helps identify issues and guidelines violations aligned with the WordPress.org plugin directory standards. While this test is optional and not automatically triggered by QIT for WooCommerce Marketplace submissions, it can be valuable if you also distribute your extension on wordpress.org or simply want to align with broader WordPress best practices.
+Plugin Check tests run the [wordpress.org automated plugin check](https://wordpress.org/plugins/plugin-check) tool against your extension. This tool helps identify issues and guidelines violations aligned with the WordPress.org plugin directory standards. While this test is optional and not automatically triggered by QIT for WooCommerce Marketplace submissions, it can be valuable if you also distribute your extension on wordpress.org or simply want to align with broader WordPress best practices.
 
 ## What the Plugin Check Tool Evaluates
 

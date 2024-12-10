@@ -66,7 +66,7 @@ If you are an Automattician, an internal tunneling method might be available.
 
 ## Persistent Tunnels
 
-Persistent tunnels require additional setup and a Cloudflare account. They provide a stable URL without DNS propagation delays. See [Persistent Tunnel](#) for detailed instructions.
+Persistent tunnels require additional setup and a Cloudflare account. They provide a stable URL without DNS propagation delays. See [Persistent Tunnel](./persistent-tunnel.md) for detailed instructions.
 
 ## Custom Tunnels
 

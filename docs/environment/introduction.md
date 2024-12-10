@@ -13,7 +13,7 @@ Every time you run `qit env:up`, a fresh environment is created. Any changes you
 ## Prerequisites
 
 Refer to [Installation](../installation-setup/cli-installation.md) if needed.
-- **Docker:** QIT relies on Docker to create isolated environments. Make sure Docker is installed and running. For more information, see [Docker documentation](#).
+- **Docker:** QIT relies on Docker to create isolated environments. Make sure Docker is installed and running. For more information, see [Docker documentation](https://docs.docker.com/compose/install/).
 
 ### Platform-Specific Notes
 
@@ -22,7 +22,7 @@ Refer to [Installation](../installation-setup/cli-installation.md) if needed.
 - **Windows:** Use Windows Subsystem for Linux (WSL) for the best experience.
     - WSL 2 is recommended for better speed and easier setup.
     - If you are on the latest Windows version, run `wsl --install` in PowerShell.
-    - For older Windows versions, consult [Microsoft's official guide](#).
+    - For older Windows versions, consult [Microsoft's official guide](https://learn.microsoft.com/en-us/windows/wsl/install).
 
 Verify that essential Windows features like Virtual Machine Platform, Windows Subsystem for Linux, and Hyper-V are enabled, and confirm that Virtualization is active in the BIOS.
 
