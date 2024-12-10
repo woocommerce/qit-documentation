@@ -31,9 +31,3 @@ If authenticated, you`ll see a list of extensions you have access to. This confi
 ## Understanding the QIT token
 
 The QIT Token you obtain through `qit connect` functions similarly to an application password but is scoped only to QIT actions. If you already have a WordPress Application Password from WooCommerce.com, it will not work with QIT for security reasons. It is required to generate a QIT Token through the `qit connect` flow, as it ensures the correct permissions and scope.
-
-## Next steps
-
-- [Running Tests](../using-qit/running-tests-cli.md): Once authenticated, start by running a basic managed test against one of your extensions.
-- [Introduction to QIT](../intro.md): Review the fundamentals if you haven't already.
-- [Notifications and Results](../using-qit/notifications-results.md): Learn how QIT communicates test results and how you can review logs and reports.

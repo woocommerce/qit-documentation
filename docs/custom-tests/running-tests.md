@@ -110,10 +110,3 @@ In this example, `your-extension` references the slug for the extension under te
 ## Debugging and iteration
 
 If a test fails, use the CLI output and any provided URLs for logs, screenshots, or reports. Refine your test scenario, adjust environment variables, or enable the UI mode to observe behavior in real-time. Re-run the test after making changes to confirm that issues are resolved.
-
-## Next steps
-
-- [Understanding the Lifecycle](./understanding-lifecycle.md): Learn how shared setup, isolated setup, and teardown phases affect your tests.
-- [Themes](./themes.md): Enforce a specific theme or test with multiple themes for front-end validation.
-- [Architecture & Security](./security-architecture.md): Gain insights into how QIT ensures test isolation, security, and reliable reporting.
-- [QIT Helpers](./qit-helpers.md): Explore built-in functions to simplify test writing, like logging in as admin or running WP-CLI commands.

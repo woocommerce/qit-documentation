@@ -51,9 +51,3 @@ By combining both types of tests, you get a thorough quality assurance process:
 - **Before release:** Managed tests confirm baseline standards are met.
 - **During development:** Custom tests verify new features and custom behaviors.
 - **Ongoing maintenance:** Regularly running both test suites helps ensure continuous stability and compatibility as WordPress, WooCommerce, and your extension evolve.
-
-## Next steps
-
-- **Learn how QIT works:** If you haven’t yet, see [How QIT Works](./how-qit-works) to understand how these test types fit into the overall QIT architecture.
-- **Managed tests in detail:** Dive deeper into each managed test type in [Managed Tests Introduction](./../managed-tests/introduction).
-- **Getting started with custom E2E tests:** Explore how to scaffold, write, and run your own tests in [Custom E2E Tests Introduction](./../custom-tests/introduction).

@@ -87,9 +87,3 @@ qit run:e2e your-extension --env_file .env
 ```
 
 Your tests and plugin code can now reference `API_URL` and `API_KEY` from `process.env` or `getenv`, enabling staging endpoint tests without changing code.
-
-## Next steps
-
-- [Creating Config Files](./creating-config-files.md): Combine environment variables with config files for a fully parameterized setup.
-- [Tunneling](./tunnel.md): Use environment variables to pass tokens or credentials to a custom tunneling solution.
-- [Advanced Usage](../advanced-usage/scripting.md): Explore scripting and CI integration, where environment variables can drive dynamic test configurations.

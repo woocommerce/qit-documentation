@@ -63,9 +63,3 @@ If you find flakiness or difficulties reproducing the issue, try re-running the 
 - **Take notes**: Make note of recurring issues. If the same failure mode appears across multiple runs, investigate deeper.
 - **Cross-reference with logs**: Combine Allure details with logs or CLI output. This holistic approach accelerates debugging.
 - **Share URLs**: If the report URL is shareable, send it to teammates for collaborative troubleshooting.
-
-## Next steps
-
-- [Useful Commands](./useful-commands.md): Learn about commands to list tests and get their run IDs.
-- [Notifications and Results](../using-qit/notifications-results.md): Configure email alerts or other notifications to know when to view reports.
-- [Managed Tests and Custom E2E Tests](../core-concepts/test-types-overview.md): Explore how to generate and interpret Allure reports for both default and custom scenarios.

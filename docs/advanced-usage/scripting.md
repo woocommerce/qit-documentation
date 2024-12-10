@@ -123,9 +123,3 @@ make qit-security
 - **Multi-step CI pipelines:** A CI pipeline might authenticate QIT, run activation tests, security tests, and E2E tests in parallel, and aggregate results.
 - **Conditional logic:** Scripts can run different sets of tests based on branch name, tag, or commit message.
 - **Failure hooks:** If a test fails, the script can post a message to Slack, create a GitHub issue, or revert a commit automatically.
-
-## Next steps
-
-- [GitHub Workflows](../using-qit/github-workflows.md): Integrate QIT tests into GitHub Actions for automated QA on pull requests and pushes.
-- [Using QIT via the CLI](../using-qit/running-tests-cli.md): Refine your understanding of CLI commands before scripting more complex workflows.
-- [Environment & Configuration](../environment/introduction.md): Combine scripting with custom configurations, tunneling, and handlers to build a robust testing ecosystem.

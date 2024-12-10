@@ -76,9 +76,3 @@ Running `qit run:activation my-extension` applies these settings automatically.
 - **Start stable:** Begin testing with stable versions of WordPress and WooCommerce, then check RC or older versions for regressions.
 - **Incrementally add features:** Introduce optional features (like HPOS) once you confirm basic compatibility, making debugging easier.
 - **Combine with CI/CD:** Integrate version testing in your CI pipeline, running tests against multiple versions concurrently to ensure broad compatibility.
-
-## Next steps
-
-- [Useful Commands](../test-execution/useful-commands.md): Learn how to list and view test runs for different configurations.
-- [Troubleshooting](../test-execution/troubleshooting.md): If tests fail under certain versions or features, see the troubleshooting guide.
-- [Environment & Configuration](../environment/introduction.md): Dive deeper into configuring your local test environment and advanced features.

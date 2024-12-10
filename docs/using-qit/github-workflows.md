@@ -59,9 +59,3 @@ Store your QIT credentials as GitHub Secrets to avoid exposing them in the repos
 - **Early detection:** Catch regressions, security issues, or compatibility problems before merging changes.
 - **Automated validation:** Ensure that all commits passing through your main branch are tested and meet quality standards.
 - **Faster feedback loop:** Developers receive immediate feedback, reducing the time spent manually verifying code changes.
-
-## Next steps
-
-- [Running Tests via the CLI](./running-tests-cli.md): Learn how to run tests locally before pushing changes to GitHub.
-- [Notifications and Results](./notifications-results.md): Configure notifications for failed tests triggered by GitHub Actions.
-- [Custom E2E Tests](../custom-tests/introduction.md): Integrate your custom tests into the workflow for full coverage.

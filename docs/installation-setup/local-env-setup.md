@@ -40,9 +40,3 @@ You can customize the environment by specifying versions, plugins, and features.
 - **Immediate feedback:** Quickly run and debug custom tests without waiting for cloud execution.
 - **Isolated setup:** Each run is clean and reproducible, eliminating confusion about test state or data leftovers.
 - **Faster iteration:** Experiment with new test scenarios and code changes locally before committing to the repository.
-
-## Next steps
-
-- [Creating Custom E2E Tests](../custom-tests/introduction.md): Learn how to scaffold and write your own tests to run in this environment.
-- [Running Tests Locally](../using-qit/running-tests-cli.md): Integrate custom tests into your workflow for continuous development and refinement.
-- [Advanced Configuration](../advanced-usage/advanced-config-handlers.md): Explore tunnels, custom handlers, and other advanced features.

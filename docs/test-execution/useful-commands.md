@@ -90,9 +90,3 @@ qit run:e2e my-extension --zip=my-extension.zip
 - Combine commands for efficient workflows. For example, after running `qit run:woo-e2e my-extension`, use `qit list-tests` to find the run ID, then `qit get <run ID>` for details.
 - Use `qit extensions` before running tests if you're unsure of the correct extension slug.
 - Validate zips before testing to avoid issues related to malformed packages.
-
-## Next steps
-
-- [Running Tests](../using-qit/running-tests-cli.md): Learn more about executing tests via CLI or dashboard.
-- [Notifications and Results](../using-qit/notifications-results.md): Set up alerts and view logs for continuous feedback.
-- [Configuration Files](../environment/creating-config-files.md): Integrate useful commands with custom environment configurations for a smooth testing pipeline.

@@ -50,9 +50,3 @@ All communication between QIT CLI, the QIT cloud environment, and any external s
 - **Avoid hardcoding secrets:** Use environment variables or QIT configuration files to manage sensitive data. Never commit secrets directly into test code.
 - **Isolate external dependencies:** If your plugin relies on external APIs, consider using QIT’s built-in tunnel feature or local mocks to prevent external exposure during tests.
 - **Review third-party code:** If you install additional dependencies or run scripts within the environment, ensure they come from trusted sources.
-
-## Next steps
-
-- [QIT Helpers](./qit-helpers.md): Utilize built-in helpers to run commands and interact with WordPress securely.
-- [Understanding the Lifecycle](./understanding-lifecycle.md): Learn how the lifecycle phases contribute to test isolation and data integrity.
-- [Advanced Configuration](../advanced-usage/advanced-config-handlers.md): Explore configuration files and tunneling options to enhance security and control.

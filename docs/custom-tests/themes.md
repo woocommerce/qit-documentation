@@ -38,9 +38,3 @@ When running `qit run:e2e your-extension --codegen`, consider switching themes b
 - **Keep themes in version control:** If using custom themes or child themes, maintain them in a repository. This ensures consistent installations and updates during the test lifecycle.
 - **Use config files:** Leverage qit.json or qit.yml to specify which themes to install and activate for certain test runs, making it easy to toggle between themes without rewriting scripts.
 - **Focus on selectors and markup:** Keep an eye on HTML selectors and markup differences. Write tests that rely on stable identifiers when possible, such as `data-test` attributes, to minimize theme-related flakiness.
-
-## Next steps
-
-- [Understanding the Lifecycle](./understanding-lifecycle.md): Review how and when to activate themes within shared or isolated setups.
-- [Architecture & Security](./security-architecture.md): Learn about the underlying architecture that ensures clean environments and prevents cross-test interference, even when switching themes.
-- [QIT Helpers](./qit-helpers.md): Explore QIT’s helpers for simplifying test scripting, including actions like logging in as admin or running WP-CLI commands to switch themes.

@@ -62,9 +62,3 @@ If you no longer need a certain tagged set:
 `qit tag:delete example-plugin:my-tag`
 
 This removes that tag from your listing, keeping your environment clean and reducing clutter.
-
-## Next steps
-
-- [Running Tests](./running-tests.md): Learn more about executing tagged tests locally or in the QIT cloud environment.
-- [Understanding the Lifecycle](./understanding-lifecycle.md): Delve into how tagging interacts with the shared setup, isolated setup, and teardown stages.
-- [Publishing Tests](./tagging-tests.md): Explore advanced scenarios like publishing tests publicly or integrating with CI for ongoing quality assurance.

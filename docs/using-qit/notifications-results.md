@@ -72,9 +72,3 @@ In this example, if the test fails, the `Notify on Failure` step can trigger you
 - **Proactive issue resolution:** Immediate alerts allow you to fix problems before merchants encounter them.
 - **Efficiency:** Consolidated test logs and reports help you pinpoint issues quickly.
 - **Confidence in releases:** Knowing that test failures or warnings won't go unnoticed builds trust in your continuous integration and deployment practices.
-
-## Next steps
-
-- [Running Tests via the CLI](./running-tests-cli.md): Explore how to get instant feedback locally.
-- [Using the Vendor Dashboard](./running-tests-dashboard.md): Learn how to run tests and view results directly in a UI.
-- [Custom E2E Tests](../custom-tests/introduction.md): Consider writing custom tests that produce results tailored to your unique scenarios.

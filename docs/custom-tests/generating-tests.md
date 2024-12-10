@@ -70,11 +70,3 @@ Don’t forget to leverage QIT’s built-in helpers to simplify test writing. Fo
 - `qit.wp("plugin list");`
 
 See [QIT Helpers](./qit-helpers.md) for a detailed list of available functions.
-
-## Next steps
-
-With your test structure in place and a handle on generating scenarios, you’re ready to:
-- [Tag and Publish Tests](./tagging-tests.md): Organize, upload, and share tests with others or run tests published by different plugins.
-- [Running Tests](./running-tests.md): Learn how to run these tests locally for rapid feedback or in the QIT cloud for compatibility verification.
-- [Understanding the Lifecycle](./understanding-lifecycle.md): Dive deeper into the sequence of events and environment changes that occur before, during, and after test execution.
-- [Themes and Complex Configurations](./themes.md): Explore how to enforce specific themes, run compatibility tests with multiple plugins, and tweak environment settings for advanced cases.

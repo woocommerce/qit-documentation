@@ -47,9 +47,3 @@ If you have enabled email notifications, you will receive an email when a test c
 - **Non-technical access:** Team members not comfortable with the CLI can still manage tests and review results.
 - **On-demand testing:** Quickly rerun tests after making changes without setting up a local environment.
 - **Unified interface:** All test management and result review happen in one place, integrated with the WooCommerce Marketplace workflow.
-
-## Next steps
-
-- [Running Tests via the CLI](./running-tests-cli.md): If you need scripting or integration with CI pipelines, consider using the CLI.
-- [Managed Tests](../managed-tests/introduction.md): Learn about each managed test type available.
-- [Custom E2E Tests](../custom-tests/introduction.md): Explore creating custom tests that you can run locally for deeper coverage.

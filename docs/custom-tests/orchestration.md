@@ -81,9 +81,3 @@ Imagine running compatibility tests between two plugins: **Plugin A** and **Plug
     - Cleanup any global mocks or settings applied in the shared setup.
 
 Orchestration handles multiple plugins with different actions. If you need to recall how `test`, `bootstrap`, and `activate` differ in their lifecycle participation, revisit [Compatibility Testing with Custom E2E Tests](./compatibility-tests.md).
-
-## Next steps
-
-- Review the [Understanding the Lifecycle](./understanding-lifecycle) page for baseline concepts.
-- Explore how [Tagging Tests](./tagging-tests) and running multiple plugins together let you leverage orchestration for comprehensive compatibility checks.
-- Experiment with shared and isolated setup/teardown scripts to see orchestration in action, ensuring your tests remain predictable and reproducible.

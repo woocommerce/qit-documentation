@@ -89,12 +89,6 @@ While full QIT access is currently exclusive to WooCommerce.com Partner Develope
 - **Woocommerce.com dashboard:** Run and view tests directly in the vendor dashboard UI. See [Getting Started with Dashboard](./using-qit/running-tests-dashboard.md).
 - **GitHub actions:** Integrate QIT tests into your GitHub workflows. See [GitHub Workflows Setup](./using-qit/github-workflows.md).
 
-## Next steps
-
-- **Want to learn more about authenticating?** Check out [Authentication](./installation-setup/authenticating.md).
-- **Ready to run more tests?** See [Running Tests with QIT CLI](./using-qit/running-tests-cli.md).
-- **Curious about custom E2E tests?** Visit the [Custom Tests Introduction](./custom-tests/introduction.md).
-
 :::info  
 If you encounter any issues or have questions, feel free to [contact us](mailto:qit@woocommerce.com) or open an issue on [GitHub](https://github.com/woocommerce/qit-cli/issues).  
 :::

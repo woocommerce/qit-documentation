@@ -63,9 +63,3 @@ When tests complete, QIT CLI provides a summary of the results:
 For more detailed insights:
 - [Viewing Test Results](./notifications-results.md): Learn how to access logs, screenshots, and detailed reports.
 If you have enabled email notifications, you will receive an email when a test completes if it results in warnings or failures. For more information on setting up notifications, see [Notifications and Results](./notifications-results.md).
-
-## Next steps
-
-- [Using QIT via the Dashboard](./running-tests-dashboard.md): If you prefer a UI, trigger tests and review results from the WooCommerce Vendor Dashboard.
-- [Advanced CLI Commands](../advanced-usage/scripting.md): Explore scripting and GitHub workflows to integrate QIT tests into your CI/CD pipeline.
-- [Environment & Configuration](../environment/introduction.md): Dive deeper into configuring your local test environment and advanced features.

@@ -41,9 +41,3 @@ We appreciate responsible disclosure and will work to resolve issues promptly.
 
 - Check the QIT GitHub repository’s README or releases page for announcements.
 - Watch the repository to get notified of new releases or issues.
-
-## Next steps
-
-- [Troubleshooting](../test-execution/troubleshooting.md): Consult the troubleshooting guide for immediate self-help.
-- [Useful Commands](../test-execution/useful-commands.md): Use CLI commands to gather logs and test run details before contacting support.
-- [Environment & Configuration](../environment/introduction.md): Dive deeper into configuring your local test environment and advanced features.

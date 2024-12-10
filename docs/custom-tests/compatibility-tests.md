@@ -97,9 +97,3 @@ If a compatibility issue arises only when all three plugins are present—some t
 For more intricate scenarios (multiple `test` plugins, advanced dependencies, intricate states):
 - **Dedicated configs:** Maintain separate qit.yml or test tags for multi-plugin scenarios.
 - **Enhanced lifecycle scripts:** Add custom shell/JS steps in shared/isolated phases to fine-tune conditions.
-
-## Next steps
-
-- **Review custom E2E basics:** Understand writing and running tests before tackling multi-plugin compatibility.
-- **Iterate and refine:** Experiment with different plugin actions (`test`, `bootstrap`, `activate`) to find the right balance for your compatibility scenarios.
-- **Scale up:** As your extension and ecosystem evolve, refine your compatibility testing strategies to ensure ongoing stability.

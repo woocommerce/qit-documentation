@@ -54,9 +54,3 @@ When running tests with QIT, you may occasionally encounter errors, unexpected f
 If you've tried the suggestions above and still encounter issues:
 - **Check QIT GitHub issues:** There might be known issues or solutions posted by other developers.
 - **Open a new issue:** Provide logs, details, and steps to reproduce. The QIT team or community may offer guidance.
-
-## Next steps
-
-- [Viewing Allure Reports](./viewing-allure-reports.md): Dive deeper into failure details.
-- [Useful Commands](./useful-commands.md): Identify test runs, view logs, and retrieve reports efficiently.
-- [Customizing Environments](../environment/introduction.md): Adjust versions, tunnels, and handlers to create a more stable and controlled testing environment.

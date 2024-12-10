@@ -84,9 +84,3 @@ QIT uses the persistent tunnel you configured, ensuring immediate DNS resolution
 
 - Ensure your Cloudflare DNS and tunnel configurations are correct. If something fails, check the Cloudflare dashboard or run `cloudflared tunnel run <tunnel-name>` directly to diagnose issues.
 - If you encounter permission or authentication errors, re-run `cloudflared tunnel login` or verify your Cloudflare account permissions.
-
-## Next steps
-
-- [Custom Tunnel](./custom-tunnel.md): If persistent tunnels do not meet your needs, consider implementing a custom tunneling solution.
-- [Environment & Configuration](../environment/introduction.md): Explore more advanced environment customizations to match your development workflow.
-- [Tunneling](./tunnel.md): Review other tunneling methods and their trade-offs.

@@ -73,9 +73,3 @@ Adjusting the code to use relative URLs and environment variables ensures portab
 - **Use loginasadmin at the start:** Keep authentication steps at the beginning of a test, so subsequent actions assume a stable, known state.
 - **Prefer qit.wp over direct DB access:** Rely on WP-CLI for database or configuration changes. It maintains WordPress standards and reduces the risk of introducing instability.
 - **Leverage screenshots and env variables:** Attach screenshots at key steps for visual confirmation. Use environment variables for sensitive data or toggling test modes without editing the test code itself.
-
-## Next steps
-
-- [Understanding the Lifecycle](./understanding-lifecycle.md): See how helpers fit into different lifecycle phases (e.g., setup, test, teardown).
-- [Architecture & Security](./security-architecture.md): Discover how QIT's underlying architecture supports secure and isolated test runs while using helpers.
-- [Running Tests](./running-tests.md): Practice using helpers in both local and cloud test environments for rapid feedback and continuous integration.

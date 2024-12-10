@@ -126,9 +126,3 @@ The possibilities are limited only by your scripting and environment logic.
 - **Verbose logging:** Use `$this->output->isVerbose()` or `$this->output->isVeryVerbose()` checks to print debug information. This helps diagnose issues in complex setups.
 - **Secure credentials:** If you need authentication tokens for private repositories, store them in environment variables rather than code.
 - **Test incrementally:** Start with a simple scenario and add complexity step by step. Validate each new piece of logic before moving on.
-
-## Next steps
-
-- [Custom Tunnels](../environment/custom-tunnel.md): Combine custom handlers with tunnels if you need external integrations during the build or fetch process.
-- [Environment Variables](../environment/environment-variables.md): Leverage env variables to adjust logic dynamically.
-- [Scripting](./scripting.md): Automate your advanced handler workflows in CI pipelines or local development scripts.

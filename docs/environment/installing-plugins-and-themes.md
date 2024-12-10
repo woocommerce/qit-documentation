@@ -65,9 +65,3 @@ Run `qit env:up` and QIT installs WooCommerce from WordPress.org and your custom
 After QIT finishes provisioning, run:
 `qit env:list`
 to see active environments and `qit env:enter` to inspect the WordPress installation. Check `Plugins` or `Appearance > Themes` in wp-admin to confirm the components are installed as expected.
-
-## Next steps
-
-- [Installing from Other Sources](./installing-from-other-sources.md): If you need to fetch plugins or themes from non-standard repositories, explore how to implement custom handlers.
-- [Tunneling](./tunnel.md): If testing external integrations (like SaaS services or APIs), consider using a tunnel to make your local environment accessible over the internet.
-- [Environment & Configuration](../environment/introduction.md): Learn more about refining your test environment setup and integrating advanced features.

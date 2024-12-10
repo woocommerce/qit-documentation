@@ -92,9 +92,3 @@ qit run:woo-e2e your-extension --tunnel custom
 ```
 
 ensures that the Woo E2E tests run against the publicly accessible URL your tunnel provides.
-
-## Next steps
-
-- [Tunneling](./tunnel.md): Review other tunneling methods and their trade-offs.
-- [Persistent Tunnel](./persistent-tunnel.md): If you prefer a stable, well-known subdomain, consider the persistent tunnel setup first.
-- [Environment & Configuration](../environment/introduction.md): Explore advanced configurations, environment variables, and other features to enhance your testing workflow.
