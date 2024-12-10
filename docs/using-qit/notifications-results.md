@@ -18,7 +18,10 @@ When you run tests from the CLI, QIT displays a summary of the results in your t
 - A link (URL) to more detailed reports if applicable
 
 For example:
-`qit run:activation your-extension`
+
+```qitbash
+qit run:activation your-extension
+```
 
 If the test fails or generates warnings, you'll see prompts or URLs to additional logs or reports.
 

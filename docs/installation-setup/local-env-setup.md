@@ -15,7 +15,9 @@ The local test environment allows you to run and debug **custom E2E tests** dire
 ## Getting started
 
 1. Spin up a basic environment for custom E2E development:
-   `qit env:up`
+   ```qitbash
+   qit env:up
+   ```
 
    This will start a WordPress instance configured with WooCommerce and the specified versions of WordPress and PHP, ready for your custom tests.
 
@@ -23,7 +25,9 @@ The local test environment allows you to run and debug **custom E2E tests** dire
    QIT displays the URL (e.g., `http://localhost:12345`). Open this URL in a browser to interact with your test site.
 
 3. Tear down when done:
-   `qit env:down`
+   ```qitbash
+   qit env:down
+   ```
 
    This cleans up the containers, ensuring your next `qit env:up` command starts from a blank slate.
 
@@ -31,7 +35,9 @@ The local test environment allows you to run and debug **custom E2E tests** dire
 
 You can customize the environment by specifying versions, plugins, and features. For instance:
 
-`qit env:up --php_version=8.0 --wordpress_version=rc --plugin=woocommerce`
+```qitbash
+qit env:up --php_version=8.0 --wordpress_version=rc --plugin=woocommerce
+```
 
 - [Environment & Configuration](../environment/introduction.md): Dive deeper into configuring your local test environment and advanced features.
 

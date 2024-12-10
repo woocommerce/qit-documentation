@@ -11,19 +11,31 @@ The QIT CLI allows you to run both managed and custom tests directly from your t
 
 Managed tests, such as activation, Woo E2E, and security tests, run in QIT's cloud environment. To execute a managed test, use the following command pattern:
 
-`qit run:<test-type> <extension-slug>`
+```qitbash
+qit run:<test-type> <extension-slug>
+```
 
 For example, to run the activation test:
 
-`qit run:activation your-extension`
+```qitbash
+qit run:activation your-extension
+```
 
 This sends the request to QIT's cloud infrastructure, sets up a clean environment, and runs the activation test. When the test completes, QIT CLI will display the results and provide links to detailed logs or reports if available.
 
 **Other Managed Tests:**
-- `qit run:woo-e2e your-extension`
-- `qit run:woo-api your-extension`
-- `qit run:security your-extension`
-- `qit run:phpstan your-extension`
+```qitbash
+qit run:woo-e2e your-extension
+```
+```qitbash
+qit run:woo-api your-extension
+```
+```qitbash
+qit run:security your-extension
+```
+```qitbash
+qit run:phpstan your-extension
+```
 
 - [Managed Tests](../managed-tests/introduction.md): Learn about each managed test type available.
 
@@ -31,17 +43,23 @@ This sends the request to QIT's cloud infrastructure, sets up a clean environmen
 
 To develop and debug your custom E2E tests efficiently, use the QIT local environment. First, spin up a local environment:
 
-`qit env:up`
+```qitbash
+qit env:up
+```
 
 Once the environment is ready and your custom E2E tests are in place (either locally or uploaded to QIT), run them with:
 
-`qit run:e2e your-extension --zip=your-extension.zip`
+```qitbash
+qit run:e2e <extension-slug> --zip=<path-to-zip>
+```
 
 The `--zip` argument points to a local build of your extension. This installs the extension into the test environment and runs your custom tests against it. Since these tests run locally, you'll see immediate feedback in the terminal.
 
 If you've uploaded your custom tests to QIT's cloud, you can omit the `--zip` argument and run them directly:
 
-`qit run:e2e your-extension`
+```qitbash
+qit run:e2e <extension-slug>
+```
 
 Note that while you can run custom tests locally for quick iteration, you can also execute them in the cloud environment for integration or compatibility checks.
 
@@ -49,7 +67,9 @@ Note that while you can run custom tests locally for quick iteration, you can al
 
 Both managed and custom test commands support parameters for selecting WordPress, WooCommerce, and PHP versions, as well as enabling optional WooCommerce features like HPOS:
 
-`qit run:woo-e2e your-extension --wordpress_version=rc --woocommerce_version=rc --php_version=8.0 --optional_features=hpos`
+```qitbash
+qit run:woo-e2e your-extension --wordpress_version=rc --woocommerce_version=rc --php_version=8.0 --optional_features=hpos
+```
 
 This level of customization ensures you can test under various configurations to maintain broad compatibility.
 

@@ -11,7 +11,10 @@ Before you can start running tests or interacting with QIT's cloud-based service
 ## Generating a QIT token
 
 1. Run:
-   `qit connect`
+
+   ```qitbash
+   qit connect
+   ```
 
    This command will guide you through the authentication flow. It will open a browser window or prompt you to visit a specific URL, where you must log in with your WooCommerce.com credentials.
 
@@ -24,7 +27,10 @@ When the process finishes, the CLI will confirm that you are now authenticated.
 ## Verifying authentication
 
 Run:
-`qit extensions`
+
+```qitbash
+qit extensions
+```
 
 If authenticated, you`ll see a list of extensions you have access to. This confirms that QIT recognizes your account and grants you the ability to run tests against these extensions.
 
