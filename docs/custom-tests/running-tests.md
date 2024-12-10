@@ -5,19 +5,34 @@ Once you have generated, tagged, and refined your custom E2E tests, the next ste
 ## Basic command
 
 The general command for running custom E2E tests locally is:
-`qit run:e2e your-extension`
+
+```qitbash
+qit run:e2e your-extension
+```
 
 This runs the default test tag for the specified extension. If you have uploaded tests and tagged them, you can specify tags:
-`qit run:e2e your-extension my-tag`
+
+```qitbash
+qit run:e2e your-extension my-tag
+```
 
 Multiple tags can be combined:
-`qit run:e2e your-extension default,rc`
+
+```qitbash
+qit run:e2e your-extension default,rc
+```
 
 If you created local test files rather than uploading them, you can reference the local directory:
-`qit run:e2e your-extension ./e2e`
+
+```qitbash
+qit run:e2e your-extension ./e2e
+```
 
 You can even pass a zipped version of your plugin to test an unpublished build:
-`qit run:e2e your-extension --zip=./my-extension.zip`
+
+```qitbash
+qit run:e2e your-extension --zip=./my-extension.zip
+```
 
 This installs your unpublished extension into the test environment before running the tests.
 
@@ -32,30 +47,56 @@ When the WCCOM marketplace triggers these tests—such as after submitting a new
 ## Visual UI mode
 
 For debugging complex scenarios locally, run:
-`qit run:e2e your-extension --ui`
+
+```qitbash
+qit run:e2e your-extension --ui
+```
 
 This launches a browser so you can watch the tests execute step-by-step. Visual mode helps identify subtle issues, like incorrect selectors or unexpected UI states.
 
 ## Specifying versions and features
 
 Use arguments to test different WordPress, WooCommerce, and PHP versions or enable optional features:
-`qit run:e2e your-extension --wordpress_version=rc --woocommerce_version=rc --php_version=8.0 --optional_features=hpos`
+
+```qitbash
+qit run:e2e your-extension --wordpress_version=rc --woocommerce_version=rc --php_version=8.0 --optional_features=hpos
+```
 
 This flexibility allows you to verify compatibility with upcoming releases or specific WooCommerce features like High Performance Order Storage (HPOS).
 
 ## Combining multiple plugins and tags
 
 You can run tests from multiple plugins and tags simultaneously:
-`qit run:e2e example-plugin default,rc --plugin another-plugin:test-scenarios`
+
+```qitbash
+qit run:e2e example-plugin default,rc --plugin another-plugin:test-scenarios
+```
 
 This command runs a combination of tests from multiple sources, validating cross-plugin compatibility. Useful for ensuring that your extension plays well with other known integrations or related tools.
 
-**Compatibility and Lifecycle Integration:**
+## Compatibility and Lifecycle Integration
 
 When running compatibility tests involving multiple plugins and dependencies:
+
 - **SUT and additional plugins**: The SUT is always tested (`action: test`), while additional plugins may be set to `test`, `bootstrap`, or `activate`.
 - **Shared setup/teardown**: Shared scripts run once for all plugins, ensuring a global baseline. After shared setup finishes, QIT exports a DB snapshot. Each plugin that undergoes isolated testing (`test` action) will restore this snapshot before its isolated setup and after its isolated teardown, ensuring consistent conditions. Plugins in `bootstrap` or `activate` mode do not receive isolated phases; however, they still benefit from the shared setup conditions and remain active in the environment throughout the test run.
-- **Predictable teardown**: By the time shared teardown scripts run, QIT restores the environment to the baseline snapshot, ensuring a consistent and predictable state for cleanup operations.For instance:Here, `woocommerce-amazon-s3-storage` and `woocommerce-progressive-discounts` receive isolated phases and tests, while `woocommerce-extra-plugin` is simply activated and benefits from the shared lifecycle steps without isolated runs. This approach allows you to test real-world compatibility scenarios where certain plugins provide baseline functionality (bootstrap/activate) while others are fully tested.
+- **Predictable teardown**: By the time shared teardown scripts run, QIT restores the environment to the baseline snapshot, ensuring a consistent and predictable state for cleanup operations.
+
+For instance:
+
+```qitbash
+qit run:e2e woocommerce-amazon-s3-storage \
+--dependencies=bootstrap \
+--plugin woocommerce-extra-plugin:test \
+--plugin my-analytics-plugin
+```
+
+- The SUT (`woocommerce-amazon-s3-storage`) is tested by default.
+- `woocommerce-extra-plugin` is explicitly set to `test`.
+- `my-analytics-plugin` defaults to `bootstrap`.
+- Dependencies required by the SUT or these plugins are also bootstrapped according to `--dependencies=bootstrap`.
+
+This approach allows you to test real-world compatibility scenarios where certain plugins provide baseline functionality (bootstrap/activate) while others are fully tested.
 
 Each plugin’s `action` (whether `test`, `bootstrap`, or `activate`) determines its participation in shared and isolated phases. For a refresher on these distinctions, see [Compatibility Testing with Custom E2E Tests](./compatibility-tests.md).
 
@@ -97,13 +138,20 @@ qit run:e2e woocommerce-amazon-s3-storage \
 ## Using a configuration file
 
 Create a qit.json or qit.yml file to define complex scenarios, like multiple plugins, advanced PHP versions, or custom environment variables. Once defined, a simple:
-`qit run:e2e your-extension`
+
+```qitbash
+qit run:e2e your-extension
+```
+
 applies the configuration automatically, simplifying your commands and making them more repeatable.
 
 ## Local test files and paths
 
 If you have not uploaded your tests to QIT, you can run local tests directly:
-`qit run:e2e your-extension ~/my-plugins/example-plugin/tests --source ~/my-plugins/example-plugin`
+
+```qitbash
+qit run:e2e your-extension ~/my-plugins/example-plugin/tests --source ~/my-plugins/example-plugin
+```
 
 In this example, `your-extension` references the slug for the extension under test, while the tests and source arguments point to local paths or a zip file, enabling you to test changes without publishing them first.
 
