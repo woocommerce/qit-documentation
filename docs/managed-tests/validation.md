@@ -1,34 +1,68 @@
 # Validation tests
 
-Validation tests ensure that your extension's metadata and WooCommerce feature declarations meet baseline requirements. By checking headers, WooCommerce compatibility flags, and theme templates where applicable, these tests help maintain clear, consistent, and accurate information for merchants.
+Validation tests ensure that your extension’s metadata and WooCommerce feature declarations meet baseline requirements. By verifying important headers, WooCommerce feature compatibility, and (for themes) ensuring that your theme templates are updated to the latest WooCommerce standards, these tests help maintain clear, consistent, and accurate information for merchants.
 
 ## What validation tests check
 
-- **Plugin headers:** Ensures that important headers such as `Requires PHP`, `Requires at least`, `Tested up to`, `WC requires at least`, and `WC tested up to` are present and valid. Missing or incorrect headers can lead to confusion or compatibility issues.
-- **WooCommerce feature support:** Verifies any declared incompatibilities with WooCommerce features like High Performance Order Storage (HPOS) or Cart and Checkout blocks. Explicit incompatibilities are flagged, encouraging you to support these features where possible.
-- **Theme templates (for themes):** Checks if your theme has outdated WooCommerce templates. If found, this results in a warning, guiding you to update templates for the latest WooCommerce standards.
+- **Plugin headers:**  
+  The test checks for the presence of important headers in your plugin or theme’s main file and `readme.txt`. The following headers should be present and accurate:
+    - `Requires PHP`
+    - `Requires at least`
+    - `Tested up to`
+    - `WC requires at least`
+    - `WC tested up to`
+
+  Missing or incorrect versions will trigger a warning. Additionally, certain headers should not be included:
+    - `Woo` — As noted in the [WooCommerce plugin creation documentation](https://woocommerce.com/document/create-a-plugin/#section-14), this will be automatically added during deployment. Including it manually may cause issues and will be warned against.
+
+- **WooCommerce feature compatibility:**  
+  The test checks if your extension declares incompatibility with key WooCommerce features:
+    - **High Performance Order Storage (HPOS):**  
+      Extensions are expected to [support HPOS](https://developer.woocommerce.com/docs/hpos-extension-recipe-book/#2-supporting-high-performance-order-storage-in-your-extension), as it’s now the default for new stores.
+    - **Cart and Checkout blocks:**  
+      Extensions that modify cart or checkout experiences should [support the cart and checkout blocks](https://developer.woocommerce.com/2023/11/06/faq-extending-cart-and-checkout-blocks/).
+
+  Declaring explicit incompatibility with these features will result in a warning.
+
+- **Outdated theme templates (for themes):**  
+  If your theme uses outdated WooCommerce templates, the test will flag them. While currently these appear as warnings rather than failures, they should be addressed to ensure compatibility with the latest WooCommerce standards. Refer to the [WooCommerce developer documentation](https://developer.woocommerce.com/docs/how-to-fix-outdated-woocommerce-templates/) for guidance.
 
 ## Possible outcomes
 
-- **Success:** All required metadata is present and correct, and no invalid headers or incompatible feature declarations were found.
-- **Warning:** Some headers may be missing or incorrect, or you declared incompatibility with features that you should ideally support.
-- **Failed (for themes):** Outdated templates or critical metadata issues prevent passing the validation.
+- **Success:**  
+  All required metadata is present and correct, and no invalid headers or incompatible feature declarations were found.
+
+- **Warning:**  
+  Some headers may be missing or incorrect, or you declared incompatibility with WooCommerce features that you should ideally support. If you’re a theme developer, outdated templates are flagged as warnings (though not currently failures) and should be updated.
+
+*(Note: The previous documentation referred to outdated theme templates as a “failure” for themes; however, at present they are treated as warnings.)*
 
 ## Interpreting results
 
-If you receive warnings or failures:
-- Review the recommended headers and ensure they are correctly specified in your plugin or theme files.
-- Update WooCommerce templates if your theme is flagged as outdated.
-- Consider revising your feature declarations to support new WooCommerce capabilities rather than stating incompatibility.
+If you receive warnings:
+
+- **Review headers and declarations:**  
+  Ensure all required headers are accurate and that you’re not declaring incompatibility with features you could support.
+
+- **Address outdated templates (for themes):**  
+  Update your theme’s templates to meet the latest WooCommerce standards.
+
+- **Remove or correct restricted headers:**  
+  Do not include `Woo` manually, and ensure all other headers are properly formatted and spelled.
 
 ## Best practices
 
-- **Accurate metadata:** Keep your plugin or theme headers current with each new release, reflecting supported WordPress and WooCommerce versions.
-- **Embrace new features:** Instead of declaring incompatibility, aim to support modern WooCommerce features like HPOS and Cart/Checkout blocks for broader merchant satisfaction.
-- **Continuous improvement:** Regular validation tests help maintain good metadata hygiene, improving merchant trust and compatibility clarity.
+- **Maintain accurate metadata:**  
+  Keep headers updated with each release, reflecting the correct PHP, WordPress, and WooCommerce version requirements.
+
+- **Embrace modern WooCommerce features:**  
+  Instead of declaring incompatibility, aim to support HPOS and Cart/Checkout blocks. This avoids warnings and improves merchant satisfaction.
+
+- **Stay current:**  
+  Run validation tests regularly and promptly update outdated templates, headers, or feature declarations.
 
 ## Next steps
 
-- [Managed Tests Introduction](./introduction.md): Understand how validation tests fit within the broader suite of managed tests.
-- [WooCommerce.com Marketplace](../core-concepts/marketplace-overview.md): Review how Marketplace requirements intersect with validation checks.
-- [Notifications and Results](../using-qit/notifications-results.md): Set up alerts and view logs for continuous feedback.
+- [Managed Tests Introduction](./introduction.md)
+- [WooCommerce.com Marketplace Overview](../core-concepts/marketplace-overview.md)
+- [Notifications and Results](../using-qit/notifications-results.md)
