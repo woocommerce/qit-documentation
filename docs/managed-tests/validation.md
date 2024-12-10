@@ -33,9 +33,7 @@ Validation tests ensure that your extension’s metadata and WooCommerce feature
   All required metadata is present and correct, and no invalid headers or incompatible feature declarations were found.
 
 - **Warning:**  
-  Some headers may be missing or incorrect, or you declared incompatibility with WooCommerce features that you should ideally support. If you’re a theme developer, outdated templates are flagged as warnings (though not currently failures) and should be updated.
-
-*(Note: The previous documentation referred to outdated theme templates as a “failure” for themes; however, at present they are treated as warnings.)*
+  Some headers may be missing or incorrect, or you declared incompatibility with WooCommerce features that you should ideally support. If you’re a theme developer, outdated templates are flagged as warnings and should be updated.
 
 ## Interpreting results
 
