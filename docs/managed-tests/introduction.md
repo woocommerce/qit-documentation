@@ -33,9 +33,3 @@ Managed tests often return three possible outcomes:
 - **Failed:** Critical issues prevent the extension from running properly or meeting standards.
 
 If you have enabled email notifications, you will receive an email when a test completes if it results in warnings or failures. For more information on setting up notifications, see [Notifications and Results](../using-qit/notifications-results.md).
-
-## Next steps
-
-- [Test Types Overview](../core-concepts/test-types-overview.md): Understand how managed tests fit alongside custom E2E tests.
-- [Using QIT via the CLI](../using-qit/running-tests-cli.md): Learn how to run managed tests from your terminal.
-- [WooCommerce.com Dashboard](../using-qit/running-tests-dashboard.md): Trigger and review managed test runs through a friendly UI.

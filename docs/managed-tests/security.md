@@ -101,9 +101,3 @@ Use suppression judiciously. Strive to follow recommended practices rather than 
 
 - **Combine with other tests:**  
   Security tests complement other managed tests, end-to-end tests, and code quality checks, ensuring a holistic view of your extension’s health.
-
-## Further resources
-
-- [Managed Tests Introduction](./introduction.md)
-- [PHPStan and PHPCompatibility Tests](./phpstan.md)
-- [Notifications and Results](../using-qit/notifications-results.md)

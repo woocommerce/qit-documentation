@@ -29,9 +29,3 @@ The tool currently runs checks from the `plugin_repo` category, which helps iden
 - **Optional for WooCommerce Marketplace:** Passing Plugin Check is not currently required for publishing on the WooCommerce Marketplace.
 - **Future-proofing your code:** Running these tests periodically helps ensure that your plugin remains compatible and well-structured for multiple distribution channels.
 - **Combine with other tests:** Plugin Check complements managed tests, security scans, and E2E tests, offering a broader quality overview of your extension.
-
-## Further resources
-
-- [Security Tests](./security.md)
-- [Notifications and Results](../using-qit/notifications-results.md)
-- [Managed Tests Introduction](./introduction.md)

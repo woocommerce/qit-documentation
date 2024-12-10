@@ -28,9 +28,3 @@ If you see warnings or failures:
 ## Improving code quality
 
 Tackling PHPStan warnings often results in clearer code and fewer hidden issues. Over time, you may choose to run PHPStan at a higher level locally, catching more subtle issues before pushing updates. Although QIT currently runs it at level 0, raising local analysis levels can help you continuously improve your extension.
-
-## Next steps
-
-- [Managed Tests Introduction](./introduction.md): Review other managed tests and how they complement PHPStan analysis.
-- [PHPCompatibility Tests](./validation.md): Ensure that your code is compatible with supported PHP versions for broader audience appeal.
-- [Notifications and Results](../using-qit/notifications-results.md): Learn how to access detailed logs and configure alerts for detected issues.

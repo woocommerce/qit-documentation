@@ -60,9 +60,3 @@ If you receive warnings:
 
 - **Stay current:**  
   Run validation tests regularly and promptly update outdated templates, headers, or feature declarations.
-
-## Next steps
-
-- [Managed Tests Introduction](./introduction.md)
-- [WooCommerce.com Marketplace Overview](../core-concepts/marketplace-overview.md)
-- [Notifications and Results](../using-qit/notifications-results.md)
