@@ -45,16 +45,6 @@ When the test flags issues, review the generated report for details on:
 - **WPScan advisories:**  
   If your extension is listed as vulnerable by WPScan, verify if you have an unfixed issue. If you believe you have already addressed the vulnerability and the listing is outdated, [contact WPScan](https://wpscan.com/contact/) to update their records.
 
-## What to do when encountering discouraged functions?
-
-The `Generic.PHP.ForbiddenFunctions.Discouraged` rule flags functions that are not inherently unsafe but often associated with security issues. If you’ve confirmed the code is secure, you can suppress the warning inline:
-
-```php
-// phpcs:ignore Generic.PHP.ForbiddenFunctions.Discouraged
-```
-
-Use suppression judiciously. Strive to follow recommended practices rather than routinely ignoring warnings.
-
 ## Handling failures and warnings
 
 1. **Open the test report:**  
@@ -90,6 +80,16 @@ Occasionally, a rule may flag a scenario that you believe is not genuinely insec
 
 - **Contact us:**  
   If you consistently encounter what you believe are false positives, email us at qit@woocommerce.com with details. We’ll review and refine our rules to minimize such occurrences.
+
+## What to do when encountering discouraged functions?
+
+The `Generic.PHP.ForbiddenFunctions.Discouraged` rule flags functions that are not inherently unsafe but often associated with security issues. If you’ve confirmed the code is secure, you can suppress the warning inline:
+
+```php
+// phpcs:ignore Generic.PHP.ForbiddenFunctions.Discouraged
+```
+
+Use suppression judiciously. Strive to follow recommended practices rather than routinely ignoring warnings.
 
 ## Best practices
 

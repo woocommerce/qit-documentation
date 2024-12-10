@@ -1,13 +1,13 @@
 # Woo API tests
 
-Woo API tests verify that your extension interacts cleanly with the WooCommerce REST API. By creating and manipulating products, orders, and customers through API requests, these tests ensure that your extension doesn’t introduce errors or alter expected responses, helping maintain a stable and reliable store experience.
+Woo API tests verify that your extension interacts cleanly with the [WooCommerce REST API](https://woocommerce.github.io/woocommerce-rest-api-docs/#introduction). By creating and manipulating products, orders, and customers through API requests, these tests ensure that your extension doesn’t introduce errors or alter expected responses, helping maintain a stable and reliable store experience.
 
 ## How it works
 
 The Woo API tests:
 - Set up a fresh WordPress and WooCommerce environment.
 - Install and activate your extension.
-- Execute the WooCommerce Core API test suite against the configured environment.
+- Execute the [WooCommerce Core API test suite](https://github.com/woocommerce/woocommerce/tree/trunk/plugins/woocommerce/tests/e2e-pw/tests/api-tests) against the configured environment.
 - Perform actions like creating products, customers, and orders via the REST API, then validate that the responses match expected outcomes.
 
 By running these tests, you confirm that your extension does not break or degrade the WooCommerce API, preserving compatibility with third-party integrations, mobile apps, and headless storefronts.
