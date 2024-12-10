@@ -1,6 +1,6 @@
 # Security tests
 
-**Security tests** run a suite of scanning and auditing tools against your extension’s code to identify potential vulnerabilities and ensure that it adheres to established security best practices. **All new submissions and updates to the WooCommerce Marketplace must pass these security tests.** Ensuring your extension passes helps maintain a secure and trustworthy ecosystem for merchants and customers.
+Security tests run a suite of scanning and auditing tools against your extension’s code to identify potential vulnerabilities and ensure that it adheres to established security best practices. **All new submissions and updates to the WooCommerce Marketplace must pass these security tests.** Ensuring your extension passes helps maintain a secure and trustworthy ecosystem for merchants and customers.
 
 ## What tools are used?
 
@@ -16,7 +16,7 @@ The security test currently uses a combination of industry-standard tools and da
   Scans your project’s dependencies against known vulnerability databases, identifying outdated or insecure packages.
 
 - **WPScan vulnerability database:**  
-  Compares your extension against a curated list of known WordPress plugin vulnerabilities. If your extension’s code or version matches a known insecure pattern, it will be flagged.
+  Compares your extension against a curated list of known WordPress plugin vulnerabilities. If your extension has a known unfixed vulnerability, it will be flagged.
 
 ## Test outcomes
 

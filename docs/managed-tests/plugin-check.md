@@ -1,6 +1,6 @@
 # wordpress.org Plugin Check tests
 
-The [wordpress.org automated plugin check](https://wordpress.org/plugins/plugin-check) tool against your extension. This optional test focuses on guidelines and patterns important for submitting plugins to the WordPress.org directory.
+wordpress.org Plugin Check tests run the [wordpress.org automated plugin check](https://wordpress.org/plugins/plugin-check) tool against your extension. This optional test focuses on guidelines and patterns important for submitting plugins to the WordPress.org directory.
 
 **Note:** Currently, these checks are not automatically triggered for WooCommerce Marketplace submissions. They are available for developers who also distribute on wordpress.org or wish to maintain broader WordPress best-practices.
 

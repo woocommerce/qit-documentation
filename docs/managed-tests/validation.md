@@ -12,7 +12,7 @@ Validation tests ensure that your extension’s metadata and WooCommerce feature
     - `WC requires at least`
     - `WC tested up to`
 
-  Missing or incorrect versions will trigger a warning. Additionally, certain headers should not be included:
+  Missing or incorrect versions will trigger a warning. Additionally, certain headers should **not** be included:
     - `Woo` — As noted in the [WooCommerce plugin creation documentation](https://woocommerce.com/document/create-a-plugin/#section-14), this will be automatically added during deployment. Including it manually may cause issues and will be warned against.
 
 - **WooCommerce feature compatibility:**  
