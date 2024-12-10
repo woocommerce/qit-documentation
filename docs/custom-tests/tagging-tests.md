@@ -11,17 +11,26 @@ As you expand your suite of custom E2E tests, organizing and sharing them become
 ## Listing available tags
 
 To see which tags are currently available:
-`qit tag:list`
 
-This command lists all tags you have access to. You can also specify a plugin slug:
-`qit tag:list example-plugin`
+```qitbash
+qit tag:list
+```
+
+You can also specify a plugin slug:
+
+```qitbash
+qit tag:list example-plugin
+```
 
 This helps you understand how tests are organized and which tagged sets you can leverage.
 
 ## Uploading tests with a tag
 
 To upload your tests and make them available under a specific tag:
-`qit tag:upload example-plugin:my-tag ./path/to/tests`
+
+```qitbash
+qit tag:upload example-plugin:my-tag ./path/to/tests
+```
 
 By default, uploading without specifying a tag uses `default`. Using `example-plugin:my-tag` creates or updates a custom tag that others (with appropriate access) can run later.
 
@@ -35,30 +44,45 @@ These tags help you and other team members quickly select the tests needed at an
 ## Running test tags
 
 Once tests are tagged and uploaded, you can run them directly:
-`qit run:e2e example-plugin my-tag`
+
+```qitbash
+qit run:e2e example-plugin my-tag
+```
 
 Or even run multiple tags at once:
-`qit run:e2e example-plugin default,rc`
 
-This flexibility lets you compose test sets dynamically. For example, combine a stable scenario set (default) with a release candidate scenario (rc).
+```qitbash
+qit run:e2e example-plugin default,rc
+```
+
+This flexibility lets you compose test sets dynamically. For example, combine a stable scenario set (`default`) with a release candidate scenario (`rc`).
 
 ## Running tests from other plugins
 
 If another developer publishes their tests under a tag, you can integrate them:
-`qit run:e2e example-plugin --plugin another-plugin:test`
+
+```qitbash
+qit run:e2e example-plugin --plugin another-plugin:test
+```
 
 This cross-plugin testing scenario is powerful for ensuring compatibility between multiple extensions. Combine tags from multiple sources to run a suite of tests that replicate complex, multi-extension environments.
 
 ## Multiple tags
 
 Comma-separate tags to combine multiple test sets:
-`qit run:e2e example-plugin default,foo-feature --plugin another-plugin:rc,some-feature`
+
+```qitbash
+qit run:e2e example-plugin default,foo-feature --plugin another-plugin:rc,some-feature
+```
 
 This command runs a combination of test sets from multiple plugins, ensuring you cover diverse scenarios at once.
 
 ## Deleting test tags
 
 If you no longer need a certain tagged set:
-`qit tag:delete example-plugin:my-tag`
+
+```qitbash
+qit tag:delete example-plugin:my-tag
+```
 
 This removes that tag from your listing, keeping your environment clean and reducing clutter.
