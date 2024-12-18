@@ -44,7 +44,7 @@ Validation tests ensure that your extension’s metadata and WooCommerce feature
 If you receive warnings:
 
 - **Check your readme.txt file:**  
-  Ensure a correctly named readme.txt file is provided in the root directory of your extension.
+  Ensure a correctly named readme.txt file is provided in the root directory of your plugin or theme.
 
 - **Review headers and declarations:**  
   Ensure all required headers are accurate and that you’re not declaring incompatibility with features you could support.
