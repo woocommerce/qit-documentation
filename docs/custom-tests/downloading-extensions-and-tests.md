@@ -1,71 +1,106 @@
-# Downloading Extensions and Tests
+# Downloading extensions and tests
 
-QIT automatically downloads the extension you are testing (SUT), as well as any additional plugins, dependencies, and their respective custom test tags, if needed.
+QIT (Quality Insights Toolkit) automatically downloads the extension you are testing (the **System Under Test, or SUT**) and any related plugins, dependencies, and test tags. By default, it fetches the latest stable versions from WooCommerce.com for premium extensions and WordPress.org for free plugins.
 
-By default, it fetches stable versions from WooCommerce.com (for premium extensions) or WordPress.org (for free plugins).
+## Downloading premium extensions
 
-## Downloading Premium Extensions
+Premium extensions require authentication. The account used during `qit connect` must own and maintain the premium extension you want to test. If you do not own it, you must provide a local source (for example, a ZIP file containing the extension).
 
-Access to premium extensions on WooCommerce.com is tied to the WooCommerce.com account associated with the QIT Token you obtained during the `qit connect` process. If your account owns and can manage the extension, QIT can download it remotely. Otherwise, you must provide a local source.
+For more details, see [Authenticating with QIT](../installation-setup/authenticating.md).
 
-For detailed steps on authenticating with QIT, see Authenticating with QIT.
+## Downloading free extensions
 
-## Understanding Permissions and Ownership
+Free extensions are sourced directly from WordPress.org without requiring authentication or ownership. You can still provide a local source if you want to test a modified version rather than the publicly available one.
 
-- **Premium Extensions (WooCommerce.com):**  
-  You must own the extension in your WooCommerce.com account to download it remotely. If you do not have access, QIT will fail to fetch it. In that case, providing a local source (e.g., a development build) ensures the test run can continue.
+## SUT must exist in the marketplace
 
-- **Free Extensions (WordPress.org):**  
-  No special permissions are required. QIT downloads them automatically. You can still provide a local source if you want to test a modified or private version.
+Your SUT must be recognized in the WooCommerce.com marketplace and associated with your account. Although you can override the downloaded code with a local source (such as a development build), the SUT itself must be listed in the marketplace for the test results to be recorded.
 
-- **Not Listed on WooCommerce.com:**  
-  If the extension isn’t available in the marketplace, you must provide a local source.
+## Additional plugins and dependencies
 
-## The System Under Test (SUT)
+- **Premium (WooCommerce.com):** You must own the extension or provide a local source.
+- **Free (WordPress.org):** No authentication is required.
+- **Not listed in either marketplace:** A local source is required.
 
-- **Premium SUT:** You must own it on WooCommerce.com or provide a local source.
-- **Free SUT:** Automatically fetched; local source optional for testing custom builds.
-- **SUT Not Listed:** Must provide a local source directly.
+## Custom tests (test tags)
 
-## Additional Plugins and Dependencies
+- **Remote tests:** You must own the extension associated with the test or provide a local source.
+- **Local tests:** If remote tests are not available, you can use a local directory or ZIP file.
+- **Conflicts:** If a test tag exists both remotely and locally, QIT will warn you and then default to the remote version.
 
-- **Free (WPORG):** Downloaded automatically.
-- **Premium (WCCOM):** Requires ownership; otherwise provide a local source.
-- **Not Listed:** Provide a local source.
+## Providing local sources
 
-This unified approach ensures that if you lack remote access, you can always fall back on a local source.
-
-## Custom Tests (Test Tags)
-
-- **Remote Tests:** QIT fetches them if you have the required access.
-- **Local Tests:** If remote tags aren’t accessible or don’t exist, provide a local directory or zip.
-- **Conflicts:** If the same tag exists both remotely and locally, QIT warns you and uses the remote version by default.
-
-## Providing Local Sources
-
-To supply a local source, add a `source` attribute in `qit.yml`:
-
-```yaml
-plugins:
-  my-premium-sut:
-    source: ./my-premium-sut.zip
-```
-
-For tests:
+In `qit.yml`:
 
 ```yaml
 plugins:
   my-plugin:
+    source: ./my-plugin.zip
     test_tags:
       - ./local-tests/my-plugin-tests
 ```
 
-## Error Handling
+## Installing from other sources
 
-- **No Ownership:** QIT reports that it can’t fetch the extension. Provide proper credentials or a local source.
-- **Not Found Remotely:** Check the slug or add a local source.
-- **Local vs Remote (Tests):** QIT warns on conflict; remote is used unless you adjust your setup.
+To fetch extensions from unsupported locations (such as private Git repositories), implement **custom handlers**. For details, see [Advanced Config Handlers](./../advanced-usage/advanced-config-handlers.md).
 
-## Installing Plugins and Themes from Other Sources
+## Example scenario - Step by Step
 
-While QIT works seamlessly with WordPress.org and WooCommerce.com listings—plus local sources—you may need to fetch extensions from other locations like private GitHub repositories or premium marketplaces not directly supported by QIT. In these cases, you can implement **custom handlers** that define how QIT should retrieve and prepare these plugins or themes. For more details and examples, refer to the [Advanced Config Handlers documentation](./../advanced-usage/advanced-config-handlers.md).
+Below is an example scenario where we run a Custom E2E test, which explains how QIT applies its rules for downloading.
+
+Let's suppose you are the developer of `my-extension` - you want to include `automatewoo-birthdays` in your test, but you don't own it.
+
+So at first, you run this command:
+
+```qitbash
+qit run:e2e my-extension -p automatewoo-birthdays
+```
+
+This will fail because you don't have access to `automatewoo-birthdays` and `automatewoo` (which is a dependency).
+
+We will see now what QIT does step-by-step, and how you can get around this by providing the zips of these premium plugins locally.
+
+### What happens step-by-step:
+
+1`my-extension` (SUT):
+  - QIT checks WooCommerce.com to see if you own `my-extension`.
+  - Since you do, it downloads the latest stable release of `my-extension` from WooCommerce.com and the `default` custom test tag.
+  - No local source is required here, but you could specify one if you wanted to test a development build.
+
+2. `automatewoo-birthdays` (additional plugin):
+  - This is a paid extension, and you are not it's maintainer.
+  - QIT cannot download it from WooCommerce.com, so it looks for a local source in `qit.yml` or in the CLI parameters.
+  - You must provide something like `source: ./automatewoo-birthdays.zip`. If you don’t, QIT can’t proceed with this plugin.
+
+3. `automatewoo` (dependency):
+  - "automatewoo-birthdays" depends on "automatewoo," another premium extension you don’t maintain.
+  - QIT again checks if you own "automatewoo" on WooCommerce.com. Since in this scenario you do not, it looks for a local source.
+  - You must supply `source: ./automatewoo.zip` in `qit.yml`.
+
+5. `woocommerce` (dependency):
+  - Let's suppose "automatewoo" depends on "woocommerce".
+  - "woocommerce" is free and available on WordPress.org.
+  - QIT downloads it automatically without needing authentication or a local source.
+
+**Example `qit.yml` configuration:**
+
+```yaml
+plugins:
+  my-extension:
+    # Owned premium extension, no source needed unless overriding
+    # source: ./my-extension.zip (optional if you want to test a development build)
+
+  automatewoo-birthdays:
+    # Premium, not owned → must provide local source
+    source: ./automatewoo-birthdays.zip
+
+  automatewoo:
+    # Premium, not owned → must provide local source
+    source: ./automatewoo.zip
+
+  # woocommerce:
+  #   Free, automatically fetched from WordPress.org if no source provided.
+  #   Listing it here is optional.
+```
+
+This scenario shows how starting from the CLI command, QIT applies a consistent set of rules based on ownership, marketplace availability, and local overrides to set up the testing environment.
