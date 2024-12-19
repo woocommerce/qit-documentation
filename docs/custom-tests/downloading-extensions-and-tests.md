@@ -62,40 +62,40 @@ We will see now what QIT does step-by-step, and how you can get around this by p
 
 ### What happens step-by-step:
 
-1`my-extension` (SUT):
+- `my-extension` **(SUT)**:
   - QIT checks WooCommerce.com to see if you own `my-extension`.
   - Since you do, it downloads the latest stable release of `my-extension` from WooCommerce.com and the `default` custom test tag.
-  - No local source is required here, but you could specify one if you wanted to test a development build.
+  - No local source is required. However, if you wanted to test a development build, you could specify a local ZIP file.
 
-2. `automatewoo-birthdays` (additional plugin):
-  - This is a paid extension, and you are not it's maintainer.
-  - QIT cannot download it from WooCommerce.com, so it looks for a local source in `qit.yml` or in the CLI parameters.
-  - You must provide something like `source: ./automatewoo-birthdays.zip`. If you don’t, QIT can’t proceed with this plugin.
+- `automatewoo-birthdays` **(additional plugin)**:
+  - This is a paid extension that you do not maintain.
+  - QIT cannot download it from WooCommerce.com, so it looks for a local source in `qit.yml` (or via CLI parameters).
+  - If none is provided, QIT can’t proceed.
 
-3. `automatewoo` (dependency):
-  - "automatewoo-birthdays" depends on "automatewoo," another premium extension you don’t maintain.
-  - QIT again checks if you own "automatewoo" on WooCommerce.com. Since in this scenario you do not, it looks for a local source.
-  - You must supply `source: ./automatewoo.zip` in `qit.yml`.
+- `automatewoo` **(dependency)**:
+  - `automatewoo-birthdays` depends on `automatewoo`, another premium extension you don’t maintain.
+  - QIT checks if you own `automatewoo` on WooCommerce.com. Since you don’t, it expects a local source.
+  - Similarly as above, you must define the source yourself.
 
-5. `woocommerce` (dependency):
-  - Let's suppose "automatewoo" depends on "woocommerce".
-  - "woocommerce" is free and available on WordPress.org.
-  - QIT downloads it automatically without needing authentication or a local source.
+- `woocommerce` **(dependency)**:
+  - Suppose `automatewoo` depends on `woocommerce`.
+  - `woocommerce` is free and available on WordPress.org, so QIT automatically fetches it. No local source or authentication is needed.
 
 **Example `qit.yml` configuration:**
 
 ```yaml
 plugins:
   my-extension:
-    # Owned premium extension, no source needed unless overriding
-    # source: ./my-extension.zip (optional if you want to test a development build)
+    # Premium extension that you maintain, automatically fetched from WooCommerce.com.
+    # Optionally override with a local zip if desired:
+    # source: ./my-extension.zip
 
   automatewoo-birthdays:
-    # Premium, not owned → must provide local source
+    # Premium, not the maintainer → must provide a local source
     source: ./automatewoo-birthdays.zip
 
   automatewoo:
-    # Premium, not owned → must provide local source
+    # Premium, not the maintainer → must provide a local source
     source: ./automatewoo.zip
 
   # woocommerce:
@@ -103,4 +103,12 @@ plugins:
   #   Listing it here is optional.
 ```
 
-This scenario shows how starting from the CLI command, QIT applies a consistent set of rules based on ownership, marketplace availability, and local overrides to set up the testing environment.
+This scenario demonstrates how QIT applies a consistent set of rules based on ownership, marketplace availability, and local overrides to create the necessary test environment.
+
+## Future improvements
+
+We understand that managing access to premium extensions for certain vendors or accounts can be challenging, especially when aiming to leverage [Compatibility Testing](./compatibility-tests.md) between plugins.
+
+To address this, we are planning to introduce **Access Control** in the future, allowing you to grant selected marketplace vendors or specific developer accounts access to your premium extensions and test tags.
+
+We welcome your feedback on how you’d like to manage and share your premium extensions and tests. Please feel free to provide suggestions, use cases, or requirements.
