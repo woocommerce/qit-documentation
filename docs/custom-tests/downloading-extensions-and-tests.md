@@ -1,32 +1,29 @@
 # Downloading extensions and tests
 
-QIT (Quality Insights Toolkit) automatically downloads the extension you are testing (the **System Under Test, or SUT**) and any related plugins, dependencies, and test tags. By default, it fetches the latest stable versions from WooCommerce.com for premium extensions and WordPress.org for free plugins.
+QIT automatically downloads the extension you are testing **(SUT)** and any additional plugins requested, dependencies, and test tags. By default, it fetches the latest stable versions from WooCommerce.com for paid extensions and WordPress.org for free plugins.
 
-## Downloading premium extensions
+## The extension under test
 
-Premium extensions require authentication. The account used during `qit connect` must own and maintain the premium extension you want to test. If you do not own it, you must provide a local source (for example, a ZIP file containing the extension).
+The main extension you're testing (SUT) must be a product in the WooCommerce.com marketplace and associated with your account. The account used during `qit connect` **must be the maintainer of this extension**. It can be a product submission or a published product.
 
 For more details, see [Authenticating with QIT](../installation-setup/authenticating.md).
+
+## Downloading paid extensions
+
+Paid extensions require authentication. Similar to the sut, you **must be the maintainer of the paid extension** you want to include in your test. If you do not own it, you must provide a local source (for example, a ZIP file containing the extension).
+
+You can find examples of providing local sources below.
 
 ## Downloading free extensions
 
 Free extensions are sourced directly from WordPress.org without requiring authentication or ownership. You can still provide a local source if you want to test a modified version rather than the publicly available one.
 
-## SUT must exist in the marketplace
+## Additional plugins, dependencies and test tags
 
-Your SUT must be recognized in the WooCommerce.com marketplace and associated with your account. Although you can override the downloaded code with a local source (such as a development build), the SUT itself must be listed in the marketplace for the test results to be recorded.
-
-## Additional plugins and dependencies
-
-- **Premium (WooCommerce.com):** You must own the extension or provide a local source.
+- **Paid (WooCommerce.com):** You must be the maintainer of the extension or provide a local source.
 - **Free (WordPress.org):** No authentication is required.
 - **Not listed in either marketplace:** A local source is required.
-
-## Custom tests (test tags)
-
-- **Remote tests:** You must own the extension associated with the test or provide a local source.
-- **Local tests:** If remote tests are not available, you can use a local directory or ZIP file.
-- **Conflicts:** If a test tag exists both remotely and locally, QIT will warn you and then default to the remote version.
+- **Custom test tags**: You must own the extension associated with the test you want to use, or provide a local source.
 
 ## Providing local sources
 
@@ -58,7 +55,7 @@ qit run:e2e my-extension -p automatewoo-birthdays
 
 This will fail because you don't have access to `automatewoo-birthdays` and `automatewoo` (which is a dependency).
 
-We will see now what QIT does step-by-step, and how you can get around this by providing the zips of these premium plugins locally.
+We will see now what QIT does step-by-step, and how you can get around this by providing the zips of these paid plugins locally.
 
 ### What happens step-by-step:
 
@@ -73,7 +70,7 @@ We will see now what QIT does step-by-step, and how you can get around this by p
   - If none is provided, QIT can’t proceed.
 
 - `automatewoo` **(dependency)**:
-  - `automatewoo-birthdays` depends on `automatewoo`, another premium extension you don’t maintain.
+  - `automatewoo-birthdays` depends on `automatewoo`, another paid extension you don’t maintain.
   - QIT checks if you own `automatewoo` on WooCommerce.com. Since you don’t, it expects a local source.
   - Similarly as above, you must define the source yourself.
 
@@ -86,16 +83,16 @@ We will see now what QIT does step-by-step, and how you can get around this by p
 ```yaml
 plugins:
   my-extension:
-    # Premium extension that you maintain, automatically fetched from WooCommerce.com.
+    # Paid extension that you maintain, automatically fetched from WooCommerce.com.
     # Optionally override with a local zip if desired:
     # source: ./my-extension.zip
 
   automatewoo-birthdays:
-    # Premium, not the maintainer → must provide a local source
+    # Paid, not the maintainer → must provide a local source
     source: ./automatewoo-birthdays.zip
 
   automatewoo:
-    # Premium, not the maintainer → must provide a local source
+    # Paid, not the maintainer → must provide a local source
     source: ./automatewoo.zip
 
   # woocommerce:
@@ -107,8 +104,8 @@ This scenario demonstrates how QIT applies a consistent set of rules based on ow
 
 ## Future improvements
 
-We understand that managing access to premium extensions for certain vendors or accounts can be challenging, especially when aiming to leverage [Compatibility Testing](./compatibility-tests.md) between plugins.
+We understand that managing access to paid extensions for certain vendors or accounts can be challenging, especially when aiming to leverage [Compatibility Testing](./compatibility-tests.md) between plugins.
 
-To address this, we are planning to introduce **Access Control** in the future, allowing you to grant selected marketplace vendors or specific developer accounts access to your premium extensions and test tags.
+To address this, we are planning to introduce **Access Control** in the future, allowing you to grant selected marketplace vendors or specific developer accounts access to your paid extensions and test tags.
 
-We welcome your feedback on how you’d like to manage and share your premium extensions and tests. Please feel free to provide suggestions, use cases, or requirements.
+We welcome your feedback on how you’d like to manage and share your paid extensions and tests. Please feel free to provide suggestions, use cases, or requirements.
