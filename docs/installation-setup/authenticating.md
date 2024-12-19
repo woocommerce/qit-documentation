@@ -1,99 +1,39 @@
-Below is a revised version incorporating a brief explanation about authentication and its relation to extension ownership and access:
+# Authenticating with QIT
 
----
+Before you can start running tests or interacting with QIT's cloud-based services, you need to authenticate the QIT CLI with your WooCommerce Marketplace account. This step ensures that only authorized developers can run tests against their listed extensions.
 
-# Downloading Extensions and Tests
+## Prerequisites
 
-When you run tests with QIT, it automatically attempts to download the main plugin or theme you are testing (referred to as the **System Under Test (SUT)**), as well as any additional plugins, dependencies, and associated custom test tags needed for your scenario. By default, it fetches stable versions of extensions from WooCommerce.com (for premium extensions) or WordPress.org (for free plugins).
+- A WooCommerce.com Partner Developer account.
+- At least one extension listed on the WooCommerce Marketplace.
+- The QIT CLI installed and available on your system. Refer to [Installing the QIT CLI](../installation-setup/cli-installation.md).
 
-If something can’t be accessed remotely due to ownership or listing constraints, you can provide a local directory or zip file as a fallback.
+## Generating a QIT token
 
-## Authentication and Access
+1. Run:
 
-Access to premium extensions on WooCommerce.com is tied to the WooCommerce.com account associated with the QIT Token you obtained during the `qit connect` process. If your account owns and can manage the extension, QIT can download it remotely. Otherwise, you must provide a local source.
+   ```qitbash
+   qit connect
+   ```
 
-For detailed steps on authenticating with QIT, see [Authenticating with QIT](../installation-setup/authenticating.md).
+   This command will guide you through the authentication flow. It will open a browser window or prompt you to visit a specific URL, where you must log in with your WooCommerce.com credentials.
 
-## Understanding Permissions and Ownership
+2. Once logged in, the Marketplace will generate a QIT Token. Copy this token.
 
-- **Premium Extensions (WooCommerce.com):**  
-  You must own the extension in your WooCommerce.com account to download it remotely. If you do not have access, QIT will fail to fetch it. In that case, providing a local source (e.g., a development build) ensures the test run can continue.
+3. Return to your terminal and paste the QIT Token when prompted by the CLI.
 
-- **Free Extensions (WordPress.org):**  
-  No special permissions are required. QIT downloads them automatically. You can still provide a local source if you want to test a modified or private version.
+When the process finishes, the CLI will confirm that you are now authenticated.
 
-- **Not Listed on WooCommerce.com:**  
-  If the extension isn’t available in the marketplace, you must provide a local source.
+## Verifying authentication
 
-## The System Under Test (SUT)
+Run:
 
-- **Premium SUT:**  
-  Must be owned on WooCommerce.com or provided locally.
-
-- **Free SUT:**  
-  Automatically fetched; local source optional for testing custom builds.
-
-- **SUT Not Listed:**  
-  Must provide a local source directly.
-
-## Additional Plugins and Dependencies
-
-- **Free (WordPress.org):**  
-  Downloaded automatically.
-
-- **Premium (WooCommerce.com):**  
-  Requires ownership; otherwise provide a local source.
-
-- **Not Listed:**  
-  Provide a local source.
-
-If you lack remote access for any reason, you can always rely on a local source to continue testing.
-
-## Custom Tests (Test Tags)
-
-- **Remote Tests:**  
-  QIT fetches them if your account has the required access.
-
-- **Local Tests:**  
-  If remote tags aren’t accessible or don’t exist, provide a local directory or zip.
-
-- **Conflicts:**  
-  If the same tag exists both remotely and locally, QIT warns you and uses the remote version by default.
-
-## Providing Local Sources
-
-To supply a local source, add a `source` attribute in `qit.yml`:
-
-```yaml
-plugins:
-  my-premium-sut:
-    source: ./my-premium-sut.zip
+```qitbash
+qit extensions
 ```
 
-For tests:
+If authenticated, you`ll see a list of extensions you have access to. This confirms that QIT recognizes your account and grants you the ability to run tests against these extensions.
 
-```yaml
-plugins:
-  my-plugin:
-    test_tags:
-      - ./local-tests/my-plugin-tests
-```
+## Understanding the QIT token
 
-## Error Handling
-
-- **No Ownership:**  
-  QIT reports that it can’t fetch the extension. Provide valid credentials (via `qit connect`) or a local source.
-
-- **Not Found Remotely:**  
-  Check the slug or add a local source.
-
-- **Local vs Remote (Tests):**  
-  QIT warns on conflict; remote is used unless you adjust your setup.
-
-## Installing Plugins and Themes from Other Sources
-
-While QIT works seamlessly with WordPress.org and WooCommerce.com listings—plus local sources—you may need to fetch extensions from other locations such as private GitHub repositories or premium marketplaces not directly supported by QIT. In these cases, you can implement **custom handlers** that define how QIT should retrieve and prepare these plugins or themes. For more details and examples, refer to the [Advanced Config Handlers documentation](./../advanced-usage/advanced-config-handlers.md).
-
----
-
-By understanding how authentication, ownership, and listing status affect remote downloads—and knowing how to provide local sources when needed—you can maintain a flexible and reliable testing setup with QIT.
+The QIT Token you obtain through `qit connect` functions similarly to an application password but is scoped only to QIT actions. If you already have a WordPress Application Password from WooCommerce.com, it will not work with QIT for security reasons. It is required to generate a QIT Token through the `qit connect` flow, as it ensures the correct permissions and scope.
