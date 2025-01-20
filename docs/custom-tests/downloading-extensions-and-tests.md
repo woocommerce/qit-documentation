@@ -10,7 +10,7 @@ For more details, see [Authenticating with QIT](../installation-setup/authentica
 
 ## Downloading paid extensions
 
-Paid extensions require authentication. Similar to the SUT, you **must be the maintainer of the paid extension** you want to include in your test. If you do not own it, you must provide a local source (for example, a ZIP file containing the extension).
+Paid extensions require authentication. Similar to the SUT, you **must be the maintainer of the paid extension** you want to include in your test. If you do not maintain it, you must provide a local source (for example, a ZIP file containing the extension).
 
 Below you’ll find examples of providing local sources.
 
