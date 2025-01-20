@@ -41,8 +41,6 @@ plugins:
 
 To fetch extensions from unsupported locations (such as private Git repositories), implement **custom handlers**. For details, see [Advanced Config Handlers](./../advanced-usage/advanced-config-handlers.md).
 
-Below is a refined version that incorporates all your changes and additions:
-
 ## Example scenario – step by step
 
 Below is an example scenario where we run a custom E2E test to demonstrate how QIT applies its downloading rules.
@@ -110,8 +108,6 @@ qit run:e2e my-extension -p automatewoo-birthdays
 ```
 
 now succeeds. QIT sets up the environment by fetching what you own and using local sources for what you don’t.
-
-This scenario demonstrates how QIT consistently applies rules based on ownership, marketplace availability, and local overrides.
 
 ---
 
