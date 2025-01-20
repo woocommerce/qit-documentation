@@ -1,6 +1,6 @@
 # Downloading extensions and tests
 
-QIT automatically downloads the extension you are testing **(SUT)** and any additional plugins, dependencies, and test tags. By default, QITc fetches the latest stable versions from WooCommerce.com for paid extensions and WordPress.org for free plugins.
+QIT automatically downloads the extension you are testing **(SUT)** and any additional plugins, dependencies, and test tags. By default, QIT fetches the latest stable versions from WooCommerce.com for paid extensions and WordPress.org for free plugins.
 
 ## The extension under test
 
