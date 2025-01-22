@@ -65,6 +65,7 @@ const sidebars = {
                 'custom-tests/generating-tests',
                 'custom-tests/tagging-tests',
                 'custom-tests/running-tests',
+                'custom-tests/downloading-extensions-and-tests',
                 'custom-tests/understanding-lifecycle',
                 'custom-tests/orchestration',
                 'custom-tests/compatibility-tests',

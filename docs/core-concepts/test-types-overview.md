@@ -51,3 +51,19 @@ By combining both types of tests, you get a thorough quality assurance process:
 - **Before release:** Managed tests confirm baseline standards are met.
 - **During development:** Custom tests verify new features and custom behaviors.
 - **Ongoing maintenance:** Regularly running both test suites helps ensure continuous stability and compatibility as WordPress, WooCommerce, and your extension evolve.
+
+## Working with Additional Extensions
+
+When testing your main extension (SUT), you may also want to include other plugins—e.g., dependencies, compatibility targets, or popular add-ons. The process differs slightly between Managed Tests and Custom Tests:
+
+- **Managed Tests**
+    - QIT automatically downloads your extension from WooCommerce.com if you own it.
+    - Additional paid extensions must also be owned by your account, or they won’t be fetched.
+    - Some WooCommerce.com extensions that are also listed for free on WordPress.org may be downloaded automatically, even if you don’t own them.
+    - **Local ZIP sources** are allowed **only for the SUT** (if you maintain it).
+    - No custom test tags or additional custom code can be included.
+
+- **Custom Tests**
+    - You can add any extension to your test environment via Marketplace (if owned), WordPress.org (if free), or a **local ZIP** (if you don’t own it, or it’s hosted elsewhere).
+    - You can also create and upload custom test tags and specialized test flows.
+    - This flexibility is ideal for compatibility checks with plugins you don’t maintain or custom dev builds.
