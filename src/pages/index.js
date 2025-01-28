@@ -17,7 +17,7 @@ function HomepageHeader() {
                 <Heading as="h1" className="hero__title">
                     <span>Quality Insights Toolkit, or just QIT.</span>
                 </Heading>
-                <p className="hero__subtitle">A testing platform for WordPress plugins and themes.</p>
+                <p className="hero__subtitle">A testing platform for WooCommerce plugins and themes.</p>
                 <div className={styles.buttons}>
                     <Link
                         className="button button--secondary button--lg"
