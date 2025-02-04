@@ -59,7 +59,7 @@ const config = {
         title: 'Quality Insights Toolkit',
         logo: {
           alt: 'Woo',
-          src: 'img/logo.svg',
+          src: 'img/logo.svg?v=1',
         },
         items: [
           {
