@@ -6,26 +6,26 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #7f54b3;
-  --ifm-color-primary-dark: #7249a4;
-  --ifm-color-primary-darker: #6c459b;
-  --ifm-color-primary-darkest: #59397f;
-  --ifm-color-primary-light: #8d66bb;
-  --ifm-color-primary-lighter: #936fbf;
-  --ifm-color-primary-lightest: #a88bcb;
+  --ifm-color-primary: #6108ce;
+  --ifm-color-primary-dark: #5507b6;
+  --ifm-color-primary-darker: #4b06a3;
+  --ifm-color-primary-darkest: #3d0584;
+  --ifm-color-primary-light: #7220d6;
+  --ifm-color-primary-lighter: #8338de;
+  --ifm-color-primary-lightest: #a066e6;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Dark mode */
 [data-theme='dark'] {
-  --ifm-color-primary: #b99dd5;
-  --ifm-color-primary-dark: #a783ca;
-  --ifm-color-primary-darker: #9d76c4;
-  --ifm-color-primary-darkest: #824fb4;
-  --ifm-color-primary-light: #cbb7e0;
-  --ifm-color-primary-lighter: #d5c4e6;
-  --ifm-color-primary-lightest: #f1ebf6;
+  --ifm-color-primary: #aa7ce2;
+  --ifm-color-primary-dark: #9a64d7;
+  --ifm-color-primary-darker: #8c56cd;
+  --ifm-color-primary-darkest: #7233b6;
+  --ifm-color-primary-light: #bc96e8;
+  --ifm-color-primary-lighter: #c8aae9;
+  --ifm-color-primary-lightest: #e5d3f6;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
@@ -34,16 +34,42 @@
 }
 
 
-[data-theme='light'] .token.qit_command.keyword { color: #e67e22; }
-[data-theme='light'] .token.qit_subcommand { color: #d31bc8; }
-[data-theme='light'] .token.qit_option.option-name { color: #8e44ad; }
-[data-theme='light'] .token.qit_option.option-value { color: #c0392b; }
-[data-theme='light'] .token.qit_argument.variable { color: #1737b0 !important; }
+[data-theme='light'] .token.qit_command.keyword {
+  color: #e67e22;
+}
 
-[data-theme='dark'] .token.qit_command.keyword { color: #FFB088 !important; }
-[data-theme='dark'] .token.qit_subcommand { color: #FFF; }
-[data-theme='dark'] .token.qit_option.option-name { color: #FFF1D6; }
-[data-theme='dark'] .token.qit_option.option-value { color: #FFA6B8; }
-[data-theme='dark'] .token.qit_argument.variable { color: #89E2FF !important;}
+[data-theme='light'] .token.qit_subcommand {
+  color: #d31bc8;
+}
 
+[data-theme='light'] .token.qit_option.option-name {
+  color: #8e44ad;
+}
 
+[data-theme='light'] .token.qit_option.option-value {
+  color: #c0392b;
+}
+
+[data-theme='light'] .token.qit_argument.variable {
+  color: #1737b0 !important;
+}
+
+[data-theme='dark'] .token.qit_command.keyword {
+  color: #FFB088 !important;
+}
+
+[data-theme='dark'] .token.qit_subcommand {
+  color: #FFF;
+}
+
+[data-theme='dark'] .token.qit_option.option-name {
+  color: #FFF1D6;
+}
+
+[data-theme='dark'] .token.qit_option.option-value {
+  color: #FFA6B8;
+}
+
+[data-theme='dark'] .token.qit_argument.variable {
+  color: #89E2FF !important;
+}

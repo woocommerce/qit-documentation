@@ -4,11 +4,11 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
-import {duotoneDark, jettwaveDark, nightOwl, oneDark, themes as prismThemes, vsDark} from 'prism-react-renderer';
+import { duotoneDark, jettwaveDark, nightOwl, oneDark, themes as prismThemes, vsDark } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Easy automated tests for WordPress plugins and themes - QIT',
+  title: 'Easy automated tests for WooCommerce plugins and themes - QIT',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -43,7 +43,7 @@ const config = {
           routeBasePath: '/docs/',
           sidebarPath: './sidebars.js',
           editUrl:
-          'https://github.com/woocommerce/qit-documentation/tree/trunk',
+            'https://github.com/woocommerce/qit-documentation/tree/trunk',
         },
         theme: {
           customCss: './src/css/custom.css',
