@@ -80,6 +80,10 @@ Replace `your-extension` with the slug of your plugin.
 
 Some plugins might need an actual live site URL to work properly, such as payment gateways and SaaS. For those, you can use our [built-in tunnel feature](../environment/tunnel.md) to test these plugins.
 
+## Canonical compatibility check in the WooCommerce Marketplace
+
+The WooCommerce Marketplace will automatically run an activation test using the [`compatibility` extension set](extension-sets) upon new submission or update. You will see the results in the list of tests under `Activation (canonical compatibility check)`. Currently this test is informational only, and will not block a submission or an update.
+
 ## What to do if it fails
 
 If your Activation test fails:
