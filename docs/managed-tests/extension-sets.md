@@ -19,7 +19,7 @@ Extension sets can be utilized with [Woo E2E](woo-e2e), [Woo API](woo-api), and 
 - [WooCommerce Shipping](https://woocommerce.com/products/shipping/)
 - [WooCommerce Subscriptions](https://woocommerce.com/products/woocommerce-subscriptions/)
 - [WooCommerce Composite Products](https://woocommerce.com/products/composite-products/)
-- [WooCommerce Services](https://woocommerce.com/products/tax/)
+- [WooCommerce Tax](https://woocommerce.com/products/tax/)
 - [WooCommerce Google Analytics Integration](https://wordpress.org/plugins/woocommerce-google-analytics-integration/)
 - [MailPoet](https://wordpress.org/plugins/mailpoet/)
 - [Jetpack](https://wordpress.org/plugins/jetpack/)
