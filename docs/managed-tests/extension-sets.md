@@ -30,4 +30,4 @@ All test types that support extension sets support an `--extension_set` argument
 
 ## The WooCommerce Marketplace and extension sets
 
-Currently the WooCommerce Marketplace will automatically run an activation test using the `compatibility` extension set upon new submission or update. You will see the results in the list of tests under `Activation (canonical compatibility check)`. Currently this test is informational only, and will not block a submission or an update.
+Currently the WooCommerce Marketplace will automatically run an Activation test using the `compatibility` extension set upon new submission or update. You will see the results in the list of tests under `Activation (canonical compatibility check)`. Currently this test is informational only, and will not block a submission or an update.
