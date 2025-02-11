@@ -4,7 +4,7 @@ Extension sets provide a way to run certain managed test types with a predefined
 
 ## Compatible test types
 
-Extension sets can be utilized with [Woo E2E](woo-e2e), [Woo API](woo-api), and [activation](activation) tests currently.
+Extension sets can be utilized with [Woo E2E](woo-e2e), [Woo API](woo-api), and [Activation](activation) tests currently.
 
 ## Available extension sets
 
