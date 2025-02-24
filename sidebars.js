@@ -54,6 +54,7 @@ const sidebars = {
                 'managed-tests/malware',
                 'managed-tests/validation',
                 'managed-tests/plugin-check',
+                'managed-tests/extension-sets',
             ],
         },
         {

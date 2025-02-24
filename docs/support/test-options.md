@@ -12,6 +12,7 @@ When running tests with QIT, you can specify various options—like WordPress, W
 | PHP Version                  | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
 | Additional Extensions        | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
 | Additional WordPress Plugins | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
+| [Extension sets](../managed-tests/extension-sets) | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
 
 **Key:**
 - ✅: Option supported by that test type.
@@ -54,6 +55,13 @@ qit run:activation my-extension --plugin=woocommerce --plugin=my-other-plugin
 ```
 
 This ensures compatibility and stable interactions within a controlled environment.
+
+## Extension sets
+
+```qitbash
+qit run:woo-api my-extension --extension_set=compatibility
+```
+Extension sets provide a way to run certain managed test types with a predefined set of other extensions included in the environment. For more information see [their documentation page](../managed-tests/extension-sets).
 
 ## Configuring test options in config files
 
