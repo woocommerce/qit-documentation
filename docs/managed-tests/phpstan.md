@@ -1,30 +1,71 @@
-# PHPStan tests
+## PHPStan Test Type
 
-PHPStan is a static code analysis tool designed to catch errors, type issues, and questionable coding patterns. By running PHPStan tests against your extension, QIT provides feedback on code-level improvements that can increase maintainability and reduce the risk of hidden bugs. However, due to the dynamic nature of WordPress and WooCommerce codebases, you may encounter a relatively high number of false positives.
+PHPStan is a static analysis tool that helps you catch coding errors early by identifying type mismatches, undefined methods, incorrect function calls, and other potential bugs. QIT enhances PHPStan specifically for WordPress and WooCommerce with [Stubz](https://github.com/Luc45/stubz), a custom stub generator, and multi-plugin support. This integration lets you focus on meaningful issues rather than sorting through false positives or irrelevant warnings.
 
-## What PHPStan checks
+## Overview
 
-- **Level 0 analysis:** QIT runs [PHPStan at level 0](https://phpstan.org/user-guide/rule-levels) by default, focusing on basic checks like undefined variables or incorrect function calls.
-- **Type safety and consistency:** PHPStan attempts to ensure that the code meets a baseline of type consistency and logic correctness.
-- **Code quality signals:** While not strictly about security or performance, PHPStan flags patterns that, if addressed, can result in clearer, more robust code.
+QIT runs PHPStan on your extension to detect issues such as undefined classes, incorrect function calls, type inconsistencies, and logical errors. By default, PHPStan runs at level 0, providing broad fundamental checks. However, due to WordPress and WooCommerce's dynamic use of hooks and runtime declarations, QIT leverages Stubz to create static definitions, allowing PHPStan to accurately analyze your code.
 
-## Potential false positives
+## How It Works: Stubz and Multi-Plugin Analysis
 
-WordPress and WooCommerce rely heavily on dynamic features like hooks, filters, and global variables, which can confuse static analysis tools like PHPStan. As a result:
-- Some warnings may not indicate a real issue.
-- Consider reviewing flagged areas before making changes, and confirm if the warning is actionable or safe to ignore.
+Stubz is a WordPress-aware stub generator that creates static definitions for classes, functions, and constants normally defined at runtime through hooks and callbacks. This greatly reduces false positives related to missing symbols. Additionally, QIT supports multi-plugin PHPStan analysis by examining declared dependencies alongside your extension, allowing it to detect compatibility issues introduced by other plugins.
 
-## Interpreting results
+## Usage
 
-- **Success:** No PHPStan warnings or errors found.
-- **Warning/Failure:** PHPStan detected potential issues in your code.
+To run a PHPStan test with QIT, use the CLI command:
 
-If you see warnings or failures:
-- Check the line numbers and messages in the output.
-- Determine if the flagged issue is relevant to your code.
-- Address actual problems by adding missing types, refactoring complex logic, or initializing variables properly.
-- If certain checks are not applicable, you can selectively ignore rules or add PHPStan-specific annotations.
+```
+qit run:phpstan your-plugin
+```
 
-## Improving code quality
+This executes PHPStan at level 0. For stricter analysis, specify a higher level:
 
-Tackling PHPStan warnings often results in clearer code and fewer hidden issues. Over time, you may choose to run PHPStan at a higher level locally, catching more subtle issues before pushing updates. Although QIT currently runs it at level 0, raising local analysis levels can help you continuously improve your extension.
+```
+qit run:phpstan your-plugin --phpstan_level 5
+```
+
+If your plugin relies on soft dependencies, include them explicitly:
+
+```
+qit run:phpstan your-plugin --additional_plugins some-other-plugin
+```
+
+## Dependencies: Hard vs. Soft
+
+- **Hard dependencies**: Required plugins for your extension to function. If declared on WooCommerce.com, QIT includes these automatically during static analysis.
+- **Soft dependencies**: Optional plugins that enhance your extension’s functionality but aren't strictly required. QIT doesn't automatically include these; you must manually specify them using the `--additional_plugins` flag for accurate analysis.
+
+## What PHPStan Checks
+
+PHPStan analyzes your code for:
+
+- Undefined classes, methods, or functions
+- Type safety, ensuring correct parameter and return types
+- Logical errors such as unreachable code or incorrect method signatures
+
+Addressing these issues early significantly reduces the likelihood of runtime errors and simplifies maintenance.
+
+## Interpreting Results
+
+- **No warnings**: Indicates no immediate issues detected at the selected PHPStan level.
+- **Warnings or failures**: Examine file paths and line numbers carefully. Real issues may require code refactoring or adding missing type hints. Warnings related to common WordPress patterns can be safely suppressed via `phpstan.neon` or inline annotations.
+
+## Reducing False Positives
+
+Despite Stubz's effectiveness, occasional false positives may occur. To mitigate these:
+
+- Define critical classes and functions in files always loaded, avoiding conditional or delayed declarations.
+- Explicitly include all necessary dependencies, even optional ones.
+- Configure exceptions for persistent false positives in your `phpstan.neon` file.
+
+## Improving Code Quality
+
+Addressing PHPStan warnings enhances both reliability and readability. Consider raising your analysis level to detect deeper issues. Maintain a `phpstan.neon` configuration file to customize PHPStan's checks. AI-based code assistants can also suggest quick fixes, though manual review remains essential for best practices.
+
+## Future Possibilities
+
+Future QIT improvements could include:
+
+- A symbol map cataloging all declared classes and functions across plugins to automatically add soft dependencies your plugin might have.
+- An action/filter map, which allows you to see what plugins are extending your actions/filters, and what other plugins extends the same hooks as you, which can be a common cause of compatibility issues.
+- Automatic suggestions or inclusion of plugins based on symbol analysis to further streamline the testing process.
