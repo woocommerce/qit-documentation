@@ -7,6 +7,7 @@ The QIT Command Line Interface (CLI) is your primary tool for running tests loca
 - **PHP 7.2.5 or higher**
 - **Unix-like environment** (Linux, macOS, Windows WSL)
 - **Composer** (for installation and updates)
+- **Docker** (to run the QIT CLI and local environment, you can follow [this guide for the system you're using](https://docs.docker.com/engine/install/))
 
 ## Recommended installation: global via composer
 
