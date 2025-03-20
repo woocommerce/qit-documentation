@@ -6,17 +6,20 @@ Security tests run a suite of scanning and auditing tools against your extension
 
 The security test currently uses a combination of industry-standard tools and databases:
 
-- **PHPCS (PHP CodeSniffer):**  
+- **PHPCS (PHP CodeSniffer):**
   Checks your code against the WordPress Coding Standards, specifically focusing on rules in the `WordPress.Security` and `WordPress.DB` namespaces. This helps identify common security pitfalls and unsafe patterns related to database interactions and data handling.
 
-- **SemGrep:**  
+- **SemGrep:**
   Runs targeted rules to detect insecure coding patterns, such as potential injection points or unsafe file operations.
 
-- **Third-party package audit tools (e.g., `composer audit`, `npm audit`):**  
+- **Third-party package audit tools (e.g., `composer audit`, `npm audit`):**
   Scans your project’s dependencies against known vulnerability databases, identifying outdated or insecure packages.
 
-- **WPScan vulnerability database:**  
+- **WPScan vulnerability database:**
   Compares your extension against a curated list of known WordPress plugin vulnerabilities. If your extension has a known unfixed vulnerability, it will be flagged.
+
+- **gitleaks secret check:**
+  Checks your code for potential leaks of hard-coded secrets or tokens using the [gitleaks](https://github.com/gitleaks/gitleaks) tool.
 
 ## Test outcomes
 
@@ -33,17 +36,20 @@ The security test currently uses a combination of industry-standard tools and da
 
 When the test flags issues, review the generated report for details on:
 
-- **Specific code locations and functions:**  
+- **Specific code locations and functions:**
   Identify precisely where the vulnerability or questionable pattern occurs.
 
-- **Relevant security rules or guidelines:**  
+- **Relevant security rules or guidelines:**
   Reference the associated PHPCS or SemGrep rule name to understand why the code was flagged.
 
-- **Dependency vulnerabilities:**  
+- **Dependency vulnerabilities:**
   If third-party packages are outdated or insecure, consider upgrading to a patched version or replacing the package altogether.
 
-- **WPScan advisories:**  
+- **WPScan advisories:**
   If your extension is listed as vulnerable by WPScan, verify if you have an unfixed issue. If you believe you have already addressed the vulnerability and the listing is outdated, [contact WPScan](https://wpscan.com/contact/) to update their records.
+
+- **Leaked secrets:**
+  If gitleaks identifies anything that looks like a hard-coded secret, token, or similar, it will flag it as a warning.
 
 ## Handling failures and warnings
 
@@ -51,7 +57,7 @@ When the test flags issues, review the generated report for details on:
    Review the highlighted issues carefully.
 
 2. **Fix the identified problems:**  
-   Update code to use safer functions, sanitize and validate input, upgrade third-party packages, or address vulnerabilities flagged by WPScan.
+   Update code to use safer functions, sanitize and validate input, upgrade third-party packages, remove hard-coded secret values, or address vulnerabilities flagged by WPScan.
 
 3. **Rerun the test:**  
    Confirm that your changes resolved the flagged issues. You must achieve a passing result before your extension can be listed or updated on the WooCommerce Marketplace.
@@ -78,6 +84,12 @@ Occasionally, a rule may flag a scenario that you believe is not genuinely insec
   ```
   Replace `rule-id` with the relevant SemGrep rule name.
 
+  For gitleaks detections, add:
+  ```php
+  // gitleaks:allow
+  ```
+  to the relevant line.
+
 - **Contact us:**  
   If you consistently encounter what you believe are false positives, email us at qit@woocommerce.com with details. We’ll review and refine our rules to minimize such occurrences.
 
@@ -98,6 +110,9 @@ Use suppression judiciously. Strive to follow recommended practices rather than 
 
 - **Keep dependencies updated:**  
   Use the latest secure versions of third-party packages to reduce the risk of known vulnerabilities.
+
+- **Remove hard-coded secret values:**  
+  Use per-installation secrets (such as product keys) to secure communcation and API access, rather than hard-coding a token.
 
 - **Combine with other tests:**  
   Security tests complement other managed tests, end-to-end tests, and code quality checks, ensuring a holistic view of your extension’s health.
