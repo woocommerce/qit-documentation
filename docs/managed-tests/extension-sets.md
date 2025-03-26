@@ -20,6 +20,8 @@ Extension sets can be utilized with [Woo E2E](woo-e2e), [Woo API](woo-api), and 
 - [WooCommerce Subscriptions](https://woocommerce.com/products/woocommerce-subscriptions/)
 - [WooCommerce Composite Products](https://woocommerce.com/products/composite-products/)
 - [WooCommerce Tax](https://woocommerce.com/products/tax/)
+- [WooCommerce Bookings](https://woocommerce.com/products/woocommerce-bookings/)
+- [WooCommerce Shipment Tracking](https://woocommerce.com/products/shipment-tracking/)
 - [WooCommerce Google Analytics Integration](https://wordpress.org/plugins/woocommerce-google-analytics-integration/)
 - [MailPoet](https://wordpress.org/plugins/mailpoet/)
 - [Jetpack](https://wordpress.org/plugins/jetpack/)
