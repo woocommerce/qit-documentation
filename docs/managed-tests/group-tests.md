@@ -7,7 +7,7 @@ Group tests allow you to organize and execute multiple test runs together, eithe
 Group tests work with all test types, but there's an important distinction in how they're executed:
 
 - **Local Tests (E2E and Activation):** Run on your local machine using the QIT CLI.
-- **Remote Tests (All other test types):** Run on QIT's infrastructure.
+- **Remote Tests (all other test types):** Run on QIT's infrastructure.
 
 ## Basic workflow
 
@@ -26,7 +26,7 @@ qit run:activation your-extension --group
 You can add multiple tests to the same group:
 
 ```qitbash
-qit run:activation automatewoo --group --extension_set compatibility
+qit run:activation your-extension --group --extension_set compatibility
 qit run:security your-extension --group
 ```
 
@@ -93,11 +93,9 @@ To remove the current group:
 qit group:clear
 ```
 
-## Important notes
+## Important note
 
 - **Duplicate prevention:** If a test with identical parameters is already in the group, it won't be added again
-- **Opting out:** To prevent a test from being picked up by a group run, use the `--no_group` flag
-- **Group status:** You can monitor the status of your group and individual test runs through the QIT manager interface
 
 ## Example workflow
 
@@ -105,7 +103,7 @@ Here's a complete example of using group tests:
 
 ```qitbash
 # Add tests to the group
-qit run:activation automatewoo --group --extension_set compatibility
+qit run:activation your-extension --group --extension_set compatibility
 qit run:security your-extension --group
 
 # Register the group with an identifier
