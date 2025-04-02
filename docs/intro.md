@@ -35,7 +35,7 @@ For the simplest and most consistent experience, install QIT CLI globally. This 
 
 1. **Install QIT CLI Globally:**  
    ```bash
-   composer global require woocommerce/qit-cli
+   composer global require "woocommerce/qit-cli:*"
    ```
    Make sure your global Composer `bin` directory is in your `PATH`.  
    Example:  
@@ -58,7 +58,7 @@ For the simplest and most consistent experience, install QIT CLI globally. This 
 **Alternative: Per-Project Installation (If Preferred)**  
 If you prefer isolating QIT to a single project, you can still install it locally using:
 ```bash
-composer require woocommerce/qit-cli --dev
+composer require "woocommerce/qit-cli:*" --dev
 ```
 And run commands via:
 ```bash

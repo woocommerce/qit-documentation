@@ -13,7 +13,7 @@ The QIT Command Line Interface (CLI) is your primary tool for running tests loca
 By installing the QIT CLI globally, you can access it from any project directory on your system. This approach simplifies your workflow if you work on multiple extensions or projects.
 
 1. Install QIT CLI globally:
-   `composer global require woocommerce/qit-cli`
+   `composer global require "woocommerce/qit-cli:*"`
 
 2. Ensure the Composer global `bin` directory is in your `PATH`. For example:
    `export PATH="$PATH:$HOME/.composer/vendor/bin"`
@@ -32,9 +32,11 @@ By installing the QIT CLI globally, you can access it from any project directory
 
 To update the QIT CLI when installed globally via Composer:
 
-`composer global update woocommerce/qit-cli`
+`composer global require "woocommerce/qit-cli:*"`
 
 This will fetch and install the latest version, ensuring you always have the newest features and fixes.
+
+If your version constraint is already `*`, you can use `composer global update woocommerce/qit-cli` instead.
 
 ## Next steps
 
