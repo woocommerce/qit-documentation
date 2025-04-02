@@ -49,6 +49,7 @@ const config = {
           customCss: './src/css/custom.css',
         },
         sitemap: {
+          lastmod: 'date',
           changefreq: 'weekly',
           priority: 0.5,
           ignorePatterns: [],
@@ -56,7 +57,6 @@ const config = {
           createSitemapItems: async (params) => {
             const { defaultCreateSitemapItems, ...rest } = params;
             const items = await defaultCreateSitemapItems(rest);
-
             // Force trailing slash on URLs that don't have one:
             return items
                 .map((item) => {
