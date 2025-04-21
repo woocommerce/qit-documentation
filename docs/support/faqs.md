@@ -11,7 +11,7 @@ A: Full QIT functionality, including managed tests and cloud runs, requires a Wo
 ## Installation and setup
 
 **Q: How do I install the QIT CLI?**  
-Please refer to the [CLI Installation](../installation-setup/cli-installation.md) page for instrutions on installing the QIT CLI.
+Please refer to the [CLI Installation](../installation-setup/cli-installation.md) page for instructions on installing the QIT CLI.
 
 **Q: What are the prerequisites for running tests locally?**  
 Please check the [Local Test Environment Introduction](../environment/introduction.md) for more details.
