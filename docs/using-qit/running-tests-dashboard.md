@@ -4,7 +4,7 @@ If you prefer a user interface (UI) over the command line, the WooCommerce Vendo
 
 ## Prerequisites
 
-- **Woocommerce.com partner developer account:** Ensure you are logged in with the vendor account associated with your extension.
+- **WooCommerce.com partner developer account:** Ensure you are logged in with the vendor account associated with your extension.
 - **Extension listed on the WooCommerce marketplace:** The dashboard features are only available for extensions listed on WooCommerce.com.
 
 ## Accessing the vendor dashboard

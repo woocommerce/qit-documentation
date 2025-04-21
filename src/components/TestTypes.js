@@ -24,7 +24,7 @@ export default function TestTypes({ includeCode = false }) {
                         style={{ display: includeCode ? 'inline-block' : 'none' }}>run:malware</code></li>
                     <li><a href="/docs/managed-tests/validation">Validation tests</a> <code
                         style={{ display: includeCode ? 'inline-block' : 'none' }}>run:validation</code></li>
-                    <li><a href="/docs/managed-tests/plugin-check">wordpress.org Plugin Check tests</a> <code
+                    <li><a href="/docs/managed-tests/plugin-check">WordPress.org Plugin Check tests</a> <code
                         style={{ display: includeCode ? 'inline-block' : 'none' }}>run:plugin-check</code></li>
                     <li>Performance tests <i>(Coming soon)</i></li>
                 </ul>

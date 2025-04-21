@@ -55,8 +55,8 @@ Displays info such as:
 ```
 Run Id              344745
 Test Type           security
-Wordpress Version   6.1.1
-Woocommerce Version 7.2.2
+WordPress Version   6.1.1
+WooCommerce Version 7.2.2
 Status              warning
 Is Development      Yes
 Woo Extension       My Extension

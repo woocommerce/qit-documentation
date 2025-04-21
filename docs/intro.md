@@ -14,7 +14,7 @@ QIT (Quality Insights Toolkit) is a testing platform developed by WooCommerce fo
 **Key Features:**
 - **Managed test suites:** Run pre-configured end-to-end tests, activation tests, security scans, PHPStan analysis, API tests, and more.
 - **Custom E2E testing:** Write and run your own Playwright-based E2E tests directly through QIT.
-- **Continuous quality checks:** Easily integrate QIT with your development workflows (CLI, GitHub Actions, etc.).
+- **Continuous quality checks: Seamlessly integrate QIT into your development workflows via CLI, GitHub Actions, and more.
 - **Marketplace integration:** Currently in closed beta for extensions listed on the WooCommerce Marketplace.
 
 <video controls style={{ width:"100%", height:"100%" }}>
@@ -24,7 +24,7 @@ QIT (Quality Insights Toolkit) is a testing platform developed by WooCommerce fo
 
 ## Requirements
 
-- **Woocommerce.com partner developer account:** You must have at least one extension listed on the WooCommerce.com Marketplace to access QIT.
+- **WooCommerce.com partner developer account:** You must have at least one extension listed on the WooCommerce.com Marketplace to access QIT.
 - **PHP 7.2.5+ and composer:** Required if you plan to use QIT locally via the CLI.
 
 ## Quick start guide
@@ -86,7 +86,7 @@ While full QIT access is currently exclusive to WooCommerce.com Partner Develope
 ## Ways to use QIT
 
 - **Command line (CLI):** Perfect for integrating into your local development workflow or CI pipelines. See [CLI Getting Started](./installation-setup/cli-installation.md).
-- **Woocommerce.com dashboard:** Run and view tests directly in the vendor dashboard UI. See [Getting Started with Dashboard](./using-qit/running-tests-dashboard.md).
+- **WooCommerce.com dashboard:** Run and view tests directly in the vendor dashboard UI. See [Getting Started with Dashboard](./using-qit/running-tests-dashboard.md).
 - **GitHub actions:** Integrate QIT tests into your GitHub workflows. See [GitHub Workflows Setup](./using-qit/github-workflows.md).
 
 :::info  
