@@ -48,6 +48,25 @@ const config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        sitemap: {
+          lastmod: 'date',
+          changefreq: 'weekly',
+          priority: 0.5,
+          ignorePatterns: [],
+          filename: 'sitemap.xml',
+          createSitemapItems: async (params) => {
+            const { defaultCreateSitemapItems, ...rest } = params;
+            const items = await defaultCreateSitemapItems(rest);
+            // Force trailing slash on URLs that don't have one:
+            return items
+                .map((item) => {
+                  if (!item.url.endsWith('/')) {
+                    item.url = `${item.url}/`;
+                  }
+                  return item;
+                });
+          },
+        },
       }),
     ],
   ],
@@ -84,7 +103,16 @@ const config = {
         darkTheme: prismThemes.dracula,
         additionalLanguages: ['php', 'bash', 'json', 'yaml', 'makefile'],
       },
+      algolia: {
+        // The application ID provided by Algolia.
+        appId: 'XLDNDE9LL2',
+        // Public API key: it is safe to commit it.
+        apiKey: '29c11bf5cd152f048721ec14a3adeffd',
+        indexName: 'qit-woo',
+        contextualSearch: false,
+      },
     }),
+
 };
 
 export default config;
