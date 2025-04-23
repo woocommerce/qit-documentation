@@ -1,6 +1,6 @@
-# wordpress.org Plugin Check tests
+# WordPress.org Plugin Check tests
 
-wordpress.org Plugin Check tests run the [wordpress.org automated plugin check](https://wordpress.org/plugins/plugin-check) tool against your extension. This optional test focuses on guidelines and patterns important for submitting plugins to the WordPress.org directory.
+WordPress.org Plugin Check tests run the [WordPress.org automated plugin check](https://wordpress.org/plugins/plugin-check) tool against your extension. This optional test focuses on guidelines and patterns important for submitting plugins to the WordPress.org directory.
 
 **Note:** Currently, these checks are not automatically triggered for WooCommerce Marketplace submissions. They are available for developers who also distribute on wordpress.org or wish to maintain broader WordPress best-practices.
 
@@ -9,13 +9,13 @@ wordpress.org Plugin Check tests run the [wordpress.org automated plugin check](
 The tool currently runs checks from the `plugin_repo` category, which helps identify violations of the [WordPress.org Plugin Review Guidelines](https://make.wordpress.org/plugins/handbook/performing-reviews/review-checklist/). These may include:
 
 - **Core guideline compliance:** Detects code that violates mandatory directory rules.
-- **Repository readiness:** Flags improper file structures, disallowed functions, or patterns that could prevent listing on wordpress.org.
+- **Repository readiness:** Flags improper file structures, disallowed functions, or patterns that could prevent listing on WordPress.org.
 - **General code health:** May highlight deprecated functions, insecure code usage, or general best-practice concerns.
 
 ## Interpreting results
 
 - **Success:** No major issues detected.
-- **Warnings/Failures:** Potential guideline violations or best-practice deviations are highlighted. While not necessarily blocking for WooCommerce Marketplace, they could impact your plugin’s acceptability on wordpress.org.
+- **Warnings/Failures:** Potential guideline violations or best-practice deviations are highlighted. While not necessarily blocking for WooCommerce Marketplace, they could impact your plugin’s acceptability on WordPress.org.
 
 ## Next steps if it fails
 
