@@ -1,61 +1,82 @@
 # New Playright Tests
 
-To create a new Playwright test suite with QIT, follow these steps:
+This guide shows you how to set up and run end-to-end Playwright tests with QIT for your WordPress plugin or theme.
 
-1. Run the following command to create a new test suite:
+### 1. Scaffold your test suite
 
-   ```qitbash
-   qit scaffold:e2e ./tests/e2e
-   ```
-2. This creates a new directory `tests/e2e` with the following structure:
+In the root directory of your WordPress plugin or theme, run:
 
-   ```bash
-   tests/e2e/
-   ├── qit-e2e.json
-   ├── playwright.config.js
-   ├── package.json
-   ├── bootstrap/
-   │   ├── setup.sh
-   │   └── mu-plugin.php
-   └── tests/
-       └── example.spec.ts
-   ```
+```qitbash
+qit scaffold:e2e ./tests/e2e
+```
+This command will create a new `tests/e2e` folder with the following structure:
 
-3. Run the tests:
+```bash
+tests/e2e/
+├── qit-e2e.json
+├── playwright.config.js
+├── package.json
+├── bootstrap/
+│   ├── setup.sh
+│   └── mu-plugin.php
+└── tests/
+    └── example.spec.ts
+```
 
-   ```qitbash
-   qit run:e2e your-plugin-slug ./tests/e2e
-   ```
+### 2. Run your tests
 
-4. Develop the tests with Playwright. For example, you can spin up a persistent environment for development:
+Still in your plugin or theme directory, use:
 
-   ```qitbash
-   qit run:e2e your-plugin-slug ./tests/e2e --persistent
-   ```
+```qitbash
+qit run:e2e your-plugin-slug ./tests/e2e
+```
 
-   Then run the test several times while developing:
+:::info
+Replace `your-plugin-slug` with your actual plugin or theme slug. If you are building a WordPress theme, you might use a placeholder like `your-theme-slug` instead.
+:::
 
-   ```qitbash
-   cd tests/e2e
-   QIT_SITE_URL=http://localhost:8080 npx playwright test
-   ```
+### 3. Develop the tests with Playwright.
 
-   You can also run in Playwright Codegen or Headed mode.
+To spin up a persistent environment for development, run:
 
-   ```qitbash
-   npx playwright codegen http://localhost:8080
-   ```
+```qitbash
+qit run:e2e your-plugin-slug ./tests/e2e --persistent
+```
 
-   Check out the [Playwright documentation](https://playwright.dev/docs/codegen-intro) for more options.
+Within this environment, you can quickly re-run tests as you code:
 
-   You can always reset the environment to a clean state by running:
+```qitbash
+cd tests/e2e
+export QIT_SITE_URL=<Site URL provided by QIT>
+npx playwright test
+```
 
-   ```qitbash
-   qit reset
-   ```
+#### Using Playwright Codegen or Headed mode
 
-   When you are happy with the results, you can publish your tests to QIT with:
+If you want to record or visually debug your test interactions, use:
 
-   ```qitbash
-   qit publish:e2e your-plugin-slug ./tests/e2e
-   ```
+```qitbash
+npx playwright codegen <Site URL provided by QIT>
+```
+
+Check the [Playwright documentation](https://playwright.dev/docs/codegen-intro) for additional tips on recording and debugging.
+
+### 4. Reset or Publish
+
+You can reset to a clean WordPress test environment at any time:
+
+```qitbash
+qit reset
+```
+
+When your tests are stable and ready to share or integrate into CI, publish them to QIT:
+
+```qitbash
+qit publish:e2e your-plugin-slug ./tests/e2e
+```
+
+**That’s it!** You’ve successfully set up end-to-end Playwright tests for your WordPress plugin or theme using QIT.
+
+:::tip
+Remember to exclude the `tests` directory from your plugin or theme zip file before publishing it to a marketplace for distribution.
+:::

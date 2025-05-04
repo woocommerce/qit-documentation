@@ -1,8 +1,10 @@
 # Existing Playwright Tests
 
-To make your existing Playwright tests work with QIT, follow these steps:
+This guide shows you how to adapt your **existing Playwright tests** to work with QIT in a WordPress environment - whether you are developing a plugin or a theme.
 
-1. Add a `qit-e2e.json` file to root of your test directory (the same directory where `playwright.config.js` is).
+### 1. Add a `qit-e2e.json` file
+
+In the **root of your test directory** (where `playwright.config.js` is located), add a file named `qit-e2e.json`. Use this simplified example as a starting point:
  
 To start, you can use this simplified example:
    ```json
@@ -17,9 +19,11 @@ To start, you can use this simplified example:
    }
    ```
 
-See more options for the `qit-e2e.json` file in the [specification](./../specification.md).
-   
-2. Add `QIT_SITE_URL` to your `playwright.config.js` file, example:
+You can find more options in the `qit-e2e.json` [specification](./../specification.md).
+
+### 2. Add `QIT_SITE_URL` to Your Playwright Configuration
+
+In your `playwright.config.js` file, set a `baseURL` using the `QIT_SITE_URL` environment variable:
 
 ```javascript
 module.exports = {
@@ -29,13 +33,17 @@ module.exports = {
 };
 ```
 
-2. Install a CTRF Reporter:
+**Why this matters:** QIT dynamically assigns a local WordPress site URL when spinning up the test environment, so your Playwright tests need to rely on the `QIT_SITE_URL` variable to know where WordPress is running.
+
+### 3. Install a CTRF Reporter
+
+Install the [CTRF JSON Reporter](https://www.npmjs.com/package/playwright-ctrf-json-reporter) so QIT can ingest your test results:
 
 ```bash
 npm i playwright-ctrf-json-reporter
 ```
 
-And then in your `playwright.config.js` file, add the reporter:
+Then, reference it in your `playwright.config.js` file:
 
 ```javascript
 module.exports = {
@@ -51,13 +59,16 @@ module.exports = {
 };
 ```
 
-3. Optionally add an Allure Reporter if you want screenshots and videos of your test runs in QIT reports:
+
+### 4. (Optional) Add an Allure Reporter
+
+If you want screenshots and videos to show up in your QIT reports, install and configure the Allure Reporter:
 
 ```bash
 npm i allure-playwright
 ```
 
-And then in your `playwright.config.js` file, add the reporter:
+Update your `playwright.config.js` to include it:
 
 ```javascript
 module.exports = {
@@ -74,7 +85,9 @@ module.exports = {
 };
 ```
 
-4. Add a `bootstrap/setup.sh` file to your test suite, use it to personalize your environment. For example, if you want to install a theme, you can add the following:
+### 5. Personalize your test environment
+
+Create or modify a `bootstrap/setup.sh` script to customize your WordPress environment. For example, to install and activate a theme:
 
 ```bash
 #!/bin/bash
@@ -83,9 +96,11 @@ wp theme install some-example-theme
 wp theme activate some-example-theme
 ```
 
+Feel free to add any other commands needed before your tests run.
+
 ### Putting it all together:
 
-`playwright.config.js`:
+Below is an example `playwright.config.js` illustrating how you can combine all your reporters and environment settings:
 
 ```javascript
 module.exports = {
@@ -113,61 +128,75 @@ module.exports = {
 };
 ```
 
-### Extra tips
-
-- Remember that your tests should be self-contained (like a WordPress plugin), so they should NOT reference files OUTSIDE of your test directory (the directory where your `qit-e2e.json` file is located).
 
 ### Example structure
 
-   ```bash
-   tests/e2e/
-   ├── qit-e2e.json
-   ├── playwright.config.js
-   ├── package.json
-   ├── bootstrap/
-   │   ├── setup.sh
-   │   └── mu-plugin.php
-   └── tests/
-       └── example.spec.ts
-   ```
+Below is an example of how your directory might look after adding QIT-specific files and your Playwright tests:
+
+```bash
+your-plugin/
+├── your-plugin.php
+├── tests/e2e/
+├──── qit-e2e.json
+├──── playwright.config.js
+├──── package.json
+├──── bootstrap/
+│     ├── setup.sh
+│     └── mu-plugin.php
+└──── tests/
+     └── example.spec.ts
+```
+
+Make sure your tests are **self-contained** within your test directory. They should not reference files outside the folder containing `qit-e2e.json`.
 
 ### Run the tests
 
-   ```qitbash
-   qit run:e2e your-plugin-slug ./tests/e2e
-   ```
+From the root of your plugin or theme, run:
+
+```qitbash
+qit run:e2e your-plugin-slug ./tests/e2e
+```
+
+:::info
+Replace `your-plugin-slug` with your actual plugin or theme slug. If you are building a WordPress theme, you might use a placeholder like `your-theme-slug` instead.
+:::
 
 ### Develop the tests with Playwright
 
-For example, you can spin up a persistent environment for development:
+For iterative development, spin up a **persistent** QIT environment:
 
-   ```qitbash
-   qit run:e2e your-plugin-slug ./tests/e2e --persistent
-   ```
+```qitbash
+qit run:e2e your-plugin-slug ./tests/e2e --persistent
+```
 
-   Then run the test several times while developing:
+Then, in a separate terminal, navigate to your tests directory and run them repeatedly:
 
-   ```qitbash
-   cd tests/e2e
-   QIT_SITE_URL=http://localhost:8080 npx playwright test
-   ```
+```qitbash
+cd tests/e2e
+export QIT_SITE_URL=<Site URL provided by QIT>
+npx playwright test
+```
 
-   You can also run in Playwright Codegen or Headed mode.
+To visually debug or generate test code, you can use Playwright Codegen:
 
-   ```qitbash
-   npx playwright codegen http://localhost:8080
-   ```
+```qitbash
+npx playwright codegen <Site URL provided by QIT>
+```
 
-   Check out the [Playwright documentation](https://playwright.dev/docs/codegen-intro) for more options.
+Check out the [Playwright documentation](https://playwright.dev/docs/codegen-intro) for additional details on recording and debugging test steps.
 
-   You can always reset the environment to a clean state by running:
+### Reset or Publish
 
-   ```qitbash
-   qit reset
-   ```
+You can always reset your QIT environment to a fresh WordPress install:
 
-   When you are happy with the results, you can publish your tests to QIT with:
+```qitbash
+qit reset
+```
 
-   ```qitbash
-   qit publish:e2e your-plugin-slug ./tests/e2e
-   ```
+Finally, once your existing tests are validated and running smoothly:
+
+```qitbash
+qit publish:e2e your-plugin-slug ./tests/e2e
+```
+
+That’s it! By following these steps, you’ve adapted your existing Playwright tests to be **QIT-ready** for a WordPress plugin or theme.
