@@ -13,7 +13,7 @@
 
 ## Compatibility Testing
 
-QIT's orchestration system helps plugin and theme developers identify cross-plugin compatibility issues before they affect users. During the shared setup phase, each participating plugin performs its own initialization steps (e.g., a payment gateway plugin connects to its sandbox, another plugin dismisses the onboarding wizard they add, etc). QIT then captures a database snapshot of this fully prepared environment before systematically running each plugin's test suite in isolation. This approach reveals how plugins interact in real-world conditions while maintaining test isolation and separation of concerns.
+QIT's orchestration system helps plugin and theme developers identify cross-plugin compatibility issues before they affect users. During the shared setup phase, each participating plugin performs its own initialization steps (e.g., a payment gateway plugin connects to its sandbox, another plugin dismisses the onboarding wizard it adds, etc). QIT then captures a database snapshot of this fully prepared environment before systematically running each plugin's test suite in isolation. This approach reveals how plugins interact in real-world conditions while maintaining test isolation and separation of concerns.
 
 - Validate your plugin against popular extensions your users likely have installed
 - Test compatibility with different versions of companion plugins
