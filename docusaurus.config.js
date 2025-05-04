@@ -33,6 +33,9 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+  markdown: {
+    mermaid: true,
+  },
 
   presets: [
     [
@@ -70,6 +73,7 @@ const config = {
       }),
     ],
   ],
+  themes: ['@docusaurus/theme-mermaid'],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -111,6 +115,10 @@ const config = {
         indexName: 'qit-woo',
         contextualSearch: false,
       },
+      mermaid: {
+        options: {
+        }
+      }
     }),
 
 };
