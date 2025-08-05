@@ -80,7 +80,7 @@ Occasionally, a rule may flag a scenario that you believe is not genuinely insec
   ```  
   For SemGrep errors, add:  
   ```php
-  // nosemgrep: rule-id
+  // nosemgrep
   ```
   Replace `rule-id` with the relevant SemGrep rule name.
 
