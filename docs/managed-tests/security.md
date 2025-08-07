@@ -131,7 +131,7 @@ Means that the product has successfully passed automated security checks that sc
 We use trusted auditing tools like `composer audit` and `npm audit` to:
 
 - Check the product’s own code for any known security issues.
-- Scan third-party packages and libraries the product depends on — for example, payment gateways, form handlers, or UI components — and ensure none are listed in public vulnerability databases (such as GitHub Security Advisories or the National Vulnerability Database).
+- Scan third-party packages and libraries the product depends on — for example, payment gateways, form handlers, or UI components — and ensure none are listed in public vulnerability databases (such as [GitHub Security Advisories](https://github.com/advisories) or the [National Vulnerability Database](https://nvd.nist.gov/)).
 
 **What does “check passed” mean?** 
 
