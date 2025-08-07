@@ -116,3 +116,28 @@ Use suppression judiciously. Strive to follow recommended practices rather than 
 
 - **Combine with other tests:**  
   Security tests complement other managed tests, end-to-end tests, and code quality checks, ensuring a holistic view of your extension’s health.
+
+## What do the audit results mean?
+
+Audit results like:
+
+- Known vulnerability check passed
+- Dependent packages vulnerability check passed
+
+Means that the product has successfully passed automated security checks that scan for known risks in its code and any third-party tools it uses.
+
+**What’s being checked?**
+
+We use trusted auditing tools like `composer audit` and `npm audit` to:
+
+- Check the product’s own code for any known security issues.
+- Scan third-party packages and libraries the product depends on — for example, payment gateways, form handlers, or UI components — and ensure none are listed in public vulnerability databases (such as [GitHub Security Advisories](https://github.com/advisories) or the [National Vulnerability Database](https://nvd.nist.gov/)).
+
+**What does “check passed” mean?** 
+
+If a check is marked as passed, it means:
+- No known vulnerabilities were found in the product’s code or its dependencies at the time of testing.
+- All third-party packages used are either up-to-date or have no reported security issues.
+
+These audits help ensure that the product is safe, stable, and trustworthy to install on your WooCommerce store.
+
