@@ -441,14 +441,15 @@ Run only affected tests:
 
 ### 4. Fail Fast
 
-Stop on first failure:
-```json
-{
-  "test_packages": [...],
-  "options": {
-    "fail_fast": true
-  }
-}
+Stop on first failure (pass to test framework):
+```bash
+# Pass fail-fast to Playwright after --
+qit run:e2e my-extension -- --fail-fast
+
+# Or configure in playwright.config.js
+module.exports = {
+  maxFailures: 1  // Stop after first failure
+};
 ```
 
 ## Reporting
@@ -543,10 +544,12 @@ env:
 Specify exact versions for reproducibility:
 ```json
 {
-  "environment": {
-    "php": "8.2.0",
-    "wordpress": "6.4.2",
-    "woocommerce": "8.5.1"
+  "environments": {
+    "default": {
+      "php": "8.2.0",
+      "wordpress": "6.4.2",
+      "woocommerce": "8.5.1"
+    }
   }
 }
 ```

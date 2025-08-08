@@ -583,10 +583,6 @@ qit migrate-config qit.yml --output=qit.json
     "php": "8.2",
     "wordpress": "latest",
     "woocommerce": "nightly"
-  },
-  "options": {
-    "verbose": true,
-    "fail_fast": false
   }
 }
 ```
@@ -597,8 +593,7 @@ qit migrate-config qit.yml --output=qit.json
 {
   "profiles": {
     "smoke": {
-      "test_packages": ["./tests/smoke"],
-      "options": { "fail_fast": true }
+      "test_packages": ["./tests/smoke"]
     },
     "regression": {
       "test_packages": [

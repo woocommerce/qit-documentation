@@ -26,7 +26,7 @@ Provide environment setup and teardown without running tests. They:
 ## Why Test Packages?
 
 **Deterministic Execution**: Every run follows the same predictable lifecycle
-**Complete Isolation**: Database snapshots ensure packages can't interfere with each other
+**Complete Isolation**: Database snapshots ensure packages can't interfere with each other (when running multiple packages)
 **Comprehensive Orchestration**: Automatic lifecycle tracking and result generation
 **CI-Optimized**: Smart output management for continuous integration
 **Security Built-in**: Automatic secret validation and redaction
@@ -41,7 +41,7 @@ Provide environment setup and teardown without running tests. They:
 ## Core Principles
 
 - **Packages execute in order**: The sequence in your configuration matters
-- **Database isolation is automatic**: Each package gets a clean slate
+- **Database isolation is automatic**: Each package gets a clean slate (with 2+ packages)
 - **Secrets are validated upfront**: Fail fast if environment isn't ready
 - **Results are mandatory for tests**: No results = test failure
 - **Orchestration is transparent**: See exactly what's happening
@@ -66,5 +66,6 @@ Provide environment setup and teardown without running tests. They:
 
 ### Deployment
 - [CI/CD](./ci.md) - Continuous integration setup
+- [Sharding](./sharding.md) - Parallelization strategies
 - [Examples](./examples.md) - Complete working examples
 - [Troubleshooting](./troubleshooting.md) - Common issues and solutions

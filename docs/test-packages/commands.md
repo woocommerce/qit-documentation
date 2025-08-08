@@ -40,13 +40,40 @@ qit run:e2e woocommerce --php=8.2
 | `--test-package` | Test packages to include (multiple allowed) | `[]` |
 | `--skip_activating_plugins` | Skip activating plugins | `false` |
 | `--skip_activating_themes` | Skip activating themes | `false` |
-| `--pw_test_tag` | Playwright test tag filter | None |
-| `--shard` | Playwright sharding (e.g., `1/3`) | None |
-| `--update_snapshots` | Update Playwright snapshots | `false` |
-| `--pw_options` | Additional Playwright options | None |
-| `--ui` | Run Playwright in UI mode | `false` |
-| `--codegen` | Run environment for Playwright Codegen | `false` |
 | `--verbose` | Show all output (overrides CI mode) | `false` |
+| `--` | Pass all following arguments to test framework | None |
+
+### Passing Arguments to Test Framework
+
+Use `--` to pass arguments directly to the test framework (e.g., Playwright):
+
+```bash
+# Pass fail-fast to Playwright
+qit run:e2e woocommerce -- --fail-fast
+
+# Pass multiple Playwright options
+qit run:e2e woocommerce -- --headed --workers=2 --project=chromium
+
+# Run specific tests with grep
+qit run:e2e woocommerce -- --grep="checkout flow"
+
+# Combine QIT options (before --) and test framework options (after --)
+qit run:e2e woocommerce --verbose --config=test.json -- --fail-fast --headed
+
+# Update Playwright snapshots
+qit run:e2e woocommerce -- --update-snapshots
+
+# Run with UI mode
+qit run:e2e woocommerce -- --ui
+
+# Note: --shard is not supported
+# Tests will run without sharding
+```
+
+**Important**: 
+- Everything before `--` is handled by QIT
+- Everything after `--` is passed to test framework commands in the `run` phase
+- Arguments are only passed to `run` phase commands, not to `setup`, `teardown`, etc.
 
 ### Exit Codes
 
@@ -408,17 +435,17 @@ Execution logs saved to:
 
 ### Running Specific Tests
 
-You can filter tests using Playwright's built-in options:
+You can filter tests by passing options to your test framework after `--`:
 
 ```bash
-# Using --pw_test_tag to filter by tag
-qit run:e2e woocommerce --pw_test_tag="@checkout"
+# Filter by tag/grep pattern
+qit run:e2e woocommerce -- --grep="@checkout"
 
-# Using --shard for parallel execution
-qit run:e2e woocommerce --shard="1/3"
+# Run tests with sharding for parallel execution
+qit run:e2e woocommerce -- --shard=1/3
 
-# Using --pw_options for additional Playwright arguments  
-qit run:e2e woocommerce --pw_options="--grep checkout --workers=4"
+# Pass multiple Playwright options
+qit run:e2e woocommerce -- --grep checkout --workers=4
 ```
 
 Or in the package manifest:
@@ -460,3 +487,62 @@ qit run:e2e woocommerce --config=staging.json
 # Production-like
 qit run:e2e woocommerce --config=prod.json
 ```
+
+## Migration Guide
+
+### Removed Options
+
+The following Playwright-specific options have been removed in favor of the `--` pass-through mechanism:
+
+| Old Option | New Usage |
+|------------|-----------|
+| `--pw_test_tag=@tag` | `-- --grep=@tag` |
+| `--shard=1/3` | Not supported |
+| `--update_snapshots` | `-- --update-snapshots` |
+| `--pw_options="args"` | `-- args` |
+| `--ui` | `-- --ui` |
+| `--codegen` | Use `env:up` then `npx playwright codegen` |
+
+### Removed Functionality
+
+The `up_only` mode has been removed. To start an environment without running tests, use `env:up`:
+
+```bash
+# Old way (removed)
+# qit run:e2e woocommerce --up_only
+
+# New way
+qit env:up woocommerce
+```
+
+### Migration Examples
+
+**Before:**
+```bash
+# Old way with removed options
+qit run:e2e woocommerce --pw_test_tag="@smoke" --shard=1/2
+qit run:e2e woocommerce --ui
+qit run:e2e woocommerce --update_snapshots
+qit run:e2e woocommerce --codegen
+```
+
+**After:**
+```bash
+# New way with -- pass-through
+qit run:e2e woocommerce -- --grep="@smoke" --shard=1/2
+qit run:e2e woocommerce -- --ui
+qit run:e2e woocommerce -- --update-snapshots
+
+# For codegen, use env:up instead
+qit env:up woocommerce
+source "$(qit env:source ...)"
+npx playwright codegen $QIT_SITE_URL
+```
+
+### Why These Changes?
+
+1. **Framework Agnostic**: The `--` mechanism works with any test framework, not just Playwright
+2. **Cleaner Separation**: QIT options before `--`, test framework options after
+3. **No Feature Loss**: All Playwright features still available, just passed differently
+4. **Future Proof**: New test framework options automatically supported without QIT updates
+5. **Simpler Codebase**: Removing framework-specific logic makes QIT more maintainable

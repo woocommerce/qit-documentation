@@ -15,9 +15,15 @@ Error: Package not found: ./packages/checkout-tests
 Check the path in your configuration:
 ```json
 {
-  "test_packages": [
-    "./packages/checkout-tests"  // Relative to config file
-  ]
+  "test_types": {
+    "e2e": {
+      "default": {
+        "test_packages": [
+          "./packages/checkout-tests"  // Relative to config file
+        ]
+      }
+    }
+  }
 }
 ```
 
@@ -263,9 +269,12 @@ Tests see data from previous package.
 First package doesn't get restore (by design):
 ```json
 {
-  "test_packages": [
-    "./utilities/setup",  // No restore
-    "./tests/checkout",   // Gets restore
+  "test_types": {
+    "e2e": {
+      "default": {
+        "test_packages": [
+          "./utilities/setup",  // No restore
+          "./tests/checkout",   // Gets restore
     "./tests/payment"     // Gets restore
   ]
 }
@@ -421,8 +430,10 @@ qit run:e2e woocommerce --php=8.2
 Or in config:
 ```json
 {
-  "environment": {
-    "php": "8.2"
+  "environments": {
+    "default": {
+      "php": "8.2"
+    }
   }
 }
 ```
@@ -502,9 +513,12 @@ Or install Docker:
 Split into multiple packages:
 ```json
 {
-  "test_packages": [
-    "./tests/checkout",  // Run separately
-    "./tests/payment"    // In CI matrix
+  "test_types": {
+    "e2e": {
+      "default": {
+        "test_packages": [
+          "./tests/checkout",  // Run separately
+          "./tests/payment"    // In CI matrix
   ]
 }
 ```
@@ -535,9 +549,15 @@ DEBUG=* qit run:e2e woocommerce
 
 ```json
 {
-  "test_packages": [
-    "./packages/checkout-tests"  // Only this one
-  ]
+  "test_types": {
+    "e2e": {
+      "default": {
+        "test_packages": [
+          "./packages/checkout-tests"  // Only this one
+        ]
+      }
+    }
+  }
 }
 ```
 
@@ -577,4 +597,109 @@ qit run:e2e woocommerce \
   --php=8.2 \
   --wordpress=6.4 \
   --config=test-config.json
+```
+
+## Migration Issues
+
+### Unrecognized Options
+
+#### Symptom
+```
+Error: Unrecognized option: --pw_test_tag
+Error: Unrecognized option: --ui
+Error: Unrecognized option: --codegen
+```
+
+#### Solution
+These Playwright-specific options have been removed. Use the `--` pass-through instead:
+
+```bash
+# Old (no longer works)
+qit run:e2e woocommerce --pw_test_tag="@smoke"
+qit run:e2e woocommerce --ui
+
+# New (correct way)
+qit run:e2e woocommerce -- --grep="@smoke"
+qit run:e2e woocommerce -- --ui
+```
+
+### Codegen Not Working
+
+#### Symptom
+```
+Error: --codegen option has been removed
+```
+
+#### Solution
+Use `env:up` to start an environment, then run Playwright codegen:
+
+```bash
+# Start environment
+qit env:up woocommerce
+
+# Load environment variables
+source "$(qit env:source qitenv...)"
+
+# Run codegen
+npx playwright codegen $QIT_SITE_URL
+```
+
+### Options Not Being Passed
+
+#### Symptom
+Test framework options are not being applied.
+
+#### Solution
+Ensure you're using `--` to separate QIT options from test framework options:
+
+```bash
+# Wrong - options treated as QIT arguments
+qit run:e2e woocommerce --fail-fast --headed
+
+# Correct - options passed to test framework
+qit run:e2e woocommerce -- --fail-fast --headed
+```
+
+### Sharding Not Working
+
+#### Symptom
+```
+Warning: --shard is not supported with Test Packages.
+```
+
+#### Solution
+Sharding is not supported with Test Packages. The `--shard` argument is filtered out and tests run normally without sharding.
+
+If you need to run tests in parallel, you'll need to set up multiple CI jobs with different test configurations.
+
+## Common Patterns After Migration
+
+### Running Tests with Options
+
+```bash
+# Run specific tests
+qit run:e2e woocommerce -- --grep="checkout"
+
+# Run in headed mode with debugging
+qit run:e2e woocommerce -- --headed --debug
+
+# Update snapshots
+qit run:e2e woocommerce -- --update-snapshots
+
+# Run with multiple workers
+qit run:e2e woocommerce -- --workers=4
+```
+
+### Combining QIT and Test Framework Options
+
+```bash
+# QIT options before --, test framework options after
+qit run:e2e woocommerce \
+  --config=test.json \
+  --php=8.2 \
+  --verbose \
+  -- \
+  --grep="@critical" \
+  --fail-fast \
+  --workers=2
 ```

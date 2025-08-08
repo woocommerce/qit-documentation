@@ -314,22 +314,31 @@ test.describe('WooCommerce API', () => {
 
 ### Complete Test Suite
 
-`qit-config.json`:
+`qit.json`:
 ```json
 {
-  "test_packages": [
-    "./packages/utilities/environment-setup",
-    "./packages/smoke-tests",
-    "./packages/checkout-tests",
-    "./packages/payment-tests/stripe",
-    "./packages/payment-tests/paypal",
-    "./packages/api-tests",
-    "./packages/utilities/cleanup"
-  ],
-  "environment": {
-    "php": "8.2",
-    "wordpress": "latest",
-    "woocommerce": "latest"
+  "environments": {
+    "default": {
+      "php": "8.2",
+      "wordpress": "latest",
+      "woocommerce": "latest"
+    }
+  },
+  "test_types": {
+    "e2e": {
+      "default": {
+        "test_packages": [
+          "./packages/utilities/environment-setup",
+          "./packages/smoke-tests",
+          "./packages/checkout-tests",
+          "./packages/payment-tests/stripe",
+          "./packages/payment-tests/paypal",
+          "./packages/api-tests",
+          "./packages/utilities/cleanup"
+        ],
+        "environment": "default"
+      }
+    }
   }
 }
 ```

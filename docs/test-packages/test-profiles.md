@@ -14,34 +14,34 @@ Test Profiles are named configurations that specify:
 
 ### Defining Profiles
 
-In `qit.json`:
+Profiles are defined under `test_types.e2e` in `qit.json`:
 
 ```json
 {
-  "profiles": {
-    "smoke": {
-      "test_packages": [
-        "./tests/critical-path"
-      ],
-      "environment": {
-        "php": "8.2",
-        "wordpress": "latest"
+  "test_types": {
+    "e2e": {
+      "smoke": {
+        "test_packages": [
+          "./tests/critical-path"
+        ]
+      },
+      "full": {
+        "test_packages": [
+          "./utilities/setup",
+          "./tests/smoke",
+          "./tests/checkout",
+          "./tests/payment",
+          "./tests/shipping",
+          "./utilities/cleanup"
+        ]
       }
-    },
-    "full": {
-      "test_packages": [
-        "./utilities/setup",
-        "./tests/smoke",
-        "./tests/checkout",
-        "./tests/payment",
-        "./tests/shipping",
-        "./utilities/cleanup"
-      ],
-      "environment": {
-        "php": "8.0",
-        "wordpress": "6.4",
-        "woocommerce": "8.5"
-      }
+    }
+  },
+  "environments": {
+    "default": {
+      "php": "8.2",
+      "wordpress": "latest",
+      "woocommerce": "latest"
     }
   }
 }
@@ -66,27 +66,22 @@ qit run:e2e woocommerce --config=qit.json --profile=regression
 
 ```json
 {
-  "profile_name": {
-    "description": "Profile description",
-    "test_packages": ["array of packages"],
-    "environment": {
+  "test_types": {
+    "e2e": {
+      "profile_name": {
+        "test_packages": ["array of packages"],
+        "environment": "environment_name",
+        "extends": "base_profile_name"
+      }
+    }
+  },
+  "environments": {
+    "environment_name": {
       "php": "version",
       "wordpress": "version",
       "woocommerce": "version",
-      "features": ["features"]
-    },
-    "options": {
-      "fail_fast": "boolean",
-      "verbose": "boolean",
-      "timeout": "number",
-      "parallel": "boolean"
-    },
-    "extensions": {
-      "sut": "path",
-      "additional": ["paths"]
-    },
-    "requires": {
-      "secrets": ["required secrets"]
+      "plugins": [],
+      "themes": []
     }
   }
 }
@@ -98,32 +93,27 @@ qit run:e2e woocommerce --config=qit.json --profile=regression
 
 ```json
 {
-  "profiles": {
+  "environments": {
     "dev": {
-      "description": "Local development testing",
-      "test_packages": [
-        "./utilities/dev-setup",
-        "./tests/current-feature"
-      ],
-      "environment": {
-        "php": "8.2",
-        "wordpress": "latest",
-        "woocommerce": "nightly"
+      "php": "8.2",
+      "wordpress": "latest",
+      "woocommerce": "nightly"
+    }
+  },
+  "test_types": {
+    "e2e": {
+      "dev": {
+        "test_packages": [
+          "./utilities/dev-setup",
+          "./tests/current-feature"
+        ],
+        "environment": "dev"
       },
-      "options": {
-        "verbose": true,
-        "fail_fast": false,
-        "skip_cleanup": true
-      }
-    },
-    "dev-quick": {
-      "description": "Quick smoke test during development",
-      "test_packages": [
-        "./tests/smoke"
-      ],
-      "options": {
-        "verbose": true,
-        "timeout": 300000
+      "dev-quick": {
+        "test_packages": [
+          "./tests/smoke"
+        ],
+        "environment": "dev"
       }
     }
   }
@@ -134,40 +124,36 @@ qit run:e2e woocommerce --config=qit.json --profile=regression
 
 ```json
 {
-  "profiles": {
-    "pr": {
-      "description": "Pull request validation",
-      "test_packages": [
-        "./tests/smoke",
-        "./tests/critical"
-      ],
-      "options": {
-        "fail_fast": true,
-        "verbose": false
-      }
-    },
+  "environments": {
     "nightly": {
-      "description": "Nightly regression tests",
-      "test_packages": [
-        "./utilities/setup",
-        "./tests/**/*",
-        "./utilities/cleanup"
-      ],
-      "environment": {
-        "woocommerce": "nightly"
-      }
-    },
-    "release": {
-      "description": "Pre-release validation",
-      "test_packages": [
-        "./tests/smoke",
-        "./tests/regression",
-        "./tests/performance",
-        "./tests/security"
-      ],
-      "options": {
-        "fail_fast": false,
-        "parallel": true
+      "php": "8.2",
+      "wordpress": "latest",
+      "woocommerce": "nightly"
+    }
+  },
+  "test_types": {
+    "e2e": {
+      "pr": {
+        "test_packages": [
+          "./tests/smoke",
+          "./tests/critical"
+        ]
+      },
+      "nightly": {
+        "test_packages": [
+          "./utilities/setup",
+          "./tests/**/*",
+          "./utilities/cleanup"
+        ],
+        "environment": "nightly"
+      },
+      "release": {
+        "test_packages": [
+          "./tests/smoke",
+          "./tests/regression",
+          "./tests/performance",
+          "./tests/security"
+        ]
       }
     }
   }
@@ -178,32 +164,36 @@ qit run:e2e woocommerce --config=qit.json --profile=regression
 
 ```json
 {
-  "profiles": {
+  "environments": {
     "min-requirements": {
-      "description": "Test with minimum supported versions",
-      "test_packages": ["./tests/compatibility"],
-      "environment": {
-        "php": "7.4",
-        "wordpress": "6.0",
-        "woocommerce": "7.0"
-      }
+      "php": "7.4",
+      "wordpress": "6.0",
+      "woocommerce": "7.0"
     },
     "latest-stable": {
-      "description": "Test with latest stable versions",
-      "test_packages": ["./tests/all"],
-      "environment": {
-        "php": "8.2",
-        "wordpress": "latest",
-        "woocommerce": "latest"
-      }
+      "php": "8.2",
+      "wordpress": "latest",
+      "woocommerce": "latest"
     },
     "bleeding-edge": {
-      "description": "Test with development versions",
-      "test_packages": ["./tests/all"],
-      "environment": {
-        "php": "8.3",
-        "wordpress": "nightly",
-        "woocommerce": "nightly"
+      "php": "8.3",
+      "wordpress": "nightly",
+      "woocommerce": "nightly"
+    }
+  },
+  "test_types": {
+    "e2e": {
+      "min-requirements": {
+        "test_packages": ["./tests/compatibility"],
+        "environment": "min-requirements"
+      },
+      "latest-stable": {
+        "test_packages": ["./tests/all"],
+        "environment": "latest-stable"
+      },
+      "bleeding-edge": {
+        "test_packages": ["./tests/all"],
+        "environment": "bleeding-edge"
       }
     }
   }
@@ -212,17 +202,20 @@ qit run:e2e woocommerce --config=qit.json --profile=regression
 
 ## Default Profile
 
-### Setting a Default
+### Using the Default Profile
+
+The profile named `default` is used when no `--profile` is specified:
 
 ```json
 {
-  "default_profile": "smoke",
-  "profiles": {
-    "smoke": {
-      "test_packages": ["./tests/smoke"]
-    },
-    "full": {
-      "test_packages": ["./tests/**/*"]
+  "test_types": {
+    "e2e": {
+      "default": {
+        "test_packages": ["./tests/smoke"]
+      },
+      "full": {
+        "test_packages": ["./tests/**/*"]
+      }
     }
   }
 }
@@ -240,27 +233,30 @@ qit run:e2e woocommerce --config=qit.json --profile=full
 
 ## Profile Inheritance
 
-### Base Profiles
+### Using extends
+
+Profiles can extend other profiles:
 
 ```json
 {
-  "base_environment": {
-    "php": "8.2",
-    "wordpress": "latest"
-  },
-  "base_options": {
-    "timeout": 600000
-  },
-  "profiles": {
-    "quick": {
-      "inherits": "base",
-      "test_packages": ["./tests/smoke"]
-    },
-    "full": {
-      "inherits": "base",
-      "test_packages": ["./tests/**/*"],
-      "environment": {
-        "woocommerce": "8.5"
+  "test_types": {
+    "e2e": {
+      "base": {
+        "test_packages": [
+          "./utilities/setup"
+        ]
+      },
+      "smoke": {
+        "extends": "base",
+        "test_packages": [
+          "./tests/smoke"
+        ]
+      },
+      "full": {
+        "extends": "base",
+        "test_packages": [
+          "./tests/**/*"
+        ]
       }
     }
   }
@@ -271,22 +267,21 @@ qit run:e2e woocommerce --config=qit.json --profile=full
 
 ```json
 {
-  "profiles": {
-    "base-e2e": {
-      "test_packages": [
-        "./utilities/setup",
-        "./tests/checkout"
-      ],
-      "environment": {
-        "php": "8.2"
+  "test_types": {
+    "e2e": {
+      "base-e2e": {
+        "test_packages": [
+          "./utilities/setup",
+          "./tests/checkout"
+        ]
+      },
+      "e2e-with-payments": {
+        "extends": "base-e2e",
+        "test_packages": [
+          "./tests/stripe",
+          "./tests/paypal"
+        ]
       }
-    },
-    "e2e-with-payments": {
-      "extends": "base-e2e",
-      "test_packages": [
-        "./tests/stripe",
-        "./tests/paypal"
-      ]
     }
   }
 }
@@ -534,16 +529,10 @@ qit run:e2e woocommerce --profiles=pr,nightly
 {
   "profiles": {
     "pr": {
-      "test_packages": ["./tests/smoke"],
-      "options": {
-        "fail_fast": true  // Stop on first failure in PRs
-      }
+      "test_packages": ["./tests/smoke"]
     },
     "nightly": {
-      "test_packages": ["./tests/**/*"],
-      "options": {
-        "fail_fast": false  // Run all tests in nightly
-      }
+      "test_packages": ["./tests/**/*"]
     }
   }
 }
@@ -576,8 +565,7 @@ qit run:e2e woocommerce --profiles=pr,nightly
   "profiles": {
     "stage-1-smoke": {
       "description": "Quick validation",
-      "test_packages": ["./tests/smoke"],
-      "options": { "fail_fast": true }
+      "test_packages": ["./tests/smoke"]
     },
     "stage-2-critical": {
       "description": "Critical path testing",

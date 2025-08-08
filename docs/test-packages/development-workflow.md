@@ -125,11 +125,17 @@ php qit-cli.php env:up woocommerce --global-setup --config=utilities.json
 `utilities.json`:
 ```json
 {
-  "test_packages": [
-    "./utilities/disable-onboarding",
-    "./utilities/create-test-data",
-    "./utilities/configure-stripe"
-  ]
+  "test_types": {
+    "e2e": {
+      "default": {
+        "test_packages": [
+          "./utilities/disable-onboarding",
+          "./utilities/create-test-data",
+          "./utilities/configure-stripe"
+        ]
+      }
+    }
+  }
 }
 ```
 
