@@ -1,42 +1,70 @@
-# Introduction to custom E2E tests
+# Introduction to Custom Tests
 
-While managed tests provide a strong baseline for quality, compatibility, and security, your extension may include unique features or workflows that require specialized validation. Custom E2E (end-to-end) tests fill this gap. They enable you to write tailored test scenarios that simulate real-world usage patterns, integrate with other plugins and themes, and run complex workflows that managed tests might not cover.
+Custom Tests in QIT provide a powerful, package-based system for running E2E tests against WordPress and WooCommerce environments. This system ensures consistent, isolated, and reproducible test execution across different environments.
 
-In this section, you'll learn how to generate, structure, and run custom E2E tests, as well as how to share them with other developers and incorporate them into your continuous integration (CI) pipeline.
+## What are Custom Tests?
 
-## Why custom E2E tests?
+Custom Tests are self-contained packages that define:
+- Test execution commands
+- Environment setup and teardown procedures
+- Result collection specifications
+- Secret requirements
+- Dependencies and constraints
 
-- **Unique user flows:** Verify custom checkout fields, specialized product types, or complex discount logic that generic tests won’t catch.
-- **Compatibility tests:** Ensure your extension remains compatible when used alongside other plugins or themes.
-  For more complex multi-plugin testing scenarios, including how to manage actions like `test`, `bootstrap`, and
-  `activate` across multiple plugins, see [Compatibility Testing with Custom E2E Tests](./compatibility-tests).
-- **Early feedback:** Run tests locally for instant validation during development, reducing the time spent debugging issues in production.
-- **Scalability and collaboration:** Publish and tag your tests, allowing others to run them and ensuring consistency across development teams.
+## Why Custom Tests?
 
-## Getting started
+- **Isolation**: Each test package runs in an isolated environment with database snapshots
+- **Reproducibility**: Deterministic execution ensures consistent results
+- **Flexibility**: Support for both test packages and utility packages
+- **Security**: Built-in secret management with automatic redaction
+- **Orchestration**: Comprehensive lifecycle management with automatic CTRF generation
+- **CI/CD Ready**: Optimized output for continuous integration environments
 
-1. See [Installation & Setup](../installation-setup/cli-installation.md) and [Authenticating](../installation-setup/authenticating.md) if you haven’t.
-2. **List Available Extensions:** Run `qit extensions` to confirm which extensions you can test.
-3. **Generate a Test Scaffold:** `qit scaffold:e2e my-test` creates a starter template, including a basic test file and optional bootstrap scripts.
-4. **Run an Initial Test:** `qit run:e2e your-extension-slug my-test` executes the generated test against a local or cloud environment.
-5. **Refine and Expand:** Learn how to add more tests, use codegen tools, and adjust environments as you progress.
+## Package Types
 
-## What’s next?
+### Test Packages
+Packages that execute actual tests. They must include:
+- A `run` phase for test execution
+- Result specifications (CTRF and blob artifacts)
 
-This introduction is the first step. Custom E2E testing involves several moving parts, and the following pages will guide you through each phase:
+### Utility Packages
+Packages that provide setup/teardown functionality without running tests. They:
+- Do NOT have a `run` phase
+- Do NOT have result specifications
+- Are used for environment preparation and cleanup
 
-- [Generating Tests](./generating-tests.md): Learn how to scaffold tests, use Playwright codegen, and set up shared bootstrap files.
-- [Tagging Tests](./tagging-tests.md): Organize, publish, and share your tests with other developers or use tests published by others.
-- [Running Tests](./running-tests.md): Understand how to run custom tests locally and in QIT’s cloud environment, including selecting versions and enabling optional features.
-- [Understanding the Lifecycle](./understanding-lifecycle.md): Dive deeper into the sequence of events and environment changes that occur before, during, and after test execution.
-- [Themes](./themes.md): Ensure that your tests are compatible with different themes, or enforce a specific theme for front-end verification.
-- [Architecture & Security](./security-architecture.md): Explore how QIT’s custom E2E architecture ensures isolation, security, and easy integration with various stacks.
-- [QIT Helpers](./qit-helpers.md): Utilize QIT’s built-in helpers to simplify test writing, handle authentication, or manage WP-CLI commands within tests.
+## Key Concepts
 
-## Additional capabilities
+### Phases
+Each package can define execution phases:
+- **globalSetup**: Runs once before all packages
+- **setup**: Runs before this package's tests
+- **run**: Executes the tests (test packages only)
+- **teardown**: Cleanup after this package
+- **globalTeardown**: Runs once after all packages
 
-- **Complex environment configurations:** Use a config file (qit.json or qit.yml) to set up multiple plugins, advanced PHP versions, feature flags, and environment variables.
-- **Visual test execution:** Run `qit run:e2e your-extension --ui` to observe the tests in a browser, improving debugging and communication with your team.
-- **Publishing and sharing:** Once you’ve perfected your tests, publish them so that other developers (or future you) can run these scenarios easily.
-- **CI integration:** Integrate custom E2E tests into your CI pipelines for continuous feedback, ensuring your extension’s quality at every commit.
-- **Compatibility tests:** Leveraging shared setup and teardown scripts, orchestrate complex compatibility scenarios across multiple plugins, ensuring consistent test environments and results.
+### Manifest
+Every package requires a `manifest.json` file that defines its configuration, phases, and requirements.
+
+### Orchestration
+The orchestrator manages the entire test execution flow, providing:
+- Visual feedback through a CLI UI
+- Automatic CTRF generation for lifecycle phases
+- Output management for CI environments
+- Secret redaction from all outputs
+
+## Getting Started
+
+1. **Create a test package** with a manifest.json
+2. **Define your phases** (setup, run, teardown)
+3. **Specify result paths** for CTRF and artifacts
+4. **Run your tests** using `qit run:e2e`
+
+## Next Steps
+
+- [Understanding Package Structure](./package-structure.md) - Learn how to structure your test packages
+- [Writing Manifests](./manifest-schema.md) - Detailed manifest.json documentation
+- [Running Tests](./running-tests.md) - How to execute your test packages
+- [Lifecycle Management](./understanding-lifecycle.md) - Deep dive into execution phases
+- [Secret Management](./secret-management.md) - Handling sensitive data securely
+- [CI/CD Integration](./ci-integration.md) - Optimizing for continuous integration

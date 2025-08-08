@@ -1,61 +1,346 @@
-# Understanding the lifecycle
+# Understanding the Lifecycle
 
-Custom E2E tests in QIT follow a structured lifecycle to ensure consistency, isolation, and reproducibility. By understanding the order of operations, you can write more effective tests and leverage shared setups, teardowns, and database snapshots to streamline your workflows.
+Custom Tests follow a deterministic lifecycle that ensures consistency, isolation, and reproducibility. Understanding this lifecycle helps you design effective test packages and leverage the full power of the orchestration system.
 
-## Lifecycle phases overview
+## Lifecycle Overview
 
-1. **Starting the Environment**  
-   QIT provisions a test environment (WordPress, WooCommerce, PHP) based on your specified versions and configurations. It installs and activates plugins, including your extension, ensuring a clean slate for every run.
+```mermaid
+graph TD
+    A[Start] --> B[Environment Setup]
+    B --> C[Secret Validation]
+    C --> D[Package Validation]
+    D --> E[Global Setup Phase]
+    E --> F[Database Snapshot]
+    F --> G[Package Loop Start]
+    G --> H{More Packages?}
+    H -->|Yes| I[Restore Database]
+    I --> J[Setup Phase]
+    J --> K{Has Run Phase?}
+    K -->|Yes| L[Run Phase]
+    L --> M[Collect Results]
+    M --> N[Teardown Phase]
+    K -->|No| N
+    N --> G
+    H -->|No| O[Global Teardown Phase]
+    O --> P[Post-Processing]
+    P --> Q[End]
+```
 
-2. **Installing Additional Dependencies**  
-   If your tests require extra NPM packages or custom dependencies, specify them in `dependencies.json`. QIT installs these before running any tests, ensuring your environment has all the tools you need.
+## Detailed Phase Breakdown
 
-3. **Shared Setup Phase**  
-   Shared setup scripts, if present, run before any plugin’s isolated setup. Use this phase to:
-    - Disable onboarding wizards or data consent forms common to all tests.
-    - Mock external services or configure global settings that every test needs.
+### 1. Environment Setup
+QIT provisions a test environment with:
+- WordPress (specified version)
+- WooCommerce (specified version)
+- PHP (specified version)
+- Your extension under test
+- Docker containers for isolation
 
-   Any changes here persist across all subsequent tests.
+### 2. Secret Validation
+Before any execution:
+- Collects required secrets from ALL packages
+- Validates environment variables exist
+- Fails fast if secrets are missing
+- Provides helpful error messages
 
-4. **Database Export**  
-   QIT takes a snapshot of the database after the shared setup completes. This snapshot acts as a baseline, ensuring that each plugin test starts from the same state.
+### 3. Package Validation
+Ensures configuration is valid:
+- Checks for at least one test package (for `run:e2e`)
+- Validates manifest schemas
+- Confirms result paths for test packages
 
-5. **Database Import (Per Plugin Test)**  
-   For each plugin test, QIT restores the database snapshot taken after the shared setup. This guarantees that tests start from a consistent state, unaffected by previous tests.
+### 4. Global Setup Phase
+Runs once before all packages:
+- Executes `globalSetup` commands from ALL packages
+- Commands run in the order packages are listed
+- Orchestrator generates CTRF for each command
+- Perfect for:
+  - Installing helper plugins
+  - Configuring WordPress settings
+  - Creating test users
+  - Seeding initial data
 
-6. **Isolated Setup Phase (Per Plugin)**  
-   Each test can have an isolated setup—Playwright and shell scripts run here, installing themes, configuring WordPress settings, or adding test data unique to the plugin’s scenario.
+Example:
+```json
+"globalSetup": [
+  "wp plugin install woocommerce-helpers --activate",
+  "wp option set woocommerce_task_list_hidden yes",
+  "wp user create test test@example.com --role=customer"
+]
+```
 
-   Changes made in isolated setup affect only that plugin test and do not carry over to others.
+### 5. Database Snapshot
+After global setup:
+- Exports the database state
+- Creates a baseline for all packages
+- Ensures test isolation
+- Enables fast restoration between packages
 
-7. **Test Phase (Per Plugin)**  
-   The actual test files (like example.spec.js) run now, navigating the WordPress site, interacting with WooCommerce flows, and verifying that your extension behaves as intended.
+### 6. Package Execution Loop
 
-8. **Teardown Phase (Per Plugin)**  
-   After each plugin’s tests complete, a corresponding teardown phase (if defined) cleans up any temporary data or configurations. It reverts the environment to a known state before moving on.
+For each package in the configuration:
 
-9. **Shared Teardown**  
-   After all plugin tests finish, shared teardown scripts run to restore global conditions. Use this to remove mocks, revert global settings, or clean up resources created in the shared setup.
+#### 6.1 Database Restore
+- Skipped for the first package (already at baseline)
+- Restores snapshot for subsequent packages
+- Ensures clean state
+- Prevents cross-contamination
 
-10. **Post-Processing and Reporting**  
-    Once all tests are done, QIT compiles logs, screenshots, and results. These outputs are made available through the CLI, dashboard, or shareable URLs, helping you analyze outcomes and improve test quality.
+#### 6.2 Setup Phase
+Package-specific preparation:
+- Runs `setup` commands
+- Installs dependencies
+- Configures package-specific settings
+- Orchestrator generates CTRF
 
-## Files and directories involved
+Example:
+```json
+"setup": [
+  "npm install",
+  "cp .env.example .env",
+  "mkdir -p ./results"
+]
+```
 
-The `bootstrap` directory may contain:
-- `setup.js` or `setup.sh`: Run before your tests.
-- `shared-setup.js` or `shared-setup.sh`: Scripts that run before all tests in a compatibility scenario.
-- `shared-teardown.js` or `shared-teardown.sh`: Run after all tests complete.
-- `teardown.js` or `teardown.sh`: Clean up after your plugin’s individual tests.
+#### 6.3 Run Phase (Test Packages Only)
+Actual test execution:
+- Only for packages with `run` phase
+- Executes test commands
+- Package generates its own CTRF
+- Captures screenshots, videos, logs
 
-This structure allows fine-grained control:
-- **Shared setup/teardown:** Affects all tests in a compatibility test scenario.
-- **Isolated setup/teardown:** Affects only individual plugin tests, ensuring that each plugin test scenario is isolated and reproducible.
+Example:
+```json
+"run": [
+  "npx playwright test --reporter=ctrf"
+]
+```
 
-Note: Different plugin actions (`test`, `bootstrap`, `activate`) influence whether plugins appear in shared phases, isolated phases, or neither. For a full explanation of these actions, see [Compatibility Testing with Custom E2E Tests](./compatibility-tests.md).
+#### 6.4 Result Collection (Test Packages Only)
+Gathers test artifacts:
+- Collects CTRF JSON from specified path
+- Copies blob artifacts (screenshots, videos)
+- Optional: Collects Allure results
+- Fails if results are missing
 
-## Practical tips
+#### 6.5 Teardown Phase
+Package-specific cleanup:
+- Runs `teardown` commands
+- Removes temporary files
+- Resets package-specific state
+- Orchestrator generates CTRF
 
-- **Use shared setup wisely:** Common tasks (e.g., disabling onboarding wizards) belong in shared setup, so you don’t repeat them in every test.
-- **Keep tests independent:** Rely on database snapshots to ensure each test runs in a controlled state. Avoid depending on changes made by previous tests.
-- **Employ teardown scripts:** Clean up after tests to prevent side effects that might affect later runs or consume unnecessary resources.
+Example:
+```json
+"teardown": [
+  "rm -rf ./temp",
+  "wp option delete test_option"
+]
+```
+
+### 7. Global Teardown Phase
+Runs once after all packages:
+- Executes `globalTeardown` commands from ALL packages
+- Final cleanup opportunity
+- Orchestrator generates CTRF
+
+Example:
+```json
+"globalTeardown": [
+  "wp user delete test --yes",
+  "wp plugin deactivate woocommerce-helpers"
+]
+```
+
+### 8. Post-Processing
+Finalizes results:
+- Merges all CTRF reports
+- Generates HTML from blob artifacts
+- Uploads Allure results (if configured and tests failed)
+- Creates shareable URLs
+- Saves debug logs
+
+## Execution Contexts
+
+### Host vs Container
+Commands can run in different contexts:
+
+- **Host commands** (marked with `[host]`): Run on the host machine
+- **Container commands**: Run inside the WordPress Docker container
+
+The orchestrator automatically determines the appropriate context.
+
+### Working Directory
+- Commands execute in the package directory
+- Relative paths are resolved from the package root
+- Access to package files and generated artifacts
+
+## Database Management
+
+### Snapshot Strategy
+1. **Baseline snapshot** after global setup
+2. **Restore before each package** (except first)
+3. **No incremental snapshots** between phases
+4. **Final state discarded** after global teardown
+
+### Benefits
+- **Isolation**: Tests can't affect each other
+- **Speed**: Fast database restoration
+- **Reproducibility**: Same starting state for each package
+- **Debugging**: Known state at each point
+
+## CTRF Generation
+
+### Orchestrator CTRF
+Generated automatically for:
+- `globalSetup` commands
+- `setup` commands
+- `teardown` commands
+- `globalTeardown` commands
+
+Format:
+```json
+{
+  "name": "[globalSetup] utilities/setup: wp plugin install",
+  "status": "passed",
+  "duration": 1234
+}
+```
+
+### Test Package CTRF
+Generated by test framework for:
+- Test execution results
+- Individual test cases
+- Test suites
+
+### Merged CTRF
+Post-processing combines:
+- All orchestrator CTRF
+- All test package CTRF
+- Into single comprehensive report
+
+## Output Management
+
+### Standard Mode
+Shows all output:
+- Commands being executed
+- Command output
+- Errors and warnings
+- Progress indicators
+
+### CI Mode
+Suppresses output:
+- Shows commands only
+- Hides command output
+- Shows errors always
+- Cleaner logs
+
+### Verbose Mode
+Forces full output:
+- Overrides CI suppression
+- Useful for debugging
+- Shows all details
+
+## Best Practices
+
+### 1. Use Global Setup Wisely
+- Put shared configuration in `globalSetup`
+- Don't repeat common setup in every package
+- Examples: Disable wizards, create users, install helpers
+
+### 2. Leverage Database Snapshots
+- Don't worry about cleanup between packages
+- Each package gets a fresh start
+- Focus on your test logic
+
+### 3. Organize Phases Logically
+- `globalSetup`: Environment-wide configuration
+- `setup`: Package-specific preparation
+- `run`: Test execution
+- `teardown`: Package-specific cleanup
+- `globalTeardown`: Environment-wide cleanup
+
+### 4. Handle Dependencies
+- Install in `setup` phase
+- Clean in `teardown` phase
+- Use package.json or composer.json
+
+### 5. Generate Proper Results
+- Ensure CTRF output to specified path
+- Capture screenshots on failure
+- Include meaningful test names
+
+## Example: Complete Lifecycle
+
+Given this configuration:
+```json
+{
+  "test_packages": [
+    "./utilities/environment-setup",
+    "./tests/checkout-flow",
+    "./tests/payment-gateway",
+    "./utilities/cleanup"
+  ]
+}
+```
+
+Execution order:
+1. Environment setup
+2. Validate secrets from all 4 packages
+3. Run globalSetup from all 4 packages
+4. Take database snapshot
+5. Package 1 (environment-setup):
+   - No database restore (first package)
+   - Run setup commands
+   - Skip run (utility package)
+   - Skip results (utility package)
+   - Run teardown commands
+6. Package 2 (checkout-flow):
+   - Restore database snapshot
+   - Run setup commands
+   - Run test commands
+   - Collect results
+   - Run teardown commands
+7. Package 3 (payment-gateway):
+   - Restore database snapshot
+   - Run setup commands
+   - Run test commands
+   - Collect results
+   - Run teardown commands
+8. Package 4 (cleanup):
+   - Restore database snapshot
+   - Run setup commands
+   - Skip run (utility package)
+   - Skip results (utility package)
+   - Run teardown commands
+9. Run globalTeardown from all 4 packages
+10. Post-process and generate reports
+
+## Troubleshooting Lifecycle Issues
+
+### Package Doesn't Run
+- Check it's listed in configuration
+- Verify manifest.json exists
+- Ensure path is correct
+
+### Setup Commands Not Running
+- Check `setup` phase in manifest
+- Verify command syntax
+- Check for typos
+
+### Results Not Found
+- Ensure test framework outputs CTRF
+- Check path in manifest matches actual output
+- Verify test package has `run` phase
+
+### Database State Issues
+- Remember restoration happens before each package
+- Global setup changes persist to all packages
+- Package-specific changes don't carry over
+
+## Next Steps
+
+- [Package Structure](./package-structure.md) - How to organize packages
+- [Manifest Schema](./manifest-schema.md) - Detailed manifest documentation
+- [Running Tests](./running-tests.md) - Executing your packages
+- [Orchestration](./orchestration.md) - Deep dive into the orchestrator
