@@ -7,8 +7,7 @@ The `qit.json` file is the central configuration for Test Packages, defining whi
 QIT looks for configuration files in this order:
 1. File specified with `--config` flag
 2. `qit.json` in current directory
-3. `qit-config.json` in current directory
-4. Default configuration
+3. Default configuration (no config file)
 
 ## Basic Structure
 
@@ -33,27 +32,27 @@ QIT looks for configuration files in this order:
 {
   "$schema": "https://qit.io/schema/qit.json",
   "test_packages": ["array of package paths"],
-  "environment": {
-    "php": "version string",
-    "wordpress": "version string",
-    "woocommerce": "version string",
-    "features": ["array of features"]
-  },
-  "profiles": {
-    "profile_name": {
-      "test_packages": ["array"],
-      "environment": {}
+  "environments": {
+    "environment_name": {
+      "php": "version string",
+      "wordpress": "version string",
+      "woocommerce": "version string",
+      "plugins": ["array of plugins"],
+      "themes": ["array of themes"]
     }
   },
-  "options": {
-    "fail_fast": "boolean",
-    "verbose": "boolean",
-    "parallel": "boolean",
-    "timeout": "number"
+  "test_types": {
+    "e2e": {
+      "profile_name": {
+        "test_packages": ["array"],
+        "extends": "base_profile"
+      }
+    }
   },
-  "extensions": {
-    "sut": "path or url",
-    "additional": ["array of paths or urls"]
+  "sut": {
+    "from": "local|wporg|url",
+    "path": "path for local",
+    "url": "url for remote"
   }
 }
 ```
@@ -62,16 +61,32 @@ QIT looks for configuration files in this order:
 
 ### test_packages
 
-An ordered array of package paths to execute:
+Test packages can be defined at the root level or within test profiles:
 
 ```json
 {
   "test_packages": [
-    "./utilities/setup",           // Utility package (no tests)
-    "./tests/smoke",              // Test package
-    "./tests/regression",         // Test package
-    "./utilities/cleanup"         // Utility package
+    "./utilities/setup",
+    "./tests/smoke",
+    "./tests/regression",
+    "./utilities/cleanup"
   ]
+}
+```
+
+Or within profiles:
+
+```json
+{
+  "test_types": {
+    "e2e": {
+      "default": {
+        "test_packages": [
+          "./tests/smoke"
+        ]
+      }
+    }
+  }
 }
 ```
 
@@ -81,22 +96,35 @@ An ordered array of package paths to execute:
 - Mix test and utility packages
 - At least one test package required for `run:e2e`
 
-### environment
+### environments
 
-Specify versions and features:
+Define named environment configurations:
 
 ```json
 {
-  "environment": {
-    "php": "8.2",              // Specific version
-    "wordpress": "latest",      // Latest stable
-    "woocommerce": "nightly",   // Nightly build
-    "features": [
-      "hpos",                  // High Performance Order Storage
-      "cart-checkout-blocks"   // Blocks-based checkout
-    ]
+  "environments": {
+    "default": {
+      "php": "8.2",
+      "wordpress": "latest",
+      "woocommerce": "latest"
+    },
+    "php74": {
+      "php": "7.4",
+      "wordpress": "6.0",
+      "woocommerce": "7.0"
+    },
+    "bleeding-edge": {
+      "php": "8.3",
+      "wordpress": "nightly",
+      "woocommerce": "nightly"
+    }
   }
 }
+```
+
+Use with `--environment` flag:
+```bash
+qit run:e2e woocommerce --environment=php74
 ```
 
 **Version formats:**
@@ -106,77 +134,90 @@ Specify versions and features:
 - Nightly: `"nightly"`
 - Beta: `"beta"`
 
-### options
+### Test Profile Options
 
-Control execution behavior:
+Options can be set within test profiles:
 
 ```json
 {
-  "options": {
-    "fail_fast": true,        // Stop on first failure
-    "verbose": false,         // Suppress output in CI
-    "parallel": false,        // Run packages in parallel
-    "timeout": 3600000,       // Global timeout in ms
-    "retry": 2,              // Retry failed packages
-    "skip_cleanup": false    // Keep environment after tests
+  "test_types": {
+    "e2e": {
+      "default": {
+        "test_packages": ["./tests/smoke"],
+        "environment": "default",
+        "extends": "base"
+      }
+    }
   }
 }
 ```
 
-### extensions
+Note: Execution options like `fail_fast`, `verbose`, etc. are controlled via CLI flags, not the config file.
 
-Specify the extension under test and additional extensions:
+### sut (System Under Test)
+
+Specify the extension under test:
 
 ```json
 {
-  "extensions": {
-    "sut": "./my-extension.zip",
-    "additional": [
-      "./helper-plugin.zip",
-      "https://example.com/plugin.zip"
-    ]
+  "sut": {
+    "from": "local",
+    "path": "./my-extension"
+  }
+}
+```
+
+Or from WordPress.org:
+
+```json
+{
+  "sut": {
+    "from": "wporg",
+    "slug": "woocommerce",
+    "version": "latest"
+  }
+}
+```
+
+Or from URL:
+
+```json
+{
+  "sut": {
+    "from": "url",
+    "url": "https://example.com/plugin.zip"
   }
 }
 ```
 
 ## Test Profiles
 
-Define multiple test configurations in one file:
+Define multiple test configurations under test types:
 
 ```json
 {
-  "profiles": {
-    "smoke": {
-      "test_packages": [
-        "./tests/smoke"
-      ],
-      "environment": {
-        "php": "8.2",
-        "wordpress": "latest"
-      }
-    },
-    "full": {
-      "test_packages": [
-        "./utilities/setup",
-        "./tests/smoke",
-        "./tests/checkout",
-        "./tests/payment",
-        "./tests/shipping",
-        "./utilities/cleanup"
-      ],
-      "environment": {
-        "php": "8.0",
-        "wordpress": "6.4"
-      }
-    },
-    "compatibility": {
-      "test_packages": [
-        "./tests/basic"
-      ],
-      "environment": {
-        "php": "7.4",
-        "wordpress": "6.0",
-        "woocommerce": "7.0"
+  "test_types": {
+    "e2e": {
+      "smoke": {
+        "test_packages": [
+          "./tests/smoke"
+        ]
+      },
+      "full": {
+        "test_packages": [
+          "./utilities/setup",
+          "./tests/smoke",
+          "./tests/checkout",
+          "./tests/payment",
+          "./tests/shipping",
+          "./utilities/cleanup"
+        ]
+      },
+      "compatibility": {
+        "test_packages": [
+          "./tests/basic"
+        ],
+        "extends": "smoke"
       }
     }
   }
@@ -200,14 +241,19 @@ qit run:e2e woocommerce --profile=compatibility
 
 ### Default Profile
 
-Set a default profile:
+The `default` profile is used when no `--profile` is specified:
 
 ```json
 {
-  "default_profile": "smoke",
-  "profiles": {
-    "smoke": { /* ... */ },
-    "full": { /* ... */ }
+  "test_types": {
+    "e2e": {
+      "default": {
+        "test_packages": ["./tests/smoke"]
+      },
+      "full": {
+        "test_packages": ["./tests/smoke", "./tests/checkout"]
+      }
+    }
   }
 }
 ```
@@ -237,25 +283,19 @@ Reference environment variables in configuration:
   "test_packages": [
     "./tests/basic"
   ],
-  "profiles": {
-    "development": {
-      "test_packages": [
-        "./utilities/dev-setup",
-        "./tests/basic"
-      ],
-      "options": {
-        "verbose": true,
-        "fail_fast": false
-      }
-    },
-    "ci": {
-      "test_packages": [
-        "./tests/smoke",
-        "./tests/critical"
-      ],
-      "options": {
-        "verbose": false,
-        "fail_fast": true
+  "test_types": {
+    "e2e": {
+      "development": {
+        "test_packages": [
+          "./utilities/dev-setup",
+          "./tests/basic"
+        ]
+      },
+      "ci": {
+        "test_packages": [
+          "./tests/smoke",
+          "./tests/critical"
+        ]
       }
     }
   }
@@ -266,18 +306,25 @@ Reference environment variables in configuration:
 
 ```json
 {
-  "profiles": {
-    "php74": {
-      "environment": { "php": "7.4" },
-      "test_packages": ["./tests/php74-compatible"]
-    },
-    "php80": {
-      "environment": { "php": "8.0" },
-      "test_packages": ["./tests/all"]
-    },
-    "php82": {
-      "environment": { "php": "8.2" },
-      "test_packages": ["./tests/all", "./tests/php82-features"]
+  "environments": {
+    "php74": { "php": "7.4" },
+    "php80": { "php": "8.0" },
+    "php82": { "php": "8.2" }
+  },
+  "test_types": {
+    "e2e": {
+      "php74-compat": {
+        "test_packages": ["./tests/php74-compatible"],
+        "environment": "php74"
+      },
+      "php80-full": {
+        "test_packages": ["./tests/all"],
+        "environment": "php80"
+      },
+      "php82-features": {
+        "test_packages": ["./tests/all", "./tests/php82-features"],
+        "environment": "php82"
+      }
     }
   }
 }

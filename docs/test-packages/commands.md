@@ -29,12 +29,24 @@ qit run:e2e woocommerce --php=8.2
 | Option | Description | Default |
 |--------|-------------|---------|
 | `--config` | Configuration file path | `qit-config.json` |
+| `--profile` | Test profile to use | `default` |
+| `--environment` | Environment name from configuration | `default` |
 | `--php` | PHP version | `8.1` |
-| `--wordpress` | WordPress version | `latest` |
-| `--woocommerce` | WooCommerce version | `latest` |
+| `--wordpress`, `--wp` | WordPress version | `latest` |
+| `--woocommerce`, `--woo` | WooCommerce version | `latest` |
+| `--plugin` | Additional plugins to install | None |
+| `--theme` | Additional themes to install | None |
+| `--zip` | Use a custom ZIP/directory/URL as the SUT build | None |
+| `--test-package` | Test packages to include (multiple allowed) | `[]` |
+| `--skip_activating_plugins` | Skip activating plugins | `false` |
+| `--skip_activating_themes` | Skip activating themes | `false` |
+| `--pw_test_tag` | Playwright test tag filter | None |
+| `--shard` | Playwright sharding (e.g., `1/3`) | None |
+| `--update_snapshots` | Update Playwright snapshots | `false` |
+| `--pw_options` | Additional Playwright options | None |
+| `--ui` | Run Playwright in UI mode | `false` |
+| `--codegen` | Run environment for Playwright Codegen | `false` |
 | `--verbose` | Show all output (overrides CI mode) | `false` |
-| `--skip-activate` | Don't activate the extension | `false` |
-| `--random-test-id` | Use random test ID | `false` |
 
 ### Exit Codes
 
@@ -117,10 +129,15 @@ qit env:up woocommerce --php=8.2 --wordpress=6.4
 |--------|-------------|---------|
 | `--global-setup` | Run globalSetup phase from packages | `false` |
 | `--config` | Configuration file (when using --global-setup) | None |
+| `--profile` | Test profile to use | `default` |
+| `--environment` | Environment name from configuration | `default` |
 | `--php` | PHP version | `8.1` |
-| `--wordpress` | WordPress version | `latest` |
-| `--woocommerce` | WooCommerce version | `latest` |
-| `--skip-activate` | Don't activate the extension | `false` |
+| `--wordpress`, `--wp` | WordPress version | `latest` |
+| `--woocommerce`, `--woo` | WooCommerce version | `latest` |
+| `--plugin` | Additional plugins to install | None |
+| `--theme` | Additional themes to install | None |
+| `--skip_activating_plugins` | Skip activating plugins | `false` |
+| `--skip_activating_themes` | Skip activating themes | `false` |
 
 ### With Global Setup
 
@@ -390,6 +407,21 @@ Execution logs saved to:
 ## Common Patterns
 
 ### Running Specific Tests
+
+You can filter tests using Playwright's built-in options:
+
+```bash
+# Using --pw_test_tag to filter by tag
+qit run:e2e woocommerce --pw_test_tag="@checkout"
+
+# Using --shard for parallel execution
+qit run:e2e woocommerce --shard="1/3"
+
+# Using --pw_options for additional Playwright arguments  
+qit run:e2e woocommerce --pw_options="--grep checkout --workers=4"
+```
+
+Or in the package manifest:
 ```json
 {
   "run": [

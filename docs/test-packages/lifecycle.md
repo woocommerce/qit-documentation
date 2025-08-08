@@ -105,11 +105,12 @@ Common uses:
 
 ### 5. Database Snapshot
 
-Creates isolation checkpoint:
+Creates isolation checkpoint (only if multiple packages):
 - Exports current database state
 - Becomes the baseline for all packages
 - Enables fast restoration
 - Ensures reproducibility
+- **Note**: Snapshot is only taken when there are 2+ packages
 
 ### 6. Package Loop
 
@@ -134,10 +135,12 @@ For each package in order:
 - Captures screenshots/videos
 
 #### 6.4 Result Collection
-- Only for test packages
+- Only for packages with results defined
+- Collected for both setup and run phases
 - Copies CTRF JSON
 - Copies blob artifacts
 - Optional Allure collection
+- Collected even on test failures
 - Missing results = failure
 
 #### 6.5 Teardown Phase
@@ -214,6 +217,11 @@ Execution sequence:
 ## CTRF Generation
 
 The orchestrator automatically generates CTRF for lifecycle phases:
+
+**Note**: Command execution contexts:
+- Commands ending in `.sh` run in Docker container
+- Other commands run on host
+- Phase timeouts: 30 minutes for run phase, 5 minutes for others
 
 ### Lifecycle CTRF
 Generated for:
@@ -329,15 +337,15 @@ CI=true qit run:e2e woocommerce --config=test.json --verbose
 | Setup | Stop package, continue to next |
 | Run | Stop package, continue to next |
 | Result Collection | Stop package, continue to next |
-| Teardown | Log error, continue |
-| Global Teardown | Log error, continue |
+| Teardown | Stop package, continue to next |
+| Global Teardown | Log warning, continue |
 | Post-Processing | Log error, finish |
 
 ### Exit Codes
 
 - **0**: All test packages passed
 - **1**: Test failures or validation errors
-- **3**: Infrastructure failures
+- **3**: Infrastructure failures (database restore, Docker issues)
 
 ## Best Practices
 

@@ -27,36 +27,51 @@ The `manifest.json` file defines a package's behavior, requirements, and integra
 {
   "package": "string",
   "namespace": "string", 
-  "test_type": "string",
+  "test_type": "e2e",
   "description": "string",
+  "tags": ["array"],
+  "test_dir": "string",
   "requires": {
     "secrets": ["array"],
     "php": "string",
-    "wordpress": "string"
+    "wordpress": "string",
+    "plugins": {"name": "version"},
+    "themes": {"name": "version"},
+    "external_services": ["array"]
   },
   "test": {
     "phases": {
-      "globalSetup": ["array"],
-      "setup": ["array"],
-      "run": ["array"],
-      "teardown": ["array"],
-      "globalTeardown": ["array"]
+      "globalSetup": ["array or objects"],
+      "setup": ["array or objects"],
+      "run": ["array or objects"],
+      "teardown": ["array or objects"],
+      "globalTeardown": ["array or objects"]
     },
     "results": {
       "ctrf-json": "string",
       "blob-dir": "string",
+      "json": "string",
       "allure-dir": "string"
     }
+  },
+  "mu_plugins": ["array"],
+  "envs": {"key": "value"},
+  "timeout": "number",
+  "retry": {
+    "times": "number",
+    "delay": "number"
   }
 }
 ```
 
-## Top-Level Fields
+## Required Fields
+
+These four fields are always required:
 
 ### package
 **Required** | `string`
 
-Unique identifier within the namespace.
+Unique identifier within the namespace. Must match pattern `^[a-zA-Z0-9_.-]+$`.
 
 ```json
 "package": "payment-gateway-tests"
@@ -65,7 +80,7 @@ Unique identifier within the namespace.
 ### namespace
 **Required** | `string`
 
-Organization or vendor identifier.
+Organization or vendor identifier. Must match pattern `^[a-zA-Z0-9_.-]+$`.
 
 ```json
 "namespace": "acme-corp"
@@ -74,20 +89,91 @@ Organization or vendor identifier.
 ### test_type
 **Required** | `string`
 
-Must be `"e2e"`.
+Must be `"e2e"`. Currently only E2E tests are supported.
 
 ```json
 "test_type": "e2e"
 ```
 
+### test
+**Required** | `object`
+
+Contains phases and results configuration. Must have at least a `phases` object.
+
+## Optional Top-Level Fields
+
 ### description
 **Optional** | `string`
 
-Human-readable description.
+Human-readable description (max 500 characters).
 
 ```json
 "description": "Payment gateway integration tests"
 ```
+
+### tags
+**Optional** | `string[]`
+
+Tags for categorizing and searching test packages. Each tag must match pattern `^[a-zA-Z0-9_.-]+$`.
+
+```json
+"tags": ["payment", "stripe", "integration"]
+```
+
+### test_dir  
+**Optional** | `string`
+
+Directory containing test files. Defaults to `"./"`. Must start with `./`.
+
+```json
+"test_dir": "./tests"
+```
+
+### mu_plugins
+**Optional** | `string[]`
+
+Must-use plugins to install. Paths to mu-plugin files.
+
+```json
+"mu_plugins": ["./mu-plugins/test-helper.php"]
+```
+
+### envs
+**Optional** | `object`
+
+Environment variables to set during test execution. Values can be string, boolean, or number.
+
+```json
+"envs": {
+  "TEST_MODE": "integration",
+  "DEBUG": true,
+  "MAX_RETRIES": 3
+}
+```
+
+### timeout
+**Optional** | `integer`
+
+Test timeout in seconds. Range: 1-3600.
+
+```json
+"timeout": 600
+```
+
+### retry
+**Optional** | `object`
+
+Retry configuration for flaky tests.
+
+```json
+"retry": {
+  "times": 3,
+  "delay": 5
+}
+```
+
+- `times`: Number of retry attempts (0-5)
+- `delay`: Delay between retries in seconds (0-60)
 
 ## requires
 
@@ -128,6 +214,44 @@ WordPress version constraint.
 ```json
 "requires": {
   "wordpress": ">=6.4"
+}
+```
+
+### requires.plugins
+**Optional** | `object`
+
+Required plugins with semantic version constraints.
+
+```json
+"requires": {
+  "plugins": {
+    "woocommerce": ">=8.0.0",
+    "woocommerce-subscriptions": "^5.0.0"
+  }
+}
+```
+
+### requires.themes
+**Optional** | `object`
+
+Required themes with semantic version constraints.
+
+```json
+"requires": {
+  "themes": {
+    "storefront": ">=4.0.0"
+  }
+}
+```
+
+### requires.external_services
+**Optional** | `string[]`
+
+External services needed (for documentation purposes).
+
+```json
+"requires": {
+  "external_services": ["stripe-api", "webhook-endpoint"]
 }
 ```
 
@@ -229,10 +353,19 @@ artifacts/
     └── console.log
 ```
 
+### json
+**Optional** | `string`
+
+Path to original JSON test results (before CTRF conversion).
+
+```json
+"json": "./test-results/raw.json"
+```
+
 ### allure-dir
 **Optional** | `string`
 
-Allure results directory.
+Allure results directory for advanced reporting.
 
 ```json
 "allure-dir": "./allure-results"
@@ -254,8 +387,9 @@ If a package has NO `run` phase:
 ## Command Execution
 
 ### Command Format
-Commands are strings executed in order:
+Commands can be either strings or objects with additional configuration:
 
+#### String Format (Simple)
 ```json
 "setup": [
   "echo 'Starting setup'",
@@ -263,6 +397,28 @@ Commands are strings executed in order:
   "echo 'Setup complete'"
 ]
 ```
+
+#### Object Format (Advanced)
+```json
+"setup": [
+  {
+    "command": "npm install",
+    "runs_on": "host",
+    "timeout": 300,
+    "continue_on_error": false,
+    "env": {
+      "NODE_ENV": "test"
+    }
+  }
+]
+```
+
+Object properties:
+- `command` (required): The command to execute
+- `runs_on`: "host" or "docker" (default: smart detection)
+- `timeout`: Command timeout in seconds (1-3600)
+- `continue_on_error`: Continue even if command fails (default: false)
+- `env`: Additional environment variables for this command
 
 ### Environment Variables
 Commands have access to:
