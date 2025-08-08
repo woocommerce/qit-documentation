@@ -1,6 +1,6 @@
 # Test Packages
 
-Test Packages are the fundamental unit of test execution in QIT. They provide a deterministic, package-based approach to testing WordPress and WooCommerce extensions.
+Test Packages are the fundamental unit of test execution in QIT. They provide a deterministic, package-based approach to E2E testing for WordPress and WooCommerce extensions using Playwright.
 
 ## What are Test Packages?
 

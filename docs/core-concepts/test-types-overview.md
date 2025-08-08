@@ -31,7 +31,7 @@ Test Packages are developer-owned test scenarios that you design, write, and mai
 Key Characteristics:
 - **Package-based architecture:** Each test is a self-contained package with a manifest defining its behavior, requirements, and lifecycle phases.
 - **Two package types:** Test packages execute actual tests and produce results, while utility packages provide environment setup without running tests.
-- **Framework-agnostic:** While commonly using Playwright, Test Packages support any testing framework that can output CTRF (Common Test Results Format).
+- **Playwright-based:** Test Packages are built on the Playwright framework for reliable E2E testing, with CTRF (Common Test Results Format) output for standardized reporting.
 - **Lifecycle management:** Explicit phases (globalSetup, setup, run, teardown, globalTeardown) provide clear execution flow and automatic database isolation between packages.
 - **Built-in secret management:** Declare required secrets in manifests for automatic validation and redaction.
 

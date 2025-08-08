@@ -23,10 +23,10 @@ architecture ensures these tests remain updated and relevant, running seamlessly
 automatically when new releases are published to the Marketplace.
 
 **3. Test Packages**
-Developers can create and maintain their own test packages tailored to their extension's unique features.
+Developers can create and maintain their own Playwright-based E2E test packages tailored to their extension's unique features.
 Test Packages provide a package-based architecture with manifests, lifecycle phases, and automatic database isolation.
-The system supports both test packages (which run tests) and utility packages (for environment setup).
-Tests can use any framework that outputs CTRF format and run locally or in the cloud environment,
+The system supports both test packages (which run Playwright tests) and utility packages (for environment setup).
+Tests output CTRF format for standardized reporting and run locally or in the cloud environment,
 enabling compatibility testing between multiple extensions and complex scenarios that managed tests don't cover.
 
 **4. Cloud-based Test Runner and Environment**

@@ -225,7 +225,7 @@ test.describe('Stripe Payments', () => {
 
 ## API Test Package
 
-### REST API Tests with Jest
+### REST API Tests with Playwright
 
 `packages/api-tests/manifest.json`:
 ```json
@@ -233,17 +233,18 @@ test.describe('Stripe Payments', () => {
   "package": "woocommerce-api-tests",
   "namespace": "api",
   "test_type": "e2e",
-  "description": "WooCommerce REST API tests",
+  "description": "WooCommerce REST API tests using Playwright",
   "requires": {
     "secrets": ["WC_API_KEY", "WC_API_SECRET"]
   },
   "test": {
     "phases": {
       "setup": [
-        "npm ci"
+        "npm ci",
+        "npx playwright install"
       ],
       "run": [
-        "npm test"
+        "npx playwright test api.spec.js"
       ]
     },
     "results": {
@@ -254,45 +255,57 @@ test.describe('Stripe Payments', () => {
 }
 ```
 
-`packages/api-tests/tests/products.test.js`:
+`packages/api-tests/tests/api.spec.js`:
 ```javascript
-const axios = require('axios');
+const { test, expect } = require('@playwright/test');
 
-const api = axios.create({
-  baseURL: process.env.QIT_SITE_URL + '/wp-json/wc/v3',
-  auth: {
-    username: process.env.WC_API_KEY,
-    password: process.env.WC_API_SECRET
-  }
-});
-
-describe('Products API', () => {
-  test('create simple product', async () => {
-    const product = {
-      name: 'Test Product',
-      type: 'simple',
-      regular_price: '9.99',
-      description: 'Test product description',
-      short_description: 'Test short description'
-    };
+test.describe('WooCommerce API', () => {
+  test('create and verify product via API', async ({ request }) => {
+    const apiKey = process.env.WC_API_KEY;
+    const apiSecret = process.env.WC_API_SECRET;
+    const baseURL = process.env.QIT_SITE_URL;
     
-    const response = await api.post('/products', product);
+    // Create product via API
+    const createResponse = await request.post(`${baseURL}/wp-json/wc/v3/products`, {
+      headers: {
+        'Authorization': 'Basic ' + Buffer.from(`${apiKey}:${apiSecret}`).toString('base64')
+      },
+      data: {
+        name: 'Test Product',
+        type: 'simple',
+        regular_price: '9.99',
+        description: 'Test product description'
+      }
+    });
     
-    expect(response.status).toBe(201);
-    expect(response.data.name).toBe('Test Product');
-    expect(response.data.price).toBe('9.99');
+    expect(createResponse.ok()).toBeTruthy();
+    const product = await createResponse.json();
+    expect(product.name).toBe('Test Product');
+    
+    // Verify product exists via UI
+    const page = await context.newPage();
+    await page.goto(`${baseURL}/product/${product.slug}`);
+    await expect(page.locator('h1')).toContainText('Test Product');
   });
   
-  test('update product stock', async () => {
-    const update = {
-      stock_quantity: 50,
-      manage_stock: true
-    };
+  test('update product stock via API', async ({ request }) => {
+    const apiKey = process.env.WC_API_KEY;
+    const apiSecret = process.env.WC_API_SECRET;
+    const baseURL = process.env.QIT_SITE_URL;
     
-    const response = await api.put('/products/1', update);
+    const updateResponse = await request.put(`${baseURL}/wp-json/wc/v3/products/1`, {
+      headers: {
+        'Authorization': 'Basic ' + Buffer.from(`${apiKey}:${apiSecret}`).toString('base64')
+      },
+      data: {
+        stock_quantity: 50,
+        manage_stock: true
+      }
+    });
     
-    expect(response.status).toBe(200);
-    expect(response.data.stock_quantity).toBe(50);
+    expect(updateResponse.ok()).toBeTruthy();
+    const product = await updateResponse.json();
+    expect(product.stock_quantity).toBe(50);
   });
 });
 ```

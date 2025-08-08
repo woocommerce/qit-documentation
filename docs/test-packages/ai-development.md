@@ -159,7 +159,7 @@ Current manifest: [paste manifest]
 Create a QIT Test Package for [FEATURE] with these requirements:
 
 Package Type: [test/utility]
-Framework: [Playwright/Cypress/PHPUnit/Jest]
+Framework: Playwright
 Test Scenarios:
 1. [Scenario 1]
 2. [Scenario 2]
@@ -205,7 +205,7 @@ Include proper error handling.
 ### Converting Existing Tests
 
 ```
-Convert these existing [FRAMEWORK] tests to QIT Test Packages:
+Convert these existing Playwright tests to QIT Test Packages:
 
 [paste existing tests]
 

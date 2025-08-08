@@ -10,7 +10,7 @@ Test Packages represent a fundamental shift in how tests are organized and execu
 A Test Package is one that executes tests. It's identified by having a `run` phase in its manifest.
 
 **Characteristics:**
-- Contains actual test code (Playwright, PHPUnit, etc.)
+- Contains Playwright E2E test code
 - Produces test results in CTRF format
 - Generates artifacts (screenshots, logs, videos)
 - Must declare where results will be found

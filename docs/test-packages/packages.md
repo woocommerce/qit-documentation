@@ -397,7 +397,7 @@ Remove only what you created:
 
 ## Package Templates
 
-### Playwright E2E Tests
+### Playwright E2E Tests (Primary Framework)
 
 ```json
 {
@@ -423,70 +423,23 @@ Remove only what you created:
 }
 ```
 
-### Cypress E2E Tests
+### Additional Playwright Configurations
 
 ```json
 {
-  "package": "cypress-e2e",
+  "package": "playwright-multi-browser",
   "namespace": "templates",
   "test_type": "e2e",
   "test": {
     "phases": {
       "setup": [
         "npm ci",
-        "mkdir -p cypress/results"
+        "npx playwright install"
       ],
       "run": [
-        "npx cypress run --reporter ctrf-json"
-      ]
-    },
-    "results": {
-      "ctrf-json": "./cypress/results/ctrf.json",
-      "blob-dir": "./cypress/screenshots"
-    }
-  }
-}
-```
-
-### PHPUnit Tests
-
-```json
-{
-  "package": "phpunit-integration",
-  "namespace": "templates",
-  "test_type": "e2e",
-  "test": {
-    "phases": {
-      "setup": [
-        "composer install",
-        "mkdir -p test-results"
-      ],
-      "run": [
-        "vendor/bin/phpunit --log-ctrf test-results/ctrf.json"
-      ]
-    },
-    "results": {
-      "ctrf-json": "./test-results/ctrf.json",
-      "blob-dir": "./test-results/artifacts"
-    }
-  }
-}
-```
-
-### Jest API Tests
-
-```json
-{
-  "package": "jest-api",
-  "namespace": "templates",
-  "test_type": "e2e",
-  "test": {
-    "phases": {
-      "setup": [
-        "npm ci"
-      ],
-      "run": [
-        "npm test -- --reporter=ctrf-json"
+        "npx playwright test --project=chromium",
+        "npx playwright test --project=firefox",
+        "npx playwright test --project=webkit"
       ]
     },
     "results": {

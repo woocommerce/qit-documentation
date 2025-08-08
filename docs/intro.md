@@ -13,7 +13,7 @@ QIT (Quality Insights Toolkit) is a testing platform developed by WooCommerce fo
 
 **Key Features:**
 - **Managed test suites:** Run pre-configured end-to-end tests, activation tests, security scans, PHPStan analysis, API tests, and more.
-- **Test Packages:** Write and run your own test packages with any framework, featuring automatic isolation, lifecycle management, and utility packages for environment setup.
+- **Test Packages:** Write and run your own Playwright-based E2E test packages, featuring automatic isolation, lifecycle management, and utility packages for environment setup.
 - **Continuous quality checks**: Seamlessly integrate QIT into your development workflows via CLI, GitHub Actions, and more.
 - **Marketplace integration:** Currently in closed beta for extensions listed on the WooCommerce Marketplace.
 

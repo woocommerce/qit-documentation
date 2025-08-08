@@ -85,9 +85,11 @@ Advanced reporting format (optional):
 - Directories created automatically
 - Files must exist after run phase
 
-## Framework Integration
+## Playwright Integration
 
-### Playwright
+Test Packages primarily use Playwright for E2E testing. Here's how to configure Playwright to generate the required CTRF output:
+
+### Basic Configuration
 
 `playwright.config.js`:
 ```javascript
@@ -109,46 +111,29 @@ module.exports = {
 };
 ```
 
-### Cypress
+### Installing CTRF Reporter
 
-`cypress.config.js`:
-```javascript
-module.exports = {
-  reporter: 'ctrf-json-reporter',
-  reporterOptions: {
-    outputFile: './test-results/ctrf.json'
-  },
-  screenshotsFolder: './test-results/artifacts/screenshots',
-  videosFolder: './test-results/artifacts/videos',
-  video: true,
-  screenshotOnRunFailure: true
-};
+```bash
+npm install --save-dev ctrf-playwright-reporter
 ```
 
-### Jest
+### Multiple Reporter Configuration
 
-`jest.config.js`:
 ```javascript
 module.exports = {
-  reporters: [
-    'default',
-    ['ctrf-json-reporter', {
+  reporter: [
+    ['ctrf-json', {
       outputFile: './test-results/ctrf.json'
-    }]
-  ],
-  coverageDirectory: './test-results/artifacts/coverage'
+    }],
+    ['junit', {
+      outputFile: './test-results/junit.xml'
+    }],
+    ['html', {
+      outputFolder: './test-results/html'
+    }],
+    ['line']  // Console output
+  ]
 };
-```
-
-### PHPUnit
-
-`phpunit.xml`:
-```xml
-<phpunit>
-  <logging>
-    <log type="ctrf-json" target="./test-results/ctrf.json"/>
-  </logging>
-</phpunit>
 ```
 
 ## Blob Directory Structure
@@ -534,9 +519,9 @@ const aggregated = {
 };
 ```
 
-### Custom Reporters
+### Custom CTRF Generation
 
-Create CTRF from any framework:
+If you need to generate CTRF from Playwright test results programmatically:
 ```javascript
 class CtrfReporter {
   onTestEnd(test, result) {
