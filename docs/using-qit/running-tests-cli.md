@@ -1,6 +1,6 @@
 # Running tests via the CLI
 
-The QIT CLI allows you to run both managed and custom tests directly from your terminal. By using simple commands, you can quickly validate your extension against the latest WordPress and WooCommerce versions, or test your custom scenarios in a local environment.
+The QIT CLI allows you to run both managed and Test Packages directly from your terminal. By using simple commands, you can quickly validate your extension against the latest WordPress and WooCommerce versions, or test your Test Package scenarios in a local environment.
 
 ## Prerequisites
 
@@ -39,29 +39,29 @@ qit run:phpstan your-extension
 
 - [Managed Tests](../managed-tests/introduction.md): Learn about each managed test type available.
 
-## Running custom E2E tests locally
+## Running Test Packages locally
 
-To develop and debug your custom E2E tests efficiently, use the QIT local environment. First, spin up a local environment:
+To develop and debug your Test Packages efficiently, use the QIT local environment. First, spin up a local environment:
 
 ```qitbash
 qit env:up
 ```
 
-Once the environment is ready and your custom E2E tests are in place (either locally or uploaded to QIT), run them with:
+Once the environment is ready and your Test Packages are in place (either locally or uploaded to QIT), run them with:
 
 ```qitbash
 qit run:e2e <extension-slug> --zip=<path-to-zip>
 ```
 
-The `--zip` argument points to a local build of your extension. This installs the extension into the test environment and runs your custom tests against it. Since these tests run locally, you'll see immediate feedback in the terminal.
+The `--zip` argument points to a local build of your extension. This installs the extension into the test environment and runs your Test Packages against it. Since these tests run locally, you'll see immediate feedback in the terminal.
 
-If you've uploaded your custom tests to QIT's cloud, you can omit the `--zip` argument and run them directly:
+If you've uploaded your Test Packages to QIT's cloud, you can omit the `--zip` argument and run them directly:
 
 ```qitbash
 qit run:e2e <extension-slug>
 ```
 
-Note that while you can run custom tests locally for quick iteration, you can also execute them in the cloud environment for integration or compatibility checks.
+Note that while you can run Test Packages locally for quick iteration, you can also execute them in the cloud environment for integration or compatibility checks.
 
 ## Specifying versions and features
 

@@ -45,7 +45,7 @@ PHPCompatibility tests rely on static analysis and may not detect all runtime is
   Test your extension’s activation, WooCommerce API interactions, and workflows under newer PHP versions, such as PHP 8.4, to catch issues that static analysis might miss.
 
 - **Combine with E2E tests:**  
-  Execute WooCommerce end-to-end tests and any custom E2E tests in environments running higher PHP versions to ensure real-world compatibility.
+  Execute WooCommerce end-to-end tests and your test packages in environments running higher PHP versions to ensure real-world compatibility.
 
 By combining static analysis (PHPCompatibility) with runtime tests, you can achieve a more reliable and future-proof extension that supports a broad range of PHP environments.
 
@@ -58,4 +58,4 @@ By combining static analysis (PHPCompatibility) with runtime tests, you can achi
   Keep track of minimum PHP version requirements and remove deprecated or removed functions as PHP evolves.
 
 - **Use complementary tests:**  
-  Pair PHPCompatibility tests with [Activation test](./activation.md), [Woo API test](./woo-api.md), [Woo E2E test](./woo-e2e.md) and [Custom E2E tests](./../custom-tests/introduction.md) for a comprehensive assessment of your extension’s readiness.
+  Pair PHPCompatibility tests with [Activation test](./activation.md), [Woo API test](./woo-api.md), [Woo E2E test](./woo-e2e.md) and [Test Packages](./../test-packages/index.md) for a comprehensive assessment of your extension's readiness.

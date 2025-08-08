@@ -1,8 +1,7 @@
 # QIT architecture overview
 
 The Quality Insights Toolkit (QIT) is designed to streamline and standardize the testing of WooCommerce extensions. Its
-architecture brings together multiple components—local tools, cloud-based services, managed test suites, custom E2E
-tests, and the WooCommerce Marketplace itself—to create a cohesive, automated testing ecosystem. By understanding the
+architecture brings together multiple components—local tools, cloud-based services, managed test suites, Test Packages, and the WooCommerce Marketplace itself—to create a cohesive, automated testing ecosystem. By understanding the
 big picture of how QIT is structured, developers can better appreciate the role of each component and how they all work
 together to ensure quality, compatibility, and reliability.
 
@@ -12,8 +11,8 @@ together to ensure quality, compatibility, and reliability.
 The QIT Command Line Interface is the primary tool developers use locally. Through simple commands, a developer can:
 
 - Authenticate with their WooCommerce Marketplace account.
-- Trigger managed or custom tests.
-- Upload custom tests, run them against different WordPress/WooCommerce versions, and inspect results.
+- Trigger managed or Test Packages.
+- Upload Test Packages, run them against different WordPress/WooCommerce versions, and inspect results.
 - Integrate QIT into their existing development workflows or CI/CD pipelines.
 
 **2. Managed Test Suites**
@@ -22,11 +21,9 @@ The QIT Command Line Interface is the primary tool developers use locally. Throu
   architecture ensures these tests remain updated and relevant, running seamlessly both on developer demand and
   automatically when new releases are published to the Marketplace.
 
-**3. Custom E2E Tests**
+**3. Test Packages**
   Developers can create and maintain their own Playwright-based E2E tests tailored to their extension’s unique features.
-  These tests are uploaded and stored within QIT’s infrastructure. The architecture supports running these custom tests
-  locally or in the cloud environment, enabling compatibility testing between multiple extensions and scenarios that
-  managed tests don’t cover.
+  These tests are uploaded and stored within QIT's infrastructure. The architecture supports running these Test Packages locally or in the cloud environment, enabling compatibility testing between multiple extensions and scenarios that managed tests don't cover.
 
 **4. Cloud-based Test Runner and Environment**
   When a test run is triggered, QIT provisions a clean, isolated environment—complete with the specified WordPress,
@@ -55,7 +52,7 @@ The QIT Command Line Interface is the primary tool developers use locally. Throu
    activates the developer’s extension, and sets up any other required conditions.
 3. **Test Retrieval**:
     - For managed tests, QIT fetches the latest stable set of tests maintained by QIT.
-    - For custom tests, QIT retrieves the specific tests uploaded by the developer or linked from a repository.
+    - For Test Packages, QIT retrieves the specific tests uploaded by the developer or linked from a repository.
 4. **Test Execution**:
    The tests run within the containerized environment, ensuring isolation and preventing side effects. QIT collects
    logs, errors, screenshots, and performance metrics.
@@ -64,8 +61,7 @@ The QIT Command Line Interface is the primary tool developers use locally. Throu
     - In the CLI (as textual output and links to detailed logs).
     - In the Vendor Dashboard (with visuals and clickable links to Allure or other reporting tools).
 6. **Iteration and Improvement**:
-   With immediate feedback, developers refine their code or add more custom tests. Over time, this leads to
-   higher-quality extensions and a more trusted WooCommerce ecosystem.
+   With immediate feedback, developers refine their code or add more Test Packages. Over time, this leads to higher-quality extensions and a more trusted WooCommerce ecosystem.
 
 ## Why this matters
 

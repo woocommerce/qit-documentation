@@ -10,7 +10,7 @@ Allure reports are automatically created for certain managed tests, such as Woo 
 - Screenshots at the moment of failure
 - Stack traces and error messages
 
-For custom E2E tests, QIT may also produce Allure reports if configured to do so, helping you debug and fix issues quickly.
+For Test Packages, QIT may also produce Allure reports if configured to do so, helping you debug and fix issues quickly.
 
 ## Accessing reports via CLI
 

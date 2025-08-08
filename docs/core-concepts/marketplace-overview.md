@@ -38,6 +38,6 @@ This flexibility empowers developers to iterate rapidly, catch potential problem
 3. **On-demand Testing:**  
    If a new feature is sensitive or a bug fix might have wide-ranging impacts, run tests before release using the Vendor Dashboard.
 4. **Refine and Improve:**  
-   Based on feedback from managed tests and custom E2E tests, refine your code and retest until everything meets the required standards.
+   Based on feedback from managed tests and Test Packages, refine your code and retest until everything meets the required standards.
 
 This integrated workflow ensures that both your development process and the merchant’s experience with your extension remain efficient, reliable, and user-focused.

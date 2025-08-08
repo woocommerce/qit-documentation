@@ -60,20 +60,60 @@ const sidebars = {
         },
         {
             type: 'category',
-            label: 'Custom E2E Tests',
+            label: 'Test Packages',
             collapsed: true,
             items: [
-                'custom-tests/introduction',
-                'custom-tests/generating-tests',
-                'custom-tests/tagging-tests',
-                'custom-tests/running-tests',
-                'custom-tests/downloading-extensions-and-tests',
-                'custom-tests/understanding-lifecycle',
-                'custom-tests/orchestration',
-                'custom-tests/compatibility-tests',
-                'custom-tests/themes',
-                'custom-tests/security-architecture',
-                'custom-tests/qit-helpers',
+                'test-packages/index',
+                {
+                    type: 'category',
+                    label: 'Core Concepts',
+                    collapsed: true,
+                    items: [
+                        'test-packages/concepts',
+                        'test-packages/manifest',
+                        'test-packages/lifecycle',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Development',
+                    collapsed: true,
+                    items: [
+                        'test-packages/development-workflow',
+                        'test-packages/ai-development',
+                        'test-packages/packages',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Configuration',
+                    collapsed: true,
+                    items: [
+                        'test-packages/qit-config',
+                        'test-packages/test-profiles',
+                        'test-packages/utility-packages',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Execution',
+                    collapsed: true,
+                    items: [
+                        'test-packages/commands',
+                        'test-packages/secrets',
+                        'test-packages/results',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Deployment',
+                    collapsed: true,
+                    items: [
+                        'test-packages/ci',
+                        'test-packages/examples',
+                        'test-packages/troubleshooting',
+                    ],
+                },
             ],
         },
         {

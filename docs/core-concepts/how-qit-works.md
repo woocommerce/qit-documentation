@@ -1,8 +1,8 @@
 # How QIT works
 
 The Quality Insights Toolkit (QIT) is designed to streamline and standardize the testing of WooCommerce extensions. Its
-architecture brings together multiple components—local tools, cloud-based services, managed test suites, custom E2E
-tests, and the WooCommerce Marketplace itself—to create a cohesive, automated testing ecosystem. By understanding the
+architecture brings together multiple components—local tools, cloud-based services, managed test suites, test packages,
+and the WooCommerce Marketplace itself—to create a cohesive, automated testing ecosystem. By understanding the
 big picture of how QIT is structured, developers can better appreciate the role of each component and how they all work
 together to ensure quality, compatibility, and reliability.
 
@@ -12,8 +12,8 @@ together to ensure quality, compatibility, and reliability.
 The QIT Command Line Interface is the primary tool developers use locally. Through simple commands, a developer can:
 
 - Authenticate with their WooCommerce Marketplace account.
-- Trigger managed or custom tests.
-- Upload custom tests, run them against different WordPress/WooCommerce versions, and inspect results.
+- Trigger managed tests or test packages.
+- Create and run test packages against different WordPress/WooCommerce versions, and inspect results.
 - Integrate QIT into their existing development workflows or CI/CD pipelines.
 
 **2. Managed Test Suites**
@@ -22,12 +22,12 @@ cover everything from plugin activation and WooCommerce flows to security, PHP c
 architecture ensures these tests remain updated and relevant, running seamlessly both on developer demand and
 automatically when new releases are published to the Marketplace.
 
-**3. Custom E2E Tests**
-Developers can create and maintain their own Playwright-based E2E tests tailored to their extension’s unique features.
-These tests are uploaded and stored within QIT’s infrastructure. The architecture supports running these custom tests
-locally or in the cloud environment, enabling compatibility testing between multiple extensions and scenarios that
-managed tests don’t cover. For detailed guidance on setting up multi-plugin compatibility tests, see
-[Compatibility Testing with Custom E2E Tests](./../custom-tests/compatibility-tests.md).
+**3. Test Packages**
+Developers can create and maintain their own test packages tailored to their extension's unique features.
+Test Packages provide a package-based architecture with manifests, lifecycle phases, and automatic database isolation.
+The system supports both test packages (which run tests) and utility packages (for environment setup).
+Tests can use any framework that outputs CTRF format and run locally or in the cloud environment,
+enabling compatibility testing between multiple extensions and complex scenarios that managed tests don't cover.
 
 **4. Cloud-based Test Runner and Environment**
 When a test run is triggered, QIT provisions a clean, isolated environment—complete with the specified WordPress,

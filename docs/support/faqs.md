@@ -6,7 +6,7 @@
 A: QIT (Quality Insights Toolkit) is a testing platform designed by WooCommerce to help developers run automated tests on their WordPress plugins and themes. It’s primarily for developers who publish or plan to publish extensions on the WooCommerce Marketplace, though a local environment is available for anyone interested in testing.
 
 **Q: Do I need a WooCommerce.com Partner Developer account to use QIT?**  
-A: Full QIT functionality, including managed tests and cloud runs, requires a WooCommerce.com Partner Developer account with at least one listed extension. However, the local test environment and custom E2E tests can be used in an early-access capacity without being a Marketplace partner.
+A: Full QIT functionality, including managed tests and cloud runs, requires a WooCommerce.com Partner Developer account with at least one listed extension. However, the local test environment and Test Packages can be used in an early-access capacity without being a Marketplace partner.
 
 ## Installation and setup
 
