@@ -1,194 +1,334 @@
-# Quickstart: Scaffold, run, verify CTRF
+# Quickstart: Your First Test in 5 Minutes
 
-This guide gets you from zero to a passing Test Package run—**with CTRF results you can trust**—in a few minutes.
+Get from zero to a working test package with real results—fast.
 
-**You will:**
+## What You'll Build
 
-1. Scaffold a Playwright-based test package
-2. Run it under QIT orchestration
-3. Verify CTRF + artifacts were produced
-4. (Optional) Run only `globalSetup` in a persistent environment
-
-> **Good to know:** You rarely need "utility packages." Use a **test package** for everything; when you only want setup, run its `globalSetup` with `env:up --global-setup`.
-
----
+A complete E2E test suite that:
+- ✅ Tests your WordPress/WooCommerce extension
+- ✅ Runs in isolation with guaranteed clean state
+- ✅ Produces standardized CTRF results
+- ✅ Captures screenshots and videos automatically
 
 ## Prerequisites
 
-* **QIT CLI** installed and on your PATH
-  (If you're running from source, replace `qit …` with `php qit-cli.php …`.)
-* **Docker** running
-* **Node & npm** available
-* **Your extension slug** (namespace), e.g. `woocommerce`
-
----
-
-## 1) Scaffold a package
-
-Create an empty target directory (the command will create it) and run:
+Before you start, make sure you have:
 
 ```bash
-qit package:scaffold ./packages/e2e \
-  --namespace=<your-extension-slug> \
-  --package=e2e
+# Check prerequisites
+docker --version  # Docker 20.10+
+node --version    # Node 16+
+qit --version     # QIT CLI installed
 ```
 
-What you get (key files):
+Not installed? See [Installation Guide](../installation)
 
-```
-packages/e2e/
-├─ manifest.json
-├─ bootstrap/
-│  ├─ global-setup.sh
-│  ├─ setup.sh
-│  └─ global-teardown.sh
-├─ tests/
-│  └─ example.spec.js
-├─ playwright.config.js
-└─ results/            # will be populated on run
-```
+## Step 1: Scaffold Your Test Package
 
-**Defaults baked into the scaffold**
-
-* Playwright configured with **`playwright-ctrf-json-reporter`**
-* CTRF → `./results/ctrf.json`
-* Blob artifacts (screens, videos, traces, HTML) → `./results/blob/`
-* Allure (optional) → `./results/allure/`
-
----
-
-## 2) Run it (ephemeral, fully orchestrated)
-
-Choose the extension you're testing (System Under Test), e.g. `woocommerce`, and run:
+Create a complete test package structure with one command:
 
 ```bash
-qit run:e2e woocommerce \
-  --test-package "$(pwd)/packages/e2e" \
-  --verbose \
-  -- --project=chromium
+qit package:scaffold ./my-tests \
+  --namespace=my-extension \
+  --package=checkout
 ```
 
-**What happens**
+<details>
+<summary>📁 What gets created?</summary>
 
-1. QIT starts a clean WP/Woo environment
-2. Validates your package & any required secrets
-3. Runs **globalSetup** across all packages (you have one)
-4. (If you had 2+ packages) takes a DB snapshot
-5. Runs your package: **setup → run → results → teardown**
-6. Merges results and generates the final report
+```
+my-tests/
+├── manifest.json           # Package configuration
+├── package.json            # Node dependencies
+├── playwright.config.js    # Test framework config
+├── bootstrap/
+│   ├── global-setup.sh    # Shared setup (all packages)
+│   ├── setup.sh           # This package setup
+│   └── global-teardown.sh # Final cleanup
+└── tests/
+    └── example.spec.js    # Sample test
+```
 
-> **Pass-through options:** Everything **after `--`** goes to your test framework's **run phase only** (here, Playwright).
+The scaffold includes:
+- ✅ Playwright pre-configured with CTRF reporter
+- ✅ Bootstrap scripts for common tasks
+- ✅ Working example test
+- ✅ All paths following QIT conventions
 
----
+</details>
 
-## 3) Verify results
+## Step 2: Write Your First Test
 
-After the run:
+Replace the example test with your own:
 
-* **Per-package outputs (inside your package)**
+```javascript
+// tests/checkout.spec.js
+const { test, expect } = require('@playwright/test');
 
-  * CTRF JSON: `packages/e2e/results/ctrf.json`
-  * Artifacts: `packages/e2e/results/blob/` (screens, videos, traces, HTML)
+test('checkout flow works', async ({ page }) => {
+  // Navigate to shop
+  await page.goto('/shop');
+  
+  // Add first product to cart
+  await page.locator('.add_to_cart_button').first().click();
+  await page.waitForSelector('.added_to_cart');
+  
+  // Proceed to checkout
+  await page.goto('/checkout');
+  
+  // Fill required fields
+  await page.fill('#billing_email', 'test@example.com');
+  await page.fill('#billing_first_name', 'Test');
+  await page.fill('#billing_last_name', 'User');
+  
+  // Place order
+  await page.click('#place_order');
+  
+  // Verify success
+  await expect(page).toHaveURL(/order-received/);
+  await expect(page.locator('.woocommerce-thankyou-order-received'))
+    .toContainText('Thank you');
+});
+```
 
-* **Orchestrator outputs (root of your project)**
+## Step 3: Run Your Tests
 
-  ```
-  qit-results/
-  ├─ ctrf.json           # merged CTRF (lifecycle + tests)
-  ├─ artifacts/          # merged blobs (from all packages)
-  └─ logs/
-     ├─ execution.log
-     └─ debug.log
-  ```
+Execute your test package against your extension:
 
-Open the report:
+```bash
+qit run:e2e my-extension \
+  --test-package=./my-tests \
+  --verbose
+```
 
+### What Happens When You Run?
+
+```mermaid
+graph TB
+    A[1. Environment Setup] --> B[2. Install Extension]
+    B --> C[3. Validate Package]
+    C --> D[4. Run globalSetup]
+    D --> E[5. Execute Tests]
+    E --> F[6. Collect Results]
+    F --> G[7. Generate Report]
+    
+    style A fill:#e1f5fe
+    style E fill:#c8e6c9
+    style G fill:#fff3e0
+```
+
+Watch the output:
+```
+┌─ ENVIRONMENT SETUP ────────────────────────────
+│ PHP: 8.2 | WordPress: latest | WooCommerce: latest
+│ Installing my-extension...
+└────────────────────────────────────────────────
+
+┌─ PACKAGE: my-tests/checkout ───────────────────
+│ ➤ Setup phase
+│   Installing dependencies...
+│ ➤ Run phase
+│   Running 1 test...
+│   ✓ checkout flow works (3.2s)
+│ ➤ Results collected
+│   CTRF: ./results/ctrf.json
+│   Artifacts: ./results/blob/
+└────────────────────────────────────────────────
+```
+
+## Step 4: View Your Results
+
+### Open the Report Dashboard
 ```bash
 qit report
-# or:
-qit open
 ```
 
-> **CI note:** In CI mode, output is concise by default. Use `--verbose` to see framework logs.
+This opens an interactive HTML report showing:
+- Test pass/fail status
+- Execution times
+- Screenshots on failure
+- Video recordings
+- Detailed error messages
 
----
+### Check the Files
+Your test package now contains:
 
-## 4) (Optional) Setup-only: persistent environment for dev
+```
+my-tests/
+└── results/
+    ├── ctrf.json          # Standardized test results
+    └── blob/
+        ├── screenshots/   # Failure screenshots
+        ├── videos/       # Test recordings
+        └── traces/       # Debug traces
+```
 
-When developing tests, run only `globalSetup` and keep the environment alive:
-
-1. Create a minimal config (e.g., `setup-only.json`):
-
+### Understanding CTRF Output
 ```json
 {
-  "test_packages": [
-    "./packages/e2e"
-  ]
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "duration": 3200
+  },
+  "tests": [{
+    "name": "checkout flow works",
+    "status": "passed",
+    "duration": 3200
+  }]
 }
 ```
 
-2. Start and run global setup:
+## Development Workflow
+
+### Quick Iteration Mode
+
+When developing tests, use a persistent environment:
 
 ```bash
-qit env:up woocommerce --global-setup --config=setup-only.json
-source "$(qit env:source <printed-env-id>)"
-```
+# 1. Start environment (stays running)
+qit env:up my-extension --global-setup
 
-3. Iterate locally with Playwright:
+# 2. Get environment variables
+source "$(qit env:source)"
 
-```bash
+# 3. Run tests with Playwright UI (interactive)
 npx playwright test --ui
+
+# 4. Make changes and re-run instantly
+npx playwright test --headed --debug
 ```
 
-4. When done:
+### CI/Production Mode
+
+For CI or final validation, use full orchestration:
 
 ```bash
-qit env:down
+qit run:e2e my-extension \
+  --config=qit.json \
+  --php=8.2 \
+  --wordpress=6.4
 ```
 
-**Behavior differences (quick):**
+## Common Patterns
 
-| Aspect                     | `run:e2e` (ephemeral) | `env:up --global-setup` (persistent) |
-| -------------------------- | --------------------- | ------------------------------------ |
-| DB snapshot                | Yes (if ≥2 packages)  | No                                   |
-| Isolation between packages | Yes                   | N/A (no packages loop)               |
-| Lifecycle                  | Full                  | globalSetup only                     |
-| Best for                   | CI and full runs      | Local dev & debugging                |
+### Testing with Secrets
+
+```json
+// manifest.json
+{
+  "requires": {
+    "secrets": ["STRIPE_KEY", "STRIPE_SECRET"]
+  }
+}
+```
+
+```bash
+# Set secrets before running
+export STRIPE_KEY="pk_test_..."
+export STRIPE_SECRET="sk_test_..."
+qit run:e2e my-extension
+```
+
+### Multiple Browsers
+
+```bash
+# Test on different browsers
+qit run:e2e my-extension -- --project=chromium
+qit run:e2e my-extension -- --project=firefox
+qit run:e2e my-extension -- --project=webkit
+```
+
+### Debugging Failed Tests
+
+```bash
+# Run with full output
+qit run:e2e my-extension --verbose
+
+# Check logs
+cat qit-results/logs/execution.log
+
+# Review artifacts
+ls -la my-tests/results/blob/screenshots/
+```
+
+## Troubleshooting
+
+<details>
+<summary>❌ Docker not running</summary>
+
+```bash
+# Start Docker
+sudo systemctl start docker  # Linux
+open -a Docker               # macOS
+
+# Verify it's running
+docker ps
+```
+</details>
+
+<details>
+<summary>❌ Package not found</summary>
+
+```bash
+# Use absolute path
+qit run:e2e my-extension --test-package="$(pwd)/my-tests"
+
+# Or relative from project root
+cd /project/root
+qit run:e2e my-extension --test-package=./my-tests
+```
+</details>
+
+<details>
+<summary>❌ No CTRF results</summary>
+
+Check your `playwright.config.js` has the CTRF reporter:
+```javascript
+reporter: [
+  ['playwright-ctrf-json-reporter', {
+    outputFile: './results/ctrf.json'
+  }]
+]
+```
+</details>
+
+<details>
+<summary>❌ Tests timeout</summary>
+
+Increase timeout in `playwright.config.js`:
+```javascript
+module.exports = {
+  timeout: 60000,  // 60 seconds
+  expect: {
+    timeout: 10000  // 10 seconds for assertions
+  }
+};
+```
+</details>
+
+## What's Next?
+
+Now that you have a working test package:
+
+### Learn More
+- 📚 [Package Concepts](../concepts/architecture-and-lifecycle) — Understand the lifecycle
+- 🔄 [Orchestration](../concepts/orchestration-and-execution-order) — How isolation works
+- 🔧 [Configure Playwright](../how-to-guides/configure-playwright-ctrf) — Advanced setup
+
+### Do More
+- 🚀 [CI Integration](../how-to-guides/ci-github-actions) — Run in GitHub Actions
+- 🔐 [Manage Secrets](../how-to-guides/manage-secrets) — Handle sensitive data
+- 📦 [Publish Packages](./package-registry-and-versioning) — Share with others
+
+### Get Help
+- 💬 [FAQ](../glossary-and-faq/faq) — Common questions
+- 🐛 [Troubleshooting](../operations/troubleshooting) — Fix issues
+- 📝 [Examples](../examples/index) — Copy working code
 
 ---
 
-## Common hiccups (fast fixes)
-
-* **"Docker not found / cannot connect to daemon"**
-  Start Docker and re-run. On CI, ensure `runs-on: ubuntu-latest` or install Docker.
-
-* **Missing secrets**
-  Declare under `"requires.secrets"` in `manifest.json` and export them before running:
-
-  ```bash
-  export STRIPE_TEST_KEY="sk_test_..."
-  ```
-
-* **No CTRF found**
-  Ensure your Playwright config writes to `./results/ctrf.json` and the directory exists (the scaffold already does this). Don't delete results in teardown.
-
-* **No logs in CI**
-  Add `--verbose` to `qit run:e2e …`. Check `qit-results/logs/execution.log`.
-
-* **Playwright sharding**
-  `--shard` is **not supported** under `run:e2e`. You can use it when calling Playwright directly in a persistent env (`env:up`).
-
----
-
-## What's next
-
-* **Architecture & lifecycle:** The full sequence and guarantees
-* **Orchestration & execution order:** globalSetup timing, DB snapshot/restore, FS vs DB
-* **Results & artifacts:** CTRF format, blob layout, merged reports
-* **Package registry & versioning:** Publish & consume `namespace/package:version`
-
-**Tip:** Keep using the scaffold defaults (paths, reporter) across all examples so your team's mental model—and CI parsing—stay consistent.
-
----
+**Success!** You've created, run, and verified your first test package. The same pattern scales from one test to hundreds, from local development to CI/CD pipelines.
 
 **Last updated:** 2025-08-09

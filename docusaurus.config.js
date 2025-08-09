@@ -71,6 +71,12 @@ const config = {
     ],
   ],
 
+  // Add Mermaid support
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -110,6 +116,12 @@ const config = {
         apiKey: '29c11bf5cd152f048721ec14a3adeffd',
         indexName: 'qit-woo',
         contextualSearch: false,
+      },
+      mermaid: {
+        theme: {light: 'neutral', dark: 'dark'},
+        options: {
+          maxTextSize: 50000,
+        },
       },
     }),
 
