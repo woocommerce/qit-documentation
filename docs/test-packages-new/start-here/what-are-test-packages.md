@@ -1,8 +1,8 @@
-# What are Test Packages?
+# Test Packages
 
-Test Packages are a minimal standard for E2E tests that makes WordPress ecosystem compatibility testing possible - enabling plugins and themes to share tests and verify they work together.
+Test Packages are a minimal standard for E2E tests that makes WordPress ecosystem compatibility testing possible - enabling plugins and themes to share tests and verify they work together. They're the missing piece that lets developers stop testing in isolation and start testing in reality, running their code against real test suites from other plugin vendors to catch compatibility issues before customers do.
 
-## The Hidden Crisis in WordPress
+## The Compatibility Challenge
 
 Every WordPress site is unique. A typical WooCommerce store might run:
 - WooCommerce + Stripe payment gateway
@@ -60,9 +60,9 @@ qit run:e2e my-plugin \
 # Result: You know they work together BEFORE release
 ```
 
-## Getting Started is Simple
+## The Minimal Standard
 
-The minimum Test Package requires just:
+A Test Package requires just:
 
 ### 1. Standard Playwright tests
 ```javascript
@@ -128,47 +128,37 @@ qit run:e2e my-gateway \
   --test-package=./my-gateway-tests
 
 # Test across versions
---wordpress=6.5 --woocommerce=8.6  # Current
---wordpress=6.4 --woocommerce=8.5  # Previous
---wordpress=latest --woocommerce=latest  # Upcoming
+--wp=stable --woo=stable  # Current stable
+--wp=6.4 --woo=8.5  # Specific previous versions
+--wp=rc --woo=rc  # Release candidates
+--wp=nightly --woo=nightly  # Bleeding edge
 ```
 
 You're now testing with **actual tests from actual plugin vendors**, not your assumptions about how their plugins work.
 
 ## Who Benefits?
 
-**Plugin & Theme Developers** - Ship features faster without fear. Refactor confidently. Test against real scenarios from other plugins instead of guessing how they work.
+- **Plugin & Theme Developers** - Ship features faster without fear. Refactor confidently. Test against real scenarios from other plugins instead of guessing how they work.
 
-**WooCommerce Core** - Share official test suites so extensions can verify compatibility with upcoming releases before they ship.
+- **WooCommerce Core** - Share official test suites so extensions can verify compatibility with upcoming releases before they ship.
 
-**Agencies** - Combine plugin tests into comprehensive suites for client projects. Deploy updates knowing they won't break production.
+- **Agencies** - Combine plugin tests into comprehensive suites for client projects. Deploy updates knowing they won't break production.
 
-**Hosting Providers** - Reduce support tickets, lower churn, happier customers. Recommend plugin combinations with confidence.
+- **Hosting Providers** - Reduce support tickets, lower churn, happier customers. Recommend plugin combinations with confidence.
 
-**The WordPress Ecosystem** - Fewer broken sites, predictable compatibility, shared quality standards. Everyone moves faster when compatibility is guaranteed.
+- **The WordPress Ecosystem** - Fewer broken sites, predictable compatibility, shared quality standards. Everyone moves faster when compatibility is guaranteed.
 
-## Getting Started
+## Ready to Start?
 
-### Use Existing Test Packages
 ```bash
-# Find packages in the registry
-qit package:search woocommerce
-
-# Run them with your plugin
+# Try an existing package with your plugin
 qit run:e2e my-plugin --test-package=woocommerce/core-tests:latest
-```
 
-### Create Your Own
-```bash
-# Scaffold a package
+# Or create your own in minutes
 qit package:scaffold ./tests --namespace=my-plugin
-
-# Write standard Playwright tests
-npx playwright test
-
-# Share with the community
-qit package:publish ./tests
 ```
+
+**→ [Follow the Quickstart Guide](./quickstart-scaffold-run-verify)** for step-by-step instructions
 
 
 ## The Technical Foundation
@@ -187,21 +177,3 @@ Want the deep technical details? See [Architecture & Lifecycle](../concepts/arch
 Test Packages aren't just another testing tool. They're a **community standard** that makes comprehensive WordPress compatibility testing possible for the first time.
 
 When everyone can share and combine tests, everyone's plugins work better together.
-
-### Quick Start
-- **[Quickstart Guide](./quickstart-scaffold-run-verify)** - Create your first package
-- **[Package Registry](./package-registry-and-versioning)** - Find and share packages
-- **[Multi-Package Testing](./tutorial-first-multipackage-run)** - Combine test suites
-
-### Learn More
-- **[Orchestration Concepts](../concepts/orchestration-and-execution-order)** - How isolation works
-- **[Environment Models](../concepts/environment-models)** - Testing strategies
-- **[Package Capabilities](../concepts/package-capabilities)** - What packages can do
-
----
-
-**Test Packages: The missing standard for WordPress compatibility testing.**
-
-Stop testing in isolation. Start testing in reality.
-
-**Last updated:** 2025-08-09
