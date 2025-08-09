@@ -169,6 +169,8 @@ Test Packages work because they provide:
 - **Orchestration**: Managed execution across environments
 - **Isolation**: Each package gets a clean state
 - **Aggregation**: Unified results across all packages
+- **Encapsulated setup**: Each package handles its own initial configuration (WooCommerce dismisses its onboarding flows, Stripe configures its API keys) so you don't have to
+- **Decoupled coverage**: Test against real plugin behaviors without maintaining knowledge of their internals
 
 Want the deep technical details? See [Architecture & Lifecycle](../concepts/architecture-and-lifecycle).
 
