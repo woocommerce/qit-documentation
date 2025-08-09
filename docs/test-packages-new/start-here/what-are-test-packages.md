@@ -48,23 +48,24 @@ graph LR
 ### With Test Packages
 ```bash
 # Stripe publishes their test package
-qit package:publish stripe/gateway-tests
+qit package:publish stripe/gateway-tests:1.2.0
 
 # You test YOUR plugin WITH Stripe's tests
 qit run:e2e my-plugin \
-  --test-package=stripe/gateway-tests:latest \
+  --test-package=stripe/gateway-tests:1.2.0 \
   --test-package=./my-tests
 
 # Result: You know they work together BEFORE release
 ```
 
-## The Standard is Simple
+## Getting Started is Simple
 
-A Test Package is just:
+The minimum Test Package requires just:
 
-### 1. Your existing Playwright tests
+### 1. Standard Playwright tests
 ```javascript
 test('checkout works', async ({ page }) => {
+  // Uses QIT's environment URL
   await page.goto('/checkout');
   await page.fill('#billing_email', 'test@example.com');
   await page.click('#place_order');
@@ -75,7 +76,7 @@ test('checkout works', async ({ page }) => {
 ### 2. A manifest describing them
 ```json
 {
-  "namespace": "my-company",
+  "namespace": "my-awesome-plugin",
   "package": "checkout-tests",
   "test_type": "e2e",
   "test": {
@@ -90,9 +91,14 @@ test('checkout works', async ({ page }) => {
 }
 ```
 
-### 3. That's it
+### 3. That's enough to start
 
-No complex framework. No vendor lock-in. Just a minimal convention that enables maximum compatibility testing.
+With just these two files, you're ready. The complete Test Package standard offers much more—lifecycle phases for setup/teardown, state management between packages, environment targeting, secret handling, result aggregation—but none of that is required to begin.
+
+Start minimal. Once your package works, it instantly gains superpowers: it can be combined with other packages, run across version matrices, and orchestrated with guaranteed isolation—all without touching your test code.
+
+**Curious what else your package can do?** See [Package Capabilities](../concepts/package-capabilities).  
+**Want to understand the full system?** See [Architecture & Lifecycle](../concepts/architecture-and-lifecycle).
 
 ## Real-World Example: Payment Gateway Testing
 
@@ -114,9 +120,9 @@ You'd need to:
 ```bash
 # Use the community's shared test packages
 qit run:e2e my-gateway \
-  --test-package=woocommerce/checkout-tests \
-  --test-package=woocommerce-subscriptions/recurring-tests \
-  --test-package=fedex/shipping-tests \
+  --test-package=woocommerce/checkout-tests:latest \
+  --test-package=woocommerce-subscriptions/recurring-tests:5.5.0 \
+  --test-package=fedex/shipping-tests:stable \
   --test-package=./my-gateway-tests
 
 # Test across versions
@@ -127,43 +133,17 @@ qit run:e2e my-gateway \
 
 You're now testing with **actual tests from actual plugin vendors**, not your assumptions about how their plugins work.
 
-## The Network Effect
+## Who Benefits?
 
-As more plugins adopt Test Packages:
+**Plugin & Theme Developers** — Ship features faster without fear. Refactor confidently. Test against real scenarios from other plugins instead of guessing how they work.
 
-### Plugin Developers
-- Test with real WooCommerce test scenarios
-- Verify compatibility with popular plugins
-- Catch integration issues before release
+**WooCommerce Core** — Share official test suites so extensions can verify compatibility with upcoming releases before they ship.
 
-### Theme Developers
-- Ensure themes work with major plugins
-- Test responsive checkout flows
-- Verify page builder compatibility
+**Agencies** — Combine plugin tests into comprehensive suites for client projects. Deploy updates knowing they won't break production.
 
-### WooCommerce Core
-- Share official test suites
-- Let extensions test against upcoming changes
-- Maintain backward compatibility
+**Hosting Providers** — Reduce support tickets, lower churn, happier customers. Recommend plugin combinations with confidence.
 
-### The Ecosystem
-- **Shared quality standards** across all extensions
-- **Predictable compatibility** between plugins
-- **Fewer broken sites** in production
-
-## Who's Using Test Packages?
-
-### Extension Developers
-Share your test suite so others can verify compatibility with your plugin.
-
-### Marketplace Vendors
-Require Test Package compatibility for listed products.
-
-### Agencies
-Combine client plugin tests into comprehensive compatibility suites.
-
-### Hosting Providers
-Verify plugin combinations before recommending them to customers.
+**The WordPress Ecosystem** — Fewer broken sites, predictable compatibility, shared quality standards. Everyone moves faster when compatibility is guaranteed.
 
 ## Getting Started
 
@@ -173,7 +153,7 @@ Verify plugin combinations before recommending them to customers.
 qit package:search woocommerce
 
 # Run them with your plugin
-qit run:e2e my-plugin --test-package=woocommerce/core-tests
+qit run:e2e my-plugin --test-package=woocommerce/core-tests:latest
 ```
 
 ### Create Your Own
@@ -188,16 +168,6 @@ npx playwright test
 qit package:publish ./tests
 ```
 
-### Combine Multiple Packages
-```json
-{
-  "test_packages": [
-    "woocommerce/checkout-tests",
-    "stripe/payment-tests",
-    "./my-custom-tests"
-  ]
-}
-```
 
 ## The Technical Foundation
 
