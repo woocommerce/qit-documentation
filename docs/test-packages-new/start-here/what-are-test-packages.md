@@ -33,8 +33,10 @@ graph LR
     D --> E[Combined Test Suite]
     E --> F[Full Compatibility Matrix]
     
-    style D fill:#fff3e0
-    style F fill:#c8e6c9
+    classDef highlight fill:#fff3e0,stroke:#f9a825,color:#000
+    classDef success fill:#c8e6c9,stroke:#4caf50,color:#000
+    class D highlight
+    class F success
 ```
 
 ## Why This Changes Everything
