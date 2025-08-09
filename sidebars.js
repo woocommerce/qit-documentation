@@ -118,6 +118,78 @@ const sidebars = {
         },
         {
             type: 'category',
+            label: 'Test Packages 2.0',
+            collapsed: false,
+            items: [
+                {
+                    type: 'category',
+                    label: 'Start Here',
+                    collapsed: false,
+                    items: [
+                        'test-packages-new/start-here/what-are-test-packages',
+                        'test-packages-new/start-here/quickstart-scaffold-run-verify',
+                        'test-packages-new/start-here/tutorial-first-multipackage-run',
+                        'test-packages-new/start-here/package-registry-and-versioning',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Concepts',
+                    collapsed: true,
+                    items: [
+                        'test-packages-new/concepts/architecture-and-lifecycle',
+                        'test-packages-new/concepts/orchestration-and-execution-order',
+                        'test-packages-new/concepts/venues-host-vs-container',
+                        'test-packages-new/concepts/isolation-semantics',
+                        'test-packages-new/concepts/environment-models',
+                        'test-packages-new/concepts/package-capabilities',
+                        'test-packages-new/concepts/results-and-artifacts',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'How-To Guides',
+                    collapsed: true,
+                    items: [
+                        'test-packages-new/how-to-guides/scaffold-test-package',
+                        'test-packages-new/how-to-guides/configure-playwright-ctrf',
+                        'test-packages-new/how-to-guides/run-only-global-setup',
+                        'test-packages-new/how-to-guides/pass-playwright-options',
+                        'test-packages-new/how-to-guides/manage-secrets',
+                        'test-packages-new/how-to-guides/ci-github-actions',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Reference',
+                    collapsed: true,
+                    items: [
+                        'test-packages-new/reference/cli-commands',
+                        'test-packages-new/reference/manifest-schema',
+                        'test-packages-new/reference/qit-json-schema',
+                        'test-packages-new/reference/environment-variables',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Operations',
+                    collapsed: true,
+                    items: [
+                        'test-packages-new/operations/troubleshooting',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Examples',
+                    collapsed: true,
+                    items: [
+                        'test-packages-new/examples/index',
+                    ],
+                },
+            ],
+        },
+        {
+            type: 'category',
             label: 'Environment & Configuration',
             collapsed: true,
             items: [
