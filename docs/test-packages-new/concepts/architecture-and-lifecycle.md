@@ -36,7 +36,7 @@ This page explains how the QIT orchestrator is built, the exact order of operati
 
 ---
 
-## Lifecycle — end‑to‑end timeline
+## Lifecycle - end-to-end timeline
 
 ```
 ┌────────────────────────────────────────────────────────────┐
@@ -210,17 +210,17 @@ This page explains how the QIT orchestrator is built, the exact order of operati
 
 **Exit codes**
 
-* `0` — All test packages passed
-* `1` — Test failures or configuration errors
-* `3` — Infrastructure failure (e.g., DB restore, Docker outage)
+* `0` - All test packages passed
+* `1` - Test failures or configuration errors
+* `3` - Infrastructure failure (e.g., DB restore, Docker outage)
 
 ---
 
 ## Output & reporting
 
-* **Lifecycle CTRF** — QIT emits test‑like entries for each lifecycle command (`[globalSetup]`, `[setup]`, etc.), aiding traceability.
-* **Package CTRF** — Your framework's CTRF file is collected from the path you declared.
-* **Merged output** — Final artifacts live under:
+* **Lifecycle CTRF** - QIT emits test-like entries for each lifecycle command (`[globalSetup]`, `[setup]`, etc.), aiding traceability.
+* **Package CTRF** - Your framework's CTRF file is collected from the path you declared.
+* **Merged output** - Final artifacts live under:
 
   ```
   qit-results/
@@ -231,7 +231,7 @@ This page explains how the QIT orchestrator is built, the exact order of operati
   └─ reports/
      └─ index.html
   ```
-* **CI mode** — When `CI` is truthy, console noise is reduced; `--verbose` restores full logs.
+* **CI mode** - When `CI` is truthy, console noise is reduced; `--verbose` restores full logs.
 
 ---
 
@@ -298,10 +298,10 @@ To keep runs predictable:
 
 ## See also
 
-* **[Orchestration & execution order](./orchestration-and-execution-order.md)** — concrete guarantees, ordering rules, and examples
-* **[Venues: Host vs container execution](./venues-host-vs-container.md)** — how QIT decides where each command runs
-* **[Isolation semantics](./isolation-semantics.md)** — DB snapshot vs shared filesystem details
-* **[Environment models](./environment-models.md)** — `run:e2e` (ephemeral) vs `env:up` (persistent)
+* **[Orchestration & execution order](./orchestration-and-execution-order.md)** - concrete guarantees, ordering rules, and examples
+* **[Venues: Host vs container execution](./venues-host-vs-container.md)** - how QIT decides where each command runs
+* **[Isolation semantics](./isolation-semantics.md)** - DB snapshot vs shared filesystem details
+* **[Environment models](./environment-models.md)** - `run:e2e` (ephemeral) vs `env:up` (persistent)
 
 ---
 

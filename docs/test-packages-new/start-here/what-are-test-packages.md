@@ -1,6 +1,6 @@
 # What are Test Packages?
 
-Test Packages are a minimal standard for E2E tests that makes WordPress ecosystem compatibility testing possible—enabling plugins and themes to share tests and verify they work together.
+Test Packages are a minimal standard for E2E tests that makes WordPress ecosystem compatibility testing possible - enabling plugins and themes to share tests and verify they work together.
 
 ## The Hidden Crisis in WordPress
 
@@ -93,9 +93,9 @@ test('checkout works', async ({ page }) => {
 
 ### 3. That's enough to start
 
-With just these two files, you're ready. The complete Test Package standard offers much more—lifecycle phases for setup/teardown, state management between packages, environment targeting, secret handling, result aggregation—but none of that is required to begin.
+With just these two files, you're ready. The complete Test Package standard offers much more - lifecycle phases for setup/teardown, state management between packages, environment targeting, secret handling, result aggregation - but none of that is required to begin.
 
-Start minimal. Once your package works, it instantly gains superpowers: it can be combined with other packages, run across version matrices, and orchestrated with guaranteed isolation—all without touching your test code.
+Start minimal. Once your package works, it instantly gains superpowers: it can be combined with other packages, run across version matrices, and orchestrated with guaranteed isolation - all without touching your test code.
 
 **Curious what else your package can do?** See [Package Capabilities](../concepts/package-capabilities).  
 **Want to understand the full system?** See [Architecture & Lifecycle](../concepts/architecture-and-lifecycle).
@@ -135,15 +135,15 @@ You're now testing with **actual tests from actual plugin vendors**, not your as
 
 ## Who Benefits?
 
-**Plugin & Theme Developers** — Ship features faster without fear. Refactor confidently. Test against real scenarios from other plugins instead of guessing how they work.
+**Plugin & Theme Developers** - Ship features faster without fear. Refactor confidently. Test against real scenarios from other plugins instead of guessing how they work.
 
-**WooCommerce Core** — Share official test suites so extensions can verify compatibility with upcoming releases before they ship.
+**WooCommerce Core** - Share official test suites so extensions can verify compatibility with upcoming releases before they ship.
 
-**Agencies** — Combine plugin tests into comprehensive suites for client projects. Deploy updates knowing they won't break production.
+**Agencies** - Combine plugin tests into comprehensive suites for client projects. Deploy updates knowing they won't break production.
 
-**Hosting Providers** — Reduce support tickets, lower churn, happier customers. Recommend plugin combinations with confidence.
+**Hosting Providers** - Reduce support tickets, lower churn, happier customers. Recommend plugin combinations with confidence.
 
-**The WordPress Ecosystem** — Fewer broken sites, predictable compatibility, shared quality standards. Everyone moves faster when compatibility is guaranteed.
+**The WordPress Ecosystem** - Fewer broken sites, predictable compatibility, shared quality standards. Everyone moves faster when compatibility is guaranteed.
 
 ## Getting Started
 
@@ -187,14 +187,14 @@ Test Packages aren't just another testing tool. They're a **community standard**
 When everyone can share and combine tests, everyone's plugins work better together.
 
 ### Quick Start
-- **[Quickstart Guide](./quickstart-scaffold-run-verify)** — Create your first package
-- **[Package Registry](./package-registry-and-versioning)** — Find and share packages
-- **[Multi-Package Testing](./tutorial-first-multipackage-run)** — Combine test suites
+- **[Quickstart Guide](./quickstart-scaffold-run-verify)** - Create your first package
+- **[Package Registry](./package-registry-and-versioning)** - Find and share packages
+- **[Multi-Package Testing](./tutorial-first-multipackage-run)** - Combine test suites
 
 ### Learn More
-- **[Orchestration Concepts](../concepts/orchestration-and-execution-order)** — How isolation works
-- **[Environment Models](../concepts/environment-models)** — Testing strategies
-- **[Package Capabilities](../concepts/package-capabilities)** — What packages can do
+- **[Orchestration Concepts](../concepts/orchestration-and-execution-order)** - How isolation works
+- **[Environment Models](../concepts/environment-models)** - Testing strategies
+- **[Package Capabilities](../concepts/package-capabilities)** - What packages can do
 
 ---
 
