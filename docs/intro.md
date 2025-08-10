@@ -50,9 +50,9 @@ When a developer publishes an extension, QIT automatically validates quality thr
 
 ### Managed Tests
 
-Pre-built test suites maintained by QIT that validate security, PHP compatibility, activation, core functionality, and API standards. These automated tests run in the cloud with zero setup, providing consistent quality baselines across all extensions.
+Industry-standard quality checks packaged to work consistently across all extensions. These automated tests run with zero setup in development, CI pipelines, and as marketplace quality gates.
 
-Managed tests catch critical issues like security vulnerabilities, compatibility breaks, and activation failures before they reach production sites.
+Whether you're testing locally, automating in GitHub Actions, or publishing to a marketplace, managed tests provide the same comprehensive validation - ensuring extensions meet security, compatibility, and functionality standards before reaching production sites.
 
 ### Test Packages
 
@@ -75,70 +75,12 @@ qit run:e2e my-payment-plugin \
 
 This is crucial: developers can test **how their plugin actually behaves with other real plugins**, not just in isolation. When payment gateways share their checkout tests, when shipping providers share their calculation tests, when subscription plugins share their renewal tests - the entire ecosystem becomes more reliable.
 
-## Who Uses QIT
-
-### Extension Developers
-
-Build and test with confidence:
-- Validate quality during development
-- Test compatibility with other extensions
-- Automate testing in CI/CD pipelines
-- Meet marketplace requirements
-
-### Marketplaces and Platforms
-
-Maintain quality standards at scale:
-- Automated testing for all submissions
-- Consistent quality requirements
-- Reduced support burden
-- Higher user satisfaction
-
-### Agencies and Integrators
-
-Ensure reliability for client projects:
-- Validate plugin combinations before deployment
-- Create test suites for specific configurations
-- Automate quality gates in workflows
-- Reduce post-launch issues
-
-## Getting Started
-
-Start using QIT in minutes:
-
-```bash
-# Install
-composer global require "woocommerce/qit-cli:*"
-
-# Authenticate
-qit connect
-
-# Run your first test
-qit run:activation your-extension
-```
-
-From there, you can:
-- Run additional managed tests for security and compatibility
-- Create Test Packages for your specific features
-- Test against other extensions' Test Packages
-- Integrate QIT into your development workflow
-
-[Complete Getting Started Guide →](getting-started.md)
-
 ## Current Availability
 
-QIT is currently available to:
-- WooCommerce Marketplace developers (full access)
-- WordPress plugin developers (Test Packages framework)
-- Platforms interested in quality standards (contact us)
+QIT is currently available to WooCommerce.com Marketplace developers. We're actively working to expand access to extensions outside the WooCommerce Marketplace, making quality infrastructure available to the broader WordPress ecosystem.
 
-We're expanding access as we build out the platform. The goal is quality infrastructure that serves the entire WordPress ecosystem.
+## Next Steps
 
-## The Vision
+Ready to start using QIT? Learn how to install, authenticate, and run your first tests.
 
-QIT aims to become the standard quality infrastructure for WordPress. When developers share tests and platforms share standards, the entire ecosystem becomes more reliable. Every site benefits from higher quality extensions that work together.
-
-## Support
-
-- **Issues**: [GitHub Repository](https://github.com/woocommerce/qit-cli/issues)
-- **Contact**: qit@woocommerce.com
-- **Documentation**: [qit.woo.com](https://qit.woo.com)
+[Get Started with QIT →](getting-started.md)
