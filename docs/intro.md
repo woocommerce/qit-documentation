@@ -58,7 +58,9 @@ Whether you're testing locally, automating in GitHub Actions, or publishing to a
 
 While managed tests ensure baseline quality, Test Packages solve a deeper problem: **custom plugin behavior and cross-plugin compatibility**.
 
-Test Packages are E2E tests built on Playwright that can be combined and run together. They enable developers to:
+Test Packages are E2E tests built on Playwright that follow a standardized format, enabling them to be combined and run together. This standardization is what makes cross-compatibility testing possible and allows Test Packages to serve as quality gates alongside managed tests.
+
+Developers can:
 - Test their plugin's specific features and custom behavior
 - Verify compatibility between multiple plugins
 - Combine multiple test packages in a single run

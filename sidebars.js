@@ -9,6 +9,11 @@ const sidebars = {
             label: 'Introduction to QIT',
         },
         {
+            type: 'doc',
+            id: 'getting-started', // maps to docs/getting-started.md
+            label: 'Getting Started',
+        },
+        {
             type: 'category',
             label: 'Core Concepts',
             collapsed: true,
