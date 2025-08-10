@@ -1,94 +1,144 @@
----  
-sidebar_position: 1  
+---
+sidebar_position: 1
 slug: /
 ---
 
-import QITIntro from '@site/src/video/qit_intro.mp4';  
-import TestTypes from '@site/src/components/TestTypes';  
-import QITImageURL from '@site/static/img/qit-right.webp';
+# QIT: Quality Insights Toolkit
 
-# Introduction to QIT
+QIT is a quality assurance platform for the WordPress ecosystem. It provides the testing infrastructure that helps developers ship reliable extensions and helps marketplaces maintain quality standards.
 
-QIT (Quality Insights Toolkit) is a testing platform developed by WooCommerce for WordPress plugins and themes. It allows developers to quickly run a variety of managed tests out-of-the-box, as well as create their own test packages to ensure their extensions are reliable, secure, and compatible.
+## The Quality Challenge
 
-**Key Features:**
-- **Managed test suites:** Run pre-configured end-to-end tests, activation tests, security scans, PHPStan analysis, API tests, and more.
-- **Test Packages:** Write and run your own Playwright-based E2E test packages, featuring automatic isolation, lifecycle management, and utility packages for environment setup.
-- **Continuous quality checks**: Seamlessly integrate QIT into your development workflows via CLI, GitHub Actions, and more.
-- **Marketplace integration:** Currently in closed beta for extensions listed on the WooCommerce Marketplace.
+WordPress powers 40% of the web through its extensibility. The average WordPress site runs dozens of plugins from different developers, each updated on their own schedule. This creates a quality assurance challenge:
 
-<video controls style={{ width:"100%", height:"100%" }}>
-  <source src={QITIntro} type="video/mp4"/>  
-  Your browser does not support the video tag.  
-</video>
+- Developers can't test with every possible plugin combination
+- Marketplaces need consistent quality standards
+- Users need reliability when combining extensions
+- The ecosystem needs shared testing infrastructure
 
-## Requirements
+QIT addresses these challenges by providing standardized testing tools that work across the WordPress ecosystem.
 
-- **WooCommerce.com partner developer account:** You must have at least one extension listed on the WooCommerce.com Marketplace to access QIT.
-- **PHP 7.2.5+ and composer:** Required if you plan to use QIT locally via the CLI.
+## QIT as a Quality Gateway
 
-## Quick start guide
+QIT addresses these challenges by acting as a quality gateway between developers and trusted marketplaces. Every extension passes through automated quality checks before reaching users.
 
-**Recommended Approach: Global Installation via Composer**
+<div style={{textAlign: 'center'}}>
 
-For the simplest and most consistent experience, install QIT CLI globally. This ensures QIT is readily available across all your projects without repeated per-project installations.
-
-1. **Install QIT CLI Globally:**  
-   ```bash
-   composer global require "woocommerce/qit-cli:*"
-   ```
-   Make sure your global Composer `bin` directory is in your `PATH`.  
-   Example:  
-   ```bash
-   export PATH="$PATH:$HOME/.composer/vendor/bin"
-   ```
-
-2. **Authenticate with QIT:**  
-   ```qitbash
-   qit connect
-   ```
-   This generates a QIT Token and prompts you to [authenticate](./installation-setup/authenticating.md) with your WooCommerce.com developer account.
-
-3. **Run Your First Test:**  
-   ```qitbash
-   qit run:activation your-extension
-   ```
-   Replace 'your-extension' with the slug of a WooCommerce.com extension you own. This runs a simple activation test to ensure your plugin can be activated without errors.
-
-**Alternative: Per-Project Installation (If Preferred)**  
-If you prefer isolating QIT to a single project, you can still install it locally using:
-```bash
-composer require "woocommerce/qit-cli:*" --dev
+```mermaid
+graph TD
+    Dev[🧑‍💻 Developer<br/>Creates/Updates Extension] 
+    Dev -->|Publishes| Gate[🛡️ QIT Gateway]
+    Gate --> MT[Managed Tests<br/>━━━━━━━━━<br/>Woo E2E Tests<br/>Woo API Tests<br/>Activation Tests<br/>Security Tests<br/>PHPStan Tests<br/>PHPCompatibility Tests<br/>Malware Tests<br/>Validation Tests<br/>Plugin Check Tests<br/>Performance Tests]
+    Gate --> TP[Test Packages<br/>━━━━━━━━━<br/>E2E Testing<br/>• Custom Plugin Behavior<br/>• Cross-Plugin Compatibility]
+    MT --> Market[✅ Trusted Marketplaces]
+    TP --> Market
+    Market --> Users[👥 Users<br/>Install and Update with Confidence]
+    
+    style Dev fill:#e1f5fe
+    style Gate fill:#fff3e0,stroke:#f9a825,stroke-width:3px
+    style MT fill:#f3e5f5
+    style TP fill:#f3e5f5
+    style Market fill:#e8f5e9
+    style Users fill:#e0f2f1
 ```
-And run commands via:
+
+</div>
+
+When a developer publishes an extension, QIT automatically validates quality through comprehensive testing before it reaches users. This gateway ensures every extension in trusted marketplaces meets consistent quality standards.
+
+## Two Testing Approaches
+
+### Managed Tests
+
+Pre-built test suites maintained by QIT that validate security, PHP compatibility, activation, core functionality, and API standards. These automated tests run in the cloud with zero setup, providing consistent quality baselines across all extensions.
+
+Managed tests catch critical issues like security vulnerabilities, compatibility breaks, and activation failures before they reach production sites.
+
+### Test Packages
+
+While managed tests ensure baseline quality, Test Packages solve a deeper problem: **custom plugin behavior and cross-plugin compatibility**.
+
+Test Packages are E2E tests built on Playwright that can be combined and run together. They enable developers to:
+- Test their plugin's specific features and custom behavior
+- Verify compatibility between multiple plugins
+- Combine multiple test packages in a single run
+- Share tests so others can validate compatibility with their plugin
+
 ```bash
-./vendor/bin/qit connect
-./vendor/bin/qit run:activation your-extension
+# Example: Combine multiple test packages to verify cross-plugin compatibility
+qit run:e2e my-payment-plugin \
+  --test-package=./my-custom-tests \
+  --test-package=woocommerce/checkout-tests \
+  --test-package=subscription-plugin/recurring-tests \
+  --test-package=tax-plugin/calculation-tests
 ```
-However, the global installation approach is recommended for most developers.
 
-## What tests are available?
+This is crucial: developers can test **how their plugin actually behaves with other real plugins**, not just in isolation. When payment gateways share their checkout tests, when shipping providers share their calculation tests, when subscription plugins share their renewal tests - the entire ecosystem becomes more reliable.
 
-QIT provides multiple managed test types right out of the box:
+## Who Uses QIT
 
-<TestTypes />
+### Extension Developers
 
-Each test type runs in a controlled environment, providing consistent, reproducible results. For detailed explanations of each test type, see the [Managed Tests Introduction](/docs/managed-tests/introduction).
+Build and test with confidence:
+- Validate quality during development
+- Test compatibility with other extensions
+- Automate testing in CI/CD pipelines
+- Meet marketplace requirements
 
-## QIT & WooCommerce Marketplace
+### Marketplaces and Platforms
 
-QIT automatically runs tests for every new release published on the WooCommerce Marketplace. Partner Developers can also run tests on-demand using the CLI or the WooCommerce.com Vendor Dashboard.
+Maintain quality standards at scale:
+- Automated testing for all submissions
+- Consistent quality requirements
+- Reduced support burden
+- Higher user satisfaction
 
-## Non-partner developers
+### Agencies and Integrators
 
-While full QIT access is currently exclusive to WooCommerce.com Partner Developers, a local test environment is available for non-partners. We plan to open full access publicly in the future. Stay tuned!
+Ensure reliability for client projects:
+- Validate plugin combinations before deployment
+- Create test suites for specific configurations
+- Automate quality gates in workflows
+- Reduce post-launch issues
 
-## Ways to use QIT
+## Getting Started
 
-- **Command line (CLI):** Perfect for integrating into your local development workflow or CI pipelines. See [CLI Getting Started](./installation-setup/cli-installation.md).
-- **WooCommerce.com dashboard:** Run and view tests directly in the vendor dashboard UI. See [Getting Started with Dashboard](./using-qit/running-tests-dashboard.md).
-- **GitHub actions:** Integrate QIT tests into your GitHub workflows. See [GitHub Workflows Setup](./using-qit/github-workflows.md).
+Start using QIT in minutes:
 
-:::info  
-If you encounter any issues or have questions, feel free to [contact us](mailto:qit@woocommerce.com) or open an issue on [GitHub](https://github.com/woocommerce/qit-cli/issues).  
-:::
+```bash
+# Install
+composer global require "woocommerce/qit-cli:*"
+
+# Authenticate
+qit connect
+
+# Run your first test
+qit run:activation your-extension
+```
+
+From there, you can:
+- Run additional managed tests for security and compatibility
+- Create Test Packages for your specific features
+- Test against other extensions' Test Packages
+- Integrate QIT into your development workflow
+
+[Complete Getting Started Guide →](getting-started.md)
+
+## Current Availability
+
+QIT is currently available to:
+- WooCommerce Marketplace developers (full access)
+- WordPress plugin developers (Test Packages framework)
+- Platforms interested in quality standards (contact us)
+
+We're expanding access as we build out the platform. The goal is quality infrastructure that serves the entire WordPress ecosystem.
+
+## The Vision
+
+QIT aims to become the standard quality infrastructure for WordPress. When developers share tests and platforms share standards, the entire ecosystem becomes more reliable. Every site benefits from higher quality extensions that work together.
+
+## Support
+
+- **Issues**: [GitHub Repository](https://github.com/woocommerce/qit-cli/issues)
+- **Contact**: qit@woocommerce.com
+- **Documentation**: [qit.woo.com](https://qit.woo.com)
