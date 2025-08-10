@@ -15,37 +15,6 @@ const sidebars = {
         },
         {
             type: 'category',
-            label: 'Core Concepts',
-            collapsed: true,
-            items: [
-                'core-concepts/how-qit-works',
-                'core-concepts/test-types-overview',
-                'core-concepts/marketplace-overview',
-            ],
-        },
-        {
-            type: 'category',
-            label: 'Installation & Setup',
-            collapsed: true,
-            items: [
-                'installation-setup/cli-installation',
-                'installation-setup/authenticating',
-                'installation-setup/local-env-setup',
-            ],
-        },
-        {
-            type: 'category',
-            label: 'Using QIT',
-            collapsed: true,
-            items: [
-                'using-qit/running-tests-cli',
-                'using-qit/running-tests-dashboard',
-                'using-qit/github-workflows',
-                'using-qit/notifications-results',
-            ],
-        },
-        {
-            type: 'category',
             label: 'Managed Tests',
             collapsed: true,
             items: [
@@ -131,7 +100,7 @@ const sidebars = {
                     label: 'Start Here',
                     collapsed: false,
                     items: [
-                        'test-packages-new/start-here/what-are-test-packages',
+                        'test-packages-new/start-here/test-packages',
                         'test-packages-new/start-here/quickstart-scaffold-run-verify',
                         'test-packages-new/start-here/tutorial-first-multipackage-run',
                         'test-packages-new/start-here/package-registry-and-versioning',
@@ -206,25 +175,6 @@ const sidebars = {
                 'environment/persistent-tunnel',
                 'environment/custom-tunnel',
                 'environment/environment-variables',
-            ],
-        },
-        {
-            type: 'category',
-            label: 'Test Execution & Reporting',
-            collapsed: true,
-            items: [
-                'test-execution/useful-commands',
-                'test-execution/viewing-allure-reports',
-                'test-execution/troubleshooting',
-            ],
-        },
-        {
-            type: 'category',
-            label: 'Advanced Usage',
-            collapsed: true,
-            items: [
-                'advanced-usage/scripting',
-                'advanced-usage/advanced-config-handlers',
             ],
         },
         {
