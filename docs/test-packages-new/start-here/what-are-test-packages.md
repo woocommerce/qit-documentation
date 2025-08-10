@@ -86,8 +86,8 @@ test('checkout works', async ({ page }) => {
       "run": ["npx playwright test"]
     },
     "results": {
-      "ctrf-json": "./results/ctrf.json",
-      "blob-dir": "./results/blob"
+      "ctrf-json": "./results/ctrf.json",  // Test results
+      "blob-dir": "./results/blob"         // Screenshots, videos, traces
     }
   }
 }
@@ -95,7 +95,7 @@ test('checkout works', async ({ page }) => {
 
 ### 3. That's enough to start
 
-With just these two files, you're ready. The complete Test Package standard offers much more - lifecycle phases for setup/teardown, state management between packages, environment targeting, secret handling, result aggregation - but none of that is required to begin.
+That's it - Playwright tests plus a manifest that describes them. The complete Test Package standard offers much more - lifecycle phases for setup/teardown, state management between packages, environment targeting, secret handling, result aggregation - but none of that is required to begin.
 
 Start minimal. Once your package works, it instantly gains superpowers: it can be combined with other packages, run across version matrices, and orchestrated with guaranteed isolation - all without touching your test code.
 
