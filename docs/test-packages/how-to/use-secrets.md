@@ -283,8 +283,3 @@ Verify CI environment:
     echo "Secrets configured:"
     [ -n "$STRIPE_TEST_KEY" ] && echo "✓ STRIPE_TEST_KEY" || echo "✗ STRIPE_TEST_KEY"
 ```
-
-## Related Topics
-
-- [CI/CD Integration](../ci.md)
-- [Secrets Management](../secrets.md)

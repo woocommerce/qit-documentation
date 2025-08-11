@@ -242,11 +242,6 @@ Error: Package tests failed validation
 
 Solution: Ensure tests pass locally before publishing.
 
-## Next Steps
-
-- **[Combine Packages](combining-packages.md)** - Use multiple packages together
-- **[Package Management](../packages.md)** - Advanced package strategies
-
 ---
 
 **Congratulations!** Your Test Package is now part of the WordPress testing ecosystem. Others can use your tests to verify compatibility.

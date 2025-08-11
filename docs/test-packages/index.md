@@ -156,9 +156,6 @@ qit run:e2e my-plugin --test-package=woocommerce/core-tests:latest
 qit package:scaffold ./tests --namespace=my-plugin
 ```
 
-**→ [Follow the Quickstart Guide](./quickstart-scaffold-run-verify)** for step-by-step instructions
-
-
 ## The Technical Foundation
 
 Test Packages work because they provide:

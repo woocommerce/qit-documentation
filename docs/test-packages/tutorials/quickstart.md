@@ -37,7 +37,6 @@ Open `qit-test.json` to understand your package structure:
   "package": "your-extension-slug/checkout-tests",
   "test": {
     "phases": {
-      "setup": ["npm install"],
       "run": ["npx playwright test"]
     },
     "results": {
@@ -50,7 +49,7 @@ Open `qit-test.json` to understand your package structure:
 
 Key points:
 - **package**: Your unique identifier (namespace/name format)
-- **phases**: Commands that run during testing
+- **phases**: Commands that run during testing (npm install happens automatically)
 - **results**: Where test output goes
 
 ## Step 3: Write Your Test (3 minutes)
@@ -87,59 +86,64 @@ test('checkout flow works', async ({ page, baseURL }) => {
 
 ## Step 4: Test Locally (2 minutes)
 
-Start a test environment and run your package:
+Run your test package against your extension:
 
 ```bash
-# Start environment
-qit env:up
-
-# Run your test package
+# Run your test package locally
 qit run:e2e your-extension-slug --test-package=.
 ```
 
-You'll see:
-```
-Running Test Package: your-extension-slug/checkout-tests
-✓ Setup phase completed
-✓ Test: checkout flow works (8.2s)
-✓ Results collected
+:::tip
+For manual debugging while developing your tests, you can start an environment first:
+```bash
+# Start the environment
+qit env:up
 
-Test Summary:
-- Total: 1
-- Passed: 1
-- Failed: 0
+# Note the environment ID from the output (e.g., qitenv123abc...)
+# Then source the environment variables in your terminal:
+source "$(qit env:source qitenv123abc...)"
+
+# Now you can:
+# 1. Browse the site manually at the URL shown
+# 2. Run your Playwright tests directly:
+npx playwright test
 ```
+:::
+
+The command will:
+1. Download and prepare your test package
+2. Start a Docker environment with WordPress and WooCommerce
+3. Install your extension
+4. Run the test phases (setup → run → teardown)
+5. Collect and display results
+
+If your test passes, you'll see a summary showing the test results and options to view detailed reports.
 
 ## Step 5: Combine with Other Packages (2 minutes)
 
 The real power comes from combining packages:
 
 ```bash
-# Run your test WITH WooCommerce's tests
+# Run your test WITH another extension's tests
 qit run:e2e your-extension-slug \
   --test-package=. \
-  --test-package=woocommerce/checkout-tests
+  --test-package=other-extension/compatibility-tests
 
-# Or with payment gateway tests  
+# Or test multiple extensions together  
 qit run:e2e your-extension-slug \
+  --plugin=woocommerce-stripe \
   --test-package=. \
-  --test-package=woocommerce-stripe/gateway-tests
+  --test-package=woocommerce-stripe/payment-tests
 ```
 
 Each package runs in isolation (clean database state) but in the same environment.
 
 ## What You've Learned
 
-✅ Test Packages are just Playwright tests with a manifest
-✅ The manifest defines how your package runs
-✅ Packages can be combined without conflicts
+✅ Test Packages are just Playwright tests with a manifest  
+✅ The manifest defines how your package runs  
+✅ Packages can be combined without conflicts  
 ✅ Each package gets a clean state via database snapshots
-
-## Next Steps
-
-- **[Share Your Package](sharing-packages.md)** - Publish to the registry
-- **[Combine Multiple Packages](combining-packages.md)** - Advanced orchestration
-- **[Troubleshooting](../troubleshooting.md)** - When things go wrong
 
 ## Quick Reference
 

@@ -291,11 +291,6 @@ If tests seem to interfere despite isolation:
 2. Verify packages don't modify shared resources
 3. Report issue - isolation should prevent this
 
-## Next Steps
-
-- **[Package Concepts](../concepts.md)** - Deep dive into how it works
-- **[CI Integration](../ci.md)** - Automate multi-package testing
-
 ---
 
 **You've learned:** How to combine Test Packages to test real-world plugin interactions. This is the true power of the Test Package ecosystem!

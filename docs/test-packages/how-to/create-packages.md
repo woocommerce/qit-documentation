@@ -60,9 +60,3 @@ Setup without tests:
 - Use descriptive test names
 - Include clear documentation
 - Specify requirements explicitly
-
-## Related Topics
-
-- [Package Manifest](../manifest.md)
-- [Lifecycle Phases](../lifecycle.md)
-- [Utility Packages](../utility-packages.md)
