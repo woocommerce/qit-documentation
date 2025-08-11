@@ -119,7 +119,7 @@ The `--config` option points to a JSON file:
 
 `run:e2e` requires:
 - At least one test package (with `run` phase)
-- Valid manifest.json in each package
+- Valid qit-test.json in each package
 - Result paths for test packages
 - All required secrets set
 
@@ -288,7 +288,7 @@ Use in commands:
 QIT looks for packages in these locations:
 
 1. Paths specified in configuration file
-2. Current directory (if manifest.json exists)
+2. Current directory (if qit-test.json exists)
 3. Subdirectories of specified paths
 
 Example structure:
@@ -297,11 +297,11 @@ my-tests/
 ├── qit-config.json
 ├── packages/
 │   ├── setup/
-│   │   └── manifest.json
+│   │   └── qit-test.json
 │   ├── checkout/
-│   │   └── manifest.json
+│   │   └── qit-test.json
 │   └── payment/
-│       └── manifest.json
+│       └── qit-test.json
 ```
 
 Configuration:

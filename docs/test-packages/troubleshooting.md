@@ -32,10 +32,10 @@ Verify the directory exists:
 ls -la packages/checkout-tests/
 ```
 
-#### Missing manifest.json
+#### Missing qit-test.json
 Every package must have a manifest:
 ```bash
-ls packages/checkout-tests/manifest.json
+ls packages/checkout-tests/qit-test.json
 ```
 
 #### Case Sensitivity
@@ -58,7 +58,7 @@ Validation error: Package 'checkout-tests' missing required field 'namespace'
 ```
 
 #### Solution
-Add missing fields to manifest.json:
+Add missing fields to qit-test.json:
 ```json
 {
   "package": "checkout-tests",

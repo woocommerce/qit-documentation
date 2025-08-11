@@ -11,7 +11,7 @@ Secrets provide secure handling of sensitive data like API keys, passwords, and 
 
 ## Declaring Secrets
 
-In `manifest.json`:
+In `qit-test.json`:
 
 ```json
 {
@@ -413,7 +413,7 @@ if (!process.env.API_KEY || process.env.API_KEY.length < 10) {
 ### Secret Not Available in Test
 
 Ensure:
-- Declared in manifest.json
+- Declared in qit-test.json
 - Set before running tests
 - Correct variable name
 
@@ -472,5 +472,5 @@ if (process.env.ENABLE_STRIPE === 'true') {
   secrets.push('STRIPE_KEY', 'STRIPE_SECRET');
 }
 
-// manifest.json would list all possible secrets
+// qit-test.json would list all possible secrets
 ```

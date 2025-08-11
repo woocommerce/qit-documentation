@@ -1,14 +1,14 @@
-# Manifest Reference
+# Test Package Manifest Reference
 
-The `manifest.json` file defines a package's behavior, requirements, and integration points.
+The `qit-test.json` file defines a test package's behavior, requirements, and integration points.
+
+> **IDE Validation**: To enable IDE validation and autocompletion, use `qit package:scaffold` with the `--with-schema` option, or manually add `"$schema": "https://qit.woo.com/json-schema/test-package"` to your manifest.
 
 ## Minimal Example
 
 ```json
 {
-  "package": "checkout-tests",
-  "namespace": "acme",
-  "test_type": "e2e",
+  "package": "your-extension-slug/checkout-tests",
   "test": {
     "phases": {
       "run": ["npm test"]
@@ -25,9 +25,7 @@ The `manifest.json` file defines a package's behavior, requirements, and integra
 
 ```json
 {
-  "package": "string",
-  "namespace": "string", 
-  "test_type": "e2e",
+  "package": "namespace/name",
   "description": "string",
   "tags": ["array"],
   "test_dir": "string",
@@ -66,33 +64,15 @@ The `manifest.json` file defines a package's behavior, requirements, and integra
 
 ## Required Fields
 
-These four fields are always required:
+These two fields are always required:
 
 ### package
 **Required** | `string`
 
-Unique identifier within the namespace. Must match pattern `^[a-zA-Z0-9_.-]+$`.
+Full package identifier in format `namespace/name`. Both namespace and name must match pattern `^[a-zA-Z0-9_.-]+$`.
 
 ```json
-"package": "payment-gateway-tests"
-```
-
-### namespace
-**Required** | `string`
-
-Organization or vendor identifier. Must match pattern `^[a-zA-Z0-9_.-]+$`.
-
-```json
-"namespace": "acme-corp"
-```
-
-### test_type
-**Required** | `string`
-
-Must be `"e2e"`. Currently only E2E tests are supported.
-
-```json
-"test_type": "e2e"
+"package": "your-extension-slug/payment-tests"
 ```
 
 ### test
@@ -109,6 +89,15 @@ Human-readable description (max 500 characters).
 
 ```json
 "description": "Payment gateway integration tests"
+```
+
+### test_type
+**Optional** | `string`
+
+Type of test. Currently only `"e2e"` is supported. Defaults to `"e2e"` if not specified.
+
+```json
+"test_type": "e2e"
 ```
 
 ### tags
@@ -444,9 +433,7 @@ Any non-zero exit code fails the phase.
 
 ```json
 {
-  "package": "woocommerce-checkout",
-  "namespace": "acme",
-  "test_type": "e2e",
+  "package": "your-extension-slug/checkout-tests",
   "description": "WooCommerce checkout flow tests",
   "requires": {
     "secrets": ["STRIPE_TEST_KEY", "STRIPE_TEST_SECRET"],
@@ -486,9 +473,7 @@ Any non-zero exit code fails the phase.
 
 ```json
 {
-  "package": "test-environment",
-  "namespace": "utilities",
-  "test_type": "e2e",
+  "package": "woocommerce/test-environment",
   "description": "Test environment configuration",
   "test": {
     "phases": {
@@ -514,9 +499,7 @@ Any non-zero exit code fails the phase.
 
 ```json
 {
-  "package": "smoke-test",
-  "namespace": "quick",
-  "test_type": "e2e",
+  "package": "your-extension-slug/smoke-tests",
   "test": {
     "phases": {
       "run": ["npm test"]
@@ -533,9 +516,7 @@ Any non-zero exit code fails the phase.
 
 ```json
 {
-  "package": "disable-onboarding",
-  "namespace": "utilities",
-  "test_type": "e2e",
+  "package": "woocommerce/disable-onboarding",
   "test": {
     "phases": {
       "globalSetup": [

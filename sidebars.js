@@ -5,13 +5,91 @@ const sidebars = {
     docsSidebar: [
         {
             type: 'doc',
-            id: 'intro', // maps to docs/intro.md
+            id: 'intro',
             label: 'Introduction to QIT',
         },
         {
             type: 'doc',
-            id: 'getting-started', // maps to docs/getting-started.md
+            id: 'getting-started',
             label: 'Getting Started',
+        },
+        {
+            type: 'category',
+            label: 'Test Packages',
+            collapsed: false,  // Keep open - this is the hero feature
+            items: [
+                'test-packages/index',
+                {
+                    type: 'category',
+                    label: 'Tutorials',
+                    collapsed: true,
+                    items: [
+                        'test-packages/tutorials/quickstart',
+                        'test-packages/tutorials/sharing-packages',
+                        'test-packages/tutorials/combining-packages',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'How-To Guides',
+                    collapsed: true,
+                    items: [
+                        'test-packages/how-to/create-packages',
+                        'test-packages/how-to/use-secrets',
+                        // These will be created later:
+                        // 'test-packages/how-to/run-packages',
+                        // 'test-packages/how-to/debug-failures',
+                        // 'test-packages/how-to/configure-ci',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Concepts',
+                    collapsed: true,
+                    items: [
+                        'test-packages/concepts',
+                        'test-packages/lifecycle',
+                        'test-packages/manifest',
+                        'test-packages/utility-packages',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Reference',
+                    collapsed: true,
+                    items: [
+                        'test-packages/commands',
+                        'test-packages/results',
+                        'test-packages/examples',
+                    ],
+                },
+                {
+                    type: 'category',
+                    label: 'Advanced',
+                    collapsed: true,
+                    items: [
+                        'test-packages/development-workflow',
+                        'test-packages/secrets',
+                        'test-packages/ci',
+                        'test-packages/ai-development',
+                        'test-packages/sharding',
+                    ],
+                },
+                'test-packages/troubleshooting',
+            ],
+        },
+        {
+            type: 'category',
+            label: 'Test Configuration',
+            collapsed: true,
+            items: [
+                'configuration/index',
+                'configuration/qit-json',
+                'configuration/profiles',
+                'configuration/environments',
+                'configuration/groups',
+                'configuration/extension-sets',
+            ],
         },
         {
             type: 'category',
@@ -28,81 +106,6 @@ const sidebars = {
                 'managed-tests/malware',
                 'managed-tests/validation',
                 'managed-tests/plugin-check',
-                'managed-tests/extension-sets',
-                'managed-tests/group-tests',
-            ],
-        },
-        {
-            type: 'category',
-            label: 'Test Packages',
-            collapsed: true,
-            items: [
-                'test-packages/index',
-                {
-                    type: 'category',
-                    label: 'Core Concepts',
-                    collapsed: true,
-                    items: [
-                        'test-packages/concepts',
-                        'test-packages/manifest',
-                        'test-packages/lifecycle',
-                    ],
-                },
-                {
-                    type: 'category',
-                    label: 'Development',
-                    collapsed: true,
-                    items: [
-                        'test-packages/development-workflow',
-                        'test-packages/ai-development',
-                        'test-packages/packages',
-                    ],
-                },
-                {
-                    type: 'category',
-                    label: 'Configuration',
-                    collapsed: true,
-                    items: [
-                        'test-packages/qit-config',
-                        'test-packages/test-profiles',
-                        'test-packages/utility-packages',
-                    ],
-                },
-                {
-                    type: 'category',
-                    label: 'Execution',
-                    collapsed: true,
-                    items: [
-                        'test-packages/commands',
-                        'test-packages/secrets',
-                        'test-packages/results',
-                    ],
-                },
-                {
-                    type: 'category',
-                    label: 'Deployment',
-                    collapsed: true,
-                    items: [
-                        'test-packages/ci',
-                        'test-packages/examples',
-                        'test-packages/troubleshooting',
-                    ],
-                },
-            ],
-        },
-        {
-            type: 'category',
-            label: 'Environment & Configuration',
-            collapsed: true,
-            items: [
-                'environment/introduction',
-                'environment/creating-config-files',
-                'environment/installing-plugins-and-themes',
-                'environment/installing-from-other-sources',
-                'environment/tunnel',
-                'environment/persistent-tunnel',
-                'environment/custom-tunnel',
-                'environment/environment-variables',
             ],
         },
         {

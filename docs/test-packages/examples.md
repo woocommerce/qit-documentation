@@ -6,12 +6,10 @@ Complete, working examples of Test Packages for various scenarios.
 
 ### Playwright Checkout Tests
 
-`packages/checkout-tests/manifest.json`:
+`packages/checkout-tests/qit-test.json`:
 ```json
 {
-  "package": "checkout-tests",
-  "namespace": "woocommerce",
-  "test_type": "e2e",
+  "package": "woocommerce/checkout-tests",
   "description": "WooCommerce checkout flow tests",
   "test": {
     "phases": {
@@ -140,12 +138,10 @@ test.describe('Checkout Flow', () => {
 
 ### Stripe Integration Tests
 
-`packages/stripe-tests/manifest.json`:
+`packages/stripe-tests/qit-test.json`:
 ```json
 {
-  "package": "stripe-payment-tests",
-  "namespace": "payment-gateways",
-  "test_type": "e2e",
+  "package": "woocommerce-stripe/payment-tests",
   "description": "Stripe payment gateway integration tests",
   "requires": {
     "secrets": [
@@ -227,12 +223,10 @@ test.describe('Stripe Payments', () => {
 
 ### REST API Tests with Playwright
 
-`packages/api-tests/manifest.json`:
+`packages/api-tests/qit-test.json`:
 ```json
 {
-  "package": "woocommerce-api-tests",
-  "namespace": "api",
-  "test_type": "e2e",
+  "package": "woocommerce/api-tests",
   "description": "WooCommerce REST API tests using Playwright",
   "requires": {
     "secrets": ["WC_API_KEY", "WC_API_SECRET"]
@@ -314,7 +308,7 @@ test.describe('WooCommerce API', () => {
 
 ### Complete Test Suite
 
-`qit.json`:
+`qit-config.json`:
 ```json
 {
   "environments": {
@@ -345,12 +339,10 @@ test.describe('WooCommerce API', () => {
 
 ### Environment Setup Utility
 
-`packages/utilities/environment-setup/manifest.json`:
+`packages/utilities/environment-setup/qit-test.json`:
 ```json
 {
-  "package": "environment-setup",
-  "namespace": "utilities",
-  "test_type": "e2e",
+  "package": "woocommerce/environment-setup",
   "description": "Configure test environment",
   "test": {
     "phases": {
@@ -372,12 +364,10 @@ test.describe('WooCommerce API', () => {
 
 ### Cleanup Utility
 
-`packages/utilities/cleanup/manifest.json`:
+`packages/utilities/cleanup/qit-test.json`:
 ```json
 {
-  "package": "cleanup",
-  "namespace": "utilities",
-  "test_type": "e2e",
+  "package": "woocommerce/cleanup",
   "description": "Clean up test data",
   "test": {
     "phases": {
@@ -398,12 +388,10 @@ test.describe('WooCommerce API', () => {
 
 ### Load Testing with K6
 
-`packages/performance-tests/manifest.json`:
+`packages/performance-tests/qit-test.json`:
 ```json
 {
-  "package": "performance-tests",
-  "namespace": "performance",
-  "test_type": "e2e",
+  "package": "woocommerce/performance-tests",
   "description": "Load and performance tests",
   "test": {
     "phases": {
@@ -454,12 +442,10 @@ export default function() {
 
 ### Mobile Browser Tests
 
-`packages/mobile-tests/manifest.json`:
+`packages/mobile-tests/qit-test.json`:
 ```json
 {
-  "package": "mobile-browser-tests",
-  "namespace": "mobile",
-  "test_type": "e2e",
+  "package": "woocommerce/mobile-browser-tests",
   "description": "Mobile responsive tests",
   "test": {
     "phases": {
@@ -505,12 +491,10 @@ module.exports = {
 
 ### Screenshot Comparison Tests
 
-`packages/visual-tests/manifest.json`:
+`packages/visual-tests/qit-test.json`:
 ```json
 {
-  "package": "visual-regression",
-  "namespace": "visual",
-  "test_type": "e2e",
+  "package": "woocommerce/visual-regression",
   "description": "Visual regression tests",
   "test": {
     "phases": {
@@ -556,12 +540,10 @@ test.describe('Visual Regression', () => {
 
 ### A11y Testing with Axe
 
-`packages/a11y-tests/manifest.json`:
+`packages/a11y-tests/qit-test.json`:
 ```json
 {
-  "package": "accessibility-tests",
-  "namespace": "a11y",
-  "test_type": "e2e",
+  "package": "woocommerce/accessibility-tests",
   "description": "Accessibility compliance tests",
   "test": {
     "phases": {

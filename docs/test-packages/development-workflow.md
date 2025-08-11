@@ -154,7 +154,7 @@ This will:
 
 ### Example Utility Package for Development
 
-`utilities/dev-setup/manifest.json`:
+`utilities/dev-setup/qit-test.json`:
 ```json
 {
   "package": "dev-setup",

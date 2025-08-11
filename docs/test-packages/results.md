@@ -241,7 +241,7 @@ artifacts:
 
 ### Configuration
 
-`manifest.json`:
+`qit-test.json`:
 ```json
 {
   "test": {
@@ -277,7 +277,7 @@ module.exports = {
 
 ### Post-Processing Hook
 
-`manifest.json`:
+`qit-test.json`:
 ```json
 {
   "test": {

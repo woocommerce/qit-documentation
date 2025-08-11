@@ -1,6 +1,6 @@
 # Test Profiles
 
-Test Profiles allow you to define multiple test configurations within a single `qit.json` file, enabling different test scenarios without maintaining multiple configuration files.
+Test Profiles allow you to define multiple test configurations within a single `qit-config.json` file, enabling different test scenarios without maintaining multiple configuration files.
 
 ## What are Test Profiles?
 
@@ -14,7 +14,7 @@ Test Profiles are named configurations that specify:
 
 ### Defining Profiles
 
-Profiles are defined under `test_types.e2e` in `qit.json`:
+Profiles are defined under `test_types.e2e` in `qit-config.json`:
 
 ```json
 {
@@ -57,7 +57,7 @@ qit run:e2e woocommerce --profile=smoke
 qit run:e2e woocommerce --profile=full
 
 # Profile with config file
-qit run:e2e woocommerce --config=qit.json --profile=regression
+qit run:e2e woocommerce --config=qit-config.json --profile=regression
 ```
 
 ## Profile Structure
@@ -225,10 +225,10 @@ The profile named `default` is used when no `--profile` is specified:
 
 ```bash
 # Uses default_profile if set
-qit run:e2e woocommerce --config=qit.json
+qit run:e2e woocommerce --config=qit-config.json
 
 # Override default
-qit run:e2e woocommerce --config=qit.json --profile=full
+qit run:e2e woocommerce --config=qit-config.json --profile=full
 ```
 
 ## Profile Inheritance

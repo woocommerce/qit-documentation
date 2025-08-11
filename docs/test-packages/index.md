@@ -50,11 +50,11 @@ graph LR
 ### With Test Packages
 ```bash
 # Stripe publishes their test package
-qit package:publish stripe/gateway-tests:1.2.0
+qit package:publish woocommerce-stripe/gateway-tests:1.2.0
 
-# You test YOUR plugin WITH Stripe's tests
-qit run:e2e my-plugin \
-  --test-package=stripe/gateway-tests:1.2.0 \
+# You test YOUR extension WITH Stripe's tests
+qit run:e2e your-extension-slug \
+  --test-package=woocommerce-stripe/gateway-tests:1.2.0 \
   --test-package=./my-tests
 
 # Result: You know they work together BEFORE release
@@ -78,9 +78,7 @@ test('checkout works', async ({ page }) => {
 ### 2. A manifest describing them
 ```json
 {
-  "namespace": "my-awesome-plugin",
-  "package": "checkout-tests",
-  "test_type": "e2e",
+  "package": "your-extension-slug/checkout-tests",
   "test": {
     "phases": {
       "run": ["npx playwright test"]

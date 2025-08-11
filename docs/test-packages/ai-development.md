@@ -21,7 +21,7 @@ When starting a new conversation with an AI assistant, provide this context:
 I'm developing Test Packages for QIT (Quality Insights Toolkit). Here's what you need to know:
 
 ## Test Package Structure
-- Test Packages are directories with a manifest.json file
+- Test Packages are directories with a qit-test.json file
 - They can be test packages (with run phase) or utility packages (without run phase)
 - Test packages must produce CTRF (Common Test Results Format) output
 - Results must include ctrf-json and blob-dir paths
@@ -114,7 +114,7 @@ Namespace: mycompany
 ```
 
 **AI will generate:**
-- Complete manifest.json
+- Complete qit-test.json
 - package.json with dependencies
 - playwright.config.js
 - Test files
@@ -168,7 +168,7 @@ Required Secrets: [LIST_SECRETS]
 Dependencies: [LIST_DEPENDENCIES]
 
 Generate:
-1. manifest.json with all phases
+1. qit-test.json with all phases
 2. Test files with proper CTRF output
 3. Configuration files
 4. package.json/composer.json
@@ -181,7 +181,7 @@ My QIT Test Package is failing. Here's the context:
 
 Error: [paste error]
 Test Code: [paste relevant test]
-Manifest: [paste manifest.json]
+Manifest: [paste qit-test.json]
 Environment: [paste from qit env:source output]
 
 The test is supposed to [DESCRIBE_INTENT].
@@ -211,7 +211,7 @@ Convert these existing Playwright tests to QIT Test Packages:
 
 Requirements:
 1. Maintain all test logic
-2. Add proper manifest.json
+2. Add proper qit-test.json
 3. Configure CTRF output
 4. Add setup/teardown phases
 5. Handle secrets properly
@@ -246,7 +246,7 @@ Add this to your workspace `.github/copilot-instructions.md`:
 ## QIT Test Package Development
 
 When writing Test Packages:
-1. Always include manifest.json with correct schema
+1. Always include qit-test.json with correct schema
 2. Test packages need "run" phase and "results" configuration
 3. Utility packages have no "run" phase
 4. Use CTRF format for test output

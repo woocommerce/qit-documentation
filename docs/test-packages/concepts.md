@@ -38,7 +38,7 @@ A Utility Package provides supporting functionality without running tests. It ha
 
 ## The Manifest
 
-Every package has a `manifest.json` that serves as its contract with the system. The manifest declares:
+Every package has a `qit-test.json` that serves as its contract with the system. The manifest declares:
 
 - **Identity**: Package name and namespace
 - **Requirements**: What the package needs to run

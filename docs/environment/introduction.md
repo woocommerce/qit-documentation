@@ -8,7 +8,7 @@ Every time you run `qit env:up`, a fresh environment is created. Any changes you
 
 ## Prerequisites
 
-Refer to [Installation](../installation-setup/cli-installation.md) if needed.
+Refer to [Installation](../getting-started.md) if needed.
 - **Docker:** QIT relies on Docker to create isolated environments. Make sure Docker is installed and running. For more information, see [Docker documentation](https://docs.docker.com/compose/install/).
 
 ### Platform-specific notes

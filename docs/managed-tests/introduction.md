@@ -1,4 +1,4 @@
-# Introduction to managed tests
+# Managed Tests
 
 Managed tests are a collection of standardized test suites maintained by the QIT team. They are designed to ensure your extension meets baseline criteria for stability, compatibility, and security. By running these tests, you gain quick, reliable feedback on potential issues, all without having to write or maintain your own scenarios.
 
@@ -32,4 +32,4 @@ Managed tests often return three possible outcomes:
 - **Warning:** Non-fatal errors, deprecations, or notices that should be addressed.
 - **Failed:** Critical issues prevent the extension from running properly or meeting standards.
 
-If you have enabled email notifications, you will receive an email when a test completes if it results in warnings or failures. For more information on setting up notifications, see [Notifications and Results](../using-qit/notifications-results.md).
+If you have enabled email notifications, you will receive an email when a test completes if it results in warnings or failures.

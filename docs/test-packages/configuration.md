@@ -1,12 +1,12 @@
-# QIT Configuration (qit.json)
+# QIT Configuration (qit-config.json)
 
-The `qit.json` file is the central configuration for Test Packages, defining which packages to run, their order, environment settings, and test profiles.
+The `qit-config.json` file is the central configuration for Test Packages, defining which packages to run, their order, environment settings, and test profiles.
 
 ## File Location
 
 QIT looks for configuration files in this order:
 1. File specified with `--config` flag
-2. `qit.json` in current directory
+2. `qit-config.json` in current directory
 3. Default configuration (no config file)
 
 ## Basic Structure
@@ -30,7 +30,7 @@ QIT looks for configuration files in this order:
 
 ```json
 {
-  "$schema": "https://qit.io/schema/qit.json",
+  "$schema": "https://qit.io/schema/qit-config.json",
   "test_packages": ["array of package paths"],
   "environments": {
     "environment_name": {
@@ -427,16 +427,16 @@ Configuration file options can be overridden via command line:
 
 ```bash
 # Override PHP version
-qit run:e2e woocommerce --config=qit.json --php=8.2
+qit run:e2e woocommerce --config=qit-config.json --php=8.2
 
 # Override WordPress version
-qit run:e2e woocommerce --config=qit.json --wordpress=6.4
+qit run:e2e woocommerce --config=qit-config.json --wordpress=6.4
 
 # Use different profile
-qit run:e2e woocommerce --config=qit.json --profile=full
+qit run:e2e woocommerce --config=qit-config.json --profile=full
 
 # Force verbose output
-qit run:e2e woocommerce --config=qit.json --verbose
+qit run:e2e woocommerce --config=qit-config.json --verbose
 ```
 
 Priority order:
@@ -451,7 +451,7 @@ QIT validates configuration files before execution:
 
 ```bash
 # Validate configuration
-qit validate-config qit.json
+qit validate-config qit-config.json
 ```
 
 Common validation errors:
@@ -496,7 +496,7 @@ Common validation errors:
 
 ```json
 {
-  "$schema": "https://qit.io/schema/qit.json",
+  "$schema": "https://qit.io/schema/qit-config.json",
   "description": "E2E test configuration for WooCommerce Payments",
   "test_packages": [
     "./utilities/setup",        // Sets up test environment
@@ -540,7 +540,7 @@ environment:
   php: 8.0
 ```
 
-### New Format (qit.json)
+### New Format (qit-config.json)
 
 ```json
 {
@@ -558,7 +558,7 @@ environment:
 
 ```bash
 # Convert old format to new
-qit migrate-config qit.yml --output=qit.json
+qit migrate-config qit.yml --output=qit-config.json
 ```
 
 ## Examples

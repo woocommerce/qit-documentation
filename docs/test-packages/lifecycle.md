@@ -84,7 +84,7 @@ Set these environment variables:
 ### 3. Package Validation
 
 Ensures configuration integrity:
-- Validates all manifest.json files
+- Validates all qit-test.json files
 - Confirms test packages have results configuration
 - Verifies utility packages don't have run phases
 - Checks at least one test package exists (for run:e2e)

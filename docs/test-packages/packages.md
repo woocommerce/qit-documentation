@@ -3,7 +3,7 @@
 ## Package Structure
 
 A Test Package is a directory containing:
-- `manifest.json` - Package configuration
+- `qit-test.json` - Package configuration
 - Test files or scripts
 - Dependencies (package.json, composer.json, etc.)
 - Configuration files
@@ -13,7 +13,7 @@ A Test Package is a directory containing:
 
 ```
 my-test-package/
-├── manifest.json       # Required: Package manifest
+├── qit-test.json       # Required: Package manifest
 ├── package.json        # Optional: NPM dependencies
 ├── tests/             # Test files
 │   ├── checkout.spec.js
@@ -35,7 +35,7 @@ cd packages/checkout-tests
 
 ### Step 2: Create Manifest
 
-`manifest.json`:
+`qit-test.json`:
 ```json
 {
   "package": "checkout-tests",
@@ -128,7 +128,7 @@ Utility packages provide setup/teardown without running tests.
 
 ### Example: Environment Setup
 
-`manifest.json`:
+`qit-test.json`:
 ```json
 {
   "package": "environment-setup",
@@ -298,7 +298,7 @@ Package `package.json`:
 
 ```
 packages/checkout/
-├── manifest.json
+├── qit-test.json
 ├── config/
 │   ├── dev.json
 │   ├── staging.json
@@ -454,7 +454,7 @@ Remove only what you created:
 
 ### Package Not Found
 - Check path in configuration
-- Verify manifest.json exists
+- Verify qit-test.json exists
 - Use absolute or relative paths correctly
 
 ### Dependencies Not Installing

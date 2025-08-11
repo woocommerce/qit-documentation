@@ -19,9 +19,7 @@ A Utility Package is identified by the **absence of a `run` phase** in its manif
 ### Environment Configuration
 ```json
 {
-  "package": "disable-onboarding",
-  "namespace": "utilities",
-  "test_type": "e2e",
+  "package": "woocommerce/disable-onboarding",
   "description": "Disable WooCommerce onboarding wizards",
   "test": {
     "phases": {
@@ -38,9 +36,7 @@ A Utility Package is identified by the **absence of a `run` phase** in its manif
 ### Test Data Seeding
 ```json
 {
-  "package": "seed-test-data",
-  "namespace": "utilities",
-  "test_type": "e2e",
+  "package": "woocommerce/seed-test-data",
   "description": "Create test products and users",
   "test": {
     "phases": {
@@ -59,9 +55,7 @@ A Utility Package is identified by the **absence of a `run` phase** in its manif
 ### Plugin Installation
 ```json
 {
-  "package": "install-helpers",
-  "namespace": "utilities",
-  "test_type": "e2e",
+  "package": "woocommerce-bookings/install-helpers",
   "description": "Install helper plugins for testing",
   "test": {
     "phases": {
@@ -82,9 +76,7 @@ A Utility Package is identified by the **absence of a `run` phase** in its manif
 ### Database Import
 ```json
 {
-  "package": "import-sample-data",
-  "namespace": "utilities",
-  "test_type": "e2e",
+  "package": "woocommerce/import-sample-data",
   "description": "Import sample WooCommerce data",
   "test": {
     "phases": {
@@ -205,9 +197,7 @@ npx playwright test --ui
 
 ```json
 {
-  "package": "reset-environment",
-  "namespace": "utilities",
-  "test_type": "e2e",
+  "package": "woocommerce/reset-environment",
   "description": "Reset to clean state",
   "test": {
     "phases": {
@@ -226,9 +216,7 @@ npx playwright test --ui
 
 ```json
 {
-  "package": "configure-stripe",
-  "namespace": "utilities",
-  "test_type": "e2e",
+  "package": "woocommerce-stripe/configure-test-mode",
   "description": "Configure Stripe for testing",
   "requires": {
     "secrets": ["STRIPE_TEST_KEY", "STRIPE_TEST_SECRET"]
@@ -248,9 +236,7 @@ npx playwright test --ui
 
 ```json
 {
-  "package": "optimize-for-tests",
-  "namespace": "utilities",
-  "test_type": "e2e",
+  "package": "woocommerce/optimize-for-tests",
   "description": "Optimize WordPress for test performance",
   "test": {
     "phases": {
@@ -270,9 +256,7 @@ npx playwright test --ui
 
 ```json
 {
-  "package": "multistore-setup",
-  "namespace": "utilities",
-  "test_type": "e2e",
+  "package": "woocommerce-multilingual/multistore-setup",
   "description": "Configure multi-currency and multi-language",
   "test": {
     "phases": {
@@ -445,7 +429,7 @@ Validation error: Utility package cannot have results configuration
 ```
 
 **Solution:**
-Remove the `results` section from manifest.json
+Remove the `results` section from qit-test.json
 
 ### Command Fails in GlobalSetup
 

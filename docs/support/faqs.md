@@ -11,7 +11,7 @@ A: Full QIT functionality, including managed tests and cloud runs, requires a Wo
 ## Installation and setup
 
 **Q: How do I install the QIT CLI?**  
-Please refer to the [CLI Installation](../installation-setup/cli-installation.md) page for instructions on installing the QIT CLI.
+Please refer to the [Getting Started](../getting-started.md) page for instructions on installing the QIT CLI.
 
 **Q: What are the prerequisites for running tests locally?**  
 Please check the [Local Test Environment Introduction](../environment/introduction.md) for more details.
@@ -19,7 +19,7 @@ Please check the [Local Test Environment Introduction](../environment/introducti
 ## Running tests
 
 **Q: Which types of tests are available?**  
-See the [Test Types Overview](../core-concepts/test-types-overview.md) for a full list.
+See the [Managed Tests Introduction](../managed-tests/introduction.md) for a full list of available test types.
 
 **Q: Can I choose different WordPress or WooCommerce versions to test against?**  
 Check the [Test Options](./test-options.md) for details on which tests support this.
@@ -30,7 +30,7 @@ See [Tunneling](../environment/tunnel.md) for more information.
 ## Troubleshooting and reporting issues
 
 **Q: What if a test fails unexpectedly?**  
-Take a look at our [Troubleshooting](../test-execution/troubleshooting.md) guide.
+Take a look at our [Troubleshooting](../test-packages/troubleshooting.md) guide.
 
 **Q: How do I handle flakiness in tests?**  
 A: Consider simplifying selectors, adding retries, increasing timeouts, or ensuring stable conditions (like waiting for elements to load). If issues persist, open a GitHub issue or email `qit@woocommerce.com` with details.
@@ -41,10 +41,10 @@ A: Email `qit@woocommerce.com` with `Security Issue` in the subject line. Provid
 ## Advanced topics
 
 **Q: How can I integrate QIT tests into my CI/CD pipeline?**  
-See [Scripting](../advanced-usage/scripting.md) and [GitHub Workflows](../using-qit/github-workflows.md) for examples.
+See [CI/CD Integration](../test-packages/ci.md) for examples of integrating QIT into your pipeline.
 
 **Q: Can I fetch plugins or themes from private repos or other custom sources?**  
-Refer to [Installing from Other Sources](../environment/installing-from-other-sources.md) and [Advanced Config Handlers](../advanced-usage/advanced-config-handlers.md) for guidance.
+Refer to [Installing from Other Sources](../environment/installing-from-other-sources.md) for guidance on using private repos and custom sources.
 
 ## Getting help
 
