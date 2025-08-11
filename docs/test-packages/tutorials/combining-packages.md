@@ -23,27 +23,7 @@ qit run:e2e your-extension-slug \
   --test-package=another-extension/e2e:latest
 ```
 
-Output shows both packages:
-```
-Running 2 Test Packages:
-  1. your-extension-slug/e2e (local)
-  2. another-extension/e2e:latest
-
-[Package 1/2: your-extension-slug/e2e]
-✓ Setup phase
-✓ 3 tests passed
-✓ Teardown phase
-
-[Package 2/2: another-extension/e2e]
-✓ Setup phase
-✓ 5 tests passed
-✓ Teardown phase
-
-Combined Results:
-- Total Tests: 8
-- Passed: 8
-- Failed: 0
-```
+This runs both test packages in sequence, each with its own isolated database state.
 
 ### Testing Multiple Extension Compatibility
 
@@ -130,174 +110,93 @@ test('list products', async ({ page }) => {
 });
 ```
 
-## Real-World Scenarios
+## Real-World Scenario: Testing Payment Integration Compatibility
 
-### Scenario 1: Testing with Payment Extensions
-
-Test your extension with payment gateways:
+Let's walk through a concrete example where your shipping extension needs to verify it works correctly with Stripe's payment flow. You'll use community-provided test packages to ensure your extension doesn't break critical WooCommerce flows.
 
 ```bash
-qit run:e2e your-extension-slug \
-  --plugin=woocommerce-stripe \
-  --plugin=woocommerce-subscriptions \
-  --test-package=./tests/e2e \
-  --test-package=woocommerce-stripe/e2e:latest \
-  --test-package=woocommerce-subscriptions/e2e:latest
-```
-
-### Scenario 2: Testing Extension Compatibility
-
-Test your extension works with other popular extensions:
-
-```bash
-qit run:e2e your-extension-slug \
-  --plugin=woocommerce-product-addons \
-  --plugin=woocommerce-bookings \
-  --test-package=./tests/e2e
-```
-
-### Scenario 3: Reproducing Customer Issues
-
-Test with specific versions to match customer environment:
-
-```bash
-# Customer reports issue with specific setup
-qit run:e2e your-extension-slug \
-  --plugin=woocommerce-subscriptions \
+qit run:e2e your-shipping-extension \
+  --woo nightly \
   --plugin=woocommerce-stripe \
   --test-package=./tests/e2e \
-  --wp=6.4 --woo=8.5  # Match customer's versions
+  --test-package=woocommerce/minimal:nightly \
+  --test-package=woocommerce-stripe/checkout:latest \
+  --env STRIPE_TEST_PUBLISHABLE_KEY=pk_test_YourTestKey \
+  --env STRIPE_TEST_SECRET_KEY=sk_test_YourTestSecret
 ```
 
-## Working with Multiple Local Packages
+### What Happens During Execution
 
-If you've organized your tests into multiple packages:
+#### Global Setup Phase (Once for All Packages)
+1. **Environment boots** with WordPress, WooCommerce, your shipping extension, and WooCommerce Stripe
+2. **WooCommerce/minimal global setup** runs - disables the onboarding wizard that normally appears on fresh installs
+3. **Stripe global setup** configures the payment gateway using the provided sandbox API keys
+4. **Your extension global setup** configures default shipping zones and methods
+5. **Database snapshot** is taken after all global setup completes
 
-```bash
-# Run your main tests plus focused packages
-qit run:e2e your-extension-slug \
-  --test-package=./tests/e2e \
-  --test-package=./tests/packages/checkout
-```
+#### Package 1: Your Shipping Extension Tests
+Your tests verify that shipping calculations work correctly during checkout:
+- Customer adds products to cart
+- Proceeds to checkout
+- Your shipping rates appear correctly
+- Customer can complete purchase with your shipping method selected
+
+#### Database Restore
+The environment resets to the clean snapshot state.
+
+#### Package 2: WooCommerce Minimal Tests
+These community tests verify core flows still work:
+- Products can be added to cart
+- Checkout page loads without errors
+- Orders can be placed successfully
+- No JavaScript errors occur
+
+#### Database Restore
+Environment resets again.
+
+#### Package 3: Stripe Checkout Tests  
+Stripe's tests verify their payment flow works with your extension active:
+- Payment form renders correctly on checkout
+- Card validation works
+- 3D Secure challenges complete (if configured)
+- Payment processes successfully
+- Order status updates correctly
+
+#### Global Teardown
+Cleanup operations run once after all packages complete.
+
+### Coverage and Guarantees
+
+This combination gives you confidence that:
+
+✅ **Your extension works** - Your own tests pass, confirming your shipping logic is correct
+
+✅ **You don't break WooCommerce** - The minimal tests ensure core e-commerce flows remain functional with your extension active
+
+✅ **You don't break Stripe** - Stripe's checkout tests verify that payment processing still works when your shipping options are present
+
+✅ **Real-world compatibility** - You've tested the actual combination that thousands of stores use: WooCommerce + Stripe + custom shipping
+
+### Important Notes
+
+- **Stripe Sandbox**: The Stripe test package requires valid Stripe test API keys to run properly. These connect to your Stripe sandbox account for realistic payment testing.
+- **Test Isolation**: Each package's tests can't interfere with others due to database restoration between runs
+- **Shared Environment**: All packages see the same plugins installed, so you're testing real compatibility
 
 ## Interpreting Combined Results
 
-### Understanding the Output
-
-```
-Combined Test Results:
-├── your-plugin/checkout-tests
-│   ├── ✓ add-to-cart.spec.js (3 passed)
-│   └── ✓ checkout.spec.js (2 passed)
-├── stripe/gateway-tests
-│   ├── ✓ payment.spec.js (4 passed)
-│   └── ✗ refund.spec.js (1 failed)
-└── woocommerce/core-tests
-    └── ✓ critical.spec.js (10 passed)
-
-Summary: 19 passed, 1 failed
-```
-
-### Accessing Detailed Reports
+When multiple packages run, QIT aggregates all test results and provides detailed reports. You can view results using:
 
 ```bash
-# View combined Allure report
-qit report:view
-
-# Get CTRF JSON for CI
-cat .qit/results/ctrf-combined.json
-
-# Package-specific results
-cat .qit/results/stripe-gateway-tests/ctrf.json
+# View the QIT report (which includes links to Allure reports)
+qit report
 ```
+
+The QIT report shows the overall test results and provides links to detailed Allure reports for each package, making it easy to identify which tests belong to which package and whether any failures occurred.
 
 ## Performance Considerations
 
-### Parallel vs Sequential
-
-By default, packages run sequentially. For independent packages:
-
-```bash
-# Future feature: parallel execution
-qit run:e2e your-plugin \
-  --test-package=./unit-tests \
-  --test-package=./integration-tests \
-  --parallel
-```
-
-### Execution Time
-
-Each package adds time:
-- Setup phase: ~5-10 seconds
-- Teardown phase: ~2-5 seconds
-- DB restore: ~3-5 seconds
-
-Plan accordingly for CI pipelines.
-
-## Best Practices
-
-### 1. Start Small
-
-Begin with two packages, then expand:
-```bash
-# Start simple
---test-package=. --test-package=woocommerce/core
-
-# Then add more
---test-package=. --test-package=woocommerce/core --test-package=stripe/gateway
-```
-
-### 2. Group Related Tests
-
-Combine packages that test related functionality:
-- ✅ Payment packages together
-- ✅ Shipping packages together
-- ❌ Unrelated packages (slower, no benefit)
-
-### 3. Version Consistently
-
-Use consistent versions for related packages:
-```bash
-# Good: Matching versions
---test-package=woocommerce/checkout:8.5.0 \
---test-package=woocommerce/cart:8.5.0
-
-# Risky: Mismatched versions
---test-package=woocommerce/checkout:8.5.0 \
---test-package=woocommerce/cart:7.0.0
-```
-
-## Troubleshooting
-
-### Package Not Found
-
-```
-Error: Package stripe/gateway-tests not found
-```
-
-Check available packages:
-```bash
-qit package:list
-```
-
-### Conflicting Requirements
-
-```
-Error: Package requires WooCommerce >=9.0.0 but environment has 8.5.0
-```
-
-Adjust environment or package versions:
-```bash
-# Use compatible package version
---test-package=stripe/gateway-tests:2.0.0  # Supports WooCommerce 8.x
-```
-
-### Test Interference
-
-If tests seem to interfere despite isolation:
-1. Check for external dependencies (APIs, files)
-2. Verify packages don't modify shared resources
-3. Report issue - isolation should prevent this
+Packages run sequentially, with each package adding to the total execution time. The database snapshot and restore operations between packages ensure isolation but add a few seconds of overhead. Plan your CI pipeline timeouts accordingly when running multiple packages.
 
 ---
 

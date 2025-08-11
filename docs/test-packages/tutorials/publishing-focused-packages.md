@@ -1,6 +1,6 @@
-# Publishing Focused Test Packages from Your E2E Suite
+# Publishing Focused Test Packages
 
-Sometimes you want to share specific test scenarios from your larger E2E suite as standalone packages. For example, publishing just your checkout tests so other extensions can verify they don't break your checkout flow.
+Learn how to share specific test scenarios from your E2E suite using subpackages.
 
 ## The Problem
 
@@ -9,39 +9,58 @@ You have a comprehensive E2E suite with dozens of tests, but you want to:
 - Let others test compatibility with your critical flows
 - Keep your internal tests private while sharing key scenarios
 
-## The Solution: Playwright Projects
+## The Solution: Subpackages
 
-Use Playwright's project configuration to create focused test packages from your main suite.
+QIT's subpackages feature lets you publish multiple focused test packages from a single codebase.
 
-## Example: Extracting Checkout Tests
+## Quick Example
 
-### Your Main E2E Structure
+### Step 1: Define Subpackages in Your Manifest
 
+Update your `tests/e2e/qit-test.json`:
+
+```json
+{
+  "package": "your-extension/e2e",
+  "description": "Complete E2E test suite",
+  "test": {
+    "phases": {
+      "globalSetup": ["./scripts/setup.sh"],
+      "run": ["npx playwright test"]
+    },
+    "results": {
+      "ctrf-json": "./results/ctrf.json"
+    }
+  },
+  "subpackages": {
+    "your-extension/checkout": {
+      "description": "Checkout flow tests for compatibility testing",
+      "tags": ["checkout", "critical"],
+      "test": {
+        "phases": {
+          "run": ["npx playwright test --project=checkout"]
+        }
+      }
+    },
+    "your-extension/cart": {
+      "description": "Cart operations tests",
+      "tags": ["cart"],
+      "test": {
+        "phases": {
+          "run": ["npx playwright test --project=cart"]
+        }
+      }
+    }
+  }
+}
 ```
-your-plugin/
-├── tests/
-│   └── e2e/
-│       ├── qit-test.json           # Your main package
-│       ├── playwright.config.js     # Multiple projects defined
-│       ├── package.json
-│       └── tests/
-│           ├── checkout/
-│           │   ├── guest-checkout.spec.js
-│           │   ├── customer-checkout.spec.js
-│           │   └── payment-methods.spec.js
-│           ├── cart/
-│           │   └── cart-operations.spec.js
-│           ├── admin/
-│           │   └── settings.spec.js
-│           └── api/
-│               └── webhooks.spec.js
-```
 
-### Step 1: Configure Playwright Projects
+### Step 2: Configure Playwright Projects
 
-In your `playwright.config.js`, define projects for different test groups:
+Align your Playwright projects with your subpackages:
 
 ```javascript
+// playwright.config.js
 export default {
   testDir: './tests',
   
@@ -55,10 +74,6 @@ export default {
       testMatch: /cart\/.*.spec.js/,
     },
     {
-      name: 'admin',
-      testMatch: /admin\/.*.spec.js/,
-    },
-    {
       name: 'all',
       testMatch: /.*.spec.js/,
     }
@@ -68,185 +83,121 @@ export default {
 };
 ```
 
-### Step 2: Create a Focused Package
-
-Create a new directory for your shareable checkout package:
+### Step 3: Publish All Packages
 
 ```bash
-mkdir -p tests/packages/checkout
+# This publishes the parent and all subpackages with the same version
+qit package:publish tests/e2e --version=latest
+
+# Creates:
+# - your-extension/e2e:latest (full suite)
+# - your-extension/checkout:latest (checkout tests only)
+# - your-extension/cart:latest (cart tests only)
 ```
 
-### Step 3: Create the Focused Manifest
+## How Others Use Your Packages
 
-Create `tests/packages/checkout/qit-test.json`:
-
-```json
-{
-  "package": "your-extension-slug/checkout",
-  "description": "Checkout flow tests for compatibility testing",
-  "test": {
-    "phases": {
-      "run": [
-        "cd ../../e2e && npx playwright test --project=checkout"
-      ]
-    },
-    "results": {
-      "ctrf-json": "../../e2e/results/ctrf.json",
-      "blob-dir": "../../e2e/results/blob"
-    }
-  }
-}
-```
-
-### Step 4: Add Package Dependencies
-
-Create a minimal `tests/packages/checkout/package.json`:
-
-```json
-{
-  "name": "your-extension-checkout-tests",
-  "version": "1.0.0",
-  "description": "Checkout compatibility tests",
-  "scripts": {
-    "test": "cd ../../e2e && npx playwright test --project=checkout"
-  }
-}
-```
-
-### Step 5: Test Your Focused Package
+Other developers can now test against specific parts of your suite:
 
 ```bash
-# Test the focused package
-qit run:e2e your-extension-slug --test-package=./tests/packages/checkout
+# Test checkout compatibility
+qit run:e2e their-plugin --test-package=your-extension/checkout:latest
 
-# Verify it only runs checkout tests
-```
-
-### Step 6: Publish the Focused Package
-
-```bash
-qit package:publish ./tests/packages/checkout --version=latest
-```
-
-## Alternative: Symlink Approach
-
-If you want to avoid path navigation, use symlinks:
-
-```bash
-cd tests/packages/checkout
-ln -s ../../e2e/playwright.config.js .
-ln -s ../../e2e/tests/checkout tests
-ln -s ../../e2e/node_modules .
-```
-
-Then your manifest can be simpler:
-
-```json
-{
-  "package": "your-extension-slug/checkout",
-  "test": {
-    "phases": {
-      "run": ["npx playwright test"]
-    },
-    "results": {
-      "ctrf-json": "./results/ctrf.json",
-      "blob-dir": "./results/blob"
-    }
-  }
-}
-```
-
-## Best Practices
-
-### What to Share
-
-**Good candidates for focused packages:**
-- Critical user flows (checkout, cart, account)
-- Integration points (payment gateways, shipping)
-- API endpoints other plugins might call
-- Data structures others depend on
-
-**Keep private:**
-- Internal admin workflows
-- Business logic tests
-- Performance benchmarks
-- Security test scenarios
-
-### Versioning Strategy
-
-Your focused packages can be published independently:
-
-```bash
-# Main E2E suite (could be private or public)
-tests/e2e/  # Published as your-extension-slug/e2e:latest
-
-# Focused packages (public)
-tests/packages/checkout/  # Published as your-extension-slug/checkout:latest
-tests/packages/api/       # Published as your-extension-slug/api:latest
-```
-
-### Documentation
-
-Include a README in each published package:
-
-```markdown
-# Checkout Compatibility Tests
-
-These tests verify that your extension doesn't break our checkout flow.
-
-## What's Tested
-- Guest checkout with default settings
-- Customer checkout with saved payment methods
-- Payment method switching
-
-## Requirements
-- WooCommerce 8.0+
-- Checkout block enabled
-
-## Usage
-qit run:e2e your-plugin --test-package=our-plugin/checkout:latest
+# Test multiple areas (subpackages must use the same version)
+qit run:e2e their-plugin \
+  --test-package=your-extension/checkout:2.0.0 \
+  --test-package=your-extension/cart:2.0.0  # ✅ Same version required
 ```
 
 ## Real-World Example
 
-```bash
-# WooCommerce Stripe might publish:
-woocommerce-stripe/e2e           # Full suite (private)
-woocommerce-stripe/checkout      # Just checkout with Stripe (public)
-woocommerce-stripe/webhooks      # Webhook handling tests (public)
-woocommerce-stripe/3ds           # 3D Secure flows (public)
+Here's how WooCommerce Stripe might structure their packages:
 
-# Other plugins can then test compatibility:
+```json
+{
+  "package": "woocommerce-stripe/e2e",
+  "description": "WooCommerce Stripe Gateway E2E tests",
+  "test": {
+    "phases": {
+      "globalSetup": ["./setup-stripe.sh"],
+      "run": ["npx playwright test"]
+    }
+  },
+  "subpackages": {
+    "woocommerce-stripe/checkout": {
+      "description": "Stripe checkout flow tests",
+      "tags": ["payments", "checkout"],
+      "test": {
+        "phases": {
+          "run": ["npx playwright test --project=checkout"]
+        }
+      }
+    },
+    "woocommerce-stripe/3ds": {
+      "description": "3D Secure authentication tests",
+      "tags": ["payments", "security"],
+      "test": {
+        "phases": {
+          "run": ["npx playwright test --project=3ds"]
+        }
+      }
+    },
+    "woocommerce-stripe/webhooks": {
+      "description": "Webhook handling tests",
+      "tags": ["api", "webhooks"],
+      "test": {
+        "phases": {
+          "run": ["npx playwright test --project=webhooks"]
+        }
+      }
+    }
+  }
+}
+```
+
+Other plugins can then test compatibility:
+
+```bash
 qit run:e2e my-checkout-plugin \
   --test-package=woocommerce-stripe/checkout:latest \
   --test-package=woocommerce-stripe/3ds:latest
 ```
 
-## Troubleshooting
+## What to Share vs Keep Private
 
-### "Tests not found"
+### Good Candidates for Subpackages
 
-Make sure your Playwright project name matches exactly:
-```bash
-npx playwright test --list --project=checkout
-```
+- **Critical user flows**: Checkout, cart, account management
+- **Integration points**: Payment processing, shipping calculations
+- **API endpoints**: REST/GraphQL endpoints others might use
+- **Data structures**: Order formats, customer data structures
 
-### Path Resolution Issues
+### Keep Private
 
-Use absolute paths in CI environments:
-```json
-"run": ["cd $QIT_PACKAGE_DIR/../../e2e && npx playwright test --project=checkout"]
-```
+- Internal admin workflows
+- Business logic tests
+- Performance benchmarks
+- Security test scenarios
+- Experimental features
 
-### Results Not Collected
+## Key Benefits
 
-Ensure result paths point to where Playwright actually writes them:
-```json
-"results": {
-  "ctrf-json": "../../e2e/results/ctrf.json"
-}
-```
+1. **Single codebase**: Maintain one test suite, publish multiple packages
+2. **Version consistency**: All subpackages version together, ensuring compatibility
+3. **Selective sharing**: Share what's useful, keep the rest private
+4. **Easy consumption**: Others use subpackages like any other test package
+
+## Important Notes
+
+- Subpackages always version together with their parent
+- They share the same global setup/teardown
+- Each subpackage runs in isolation with database restore between them
+- QIT optimizes by downloading the shared artifact only once
+
+## Learn More
+
+For advanced subpackage concepts and constraints, see [Subpackages Concepts](../concepts/subpackages.md).
 
 ---
 
-**Summary:** You can extract and publish focused test packages from your main E2E suite using Playwright projects. This lets you share critical test scenarios while keeping your full suite private.
+**Summary:** Subpackages let you publish focused test sets from your main E2E suite, making it easy to share critical test scenarios while keeping your full test suite to yourself.
