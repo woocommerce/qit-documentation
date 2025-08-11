@@ -6,33 +6,35 @@ Learn how QIT orchestrates multiple Test Packages to test real-world plugin comb
 
 When you run multiple Test Packages together, QIT:
 1. Sets up the environment once
-2. Runs each package in isolation
-3. Aggregates all results
-4. Ensures no test contamination
+2. Runs global setup phase for all packages
+3. Takes a database snapshot
+4. Runs each package in isolation (with DB restore between packages)
+5. Runs global teardown phase for all packages
+6. Aggregates all results
 
 ## Basic Multi-Package Testing
 
 ### Running Two Packages
 
 ```bash
-# Your tests + WooCommerce tests
+# Your tests + another extension's tests
 qit run:e2e your-extension-slug \
-  --test-package=./your-tests \
-  --test-package=woocommerce/checkout-tests
+  --test-package=./tests/e2e \
+  --test-package=another-extension/e2e:latest
 ```
 
 Output shows both packages:
 ```
 Running 2 Test Packages:
-  1. your-plugin/your-tests (local)
-  2. woocommerce/checkout-tests:8.5.0
+  1. your-extension-slug/e2e (local)
+  2. another-extension/e2e:latest
 
-[Package 1/2: your-plugin/your-tests]
+[Package 1/2: your-extension-slug/e2e]
 ✓ Setup phase
 ✓ 3 tests passed
 ✓ Teardown phase
 
-[Package 2/2: woocommerce/checkout-tests]
+[Package 2/2: another-extension/e2e]
 ✓ Setup phase
 ✓ 5 tests passed
 ✓ Teardown phase
@@ -43,34 +45,71 @@ Combined Results:
 - Failed: 0
 ```
 
-### Testing Payment Gateway Compatibility
+### Testing Multiple Extension Compatibility
 
 ```bash
-# Test your plugin with multiple payment gateways
+# Test your extension with multiple other extensions
 qit run:e2e your-extension-slug \
-  --test-package=./your-tests \
-  --test-package=woocommerce-stripe/gateway-tests:3.0.0 \
-  --test-package=woocommerce-paypal-payments/checkout-tests:latest \
-  --test-package=woocommerce-square/payments-tests:2.1.0
+  --plugin=woocommerce-stripe \
+  --plugin=woocommerce-subscriptions \
+  --test-package=./tests/e2e \
+  --test-package=woocommerce-stripe/e2e:latest \
+  --test-package=woocommerce-subscriptions/e2e:latest
 ```
 
 ## Understanding Orchestration
 
-### Execution Order
+When multiple Test Packages run together, QIT follows a specific execution order to ensure proper isolation and consistency. The diagram below illustrates how QIT orchestrates the execution of two packages, showing the global setup/teardown phases that run once for all packages, and the database snapshot/restore operations that provide isolation between each package's execution.
+
+<div align="center">
 
 ```mermaid
-graph TD
-    A[Environment Setup] --> B[Global Setup]
-    B --> C[Package 1: Setup]
-    C --> D[Package 1: Run Tests]
-    D --> E[Package 1: Teardown]
-    E --> F[DB Snapshot Restore]
-    F --> G[Package 2: Setup]
-    G --> H[Package 2: Run Tests]
-    H --> I[Package 2: Teardown]
-    I --> J[Global Teardown]
-    J --> K[Aggregate Results]
+flowchart TD
+    A[Environment Setup]:::global 
+    B[Global Setup - All Packages]:::global
+    C[DB Export/Snapshot]:::db
+    
+    A --> B
+    B --> C
+    
+    subgraph P1["📦 Package 1"]
+        direction TB
+        D[Setup]:::package1
+        E[Run Tests]:::package1
+        F[Teardown]:::package1
+        D --> E --> F
+    end
+    
+    C --> P1
+    P1 --> G[DB Snapshot Restore]:::db
+    
+    subgraph P2["📦 Package 2"]
+        direction TB
+        H[Setup]:::package2
+        I[Run Tests]:::package2
+        J[Teardown]:::package2
+        H --> I --> J
+    end
+    
+    G --> P2
+    
+    K[Global Teardown - All Packages]:::global
+    L[Aggregate Results]:::global
+    
+    P2 --> K
+    K --> L
+    
+    classDef global fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef db fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef package1 fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef package2 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
 ```
+
+</div>
+
+### Global Setup and Teardown
+
+The global setup phase runs once before any package executes, and global teardown runs once after all packages complete. This is where shared environment preparation happens (like installing plugins, configuring settings, etc.).
 
 ### Database Isolation
 
@@ -93,83 +132,52 @@ test('list products', async ({ page }) => {
 
 ## Real-World Scenarios
 
-### Scenario 1: Subscription + Payments
+### Scenario 1: Testing with Payment Extensions
 
-Test subscription renewals with different payment methods:
-
-```bash
-qit run:e2e your-subscription-addon \
-  --test-package=./subscription-tests \
-  --test-package=woocommerce-subscriptions/renewal-tests:5.5.0 \
-  --test-package=woocommerce-stripe/subscription-tests:latest \
-  --test-package=woocommerce-paypal-payments/recurring-tests:latest
-```
-
-### Scenario 2: Multi-Currency Checkout
-
-Test currency switching with various payment gateways:
+Test your extension with payment gateways:
 
 ```bash
 qit run:e2e your-extension-slug \
-  --test-package=./currency-tests \
-  --test-package=woocommerce-multi-currency/switcher-tests:1.0.0 \
-  --test-package=woocommerce-stripe/multi-currency-tests:3.0.0 \
-  --test-package=woocommerce-product-price-based-on-countries/currency-tests:2.0.0
+  --plugin=woocommerce-stripe \
+  --plugin=woocommerce-subscriptions \
+  --test-package=./tests/e2e \
+  --test-package=woocommerce-stripe/e2e:latest \
+  --test-package=woocommerce-subscriptions/e2e:latest
 ```
 
-### Scenario 3: The Kitchen Sink
+### Scenario 2: Testing Extension Compatibility
 
-Test everything your customer reported:
+Test your extension works with other popular extensions:
 
 ```bash
-# Customer says: "Checkout breaks with Subscriptions + Stripe + EU VAT"
 qit run:e2e your-extension-slug \
-  --test-package=./your-tests \
-  --test-package=woocommerce-subscriptions/checkout-tests \
-  --test-package=woocommerce-stripe/gateway-tests \
-  --test-package=woocommerce-eu-vat-assistant/tax-tests \
+  --plugin=woocommerce-product-addons \
+  --plugin=woocommerce-bookings \
+  --test-package=./tests/e2e
+```
+
+### Scenario 3: Reproducing Customer Issues
+
+Test with specific versions to match customer environment:
+
+```bash
+# Customer reports issue with specific setup
+qit run:e2e your-extension-slug \
+  --plugin=woocommerce-subscriptions \
+  --plugin=woocommerce-stripe \
+  --test-package=./tests/e2e \
   --wp=6.4 --woo=8.5  # Match customer's versions
 ```
 
-## Advanced Package Selection
+## Working with Multiple Local Packages
 
-### Using Wildcards
-
-Run all tests from a namespace:
+If you've organized your tests into multiple packages:
 
 ```bash
-# Run all WooCommerce test packages
+# Run your main tests plus focused packages
 qit run:e2e your-extension-slug \
-  --test-package=woocommerce/*:latest
-```
-
-### Version Matrices
-
-Test across versions:
-
-```bash
-# Test with multiple Stripe versions
-qit run:e2e your-plugin \
-  --test-package=stripe/gateway-tests:2.0.0 \
-  --test-package=stripe/gateway-tests:3.0.0
-```
-
-### Conditional Packages
-
-Use different packages for different environments:
-
-```bash
-# For production testing
-qit run:e2e your-plugin \
-  --test-package=./smoke-tests \
-  --test-package=woocommerce/critical-flows
-
-# For comprehensive testing
-qit run:e2e your-plugin \
-  --test-package=./full-suite \
-  --test-package=woocommerce/checkout-tests \
-  --test-package=woocommerce/account-tests \
-  --test-package=woocommerce/admin-tests
+  --test-package=./tests/e2e \
+  --test-package=./tests/packages/checkout
 ```
 
 ## Interpreting Combined Results
@@ -267,9 +275,9 @@ Use consistent versions for related packages:
 Error: Package stripe/gateway-tests not found
 ```
 
-Check available versions:
+Check available packages:
 ```bash
-qit package:info stripe/gateway-tests
+qit package:list
 ```
 
 ### Conflicting Requirements

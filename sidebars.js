@@ -16,7 +16,7 @@ const sidebars = {
         {
             type: 'category',
             label: 'Test Packages',
-            collapsed: false,  // Keep open - this is the hero feature
+            collapsed: true,
             items: [
                 'test-packages/index',
                 {
@@ -27,6 +27,7 @@ const sidebars = {
                         'test-packages/tutorials/quickstart',
                         'test-packages/tutorials/sharing-packages',
                         'test-packages/tutorials/combining-packages',
+                        'test-packages/tutorials/publishing-focused-packages',
                     ],
                 },
                 {
@@ -80,19 +81,6 @@ const sidebars = {
         },
         {
             type: 'category',
-            label: 'Test Configuration',
-            collapsed: true,
-            items: [
-                'configuration/index',
-                'configuration/qit-json',
-                'configuration/profiles',
-                'configuration/environments',
-                'configuration/groups',
-                'configuration/extension-sets',
-            ],
-        },
-        {
-            type: 'category',
             label: 'Managed Tests',
             collapsed: true,
             items: [
@@ -106,6 +94,19 @@ const sidebars = {
                 'managed-tests/malware',
                 'managed-tests/validation',
                 'managed-tests/plugin-check',
+            ],
+        },
+        {
+            type: 'category',
+            label: 'Test Configuration',
+            collapsed: true,
+            items: [
+                'configuration/index',
+                'configuration/qit-json',
+                'configuration/profiles',
+                'configuration/environments',
+                'configuration/groups',
+                'configuration/extension-sets',
             ],
         },
         {

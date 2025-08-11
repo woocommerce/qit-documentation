@@ -4,32 +4,28 @@ Learn how to share your Test Package with the WordPress ecosystem through the QI
 
 ## Prerequisites
 
-- A working Test Package (from the [quickstart](quickstart.md))
+- A working Test Package (from the quickstart)
 - QIT CLI authenticated
 - Package tested locally
 
 ## Before Publishing
 
-### 1. Verify Your Package Works
+### Verify Your Package Works
 
 ```bash
-# Run locally (replace with your extension slug)
-qit run:e2e your-extension-slug --test-package=.
-
-# Test with different WordPress versions
-qit run:e2e your-extension-slug --test-package=. --wp=6.4
-qit run:e2e your-extension-slug --test-package=. --wp=rc
+# From your plugin root directory
+qit run:e2e your-extension-slug --test-package=./tests/e2e
 ```
 
-### 2. Add Package Metadata
+### Add Package Metadata (Optional)
 
-Enhance your `qit-test.json` with helpful information:
+Enhance your `tests/e2e/qit-test.json` with helpful information:
 
 ```json
 {
-  "package": "your-extension-slug/checkout-tests",
-  "description": "Tests checkout flow with custom fields",
-  "tags": ["checkout", "e-commerce", "payments"],
+  "package": "your-extension-slug/e2e",
+  "description": "E2E tests for Your Extension",
+  "tags": ["e2e", "woocommerce"],
   "requires": {
     "plugins": {
       "woocommerce": ">=8.0.0"
@@ -39,208 +35,66 @@ Enhance your `qit-test.json` with helpful information:
 }
 ```
 
-### 3. Document Your Package
-
-Create a `README.md`:
-
-```markdown
-# My Plugin Checkout Tests
-
-Tests the checkout flow with custom billing fields.
-
-## What It Tests
-- Adding products to cart
-- Custom billing field validation
-- Order completion flow
-
-## Requirements
-- WooCommerce 8.0+
-- WordPress 6.0+
-
-## Usage
-```bash
-qit run:e2e your-extension-slug --test-package=your-extension-slug/checkout-tests
-```
-```
-
 ## Publishing to the Registry
 
-### Step 1: Validate Your Package
+### Publish Your Package
 
 ```bash
-qit package:validate .
-```
-
-This checks:
-- ✓ Valid manifest structure
-- ✓ Required fields present
-- ✓ Namespace availability
-- ✓ Version constraints valid
-
-### Step 2: Publish
-
-```bash
-qit package:publish . --version=1.0.0
+qit package:publish ./tests/e2e --version=latest
 ```
 
 Output:
 ```
-Publishing your-extension-slug/checkout-tests:1.0.0...
+Publishing your-extension-slug/e2e:latest...
 ✓ Package validated
 ✓ Tests verified
 ✓ Uploaded to registry
 
 Published successfully!
-Others can now use: your-extension-slug/checkout-tests:1.0.0
+Others can now use: your-extension-slug/e2e:latest
 ```
 
-### Step 3: Verify Publication
+:::tip Version Management
+By default, just use `:latest` for continuous updates. If you're publishing from GitHub Actions or other CI/CD, you can tag specific versions (e.g., `1.0.0`, `nightly`, `rc`) as part of your existing release process.
+:::
+
+### Verify Publication
 
 ```bash
-# Search for your package
-qit package:search my-plugin
+# List available packages
+qit package:list
 
-# Get package info
-qit package:info your-extension-slug/checkout-tests
+# Download your published package to verify
+qit package:download your-extension-slug/e2e:latest
 ```
 
-## Version Management
-
-### Semantic Versioning
-
-Follow semantic versioning for your packages:
-
-- **1.0.0** → Initial release
-- **1.0.1** → Bug fixes
-- **1.1.0** → New features (backward compatible)
-- **2.0.0** → Breaking changes
-
-### Publishing Updates
+## Publishing Updates
 
 ```bash
-# Publish patch version
-qit package:publish . --version=1.0.1
-
-# Publish minor version
-qit package:publish . --version=1.1.0
-
-# Publish with tags
-qit package:publish . --version=2.0.0 --tag=latest --tag=stable
+# Just publish again - it overwrites automatically
+qit package:publish ./tests/e2e --version=latest
 ```
+
+Each publish overwrites the previous version. Users always get your most recent tests.
 
 ## How Others Use Your Package
 
 Once published, anyone can use your package:
 
 ```bash
-# Use specific version
-qit run:e2e woocommerce-bookings \
-  --test-package=woocommerce-subscriptions/checkout-tests:1.0.0
+# Use your package (defaults to :latest)
+qit run:e2e some-extension \
+  --test-package=your-extension-slug/e2e
 
-# Use latest
-qit run:e2e woocommerce-bookings \
-  --test-package=woocommerce-subscriptions/checkout-tests:latest
+# Explicitly specify latest
+qit run:e2e some-extension \
+  --test-package=your-extension-slug/e2e:latest
 
 # Combine with other packages
-qit run:e2e woocommerce-bookings \
-  --test-package=woocommerce-subscriptions/checkout-tests \
-  --test-package=woocommerce-stripe/gateway-tests
+qit run:e2e some-extension \
+  --test-package=your-extension-slug/e2e:latest \
+  --test-package=another-extension/e2e:latest
 ```
-
-## Best Practices
-
-### 1. Clear Naming
-
-Use descriptive names that indicate what's tested:
-- ✅ `checkout-tests`
-- ✅ `multi-currency-tests`
-- ❌ `tests`
-- ❌ `my-tests`
-
-### 2. Version Compatibility
-
-Specify requirements clearly:
-```json
-"requires": {
-  "plugins": {
-    "woocommerce": ">=8.0.0 <9.0.0"
-  }
-}
-```
-
-### 3. Meaningful Tags
-
-Use tags to help discovery:
-```json
-"tags": ["payments", "stripe", "subscriptions", "checkout"]
-```
-
-### 4. Keep Tests Focused
-
-Each package should test one aspect well:
-- ✅ One package for checkout
-- ✅ Another for refunds
-- ❌ One package testing everything
-
-## Updating Published Packages
-
-### Non-Breaking Updates
-
-For bug fixes and improvements:
-
-```bash
-# Make changes
-vim tests/checkout.spec.js
-
-# Test locally
-qit run:e2e your-plugin --test-package=.
-
-# Publish patch
-qit package:publish . --version=1.0.1
-```
-
-### Breaking Changes
-
-When changing test structure:
-
-1. Publish new major version
-2. Maintain old version for compatibility
-3. Document migration path
-
-```bash
-# Publish v2 while v1 remains available
-qit package:publish . --version=2.0.0
-
-# Users can choose version
---test-package=woocommerce-subscriptions/checkout-tests:1.0.0  # Old
---test-package=woocommerce-subscriptions/checkout-tests:2.0.0  # New
-```
-
-## Troubleshooting
-
-### Package Already Exists
-
-```
-Error: Package woocommerce-subscriptions/checkout-tests already exists
-```
-
-Solution: Use a different package name or publish a new version.
-
-### Namespace Not Owned
-
-```
-Error: You don't own namespace 'my-plugin'
-```
-
-Solution: Use your vendor namespace or request ownership.
-
-### Tests Fail During Validation
-
-```
-Error: Package tests failed validation
-```
-
-Solution: Ensure tests pass locally before publishing.
 
 ---
 
