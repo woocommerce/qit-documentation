@@ -34,12 +34,17 @@ graph TD
     TP --> Market
     Market --> Users[👥 Users<br/>Install and Update with Confidence]
     
-    style Dev fill:#e1f5fe
-    style Gate fill:#fff3e0,stroke:#f9a825,stroke-width:3px
-    style MT fill:#f3e5f5
-    style TP fill:#f3e5f5
-    style Market fill:#e8f5e9
-    style Users fill:#e0f2f1
+    classDef developer fill:#e1f5fe,stroke:#0288d1,stroke-width:2px,color:#01579b
+    classDef gateway fill:#fff3e0,stroke:#f9a825,stroke-width:3px,color:#f57f17
+    classDef tests fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#4a148c
+    classDef market fill:#e8f5e9,stroke:#388e3c,stroke-width:2px,color:#1b5e20
+    classDef users fill:#e0f2f1,stroke:#00796b,stroke-width:2px,color:#004d40
+    
+    class Dev developer
+    class Gate gateway
+    class MT,TP tests
+    class Market market
+    class Users users
 ```
 
 </div>

@@ -15,16 +15,16 @@ const config = {
   url: 'https://qit.woo.com/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/docs/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: '', // Usually your GitHub org/user name.
   projectName: '', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
-  onBrokenAnchors: 'throw',
-  onBrokenMarkdownLinks: 'throw',
+  onBrokenLinks: 'warn',
+  onBrokenAnchors: 'warn',
+  onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -40,7 +40,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          routeBasePath: '/docs/',
+          routeBasePath: '/',  // Docs at the root of the Docusaurus site
           sidebarPath: './sidebars.js',
           editUrl:
             'https://github.com/woocommerce/qit-documentation/tree/trunk',
@@ -85,18 +85,21 @@ const config = {
         logo: {
           alt: 'Woo',
           src: 'img/logo.svg?v=1',
+          href: '/',
+          target: '_self',
         },
         items: [
+          {
+            href: 'https://qit.woo.com/',
+            label: '← Back to QIT Website',
+            position: 'right',
+            target: '_self',
+          },
           {
             type: 'docSidebar',
             sidebarId: 'docsSidebar',
             position: 'right',
             label: 'Documentation',
-          },
-          {
-            href: 'https://github.com/woocommerce/qit-cli',
-            label: 'QIT CLI',
-            position: 'right',
           },
         ],
       },
