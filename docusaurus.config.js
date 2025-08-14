@@ -120,6 +120,11 @@ const config = {
         indexName: 'qit-woo',
         contextualSearch: false,
       },
+      colorMode: {
+          defaultMode: 'dark',          // start in dark mode
+          respectPrefersColorScheme: false, // ignore system preference
+          disableSwitch: false,         // keep the toggle (set true to force dark)
+      },
       mermaid: {
         theme: {light: 'neutral', dark: 'dark'},
         options: {
