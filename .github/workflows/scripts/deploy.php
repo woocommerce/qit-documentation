@@ -16,6 +16,20 @@ if ( ! file_exists( getenv( 'FILE' ) ) ) {
 	throw new RuntimeException( sprintf( "File %s does not exist", getenv( 'FILE' ) ) );
 }
 
+// Determine deployment target
+$deploy_target = getenv( 'DEPLOY_TARGET' ) ?: 'production';
+$deploy_urls = [
+	'production' => 'https://qit.woo.com',
+	'staging'    => 'https://stagingcompatibilitydashboard.wpcomstaging.com',
+];
+
+if ( ! isset( $deploy_urls[ $deploy_target ] ) ) {
+	throw new RuntimeException( sprintf( "Invalid DEPLOY_TARGET '%s'. Must be 'production' or 'staging'", $deploy_target ) );
+}
+
+$deploy_url = $deploy_urls[ $deploy_target ];
+echo sprintf( "🎯 Deploying to %s: %s\n", $deploy_target, $deploy_url );
+
 $file = new SplFileObject( getenv( 'FILE' ) );
 
 $chunk_size_bytes = 8 * 1024 * 1024; // 8mb
@@ -27,7 +41,7 @@ while ( $file->valid() ) {
 	$current_chunk ++;
 	$curl = curl_init();
 	$args = [
-		CURLOPT_URL            => 'https://qit.woo.com',
+		CURLOPT_URL            => $deploy_url,
 		CURLOPT_POST           => true,
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_FOLLOWLOCATION => true,
