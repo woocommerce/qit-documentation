@@ -2,6 +2,15 @@ name: Deploy QIT Docs
 
 on:
   workflow_dispatch: # Allows manual triggering of the workflow.
+    inputs:
+      deploy_target:
+        description: 'Deployment target'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
   push:
     branches:
       - trunk
@@ -44,3 +53,4 @@ jobs:
         env:
           DOCS_SECRET: ${{ secrets.DOCS_SECRET }}
           FILE: ${{ github.workspace }}/docs.zip
+          DEPLOY_TARGET: ${{ github.event.inputs.deploy_target || (github.ref == 'refs/heads/trunk' && 'production' || 'staging') }}
