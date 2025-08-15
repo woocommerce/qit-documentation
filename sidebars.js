@@ -48,6 +48,7 @@ const sidebars = {
                     label: 'Concepts',
                     collapsed: true,
                     items: [
+                        'test-packages/concepts/global-setup',
                         'test-packages/concepts',
                         'test-packages/lifecycle',
                         'test-packages/manifest',
