@@ -36,6 +36,27 @@ Test packages can include an optional `requires_network` field in their manifest
 
 💡 **Tip**: Most tests don't need network, so the default works perfectly!
 
+## Scope of Network Restriction
+
+**The network restriction only applies to WordPress HTTP API requests** (e.g., `wp_remote_get()`, `wp_remote_post()`, etc.). 
+
+### What IS Blocked (in offline mode)
+- WordPress HTTP API calls (`wp_remote_*` functions)
+- WordPress update checks
+- Plugin/theme external API calls using WordPress functions
+
+### What is NOT Blocked
+- **Playwright tests** - Browser automation runs on the host
+- **Bash scripts** - Commands like `curl`, `wget` work normally
+- **Direct PHP** - Functions like `file_get_contents()`, `curl_*` work
+- **Docker networking** - Container-to-container communication
+- **Database connections** - MySQL/MariaDB connections
+
+This is a **measured compromise** that balances:
+- **Reliability**: Preventing unpredictable WordPress external calls
+- **Functionality**: Allowing test tools to work properly  
+- **Practicality**: Focusing on the main source of test flakiness
+
 ## Automatic Network Management
 
 ### The Magic of Auto Mode (Default)
