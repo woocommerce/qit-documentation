@@ -61,6 +61,7 @@ const sidebars = {
                     collapsed: true,
                     items: [
                         'test-packages/commands',
+                        'test-packages/reference/network-requirements',
                         'test-packages/results',
                         'test-packages/examples',
                     ],
