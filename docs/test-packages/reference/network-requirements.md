@@ -46,6 +46,7 @@ Test packages can include an optional `requires_network` field in their manifest
 - Plugin/theme external API calls using WordPress functions
 
 ### What is NOT Blocked
+- **WP-CLI commands** - CLI contexts retain network access for package operations
 - **Playwright tests** - Browser automation runs on the host
 - **Bash scripts** - Commands like `curl`, `wget` work normally
 - **Direct PHP** - Functions like `file_get_contents()`, `curl_*` work
