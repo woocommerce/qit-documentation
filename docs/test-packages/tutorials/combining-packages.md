@@ -79,10 +79,10 @@ flowchart TD
     P2 --> K
     K --> L
     
-    classDef global fill:#e1f5fe,stroke:#01579b,stroke-width:2px
-    classDef db fill:#fff3e0,stroke:#e65100,stroke-width:2px
-    classDef package1 fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
-    classDef package2 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+    classDef global fill:#e1f5fe,stroke:#0288d1,stroke-width:2px,color:#01579b
+    classDef db fill:#fff3e0,stroke:#f9a825,stroke-width:2px,color:#f57f17
+    classDef package1 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#4a148c
+    classDef package2 fill:#e8f5e9,stroke:#388e3c,stroke-width:2px,color:#1b5e20
 ```
 
 </div>
