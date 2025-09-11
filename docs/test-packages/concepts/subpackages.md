@@ -1,6 +1,6 @@
-# Subpackages: Publishing Multiple Test Variants
+# Subpackages: Publishing Test Subsets
 
-Subpackages allow you to publish multiple focused test packages from a single codebase, each targeting specific test scenarios while sharing the same underlying test suite.
+Subpackages allow you to publish focused test subsets from a single codebase, each selecting specific tests to run while sharing the same test infrastructure and environment setup.
 
 ## Core Philosophy
 
@@ -8,11 +8,11 @@ Subpackages allow you to publish multiple focused test packages from a single co
 
 They exist to solve a practical problem: you have a comprehensive test suite, but you want to share only specific, relevant tests with the ecosystem. Instead of maintaining separate test suites, you publish multiple packages from one codebase.
 
-Think of subpackages like **camera lenses**:
-- The camera (parent package) is your complete test infrastructure
-- Different lenses (subpackages) give different views
-- You can quickly swap lenses (run different subpackages)
-- But it's still the same camera (shared codebase)
+Think of subpackages like **playlists from an album**:
+- The album (parent package) is your complete test suite
+- Different playlists (subpackages) select different songs
+- All playlists use the same audio setup and equipment
+- But each playlist chooses which songs to play
 
 ## When to Use Subpackages
 
@@ -20,8 +20,9 @@ Use subpackages when you want to:
 - Share specific test scenarios (checkout, cart, API) from your comprehensive E2E suite
 - Allow others to test compatibility with your critical flows
 - Provide focused test sets without exposing your entire test suite
-- Create utility packages for environment setup
 - Maintain a single codebase while publishing multiple test packages
+
+**Important:** Subpackages are pure subsets - they can only select which tests to run, not change how the environment is configured. If you need different setup/teardown, create separate test packages instead.
 
 ## How Subpackages Work
 
@@ -62,19 +63,6 @@ Define subpackages in your main `qit-test.json`:
           "run": ["npx playwright test --grep @critical"]
         }
       }
-    },
-    "woocommerce/setup-multisite": {
-      "description": "Configure multisite environment",
-      "tags": ["utility", "multisite"],
-      "test": {
-        "phases": {
-          "globalSetup": [
-            "./scripts/setup-woo.sh",
-            "./scripts/enable-multisite.sh"
-          ]
-          // No run phase - this is a utility package
-        }
-      }
     }
   }
 }
@@ -108,15 +96,17 @@ qit run:e2e my-plugin \
   --test-package=woocommerce/checkout:latest \
   --test-package=woocommerce/minimal:latest
 
-# Use a utility subpackage for environment setup
-qit env:up --global-setup woocommerce/setup-multisite:latest
+# Run multiple test subsets
+qit run:e2e my-plugin \
+  --test-package=woocommerce/checkout:latest \
+  --test-package=woocommerce/api:latest
 ```
 
-## The globalSetup Model
+## Phase Inheritance Model
 
-### Inheritance and Override
+### Automatic Inheritance
 
-Subpackages inherit the parent's `globalSetup` by default but **can override it** when needed:
+Subpackages automatically inherit ALL phases from the parent except `run`, which they must override to select their test subset:
 
 ```json
 {
@@ -133,20 +123,18 @@ Subpackages inherit the parent's `globalSetup` by default but **can override it*
     "woocommerce/checkout": {
       "test": {
         "phases": {
-          // Inherits parent's globalSetup
+          // Automatically inherits all parent phases
+          // Only override run to select test subset
           "run": ["npx playwright test checkout/"]
         }
       }
     },
-    "woocommerce/hpos": {
+    "woocommerce/api": {
       "test": {
         "phases": {
-          "globalSetup": [
-            "./scripts/dismiss-onboarding.sh",
-            "./scripts/configure-basics.sh",
-            "./scripts/enable-hpos.sh"  // Additional setup
-          ],
-          "run": ["npx playwright test hpos/"]
+          // Automatically inherits all parent phases
+          // Only override run to select test subset
+          "run": ["npx playwright test api/"]
         }
       }
     }
@@ -154,40 +142,13 @@ Subpackages inherit the parent's `globalSetup` by default but **can override it*
 }
 ```
 
-### De-duplication
+### Why This Model Works
 
-When multiple subpackages run together, QIT collects all `globalSetup` commands and de-duplicates them:
-
-```
-Parent globalSetup:
-  - dismiss-onboarding.sh
-  - configure-basics.sh
-
-Subpackage 1 globalSetup:
-  - dismiss-onboarding.sh    [duplicate]
-  - configure-basics.sh      [duplicate]
-  - enable-hpos.sh           [unique]
-
-Subpackage 2 globalSetup:
-  - dismiss-onboarding.sh    [duplicate]
-  - setup-stripe.sh          [unique]
-
-Result - Runs once in order:
-  1. dismiss-onboarding.sh
-  2. configure-basics.sh
-  3. enable-hpos.sh
-  4. setup-stripe.sh
-```
-
-This creates ONE shared environment with all necessary setup, then takes a single database snapshot that all packages use as their baseline.
-
-### Why De-duplication Works
-
-Since subpackages are variants of the same test suite:
-- They need the same foundational setup
-- Additional commands are complementary, not conflicting
-- Order is preserved within each package's commands
-- The result is a complete environment for all tests
+Since subpackages are pure subsets of the parent:
+- They all need the exact same environment setup
+- They all need the same teardown procedures
+- Only the test selection differs between them
+- This ensures consistent test environments across all subsets
 
 ## Key Characteristics
 
@@ -229,11 +190,11 @@ tests/e2e/
 
 | Phase | Inherited from Parent | Override Allowed | Notes |
 |-------|----------------------|------------------|-------|
-| globalSetup | Yes | Yes | Commands are de-duplicated |
-| globalTeardown | Yes | Yes | Commands are de-duplicated |
-| setup | No | N/A | Must be explicit per package |
-| run | No | N/A | Must be explicit (or omit for utilities) |
-| teardown | No | N/A | Must be explicit per package |
+| globalSetup | Yes | No | Always inherited from parent |
+| globalTeardown | Yes | No | Always inherited from parent |
+| setup | Yes | No | Always inherited from parent |
+| run | No | Required | Must override to select test subset |
+| teardown | Yes | No | Always inherited from parent |
 
 ## Runtime Optimizations
 
@@ -338,74 +299,26 @@ Provide minimal smoke tests:
 }
 ```
 
-### Utility Packages
 
-Create environment modifiers without tests:
+### Test Selection Patterns
 
-```json
-{
-  "subpackages": {
-    "myplugin/setup-heavy": {
-      "description": "Generate heavy test data",
-      "test": {
-        "phases": {
-          "globalSetup": [
-            "./scripts/dismiss-onboarding.sh",
-            "wp post generate --count=1000",
-            "wp user generate --count=100"
-          ]
-          // No run phase - utility package
-        }
-      }
-    },
-    "myplugin/setup-multisite": {
-      "description": "Configure multisite network",
-      "test": {
-        "phases": {
-          "globalSetup": [
-            "./scripts/dismiss-onboarding.sh",
-            "./scripts/enable-multisite.sh"
-          ]
-          // No run phase - utility package
-        }
-      }
-    }
-  }
-}
-```
-
-Usage:
-```bash
-# Set up environment with heavy data
-qit env:up --global-setup myplugin/setup-heavy:latest
-
-# Or use in testing
-qit run:e2e other-plugin \
-  --test-package=myplugin/setup-heavy:latest \
-  --test-package=other-plugin/performance:latest
-```
-
-### Feature Configuration Testing
-
-Test different feature configurations:
+Select different test subsets:
 
 ```json
 {
   "subpackages": {
     "myplugin/blocks": {
-      "description": "Tests with WooCommerce Blocks enabled",
+      "description": "Block-related tests",
       "test": {
         "phases": {
-          "setup": ["wp option set woocommerce_blocks_enabled yes"],
           "run": ["npx playwright test --project=blocks"]
         }
       }
     },
     "myplugin/classic": {
-      "description": "Tests with Classic checkout",
+      "description": "Classic interface tests",
       "test": {
         "phases": {
-          "setup": ["wp option set woocommerce_blocks_enabled no"],
           "run": ["npx playwright test --project=classic"]
         }
       }
@@ -413,6 +326,8 @@ Test different feature configurations:
   }
 }
 ```
+
+**Note:** If you need different environment configurations (like enabling/disabling features), create separate parent test packages instead of trying to use subpackages.
 
 ## Best Practices
 
@@ -467,9 +382,9 @@ Document what each subpackage tests:
 
 Each subpackage should have a clear, single purpose. Don't create too many subpackages - it creates confusion.
 
-### 5. Share Common Setup
+### 5. Keep Environment Consistent
 
-Most `globalSetup` should be in the parent or duplicated across subpackages. Unique setup commands should be the exception, not the rule.
+All setup and teardown must be in the parent package. Subpackages exist only to select which tests to run from the parent's test suite.
 
 ## Migration from Separate Packages
 
@@ -527,7 +442,7 @@ Benefits:
       "description": "Payment flow tests",
       "test": {
         "phases": {
-          // Inherits parent's globalSetup (not declared)
+          // Inherits all parent phases automatically
           "run": ["npx playwright test checkout/"]
         }
       }
@@ -536,24 +451,17 @@ Benefits:
       "description": "3D Secure authentication tests",
       "test": {
         "phases": {
-          "globalSetup": [
-            "./scripts/dismiss-onboarding.sh",      // Must re-declare
-            "./scripts/configure-stripe-basic.sh",   // Must re-declare
-            "./scripts/enable-3ds.sh"                // Additional
-          ],
+          // Inherits all parent phases automatically
           "run": ["npx playwright test 3ds/"]
         }
       }
     },
-    "woocommerce-stripe/setup": {
-      "description": "Configure Stripe for other tests",
+    "woocommerce-stripe/refunds": {
+      "description": "Refund flow tests",
       "test": {
         "phases": {
-          "globalSetup": [
-            "./scripts/dismiss-onboarding.sh",       // Must re-declare
-            "./scripts/configure-stripe-full.sh"     // Different config
-          ]
-          // No run phase - utility package
+          // Inherits all parent phases automatically
+          "run": ["npx playwright test refunds/"]
         }
       }
     }
@@ -565,4 +473,4 @@ Benefits:
 
 Subpackages are a **publishing optimization** that allows you to share different aspects of your test suite without maintaining multiple codebases. They're not a complex architectural concept - they're a simple tool for creating multiple packages from one source of truth.
 
-The key insight: **one codebase, multiple publishes, shared infrastructure**.
+The key insight: **one codebase, one environment setup, multiple test selections**.
