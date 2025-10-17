@@ -113,28 +113,241 @@ Define reusable WordPress/PHP/WooCommerce combinations:
 
 ### Installing Plugins
 
+Plugins can be specified in multiple ways depending on their source:
+
+#### Simple Format (WordPress.org)
+
 ```json
 "plugins": [
-  // Simple: from WordPress.org
   "woocommerce-subscriptions",
-  
-  // Detailed: specific source and version
+  "contact-form-7"
+]
+```
+
+#### Detailed Format with Source Options
+
+```json
+"plugins": [
+  // Specific version from WordPress.org
   {
     "slug": "stripe",
     "from": "wporg",
     "version": "3.0.0"
   },
+
+  // From WooCommerce.com (requires authentication)
+  {
+    "slug": "woocommerce-bookings",
+    "from": "wccom",
+    "version": "stable"
+  },
+
+  // From URL
   {
     "slug": "my-private-plugin",
     "from": "url",
     "url": "https://example.com/plugin.zip"
   },
+
+  // From local directory
   {
-    "slug": "local-plugin",
+    "slug": "my-dev-plugin",
     "from": "local",
-    "path": "../local-plugin"
+    "path": "../my-plugin"
+  },
+
+  // From local zip file
+  {
+    "slug": "pre-release-plugin",
+    "from": "local",
+    "path": "../builds/plugin-v2.0.0.zip"
   }
 ]
+```
+
+#### Local Path Options
+
+Local paths can be:
+- **Relative**: Resolved relative to the qit.json file location
+- **Absolute**: Used as-is
+- **Directory**: Must contain the plugin's main PHP file
+- **Zip file**: Will be extracted automatically
+
+```json
+"plugins": [
+  // Relative path to directory
+  {
+    "slug": "my-plugin",
+    "from": "local",
+    "path": "./build/my-plugin"
+  },
+
+  // Relative path to zip
+  {
+    "slug": "my-plugin",
+    "from": "local",
+    "path": "../releases/my-plugin.zip"
+  },
+
+  // Absolute path
+  {
+    "slug": "my-plugin",
+    "from": "local",
+    "path": "/Users/developer/projects/my-plugin"
+  }
+]
+```
+
+### Understanding Plugin Sources: CLI vs Configuration vs SUT
+
+There are three main ways to provide plugins to QIT, each serving different purposes:
+
+#### 1. CLI Parameters (`--plugin`)
+
+Use CLI parameters for quick overrides or one-off additions:
+
+```bash
+# Simple slug (infers from WordPress.org)
+qit env:up --plugin=woocommerce
+
+# Local path (directory or zip)
+qit env:up --plugin=./my-plugin.zip
+qit env:up --plugin=/absolute/path/to/plugin
+
+# Explicit slug with path (recommended for local plugins)
+qit env:up --plugin=my-plugin@./builds/my-plugin.zip
+
+# Multiple plugins
+qit env:up --plugin=woocommerce --plugin=./custom-plugin.zip
+```
+
+**When to use CLI parameters:**
+- Quick testing with different plugin combinations
+- Overriding configuration file settings
+- One-time test runs
+- CI/CD pipelines with dynamic plugin versions
+
+**How path resolution works:**
+- Relative paths (e.g., `./plugin`, `../builds/plugin.zip`) are resolved from current working directory
+- Absolute paths are used as-is
+- If no explicit slug is provided, QIT infers it from the path basename (with warnings)
+
+#### 2. Configuration File (qit.json)
+
+Use configuration files for consistent, repeatable test environments:
+
+```json
+{
+  "environments": {
+    "default": {
+      "plugins": [
+        "woocommerce",
+        {
+          "slug": "my-plugin",
+          "from": "local",
+          "path": "../my-plugin"
+        }
+      ]
+    }
+  }
+}
+```
+
+**When to use configuration files:**
+- Shared team configurations
+- Consistent test environments across runs
+- Multiple environment definitions (staging, production, etc.)
+- Complex plugin setups with specific versions
+
+**How path resolution works:**
+- Relative paths are resolved relative to the qit.json file location
+- Absolute paths are used as-is
+- Slug must be explicitly specified in detailed format
+
+#### 3. System Under Test (SUT)
+
+Use SUT configuration for the plugin you're actively testing:
+
+```json
+{
+  "sut": {
+    "type": "plugin",
+    "slug": "my-plugin",
+    "source": {
+      "type": "local",
+      "path": "./build",
+      "build": "npm run build"
+    }
+  }
+}
+```
+
+**When to use SUT:**
+- The primary plugin/theme being tested
+- Automatically includes build steps
+- Higher priority than other plugins
+- Replaces the need for `--zip` CLI parameter
+
+**Key differences:**
+- SUT is installed first and has highest priority
+- SUT can include build commands
+- Only one SUT per configuration
+- SUT is typically version-controlled with your project
+
+#### Comparison Table
+
+| Aspect | CLI `--plugin` | Configuration File | SUT |
+|--------|---------------|-------------------|-----|
+| **Use Case** | Quick overrides | Consistent environments | Primary test target |
+| **Path Resolution** | From current directory | From qit.json location | From qit.json location |
+| **Priority** | Overrides config | Base configuration | Highest priority |
+| **Build Support** | No | No | Yes (optional) |
+| **Multiple Allowed** | Yes | Yes | No (one SUT only) |
+| **Best For** | CI/CD, quick tests | Team sharing | Your plugin under test |
+
+#### Examples: Choosing the Right Approach
+
+**Scenario 1: Testing your plugin with WooCommerce**
+```json
+{
+  "sut": {
+    "type": "plugin",
+    "slug": "my-payment-gateway",
+    "source": {
+      "type": "local",
+      "path": "./build"
+    }
+  },
+  "environments": {
+    "default": {
+      "plugins": ["woocommerce"]
+    }
+  }
+}
+```
+
+**Scenario 2: Quick test with a pre-release plugin**
+```bash
+qit env:up --plugin=./downloads/pre-release-plugin.zip
+```
+
+**Scenario 3: Team-wide compatibility testing**
+```json
+{
+  "environments": {
+    "default": {
+      "plugins": [
+        "woocommerce",
+        "woocommerce-subscriptions",
+        {
+          "slug": "internal-plugin",
+          "from": "local",
+          "path": "../internal-plugins/payment-gateway"
+        }
+      ]
+    }
+  }
+}
 ```
 
 ## Test Types and Profiles

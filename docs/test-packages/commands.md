@@ -34,7 +34,7 @@ qit run:e2e woocommerce --php=8.2
 | `--php` | PHP version | `8.1` |
 | `--wordpress`, `--wp` | WordPress version | `latest` |
 | `--woocommerce`, `--woo` | WooCommerce version | `latest` |
-| `--plugin` | Additional plugins to install | None |
+| `--plugin` | Additional plugins to install (see below) | None |
 | `--theme` | Additional themes to install | None |
 | `--zip` | Use a custom ZIP/directory/URL as the SUT build | None |
 | `--test-package` | Test packages to include (multiple allowed) | `[]` |
@@ -70,10 +70,78 @@ qit run:e2e woocommerce -- --ui
 # Tests will run without sharding
 ```
 
-**Important**: 
+**Important**:
 - Everything before `--` is handled by QIT
 - Everything after `--` is passed to test framework commands in the `run` phase
 - Arguments are only passed to `run` phase commands, not to `setup`, `teardown`, etc.
+
+### Installing Plugins with --plugin
+
+The `--plugin` option supports multiple formats for maximum flexibility:
+
+#### Simple Slug (WordPress.org)
+```bash
+# Single plugin
+qit run:e2e woocommerce --plugin=woocommerce-subscriptions
+
+# Multiple plugins
+qit run:e2e woocommerce --plugin=woocommerce-payments --plugin=contact-form-7
+```
+
+#### Local Paths
+```bash
+# Local directory
+qit run:e2e woocommerce --plugin=./my-plugin
+
+# Local zip file
+qit run:e2e woocommerce --plugin=./builds/my-plugin.zip
+
+# Absolute path
+qit run:e2e woocommerce --plugin=/Users/developer/plugins/my-plugin.zip
+```
+
+#### Explicit Slug Format (Recommended for Local Plugins)
+
+When using local paths, QIT infers the slug from the filename. To ensure the correct slug is used, specify it explicitly:
+
+```bash
+# Format: slug@path
+qit run:e2e woocommerce --plugin=my-plugin@./builds/my-plugin-v2.0.0.zip
+
+# Avoids slug inference warnings
+qit run:e2e woocommerce --plugin=payment-gateway@../payment-gateway
+```
+
+**Why use explicit slugs?**
+- Prevents slug inference errors
+- Handles version numbers in filenames correctly (e.g., `plugin-1.2.3.zip`)
+- Makes intent clear and maintainable
+- Required when filename doesn't match plugin slug
+
+#### Path Resolution
+
+- **Relative paths** (`./plugin`, `../builds/plugin.zip`): Resolved from current working directory
+- **Absolute paths** (`/full/path/to/plugin`): Used as-is
+- **Configuration file paths**: Resolved relative to qit.json location
+
+#### Examples
+
+```bash
+# Testing with development version of a plugin
+qit run:e2e woocommerce \
+  --plugin=woocommerce-payments \
+  --plugin=my-plugin@./dist/my-plugin.zip
+
+# CI pipeline with dynamic version
+qit run:e2e woocommerce \
+  --plugin=my-plugin@./artifacts/my-plugin-${VERSION}.zip
+
+# Multiple test dependencies
+qit run:e2e woocommerce \
+  --plugin=woocommerce-subscriptions \
+  --plugin=test-helper@./test-plugins/helper.zip \
+  --plugin=./local-dev/custom-extension
+```
 
 ### Exit Codes
 
@@ -161,10 +229,12 @@ qit env:up woocommerce --php=8.2 --wordpress=6.4
 | `--php` | PHP version | `8.1` |
 | `--wordpress`, `--wp` | WordPress version | `latest` |
 | `--woocommerce`, `--woo` | WooCommerce version | `latest` |
-| `--plugin` | Additional plugins to install | None |
+| `--plugin` | Additional plugins to install (same format as run:e2e) | None |
 | `--theme` | Additional themes to install | None |
 | `--skip_activating_plugins` | Skip activating plugins | `false` |
 | `--skip_activating_themes` | Skip activating themes | `false` |
+
+**Note:** The `--plugin` option works the same as in `run:e2e`. See the "Installing Plugins with --plugin" section above for detailed usage.
 
 ### With Global Setup
 
