@@ -38,6 +38,11 @@ Groups map test types to profile arrays:
 }
 ```
 
+**Naming Rules:**
+- Group names, test type names, and profile names must use only alphanumeric, hyphens (`-`), underscores (`_`)
+- No spaces or special characters
+- See [Validation Rules](validation-rules.md#naming-constraints)
+
 ## Common Group Patterns
 
 ### CI Pipeline Groups

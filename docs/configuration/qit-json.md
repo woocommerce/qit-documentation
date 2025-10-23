@@ -105,11 +105,35 @@ Define reusable WordPress/PHP/WooCommerce combinations:
 |--------|------------|---------|
 | `wp` | WordPress version | `"6.4"`, `"stable"`, `"rc"` |
 | `woo` | WooCommerce version | `"8.5"`, `"stable"`, `"nightly"` |
-| `php` | PHP version | `"7.4"`, `"8.0"`, `"8.3"` |
+| `php` | PHP version (format: X.Y or X.Y.Z) | `"7.4"`, `"8.0"`, `"8.3.1"` |
 | `plugins` | Additional plugins | See below |
 | `themes` | Additional themes | Similar to plugins |
 | `object_cache` | Enable Redis | `true`, `false` |
 | `php_extensions` | PHP extensions | `["imagick", "redis"]` |
+| `volumes` | Docker volume mappings | `["/local/path:/container/path"]` |
+| `envs` | Environment variables | `{"WP_DEBUG": "true"}` |
+| `global_setup` | Utility packages to run in global setup | `["./setup-package"]` |
+
+### PHPStan Analysis Level
+
+When configuring PHPStan test profiles, the `phpstan_level` must be an integer between 0 (lowest) and 9 (highest strictness):
+
+```json
+{
+  "phpstan": {
+    "basic": {
+      "phpstan_level": 5     // Valid: 0-9
+    },
+    "strict": {
+      "phpstan_level": 9
+    }
+  }
+}
+```
+
+See [Validation Rules](validation-rules.md#phpstan-analysis-level) for details.
+
+---
 
 ### Installing Plugins
 
@@ -492,15 +516,17 @@ Here's a real-world `qit.json`:
         ]
       },
       "compatibility-matrix": {
-        "test_packages": ["./tests/smoke"],
-        "matrix": {
-          "environments": ["minimum", "recommended", "latest"]
-        }
+        "test_packages": ["./tests/smoke"]
+
+        // [PLANNED] Matrix testing across environments
+        // "matrix": {
+        //   "environments": ["minimum", "recommended", "latest"]
+        // }
       }
     },
     "security": {
       "scan": {
-        "severity": "medium"
+        // "severity": "medium"  // [PLANNED] Minimum severity filter
       }
     }
   },
@@ -597,6 +623,39 @@ Share templates for common scenarios:
   // ... customizations
 }
 ```
+
+## Validation and Naming Rules
+
+### Naming Constraints
+
+All names (environments, profiles, groups, slugs) must follow these rules:
+- **Only** alphanumeric characters, hyphens (`-`), and underscores (`_`)
+- No spaces or special characters allowed
+- Pattern: `^[a-zA-Z0-9_-]+$`
+
+```json
+// ✅ Valid names
+{
+  "environments": {
+    "staging-env": {},
+    "test_server_2": {},
+    "prod123": {}
+  }
+}
+
+// ❌ Invalid names
+{
+  "environments": {
+    "staging env": {},      // Space not allowed
+    "test.server": {},      // Period not allowed
+    "prod@home": {}         // @ not allowed
+  }
+}
+```
+
+See [Validation Rules](validation-rules.md) for complete validation reference.
+
+---
 
 ## Best Practices
 

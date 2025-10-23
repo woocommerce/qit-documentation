@@ -201,9 +201,9 @@ Different tests support different version options. Check with `--help` to see wh
 ```bash
 # Tests that support version selection (woo-e2e, woo-api, etc.)
 qit run:woo-e2e your-extension-slug \
-  --wordpress_version=6.4 \
-  --woocommerce_version=8.5 \
-  --php_version=8.0
+  --wp=6.4 \
+  --woo=8.5 \
+  --php=8.0
 
 # PHPCompatibility has special version range options
 qit run:phpcompatibility your-extension-slug \
