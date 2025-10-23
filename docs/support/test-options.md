@@ -27,7 +27,7 @@ For tests like Activation, Woo E2E, and Woo API, you can choose which WordPress 
 - Release candidates (RC)
 - Previous stable versions (up to the last 4)
 
-Use CLI flags like `--wordpress_version=rc` or `--woocommerce_version=7.0` to toggle these versions. This helps you catch compatibility issues before new versions are released.
+Use CLI flags like `--wp=rc` or `--woo=7.0` to toggle these versions. This helps you catch compatibility issues before new versions are released.
 
 ## WooCommerce features
 
@@ -42,7 +42,7 @@ This ensures you validate how your extension works with emerging WooCommerce fea
 
 Activation, Woo E2E, and Woo API tests also support testing against different PHP versions (e.g., 7.4, 8.0, 8.1, 8.3). Specify:
 ```bash
---php_version=8.0
+--php=8.0
 ```
 
 This helps identify PHP-specific compatibility issues or deprecation notices.
@@ -67,9 +67,9 @@ Extension sets provide a way to run certain managed test types with a predefined
 
 Instead of passing flags every time, define options in `qit.yml` or `qit.json`:
 ```yaml
-wordpress_version: rc
-woocommerce_version: 7.2
-php_version: 8.1
+wp: rc
+woo: 7.2
+php: 8.1
 optional_features:
   - hpos
 plugins:

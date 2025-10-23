@@ -36,10 +36,10 @@ You can specify PHP, WordPress, and WooCommerce versions, as well as plugins and
 
 ```qitbash
 qit env:up \
-    --php_version=8.3 \
+    --php=8.3 \
     --plugin=gutenberg \
     --plugin=contact-form-7 \
-    --wordpress_version=rc
+    --wp=rc
 ```
 
 This command creates an environment running PHP 8.3, the latest release candidate of WordPress, and includes Gutenberg and Contact Form 7 plugins by default.
@@ -49,8 +49,8 @@ This command creates an environment running PHP 8.3, the latest release candidat
 Create a `qit.yml` file in your project directory:
 
 ```yaml
-wordpress_version: rc
-php_version: 8.3
+wp: rc
+php: 8.3
 plugins:
   - gutenberg
   - contact-form-7
@@ -68,10 +68,10 @@ Now running `qit env:up` without extra parameters uses these configurations, ens
 
 ## Env:up options
 
-- `--wordpress_version`: Choose a specific WordPress version.
-- `--php_version`: Test across different PHP versions for better compatibility coverage.
+- `--wp`: Choose a specific WordPress version.
+- `--php`: Test across different PHP versions for better compatibility coverage.
 - `--plugin`: Automatically install and activate given plugins.
-- `--themes`: Specify themes to be included.
-- `--volumes`: Map local directories into the environment, useful for plugin or theme development.
-- `--php_extensions`: Add necessary PHP extensions.
+- `--theme`: Specify themes to be included.
+- `--volume`: Map local directories into the environment, useful for plugin or theme development.
+- `--php_extension`: Add necessary PHP extensions.
 - `--object_cache`: Enable Redis Object Cache for advanced performance testing scenarios.

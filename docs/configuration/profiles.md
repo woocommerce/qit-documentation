@@ -71,6 +71,8 @@ Profiles are organized by test type:
 
 ### Complete Profile
 
+> **Note**: Properties with `[PLANNED]` are future features not yet implemented.
+
 ```json
 {
   "comprehensive": {
@@ -80,8 +82,12 @@ Profiles are organized by test type:
       "woocommerce/checkout-tests:8.5",
       "stripe/gateway-tests:3.0"
     ],
-    "php": "8.2",  // Override environment's PHP
-    "timeout": 1800,  // 30 minutes
+    "php": "8.2",  // Override environment's PHP (format: X.Y or X.Y.Z)
+
+    // [PLANNED] Test timeout in seconds
+    "timeout": 1800,
+
+    // [PLANNED] Retry configuration for flaky tests
     "retry": {
       "times": 2,
       "delay": 10
@@ -100,7 +106,8 @@ Quick validation of critical paths:
 {
   "smoke": {
     "environment": "production",
-    "test_packages": ["./tests/critical"],
+    "test_packages": ["./tests/critical"]
+    // [PLANNED]
     "timeout": 300  // 5 minutes max
   }
 }
@@ -128,10 +135,14 @@ Test with multiple plugins:
 
 Test across versions:
 
+> **Note**: Matrix testing is a planned feature not yet implemented.
+
 ```json
 {
   "matrix-test": {
-    "test_packages": ["./tests"],
+    "test_packages": ["./tests"]
+
+    // [PLANNED] Matrix testing across multiple environments
     "matrix": {
       "environments": ["minimum", "recommended", "latest"]
     }
@@ -198,9 +209,11 @@ For local development:
 {
   "dev": {
     "environment": "local",
-    "test_packages": ["./tests"],
+    "test_packages": ["./tests"]
+
+    // [PLANNED] Debug mode and headful browser
     "debug": true,
-    "headed": true  // Show browser
+    "headed": true
   }
 }
 ```
@@ -213,16 +226,18 @@ For different CI stages:
 {
   "ci-quick": {
     "environment": "staging",
-    "test_packages": ["./tests/smoke"],
-    "timeout": 600
+    "test_packages": ["./tests/smoke"]
+    // [PLANNED] 
+    "timeout": 600  //10 minute timeout
   },
   "ci-full": {
-    "environment": "production", 
+    "environment": "production",
     "test_packages": [
       "./tests",
       "woocommerce/checkout-tests"
-    ],
-    "timeout": 3600
+    ]
+    // [PLANNED]
+    "timeout": 3600  // 1 hour timeout
   }
 }
 ```
@@ -240,7 +255,9 @@ Pre-release validation:
       "woocommerce/checkout-tests",
       "stripe/gateway-tests",
       "paypal/checkout-tests"
-    ],
+    ]
+
+    // [PLANNED] Retry flaky tests once
     "retry": {
       "times": 1
     }
@@ -248,23 +265,65 @@ Pre-release validation:
 }
 ```
 
+## Advanced Features
+
+### Skipping Tests
+
+Use the `tweaks.skip` property to skip specific tests by name or regex pattern:
+
+```json
+{
+  "e2e": {
+    "stable": {
+      "environment": "production",
+      "test_packages": ["./tests"],
+      "tweaks": {
+        "skip": [
+          "test-flaky-feature",           // Skip by exact name
+          "admin-.*-slow",                // Skip by regex pattern
+          "test-requires-external-api"
+        ]
+      }
+    }
+  }
+}
+```
+
+**Use cases:**
+- Skip flaky tests in CI
+- Exclude tests requiring external dependencies
+- Temporarily disable broken tests
+- Filter tests during development
+
+**Pattern matching:**
+- Exact match: `"test-checkout"`
+- Regex: `"test-.*-slow"` matches any test with "slow" in the name
+- Multiple patterns: Array of strings
+
+---
+
 ## Best Practices
 
 ### Naming Conventions
 
-Use descriptive, action-oriented names:
+Use descriptive, action-oriented names.
+
+**Naming Rules:**
+- Only alphanumeric characters, hyphens (`-`), and underscores (`_`)
+- No spaces or special characters
+- See [Validation Rules](validation-rules.md#naming-constraints) for details
 
 ```json
 {
   // Good
-  "test-checkout-with-subscriptions": {},
-  "validate-payment-gateways": {},
-  "smoke-test-critical-paths": {},
-  
+  "test-checkout-with-subscriptions": {},  // ✅ Valid
+  "validate_payment_gateways": {},          // ✅ Valid
+  "smoke-test-v2": {},                      // ✅ Valid
+
   // Avoid
-  "test1": {},
-  "new": {},
-  "final": {}
+  "test1": {},                              // Valid but not descriptive
+  "test checkout": {},                      // ❌ Invalid (space)
+  "my.profile": {}                          // ❌ Invalid (period)
 }
 ```
 
