@@ -73,7 +73,7 @@ QIT provides built-in commands to generate AI-friendly context:
 
 #### Understanding Test Packages
 ```bash
-php qit-cli.php ai-context understanding-test-packages
+php qit-cli.php ai:context understanding-test-packages
 ```
 
 This generates comprehensive documentation about:
@@ -87,7 +87,7 @@ Copy this output and provide it to your AI assistant.
 
 #### Failed Test Context
 ```bash
-php qit-cli.php ai-context failed-e2e
+php qit-cli.php ai:context failed-e2e
 ```
 
 When tests fail, this command generates:
@@ -130,7 +130,7 @@ php qit-cli.php run:e2e woocommerce --config=test.json
 If tests fail:
 ```bash
 # Get failure context
-php qit-cli.php ai-context failed-e2e > failure-context.txt
+php qit-cli.php ai:context failed-e2e > failure-context.txt
 
 # Provide to AI
 "The tests failed with this context: [paste failure-context.txt]
@@ -379,7 +379,7 @@ When asking AI to debug, include:
 
 2. **Capture failure context**
    ```bash
-   php qit-cli.php ai-context failed-e2e > debug.txt
+   php qit-cli.php ai:context failed-e2e > debug.txt
    ```
 
 3. **Ask AI for analysis**
@@ -449,7 +449,7 @@ Requirements:
 
 ## AI Context Files
 
-### Create `.ai-context/qit-guide.md`
+### Create `.ai:context/qit-guide.md`
 
 Store this in your project for quick AI context:
 
@@ -465,7 +465,7 @@ Store this in your project for quick AI context:
 ## Commands Available
 - php qit-cli.php run:e2e [extension] --config=test.json
 - php qit-cli.php env:up [extension]
-- php qit-cli.php ai-context failed-e2e
+- php qit-cli.php ai:context failed-e2e
 - source "$(qit env:source [env-id])"
 
 ## Current Setup
@@ -480,7 +480,7 @@ Store this in your project for quick AI context:
 3. Tests timeout: Check selectors and waits
 ```
 
-### Create `.ai-context/examples.md`
+### Create `.ai:context/examples.md`
 
 Include working examples:
 
@@ -515,7 +515,7 @@ When AI can't solve an issue:
 1. **Check documentation**
    ```bash
    # Generate full docs context
-   php qit-cli.php ai-context understanding-test-packages
+   php qit-cli.php ai:context understanding-test-packages
    ```
 
 2. **Examine working examples**

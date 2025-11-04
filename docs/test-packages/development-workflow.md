@@ -184,7 +184,7 @@ This will:
 When tests fail, get AI-friendly context:
 
 ```bash
-php qit-cli.php ai-context failed-e2e
+php qit-cli.php ai:context failed-e2e
 ```
 
 This generates a comprehensive report including:
@@ -199,7 +199,7 @@ This generates a comprehensive report including:
 Get complete context about Test Packages:
 
 ```bash
-php qit-cli.php ai-context understanding-test-packages
+php qit-cli.php ai:context understanding-test-packages
 ```
 
 This provides:
