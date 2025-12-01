@@ -64,8 +64,9 @@ Define once and reuse:
       "WP_DEBUG": "true",
       "SCRIPT_DEBUG": "true"
     },
-    "global_setup": [
-      "./utility-packages/setup-woocommerce"
+    "utilities": [
+      "./utilities/disable-onboarding",
+      "woocommerce/sample-data:latest"
     ]
   }
 }
@@ -170,14 +171,15 @@ Map local directories into the WordPress environment for development:
 
 Volume format: `local-path:container-path`
 
-### Global Setup Packages
+### Utility Packages
 
-The `global_setup` property specifies **utility test packages** that should run **only their globalSetup phase** to configure the environment, but won't execute tests.
+The `utilities` property specifies **utility packages** that provide environment setup and configuration without running tests.
 
-**What it does:**
-1. Runs the `globalSetup` phase from specified test packages
-2. Changes persist to database snapshot (the baseline for all tests)
-3. Test phases (`run`, `setup`, etc.) are skipped - these are configuration-only packages
+**What are utility packages:**
+- Packages WITHOUT a `run` phase (no test execution)
+- Can be local (`./utilities/name`) or from registry (`vendor/name:version`)
+- Run their `globalSetup` phase to configure the environment
+- Changes persist to database snapshot (the baseline for all tests)
 
 **Example:**
 ```json
@@ -185,10 +187,10 @@ The `global_setup` property specifies **utility test packages** that should run 
   "testing": {
     "wp": "stable",
     "woo": "stable",
-    "global_setup": [
-      "./utility-packages/setup-woocommerce",    // Dismisses onboarding, sets defaults
-      "./utility-packages/configure-stripe",      // Configures payment gateway
-      "./utility-packages/load-sample-data"       // Imports test products/orders
+    "utilities": [
+      "./utilities/disable-onboarding",          // Local utility
+      "woocommerce/sample-data:latest",          // Registry utility (latest version)
+      "vendor/payment-setup:1.2.0"               // Registry utility (specific version)
     ]
   }
 }
@@ -201,11 +203,16 @@ The `global_setup` property specifies **utility test packages** that should run 
 - Import sample/test data (products, orders, customers)
 - Configure integrations with external services
 
-**Key difference from regular test packages:**
-- Environment `global_setup`: Utility packages for environment configuration (no tests run)
-- Regular test packages: Have both globalSetup AND test execution phases
+**Local vs Registry Utilities:**
+- **Local utilities**: `./utilities/name` - Stored in your project
+- **Registry utilities**: `vendor/name:version` - Published to QIT registry, automatically downloaded and cached
 
-See [Test Package Global Setup](../test-packages/concepts/global-setup.md) for detailed explanation of how the globalSetup phase works.
+**Why attach to environments:**
+- Every test using that environment automatically gets the utility setup
+- Clean separation: environment configuration vs test logic
+- Utilities are reusable across projects
+
+See [Utility Packages](../test-packages/utility-packages.md) for detailed documentation on creating, publishing, and using utility packages.
 
 ### Environment Variables
 

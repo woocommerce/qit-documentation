@@ -112,7 +112,7 @@ Define reusable WordPress/PHP/WooCommerce combinations:
 | `php_extensions` | PHP extensions | `["imagick", "redis"]` |
 | `volumes` | Docker volume mappings | `["/local/path:/container/path"]` |
 | `envs` | Environment variables | `{"WP_DEBUG": "true"}` |
-| `global_setup` | Utility packages to run in global setup | `["./setup-package"]` |
+| `utilities` | Utility packages for environment setup | `["./utilities/name", "vendor/name:version"]` |
 
 ### PHPStan Analysis Level
 
