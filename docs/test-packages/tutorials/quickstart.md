@@ -41,6 +41,7 @@ Open `tests/e2e/qit-test.json` to understand your package structure:
 ```json
 {
   "package": "your-extension-slug/e2e",
+  "package_type": "test",
   "test": {
     "phases": {
       "run": ["npx playwright test"]

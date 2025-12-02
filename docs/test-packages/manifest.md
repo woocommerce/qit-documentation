@@ -9,6 +9,7 @@ The `qit-test.json` file defines a test package's behavior, requirements, and in
 ```json
 {
   "package": "your-extension-slug/checkout-tests",
+  "package_type": "test",
   "test": {
     "phases": {
       "run": ["npm test"]
@@ -26,6 +27,7 @@ The `qit-test.json` file defines a test package's behavior, requirements, and in
 ```json
 {
   "package": "namespace/name",
+  "package_type": "test or utility",
   "description": "string",
   "tags": ["array"],
   "test_dir": "string",
@@ -64,7 +66,7 @@ The `qit-test.json` file defines a test package's behavior, requirements, and in
 
 ## Required Fields
 
-These two fields are always required:
+These fields are always required:
 
 ### package
 **Required** | `string`
@@ -74,6 +76,20 @@ Full package identifier in format `namespace/name`. Both namespace and name must
 ```json
 "package": "your-extension-slug/payment-tests"
 ```
+
+### package_type
+**Required** | `string`
+
+Type of package: `"test"` or `"utility"`.
+
+- **`"test"`** - Traditional test packages that execute tests and produce results. Must have a `run` phase and `results` configuration.
+- **`"utility"`** - Configuration and setup packages without test execution. Must NOT have a `run` phase or `results` configuration.
+
+```json
+"package_type": "test"
+```
+
+**Best Practice**: Always explicitly set this field even though QIT can auto-detect package type. Explicit declaration makes your intent clear and prevents accidental misconfiguration.
 
 ### test
 **Required** | `object`
@@ -434,6 +450,7 @@ Any non-zero exit code fails the phase.
 ```json
 {
   "package": "your-extension-slug/checkout-tests",
+  "package_type": "test",
   "description": "WooCommerce checkout flow tests",
   "requires": {
     "secrets": ["STRIPE_TEST_KEY", "STRIPE_TEST_SECRET"],
@@ -474,6 +491,7 @@ Any non-zero exit code fails the phase.
 ```json
 {
   "package": "woocommerce/test-environment",
+  "package_type": "utility",
   "description": "Test environment configuration",
   "test": {
     "phases": {
@@ -500,6 +518,7 @@ Any non-zero exit code fails the phase.
 ```json
 {
   "package": "your-extension-slug/smoke-tests",
+  "package_type": "test",
   "test": {
     "phases": {
       "run": ["npm test"]
@@ -517,6 +536,7 @@ Any non-zero exit code fails the phase.
 ```json
 {
   "package": "woocommerce/disable-onboarding",
+  "package_type": "utility",
   "test": {
     "phases": {
       "globalSetup": [

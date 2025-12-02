@@ -123,6 +123,7 @@ Utility packages attach to environments in your `qit.json` configuration using t
 ```json
 {
   "package": "woocommerce/disable-onboarding",
+  "package_type": "utility",
   "description": "Disable WooCommerce onboarding wizards",
   "test": {
     "phases": {
@@ -140,6 +141,7 @@ Utility packages attach to environments in your `qit.json` configuration using t
 ```json
 {
   "package": "woocommerce/seed-test-data",
+  "package_type": "utility",
   "description": "Create test products and users",
   "test": {
     "phases": {
@@ -159,6 +161,7 @@ Utility packages attach to environments in your `qit.json` configuration using t
 ```json
 {
   "package": "woocommerce-bookings/install-helpers",
+  "package_type": "utility",
   "description": "Install helper plugins for testing",
   "test": {
     "phases": {
@@ -180,6 +183,7 @@ Utility packages attach to environments in your `qit.json` configuration using t
 ```json
 {
   "package": "woocommerce/import-sample-data",
+  "package_type": "utility",
   "description": "Import sample WooCommerce data",
   "test": {
     "phases": {
@@ -333,6 +337,7 @@ qit run:e2e my-plugin --test-package=./tests/checkout
 ```json
 {
   "package": "woocommerce/reset-environment",
+  "package_type": "utility",
   "description": "Reset to clean state",
   "test": {
     "phases": {
@@ -352,6 +357,7 @@ qit run:e2e my-plugin --test-package=./tests/checkout
 ```json
 {
   "package": "woocommerce-stripe/configure-test-mode",
+  "package_type": "utility",
   "description": "Configure Stripe for testing",
   "requires": {
     "secrets": ["STRIPE_TEST_KEY", "STRIPE_TEST_SECRET"]
@@ -372,6 +378,7 @@ qit run:e2e my-plugin --test-package=./tests/checkout
 ```json
 {
   "package": "woocommerce/optimize-for-tests",
+  "package_type": "utility",
   "description": "Optimize WordPress for test performance",
   "test": {
     "phases": {
@@ -392,6 +399,7 @@ qit run:e2e my-plugin --test-package=./tests/checkout
 ```json
 {
   "package": "woocommerce-multilingual/multistore-setup",
+  "package_type": "utility",
   "description": "Configure multi-currency and multi-language",
   "test": {
     "phases": {
@@ -433,6 +441,7 @@ Your utility package must have a valid `qit-test.json`:
 ```json
 {
   "package": "your-namespace/utility-name",
+  "package_type": "utility",
   "description": "Brief description of what this utility does",
   "tags": ["setup", "configuration", "woocommerce"],
   "requires": {

@@ -33,6 +33,7 @@ Define subpackages in your main `qit-test.json`:
 ```json
 {
   "package": "woocommerce/e2e",
+  "package_type": "test",
   "description": "Complete WooCommerce E2E test suite",
   "test": {
     "phases": {
@@ -402,6 +403,7 @@ tests/api/qit-test.json       # Separate package
 // tests/e2e/qit-test.json
 {
   "package": "myplugin/e2e",
+  "package_type": "test",
   "subpackages": {
     "myplugin/checkout": { /* ... */ },
     "myplugin/cart": { /* ... */ },
@@ -428,6 +430,7 @@ Benefits:
 ```json
 {
   "package": "woocommerce-stripe/e2e",
+  "package_type": "test",
   "test": {
     "phases": {
       "globalSetup": [

@@ -10,6 +10,7 @@ Complete, working examples of Test Packages for various scenarios.
 ```json
 {
   "package": "woocommerce/checkout-tests",
+  "package_type": "test",
   "description": "WooCommerce checkout flow tests",
   "test": {
     "phases": {
@@ -142,6 +143,7 @@ test.describe('Checkout Flow', () => {
 ```json
 {
   "package": "woocommerce-stripe/payment-tests",
+  "package_type": "test",
   "description": "Stripe payment gateway integration tests",
   "requires": {
     "secrets": [
@@ -227,6 +229,7 @@ test.describe('Stripe Payments', () => {
 ```json
 {
   "package": "woocommerce/api-tests",
+  "package_type": "test",
   "description": "WooCommerce REST API tests using Playwright",
   "requires": {
     "secrets": ["WC_API_KEY", "WC_API_SECRET"]
@@ -343,6 +346,7 @@ test.describe('WooCommerce API', () => {
 ```json
 {
   "package": "woocommerce/environment-setup",
+  "package_type": "utility",
   "description": "Configure test environment",
   "test": {
     "phases": {
@@ -368,6 +372,7 @@ test.describe('WooCommerce API', () => {
 ```json
 {
   "package": "woocommerce/cleanup",
+  "package_type": "utility",
   "description": "Clean up test data",
   "test": {
     "phases": {
@@ -392,6 +397,7 @@ test.describe('WooCommerce API', () => {
 ```json
 {
   "package": "woocommerce/performance-tests",
+  "package_type": "test",
   "description": "Load and performance tests",
   "test": {
     "phases": {
@@ -446,6 +452,7 @@ export default function() {
 ```json
 {
   "package": "woocommerce/mobile-browser-tests",
+  "package_type": "test",
   "description": "Mobile responsive tests",
   "test": {
     "phases": {
@@ -495,6 +502,7 @@ module.exports = {
 ```json
 {
   "package": "woocommerce/visual-regression",
+  "package_type": "test",
   "description": "Visual regression tests",
   "test": {
     "phases": {
@@ -544,6 +552,7 @@ test.describe('Visual Regression', () => {
 ```json
 {
   "package": "woocommerce/accessibility-tests",
+  "package_type": "test",
   "description": "Accessibility compliance tests",
   "test": {
     "phases": {

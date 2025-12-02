@@ -79,6 +79,7 @@ test('checkout works', async ({ page }) => {
 ```json
 {
   "package": "your-extension-slug/checkout-tests",
+  "package_type": "test",
   "test": {
     "phases": {
       "run": ["npx playwright test"]
