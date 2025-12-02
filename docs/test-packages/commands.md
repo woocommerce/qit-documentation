@@ -241,24 +241,32 @@ qit env:up woocommerce --php=8.2 --wordpress=6.4
 The `--global-setup` flag enables package execution:
 
 ```bash
-qit env:up woocommerce --global-setup --config=utilities.json
+qit env:up --global-setup --config=utilities.json
 ```
 
 Configuration file:
 ```json
 {
-  "test_packages": [
-    "./utilities/disable-onboarding",
-    "./utilities/create-test-data",
-    "./utilities/configure-payment"
-  ]
+  "environments": {
+    "default": {
+      "php": "8.2",
+      "wp": "stable",
+      "woo": "stable",
+      "utilities": [
+        "./utilities/disable-onboarding",
+        "woocommerce/sample-data:latest",
+        "./utilities/configure-payment"
+      ]
+    }
+  }
 }
 ```
 
 This will:
 1. Set up the environment
-2. Run globalSetup from all packages
-3. Leave environment running
+2. Download registry utilities (if any)
+3. Run globalSetup from all utilities
+4. Leave environment running
 
 ### Use Cases
 
@@ -270,14 +278,14 @@ qit env:up my-extension
 
 #### Pre-configured Environment
 ```bash
-# Set up with test data and configuration
-qit env:up my-extension --global-setup --config=setup.json
+# Set up with utilities (local and registry)
+qit env:up --global-setup --config=setup.json
 ```
 
 #### Utility Packages Only
 ```bash
 # Works with only utility packages
-qit env:up my-extension --global-setup --config=utilities.json
+qit env:up --global-setup --config=utilities.json
 ```
 
 ### Differences from run:e2e
@@ -304,6 +312,173 @@ Removes:
 - Temporary files
 - Database dumps
 - Test artifacts
+
+## package:list
+
+List available test packages from the registry.
+
+```bash
+qit package:list [options]
+```
+
+### Basic Usage
+
+```bash
+# List all packages
+qit package:list
+
+# List only utility packages
+qit package:list --type=utility
+
+# List only test packages
+qit package:list --type=test
+
+# Filter by namespace
+qit package:list --namespace=woocommerce
+
+# Combine filters
+qit package:list --type=utility --namespace=woocommerce
+```
+
+### Options
+
+| Option | Description | Values |
+|--------|-------------|--------|
+| `--type` | Filter by package type | `utility`, `test`, `all` (default) |
+| `--namespace` | Filter by namespace | Any string |
+| `--owned-only` | Show only packages you own | Boolean |
+| `--limit` | Packages per page | Number (default: 20) |
+| `--page` | Page number | Number (default: 1) |
+
+### Output
+
+```
+Available Packages
+==================
+
+Package ID                                Version    Visibility
+woocommerce/disable-onboarding:latest    1.0.0      Private     Utility
+woocommerce/checkout-tests:latest        2.1.0      Public
+vendor/payment-tests:latest              1.5.0      Public
+
+Use qit package:download <package-id> to download a package
+Use --type utility to show only utility packages
+```
+
+Utility packages are indicated in the output.
+
+## package:show
+
+Display detailed information about a specific package.
+
+```bash
+qit package:show <package-id> [options]
+```
+
+### Basic Usage
+
+```bash
+# Show package details
+qit package:show woocommerce/disable-onboarding:latest
+
+# JSON output
+qit package:show woocommerce/disable-onboarding:latest --json
+```
+
+### Options
+
+| Option | Description |
+|--------|-------------|
+| `--format` | Output format: `table` or `json` |
+| `--json`, `-j` | Shorthand for `--format=json` |
+
+### Output
+
+```
+Package Details: woocommerce/disable-onboarding:latest
+==========================================================
+
+Basic Information
+-----------------
+ Package ID   woocommerce/disable-onboarding:latest
+ Type         Utility Package
+ Namespace    woocommerce
+ Version      1.0.0
+ Visibility   Public
+
+Description
+-----------
+ Disables WooCommerce onboarding wizards and admin notices
+
+Tags
+----
+ setup, woocommerce, configuration
+
+Requirements
+------------
+  Plugins:
+    • woocommerce
+
+Phases
+------
+  ✓ globalSetup:
+        wp option set woocommerce_task_list_hidden yes
+        wp option set woocommerce_onboarding_profile_completed yes
+  ✗ run: (none - this is a utility package)
+
+Use qit package:download woocommerce/disable-onboarding:latest to download
+Add to your qit.json under "utilities" to use in environments
+```
+
+Shows:
+- Package type (utility vs test)
+- Description and tags
+- Requirements (plugins, themes, secrets)
+- Available phases
+- Usage hints
+
+## package:publish
+
+Publish a test package to the registry.
+
+```bash
+qit package:publish <path> <version>
+```
+
+### Basic Usage
+
+```bash
+# Publish utility package
+qit package:publish ./utilities/disable-onboarding 1.0.0
+
+# Publish test package
+qit package:publish ./tests/e2e 2.1.0
+```
+
+### Output
+
+```
+Publishing woocommerce/disable-onboarding:1.0.0...
+✓ Package validated
+✓ Package type: utility
+✓ Uploaded to registry
+
+Published successfully!
+```
+
+Package type is automatically detected from manifest:
+- No `run` phase = utility package
+- Has `run` phase = test package
+
+## package:download
+
+Download a package from the registry.
+
+```bash
+qit package:download <package-id>
+```
+
+Downloads package to local cache for inspection or local use.
 
 ## Environment Variables
 

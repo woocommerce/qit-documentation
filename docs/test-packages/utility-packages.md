@@ -2,6 +2,47 @@
 
 Utility Packages provide environment setup, configuration, and teardown functionality without running actual tests. They're perfect for preparing test environments, seeding data, and cleaning up after test runs.
 
+Utility packages can be used locally or published to the QIT registry for sharing across teams and projects.
+
+## Quick Start
+
+### Use a Registry Utility
+
+```json
+{
+  "environments": {
+    "default": {
+      "php": "8.2",
+      "wp": "stable",
+      "woo": "stable",
+      "utilities": [
+        "woocommerce/disable-onboarding:latest"
+      ]
+    }
+  }
+}
+```
+
+### Discover Available Utilities
+
+```bash
+# List all utilities in registry
+qit package:list --type=utility
+
+# Show utility details
+qit package:show woocommerce/disable-onboarding:latest
+```
+
+### Publish Your Own Utility
+
+```bash
+# Create utility package (no run phase)
+cd utilities/my-utility
+
+# Publish to registry
+qit package:publish . 1.0.0
+```
+
 ## What are Utility Packages?
 
 A Utility Package is identified by the **absence of a `run` phase** in its manifest. It can have any other phases (globalSetup, setup, teardown, globalTeardown) but no test execution.
@@ -13,6 +54,68 @@ A Utility Package is identified by the **absence of a `run` phase** in its manif
 - **Environment preparation**: Perfect for setup tasks
 - **Shared configuration**: Changes available to all packages
 - **Works with env:up**: Can be used with `--global-setup` flag
+- **Local or Registry**: Can be used from local filesystem or QIT registry
+
+## Attaching Utilities to Environments
+
+Utility packages attach to environments in your `qit.json` configuration using the `utilities` array. This ensures every test using that environment automatically gets the utility setup.
+
+```json
+{
+  "environments": {
+    "default": {
+      "php": "8.2",
+      "wp": "stable",
+      "woo": "stable",
+      "utilities": [
+        "./utilities/disable-onboarding",           // Local utility
+        "woocommerce/woopay-setup:latest",          // Registry utility (latest version)
+        "woocommerce/sample-data:1.2.0"             // Registry utility (specific version)
+      ]
+    },
+    "legacy": {
+      "php": "7.4",
+      "wp": "6.4",
+      "woo": "8.0",
+      "utilities": [
+        "./utilities/disable-onboarding"
+      ]
+    }
+  }
+}
+```
+
+**Why attach to environments?**
+- Utilities configure environments, not tests
+- Every test using that environment automatically gets the utilities
+- Clean separation of concerns: environment vs test logic
+
+### Local vs Registry Utilities
+
+**Local Utilities** - Stored in your project directory:
+```json
+{
+  "utilities": ["./utilities/disable-onboarding"]
+}
+```
+- Perfect for project-specific setup
+- Easy to modify and test
+- No publishing required
+
+**Registry Utilities** - Published to QIT registry:
+```json
+{
+  "utilities": [
+    "woocommerce/disable-onboarding:latest",
+    "woocommerce/woopay-setup:1.2.0",
+    "vendor/utility-name:^1.0"
+  ]
+}
+```
+- Shared across teams and projects
+- Version-controlled
+- Supports semver versioning (latest, 1.2.0, ^1.0, etc.)
+- Automatically downloaded and cached
 
 ## When to Use Utility Packages
 
@@ -98,7 +201,7 @@ A Utility Package is identified by the **absence of a `run` phase** in its manif
 The `env:up` command with `--global-setup` is perfect for utility packages:
 
 ```bash
-php qit-cli.php env:up woocommerce --global-setup --config=utilities.json
+qit env:up --global-setup --config=utilities.json
 ```
 
 ### Configuration Example
@@ -106,12 +209,18 @@ php qit-cli.php env:up woocommerce --global-setup --config=utilities.json
 `utilities.json`:
 ```json
 {
-  "test_packages": [
-    "./utilities/disable-onboarding",
-    "./utilities/seed-test-data",
-    "./utilities/configure-payment",
-    "./utilities/import-sample-data"
-  ]
+  "environments": {
+    "default": {
+      "php": "8.2",
+      "wp": "stable",
+      "woo": "stable",
+      "utilities": [
+        "./utilities/disable-onboarding",
+        "woocommerce/sample-data:latest",
+        "./utilities/configure-payment"
+      ]
+    }
+  }
 }
 ```
 
@@ -119,18 +228,18 @@ php qit-cli.php env:up woocommerce --global-setup --config=utilities.json
 
 1. Environment starts (WordPress, WooCommerce, PHP)
 2. Each utility package's `globalSetup` runs in order
-3. Environment stays running for manual testing
-4. **No test execution** (utility packages have no run phase)
-5. **No database snapshots** (env:up doesn't snapshot)
+3. Registry utilities are automatically downloaded and cached
+4. Environment stays running for manual testing
+5. **No test execution** (utility packages have no run phase)
 
 ### Perfect for Development
 
 ```bash
 # Start environment with all setup done
-php qit-cli.php env:up woocommerce --global-setup --config=dev-setup.json
+qit env:up --global-setup --config=dev-setup.json
 
 # Load environment variables
-source "$(qit env:source qitenv...)"
+source "$(qit env:source <env-id>)"
 
 # Now manually test or develop
 cd my-test-package/
@@ -139,27 +248,53 @@ npx playwright test --ui
 
 ## Utility Packages in Test Runs
 
-### Mixed with Test Packages
+### Automatic Integration
 
-`qit-config.json`:
+When running tests with `qit run:e2e`, utilities from the selected environment are automatically included:
+
 ```json
 {
-  "test_packages": [
-    "./utilities/environment-setup",    // Utility
-    "./tests/checkout",                 // Test
-    "./tests/payment",                  // Test
-    "./utilities/cleanup"               // Utility
-  ]
+  "environments": {
+    "default": {
+      "php": "8.2",
+      "wp": "stable",
+      "woo": "stable",
+      "utilities": [
+        "./utilities/disable-onboarding",
+        "woocommerce/sample-data:latest"
+      ]
+    }
+  },
+  "test_types": {
+    "e2e": {
+      "default": {
+        "test_packages": [
+          "./tests/checkout",
+          "./tests/payment"
+        ]
+      }
+    }
+  }
 }
+```
+
+```bash
+# This automatically includes utilities from "default" environment
+qit run:e2e my-plugin --test-package=./tests/checkout
+
+# Equivalent to running with:
+# - ./utilities/disable-onboarding
+# - woocommerce/sample-data:latest
+# - ./tests/checkout
 ```
 
 ### Execution Order
 
-1. **Secret validation** - All packages checked
+1. **Secret validation** - All packages checked (utilities + tests)
 2. **Global setup** - From ALL packages (utilities and tests)
-3. **Database snapshot** - Baseline created
+3. **Database snapshot** - Baseline created after all globalSetup phases
 4. **Package execution**:
-   - Utility packages: Skip run and results phases
+   - Utility packages: **SKIPPED** (display shows "Skipping package-name (utility package)")
    - Test packages: Execute all phases including run
 
 ### Example Flow
@@ -269,6 +404,135 @@ npx playwright test --ui
     }
   }
 }
+```
+
+## Publishing Utilities to the Registry
+
+Share your utility packages with other teams by publishing them to the QIT registry.
+
+### Publishing a Utility Package
+
+```bash
+# Navigate to utility directory
+cd utilities/disable-onboarding
+
+# Publish to registry
+qit package:publish . 1.0.0
+
+# Output shows:
+# Package type: utility
+# (No test_type shown for utilities)
+```
+
+The package type is automatically detected from your manifest (absence of `run` phase = utility package).
+
+### Manifest Requirements
+
+Your utility package must have a valid `qit-test.json`:
+
+```json
+{
+  "package": "your-namespace/utility-name",
+  "description": "Brief description of what this utility does",
+  "tags": ["setup", "configuration", "woocommerce"],
+  "requires": {
+    "plugins": ["woocommerce"],
+    "themes": ["storefront"],
+    "secrets": ["API_KEY"]
+  },
+  "test": {
+    "phases": {
+      "globalSetup": [
+        "wp option set some_option value"
+      ]
+    }
+  }
+}
+```
+
+**Important:** Utility packages cannot have:
+- `run` phase
+- `results` configuration
+
+## Discovering Registry Utilities
+
+### List Available Utilities
+
+```bash
+# List all utilities
+qit package:list --type=utility
+
+# Search for specific utilities
+qit package:list --type=utility --search=woocommerce
+
+# List only test packages
+qit package:list --type=test
+
+# List all package types
+qit package:list --type=all
+```
+
+### Show Utility Details
+
+```bash
+# View comprehensive package information
+qit package:show woocommerce/disable-onboarding:latest
+
+# Output shows:
+# - Package type: 🔧 Utility Package
+# - Description
+# - Tags
+# - Required plugins, themes, and secrets
+# - Available phases
+# - Usage hints
+
+# JSON format
+qit package:show woocommerce/my-utility:latest --json
+```
+
+The `package:show` command displays:
+- **Basic Information**: Package ID, version, visibility
+- **Description**: What the utility does
+- **Tags**: Categorization for searching
+- **Requirements**: Plugins, themes, secrets needed
+- **Phases**: Which lifecycle phases are implemented
+- **Usage Hints**: How to use the utility in your config
+
+### Example Output
+
+```
+Package Details: woocommerce/disable-onboarding:latest
+==========================================================
+
+Basic Information
+-----------------
+ Package ID   woocommerce/disable-onboarding:latest
+ Type         🔧 Utility Package
+ Namespace    woocommerce
+ Version      1.0.0
+ Visibility   🌐 Public
+
+Description
+-----------
+ Disables WooCommerce onboarding wizards and admin notices
+
+Tags
+----
+ setup, woocommerce, configuration
+
+Requirements
+------------
+  Plugins:
+    • woocommerce
+
+Phases
+------
+  ✓ globalSetup:
+        wp option set woocommerce_task_list_hidden yes
+        wp option set woocommerce_onboarding_profile_completed yes
+
+💡 Use qit package:download woocommerce/disable-onboarding:latest to download
+💡 Add to your qit.json under "utilities" to use in environments
 ```
 
 ## Best Practices
@@ -388,12 +652,21 @@ This is **valid** for a utility package:
 
 ```bash
 # Create a config with just one utility
-echo '{
-  "test_packages": ["./utilities/my-utility"]
-}' > test-utility.json
+cat > test-utility.json <<'EOF'
+{
+  "environments": {
+    "default": {
+      "php": "8.2",
+      "wp": "stable",
+      "woo": "stable",
+      "utilities": ["./utilities/my-utility"]
+    }
+  }
+}
+EOF
 
 # Run it
-php qit-cli.php env:up woocommerce --global-setup --config=test-utility.json
+qit env:up --global-setup --config=test-utility.json
 ```
 
 ### Check Execution
@@ -401,7 +674,8 @@ php qit-cli.php env:up woocommerce --global-setup --config=test-utility.json
 Watch what commands actually run:
 
 ```bash
-php qit-cli.php run:e2e woocommerce --config=utilities.json --verbose
+# Verbose output shows all utility operations
+qit run:e2e woocommerce --config=utilities.json --verbose
 ```
 
 ### Verify Changes
@@ -409,14 +683,17 @@ php qit-cli.php run:e2e woocommerce --config=utilities.json --verbose
 After utility runs, check the environment:
 
 ```bash
+# Get environment ID from env:up output
+source "$(qit env:source <env-id>)"
+
 # Check options
-wp option get woocommerce_task_list_hidden
+qit env:exec <env-id> "wp option get woocommerce_task_list_hidden"
 
 # Check users
-wp user list
+qit env:exec <env-id> "wp user list"
 
 # Check plugins
-wp plugin list --status=active
+qit env:exec <env-id> "wp plugin list --status=active"
 ```
 
 ## Common Issues
