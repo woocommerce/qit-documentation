@@ -33,13 +33,25 @@ qit package:list --type=utility
 qit package:show woocommerce/disable-onboarding:latest
 ```
 
+### Create Your Own Utility
+
+```bash
+# Scaffold a utility package
+qit package:scaffold utilities/my-utility \
+  --package=my-plugin/my-utility:1.0.0 \
+  --package-type=utility
+
+# This creates:
+# - qit-test.json (with setup phases, no run phase)
+# - bootstrap/ scripts for setup/teardown
+# - No Playwright or npm dependencies
+```
+
 ### Publish Your Own Utility
 
 ```bash
-# Create utility package (no run phase)
-cd utilities/my-utility
-
 # Publish to registry
+cd utilities/my-utility
 qit package:publish . 1.0.0
 ```
 

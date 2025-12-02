@@ -75,7 +75,7 @@ When you publish, all packages are created with the same version:
 
 ```bash
 # Publishes the parent and all subpackages
-qit package:publish tests/e2e --version=2.0.0
+qit package:publish tests/e2e 2.0.0
 
 # Creates:
 # - woocommerce/e2e:2.0.0

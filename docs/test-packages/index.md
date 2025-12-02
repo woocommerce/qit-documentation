@@ -154,7 +154,7 @@ You're now testing with **actual tests from actual plugin vendors**, not your as
 qit run:e2e my-plugin --test-package=woocommerce/core-tests:latest
 
 # Or create your own in minutes
-qit package:scaffold ./tests --namespace=my-plugin
+qit package:scaffold ./tests/e2e --package=my-plugin/e2e:1.0.0
 ```
 
 ## The Technical Foundation

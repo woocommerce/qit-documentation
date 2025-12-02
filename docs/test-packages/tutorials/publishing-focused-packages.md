@@ -87,7 +87,7 @@ export default {
 
 ```bash
 # This publishes the parent and all subpackages with the same version
-qit package:publish tests/e2e --version=latest
+qit package:publish tests/e2e latest
 
 # Creates:
 # - your-extension/e2e:latest (full suite)

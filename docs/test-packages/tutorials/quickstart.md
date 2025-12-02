@@ -16,8 +16,13 @@ Create your E2E test package:
 ```bash
 # From your plugin root directory
 # Replace 'your-extension-slug' with the slug of the extension you maintain
-qit package:scaffold tests/e2e --package=your-extension-slug/e2e
+qit package:scaffold tests/e2e --package=your-extension-slug/e2e:1.0.0
+
+# Or explicitly specify package type (defaults to "test")
+qit package:scaffold tests/e2e --package=your-extension-slug/e2e:1.0.0 --package-type=test
 ```
+
+**Note:** For setup/configuration packages without tests, use `--package-type=utility` instead. See [Utility Packages](../utility-packages) for details.
 
 This creates the following structure in your plugin:
 ```

@@ -40,7 +40,7 @@ Enhance your `tests/e2e/qit-test.json` with helpful information:
 ### Publish Your Package
 
 ```bash
-qit package:publish ./tests/e2e --version=latest
+qit package:publish ./tests/e2e latest
 ```
 
 Output:
@@ -72,7 +72,7 @@ qit package:download your-extension-slug/e2e:latest
 
 ```bash
 # Just publish again - it overwrites automatically
-qit package:publish ./tests/e2e --version=latest
+qit package:publish ./tests/e2e latest
 ```
 
 Each publish overwrites the previous version. Users always get your most recent tests.
