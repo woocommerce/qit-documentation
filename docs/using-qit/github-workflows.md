@@ -36,7 +36,7 @@ jobs:
         run: composer global require woocommerce/qit-cli
 
       - name: Add Composer global bin to PATH
-        run: echo "$HOME/.composer/vendor/bin" >> $GITHUB_PATH
+        run: echo "$(composer global config bin-dir --absolute 2>/dev/null)" >> $GITHUB_PATH
 
       - name: Authenticate QIT
         run: qit partner:add --user='${{ secrets.QIT_USER }}' --application_password='${{ secrets.QIT_APP_PASS }}'
