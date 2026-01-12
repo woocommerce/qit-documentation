@@ -29,20 +29,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install PHP & Composer
-        run: sudo apt-get update && sudo apt-get install -y php-cli php-zip unzip
-
       - name: Install QIT CLI
-        run: composer global require woocommerce/qit-cli
+        run: composer require woocommerce/qit-cli
 
       - name: Authenticate QIT
-        run: qit partner:add --user='${{ secrets.QIT_USER }}' --application_password='${{ secrets.QIT_APP_PASS }}'
+        run: ./vendor/bin/qit partner:add --user='${{ secrets.QIT_USER }}' --application_password='${{ secrets.QIT_APP_PASS }}'
 
       - name: Run Activation Test
-        run: qit run:activation your-extension --wait
+        run: ./vendor/bin/qit run:activation your-extension --wait
 
       - name: Run Security Test
-        run: qit run:security your-extension --wait
+        run: ./vendor/bin/qit run:security your-extension --wait
 ```
 
 **Key Points in this Example:**
