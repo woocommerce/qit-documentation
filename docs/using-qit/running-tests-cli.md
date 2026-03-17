@@ -50,12 +50,12 @@ qit env:up
 Once the environment is ready and your custom E2E tests are in place (either locally or uploaded to QIT), run them with:
 
 ```qitbash
-qit run:e2e <extension-slug> --zip=<path-to-zip>
+qit run:e2e <extension-slug> --source=<path-to-zip>
 ```
 
-The `--zip` argument points to a local build of your extension. This installs the extension into the test environment and runs your custom tests against it. Since these tests run locally, you'll see immediate feedback in the terminal.
+The `--source` argument points to a local build of your extension. This installs the extension into the test environment and runs your custom tests against it. Since these tests run locally, you'll see immediate feedback in the terminal.
 
-If you've uploaded your custom tests to QIT's cloud, you can omit the `--zip` argument and run them directly:
+If you've uploaded your custom tests to QIT's cloud, you can omit the `--source` argument and run them directly:
 
 ```qitbash
 qit run:e2e <extension-slug>
