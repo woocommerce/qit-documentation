@@ -24,8 +24,8 @@ If both are present, QIT will prioritize one format (YAML typically has priority
 
 ```json
 {
-  "wordpress_version": "rc",
-  "php_version": "7.4",
+  "wp": "rc",
+  "php": "7.4",
   "plugins": [
     "woocommerce",
     "akismet"
@@ -47,8 +47,8 @@ If both are present, QIT will prioritize one format (YAML typically has priority
 ### YAML example
 
 ```yaml
-wordpress_version: rc
-php_version: 7.4
+wp: rc
+php: 7.4
 plugins:
   - woocommerce
   - akismet
@@ -68,8 +68,8 @@ Place the file (`qit.json` or `qit.yml`) in the root of your project directory. 
 
 ## Overriding with command-line arguments
 
-Command-line flags override config file settings. For example, if `qit.yml` sets `php_version: 7.4` but you run:
-`qit env:up --php_version=8.0`
+Command-line flags override config file settings. For example, if `qit.yml` sets `php: 7.4` but you run:
+`qit env:up --php=8.0`
 the environment will use PHP 8.0 despite the config file.
 
 This allows you to temporarily test different conditions without permanently altering the configuration file.

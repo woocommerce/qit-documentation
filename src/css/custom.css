@@ -73,3 +73,52 @@
 [data-theme='dark'] .token.qit_argument.variable {
   color: #89E2FF !important;
 }
+
+/* Mermaid diagram dark mode fixes */
+[data-theme='dark'] .mermaid .highlight > * {
+  fill: #3d3846 !important;
+  stroke: #f9a825 !important;
+  color: #fff !important;
+}
+
+[data-theme='dark'] .mermaid .success > * {
+  fill: #2e4e3e !important;
+  stroke: #4caf50 !important;
+  color: #fff !important;
+}
+
+/* Ensure text in Mermaid diagrams is readable in dark mode */
+[data-theme='dark'] .mermaid .nodeLabel {
+  color: #fff !important;
+}
+
+/* Dark mode styles for QIT architecture diagram */
+[data-theme='dark'] .mermaid .developer > * {
+  fill: #1e3a5f !important;
+  stroke: #4fc3f7 !important;
+  color: #b3e5fc !important;
+}
+
+[data-theme='dark'] .mermaid .gateway > * {
+  fill: #5d4e37 !important;
+  stroke: #ffb74d !important;
+  color: #ffe0b2 !important;
+}
+
+[data-theme='dark'] .mermaid .tests > * {
+  fill: #4a3c52 !important;
+  stroke: #ba68c8 !important;
+  color: #e1bee7 !important;
+}
+
+[data-theme='dark'] .mermaid .market > * {
+  fill: #2e4e3e !important;
+  stroke: #66bb6a !important;
+  color: #a5d6a7 !important;
+}
+
+[data-theme='dark'] .mermaid .users > * {
+  fill: #224442 !important;
+  stroke: #4db6ac !important;
+  color: #b2dfdb !important;
+}
