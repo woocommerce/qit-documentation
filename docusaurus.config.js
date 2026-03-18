@@ -123,7 +123,7 @@ const config = {
       colorMode: {
           defaultMode: 'dark',          // start in dark mode
           respectPrefersColorScheme: false, // ignore system preference
-          disableSwitch: true,         // keep the toggle (set true to force dark)
+          disableSwitch: false,
       },
       mermaid: {
         theme: {light: 'neutral', dark: 'dark'},
