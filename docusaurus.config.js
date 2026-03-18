@@ -91,15 +91,9 @@ const config = {
         items: [
           {
             href: 'https://qit.woo.com/',
-            label: '← Back to QIT Website',
+            label: 'Home',
             position: 'right',
             target: '_self',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'docsSidebar',
-            position: 'right',
-            label: 'Documentation',
           },
         ],
       },
