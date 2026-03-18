@@ -90,7 +90,7 @@ const config = {
         },
         items: [
           {
-            href: 'https://stagingcompatibilitydashboard.wpcomstaging.com/',
+            href: 'https://qit.woo.com/',
             label: '← Back to QIT Website',
             position: 'right',
             target: '_self',
