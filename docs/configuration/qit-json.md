@@ -10,7 +10,7 @@ The `qit.json` file captures complex QIT commands as reusable, shareable configu
 
 ```json
 {
-  "$schema": "https://qit.woo.com/json-schema/qit",
+  "$schema": "https://raw.githubusercontent.com/woocommerce/qit-cli/trunk/src/src/PreCommand/Schemas/qit-schema.json",
   "sut": {
     // What you're testing
   },
@@ -483,7 +483,7 @@ Here's a real-world `qit.json`:
 
 ```json
 {
-  "$schema": "https://qit.woo.com/json-schema/qit",
+  "$schema": "https://raw.githubusercontent.com/woocommerce/qit-cli/trunk/src/src/PreCommand/Schemas/qit-schema.json",
   
   "sut": {
     "type": "plugin",
@@ -623,7 +623,7 @@ Share templates for common scenarios:
 ```json
 // payment-gateway-template.json
 {
-  "$schema": "https://qit.woo.com/json-schema/qit",
+  "$schema": "https://raw.githubusercontent.com/woocommerce/qit-cli/trunk/src/src/PreCommand/Schemas/qit-schema.json",
   "extends": "https://example.com/base-config.json",
   // ... customizations
 }

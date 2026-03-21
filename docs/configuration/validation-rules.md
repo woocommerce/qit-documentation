@@ -317,12 +317,12 @@ Same validation rules as plugin/theme sources:
 ## Schema Reference
 
 For the complete JSON schema with all validation rules, see:
-`https://qit.woo.com/json-schema/qit`
+`https://raw.githubusercontent.com/woocommerce/qit-cli/trunk/src/src/PreCommand/Schemas/qit-schema.json`
 
 Add to your `qit.json`:
 ```json
 {
-  "$schema": "https://qit.woo.com/json-schema/qit"
+  "$schema": "https://raw.githubusercontent.com/woocommerce/qit-cli/trunk/src/src/PreCommand/Schemas/qit-schema.json"
 }
 ```
 

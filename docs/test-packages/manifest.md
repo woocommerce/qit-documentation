@@ -6,7 +6,7 @@ description: "Complete reference for qit-test.json — the test package manifest
 
 The `qit-test.json` file defines a test package's behavior, requirements, and integration points.
 
-> **IDE Validation**: To enable IDE validation and autocompletion, use `qit package:scaffold` with the `--with-schema` option, or manually add `"$schema": "https://qit.woo.com/json-schema/test-package"` to your manifest.
+> **IDE Validation**: To enable IDE validation and autocompletion, use `qit package:scaffold` with the `--with-schema` option, or manually add `"$schema": "https://raw.githubusercontent.com/woocommerce/qit-cli/trunk/src/src/PreCommand/Schemas/test-package-manifest-schema.json"` to your manifest.
 
 ## Minimal Example
 
