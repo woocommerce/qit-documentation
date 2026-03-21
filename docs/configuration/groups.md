@@ -1,3 +1,7 @@
+---
+description: "Guide to test groups in qit.json. Groups batch multiple test profiles across different test types into a single `qit run:group` command. Covers group structure (maps test type names to arrays of profile names), common patterns for CI pipelines (ci-quick, ci-full) and release stages (alpha, beta, release), and the --only flag to run a specific test type within a group. Naming rules: alphanumeric, hyphens, underscores only."
+---
+
 # Test Groups
 
 Groups allow batch execution of multiple test profiles across different test types.
@@ -98,23 +102,16 @@ qit run:group pre-release
 qit run:group pre-release --only=e2e
 ```
 
-### List Groups
-
-```bash
-qit config:list-groups
-
-Available groups:
-  - ci-quick: Fast CI validation
-  - ci-full: Complete CI suite
-  - pre-release: Release validation
-```
-
 ## Best Practices
 
 - Use descriptive group names
 - Group related test profiles
 - Document group purposes
 - Keep groups maintainable
+
+## CLI Usage
+
+{/* QIT_COMMAND:run:group */}
 
 ## Related Topics
 

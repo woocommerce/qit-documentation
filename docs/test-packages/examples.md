@@ -1,3 +1,7 @@
+---
+description: "Collection of complete, working test package examples. Includes qit-test.json manifests and Playwright test code for: basic checkout tests, payment gateway tests (with Stripe secrets and globalSetup), API test packages, multi-package configurations, performance tests (K6), mobile viewport tests, visual regression tests (screenshot comparison), and accessibility tests (axe-core). Each example shows the full manifest, directory structure, and key test patterns."
+---
+
 # Examples
 
 Complete, working examples of Test Packages for various scenarios.
@@ -279,9 +283,8 @@ test.describe('WooCommerce API', () => {
     const product = await createResponse.json();
     expect(product.name).toBe('Test Product');
     
-    // Verify product exists via UI
-    const page = await context.newPage();
-    await page.goto(`${baseURL}/product/${product.slug}`);
+    // Verify product ID was returned
+    expect(product.id).toBeDefined();
     await expect(page.locator('h1')).toContainText('Test Product');
   });
   
@@ -311,14 +314,14 @@ test.describe('WooCommerce API', () => {
 
 ### Complete Test Suite
 
-`qit-config.json`:
+`qit.json`:
 ```json
 {
   "environments": {
     "default": {
       "php": "8.2",
-      "wordpress": "latest",
-      "woocommerce": "latest"
+      "wp": "stable",
+      "woo": "stable"
     }
   },
   "test_types": {

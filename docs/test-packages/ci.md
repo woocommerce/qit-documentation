@@ -1,3 +1,7 @@
+---
+description: "Guide to running test packages in CI/CD pipelines. Covers CI mode auto-detection (CI=true/1/yes), CI-specific output behavior, and platform-specific examples for GitHub Actions, GitLab CI, Jenkins, CircleCI, Travis CI, Bitbucket Pipelines, and Azure DevOps. Includes Docker integration examples (Dockerfile, docker-compose), optimization strategies (caching, parallel execution, conditional testing, fail-fast), reporting setup (multiple formats, status badges, notifications), debugging CI failures (verbose mode, artifact download, local reproduction), and best practices."
+---
+
 # Continuous Integration
 
 Test Packages are designed for CI/CD environments with automatic output management, parallel execution, and comprehensive reporting.
@@ -80,14 +84,14 @@ Test multiple versions:
 strategy:
   matrix:
     php: ['7.4', '8.0', '8.1', '8.2']
-    wordpress: ['6.3', '6.4', 'latest']
+    wp: ['6.3', '6.4', 'stable']
     
 steps:
   - name: Run Tests
     run: |
       qit run:e2e my-extension \
         --php=${{ matrix.php }} \
-        --wordpress=${{ matrix.wordpress }}
+        --wp=${{ matrix.wp }}
 ```
 
 ### Parallel Execution
@@ -600,6 +604,6 @@ Match CI environment:
 export CI=true
 qit run:e2e my-extension \
   --php=8.2 \
-  --wordpress=6.4 \
+  --wp=6.4 \
   --config=test-config.json
 ```

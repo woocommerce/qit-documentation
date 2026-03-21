@@ -1,3 +1,7 @@
+---
+description: "Guide to developing and debugging test packages locally. Covers the manual testing workflow: start an environment with `qit env:up`, source environment variables with `qit env:source`, run Playwright tests directly with `npx playwright test` or `--ui` mode, iterate on tests without restarting Docker. Includes debugging tips (WordPress debug.log, Playwright traces, browser inspector), environment management (`env:list`, `env:down`, `env:reset`), and how to use AI tools (Claude, Cursor) for test development."
+---
+
 # Development Workflow
 
 This guide covers the recommended workflow for developing Test Packages, including manual testing, debugging, and AI-assisted development.

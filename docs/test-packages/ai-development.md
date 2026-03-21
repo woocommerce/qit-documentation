@@ -1,3 +1,7 @@
+---
+description: "Guide to using AI assistants (Claude, GPT-4, Copilot) for developing test packages. Covers how to provide QIT context to AI (manifest format, lifecycle phases, CTRF requirements), recommended prompts for scaffolding tests, debugging failures, and generating CTRF-compatible output. Includes the `qit ai:context` command for generating context automatically, tips for Claude Code integration with the QIT MCP server, and patterns for iterative test development with AI assistance."
+---
+
 # AI-Assisted Test Development
 
 This guide explains how to leverage AI assistants (like Claude, GPT-4, or GitHub Copilot) to develop Test Packages efficiently.
@@ -28,8 +32,8 @@ I'm developing Test Packages for QIT (Quality Insights Toolkit). Here's what you
 
 ## Manifest Schema
 {
-  "package": "string",
-  "namespace": "string",
+  "package": "namespace/name",
+  "package_type": "test",
   "test_type": "e2e",
   "requires": {
     "secrets": ["array"],

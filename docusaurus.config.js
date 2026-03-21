@@ -5,6 +5,7 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import { duotoneDark, jettwaveDark, nightOwl, oneDark, themes as prismThemes, vsDark } from 'prism-react-renderer';
+import qitCliHelp from './src/remark/qit-cli-help.mjs';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -44,6 +45,9 @@ const config = {
           sidebarPath: './sidebars.js',
           editUrl:
             'https://github.com/woocommerce/qit-documentation/tree/trunk',
+          remarkPlugins: [
+            [qitCliHelp, { qitCliPath: '/storage/qit/qit-cli/src/qit-cli.php' }],
+          ],
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -75,6 +79,13 @@ const config = {
   markdown: {
     mermaid: true,
   },
+  plugins: [
+    ['docusaurus-plugin-llms', {
+      generateLLMsTxt: true,
+      generateLLMsFullTxt: true,
+    }],
+  ],
+
   themes: ['@docusaurus/theme-mermaid'],
 
   themeConfig:

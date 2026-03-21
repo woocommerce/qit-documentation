@@ -1,3 +1,7 @@
+---
+description: "Reference for the `run:phpstan` managed test. Runs PHPStan static analysis at a configurable level (0-9 via --phpstan_level, default 2) to catch type errors, undefined variables, and questionable patterns. Covers expected false positives from WordPress/WooCommerce dynamic features, how to interpret results, and when to ignore warnings. Supports WordPress and WooCommerce version selection and additional plugins. Includes auto-generated CLI usage."
+---
+
 # PHPStan tests
 
 PHPStan is a static code analysis tool designed to catch errors, type issues, and questionable coding patterns. By running PHPStan tests against your extension, QIT provides feedback on code-level improvements that can increase maintainability and reduce the risk of hidden bugs. However, due to the dynamic nature of WordPress and WooCommerce codebases, you may encounter a relatively high number of false positives.
@@ -28,3 +32,8 @@ If you see warnings or failures:
 ## Improving code quality
 
 Tackling PHPStan warnings often results in clearer code and fewer hidden issues. Over time, you may choose to run PHPStan at a higher level locally, catching more subtle issues before pushing updates. Although QIT currently runs it at level 0, raising local analysis levels can help you continuously improve your extension.
+
+
+## CLI Usage
+
+{/* QIT_COMMAND:run:phpstan */}

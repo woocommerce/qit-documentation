@@ -1,3 +1,7 @@
+---
+description: "Core concepts of the test package system. Explains the two package types: test packages (have a run phase, produce CTRF results, contain Playwright tests) and utility packages (no run phase, provide environment setup only). Covers lifecycle phases (globalSetup, setup, run, teardown, globalTeardown), database isolation via snapshots between packages, the CTRF result format, and how packages declare requirements (plugins, PHP version, secrets)."
+---
+
 # Core Concepts
 
 ## Package-Based Architecture
@@ -125,40 +129,23 @@ The orchestrator manages the entire execution flow:
 
 ## Command Execution
 
-Commands in phases can be:
-- Shell commands: `mkdir -p results`
-- WP-CLI commands: `wp plugin install`
-- NPM scripts: `npm test`
-- Custom scripts: `./scripts/setup.sh`
+Commands in phases are auto-detected for execution venue:
+- `npm`/`npx` commands run on the **host** (where Node.js is installed)
+- Everything else runs in the **Docker container** (where WordPress lives)
+- Override with `host:` or `docker:` prefix, or use `runs_on` in object command format
 
-Commands execute in the package directory and have access to:
-- Environment variables
-- Declared secrets
-- Package files
-- QIT-provided variables
+Commands execute in the package directory and have access to environment variables, declared secrets, and QIT-provided variables like `$QIT_SITE_URL`.
 
-## Configuration
+## Running Test Packages
 
-A configuration file ties everything together:
+Test packages are run via CLI flags or qit.json configuration:
 
-```json
-{
-  "test_packages": [
-    "./packages/utilities/setup",
-    "./packages/tests/checkout",
-    "./packages/tests/payment"
-  ],
-  "environment": {
-    "php": "8.2",
-    "wordpress": "latest"
-  }
-}
+```bash
+qit run:e2e my-plugin \
+  --test-package=./packages/tests/checkout \
+  --test-package=./packages/tests/payment \
+  --php=8.2
 ```
-
-This defines:
-- Which packages to run
-- The order of execution
-- Environment specifications
 
 ## Exit Codes
 

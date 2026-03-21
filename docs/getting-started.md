@@ -1,12 +1,13 @@
 ---
 sidebar_position: 2
+description: "Step-by-step setup guide: install QIT CLI via Composer, authenticate with WooCommerce.com using `qit connect`, and run your first test with `qit run:security`. Includes troubleshooting for PATH issues and authentication problems. Links to managed tests, test packages, and configuration as next steps."
 ---
 
 # Getting Started
 
 ## Installation
 
-Install QIT CLI globally with Composer using this exact command:
+Install QIT CLI globally with Composer:
 
 ```bash
 composer global require "woocommerce/qit-cli:*"
@@ -19,15 +20,15 @@ qit --version
 ```
 
 <details>
-<summary>⚠️ Something not working?</summary>
+<summary>Something not working?</summary>
 
-**"composer: command not found"**  
+**"composer: command not found"**
 You need Composer to install QIT. [Install Composer](https://getcomposer.org/download/) first.
 
-**PHP version errors**  
+**PHP version errors**
 QIT requires PHP 7.2.5 or higher. Check your version with `php --version`.
 
-**"qit: command not found"**  
+**"qit: command not found"**
 The `qit` command isn't in your PATH. Find where Composer installed it:
 
 ```bash
@@ -61,188 +62,52 @@ qit extensions
 You should see your WooCommerce Marketplace extensions listed.
 
 <details>
-<summary>⚠️ No extensions showing?</summary>
+<summary>No extensions showing?</summary>
 
-**Check that you have:**
-- A WooCommerce.com partner account
-- At least one extension in the marketplace
-- Completed the browser authentication fully
+You need a WooCommerce.com partner account with at least one extension in the marketplace, and you need to have completed the browser authentication fully.
 
 If still having issues, contact qit@woocommerce.com with your partner account email.
 
 </details>
 
-## Explore QIT Commands
-
-Before running tests, learn how to discover QIT's capabilities yourself:
-
-```bash
-# See ALL available commands
-qit
-```
-
-This shows every command QIT offers - managed tests, environment management, package creation, and more. Take a moment to explore what's possible.
-
-To get detailed help for any command:
-
-```bash
-# See ALL options for a specific command
-qit run:security --help
-```
-
-This reveals every parameter, default values, and usage examples. For instance:
-
-```bash
-qit run:phpcompatibility --help
-```
-
-Shows hidden gems like `--min_php_version` and `--max_php_version` that let you test specific PHP version ranges.
-
-:::tip Command Discovery
-The `--help` flag is essential for mastering QIT. Every command has detailed help showing exact option names, available values, and usage examples.
-:::
-
 ## Run Your First Test
 
-Start with a security test - it runs in the cloud and gives you immediate feedback:
+Run a security scan — it works in the cloud with no local setup:
 
 ```bash
 qit run:security your-extension-slug
 ```
 
-:::tip Finding Your Extension Slug
-Use the extension slug or ID shown in `qit extensions` output.
-:::
+Replace `your-extension-slug` with the slug shown in `qit extensions` output.
 
-You'll see the test progress and results in your terminal. **Success** means no security vulnerabilities were found.
-
-<details>
-<summary>🔍 What just happened?</summary>
-
-QIT automatically ran multiple security scanning tools on your extension:
-
-1. **PHPCS Security Audit** - Checked for insecure coding patterns
-2. **Semgrep Analysis** - Scanned for known vulnerability patterns
-3. **Dependency Vulnerability Check** - Analyzed dependencies against CVE/CVSS databases
-4. **WPScan Database Check** - Verified against known WordPress vulnerabilities
-5. **Gitleaks Scan** - Detected any hardcoded secrets or API keys
-6. **Generated Security Report** - Consolidated findings from all tools
-
-This comprehensive static analysis happens in about 2 minutes without needing a WordPress environment.
-
-</details>
-
-### Testing Development Builds
-
-To test a development version instead of the marketplace version, use the `--zip` parameter:
+You'll see results in your terminal. To test a local development build instead of the marketplace version:
 
 ```bash
 qit run:security your-extension-slug --zip=/path/to/your-plugin.zip
 ```
 
-This is useful for:
-- Testing changes before releasing to the marketplace
-- Validating fixes for issues found in previous tests
-- CI/CD pipelines that build and test automatically
-
-The ZIP file must be a valid installable WordPress plugin package.
-
-## Explore More Tests
-
-Now try other managed tests:
+## Try More Tests
 
 ```bash
-# PHP compatibility check (with version range)
-qit run:phpcompatibility your-extension-slug --min_php_version=7.4 --max_php_version=8.3
-
-# WooCommerce checkout flows  
+qit run:phpcompatibility your-extension-slug
 qit run:woo-e2e your-extension-slug
-
-# Malware detection
 qit run:malware your-extension-slug
 ```
 
-All tests support the `--zip` parameter for testing development builds:
+Every command has detailed help showing all available options:
 
 ```bash
-qit run:phpcompatibility your-extension-slug --zip=/path/to/your-plugin.zip
+qit run:security --help
 ```
 
-<details>
-<summary>📋 All Available Tests</summary>
+## What's Next?
 
-| Test | Command | Purpose | Duration | Type |
-|------|---------|---------|----------|------|
-| **Security** | `run:security` | Vulnerability scanning | ~2min | Static |
-| **PHPCompatibility** | `run:phpcompatibility` | PHP version support | ~1min | Static |
-| **PHPStan** | `run:phpstan` | Static code analysis | ~1min | Static |
-| **Malware** | `run:malware` | Malicious code detection | ~2min | Static |
-| **Validation** | `run:validation` | Marketplace requirements | ~30s | Static |
-| **Plugin Check** | `run:plugin-check` | WordPress.org standards | ~1min | Static |
-| **Activation** | `run:activation` | Clean install/activate | ~30s | E2E |
-| **E2E** | `run:e2e` | Test Packages (custom tests) | Varies | E2E |
-| **Woo E2E** | `run:woo-e2e` | Core WooCommerce flows | ~10min | E2E |
-| **Woo API** | `run:woo-api` or `run:api` | REST API validation | ~3min | API |
-| **Compatibility** | `run:compatibility` | Extension compatibility | ~5min | E2E |
-| **Performance** | `run:performance` | K6 performance benchmarks | ~5min | Performance |
+**[Managed Tests](managed-tests/introduction)** — Learn what each test checks and how to interpret results.
 
-**Static tests** run faster as they don't need WordPress environments.  
-**Test Packages** (`run:e2e`) are custom E2E tests you create and share.
+**[Test Packages](test-packages/)** — Write custom E2E tests for your plugin and test compatibility with other plugins. Requires Docker.
 
-</details>
-
-## Customize Test Environments
-
-<details>
-<summary>🔧 Test Against Specific Versions</summary>
-
-Different tests support different version options. Check with `--help` to see what's available:
-
-```bash
-# Tests that support version selection (woo-e2e, woo-api, etc.)
-qit run:woo-e2e your-extension-slug \
-  --wp=6.4 \
-  --woo=8.5 \
-  --php=8.0
-
-# PHPCompatibility has special version range options
-qit run:phpcompatibility your-extension-slug \
-  --min_php_version=7.4 \
-  --max_php_version=8.2
-
-# Static tests like security don't have version options
-qit run:security your-extension-slug  # No version params
-```
-
-**Version Options (where supported):**
-- `stable` - Current stable release (default)
-- `rc` - Release candidate
-- `nightly` - Development version
-- Specific versions - e.g., `6.4`, `8.5.0`, `8.0`
-
-**Pro tip:** Always check `qit run:[test] --help` to see which options are actually available for that test type.
-
-</details>
-
-## Next Steps
-
-### → Use Managed Tests
-Learn what each test validates and when to run them.
-
-[Explore Managed Tests](managed-tests/)
-
-### → Create Test Packages
-Build custom tests for your plugin's specific features and test compatibility with other plugins. *(Requires Docker for local development)*
-
-[Start with Test Packages](test-packages/)
-
-### → Automate Testing
-Add QIT to your CI/CD pipeline for automatic quality checks on every commit.
+**[Configuration](configuration/)** — Save your test settings in `qit.json` so you don't retype them.
 
 ---
 
-:::info Need Help?
-- **Documentation**: [qit.woo.com](https://qit.woo.com)
-- **Issues**: [GitHub](https://github.com/woocommerce/qit-cli/issues)
-- **Contact**: qit@woocommerce.com
-  :::
+Need help? [GitHub Issues](https://github.com/woocommerce/qit-cli/issues) or qit@woocommerce.com

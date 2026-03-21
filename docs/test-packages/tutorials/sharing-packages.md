@@ -1,3 +1,7 @@
+---
+description: "Tutorial for publishing a test package to the QIT registry with `qit package:publish`. Covers pre-publish verification, adding optional metadata (description, tags, requires), publishing with version tags, updating published packages (overwrites previous version), and how others consume your package via `qit run:e2e --test-package=your-slug/name:latest`."
+---
+
 # Publishing Your First Package
 
 Learn how to share your Test Package with the WordPress ecosystem through the QIT Package Registry.
@@ -27,13 +31,13 @@ Enhance your `tests/e2e/qit-test.json` with helpful information:
   "description": "E2E tests for Your Extension",
   "tags": ["e2e", "woocommerce"],
   "requires": {
-    "plugins": {
-      "woocommerce": ">=8.0.0"
-    },
+    "plugins": ["woocommerce"],
     "wordpress": ">=6.0"
   }
 }
 ```
+
+Valid `requires` fields: `plugins` (array of slugs), `themes` (array of slugs), `wordpress` (version constraint), `php` (version constraint), `secrets` (array of env var names), `network` (boolean), `tunnel` (boolean).
 
 ## Publishing to the Registry
 
@@ -43,16 +47,7 @@ Enhance your `tests/e2e/qit-test.json` with helpful information:
 qit package:publish ./tests/e2e latest
 ```
 
-Output:
-```
-Publishing your-extension-slug/e2e:latest...
-✓ Package validated
-✓ Tests verified
-✓ Uploaded to registry
-
-Published successfully!
-Others can now use: your-extension-slug/e2e:latest
-```
+The version argument (`latest`) is what consumers will reference. Use `latest` for continuous updates, or specific versions (`1.0.0`, `rc`) for tagged releases.
 
 :::tip Version Management
 By default, just use `:latest` for continuous updates. If you're publishing from GitHub Actions or other CI/CD, you can tag specific versions (e.g., `1.0.0`, `nightly`, `rc`) as part of your existing release process.

@@ -1,3 +1,7 @@
+---
+description: "Overview of the qit.json configuration system. Explains the four key concepts — SUT (system under test), profiles (named test configurations with inline version settings), environments (optional reusable version combinations), and groups (batch execution). Includes a complete working qit.json example, a CLI-to-config mapping table, and the progressive enhancement model: CLI flags first, then profiles, then environments, then groups. Links to detailed pages for each concept."
+---
+
 # Test Configuration and Automation
 
 Once you've mastered running QIT commands, you'll want to make complex test scenarios repeatable and shareable. The `qit.json` configuration file enables this by capturing CLI commands as reusable profiles.
@@ -31,17 +35,19 @@ qit run:e2e --profile=payment-compatibility
 ### System Under Test (SUT)
 The plugin or theme you're testing.
 
-### Environments
-Named WordPress/PHP/WooCommerce combinations:
-- `staging`: Your staging server setup
-- `production`: Production configuration
-- `bleeding-edge`: Latest development versions
-
 ### Test Profiles
-Named test scenarios combining packages and environments:
-- `smoke`: Quick validation tests
+Named test scenarios with version settings, test packages, and other options:
+- `smoke`: Quick validation with `wp: stable, php: 8.2`
 - `full`: Comprehensive test suite
 - `compatibility`: Multi-plugin testing
+
+### Environments (optional)
+Reusable WordPress/PHP/WooCommerce combinations. Useful when multiple profiles share the same versions:
+- `production`: Your production version combo
+- `minimum`: Oldest supported versions
+- `latest`: Bleeding edge
+
+Profiles can include version settings directly or reference a named environment — your choice.
 
 ### Groups
 Batch execution of multiple profiles:
@@ -63,17 +69,12 @@ Create `qit.json` in your project root:
       "path": "./dist"
     }
   },
-  "environments": {
-    "production": {
-      "wp": "stable",
-      "woo": "stable",
-      "php": "8.0"
-    }
-  },
   "test_types": {
     "e2e": {
       "compatibility": {
-        "environment": "production",
+        "wp": "stable",
+        "woo": "stable",
+        "php": "8.0",
         "test_packages": [
           "./tests",
           "woocommerce/checkout-tests",
@@ -121,8 +122,9 @@ Everything in `qit.json` maps to CLI parameters:
 
 | Configuration | CLI Equivalent |
 |--------------|----------------|
-| `"environment": "production"` | `--wp=stable --woo=stable --php=8.0` |
+| `"wp": "stable", "php": "8.0"` | `--wp=stable --php=8.0` |
 | `"test_packages": ["./tests"]` | `--test-package=./tests` |
+| `"environment": "production"` | `--environment=production` |
 | Profile: `compatibility` | All the above combined |
 
 Configuration is **optional convenience**, not a requirement.
@@ -133,9 +135,10 @@ Configuration is **optional convenience**, not a requirement.
 Begin with CLI commands. Add configuration when you find yourself repeating commands.
 
 ### Progressive Enhancement
-1. Start with one profile
-2. Add environments as needed
-3. Create groups when managing multiple profiles
+1. Start with CLI flags — no config file needed
+2. Add a profile when you're tired of retyping the same command
+3. Extract shared versions to environments when you see duplication
+4. Create groups when managing multiple profiles
 
 ### Keep It Maintainable
 - Document profile purposes

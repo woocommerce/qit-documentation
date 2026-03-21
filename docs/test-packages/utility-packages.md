@@ -1,3 +1,7 @@
+---
+description: "Complete guide to utility packages — test packages without a run phase, used for environment setup and configuration. Covers how to attach them to environments via the `utilities` array in qit.json, create them with `qit package:scaffold --package-type=utility`, publish to the registry, and discover available utilities with `qit package:list --type=utility`. Documents common patterns (disable onboarding wizards, configure payment gateways, seed test data, set plugin defaults), execution order within test runs (globalSetup runs for utilities too, but run phase is skipped), validation rules (must NOT have run phase or results), and debugging tips."
+---
+
 # Utility Packages
 
 Utility Packages provide environment setup, configuration, and teardown functionality without running actual tests. They're perfect for preparing test environments, seeding data, and cleaning up after test runs.
@@ -80,9 +84,9 @@ Utility packages attach to environments in your `qit.json` configuration using t
       "wp": "stable",
       "woo": "stable",
       "utilities": [
-        "./utilities/disable-onboarding",           // Local utility
-        "woocommerce/woopay-setup:latest",          // Registry utility (latest version)
-        "woocommerce/sample-data:1.2.0"             // Registry utility (specific version)
+        "./utilities/disable-onboarding",
+        "woocommerce/woopay-setup:latest",
+        "woocommerce/sample-data:1.2.0"
       ]
     },
     "legacy": {

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 slug: /
+description: "Overview of QIT (Quality Insights Toolkit), a quality assurance platform for the WordPress ecosystem. Explains the two testing approaches: managed tests (pre-built checks like security, activation, PHPStan that run remotely with zero setup) and test packages (custom Playwright E2E tests that run locally with Docker for cross-plugin compatibility testing). Covers who QIT is for (WooCommerce.com Marketplace developers) and links to Getting Started."
 ---
 
 # QIT: Quality Insights Toolkit

@@ -1,3 +1,7 @@
+---
+description: "Tutorial on using subpackages to publish focused test subsets from a larger E2E suite. Covers defining subpackages in qit-test.json (each with its own run command, typically using Playwright --project), aligning with playwright.config.js projects, publishing atomically with `qit package:publish` (parent + all subpackages at the same version), and how consumers use individual subpackages via --test-package. Includes guidance on what to share (critical flows, integration points) vs keep private (internal tests, security scenarios)."
+---
+
 # Publishing Focused Test Packages
 
 Learn how to share specific test scenarios from your E2E suite using subpackages.

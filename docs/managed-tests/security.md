@@ -1,3 +1,7 @@
+---
+description: "Reference for the `run:security` managed test. Required for all WooCommerce Marketplace submissions. Covers the five scanning tools used (PHPCS WordPress.Security rules, SemGrep, composer/npm audit, WPScan vulnerability database, gitleaks secret detection), how to interpret results, and how to suppress false positives (phpcs:ignore, nosemgrep, gitleaks:allow). Does not support version parameters — security tests are static analysis only. Includes auto-generated CLI usage."
+---
+
 # Security tests
 
 Security tests run a suite of scanning and auditing tools against your extension’s code to identify potential vulnerabilities and ensure that it adheres to established security best practices. **All new submissions and updates to the WooCommerce Marketplace must pass these security tests.** Ensuring your extension passes helps maintain a secure and trustworthy ecosystem for merchants and customers.
@@ -141,3 +145,8 @@ If a check is marked as passed, it means:
 
 These audits help ensure that the product is safe, stable, and trustworthy to install on your WooCommerce store.
 
+
+
+## CLI Usage
+
+{/* QIT_COMMAND:run:security */}

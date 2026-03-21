@@ -1,3 +1,7 @@
+---
+description: "Contact information and support channels for QIT. Email support at qit@woocommerce.com, GitHub issues at github.com/woocommerce/qit-cli/issues, security vulnerability reporting process, and how to submit feedback and feature suggestions."
+---
+
 # Contact us
 
 If you have questions, need help with QIT, or want to share feedback, we encourage you to reach out.

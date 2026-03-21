@@ -1,3 +1,7 @@
+---
+description: "Explains that Playwright's --shard option is NOT supported with `qit run:e2e` test package orchestration. The --shard argument is filtered out and tests run without sharding. Reason: test packages require complete results and database snapshots between packages, which sharding would break. Workaround: when using `qit env:up` for manual testing, you can run `npx playwright test --shard=1/3` directly."
+---
+
 # Sharding
 
 ## Sharding is Not Supported

@@ -1,3 +1,7 @@
+---
+description: "Reference for test result collection and reporting. Covers the CTRF (Common Test Results Format) JSON standard used by QIT, how to configure result paths in qit-test.json (ctrf-json, blob-dir, allure-dir), Playwright integration for CTRF output, blob directory structure (screenshots, videos, traces), result collection behavior (collected even on failure, missing results = failure), orchestrator CTRF for lifecycle phases, viewing results with `qit report`, Allure report integration, and troubleshooting common result issues."
+---
+
 # Test Results and Artifacts
 
 Test Packages produce standardized results for consistent reporting across different test frameworks.

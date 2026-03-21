@@ -81,7 +81,6 @@ qit package:publish tests/e2e 2.0.0
 # - woocommerce/e2e:2.0.0
 # - woocommerce/checkout:2.0.0
 # - woocommerce/minimal:2.0.0
-# - woocommerce/setup-multisite:2.0.0
 ```
 
 ### Consuming
@@ -124,8 +123,6 @@ Subpackages automatically inherit ALL phases from the parent except `run`, which
     "woocommerce/checkout": {
       "test": {
         "phases": {
-          // Automatically inherits all parent phases
-          // Only override run to select test subset
           "run": ["npx playwright test checkout/"]
         }
       }
@@ -133,8 +130,6 @@ Subpackages automatically inherit ALL phases from the parent except `run`, which
     "woocommerce/api": {
       "test": {
         "phases": {
-          // Automatically inherits all parent phases
-          // Only override run to select test subset
           "run": ["npx playwright test api/"]
         }
       }

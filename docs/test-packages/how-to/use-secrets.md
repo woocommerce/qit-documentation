@@ -1,3 +1,7 @@
+---
+description: "How-to guide for managing API keys, passwords, and tokens in test packages. Covers declaring required secrets in qit-test.json `requires.secrets`, providing them via --env CLI flags or .env files, how QIT validates secrets exist before execution, injects them as environment variables, and automatically redacts them from logs (values >4 chars). Includes examples for Stripe test keys and webhook secrets."
+---
+
 # How to Handle API Keys and Secrets
 
 This guide shows how to securely manage sensitive data like API keys, passwords, and tokens in your Test Packages.

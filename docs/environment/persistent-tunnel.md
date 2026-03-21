@@ -1,3 +1,7 @@
+---
+description: "Guide to setting up a persistent Cloudflare Tunnel for a stable, reusable URL that doesn't change between sessions. Unlike temporary tunnels, persistent tunnels use a pre-configured Cloudflare Tunnel with your own domain. Covers requirements (Cloudflare account, cloudflared binary), step-by-step tunnel creation, DNS configuration, and registering the tunnel with QIT via `qit tunnel:setup cloudflared-persistent --name=my-tunnel --url=https://my-tunnel.example.com`."
+---
+
 # Using a persistent tunnel
 
 When testing plugins that rely on a stable, publicly accessible URL—such as payment gateways, API callbacks, or SaaS integrations—a persistent tunnel provides a permanent, predictable address. Unlike temporary tunnels, which may suffer from DNS propagation delays and variable URLs, persistent tunnels rely on a pre-configured Cloudflare Tunnel that you set up once and reuse indefinitely.
@@ -75,7 +79,7 @@ QIT uses the persistent tunnel you configured, ensuring immediate DNS resolution
 
 ## Combining persistent tunnels with other features
 
-- Use persistent tunnels in conjunction with environment configuration files (qit.yml) and custom handlers for a fully automated and reproducible setup.
+- Use persistent tunnels in conjunction with environment configuration files (`qit.json`) for a fully automated and reproducible setup.
 - Perfect for testing payment gateways, webhooks, and other features that require a publicly accessible endpoint.
 
 ## Troubleshooting

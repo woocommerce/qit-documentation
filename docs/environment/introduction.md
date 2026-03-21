@@ -1,3 +1,7 @@
+---
+description: "Introduction to the QIT local test environment — ephemeral Docker-based WordPress+WooCommerce environments created with `qit env:up` and removed with `qit env:down`. Covers prerequisites (Docker required, platform notes for Mac/Linux/Windows WSL), starting your first environment, accessing the site URL, environment management commands (env:list, env:source, env:exec, env:enter, env:reset), and how environments are stateless — every restart is a clean slate."
+---
+
 # Local test environment introduction
 
 ## Introduction
@@ -46,14 +50,18 @@ This command creates an environment running PHP 8.3, the latest release candidat
 
 ## Using configuration files
 
-Create a `qit.yml` file in your project directory:
+Create a `qit.json` file in your project directory:
 
-```yaml
-wp: rc
-php: 8.3
-plugins:
-  - gutenberg
-  - contact-form-7
+```json
+{
+  "environments": {
+    "default": {
+      "wp": "rc",
+      "php": "8.3",
+      "plugins": ["gutenberg", "contact-form-7"]
+    }
+  }
+}
 ```
 
 Now running `qit env:up` without extra parameters uses these configurations, ensuring consistency across your team and simplifying setup.
@@ -66,12 +74,18 @@ Now running `qit env:up` without extra parameters uses these configurations, ens
 - `qit env:enter`: Enters the PHP container for debugging or manual operations.
 - `qit env:exec`: Executes a command inside the PHP container.
 
-## Env:up options
+## CLI Usage
 
-- `--wp`: Choose a specific WordPress version.
-- `--php`: Test across different PHP versions for better compatibility coverage.
-- `--plugin`: Automatically install and activate given plugins.
-- `--theme`: Specify themes to be included.
-- `--volume`: Map local directories into the environment, useful for plugin or theme development.
-- `--php_extension`: Add necessary PHP extensions.
-- `--object_cache`: Enable Redis Object Cache for advanced performance testing scenarios.
+{/* QIT_COMMAND:env:up */}
+
+{/* QIT_COMMAND:env:down */}
+
+{/* QIT_COMMAND:env:list */}
+
+{/* QIT_COMMAND:env:source */}
+
+{/* QIT_COMMAND:env:exec */}
+
+{/* QIT_COMMAND:env:enter */}
+
+{/* QIT_COMMAND:env:reset */}

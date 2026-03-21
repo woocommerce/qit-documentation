@@ -1,3 +1,7 @@
+---
+description: "Reference for the `run:validation` managed test. Checks extension metadata and WooCommerce feature declarations — readme.txt presence, required plugin headers (Requires PHP, WC requires, WC tested up to), WooCommerce feature compatibility declarations (HPOS, Cart/Checkout blocks), and theme template version currency. Supports --php_version to test against a specific PHP version. Includes auto-generated CLI usage."
+---
+
 # Validation tests
 
 Validation tests ensure that your extension’s metadata and WooCommerce feature declarations meet baseline requirements. By verifying important headers, WooCommerce feature compatibility, and (for themes) ensuring that your theme templates are updated to the latest WooCommerce standards, these tests help maintain clear, consistent, and accurate information for merchants.
@@ -66,3 +70,8 @@ If you receive warnings or errors:
 
 - **Stay current:**
   Run validation tests regularly and promptly update outdated templates, headers, or feature declarations.
+
+
+## CLI Usage
+
+{/* QIT_COMMAND:run:validation */}

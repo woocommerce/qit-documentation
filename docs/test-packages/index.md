@@ -1,3 +1,7 @@
+---
+description: "Overview of test packages — custom Playwright E2E tests in a standardized format that can be shared and combined for cross-plugin compatibility testing. Explains the problem (plugins test in isolation, but users run them together), the minimal standard (Playwright tests + qit-test.json manifest), and how to run them with `qit run:e2e --test-package`. Covers the key commands: `qit package:scaffold` to create, `qit package:publish` to share, `qit run:e2e` to run. Requires Docker for local execution. Links to quickstart tutorial for hands-on walkthrough."
+---
+
 # Test Packages
 
 Test Packages are a minimal standard for E2E tests that makes WordPress ecosystem compatibility testing possible - enabling plugins and themes to share tests and verify they work together. They're the missing piece that lets developers stop testing in isolation and start testing in reality, running their code against real test suites from other plugin vendors to catch compatibility issues before customers do.
@@ -85,8 +89,8 @@ test('checkout works', async ({ page }) => {
       "run": ["npx playwright test"]
     },
     "results": {
-      "ctrf-json": "./results/ctrf.json",  // Test results
-      "blob-dir": "./results/blob"         // Screenshots, videos, traces
+      "ctrf-json": "./results/ctrf.json",
+      "blob-dir": "./results/blob"
     }
   }
 }
@@ -98,8 +102,7 @@ That's it - Playwright tests plus a manifest that describes them. The complete T
 
 Start minimal. Once your package works, it instantly gains superpowers: it can be combined with other packages, run across version matrices, and orchestrated with guaranteed isolation - all without touching your test code.
 
-**Curious what else your package can do?** See [Package Capabilities](../concepts/package-capabilities).  
-**Want to understand the full system?** See [Architecture & Lifecycle](../concepts/architecture-and-lifecycle).
+**Ready to build your first package?** See the [quickstart tutorial](tutorials/quickstart).
 
 ## Real-World Example: Payment Gateway Testing
 
@@ -168,7 +171,7 @@ Test Packages work because they provide:
 - **Encapsulated setup**: Each package handles its own initial configuration (WooCommerce dismisses its onboarding flows, Stripe configures its API keys) so you don't have to
 - **Decoupled coverage**: Test against real plugin behaviors without maintaining knowledge of their internals
 
-Want the deep technical details? See [Architecture & Lifecycle](../concepts/architecture-and-lifecycle).
+Want to get started? See the [quickstart tutorial](tutorials/quickstart).
 
 ## Join the Compatibility Revolution
 

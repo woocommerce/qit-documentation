@@ -1,3 +1,7 @@
+---
+description: "Complete reference for the qit.json configuration file. Covers all top-level sections: SUT (local, URL, wccom, wporg sources with optional build commands), environments (version pins, plugins, themes, volumes, php_extensions, envs, utilities), test_types with profiles (inline values or environment references, profile inheritance via extends), and groups (batch execution). Includes a real-world complete example for a payment gateway plugin, CLI override examples, configuration sharing via extends, naming/validation rules, and plugin installation formats (slug, URL, local path, detailed object)."
+---
+
 # The qit.json Configuration File
 
 The `qit.json` file captures complex QIT commands as reusable, shareable configurations.
@@ -376,13 +380,15 @@ qit env:up --plugin=./downloads/pre-release-plugin.zip
 
 ## Test Types and Profiles
 
-Organize test configurations by type:
+Organize test configurations by type. Profiles can include version settings directly or reference a named environment:
 
 ```json
 "test_types": {
   "e2e": {
     "smoke": {
-      "environment": "staging",
+      "wp": "stable",
+      "woo": "stable",
+      "php": "8.2",
       "test_packages": ["./tests/smoke"]
     },
     "full": {
@@ -407,6 +413,20 @@ Organize test configurations by type:
     }
   }
 }
+```
+
+The "smoke" profile uses inline values (simple, self-contained). The "full" and "compatibility" profiles reference the "production" environment (avoids duplicating the same versions).
+
+### Precedence
+
+When the same setting is defined in multiple places:
+
+| Source | Priority |
+|---|---|
+| CLI flags (`--php=8.3`) | Highest |
+| Profile inline values (`"php": "8.2"`) | High |
+| Referenced environment | Medium |
+| Framework defaults | Lowest |
 ```
 
 ### Profile Inheritance
@@ -515,19 +535,17 @@ Here's a real-world `qit.json`:
           "woocommerce-subscriptions/renewal-tests:5.5"
         ]
       },
-      "compatibility-matrix": {
+      "compat-minimum": {
+        "environment": "minimum",
         "test_packages": ["./tests/smoke"]
-
-        // [PLANNED] Matrix testing across environments
-        // "matrix": {
-        //   "environments": ["minimum", "recommended", "latest"]
-        // }
+      },
+      "compat-latest": {
+        "environment": "latest",
+        "test_packages": ["./tests/smoke"]
       }
     },
     "security": {
-      "scan": {
-        // "severity": "medium"  // [PLANNED] Minimum severity filter
-      }
+      "scan": {}
     }
   },
   
@@ -580,19 +598,6 @@ qit run:e2e --profile=smoke --php=8.2
 
 # Add extra test package
 qit run:e2e --profile=smoke --test-package=./extra-tests
-```
-
-## Validation
-
-Validate your configuration:
-
-```bash
-qit config:validate
-
-✓ Configuration valid
-  - 3 environments defined
-  - 4 test profiles defined
-  - 3 groups defined
 ```
 
 ## Sharing Configurations

@@ -1,3 +1,7 @@
+---
+description: "Reference for the `run:activation` managed test. Details all operations performed (login, activate, visit pages, create product, place order, deactivate) and how to interpret results. Covers configuration via qit.json including skipVisitPages (substring-based URL matching) and visitPages for custom admin pages. Includes auto-generated CLI usage with all available flags. Supports WordPress, WooCommerce, and PHP version selection."
+---
+
 # Activation tests
 
 The Activation test type performs basic operations on a test site with your plugin activated. It simulates essential workflows that a merchant might perform, ensuring your plugin behaves correctly throughout the entire process, from activation to order placement and deactivation.
@@ -82,7 +86,7 @@ Some plugins might need an actual live site URL to work properly, such as paymen
 
 ## Canonical compatibility check in the WooCommerce Marketplace
 
-The WooCommerce Marketplace will automatically run an activation test using the [`compatibility` extension set](extension-sets) upon new submission or update. You will see the results in the list of tests under `Activation (canonical compatibility check)`. Currently this test is informational only, and will not block a submission or an update.
+The WooCommerce Marketplace will automatically run an activation test using the [`compatibility` extension set](../configuration/extension-sets) upon new submission or update. You will see the results in the list of tests under `Activation (canonical compatibility check)`. Currently this test is informational only, and will not block a submission or an update.
 
 ## What to do if it fails
 
@@ -92,3 +96,7 @@ If your Activation test fails:
 - Identify the causes of failure. The test will log PHP notices, warnings, and errors that happens when activating your plugin.
 - Reproduce the issue locally and fix it in your code.
 - If you believe the result is incorrect, please email us at qit@woocommerce.com for further assistance.
+
+## CLI Usage
+
+{/* QIT_COMMAND:run:activation */}

@@ -1,3 +1,7 @@
+---
+description: "Guide to passing environment variables into QIT test environments. Covers the --env CLI flag (`--env KEY=VALUE`, multiple allowed), --env_file flag for loading from .env files, using environment variables in qit.json configuration, how variables are injected into Docker containers, and common patterns (WP_DEBUG, API keys, feature flags). All environment variable values must be strings — use \"true\" not true."
+---
+
 # Environment variables
 
 ## Introduction
@@ -66,7 +70,7 @@ If you're using QIT Helpers in your tests:
 
 - **Keep secrets out of code:** Store API keys, tokens, or other sensitive data in environment variables rather than committing them to your repository.
 - **Use .env files for collaboration:** By versioning a template `.env.example` (without sensitive values), team members can create their own `.env` files, ensuring consistency.
-- **Combine with config files:** Use environment variables alongside config files (qit.yml or qit.json) to handle dynamic values that should not be hardcoded.
+- **Combine with config files:** Use environment variables alongside `qit.json` config files to handle dynamic values that should not be hardcoded.
 
 ## Overriding variables
 
