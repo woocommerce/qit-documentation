@@ -531,19 +531,17 @@ Here's a real-world `qit.json`:
           "woocommerce-subscriptions/renewal-tests:5.5"
         ]
       },
-      "compatibility-matrix": {
+      "compat-minimum": {
+        "environment": "minimum",
         "test_packages": ["./tests/smoke"]
-
-        // [PLANNED] Matrix testing across environments
-        // "matrix": {
-        //   "environments": ["minimum", "recommended", "latest"]
-        // }
+      },
+      "compat-latest": {
+        "environment": "latest",
+        "test_packages": ["./tests/smoke"]
       }
     },
     "security": {
-      "scan": {
-        // "severity": "medium"  // [PLANNED] Minimum severity filter
-      }
+      "scan": {}
     }
   },
   
@@ -596,19 +594,6 @@ qit run:e2e --profile=smoke --php=8.2
 
 # Add extra test package
 qit run:e2e --profile=smoke --test-package=./extra-tests
-```
-
-## Validation
-
-Validate your configuration:
-
-```bash
-qit config:validate
-
-✓ Configuration valid
-  - 3 environments defined
-  - 4 test profiles defined
-  - 3 groups defined
 ```
 
 ## Sharing Configurations

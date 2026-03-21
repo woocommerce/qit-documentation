@@ -229,7 +229,7 @@ qit run:security your-extension-slug  # No version params
 ### → Use Managed Tests
 Learn what each test validates and when to run them.
 
-[Explore Managed Tests](managed-tests/)
+[Explore Managed Tests](managed-tests/introduction)
 
 ### → Create Test Packages
 Build custom tests for your plugin's specific features and test compatibility with other plugins. *(Requires Docker for local development)*

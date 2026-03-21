@@ -98,17 +98,6 @@ qit run:group pre-release
 qit run:group pre-release --only=e2e
 ```
 
-### List Groups
-
-```bash
-qit config:list-groups
-
-Available groups:
-  - ci-quick: Fast CI validation
-  - ci-full: Complete CI suite
-  - pre-release: Release validation
-```
-
 ## Best Practices
 
 - Use descriptive group names
