@@ -376,13 +376,15 @@ qit env:up --plugin=./downloads/pre-release-plugin.zip
 
 ## Test Types and Profiles
 
-Organize test configurations by type:
+Organize test configurations by type. Profiles can include version settings directly or reference a named environment:
 
 ```json
 "test_types": {
   "e2e": {
     "smoke": {
-      "environment": "staging",
+      "wp": "stable",
+      "woo": "stable",
+      "php": "8.2",
       "test_packages": ["./tests/smoke"]
     },
     "full": {
@@ -407,6 +409,20 @@ Organize test configurations by type:
     }
   }
 }
+```
+
+The "smoke" profile uses inline values (simple, self-contained). The "full" and "compatibility" profiles reference the "production" environment (avoids duplicating the same versions).
+
+### Precedence
+
+When the same setting is defined in multiple places:
+
+| Source | Priority |
+|---|---|
+| CLI flags (`--php=8.3`) | Highest |
+| Profile inline values (`"php": "8.2"`) | High |
+| Referenced environment | Medium |
+| Framework defaults | Lowest |
 ```
 
 ### Profile Inheritance

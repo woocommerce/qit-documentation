@@ -1,6 +1,6 @@
 # Test Profiles
 
-Test profiles are named configurations that combine test packages, environments, and settings into reusable scenarios.
+Test profiles are named configurations that save your test settings in `qit.json` so you don't have to type them every time.
 
 ## Understanding Profiles
 
@@ -20,7 +20,9 @@ You define once:
   "test_types": {
     "e2e": {
       "payment-testing": {
-        "environment": "production",
+        "wp": "6.4",
+        "woo": "8.5",
+        "php": "8.0",
         "test_packages": [
           "./tests",
           "stripe/gateway-tests"
@@ -43,27 +45,41 @@ Profiles are organized by test type:
 ```json
 {
   "test_types": {
-    "e2e": {
-      // E2E test profiles
-    },
-    "phpstan": {
-      // PHPStan profiles
-    },
-    "security": {
-      // Security scan profiles
-    }
+    "e2e": {},
+    "activation": {},
+    "security": {},
+    "phpstan": {}
   }
 }
 ```
 
+Each key under a test type is a named profile.
+
 ## Profile Properties
 
-### Basic Profile
+### Simple Profile
+
+Put your test settings directly in the profile:
 
 ```json
 {
   "smoke": {
-    "environment": "staging",
+    "wp": "6.4",
+    "woo": "8.5",
+    "php": "8.0",
+    "test_packages": ["./tests/critical"]
+  }
+}
+```
+
+### Profile with Environment Reference
+
+When you reuse the same versions across multiple profiles, extract them to a named [environment](environments.md) and reference it:
+
+```json
+{
+  "smoke": {
+    "environment": "production",
     "test_packages": ["./tests/critical"]
   }
 }
@@ -71,29 +87,49 @@ Profiles are organized by test type:
 
 ### Complete Profile
 
-> **Note**: Properties with `[PLANNED]` are future features not yet implemented.
-
 ```json
 {
   "comprehensive": {
     "environment": "production",
+    "wp": "rc",
     "test_packages": [
       "./tests",
       "woocommerce/checkout-tests:8.5",
       "stripe/gateway-tests:3.0"
-    ],
-    "php": "8.2",  // Override environment's PHP (format: X.Y or X.Y.Z)
-
-    // [PLANNED] Test timeout in seconds
-    "timeout": 1800,
-
-    // [PLANNED] Retry configuration for flaky tests
-    "retry": {
-      "times": 2,
-      "delay": 10
-    }
+    ]
   }
 }
+```
+
+This profile uses the "production" environment as a base but overrides `wp` to test against the release candidate.
+
+## Version Keys
+
+Profiles accept these version keys (short or long form):
+
+| Short form | Long form | Description |
+|---|---|---|
+| `wp` | `wordpress_version` | WordPress version |
+| `woo` | `woocommerce_version` | WooCommerce version |
+| `php` | `php_version` | PHP version |
+
+Both forms work identically. Short form is recommended for readability.
+
+## Precedence
+
+When the same setting is defined in multiple places, the most specific source wins:
+
+| Source | Priority | Example |
+|---|---|---|
+| CLI flags | Highest | `--php=8.3` |
+| Profile inline values | High | `"php": "8.2"` in profile |
+| Referenced environment | Medium | `"environment": "production"` |
+| Framework defaults | Lowest | PHP 8.2, WP stable |
+
+```bash
+# Profile has php: "8.0", referenced environment has php: "7.4"
+# CLI flag wins over both:
+qit run:e2e --profile=smoke --php=8.3  # Uses PHP 8.3
 ```
 
 ## Common Profile Patterns
@@ -105,10 +141,10 @@ Quick validation of critical paths:
 ```json
 {
   "smoke": {
-    "environment": "production",
+    "wp": "stable",
+    "woo": "stable",
+    "php": "8.2",
     "test_packages": ["./tests/critical"]
-    // [PLANNED]
-    "timeout": 300  // 5 minutes max
   }
 }
 ```
@@ -120,7 +156,9 @@ Test with multiple plugins:
 ```json
 {
   "compatibility": {
-    "environment": "production",
+    "wp": "stable",
+    "woo": "stable",
+    "php": "8.2",
     "test_packages": [
       "./tests",
       "stripe/gateway-tests",
@@ -131,20 +169,18 @@ Test with multiple plugins:
 }
 ```
 
-### Version Matrix
+### Remote Test Profiles
 
-Test across versions:
-
-> **Note**: Matrix testing is a planned feature not yet implemented.
+For managed tests like security and PHPStan, profiles contain test-specific settings (no environment needed):
 
 ```json
 {
-  "matrix-test": {
-    "test_packages": ["./tests"]
-
-    // [PLANNED] Matrix testing across multiple environments
-    "matrix": {
-      "environments": ["minimum", "recommended", "latest"]
+  "security": {
+    "default": {}
+  },
+  "phpstan": {
+    "default": {
+      "phpstan_level": 6
     }
   }
 }
@@ -157,7 +193,8 @@ Profiles can extend others:
 ```json
 {
   "base": {
-    "environment": "production",
+    "wp": "stable",
+    "woo": "stable",
     "test_packages": ["./tests/core"]
   },
   "extended": {
@@ -188,82 +225,19 @@ qit run:e2e --profile=smoke --php=8.3
 qit run:e2e --profile=smoke --test-package=./extra-tests
 ```
 
-### List Available Profiles
+## When to Use Inline Values vs Environments
 
-```bash
-qit config:list-profiles
+**Use inline values** when:
+- You have a single profile or a few profiles with different versions
+- You want a self-contained profile with no dependencies
+- You're getting started and want simplicity
 
-Available profiles for 'e2e':
-  - smoke: Quick critical path validation
-  - full: Complete test suite
-  - compatibility: Multi-plugin testing
-```
+**Use named [environments](environments.md)** when:
+- Multiple profiles share the same version combination
+- You test against a version matrix (minimum, recommended, latest)
+- Your team needs standardized environment definitions
 
-## Profile Examples
-
-### Development Profile
-
-For local development:
-
-```json
-{
-  "dev": {
-    "environment": "local",
-    "test_packages": ["./tests"]
-
-    // [PLANNED] Debug mode and headful browser
-    "debug": true,
-    "headed": true
-  }
-}
-```
-
-### CI Profiles
-
-For different CI stages:
-
-```json
-{
-  "ci-quick": {
-    "environment": "staging",
-    "test_packages": ["./tests/smoke"]
-    // [PLANNED] 
-    "timeout": 600  //10 minute timeout
-  },
-  "ci-full": {
-    "environment": "production",
-    "test_packages": [
-      "./tests",
-      "woocommerce/checkout-tests"
-    ]
-    // [PLANNED]
-    "timeout": 3600  // 1 hour timeout
-  }
-}
-```
-
-### Release Profile
-
-Pre-release validation:
-
-```json
-{
-  "release": {
-    "environment": "production",
-    "test_packages": [
-      "./tests",
-      "woocommerce/checkout-tests",
-      "stripe/gateway-tests",
-      "paypal/checkout-tests"
-    ]
-
-    // [PLANNED] Retry flaky tests once
-    "retry": {
-      "times": 1
-    }
-  }
-}
-```
+Both approaches can coexist in the same `qit.json`. See [Environments](environments.md) for details on named environments.
 
 ## Advanced Features
 
@@ -279,8 +253,8 @@ Use the `tweaks.skip` property to skip specific tests by name or regex pattern:
       "test_packages": ["./tests"],
       "tweaks": {
         "skip": [
-          "test-flaky-feature",           // Skip by exact name
-          "admin-.*-slow",                // Skip by regex pattern
+          "test-flaky-feature",
+          "admin-.*-slow",
           "test-requires-external-api"
         ]
       }
@@ -311,35 +285,21 @@ Use descriptive, action-oriented names.
 **Naming Rules:**
 - Only alphanumeric characters, hyphens (`-`), and underscores (`_`)
 - No spaces or special characters
-- See [Validation Rules](validation-rules.md#naming-constraints) for details
 
+**Good:**
 ```json
 {
-  // Good
-  "test-checkout-with-subscriptions": {},  // ✅ Valid
-  "validate_payment_gateways": {},          // ✅ Valid
-  "smoke-test-v2": {},                      // ✅ Valid
-
-  // Avoid
-  "test1": {},                              // Valid but not descriptive
-  "test checkout": {},                      // ❌ Invalid (space)
-  "my.profile": {}                          // ❌ Invalid (period)
+  "test-checkout-with-subscriptions": {},
+  "validate-payment-gateways": {},
+  "smoke-test-critical-paths": {}
 }
 ```
 
-### Document Purpose
-
-Add comments explaining profiles:
-
+**Avoid:**
 ```json
 {
-  "payment-compatibility": {
-    "_comment": "Tests all supported payment gateways",
-    "test_packages": [
-      "stripe/gateway-tests",
-      "paypal/checkout-tests"
-    ]
-  }
+  "test1": {},
+  "new": {}
 }
 ```
 
@@ -347,12 +307,12 @@ Add comments explaining profiles:
 
 Each profile should have a clear purpose:
 
-- ✅ One profile for smoke tests
-- ✅ Another for payment testing
-- ❌ One profile that does everything
+- One profile for smoke tests
+- Another for payment testing
+- Another for compatibility testing
 
 ## Related Topics
 
-- [Environments](environments.md) - Configure WordPress/PHP combinations
+- [Environments](environments.md) - Reusable version combinations (optional)
 - [Groups](groups.md) - Batch multiple profiles
 - [qit.json Structure](qit-json.md) - Complete configuration guide

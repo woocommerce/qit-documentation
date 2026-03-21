@@ -1,28 +1,66 @@
 # Environment Configuration
 
-Environments define reusable WordPress, WooCommerce, and PHP version combinations.
+Environments are named, reusable WordPress/WooCommerce/PHP version combinations. They're an **optional** feature for eliminating duplication when multiple test profiles need the same versions.
 
-## Overview
+:::tip You might not need environments
+For simple setups, you can put version values directly in your [test profiles](profiles.md). Environments become useful when you start duplicating the same version combination across multiple profiles.
+:::
 
-Instead of specifying versions repeatedly:
-```bash
-# Repetitive
-qit run:e2e --wp=6.4 --woo=8.5 --php=8.0
-qit run:security --wp=6.4 --woo=8.5 --php=8.0
-```
+## When to Use Environments
 
-Define once and reuse:
+**You don't need environments if:**
+- You have one or two profiles with different versions
+- Each profile has its own version requirements
+
+**Environments help when:**
+- Multiple profiles share the same version combination
+- You test against a version matrix (minimum, recommended, latest)
+- You want to change versions in one place and have all profiles update
+
+### Without environments (simple)
+
 ```json
 {
-  "environments": {
-    "production": {
-      "wp": "6.4",
-      "woo": "8.5",
-      "php": "8.0"
+  "test_types": {
+    "e2e": {
+      "smoke": {
+        "wp": "6.4", "woo": "8.5", "php": "8.0",
+        "test_packages": ["./tests/critical"]
+      }
+    },
+    "activation": {
+      "default": {
+        "wp": "6.4", "woo": "8.5", "php": "8.0"
+      }
     }
   }
 }
 ```
+
+Notice the version duplication. When you bump WooCommerce, you update two places.
+
+### With environments (DRY)
+
+```json
+{
+  "environments": {
+    "production": { "wp": "6.4", "woo": "8.5", "php": "8.0" }
+  },
+  "test_types": {
+    "e2e": {
+      "smoke": {
+        "environment": "production",
+        "test_packages": ["./tests/critical"]
+      }
+    },
+    "activation": {
+      "default": { "environment": "production" }
+    }
+  }
+}
+```
+
+Now versions live in one place. Both profiles inherit them.
 
 ## Environment Properties
 
@@ -115,41 +153,59 @@ Environments can extend other environments to reduce duplication:
 
 ## Common Environment Patterns
 
-### Minimum Requirements
+### Version Matrix
+
+Define minimum, recommended, and latest environments for comprehensive testing:
 
 ```json
 {
-  "minimum": {
-    "wp": "6.0",
-    "woo": "8.0", 
-    "php": "7.4"
+  "environments": {
+    "minimum":     { "wp": "6.0", "woo": "8.0", "php": "7.4" },
+    "recommended": { "wp": "stable", "woo": "stable", "php": "8.0" },
+    "latest":      { "wp": "rc", "woo": "rc", "php": "8.3" }
+  },
+  "test_types": {
+    "e2e": {
+      "compat-min":    { "environment": "minimum",     "test_packages": ["./tests"] },
+      "compat-rec":    { "environment": "recommended", "test_packages": ["./tests"] },
+      "compat-latest": { "environment": "latest",      "test_packages": ["./tests"] }
+    }
   }
 }
 ```
 
-### Recommended Setup
+### Environment with Profile Override
+
+A profile can reference an environment and override specific values:
 
 ```json
 {
-  "recommended": {
-    "wp": "stable",
-    "woo": "stable",
-    "php": "8.0"
+  "environments": {
+    "production": { "wp": "stable", "woo": "stable", "php": "8.2" }
+  },
+  "test_types": {
+    "e2e": {
+      "php83-test": {
+        "environment": "production",
+        "php": "8.3"
+      }
+    }
   }
 }
 ```
 
-### Bleeding Edge
+The "php83-test" profile inherits everything from "production" but uses PHP 8.3 instead of 8.2.
 
-```json
-{
-  "bleeding-edge": {
-    "wp": "nightly",
-    "woo": "rc",
-    "php": "8.3"
-  }
-}
-```
+## Precedence
+
+When the same setting comes from multiple sources:
+
+| Source | Priority |
+|---|---|
+| CLI flags | Highest |
+| Profile inline values | High |
+| Referenced environment | Medium |
+| Framework defaults | Lowest |
 
 ## Advanced Environment Options
 
@@ -258,5 +314,5 @@ qit run:e2e --environment=production
 
 ## Related Topics
 
-- [Test Profiles](profiles.md) - Using environments in profiles
+- [Test Profiles](profiles.md) - Configure tests with inline values or environment references
 - [qit.json Structure](qit-json.md) - Complete configuration
