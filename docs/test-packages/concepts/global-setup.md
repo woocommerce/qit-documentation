@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: "Global Setup"
+description: "Explains the globalSetup lifecycle phase — how each test package encapsulates its own environment setup (dismissing onboarding wizards, configuring API keys, setting defaults) so packages can be combined without coupling. Covers the execution model: globalSetup runs once for ALL packages before any tests, its changes persist to the database snapshot, and every subsequent package's tests see the combined setup state. Contrasts with the per-package setup phase which runs before each individual package."
 ---
 
 ### The globalSetup Phase: Purpose and Philosophy

@@ -1,3 +1,7 @@
+---
+description: "Tutorial on running multiple test packages together for cross-plugin compatibility testing. Explains the orchestration flow: environment setup, global setup for all packages, database snapshot, isolated execution per package (with DB restore between each), global teardown, result aggregation. Includes a detailed real-world example of testing a shipping extension with Stripe and WooCommerce minimal tests, showing how secrets (STRIPE_TEST_*) are passed via --env and how each package's isolation works."
+---
+
 # Using Multiple Packages Together
 
 Learn how QIT orchestrates multiple Test Packages to test real-world plugin combinations.

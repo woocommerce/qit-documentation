@@ -1,3 +1,7 @@
+---
+description: "Introduction to the QIT local test environment — ephemeral Docker-based WordPress+WooCommerce environments created with `qit env:up` and removed with `qit env:down`. Covers prerequisites (Docker required, platform notes for Mac/Linux/Windows WSL), starting your first environment, accessing the site URL, environment management commands (env:list, env:source, env:exec, env:enter, env:reset), and how environments are stateless — every restart is a clean slate."
+---
+
 # Local test environment introduction
 
 ## Introduction

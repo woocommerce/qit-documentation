@@ -15,6 +15,23 @@ const sidebars = {
         },
         {
             type: 'category',
+            label: 'Managed Tests',
+            collapsed: true,
+            items: [
+                'managed-tests/introduction',
+                'managed-tests/activation',
+                'managed-tests/woo-e2e',
+                'managed-tests/woo-api',
+                'managed-tests/security',
+                'managed-tests/phpcompatibility',
+                'managed-tests/phpstan',
+                'managed-tests/malware',
+                'managed-tests/validation',
+                'managed-tests/plugin-check',
+            ],
+        },
+        {
+            type: 'category',
             label: 'Test Packages',
             collapsed: true,
             items: [
@@ -37,10 +54,6 @@ const sidebars = {
                     items: [
                         'test-packages/how-to/create-packages',
                         'test-packages/how-to/use-secrets',
-                        // These will be created later:
-                        // 'test-packages/how-to/run-packages',
-                        // 'test-packages/how-to/debug-failures',
-                        // 'test-packages/how-to/configure-ci',
                     ],
                 },
                 {
@@ -50,6 +63,7 @@ const sidebars = {
                     items: [
                         'test-packages/concepts/global-setup',
                         'test-packages/concepts',
+                        'test-packages/concepts/subpackages',
                         'test-packages/lifecycle',
                         'test-packages/manifest',
                         'test-packages/utility-packages',
@@ -71,7 +85,6 @@ const sidebars = {
                     label: 'Advanced',
                     collapsed: true,
                     items: [
-                        'test-packages/development-workflow',
                         'test-packages/secrets',
                         'test-packages/ci',
                         'test-packages/ai-development',
@@ -83,19 +96,14 @@ const sidebars = {
         },
         {
             type: 'category',
-            label: 'Managed Tests',
+            label: 'Local Environment',
             collapsed: true,
             items: [
-                'managed-tests/introduction',
-                'managed-tests/activation',
-                'managed-tests/woo-e2e',
-                'managed-tests/woo-api',
-                'managed-tests/security',
-                'managed-tests/phpcompatibility',
-                'managed-tests/phpstan',
-                'managed-tests/malware',
-                'managed-tests/validation',
-                'managed-tests/plugin-check',
+                'environment/introduction',
+                'environment/development-workflow',
+                'environment/tunnel',
+                'environment/persistent-tunnel',
+                'environment/environment-variables',
             ],
         },
         {
@@ -109,6 +117,7 @@ const sidebars = {
                 'configuration/environments',
                 'configuration/groups',
                 'configuration/extension-sets',
+                'configuration/validation-rules',
             ],
         },
         {

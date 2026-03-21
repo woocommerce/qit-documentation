@@ -1,3 +1,7 @@
+---
+description: "Explains how QIT handles network access for test packages. Tests run offline by default for reliability. Packages can declare `requires_network: true` in qit-test.json to enable network access. Covers the --offline and --online CLI flags to override auto-detection, what network restrictions block (WordPress update checks, telemetry, external HTTP), and WP_CLI restrictions when network is disabled."
+---
+
 # Network Requirements for Test Packages
 
 ## Overview

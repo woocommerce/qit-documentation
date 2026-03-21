@@ -1,3 +1,7 @@
+---
+description: "Overview of test packages — custom Playwright E2E tests in a standardized format that can be shared and combined for cross-plugin compatibility testing. Explains the problem (plugins test in isolation, but users run them together), the minimal standard (Playwright tests + qit-test.json manifest), and how to run them with `qit run:e2e --test-package`. Covers the key commands: `qit package:scaffold` to create, `qit package:publish` to share, `qit run:e2e` to run. Requires Docker for local execution. Links to quickstart tutorial for hands-on walkthrough."
+---
+
 # Test Packages
 
 Test Packages are a minimal standard for E2E tests that makes WordPress ecosystem compatibility testing possible - enabling plugins and themes to share tests and verify they work together. They're the missing piece that lets developers stop testing in isolation and start testing in reality, running their code against real test suites from other plugin vendors to catch compatibility issues before customers do.

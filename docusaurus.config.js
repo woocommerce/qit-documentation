@@ -75,6 +75,13 @@ const config = {
   markdown: {
     mermaid: true,
   },
+  plugins: [
+    ['docusaurus-plugin-llms', {
+      generateLLMsTxt: true,
+      generateLLMsFullTxt: true,
+    }],
+  ],
+
   themes: ['@docusaurus/theme-mermaid'],
 
   themeConfig:

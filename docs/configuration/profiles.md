@@ -1,3 +1,7 @@
+---
+description: "Guide to test profiles in qit.json. Profiles save test settings (versions, test packages, options) under test_types so you don't retype CLI flags. Covers inline version values (php, wp, woo — short or long form), environment references, profile inheritance via extends, the precedence chain (CLI > profile > environment > defaults), common patterns (smoke, compatibility, remote test profiles), tweaks.skip for skipping tests by name or regex, and when to use inline values vs named environments."
+---
+
 # Test Profiles
 
 Test profiles are named configurations that save your test settings in `qit.json` so you don't have to type them every time.

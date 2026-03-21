@@ -1,3 +1,7 @@
+---
+description: "Reference for the `run:plugin-check` managed test. Runs the WordPress.org Plugin Check tool (plugin_repo category) against your extension to verify compliance with WordPress.org Plugin Review Guidelines — core guideline compliance, repository readiness, disallowed functions. Optional test, not required for WooCommerce Marketplace submissions. Supports --php_version. Includes auto-generated CLI usage."
+---
+
 # WordPress.org Plugin Check tests
 
 WordPress.org Plugin Check tests run the [WordPress.org automated plugin check](https://wordpress.org/plugins/plugin-check) tool against your extension. This optional test focuses on guidelines and patterns important for submitting plugins to the WordPress.org directory.

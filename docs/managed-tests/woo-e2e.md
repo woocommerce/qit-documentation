@@ -1,3 +1,7 @@
+---
+description: "Reference for the `run:woo-e2e` managed test. Runs WooCommerce Core end-to-end tests (onboarding, product creation, checkout, order management, tax settings) with your extension active to verify it doesn't break default WooCommerce behavior. Covers how to interpret Allure test reports (screenshots, stack traces, test steps), what to do when tests fail, and how to request AI-assisted recommendations. Supports WordPress, WooCommerce, PHP version selection, HPOS feature toggle, and extension sets."
+---
+
 # Woo E2E tests
 
 The Woo E2E (end-to-end) test suite creates a temporary WordPress installation with WooCommerce and your extension installed, then uses a scripted browser to simulate essential store operations. This includes completing the WooCommerce onboarding wizard, creating a product, making a purchase as a customer, verifying order details as an admin, adjusting tax settings, and more.

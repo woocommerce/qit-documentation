@@ -1,3 +1,7 @@
+---
+description: "Tutorial for publishing a test package to the QIT registry with `qit package:publish`. Covers pre-publish verification, adding optional metadata (description, tags, requires), publishing with version tags, updating published packages (overwrites previous version), and how others consume your package via `qit run:e2e --test-package=your-slug/name:latest`."
+---
+
 # Publishing Your First Package
 
 Learn how to share your Test Package with the WordPress ecosystem through the QIT Package Registry.

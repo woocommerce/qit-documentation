@@ -1,3 +1,7 @@
+---
+description: "Overview of the qit.json configuration system. Explains the four key concepts — SUT (system under test), profiles (named test configurations with inline version settings), environments (optional reusable version combinations), and groups (batch execution). Includes a complete working qit.json example, a CLI-to-config mapping table, and the progressive enhancement model: CLI flags first, then profiles, then environments, then groups. Links to detailed pages for each concept."
+---
+
 # Test Configuration and Automation
 
 Once you've mastered running QIT commands, you'll want to make complex test scenarios repeatable and shareable. The `qit.json` configuration file enables this by capturing CLI commands as reusable profiles.

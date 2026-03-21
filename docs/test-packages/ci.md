@@ -1,3 +1,7 @@
+---
+description: "Guide to running test packages in CI/CD pipelines. Covers CI mode auto-detection (CI=true/1/yes), CI-specific output behavior, and platform-specific examples for GitHub Actions, GitLab CI, Jenkins, CircleCI, Travis CI, Bitbucket Pipelines, and Azure DevOps. Includes Docker integration examples (Dockerfile, docker-compose), optimization strategies (caching, parallel execution, conditional testing, fail-fast), reporting setup (multiple formats, status badges, notifications), debugging CI failures (verbose mode, artifact download, local reproduction), and best practices."
+---
+
 # Continuous Integration
 
 Test Packages are designed for CI/CD environments with automatic output management, parallel execution, and comprehensive reporting.

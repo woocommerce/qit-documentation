@@ -1,3 +1,7 @@
+---
+description: "Collection of complete, working test package examples. Includes qit-test.json manifests and Playwright test code for: basic checkout tests, payment gateway tests (with Stripe secrets and globalSetup), API test packages, multi-package configurations, performance tests (K6), mobile viewport tests, visual regression tests (screenshot comparison), and accessibility tests (axe-core). Each example shows the full manifest, directory structure, and key test patterns."
+---
+
 # Examples
 
 Complete, working examples of Test Packages for various scenarios.

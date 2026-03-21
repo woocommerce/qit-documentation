@@ -1,3 +1,7 @@
+---
+description: "Complete reference for the test package execution lifecycle. Documents every phase in order: environment setup (Docker, WordPress, WooCommerce, PHP), secret validation (fail fast if missing), package validation, global setup (runs once for ALL packages), database snapshot (baseline for isolation), per-package loop (restore DB, setup, run, collect results, teardown), global teardown, post-processing (merge CTRF, generate reports). Covers CTRF generation for lifecycle phases, database isolation details (export ~3-5s, restore ~2-3s, includes DB only not filesystem), output modes (standard, CI, verbose), error handling matrix (which phases stop vs continue), and exit codes (0=pass, 1=fail, 3=infrastructure)."
+---
+
 # Lifecycle
 
 The Test Package lifecycle is deterministic and predictable. Every execution follows the same sequence, ensuring reproducibility and isolation.

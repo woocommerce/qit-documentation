@@ -1,3 +1,7 @@
+---
+description: "Symptom-indexed troubleshooting guide for test packages. Covers: package not found (path issues, missing manifest), validation errors (missing run phase, invalid CTRF path), secret validation failures (missing env vars, .env file format), results not found (wrong CTRF path, blob directory missing), command failures (not found, permission denied, timeout), database issues (snapshot/restore failures, isolation problems), output issues (redaction, suppression in CI), test execution issues (tests not running, timing out, flaky), environment issues (Docker, version mismatches), CI/CD issues, performance issues, and migration from older CLI versions (--pw_test_tag to -- --grep)."
+---
+
 # Troubleshooting
 
 Common issues and solutions when working with Test Packages.

@@ -1,3 +1,7 @@
+---
+description: "Guide to passing environment variables into QIT test environments. Covers the --env CLI flag (`--env KEY=VALUE`, multiple allowed), --env_file flag for loading from .env files, using environment variables in qit.json configuration, how variables are injected into Docker containers, and common patterns (WP_DEBUG, API keys, feature flags). All environment variable values must be strings — use \"true\" not true."
+---
+
 # Environment variables
 
 ## Introduction

@@ -1,3 +1,7 @@
+---
+description: "Overview of managed tests — pre-built quality checks maintained by the QIT team that run remotely with zero setup. Lists all available test types (activation, security, woo-e2e, woo-api, phpstan, phpcompatibility, malware, validation, plugin-check) with brief descriptions. Explains when to use them (before release, in CI/CD), how to interpret results (success, warning, failed), and links to individual test type pages for details."
+---
+
 # Managed Tests
 
 Managed tests are a collection of standardized test suites maintained by the QIT team. They are designed to ensure your extension meets baseline criteria for stability, compatibility, and security. By running these tests, you gain quick, reliable feedback on potential issues, all without having to write or maintain your own scenarios.

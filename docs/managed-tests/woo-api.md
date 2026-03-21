@@ -1,3 +1,7 @@
+---
+description: "Reference for the `run:woo-api` managed test. Runs WooCommerce Core REST API tests (products, customers, orders CRUD operations) with your extension active to verify it doesn't break or alter expected API responses. Covers how to interpret results, best practices for API compatibility, and how to run the test. Supports WordPress, WooCommerce, PHP version selection, HPOS/new_product_editor feature toggles, and extension sets. Includes auto-generated CLI usage."
+---
+
 # Woo API tests
 
 Woo API tests verify that your extension interacts cleanly with the [WooCommerce REST API](https://woocommerce.github.io/woocommerce-rest-api-docs/#introduction). By creating and manipulating products, orders, and customers through API requests, these tests ensure that your extension doesn’t introduce errors or alter expected responses, helping maintain a stable and reliable store experience.

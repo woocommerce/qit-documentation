@@ -1,3 +1,7 @@
+---
+description: "In-depth guide to secret management in test packages. Covers the full workflow: declaring secrets in qit-test.json `requires.secrets`, providing them via environment variables (export, .env files, or CI platform secrets), validation behavior (all secrets from ALL packages collected and validated before execution), injection as environment variables accessible in test code (JavaScript, PHP, Python examples), automatic redaction from output (values >4 chars), and security best practices (never commit secrets, use test credentials, rotate regularly)."
+---
+
 # Managing Secrets
 
 Secrets provide secure handling of sensitive data like API keys, passwords, and tokens. QIT validates, injects, and redacts secrets automatically.

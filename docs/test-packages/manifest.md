@@ -1,3 +1,7 @@
+---
+description: "Complete reference for qit-test.json — the test package manifest file. Documents every field: package (namespace/name), package_type (test or utility), description, tags, test_type, requires (secrets, php, wordpress, plugins, themes, external_services), test.phases (globalSetup, setup, run, teardown, globalTeardown), test.results (ctrf-json, blob-dir, json, allure-dir), mu_plugins, envs, timeout, retry, and subpackages. Includes validation rules (test packages must have run phase and results; utility packages must NOT), command execution formats (string or object with runs_on, timeout, continue_on_error, env), and complete examples for test, utility, and minimal packages."
+---
+
 # Test Package Manifest Reference
 
 The `qit-test.json` file defines a test package's behavior, requirements, and integration points.

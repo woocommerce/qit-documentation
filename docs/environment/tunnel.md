@@ -1,3 +1,7 @@
+---
+description: "Guide to exposing your local QIT environment to the internet via tunneling. Required for testing payment gateways, webhooks, SaaS integrations, and external API callbacks that need a live HTTPS URL. Covers platform-specific setup (Mac: install cloudflared via Homebrew; Linux: works out of the box; WSL: not supported), available tunnel methods (cloudflared-docker, cloudflared-binary), how to use with `qit env:up --tunnel=cloudflare` and `qit run:e2e --tunnel=cloudflare`, and troubleshooting tunnel connectivity."
+---
+
 # Tunneling
 
 Tunneling allows your local development environment to be accessible over the internet. This is useful for testing plugins that require a live URL with valid HTTPS, such as payment gateways, SaaS integrations, webhooks, or external API callbacks. QIT supports multiple tunneling methods, and the optimal choice depends on your operating system and requirements.

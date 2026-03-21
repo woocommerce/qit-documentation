@@ -1,3 +1,7 @@
+---
+description: "Frequently asked questions about QIT. Covers: what QIT is and who it's for, whether a WooCommerce.com partner account is required, installation prerequisites, which test types are available, version selection support, tunneling for live URLs, handling test failures and flakiness, CI/CD integration, security issue reporting, and how to get further support."
+---
+
 # FAQs
 
 ## General questions
@@ -44,7 +48,7 @@ A: Email `qit@woocommerce.com` with `Security Issue` in the subject line. Provid
 See [CI/CD Integration](../test-packages/ci.md) for examples of integrating QIT into your pipeline.
 
 **Q: Can I fetch plugins or themes from private repos or other custom sources?**  
-Refer to [Installing from Other Sources](../environment/installing-from-other-sources.md) for guidance on using private repos and custom sources.
+Refer to the [qit.json configuration](../configuration/qit-json.md) page for guidance on installing plugins from various sources (local, URL, wporg, wccom).
 
 ## Getting help
 

@@ -1,3 +1,7 @@
+---
+description: "Reference showing which test options are supported by which test types. Includes a matrix table: Activation, Woo E2E, and Woo API support WordPress/WooCommerce/PHP version selection, additional plugins, and extension sets. Security, PHPStan, Validation, and Plugin Check do NOT support version options. Covers WordPress/WooCommerce version values (stable, rc, specific), PHP versions (7.4-8.4), WooCommerce features (HPOS), additional plugin syntax, extension sets, and how to save options in a qit.json profile."
+---
+
 # Test options
 
 When running tests with QIT, you can specify various options—like WordPress, WooCommerce, and PHP versions—to ensure your extension behaves correctly across multiple environments. Different tests support different sets of options, and understanding these capabilities helps you thoroughly validate your code.
@@ -12,7 +16,7 @@ When running tests with QIT, you can specify various options—like WordPress, W
 | PHP Version                  | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
 | Additional Extensions        | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
 | Additional WordPress Plugins | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
-| [Extension sets](../managed-tests/extension-sets) | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
+| [Extension sets](../configuration/extension-sets) | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
 
 **Key:**
 - ✅: Option supported by that test type.

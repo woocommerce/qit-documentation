@@ -1,3 +1,7 @@
+---
+description: "Command reference for test package operations. Documents run:e2e (execute test packages with orchestration), env:up/env:down (start/stop local Docker environments), package:list/show/publish/download (registry operations). Covers all options with examples, environment variables, package discovery, command execution context (host vs Docker container for .sh scripts), output formats, debugging flags, common usage patterns, and migration guide from older CLI versions."
+---
+
 # Commands
 
 ## run:e2e

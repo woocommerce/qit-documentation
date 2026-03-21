@@ -1,3 +1,7 @@
+---
+description: "Complete reference for the qit.json configuration file. Covers all top-level sections: SUT (local, URL, wccom, wporg sources with optional build commands), environments (version pins, plugins, themes, volumes, php_extensions, envs, utilities), test_types with profiles (inline values or environment references, profile inheritance via extends), and groups (batch execution). Includes a real-world complete example for a payment gateway plugin, CLI override examples, configuration sharing via extends, naming/validation rules, and plugin installation formats (slug, URL, local path, detailed object)."
+---
+
 # The qit.json Configuration File
 
 The `qit.json` file captures complex QIT commands as reusable, shareable configurations.

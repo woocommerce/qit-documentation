@@ -1,3 +1,7 @@
+---
+description: "Core concepts of the test package system. Explains the two package types: test packages (have a run phase, produce CTRF results, contain Playwright tests) and utility packages (no run phase, provide environment setup only). Covers lifecycle phases (globalSetup, setup, run, teardown, globalTeardown), database isolation via snapshots between packages, the CTRF result format, and how packages declare requirements (plugins, PHP version, secrets)."
+---
+
 # Core Concepts
 
 ## Package-Based Architecture

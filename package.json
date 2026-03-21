@@ -20,6 +20,7 @@
         "@jongwooo/prism-theme-github": "^1.14.0",
         "@mdx-js/react": "^3.0.0",
         "clsx": "^2.0.0",
+        "docusaurus-plugin-llms": "^0.3.0",
         "prism-react-renderer": "^2.3.0",
         "react": "^18.0.0",
         "react-dom": "^18.0.0"

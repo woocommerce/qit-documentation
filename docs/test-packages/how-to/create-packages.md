@@ -1,3 +1,7 @@
+---
+description: "How-to guide for creating test packages and utility packages. Covers `qit package:scaffold` with --package-type=test (creates Playwright setup, qit-test.json with run phase and results) and --package-type=utility (creates setup phases only, no run or results). Shows scaffold options (--only-manifest, --with-schema), manual creation, and the manifest structure for both package types. Utility packages must NOT have a run phase, test_type, or results configuration."
+---
+
 # How to Create Test Packages
 
 This guide walks through creating Test Packages for different scenarios.

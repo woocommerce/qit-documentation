@@ -1,3 +1,7 @@
+---
+description: "Step-by-step tutorial to create your first test package. Covers scaffolding with `qit package:scaffold`, understanding the qit-test.json manifest (package ID, phases, results), writing a Playwright checkout test, running locally with `qit run:e2e --test-package`, debugging with `qit env:up` + `qit env:source`, and combining multiple packages in one run. Prerequisites: QIT CLI, Docker, Node.js. Includes quick reference table of key commands."
+---
+
 # Your First Test Package
 
 This tutorial walks you through creating, running, and understanding your first Test Package. By the end, you'll have a working test that can be combined with other packages.
