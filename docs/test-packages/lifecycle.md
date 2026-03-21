@@ -223,8 +223,9 @@ Execution sequence:
 The orchestrator automatically generates CTRF for lifecycle phases:
 
 **Note**: Command execution contexts:
-- Commands ending in `.sh` run in Docker container
-- Other commands run on host
+- `npm`/`npx` commands run on the host (where Node.js is installed)
+- Everything else runs inside the Docker container (where WordPress lives)
+- Override with `host:` or `docker:` prefix, or `runs_on` in object command format
 - Phase timeouts: 30 minutes for run phase, 5 minutes for others
 
 ### Lifecycle CTRF

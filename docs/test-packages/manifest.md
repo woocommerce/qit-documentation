@@ -1,5 +1,5 @@
 ---
-description: "Complete reference for qit-test.json — the test package manifest file. Documents every field: package (namespace/name), package_type (test or utility), description, tags, test_type, requires (secrets, php, wordpress, plugins, themes, external_services), test.phases (globalSetup, setup, run, teardown, globalTeardown), test.results (ctrf-json, blob-dir, json, allure-dir), mu_plugins, envs, timeout, retry, and subpackages. Includes validation rules (test packages must have run phase and results; utility packages must NOT), command execution formats (string or object with runs_on, timeout, continue_on_error, env), and complete examples for test, utility, and minimal packages."
+description: "Complete reference for qit-test.json — the test package manifest file. Documents every field: package (namespace/name), package_type (test or utility), description, tags, test_type, requires (secrets, php, wordpress, plugins as slug arrays, themes as slug arrays, network, tunnel, external_services), test.phases (globalSetup, setup, run, teardown, globalTeardown), test.results (ctrf-json, blob-dir, json, allure-dir), mu_plugins, envs, and subpackages. Includes validation rules, command execution formats (string or object with runs_on, timeout, continue_on_error), auto-detection logic (npm/npx = host, everything else = Docker), and complete examples."
 ---
 
 # Test Package Manifest Reference
@@ -39,9 +39,11 @@ The `qit-test.json` file defines a test package's behavior, requirements, and in
     "secrets": ["array"],
     "php": "string",
     "wordpress": "string",
-    "plugins": {"name": "version"},
-    "themes": {"name": "version"},
-    "external_services": ["array"]
+    "plugins": ["array of slugs"],
+    "themes": ["array of slugs"],
+    "external_services": ["array"],
+    "network": false,
+    "tunnel": false
   },
   "test": {
     "phases": {
@@ -59,12 +61,7 @@ The `qit-test.json` file defines a test package's behavior, requirements, and in
     }
   },
   "mu_plugins": ["array"],
-  "envs": {"key": "value"},
-  "timeout": "number",
-  "retry": {
-    "times": "number",
-    "delay": "number"
-  }
+  "envs": {"key": "value"}
 }
 ```
 
@@ -160,30 +157,6 @@ Environment variables to set during test execution. Values can be string, boolea
 }
 ```
 
-### timeout
-**Optional** | `integer`
-
-Test timeout in seconds. Range: 1-3600.
-
-```json
-"timeout": 600
-```
-
-### retry
-**Optional** | `object`
-
-Retry configuration for flaky tests.
-
-```json
-"retry": {
-  "times": 3,
-  "delay": 5
-}
-```
-
-- `times`: Number of retry attempts (0-5)
-- `delay`: Delay between retries in seconds (0-60)
-
 ## requires
 
 Optional requirements and constraints.
@@ -227,29 +200,46 @@ WordPress version constraint.
 ```
 
 ### requires.plugins
-**Optional** | `object`
+**Optional** | `string[]`
 
-Required plugins with semantic version constraints.
+Required plugins (will be installed and activated). Array of plugin slugs.
 
 ```json
 "requires": {
-  "plugins": {
-    "woocommerce": ">=8.0.0",
-    "woocommerce-subscriptions": "^5.0.0"
-  }
+  "plugins": ["woocommerce", "woocommerce-subscriptions"]
 }
 ```
 
 ### requires.themes
-**Optional** | `object`
+**Optional** | `string[]`
 
-Required themes with semantic version constraints.
+Required themes (will be installed). Array of theme slugs.
 
 ```json
 "requires": {
-  "themes": {
-    "storefront": ">=4.0.0"
-  }
+  "themes": ["storefront"]
+}
+```
+
+### requires.network
+**Optional** | `boolean`
+
+Whether this package requires external network access. Default: `false` (tests run offline).
+
+```json
+"requires": {
+  "network": true
+}
+```
+
+### requires.tunnel
+**Optional** | `boolean`
+
+Whether this package requires a tunnel for external access (e.g., payment gateway webhooks). Default: `false`.
+
+```json
+"requires": {
+  "tunnel": true
 }
 ```
 
@@ -414,20 +404,16 @@ Commands can be either strings or objects with additional configuration:
     "command": "npm install",
     "runs_on": "host",
     "timeout": 300,
-    "continue_on_error": false,
-    "env": {
-      "NODE_ENV": "test"
-    }
+    "continue_on_error": false
   }
 ]
 ```
 
 Object properties:
 - `command` (required): The command to execute
-- `runs_on`: "host" or "docker" (default: smart detection)
+- `runs_on`: `"host"` or `"docker"` (default: auto-detection — npm/npx run on host, everything else runs in Docker)
 - `timeout`: Command timeout in seconds (1-3600)
-- `continue_on_error`: Continue even if command fails (default: false)
-- `env`: Additional environment variables for this command
+- `continue_on_error`: Continue even if command fails (default: `false`)
 
 ### Environment Variables
 Commands have access to:
