@@ -54,6 +54,7 @@ const sidebars = {
                     items: [
                         'test-packages/how-to/create-packages',
                         'test-packages/how-to/use-secrets',
+                        'test-packages/how-to/ai-browser-testing',
                     ],
                 },
                 {
