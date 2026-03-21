@@ -34,31 +34,7 @@ The tool currently runs checks from the `plugin_repo` category, which helps iden
 - **Future-proofing your code:** Running these tests periodically helps ensure that your plugin remains compatible and well-structured for multiple distribution channels.
 - **Combine with other tests:** Plugin Check complements managed tests, security scans, and E2E tests, offering a broader quality overview of your extension.
 
-<!-- BEGIN GENERATED CLI REFERENCE -->
+
 ## CLI Usage
 
-```
-Description:
-  Enqueue Plugin Check tests.
-
-Usage:
-  run:plugin-check [options] [--] [<sut>]
-
-Arguments:
-  sut                                           Extension slug or WooCommerce.com ID
-
-Options:
-      --config[=CONFIG]                         Path to the qit.json configuration file
-      --profile[=PROFILE]                       Test profile to use [default: "default"]
-      --php_version[=PHP_VERSION]               (Optional) The PHP version to use in the test. Defaults to "Requires PHP" header in plugin or 7.4 if not set. Alias: --php [possible values: 7.4, 8.0, 8.1, 8.2, 8.3, 8.4, ] [default: ""]
-      --zip[=ZIP]                               (Optional) Local ZIP / dir / URL build to test
-  -j, --json|--no-json                          (Optional) Output raw JSON response
-      --async|--no-async                        (Optional) Enqueue test and return immediately without waiting
-  -w, --wait|--no-wait                          (Deprecated) Wait for test completion - this is now the default behavior
-      --print-report-url|--no-print-report-url  (Optional) Print the test report URL (contains sensitive data - use cautiously in public logs)
-  -t, --timeout[=TIMEOUT]                       (Optional) Wait timeout in seconds
-  -g, --group|--no-group                        (Optional) Register the run into a group
-```
-
-*Auto-generated from `qit run:plugin-check --help`.*
-<!-- END GENERATED CLI REFERENCE -->
+{/* QIT_COMMAND:run:plugin-check */}

@@ -63,32 +63,7 @@ By combining static analysis (PHPCompatibility) with runtime tests, you can achi
 
 - **Use complementary tests:**  
   Pair PHPCompatibility tests with [Activation test](./activation.md), [Woo API test](./woo-api.md), [Woo E2E test](./woo-e2e.md) and [Test Packages](./../test-packages/index.md) for a comprehensive assessment of your extension's readiness.
-<!-- BEGIN GENERATED CLI REFERENCE -->
+
 ## CLI Usage
 
-```
-Description:
-  Enqueue PHPCompatibility tests.
-
-Usage:
-  run:phpcompatibility [options] [--] [<sut>]
-
-Arguments:
-  sut                                           Extension slug or WooCommerce.com ID
-
-Options:
-      --config[=CONFIG]                         Path to the qit.json configuration file
-      --profile[=PROFILE]                       Test profile to use [default: "default"]
-      --min_php_version[=MIN_PHP_VERSION]       (Optional) The minimum PHP version to test an extension's compatibility against. [possible values: auto, 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3, 8.4] [default: "auto"]
-      --max_php_version[=MAX_PHP_VERSION]       (Optional) The maximum PHP version to test an extension's compatibility against. [possible values: 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3, 8.4] [default: "8.4"]
-      --zip[=ZIP]                               (Optional) Local ZIP / dir / URL build to test
-  -j, --json|--no-json                          (Optional) Output raw JSON response
-      --async|--no-async                        (Optional) Enqueue test and return immediately without waiting
-  -w, --wait|--no-wait                          (Deprecated) Wait for test completion - this is now the default behavior
-      --print-report-url|--no-print-report-url  (Optional) Print the test report URL (contains sensitive data - use cautiously in public logs)
-  -t, --timeout[=TIMEOUT]                       (Optional) Wait timeout in seconds
-  -g, --group|--no-group                        (Optional) Register the run into a group
-```
-
-*Auto-generated from `qit run:phpcompatibility --help`.*
-<!-- END GENERATED CLI REFERENCE -->
+{/* QIT_COMMAND:run:phpcompatibility */}

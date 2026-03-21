@@ -89,3 +89,9 @@ Follow prompts to configure and authenticate with Cloudflare or other services.
 
 - If you experience DNS propagation delays with temporary subdomains, try persistent tunnels or switch DNS to Cloudflare (1.1.1.1).
 - For installation issues or unsupported methods on your OS, consider using a custom tunnel or requesting new features on the QIT GitHub repository.
+
+## CLI Usage
+
+{/* QIT_COMMAND:tunnel:setup */}
+
+{/* QIT_COMMAND:tunnel:set-default */}

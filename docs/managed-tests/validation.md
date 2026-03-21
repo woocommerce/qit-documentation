@@ -71,31 +71,7 @@ If you receive warnings or errors:
 - **Stay current:**
   Run validation tests regularly and promptly update outdated templates, headers, or feature declarations.
 
-<!-- BEGIN GENERATED CLI REFERENCE -->
+
 ## CLI Usage
 
-```
-Description:
-  Enqueue Validation tests.
-
-Usage:
-  run:validation [options] [--] [<sut>]
-
-Arguments:
-  sut                                           Extension slug or WooCommerce.com ID
-
-Options:
-      --config[=CONFIG]                         Path to the qit.json configuration file
-      --profile[=PROFILE]                       Test profile to use [default: "default"]
-      --php_version[=PHP_VERSION]               (Optional) The PHP version to use in the test. Defaults to "Requires PHP" header in plugin or 7.4 if not set. Alias: --php [possible values: 7.4, 8.0, 8.1, 8.2, 8.3, 8.4, ] [default: ""]
-      --zip[=ZIP]                               (Optional) Local ZIP / dir / URL build to test
-  -j, --json|--no-json                          (Optional) Output raw JSON response
-      --async|--no-async                        (Optional) Enqueue test and return immediately without waiting
-  -w, --wait|--no-wait                          (Deprecated) Wait for test completion - this is now the default behavior
-      --print-report-url|--no-print-report-url  (Optional) Print the test report URL (contains sensitive data - use cautiously in public logs)
-  -t, --timeout[=TIMEOUT]                       (Optional) Wait timeout in seconds
-  -g, --group|--no-group                        (Optional) Register the run into a group
-```
-
-*Auto-generated from `qit run:validation --help`.*
-<!-- END GENERATED CLI REFERENCE -->
+{/* QIT_COMMAND:run:validation */}

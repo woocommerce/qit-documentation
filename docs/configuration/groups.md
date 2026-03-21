@@ -109,6 +109,10 @@ qit run:group pre-release --only=e2e
 - Document group purposes
 - Keep groups maintainable
 
+## CLI Usage
+
+{/* QIT_COMMAND:run:group */}
+
 ## Related Topics
 
 - [Test Profiles](profiles.md) - Individual test configurations

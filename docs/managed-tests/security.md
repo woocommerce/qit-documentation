@@ -146,30 +146,7 @@ If a check is marked as passed, it means:
 These audits help ensure that the product is safe, stable, and trustworthy to install on your WooCommerce store.
 
 
-<!-- BEGIN GENERATED CLI REFERENCE -->
+
 ## CLI Usage
 
-```
-Description:
-  Enqueue Security tests.
-
-Usage:
-  run:security [options] [--] [<sut>]
-
-Arguments:
-  sut                                           Extension slug or WooCommerce.com ID
-
-Options:
-      --config[=CONFIG]                         Path to the qit.json configuration file
-      --profile[=PROFILE]                       Test profile to use [default: "default"]
-      --zip[=ZIP]                               (Optional) Local ZIP / dir / URL build to test
-  -j, --json|--no-json                          (Optional) Output raw JSON response
-      --async|--no-async                        (Optional) Enqueue test and return immediately without waiting
-  -w, --wait|--no-wait                          (Deprecated) Wait for test completion - this is now the default behavior
-      --print-report-url|--no-print-report-url  (Optional) Print the test report URL (contains sensitive data - use cautiously in public logs)
-  -t, --timeout[=TIMEOUT]                       (Optional) Wait timeout in seconds
-  -g, --group|--no-group                        (Optional) Register the run into a group
-```
-
-*Auto-generated from `qit run:security --help`.*
-<!-- END GENERATED CLI REFERENCE -->
+{/* QIT_COMMAND:run:security */}
