@@ -6,6 +6,21 @@ description: "Step-by-step methodology for AI assistants creating QIT test packa
 
 This is the methodology to follow when creating QIT E2E test packages for a WooCommerce extension. Follow these steps in order. Do not skip steps. Present findings to the user at key checkpoints before proceeding.
 
+## Prerequisites
+
+Before starting, fetch and read the documentation pages you will need. Use the [documentation index](https://qit.woo.com/docs/llms.txt) to find the current pages for:
+
+- **How to create test packages** — scaffolding, manifest structure, package types
+- **Test package manifest reference** — all fields and validation rules for `qit-test.json`
+- **Test package lifecycle** — execution phases, database isolation, command context
+- **Global setup concepts** — what goes in globalSetup vs setup, cross-compatibility design
+- **Development workflow** — how to use `env:up`, `env:source`, `env:reset` for iterative testing
+- **How to write tests with AI browser observation** — using Playwright MCP to see the real UI
+- **How to handle secrets** — declaring and providing API keys and credentials
+- **Test results and artifacts** — CTRF format, blob directory, screenshots, traces
+
+Also run `qit package:scaffold --help`, `qit env:up --help`, and `qit run:e2e --help` to get current command syntax. Never guess at flags — use `--help` output.
+
 ## Core Principles
 
 1. **Observe before you write.** Never write a test selector without first seeing the real UI. Guessed selectors waste cycles.
@@ -57,29 +72,24 @@ If the extension talks to external APIs (payment gateways, shipping carriers, et
 1. Research the provider's developer/sandbox program (web search)
 2. Check the extension source code for default or public test keys
 3. Ask the user if they have credentials or want you to register for sandbox access
-4. Once obtained, document in a `.env.example` file:
-   - The environment variable name
-   - Where to register
-   - Any setup instructions
+4. Once obtained, document in a `.env.example` file
+
+Refer to the secrets documentation for how to declare and provide secrets in test packages.
 
 If no external services are needed, skip this step.
 
 ## Step 3: Scaffold and Configure
 
-### Scaffold the package
-
-```bash
-qit package:scaffold <extension-repo>/tests/qit \
-  --package=<extension-slug>/e2e:1.0.0 --with-schema
-```
+Use `qit package:scaffold` to create the package structure. Check `qit package:scaffold --help` for the current syntax and options.
 
 ### Write bootstrap scripts
+
+Refer to the global setup and lifecycle documentation for details. The key design decision:
 
 **`global-setup.sh`** — Only shared concerns that benefit ALL packages in a cross-compatibility run:
 - Plugin activation
 - WooCommerce onboarding/coming-soon dismissal
 - Guest checkout enabled, force SSL disabled
-- WooCommerce core pages installed
 - API credentials set as WP options (if needed)
 
 **`setup.sh`** — Extension-specific configuration (isolated, database restored between packages):
@@ -88,19 +98,17 @@ qit package:scaffold <extension-repo>/tests/qit \
 - Test data (products, users, coupons)
 - Anything that would conflict with another package if set globally
 
-This separation is critical for cross-compatibility testing. When multiple packages run together, the database is restored between each package. Global setup runs once; package setup runs for each package.
+This separation is critical. When multiple packages run together, the database is restored between each package. Global setup runs once; package setup runs for each package.
 
 ### Start the environment
 
-```bash
-qit env:up --plugin=<extension-repo> --test-package=<extension-repo>/tests/qit
-```
+Use `qit env:up` to start a local environment with the extension and test package. Check `qit env:up --help` for the current syntax.
 
 ## Step 4: Observe the Real UI
 
 **Do not skip this step.** Navigate the running site using Playwright MCP browser tools.
 
-For detailed instructions on using Playwright MCP for UI observation, see [How to Write Tests with AI Browser Observation](./ai-browser-testing.md).
+Refer to the [browser observation guide](./ai-browser-testing.md) for detailed instructions.
 
 ### Explore the merchant experience (admin)
 
@@ -160,7 +168,7 @@ Present the proposed tests to the user for approval before writing any test code
 
 ## Step 6: Write Tests
 
-Write tests using ONLY selectors you observed in Step 4.
+Write tests using ONLY selectors you observed in Step 4. Refer to the test results documentation for how to configure CTRF output and artifacts.
 
 ### Key patterns
 
@@ -173,27 +181,18 @@ Write tests using ONLY selectors you observed in Step 4.
 
 ## Step 7: Develop Iteratively
 
+Refer to the development workflow documentation for full details on environment management. The key points:
+
 ### The development loop
 
-Start the environment ONCE — this is the expensive step:
-
-```bash
-qit env:up --plugin=<extension-repo> --test-package=<extension-repo>/tests/qit
-source "$(qit env:source <env-id>)"
-```
-
-Run tests repeatedly — this is fast (seconds, not minutes):
-
-```bash
-npx playwright test --reporter=list
-```
+Start the environment ONCE — this is the expensive step. Then run tests repeatedly — this is fast (seconds, not minutes).
 
 When a test fails, DO NOT rebuild the environment. Instead:
 
 1. Navigate to the failing page via Playwright MCP to see the current state
-2. Read `test-results/*/error-context.md` for the page snapshot at failure time
+2. Read the error context artifacts for the page snapshot at failure time
 3. Fix the test code
-4. Re-run just the failing test: `npx playwright test --grep "test name"`
+4. Re-run just the failing test with `--grep`
 
 Use `qit env:reset` to restore the database to its post-setup state between full runs. This is fast (~3 seconds) and avoids the cost of tearing down and rebuilding the environment.
 
@@ -201,10 +200,10 @@ Use `qit env:reset` to restore the database to its post-setup state between full
 
 ### Debug escalation
 
-1. **First:** Read error-context.md — shows page state at failure time
+1. **First:** Read error context artifacts — shows page state at failure time
 2. **Second:** Navigate to the page via Playwright MCP and interact live
-3. **Third:** `qit env:exec <env-id> "command"` to inspect PHP logs, WP options, transients
-4. **Fourth:** Check `/var/www/html/wp-content/debug.log` for PHP errors
+3. **Third:** Use `qit env:exec` to inspect PHP logs, WP options, transients
+4. **Fourth:** Check WordPress debug.log for PHP errors
 
 ### Audit
 
@@ -212,8 +211,8 @@ After all tests pass, review each test critically. Does it exercise the plugin's
 
 ## Step 8: Publish
 
-1. Run `qit run:e2e <extension-slug> --test-package=<extension-repo>/tests/qit` for final validation
-2. Publish: `qit package:publish <path>/tests/qit latest`
+1. Use `qit run:e2e` for final validation of the full orchestrated lifecycle
+2. Use `qit package:publish` to publish. Check `--help` for syntax.
 3. Ask the user if they want CI workflow changes — if yes, follow the repo's existing patterns
 
 ## Checklist
@@ -224,7 +223,8 @@ Track progress and present to the user:
 [ ] Extension source explored — core feature, hooks, API, settings understood
 [ ] Real user research done — reviews, support threads, top pain points identified
 [ ] External service credentials obtained (if needed)
-[ ] Environment scaffolded and running (env:up)
+[ ] Prerequisites read — scaffold, lifecycle, manifest, secrets docs fetched
+[ ] Environment scaffolded and running
 [ ] Admin UI explored with Playwright MCP
 [ ] Customer-facing UI explored with Playwright MCP
 [ ] Personas identified, test list ranked and approved by user
