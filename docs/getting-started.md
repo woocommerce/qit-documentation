@@ -108,6 +108,8 @@ qit run:security --help
 
 **[Configuration](configuration/)** — Save your test settings in `qit.json` so you don't retype them.
 
+**[AI-Assisted Testing](/test-packages/ai-development/)** — Use QIT with Claude Code for AI-powered test development and debugging.
+
 ---
 
 Need help? [GitHub Issues](https://github.com/woocommerce/qit-cli/issues) or qit@woocommerce.com

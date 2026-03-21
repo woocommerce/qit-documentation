@@ -23,6 +23,7 @@ const config = {
   organizationName: '', // Usually your GitHub org/user name.
   projectName: '', // Usually your repo name.
 
+  trailingSlash: true,
   onBrokenLinks: 'warn',
   onBrokenAnchors: 'warn',
   onBrokenMarkdownLinks: 'warn',
