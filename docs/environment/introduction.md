@@ -50,14 +50,18 @@ This command creates an environment running PHP 8.3, the latest release candidat
 
 ## Using configuration files
 
-Create a `qit.yml` file in your project directory:
+Create a `qit.json` file in your project directory:
 
-```yaml
-wp: rc
-php: 8.3
-plugins:
-  - gutenberg
-  - contact-form-7
+```json
+{
+  "environments": {
+    "default": {
+      "wp": "rc",
+      "php": "8.3",
+      "plugins": ["gutenberg", "contact-form-7"]
+    }
+  }
+}
 ```
 
 Now running `qit env:up` without extra parameters uses these configurations, ensuring consistency across your team and simplifying setup.

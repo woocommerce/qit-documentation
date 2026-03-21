@@ -79,7 +79,7 @@ QIT uses the persistent tunnel you configured, ensuring immediate DNS resolution
 
 ## Combining persistent tunnels with other features
 
-- Use persistent tunnels in conjunction with environment configuration files (qit.yml) and custom handlers for a fully automated and reproducible setup.
+- Use persistent tunnels in conjunction with environment configuration files (`qit.json`) for a fully automated and reproducible setup.
 - Perfect for testing payment gateways, webhooks, and other features that require a publicly accessible endpoint.
 
 ## Troubleshooting
