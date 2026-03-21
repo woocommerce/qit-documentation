@@ -42,7 +42,7 @@ This means Claude always has current information, even as QIT evolves.
 With the QIT plugin, Claude can:
 
 - **Run any QIT test** — managed tests, test packages, or both
-- **Create test packages** — scaffold, write Playwright tests, configure manifests
+- **Create test packages** — follows a [structured methodology](./how-to/ai-test-methodology.md) that includes user research, UI observation, and persona-based test design
 - **Debug failures** — read CTRF reports, analyze artifacts, identify root causes
 - **Configure projects** — generate `qit.json` with profiles, environments, and groups
 - **Manage environments** — start, stop, and interact with Docker test environments

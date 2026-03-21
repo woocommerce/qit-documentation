@@ -55,6 +55,7 @@ const sidebars = {
                         'test-packages/how-to/create-packages',
                         'test-packages/how-to/use-secrets',
                         'test-packages/how-to/ai-browser-testing',
+                        'test-packages/how-to/ai-test-methodology',
                     ],
                 },
                 {
