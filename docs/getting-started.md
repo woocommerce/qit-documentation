@@ -108,7 +108,7 @@ qit run:security --help
 
 **[Configuration](configuration/)** — Save your test settings in `qit.json` so you don't retype them.
 
-**[AI-Assisted Testing](/test-packages/ai-development/)** — Use QIT with Claude Code for AI-powered test development and debugging.
+**[AI-Assisted Development](/ai/getting-started/)** — Use QIT with Claude Code for AI-powered test development and debugging.
 
 ---
 

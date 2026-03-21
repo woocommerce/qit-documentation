@@ -8,16 +8,16 @@ This is the methodology to follow when creating QIT E2E test packages for a WooC
 
 ## Prerequisites
 
-Before starting, fetch and read the documentation pages you will need. Use the [documentation index](https://qit.woo.com/docs/llms.txt) to find the current pages for:
+Before starting, fetch and read the documentation pages you will need:
 
-- **How to create test packages** — scaffolding, manifest structure, package types
-- **Test package manifest reference** — all fields and validation rules for `qit-test.json`
-- **Test package lifecycle** — execution phases, database isolation, command context
-- **Global setup concepts** — what goes in globalSetup vs setup, cross-compatibility design
-- **Development workflow** — how to use `env:up`, `env:source`, `env:reset` for iterative testing
-- **How to write tests with AI browser observation** — using Playwright MCP to see the real UI
-- **How to handle secrets** — declaring and providing API keys and credentials
-- **Test results and artifacts** — CTRF format, blob directory, screenshots, traces
+- [How to Create Test Packages](/test-packages/how-to/create-packages/) — scaffolding, manifest structure, package types
+- [Test Package Manifest Reference](/test-packages/manifest/) — all fields and validation rules for `qit-test.json`
+- [Test Package Lifecycle](/test-packages/lifecycle/) — execution phases, database isolation, command context
+- [Global Setup Concepts](/test-packages/concepts/global-setup/) — what goes in globalSetup vs setup, cross-compatibility design
+- [Development Workflow](/environment/development-workflow/) — how to use `env:up`, `env:source`, `env:reset` for iterative testing
+- [AI Browser Observation](./browser-observation.md) — using Playwright MCP to see the real UI before writing selectors
+- [How to Handle Secrets](/test-packages/how-to/use-secrets/) — declaring and providing API keys and credentials
+- [Test Results and Artifacts](/test-packages/results/) — CTRF format, blob directory, screenshots, traces
 
 Also run `qit package:scaffold --help`, `qit env:up --help`, and `qit run:e2e --help` to get current command syntax. Never guess at flags — use `--help` output.
 
@@ -108,7 +108,7 @@ Use `qit env:up` to start a local environment with the extension and test packag
 
 **Do not skip this step.** Navigate the running site using Playwright MCP browser tools.
 
-Refer to the [browser observation guide](./ai-browser-testing.md) for detailed instructions.
+Refer to the [browser observation guide](./browser-observation.md) for detailed instructions.
 
 ### Explore the merchant experience (admin)
 

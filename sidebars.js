@@ -54,8 +54,6 @@ const sidebars = {
                     items: [
                         'test-packages/how-to/create-packages',
                         'test-packages/how-to/use-secrets',
-                        'test-packages/how-to/ai-browser-testing',
-                        'test-packages/how-to/ai-test-methodology',
                     ],
                 },
                 {
@@ -89,7 +87,6 @@ const sidebars = {
                     items: [
                         'test-packages/secrets',
                         'test-packages/ci',
-                        'test-packages/ai-development',
                         'test-packages/sharding',
                     ],
                 },
@@ -120,6 +117,23 @@ const sidebars = {
                 'configuration/groups',
                 'configuration/extension-sets',
                 'configuration/validation-rules',
+            ],
+        },
+        {
+            type: 'category',
+            label: 'AI-Assisted Development',
+            collapsed: false,
+            items: [
+                'ai/getting-started',
+                {
+                    type: 'category',
+                    label: 'Test Packages',
+                    collapsed: false,
+                    items: [
+                        'ai/test-packages/writing-with-agents',
+                        'ai/test-packages/browser-observation',
+                    ],
+                },
             ],
         },
         {
