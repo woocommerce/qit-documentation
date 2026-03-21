@@ -50,27 +50,29 @@ This creates:
 
 #### Each Package Owns Its Setup Knowledge
 
+**woocommerce/minimal** — WooCommerce knows how to configure itself:
 ```json
-// woocommerce/minimal package
 {
   "package": "woocommerce/minimal",
   "test": {
     "phases": {
       "globalSetup": [
-        "./scripts/dismiss-onboarding.sh",  // WooCommerce knows HOW
+        "./scripts/dismiss-onboarding.sh",
         "wp option update woocommerce_task_list_hidden yes"
       ]
     }
   }
 }
+```
 
-// stripe/checkout package  
+**stripe/checkout** — Stripe knows how to configure itself:
+```json
 {
   "package": "stripe/checkout",
   "test": {
     "phases": {
       "globalSetup": [
-        "./scripts/configure-stripe-gateway.sh",  // Stripe knows HOW
+        "./scripts/configure-stripe-gateway.sh",
         "wp option update stripe_api_key $STRIPE_TEST_KEY"
       ]
     }

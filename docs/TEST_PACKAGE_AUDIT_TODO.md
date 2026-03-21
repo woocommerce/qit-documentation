@@ -15,10 +15,10 @@ Delete this file when done.
 ## Remaining to audit
 - [x] test-packages/manifest.md
 - [x] test-packages/lifecycle.md
-- [ ] test-packages/concepts.md
-- [ ] test-packages/concepts/global-setup.md
-- [ ] test-packages/concepts/subpackages.md
-- [ ] test-packages/commands.md
+- [x] test-packages/concepts.md
+- [x] test-packages/concepts/global-setup.md
+- [x] test-packages/concepts/subpackages.md
+- [ ] test-packages/commands.md — NEEDS MAJOR REWRITE: 796 lines with wrong defaults (PHP 8.1→8.2, latest→stable, --wordpress→--wordpress_version, qit-config.json→qit.json). Hand-written options tables should be replaced with auto-generated CLI help + keep examples
 - [ ] test-packages/results.md
 - [ ] test-packages/examples.md
 - [ ] test-packages/secrets.md
