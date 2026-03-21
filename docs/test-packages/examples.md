@@ -283,9 +283,8 @@ test.describe('WooCommerce API', () => {
     const product = await createResponse.json();
     expect(product.name).toBe('Test Product');
     
-    // Verify product exists via UI
-    const page = await context.newPage();
-    await page.goto(`${baseURL}/product/${product.slug}`);
+    // Verify product ID was returned
+    expect(product.id).toBeDefined();
     await expect(page.locator('h1')).toContainText('Test Product');
   });
   
@@ -315,14 +314,14 @@ test.describe('WooCommerce API', () => {
 
 ### Complete Test Suite
 
-`qit-config.json`:
+`qit.json`:
 ```json
 {
   "environments": {
     "default": {
       "php": "8.2",
-      "wordpress": "latest",
-      "woocommerce": "latest"
+      "wp": "stable",
+      "woo": "stable"
     }
   },
   "test_types": {
