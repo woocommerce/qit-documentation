@@ -21,10 +21,10 @@ Delete this file when done.
 - [ ] test-packages/commands.md — NEEDS MAJOR REWRITE: 796 lines with wrong defaults (PHP 8.1→8.2, latest→stable, --wordpress→--wordpress_version, qit-config.json→qit.json). Hand-written options tables should be replaced with auto-generated CLI help + keep examples
 - [x] test-packages/results.md — OK, no issues found
 - [x] test-packages/examples.md — Fixed: qit-config.json→qit.json, wordpress→wp, woocommerce→woo, latest→stable, broken context.newPage(). Note: CommonJS vs ESM inconsistency with scaffold remains (minor)
-- [ ] test-packages/secrets.md
-- [ ] test-packages/ci.md
-- [ ] test-packages/ai-development.md
-- [ ] test-packages/sharding.md
-- [ ] test-packages/utility-packages.md
-- [ ] test-packages/reference/network-requirements.md
-- [ ] test-packages/troubleshooting.md
+- [x] test-packages/secrets.md — Fixed JSON comments, added --env_file mention
+- [x] test-packages/ci.md — Fixed --wordpress→--wp, latest→stable in matrix examples
+- [x] test-packages/ai-development.md — Fixed: removed phantom "namespace" field, added package_type
+- [x] test-packages/sharding.md — OK, correctly documents sharding is not supported
+- [x] test-packages/utility-packages.md — Fixed JSON comments
+- [x] test-packages/reference/network-requirements.md — Fixed: requires_network→requires.network, removed JSON comment, fixed manifest example structure
+- [x] test-packages/troubleshooting.md — Fixed: phantom "namespace" field, [host] prefix→host: prefix, execution venue docs. Note: still has JSON comments throughout (in troubleshooting context, less critical)

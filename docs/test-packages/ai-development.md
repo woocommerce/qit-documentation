@@ -32,8 +32,8 @@ I'm developing Test Packages for QIT (Quality Insights Toolkit). Here's what you
 
 ## Manifest Schema
 {
-  "package": "string",
-  "namespace": "string",
+  "package": "namespace/name",
+  "package_type": "test",
   "test_type": "e2e",
   "requires": {
     "secrets": ["array"],

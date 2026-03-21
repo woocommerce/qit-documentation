@@ -1,5 +1,5 @@
 ---
-description: "Explains how QIT handles network access for test packages. Tests run offline by default for reliability. Packages can declare `requires_network: true` in qit-test.json to enable network access. Covers the --offline and --online CLI flags to override auto-detection, what network restrictions block (WordPress update checks, telemetry, external HTTP), and WP_CLI restrictions when network is disabled."
+description: "Explains how QIT handles network access for test packages. Tests run offline by default for reliability. Packages can declare `requires.network: true` in qit-test.json to enable network access. Covers the --offline and --online CLI flags to override auto-detection. Network restriction only blocks WordPress HTTP API calls (wp_remote_*) — WP-CLI, Playwright, bash scripts, and direct PHP network functions are NOT blocked."
 ---
 
 # Network Requirements for Test Packages
@@ -20,14 +20,21 @@ No manual configuration needed - it just works!
 
 ## Declaring Network Requirements
 
-Test packages can include an optional `requires_network` field in their manifest:
+Test packages can include an optional `requires.network` field in their manifest:
 
 ```json
 {
   "package": "vendor/test-package",
-  "requires_network": false,
+  "requires": {
+    "network": false
+  },
   "test": {
-    // test configuration
+    "phases": {
+      "run": ["npx playwright test"]
+    },
+    "results": {
+      "ctrf-json": "./results/ctrf.json"
+    }
   }
 }
 ```
@@ -37,6 +44,8 @@ Test packages can include an optional `requires_network` field in their manifest
 - **`false`** (default) - Test runs completely offline (no external HTTP requests)
 - **`true`** - Test requires external network access (e.g., payment gateway APIs)
 - **Not specified** - Defaults to `false` (offline)
+
+The `network` field goes inside `requires`, not at the top level.
 
 💡 **Tip**: Most tests don't need network, so the default works perfectly!
 
@@ -74,7 +83,7 @@ qit run:e2e woocommerce --test-package=my-test
 
 **What happens behind the scenes:**
 
-1. **QIT reads all test manifests** - Checks each package's `requires_network` value
+1. **QIT reads all test manifests** - Checks each package's `requires.network` value
 2. **Smart decision** - If ANY package needs network → enables it for all
 3. **Execution** - Tests run with appropriate network access
 

@@ -84,14 +84,14 @@ Test multiple versions:
 strategy:
   matrix:
     php: ['7.4', '8.0', '8.1', '8.2']
-    wordpress: ['6.3', '6.4', 'latest']
+    wp: ['6.3', '6.4', 'stable']
     
 steps:
   - name: Run Tests
     run: |
       qit run:e2e my-extension \
         --php=${{ matrix.php }} \
-        --wordpress=${{ matrix.wordpress }}
+        --wp=${{ matrix.wp }}
 ```
 
 ### Parallel Execution
@@ -604,6 +604,6 @@ Match CI environment:
 export CI=true
 qit run:e2e my-extension \
   --php=8.2 \
-  --wordpress=6.4 \
+  --wp=6.4 \
   --config=test-config.json
 ```

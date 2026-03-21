@@ -84,9 +84,9 @@ Utility packages attach to environments in your `qit.json` configuration using t
       "wp": "stable",
       "woo": "stable",
       "utilities": [
-        "./utilities/disable-onboarding",           // Local utility
-        "woocommerce/woopay-setup:latest",          // Registry utility (latest version)
-        "woocommerce/sample-data:1.2.0"             // Registry utility (specific version)
+        "./utilities/disable-onboarding",
+        "woocommerce/woopay-setup:latest",
+        "woocommerce/sample-data:1.2.0"
       ]
     },
     "legacy": {

@@ -45,12 +45,10 @@ qit run:e2e woocommerce --config=test.json
 
 ### From .env File
 
-```bash
-# Load from .env
-source .env
+QIT has built-in support for `.env` files via the `--env_file` flag:
 
-# Or use dotenv
-dotenv run qit run:e2e woocommerce
+```bash
+qit run:e2e woocommerce --env_file=.env
 ```
 
 `.env` file:
@@ -111,20 +109,13 @@ Set these environment variables:
 
 QIT collects secrets from ALL packages:
 
-```json
-// Package A
-{
-  "requires": {
-    "secrets": ["API_KEY"]
-  }
-}
+Package A declares `API_KEY`, Package B declares `API_SECRET`:
 
-// Package B
-{
-  "requires": {
-    "secrets": ["API_SECRET"]
-  }
-}
+```json
+{ "requires": { "secrets": ["API_KEY"] } }
+```
+```json
+{ "requires": { "secrets": ["API_SECRET"] } }
 ```
 
 Both must be set before execution starts.

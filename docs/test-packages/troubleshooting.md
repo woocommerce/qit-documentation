@@ -65,11 +65,13 @@ Validation error: Package 'checkout-tests' missing required field 'namespace'
 Add missing fields to qit-test.json:
 ```json
 {
-  "package": "checkout-tests",
-  "namespace": "mycompany",  // Add this
+  "package": "mycompany/checkout-tests",
+  "package_type": "test",
   "test_type": "e2e"
 }
 ```
+
+The `package` field must include the namespace: `namespace/name` format.
 
 ### Invalid Schema
 
@@ -225,14 +227,16 @@ For host commands:
 ```
 
 #### Use Correct Context
-Some commands need container context:
+Commands auto-detect execution venue: `npm`/`npx` run on host, everything else runs in Docker. Override with prefix:
 ```json
 {
   "globalSetup": [
-    "wp plugin install helper"  // Runs in container
+    "wp plugin install helper",
+    "docker:curl https://example.com/data.json -o /tmp/data.json"
   ],
   "setup": [
-    "[host] npm install"  // Explicitly run on host
+    "host:node scripts/prepare.js",
+    "npm ci"
   ]
 }
 ```
