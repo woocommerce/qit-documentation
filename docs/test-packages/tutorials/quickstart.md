@@ -20,43 +20,50 @@ Create your E2E test package:
 ```bash
 # From your plugin root directory
 # Replace 'your-extension-slug' with the slug of the extension you maintain
-qit package:scaffold tests/e2e --package=your-extension-slug/e2e:1.0.0
-
-# Or explicitly specify package type (defaults to "test")
-qit package:scaffold tests/e2e --package=your-extension-slug/e2e:1.0.0 --package-type=test
+qit package:scaffold tests/e2e --package=your-extension-slug/e2e
 ```
 
-**Note:** For setup/configuration packages without tests, use `--package-type=utility` instead. See [Utility Packages](../utility-packages) for details.
+The command will validate that you maintain the namespace (your extension slug) and create the package structure:
 
-This creates the following structure in your plugin:
 ```
 your-plugin/
-├── your-plugin.php
-├── src/
 ├── tests/
 │   └── e2e/
-│       ├── qit-test.json      # Test package manifest
-│       ├── package.json        # Node dependencies
-│       ├── playwright.config.js
+│       ├── qit-test.json          # Test package manifest
+│       ├── package.json            # Node dependencies (Playwright, reporters)
+│       ├── playwright.config.js    # Pre-configured with CTRF + Allure reporters
+│       ├── bootstrap/
+│       │   ├── global-setup.sh     # Runs in Docker — one-time environment config
+│       │   ├── setup.sh            # Runs in Docker — per-package setup
+│       │   └── global-teardown.sh  # Runs in Docker — cleanup
 │       └── tests/
-│           └── example.spec.js
+│           └── example.spec.js     # Starter test (verifies site loads)
 └── ...
 ```
 
 ## Step 2: Examine the Manifest
 
-Open `tests/e2e/qit-test.json` to understand your package structure:
+Open `tests/e2e/qit-test.json`. The scaffolded manifest looks like this:
 
 ```json
 {
   "package": "your-extension-slug/e2e",
   "package_type": "test",
+  "requires": {
+    "network": false
+  },
+  "test_type": "e2e",
   "test": {
     "phases": {
-      "run": ["npx playwright test"]
+      "globalSetup": ["./bootstrap/global-setup.sh"],
+      "setup": ["./bootstrap/setup.sh"],
+      "run": ["npx playwright test"],
+      "teardown": [],
+      "globalTeardown": ["./bootstrap/global-teardown.sh"]
     },
     "results": {
       "ctrf-json": "./results/ctrf.json",
+      "allure-dir": "./results/allure",
       "blob-dir": "./results/blob"
     }
   }
@@ -64,39 +71,31 @@ Open `tests/e2e/qit-test.json` to understand your package structure:
 ```
 
 Key points:
-- **package**: Your unique identifier (namespace/name format)
-- **phases**: Commands that run during testing (npm install happens automatically)
-- **results**: Where test output goes
+- **package**: Your unique identifier (namespace/name format). The namespace must be an extension slug you maintain.
+- **package_type**: `"test"` for packages that run tests, `"utility"` for setup-only packages. Can also be inferred from the presence of a `run` phase.
+- **requires.network**: Set to `true` if your tests need external network access (e.g., payment gateway APIs). Default is `false` (offline mode).
+- **phases**: Shell commands executed at each lifecycle stage. Commands ending in `.sh` run inside the Docker container (where WordPress lives). Other commands run on the host.
+- **results**: Where Playwright writes output. The `ctrf-json` path is required for test result reporting.
 
 ## Step 3: Write Your Test
 
-Replace `tests/example.spec.js` with a real test. As your suite grows, you'll add more spec files here:
+The scaffolded `tests/example.spec.js` verifies the site loads. Replace it with a test for your plugin's functionality:
 
 ```javascript
 import { test, expect } from '@playwright/test';
 
-test('checkout flow works', async ({ page }) => {
-  // Navigate to shop
-  await page.goto('/shop');
-  
-  // Add first product to cart
-  await page.locator('.add_to_cart_button').first().click();
-  await page.waitForSelector('.added_to_cart');
-  
-  // Go to checkout
-  await page.goto('/checkout');
-  
-  // Fill billing details
-  await page.fill('#billing_first_name', 'Test');
-  await page.fill('#billing_last_name', 'User');
-  await page.fill('#billing_email', 'test@example.com');
-  
-  // Place order
-  await page.click('#place_order');
-  
-  // Verify success
-  await expect(page).toHaveURL(/order-received/);
-  await expect(page.locator('.woocommerce-thankyou-order-received')).toBeVisible();
+test('my plugin admin page loads', async ({ page }) => {
+  // Log in as admin (WP credentials: admin/password)
+  await page.goto('/wp-login.php');
+  await page.fill('#user_login', 'admin');
+  await page.fill('#user_pass', 'password');
+  await page.click('#wp-submit');
+
+  // Navigate to your plugin's admin page
+  await page.goto('/wp-admin/admin.php?page=my-plugin-settings');
+
+  // Verify the page loads without errors
+  await expect(page.locator('h1')).toContainText('My Plugin');
 });
 ```
 

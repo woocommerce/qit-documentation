@@ -89,8 +89,8 @@ test('checkout works', async ({ page }) => {
       "run": ["npx playwright test"]
     },
     "results": {
-      "ctrf-json": "./results/ctrf.json",  // Test results
-      "blob-dir": "./results/blob"         // Screenshots, videos, traces
+      "ctrf-json": "./results/ctrf.json",
+      "blob-dir": "./results/blob"
     }
   }
 }
