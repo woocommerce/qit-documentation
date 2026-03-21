@@ -61,23 +61,27 @@ This ensures compatibility and stable interactions within a controlled environme
 ```qitbash
 qit run:woo-api my-extension --extension_set=compatibility
 ```
-Extension sets provide a way to run certain managed test types with a predefined set of other extensions included in the environment. For more information see [their documentation page](../managed-tests/extension-sets).
+Extension sets provide a way to run certain managed test types with a predefined set of other extensions included in the environment. For more information see [their documentation page](../configuration/extension-sets).
 
 ## Configuring test options in config files
 
-Instead of passing flags every time, define options in `qit.yml` or `qit.json`:
-```yaml
-wp: rc
-woo: 7.2
-php: 8.1
-optional_features:
-  - hpos
-plugins:
-  - woocommerce
-  - my-other-plugin
+Instead of passing flags every time, save your settings in a `qit.json` [profile](../configuration/profiles.md):
+
+```json
+{
+  "test_types": {
+    "activation": {
+      "default": {
+        "wp": "rc",
+        "woo": "7.2",
+        "php": "8.1"
+      }
+    }
+  }
+}
 ```
 
-Running `qit run:activation my-extension` applies these settings automatically.
+Then run `qit run:activation my-extension` and it applies these settings automatically.
 
 ## Tips
 

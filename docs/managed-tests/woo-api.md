@@ -43,3 +43,39 @@ qit run:woo-api your-extension
 ```
 
 Replace `your-extension` with your plugin’s slug. The tests will run in QIT’s cloud environment, and the CLI or Vendor Dashboard will display the results.
+
+<!-- BEGIN GENERATED CLI REFERENCE -->
+## CLI Usage
+
+```
+Description:
+  Enqueue Woo API tests.
+
+Usage:
+  run:woo-api [options] [--] [<sut>]
+
+Arguments:
+  sut                                                                Extension slug or WooCommerce.com ID
+
+Options:
+      --config[=CONFIG]                                              Path to the qit.json configuration file
+      --profile[=PROFILE]                                            Test profile to use [default: "default"]
+      --wordpress_version[=WORDPRESS_VERSION]                        (Optional) The WordPress version to use in the test. Alias: --wp [possible values: 7.0-beta6, 6.6.5, 6.7.5, 6.8.5, 6.9.4, stable, rc] [default: "6.9.4"]
+      --woocommerce_version[=WOOCOMMERCE_VERSION]                    (Optional) The WooCommerce version to use in the test. Alias: --woo [possible values: 10.4.3, 10.5.0-rc.3, stable, rc] [default: "10.4.3"]
+      --php_version[=PHP_VERSION]                                    (Optional) The PHP version to use in the test. Defaults to "Requires PHP" header in plugin or 7.4 if not set. Alias: --php [possible values: 7.4, 8.0, 8.1, 8.2, 8.3, 8.4, ] [default: ""]
+      --optional_features[=OPTIONAL_FEATURES]                        (Optional) A comma-separated list of WooCommerce features to enable in the testing environment. [possible values: hpos, new_product_editor] (multiple values allowed)
+      --extension_set[=EXTENSION_SET]                                (Optional) The predefined set of extensions to include in the test. [possible values: compatibility, minimal]
+      --additional_plugins[=ADDITIONAL_PLUGINS]                      (Optional) A comma-separated list of additional plugins to activate in the environment. Accepts: WordPress.org plugin slugs, Woo.com Product Slugs or Woo.com Product IDs. (multiple values allowed)
+      --additional_woo_plugins[=ADDITIONAL_WOO_PLUGINS]              (Optional) [Deprecated] A comma-separated list of Additional WooCommerce Extension IDs. (multiple values allowed)
+      --additional_wordpress_plugins[=ADDITIONAL_WORDPRESS_PLUGINS]  (Optional) [Deprecated] A comma-separated list of Additional WordPress plugin slugs. (multiple values allowed)
+      --zip[=ZIP]                                                    (Optional) Local ZIP / dir / URL build to test
+  -j, --json|--no-json                                               (Optional) Output raw JSON response
+      --async|--no-async                                             (Optional) Enqueue test and return immediately without waiting
+  -w, --wait|--no-wait                                               (Deprecated) Wait for test completion - this is now the default behavior
+      --print-report-url|--no-print-report-url                       (Optional) Print the test report URL (contains sensitive data - use cautiously in public logs)
+  -t, --timeout[=TIMEOUT]                                            (Optional) Wait timeout in seconds
+  -g, --group|--no-group                                             (Optional) Register the run into a group
+```
+
+*Auto-generated from `qit run:woo-api --help`.*
+<!-- END GENERATED CLI REFERENCE -->

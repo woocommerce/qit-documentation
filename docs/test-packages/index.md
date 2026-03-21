@@ -98,7 +98,7 @@ That's it - Playwright tests plus a manifest that describes them. The complete T
 
 Start minimal. Once your package works, it instantly gains superpowers: it can be combined with other packages, run across version matrices, and orchestrated with guaranteed isolation - all without touching your test code.
 
-**Ready to build your first package?** See [Development Workflow](development-workflow).
+**Ready to build your first package?** See the [quickstart tutorial](tutorials/quickstart).
 
 ## Real-World Example: Payment Gateway Testing
 
@@ -167,7 +167,7 @@ Test Packages work because they provide:
 - **Encapsulated setup**: Each package handles its own initial configuration (WooCommerce dismisses its onboarding flows, Stripe configures its API keys) so you don't have to
 - **Decoupled coverage**: Test against real plugin behaviors without maintaining knowledge of their internals
 
-Want to get started? See [Development Workflow](development-workflow).
+Want to get started? See the [quickstart tutorial](tutorials/quickstart).
 
 ## Join the Compatibility Revolution
 

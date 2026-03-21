@@ -28,3 +28,37 @@ If you see warnings or failures:
 ## Improving code quality
 
 Tackling PHPStan warnings often results in clearer code and fewer hidden issues. Over time, you may choose to run PHPStan at a higher level locally, catching more subtle issues before pushing updates. Although QIT currently runs it at level 0, raising local analysis levels can help you continuously improve your extension.
+
+<!-- BEGIN GENERATED CLI REFERENCE -->
+## CLI Usage
+
+```
+Description:
+  Enqueue PHPStan tests.
+
+Usage:
+  run:phpstan [options] [--] [<sut>]
+
+Arguments:
+  sut                                                                Extension slug or WooCommerce.com ID
+
+Options:
+      --config[=CONFIG]                                              Path to the qit.json configuration file
+      --profile[=PROFILE]                                            Test profile to use [default: "default"]
+      --wordpress_version[=WORDPRESS_VERSION]                        (Optional) The WordPress version to use in the test. Alias: --wp [possible values: 7.0-beta6, 6.6.5, 6.7.5, 6.8.5, 6.9.4, stable, rc] [default: "6.9.4"]
+      --woocommerce_version[=WOOCOMMERCE_VERSION]                    (Optional) The WooCommerce version to use in the test. Alias: --woo [possible values: 10.6.0-rc.1, 10.5.2, 10.5.3, 10.6.0, 10.6.1, stable, rc] [default: "10.6.1"]
+      --additional_plugins[=ADDITIONAL_PLUGINS]                      (Optional) A comma-separated list of additional plugins to activate in the environment. Accepts: WordPress.org plugin slugs, Woo.com Product Slugs or Woo.com Product IDs. (multiple values allowed)
+      --additional_woo_plugins[=ADDITIONAL_WOO_PLUGINS]              (Optional) [Deprecated] A comma-separated list of Additional WooCommerce Extension IDs. (multiple values allowed)
+      --additional_wordpress_plugins[=ADDITIONAL_WORDPRESS_PLUGINS]  (Optional) [Deprecated] A comma-separated list of Additional WordPress plugin slugs. (multiple values allowed)
+      --phpstan_level=PHPSTAN_LEVEL                                  The PHPStan level to use for the test run. [possible values: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] [default: 2]
+      --zip[=ZIP]                                                    (Optional) Local ZIP / dir / URL build to test
+  -j, --json|--no-json                                               (Optional) Output raw JSON response
+      --async|--no-async                                             (Optional) Enqueue test and return immediately without waiting
+  -w, --wait|--no-wait                                               (Deprecated) Wait for test completion - this is now the default behavior
+      --print-report-url|--no-print-report-url                       (Optional) Print the test report URL (contains sensitive data - use cautiously in public logs)
+  -t, --timeout[=TIMEOUT]                                            (Optional) Wait timeout in seconds
+  -g, --group|--no-group                                             (Optional) Register the run into a group
+```
+
+*Auto-generated from `qit run:phpstan --help`.*
+<!-- END GENERATED CLI REFERENCE -->

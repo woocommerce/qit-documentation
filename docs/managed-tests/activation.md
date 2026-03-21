@@ -92,3 +92,52 @@ If your Activation test fails:
 - Identify the causes of failure. The test will log PHP notices, warnings, and errors that happens when activating your plugin.
 - Reproduce the issue locally and fix it in your code.
 - If you believe the result is incorrect, please email us at qit@woocommerce.com for further assistance.
+
+<!-- BEGIN GENERATED CLI REFERENCE -->
+## CLI Usage
+
+```
+Description:
+  Run activation tests
+
+Usage:
+  run:activation [options] [--] [<sut> [<passthrough>...]]
+
+Arguments:
+  sut                                              Extension identifier: plugin/theme slug or WooCommerce.com ID
+  passthrough                                      Arguments after --
+
+Options:
+      --config[=CONFIG]                            Path to the qit.json configuration file
+      --profile[=PROFILE]                          Test profile to use [default: "default"]
+  -e, --environment[=ENVIRONMENT]                  Pick an environment block from qit.json (e.g. --environment=legacy) [default: "default"]
+      --zip[=ZIP]                                  Custom source for the plugin/theme (local ZIP, local directory, or URL to a .zip file)
+      --source[=SOURCE]                            [Deprecated] Use --zip instead
+      --async|--no-async                           Enqueue test and return immediately without waiting
+  -w, --wait|--no-wait                             (Deprecated) Wait for test completion - this is now the default behavior
+      --passthrough_target[=PASSTHROUGH_TARGET]    Test packages that should receive passthrough arguments (multiple allowed) (multiple values allowed)
+      --test-package[=TEST-PACKAGE]                Test packages to include (multiple values allowed) (multiple values allowed)
+      --php_version[=PHP_VERSION]                  PHP version (e.g., 8.2, 8.3). Alias: --php [default: "8.2"]
+      --wordpress_version[=WORDPRESS_VERSION]      WordPress version (stable, rc, 6.6). Alias: --wp [default: "stable"]
+      --woocommerce_version[=WOOCOMMERCE_VERSION]  WooCommerce version. Alias: --woo
+  -p, --plugin[=PLUGIN]                            Additional plugins (multiple values allowed)
+  -t, --theme[=THEME]                              Additional themes (multiple values allowed)
+      --volume[=VOLUME]                            Volumes (host:container) (multiple values allowed)
+  -x, --php_extension[=PHP_EXTENSION]              PHP extensions (multiple values allowed)
+  -o, --object_cache                               Enable Redis object cache
+      --tunnel[=TUNNEL]                            Enable tunnelling (cloudflare, ngrok) [default: "no_tunnel"]
+      --offline                                    Override: Force offline mode - will error if any test requires network
+      --online                                     Override: Force online mode - enable network regardless of test requirements
+      --env[=ENV]                                  Set env var  --env KEY=VAL (multiple values allowed)
+      --env_file[=ENV_FILE]                        Load vars from file  --env_file ./prod.env (multiple values allowed)
+  -j, --json                                       Machine‑readable JSON output
+  -s, --skip_activating_plugins                    Skip activating plugins
+      --notify                                     Notify on failures
+  -g, --group|--no-group                           Register into a group
+      --print-report-url                           Print the test report URL (contains sensitive data - use cautiously in public logs)
+      --ui                                         Run tests in Playwright UI mode
+  -st, --skip_activating_themes                    Skip activating themes
+```
+
+*Auto-generated from `qit run:activation --help`.*
+<!-- END GENERATED CLI REFERENCE -->

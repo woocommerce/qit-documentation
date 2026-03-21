@@ -19,7 +19,7 @@ qit --version
 ```
 
 <details>
-<summary>⚠️ Something not working?</summary>
+<summary>Something not working?</summary>
 
 **"composer: command not found"**  
 You need Composer to install QIT. [Install Composer](https://getcomposer.org/download/) first.
@@ -61,7 +61,7 @@ qit extensions
 You should see your WooCommerce Marketplace extensions listed.
 
 <details>
-<summary>⚠️ No extensions showing?</summary>
+<summary>No extensions showing?</summary>
 
 **Check that you have:**
 - A WooCommerce.com partner account
@@ -117,7 +117,7 @@ Use the extension slug or ID shown in `qit extensions` output.
 You'll see the test progress and results in your terminal. **Success** means no security vulnerabilities were found.
 
 <details>
-<summary>🔍 What just happened?</summary>
+<summary>What just happened?</summary>
 
 QIT automatically ran multiple security scanning tools on your extension:
 
@@ -194,7 +194,7 @@ qit run:phpcompatibility your-extension-slug --zip=/path/to/your-plugin.zip
 ## Customize Test Environments
 
 <details>
-<summary>🔧 Test Against Specific Versions</summary>
+<summary>Test Against Specific Versions</summary>
 
 Different tests support different version options. Check with `--help` to see what's available:
 
@@ -221,6 +221,30 @@ qit run:security your-extension-slug  # No version params
 - Specific versions - e.g., `6.4`, `8.5.0`, `8.0`
 
 **Pro tip:** Always check `qit run:[test] --help` to see which options are actually available for that test type.
+
+</details>
+
+<details>
+<summary>Run Multiple Tests at Once</summary>
+
+Define a [group](configuration/groups.md) in `qit.json` to batch multiple test types into a single command:
+
+```json
+{
+  "groups": {
+    "ci-quick": {
+      "e2e": ["default"],
+      "security": ["default"],
+      "activation": ["default"]
+    }
+  }
+}
+```
+
+Then run them all:
+```bash
+qit run:group ci-quick
+```
 
 </details>
 
