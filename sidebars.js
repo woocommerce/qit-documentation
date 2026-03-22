@@ -122,13 +122,13 @@ const sidebars = {
         {
             type: 'category',
             label: 'AI-Assisted Development',
-            collapsed: false,
+            collapsed: true,
             items: [
                 'ai/getting-started',
                 {
                     type: 'category',
                     label: 'Test Packages',
-                    collapsed: false,
+                    collapsed: true,
                     items: [
                         'ai/test-packages/writing-with-agents',
                         'ai/test-packages/browser-observation',
