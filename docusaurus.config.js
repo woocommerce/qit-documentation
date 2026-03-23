@@ -85,6 +85,17 @@ const config = {
       generateLLMsTxt: true,
       generateLLMsFullTxt: true,
     }],
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            from: '/installation-setup/cli-installation',
+            to: '/getting-started',
+          },
+        ],
+      },
+    ],
   ],
 
   themes: ['@docusaurus/theme-mermaid'],

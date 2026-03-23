@@ -43,6 +43,14 @@ After updating your PATH, open a new terminal window or reload your shell config
 
 </details>
 
+## Updating the QIT CLI
+
+Update to the latest version:
+
+```bash
+composer global update woocommerce/qit-cli
+```
+
 ## Authentication
 
 Connect QIT to your WooCommerce.com account:
