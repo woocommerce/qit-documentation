@@ -60,6 +60,9 @@ The `qit-test.json` file defines a test package's behavior, requirements, and in
       "allure-dir": "string"
     }
   },
+  "actions": {
+    "capabilityName": "./path/to/implementation.ts"
+  },
   "mu_plugins": ["array"],
   "envs": {"key": "value"}
 }
@@ -156,6 +159,22 @@ Environment variables to set during test execution. Values can be string, boolea
   "MAX_RETRIES": 3
 }
 ```
+
+### actions
+**Optional** | `object`
+
+Named actions this package registers for other packages to discover at runtime via `qit.actions()`. Maps action names to relative file paths. Each file must have an `export default` — that's the action implementation.
+
+Like WordPress `do_action()` — multiple packages can register the same action name, and consumers iterate over all of them.
+
+```json
+"actions": {
+  "makePurchase": "./flows/pay.ts",
+  "refundOrder": "./flows/refund.ts"
+}
+```
+
+Action names must be camelCase identifiers (`^[a-zA-Z][a-zA-Z0-9_]*$`). Paths must start with `./`. See [Actions](./concepts/actions.md) for the full guide.
 
 ## requires
 
