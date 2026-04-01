@@ -10,16 +10,16 @@ This is the methodology to follow when creating QIT E2E test packages for a WooC
 
 Before starting, fetch and read the documentation pages you will need:
 
-- [How to Create Test Packages](/test-packages/how-to/create-packages/) — scaffolding, manifest structure, package types
-- [Test Package Manifest Reference](/test-packages/manifest/) — all fields and validation rules for `qit-test.json`
-- [Test Package Lifecycle](/test-packages/lifecycle/) — execution phases, database isolation, command context
-- [Global Setup Concepts](/test-packages/concepts/global-setup/) — what goes in globalSetup vs setup, cross-compatibility design
-- [Development Workflow](/environment/development-workflow/) — how to use `env:up`, `env:source`, `env:reset` for iterative testing
-- [AI Browser Observation](./browser-observation.md) — using Playwright MCP to see the real UI before writing selectors
-- [How to Handle Secrets](/test-packages/how-to/use-secrets/) — declaring and providing API keys and credentials
-- [Test Results and Artifacts](/test-packages/results/) — CTRF format, blob directory, screenshots, traces
+- [How to Create Test Packages](/test-packages/how-to/create-packages/): scaffolding, manifest structure, package types
+- [Test Package Manifest Reference](/test-packages/manifest/): all fields and validation rules for `qit-test.json`
+- [Test Package Lifecycle](/test-packages/lifecycle/): execution phases, database isolation, command context
+- [Global Setup Concepts](/test-packages/concepts/global-setup/): what goes in globalSetup vs setup, cross-compatibility design
+- [Development Workflow](/environment/development-workflow/): how to use `env:up`, `env:source`, `env:reset` for iterative testing
+- [AI Browser Observation](./browser-observation.md): using Playwright MCP to see the real UI before writing selectors
+- [How to Handle Secrets](/test-packages/how-to/use-secrets/): declaring and providing API keys and credentials
+- [Test Results and Artifacts](/test-packages/results/): CTRF format, blob directory, screenshots, traces
 
-Also run `qit package:scaffold --help`, `qit env:up --help`, and `qit run:e2e --help` to get current command syntax. Never guess at flags — use `--help` output.
+Also run `qit package:scaffold --help`, `qit env:up --help`, and `qit run:e2e --help` to get current command syntax. Never guess at flags. Use `--help` output.
 
 ## Core Principles
 
@@ -52,7 +52,7 @@ Search the web for real-world user experiences:
 - `"{extension name}" bugs`
 - `"{extension name}" not working`
 
-Look at WooCommerce.com reviews, WordPress.org support forums, GitHub issues, and community posts. Identify the top 3-5 real-world pain points. These inform which tests actually matter — a test that catches a problem users frequently report is worth more than a test for a feature nobody complains about.
+Look at WooCommerce.com reviews, WordPress.org support forums, GitHub issues, and community posts. Identify the top 3-5 real-world pain points. These inform which tests actually matter. A test that catches a problem users frequently report is worth more than a test for a feature nobody complains about.
 
 ### Present findings
 
@@ -86,13 +86,13 @@ Use `qit package:scaffold` to create the package structure. Check `qit package:s
 
 Refer to the global setup and lifecycle documentation for details. The key design decision:
 
-**`global-setup.sh`** — Only shared concerns that benefit ALL packages in a cross-compatibility run:
+**`global-setup.sh`**: Only shared concerns that benefit ALL packages in a cross-compatibility run:
 - Plugin activation
 - WooCommerce onboarding/coming-soon dismissal
 - Guest checkout enabled, force SSL disabled
 - API credentials set as WP options (if needed)
 
-**`setup.sh`** — Extension-specific configuration (isolated, database restored between packages):
+**`setup.sh`**: Extension-specific configuration (isolated, database restored between packages):
 - Store settings the extension requires (country, currency, etc.)
 - Extension-specific configuration (zones, methods, instance settings)
 - Test data (products, users, coupons)
@@ -138,9 +138,9 @@ Think about who uses this extension and what can go wrong for them.
 ### Identify personas
 
 Common WooCommerce extension personas:
-- **Merchant** — configures the extension in wp-admin
-- **Customer** — experiences the extension on the storefront
-- **Admin** — manages orders, refunds, reports affected by the extension
+- **Merchant**: configures the extension in wp-admin
+- **Customer**: experiences the extension on the storefront
+- **Admin**: manages orders, refunds, reports affected by the extension
 
 ### For each persona, ask:
 
@@ -173,11 +173,11 @@ Write tests using ONLY selectors you observed in Step 4. Refer to the test resul
 ### Key patterns
 
 - **Login:** Use `page.goto('/wp-login.php')` + fill username/password + press Enter
-- **Collapsed forms:** Block checkout may collapse previously-filled sections — check for "Edit" buttons before trying to fill fields
-- **Dynamic content:** Wait for loading indicators to disappear, then wait for expected content. Never use fixed `waitForTimeout` — wait for specific elements or text
+- **Collapsed forms:** Block checkout may collapse previously-filled sections. Check for "Edit" buttons before trying to fill fields.
+- **Dynamic content:** Wait for loading indicators to disappear, then wait for expected content. Never use fixed `waitForTimeout`. Wait for specific elements or text.
 - **Settings tests that modify state:** Restore the original setting at the end
 - **Test isolation:** Each test sets up its own state, never depends on previous tests
-- **Explicit over implicit:** Don't assume defaults are correct. If a test needs a specific dropdown value, select it — even if the bootstrap "should have" set it. In cross-compatibility runs, another package may have changed it
+- **Explicit over implicit:** Don't assume defaults are correct. If a test needs a specific dropdown value, select it, even if the bootstrap "should have" set it. In cross-compatibility runs, another package may have changed it.
 
 ## Step 7: Develop Iteratively
 
@@ -185,7 +185,7 @@ Refer to the development workflow documentation for full details on environment 
 
 ### The development loop
 
-Start the environment ONCE — this is the expensive step. Then run tests repeatedly — this is fast (seconds, not minutes).
+Start the environment ONCE. This is the expensive step. Then run tests repeatedly. This is fast (seconds, not minutes).
 
 When a test fails, DO NOT rebuild the environment. Instead:
 
@@ -200,7 +200,7 @@ Use `qit env:reset` to restore the database to its post-setup state between full
 
 ### Debug escalation
 
-1. **First:** Read error context artifacts — shows page state at failure time
+1. **First:** Read error context artifacts (shows page state at failure time)
 2. **Second:** Navigate to the page via Playwright MCP and interact live
 3. **Third:** Use `qit env:exec` to inspect PHP logs, WP options, transients
 4. **Fourth:** Check WordPress debug.log for PHP errors
@@ -213,24 +213,24 @@ After all tests pass, review each test critically. Does it exercise the plugin's
 
 1. Use `qit run:e2e` for final validation of the full orchestrated lifecycle
 2. Use `qit package:publish` to publish. Check `--help` for syntax.
-3. Ask the user if they want CI workflow changes — if yes, follow the repo's existing patterns
+3. Ask the user if they want CI workflow changes. If yes, follow the repo's existing patterns.
 
 ## Checklist
 
 Track progress and present to the user:
 
 ```
-[ ] Extension source explored — core feature, hooks, API, settings understood
-[ ] Real user research done — reviews, support threads, top pain points identified
+[ ] Extension source explored: core feature, hooks, API, settings understood
+[ ] Real user research done: reviews, support threads, top pain points identified
 [ ] External service credentials obtained (if needed)
-[ ] Prerequisites read — scaffold, lifecycle, manifest, secrets docs fetched
+[ ] Prerequisites read: scaffold, lifecycle, manifest, secrets docs fetched
 [ ] Environment scaffolded and running
 [ ] Admin UI explored with Playwright MCP
 [ ] Customer-facing UI explored with Playwright MCP
 [ ] Personas identified, test list ranked and approved by user
 [ ] Tests written from observed selectors
 [ ] All tests passing via npx playwright test (development loop)
-[ ] Tests audited — weak tests removed
+[ ] Tests audited: weak tests removed
 [ ] Final validation via qit run:e2e
 [ ] Test package published to QIT registry
 ```

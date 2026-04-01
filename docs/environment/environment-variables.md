@@ -1,5 +1,5 @@
 ---
-description: "Guide to passing environment variables into QIT test environments. Covers the --env CLI flag (`--env KEY=VALUE`, multiple allowed), --env_file flag for loading from .env files, using environment variables in qit.json configuration, how variables are injected into Docker containers, and common patterns (WP_DEBUG, API keys, feature flags). All environment variable values must be strings — use \"true\" not true."
+description: "Guide to passing environment variables into QIT test environments. Covers the --env CLI flag (`--env KEY=VALUE`, multiple allowed), --env_file flag for loading from .env files, using environment variables in qit.json configuration, how variables are injected into Docker containers, and common patterns (WP_DEBUG, API keys, feature flags). All environment variable values must be strings (use \"true\" not true)."
 ---
 
 # Environment variables
@@ -73,7 +73,7 @@ qit.env.wp.username   // QIT_WP_USERNAME
 qit.env.sut.slug      // QIT_SUT_SLUG
 ```
 
-See the [full API reference](/docs/test-packages/concepts/runtime#qitenv--environment-info) for all available properties.
+See the [full API reference](/docs/test-packages/concepts/runtime#qitenv-environment-info) for all available properties.
 
 ## Best practices
 

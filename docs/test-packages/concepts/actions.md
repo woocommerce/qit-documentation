@@ -1,5 +1,5 @@
 ---
-description: "Actions are named extension points where test packages register reusable capabilities — like WordPress do_action(). A payment gateway registers makePurchase, a product plugin iterates over all makePurchase actions to test checkout with every gateway. Adding a gateway = zero code changes. Covers the full flow: provider declares actions in qit-test.json, consumer calls qit.actions() to discover and iterate."
+description: "Actions are named extension points where test packages register reusable capabilities, like WordPress do_action(). A payment gateway registers makePurchase, a product plugin iterates over all makePurchase actions to test checkout with every gateway. Adding a gateway = zero code changes. Covers the full flow: provider declares actions in qit-test.json, consumer calls qit.actions() to discover and iterate."
 ---
 
 # Actions
@@ -49,7 +49,7 @@ They declare it in their manifest:
 }
 ```
 
-**Each action maps a name to a file.** The file's `export default` is the action implementation. No metadata in the manifest — the JSDoc and TypeScript types in the source file are the contract.
+**Each action maps a name to a file.** The file's `export default` is the action implementation. No metadata in the manifest; the JSDoc and TypeScript types in the source file are the contract.
 
 ### 2. Consumer Discovers Actions at Runtime
 
@@ -78,13 +78,13 @@ Each action function has a `.provider` property (`'stripe/payments'`) for displa
 ### 3. Adding a Gateway = Zero Code Changes
 
 ```bash
-# Today — test with Stripe
+# Today: test with Stripe
 qit run:e2e my-product-plugin \
   --test-package woocommerce/core-utils \
   --test-package stripe/payments \
   --test-package dale/product-tests
 
-# Tomorrow — add PayPal, no code changes in dale/product-tests
+# Tomorrow: add PayPal, no code changes in dale/product-tests
 qit run:e2e my-product-plugin \
   --test-package woocommerce/core-utils \
   --test-package stripe/payments \
@@ -108,18 +108,18 @@ The `actions` field maps action names to relative file paths:
 **Rules:**
 - Action names must be camelCase identifiers: `^[a-zA-Z][a-zA-Z0-9_]*$`
 - Paths must be relative (start with `./`)
-- Each file must have an `export default` — that's the action implementation
+- Each file must have an `export default` (that's the action implementation)
 - Both `.js` and `.ts` files work (Playwright registers its TypeScript transpiler)
 
 ## When No Provider Exists
 
-If no loaded package provides an action, `qit.actions()` returns an empty array. The `for...of` loop produces zero iterations — zero test cases, not a failure. This is by design: adding capabilities is additive, removing them is a no-op.
+If no loaded package provides an action, `qit.actions()` returns an empty array. The `for...of` loop produces zero iterations (zero test cases, not a failure). This is by design: adding capabilities is additive, removing them is a no-op.
 
 ```typescript
 // If no payment gateway package is loaded:
 qit.actions('makePurchase') // => []
 // The for loop runs 0 times, 0 test cases generated
-// CTRF shows the test file ran but produced no tests — visible, not an error
+// CTRF shows the test file ran but produced no tests (visible, not an error)
 ```
 
 ## Actions vs `qit.package()`
@@ -128,9 +128,9 @@ Both let packages share code. The difference is the relationship:
 
 | | `qit.actions()` | `qit.package()` |
 |---|---|---|
-| **Relationship** | Anonymous — consumer doesn't know providers | Direct — consumer names the package |
+| **Relationship** | Anonymous; consumer doesn't know providers | Direct; consumer names the package |
 | **Cardinality** | Multiple implementations, iterate | One package, use directly |
-| **Manifest** | `actions` field required | No manifest field — barrel exports |
+| **Manifest** | `actions` field required | No manifest field; barrel exports |
 | **Use case** | "Test against every payment gateway" | "Use WooCommerce's login helper" |
 | **WordPress analogy** | `do_action()` / `apply_filters()` | Direct function call |
 

@@ -80,7 +80,7 @@ If still having issues, contact qit@woocommerce.com with your partner account em
 
 ## Run Your First Test
 
-Run a security scan — it works in the cloud with no local setup:
+Run a security scan. It works in the cloud with no local setup:
 
 ```bash
 qit run:security your-extension-slug
@@ -110,13 +110,10 @@ qit run:security --help
 
 ## What's Next?
 
-**[Managed Tests](managed-tests/introduction)** — Learn what each test checks and how to interpret results.
-
-**[Test Packages](test-packages/)** — Write custom E2E tests for your plugin and test compatibility with other plugins. Requires Docker.
-
-**[Configuration](configuration/)** — Save your test settings in `qit.json` so you don't retype them.
-
-**[AI-Assisted Development](/ai/getting-started/)** — Use QIT with Claude Code for AI-powered test development and debugging.
+- **[Managed Tests](./managed-tests/introduction.md)**: Learn what each test checks and how to interpret results.
+- **[Test Packages](./test-packages/index.md)**: Write custom E2E tests for your plugin and test compatibility with other plugins. Requires Docker.
+- **[Configuration](./configuration/index.md)**: Save your test settings in `qit.json` so you don't retype them.
+- **[AI-Assisted Development](/ai/getting-started/)**: Use QIT with Claude Code for AI-powered test development and debugging.
 
 ---
 

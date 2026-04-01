@@ -4,7 +4,7 @@ description: "Reference showing which test options are supported by which test t
 
 # Test options
 
-When running tests with QIT, you can specify various options—like WordPress, WooCommerce, and PHP versions—to ensure your extension behaves correctly across multiple environments. Different tests support different sets of options, and understanding these capabilities helps you thoroughly validate your code.
+When running tests with QIT, you can specify various options (like WordPress, WooCommerce, and PHP versions) to ensure your extension behaves correctly across multiple environments. Different tests support different sets of options, and understanding these capabilities helps you thoroughly validate your code.
 
 ## Overview of test options by test type
 
@@ -16,7 +16,7 @@ When running tests with QIT, you can specify various options—like WordPress, W
 | PHP Version                  | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
 | Additional Extensions        | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
 | Additional WordPress Plugins | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
-| [Extension sets](../configuration/extension-sets) | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
+| [Extension sets](../configuration/extension-sets.md) | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
 
 **Key:**
 - ✅: Option supported by that test type.
@@ -65,7 +65,7 @@ This ensures compatibility and stable interactions within a controlled environme
 ```qitbash
 qit run:woo-api my-extension --extension_set=compatibility
 ```
-Extension sets provide a way to run certain managed test types with a predefined set of other extensions included in the environment. For more information see [their documentation page](../configuration/extension-sets).
+Extension sets provide a way to run certain managed test types with a predefined set of other extensions included in the environment. For more information see [their documentation page](../configuration/extension-sets.md).
 
 ## Configuring test options in config files
 

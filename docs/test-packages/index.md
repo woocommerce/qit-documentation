@@ -1,5 +1,5 @@
 ---
-description: "Overview of test packages — custom Playwright E2E tests in a standardized format that can be shared and combined for cross-plugin compatibility testing. Explains the problem (plugins test in isolation, but users run them together), the minimal standard (Playwright tests + qit-test.json manifest), and how to run them with `qit run:e2e --test-package`. Covers the key commands: `qit package:scaffold` to create, `qit package:publish` to share, `qit run:e2e` to run. Requires Docker for local execution. Links to quickstart tutorial for hands-on walkthrough."
+description: "Overview of test packages: custom Playwright E2E tests in a standardized format that can be shared and combined for cross-plugin compatibility testing. Explains the problem (plugins test in isolation, but users run them together), the minimal standard (Playwright tests + qit-test.json manifest), and how to run them with `qit run:e2e --test-package`. Covers the key commands: `qit package:scaffold` to create, `qit package:publish` to share, `qit run:e2e` to run. Requires Docker for local execution. Links to quickstart tutorial for hands-on walkthrough."
 ---
 
 # Test Packages

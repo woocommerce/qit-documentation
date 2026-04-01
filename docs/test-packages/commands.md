@@ -49,7 +49,7 @@ Commands in manifest phases auto-detect where to run:
 }
 ```
 
-For typed access to these execution contexts from Playwright tests, see [QIT Runtime](./concepts/runtime.md) — `qit.wp()` runs WP-CLI in the container, `qit.exec()` runs arbitrary commands.
+For typed access to these execution contexts from Playwright tests, see [QIT Runtime](./concepts/runtime.md). `qit.wp()` runs WP-CLI in the container, `qit.exec()` runs arbitrary commands.
 
 ## QIT Environment Variables
 
@@ -60,7 +60,7 @@ Available in all phase commands:
 | `$QIT_SITE_URL` | WordPress site URL (e.g., `http://localhost:8080`) |
 | `$QIT_ENV_ID` | Unique environment identifier |
 
-Secrets declared in `requires.secrets` are also available as environment variables. For the complete list and typed access, see the [QIT Runtime API reference](./concepts/runtime.md#qitenv--environment-info).
+Secrets declared in `requires.secrets` are also available as environment variables. For the complete list and typed access, see the [QIT Runtime API reference](./concepts/runtime.md#qitenv-environment-info).
 
 ## Common Patterns
 

@@ -86,7 +86,7 @@ Some plugins might need an actual live site URL to work properly, such as paymen
 
 ## Canonical compatibility check in the WooCommerce Marketplace
 
-The WooCommerce Marketplace will automatically run an activation test using the [`compatibility` extension set](../configuration/extension-sets) upon new submission or update. You will see the results in the list of tests under `Activation (canonical compatibility check)`. Currently this test is informational only, and will not block a submission or an update.
+The WooCommerce Marketplace will automatically run an activation test using the [`compatibility` extension set](../configuration/extension-sets.md) upon new submission or update. You will see the results in the list of tests under `Activation (canonical compatibility check)`. Currently this test is informational only, and will not block a submission or an update.
 
 ## What to do if it fails
 

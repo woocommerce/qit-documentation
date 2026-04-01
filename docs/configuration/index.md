@@ -1,5 +1,5 @@
 ---
-description: "Overview of the qit.json configuration system. Explains the four key concepts — SUT (system under test), profiles (named test configurations with inline version settings), environments (optional reusable version combinations), and groups (batch execution). Includes a complete working qit.json example, a CLI-to-config mapping table, and the progressive enhancement model: CLI flags first, then profiles, then environments, then groups. Links to detailed pages for each concept."
+description: "Overview of the qit.json configuration system. Explains the four key concepts: SUT (system under test), profiles (named test configurations with inline version settings), environments (optional reusable version combinations), and groups (batch execution). Includes a complete working qit.json example, a CLI-to-config mapping table, and the progressive enhancement model: CLI flags first, then profiles, then environments, then groups. Links to detailed pages for each concept."
 ---
 
 # Test Configuration and Automation
@@ -47,7 +47,7 @@ Reusable WordPress/PHP/WooCommerce combinations. Useful when multiple profiles s
 - `minimum`: Oldest supported versions
 - `latest`: Bleeding edge
 
-Profiles can include version settings directly or reference a named environment — your choice.
+Profiles can include version settings directly or reference a named environment.
 
 ### Groups
 Batch execution of multiple profiles:
@@ -135,7 +135,7 @@ Configuration is **optional convenience**, not a requirement.
 Begin with CLI commands. Add configuration when you find yourself repeating commands.
 
 ### Progressive Enhancement
-1. Start with CLI flags — no config file needed
+1. Start with CLI flags (no config file needed)
 2. Add a profile when you're tired of retyping the same command
 3. Extract shared versions to environments when you see duplication
 4. Create groups when managing multiple profiles

@@ -1,5 +1,5 @@
 ---
-description: "The QIT Runtime (@woocommerce/qit-runtime) — a lightweight npm package that gives test packages access to environment info, WP-CLI execution, cross-package actions, and direct package imports. Two access patterns: qit.actions() for anonymous capability discovery (like WordPress do_action), and qit.package() for importing another package's exports directly. Always available in test execution context."
+description: "The QIT Runtime (@woocommerce/qit-runtime), a lightweight npm package that gives test packages access to environment info, WP-CLI execution, cross-package actions, and direct package imports. Two access patterns: qit.actions() for anonymous capability discovery (like WordPress do_action), and qit.package() for importing another package's exports directly. Always available in test execution context."
 ---
 
 # QIT Runtime
@@ -36,13 +36,13 @@ for (const makePurchase of qit.actions('makePurchase')) {
 
 The runtime provides two ways for test packages to use code from other packages:
 
-### `qit.actions(name)` — Anonymous Capability Discovery
+### `qit.actions(name)`: Anonymous Capability Discovery
 
 Like WordPress `do_action()`. Multiple packages register implementations for the same action name. Consumers iterate over all of them without knowing who provided them.
 
 ```typescript
 // Stripe registered "makePurchase", PayPal registered "makePurchase"
-// Dale's test iterates over both — zero code changes when adding PayPal
+// Dale's test iterates over both - zero code changes when adding PayPal
 for (const makePurchase of qit.actions('makePurchase')) {
   test(`Pay via ${makePurchase.provider}`, async ({ page }) => {
     await makePurchase(page, { amount: 29.99 });
@@ -50,11 +50,11 @@ for (const makePurchase of qit.actions('makePurchase')) {
 }
 ```
 
-**When to use:** "Test my plugin against every ___" — payment gateway, shipping method, tax calculator. You loop. Adding another provider is zero code changes.
+**When to use:** "Test my plugin against every ___" (payment gateway, shipping method, tax calculator). You loop. Adding another provider is zero code changes.
 
 See [Actions](./actions.md) for the full guide.
 
-### `qit.package(name)` — Known Dependency Access
+### `qit.package(name)`: Known Dependency Access
 
 Like importing a library. You know the package, you use its tools directly.
 
@@ -66,13 +66,13 @@ await woo.addToCart(page, { productId: 123 });
 const checkout = new woo.CheckoutPage(page);
 ```
 
-**When to use:** "Use ___'s tools in my test" — login helpers, page objects, product creation. You call directly. You know the dependency.
+**When to use:** "Use ___'s tools in my test" (login helpers, page objects, product creation). You call directly. You know the dependency.
 
 The package's exports are auto-discovered from its JavaScript entry point (`index.js` or `index.ts`). No manifest field needed.
 
 ## Complete API Reference
 
-### `qit.env` — Environment Info
+### `qit.env`: Environment Info
 
 Typed wrappers over `QIT_*` environment variables. Throws with a clear error message if the variable isn't set.
 
@@ -108,7 +108,7 @@ qit.env.themes.additional    // QIT_ADDITIONAL_THEMES (as string[])
 qit.env.testPackages         // QIT_TEST_PACKAGES (as string[])
 ```
 
-### `qit.wp(command)` / `qit.exec(command)` — Docker Execution
+### `qit.wp(command)` / `qit.exec(command)`: Docker Execution
 
 Execute commands inside the PHP container. Requires a running QIT Docker environment.
 
@@ -120,7 +120,7 @@ const plugins = await qit.wp('plugin list --format=json');
 const phpVersion = await qit.exec('php --version');
 ```
 
-### `qit.actions(name)` — Action Discovery
+### `qit.actions(name)`: Action Discovery
 
 Returns an array of all registered implementations for the named action. Each function has a `.provider` property identifying which package registered it.
 
@@ -130,7 +130,7 @@ const fns = qit.actions('makePurchase');
 // fn1.provider => 'stripe/payments'
 ```
 
-### `qit.hasAction(name)` — Check Action Availability
+### `qit.hasAction(name)`: Check Action Availability
 
 ```typescript
 if (qit.hasAction('makePurchase')) {
@@ -138,14 +138,14 @@ if (qit.hasAction('makePurchase')) {
 }
 ```
 
-### `qit.package(name)` — Load Package Exports
+### `qit.package(name)`: Load Package Exports
 
 ```typescript
 const woo = qit.package('woocommerce/core-utils');
 // Returns whatever the package's index.js/index.ts exports
 ```
 
-### `qit.waitFor(condition, timeout?, interval?)` — Async Polling
+### `qit.waitFor(condition, timeout?, interval?)`: Async Polling
 
 ```typescript
 await qit.waitFor(() => someCondition(), 30000, 1000);
@@ -153,18 +153,18 @@ await qit.waitFor(() => someCondition(), 30000, 1000);
 
 ## Availability Tiers
 
-The runtime works in any context — the import never fails. What varies is what's available:
+The runtime works in any context (the import never fails). What varies is what's available:
 
 | Tier | When | Examples |
 |------|------|---------|
 | **Always available** | Any context | `env.isQit`, `actions()`, `hasAction()`, `package()`, `waitFor()`, `version` |
-| **Needs env vars** | `QIT_*` vars set (by QIT CLI or manually) | `env.siteUrl`, `env.db.*` — throws descriptive error if missing |
-| **Needs Docker** | QIT containers running | `wp()`, `exec()` — throws "QIT_PHP_CONTAINER not set" |
+| **Needs env vars** | `QIT_*` vars set (by QIT CLI or manually) | `env.siteUrl`, `env.db.*`; throws descriptive error if missing |
+| **Needs Docker** | QIT containers running | `wp()`, `exec()`; throws "QIT_PHP_CONTAINER not set" |
 
-This means tests can use `qit.actions()` even outside QIT — it just returns `[]`, producing zero test cases instead of an error.
+This means tests can use `qit.actions()` even outside QIT. It just returns `[]`, producing zero test cases instead of an error.
 
 ```typescript
-// Safe to run anywhere — zero actions = zero iterations = no tests = no failure
+// Safe to run anywhere: zero actions = zero iterations = no tests = no failure
 for (const makePurchase of qit.actions('makePurchase')) {
   test(`via ${makePurchase.provider}`, async ({ page }) => { ... });
 }

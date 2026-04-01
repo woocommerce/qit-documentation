@@ -1,5 +1,5 @@
 ---
-description: "Explains how QIT handles network access for test packages. Tests run offline by default for reliability. Packages can declare `requires.network: true` in qit-test.json to enable network access. Covers the --offline and --online CLI flags to override auto-detection. Network restriction only blocks WordPress HTTP API calls (wp_remote_*) — WP-CLI, Playwright, bash scripts, and direct PHP network functions are NOT blocked."
+description: "Explains how QIT handles network access for test packages. Tests run offline by default for reliability. Packages can declare `requires.network: true` in qit-test.json to enable network access. Covers the --offline and --online CLI flags to override auto-detection. Network restriction only blocks WordPress HTTP API calls (wp_remote_*). WP-CLI, Playwright, bash scripts, and direct PHP network functions are NOT blocked."
 ---
 
 # Network Requirements for Test Packages

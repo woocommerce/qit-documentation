@@ -1,5 +1,5 @@
 ---
-description: "Guide to named environments in qit.json — an optional feature for reusing WordPress/WooCommerce/PHP version combinations across multiple profiles. Covers all environment properties (php, wp, woo, plugins, themes, object_cache, php_extensions, volumes, envs, utilities), environment inheritance via extends, volume mappings, utility packages for environment setup, environment variables (all values must be strings), and common patterns like version matrices (minimum/recommended/latest). Environments are optional — profiles can contain version values inline."
+description: "Guide to named environments in qit.json, an optional feature for reusing WordPress/WooCommerce/PHP version combinations across multiple profiles. Covers all environment properties (php, wp, woo, plugins, themes, object_cache, php_extensions, volumes, envs, utilities), environment inheritance via extends, volume mappings, utility packages for environment setup, environment variables (all values must be strings), and common patterns like version matrices (minimum/recommended/latest). Environments are optional; profiles can contain version values inline."
 ---
 
 # Environment Configuration

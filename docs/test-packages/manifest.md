@@ -1,5 +1,5 @@
 ---
-description: "Complete reference for qit-test.json — the test package manifest file. Documents every field: package (namespace/name), package_type (test or utility), description, tags, test_type, requires (secrets, php, wordpress, plugins as slug arrays, themes as slug arrays, network, tunnel, external_services), test.phases (globalSetup, setup, run, teardown, globalTeardown), test.results (ctrf-json, blob-dir, json, allure-dir), mu_plugins, envs, and subpackages. Includes validation rules, command execution formats (string or object with runs_on, timeout, continue_on_error), auto-detection logic (npm/npx = host, everything else = Docker), and complete examples."
+description: "Complete reference for qit-test.json, the test package manifest file. Documents every field: package (namespace/name), package_type (test or utility), description, tags, test_type, requires (secrets, php, wordpress, plugins as slug arrays, themes as slug arrays, network, tunnel, external_services), test.phases (globalSetup, setup, run, teardown, globalTeardown), test.results (ctrf-json, blob-dir, json, allure-dir), mu_plugins, envs, and subpackages. Includes validation rules, command execution formats (string or object with runs_on, timeout, continue_on_error), auto-detection logic (npm/npx = host, everything else = Docker), and complete examples."
 ---
 
 # Test Package Manifest Reference
@@ -163,9 +163,9 @@ Environment variables to set during test execution. Values can be string, boolea
 ### actions
 **Optional** | `object`
 
-Named actions this package registers for other packages to discover at runtime via `qit.actions()`. Maps action names to relative file paths. Each file must have an `export default` — that's the action implementation.
+Named actions this package registers for other packages to discover at runtime via `qit.actions()`. Maps action names to relative file paths. Each file must have an `export default` (that's the action implementation).
 
-Like WordPress `do_action()` — multiple packages can register the same action name, and consumers iterate over all of them.
+Like WordPress `do_action()`, multiple packages can register the same action name, and consumers iterate over all of them.
 
 ```json
 "actions": {
@@ -430,7 +430,7 @@ Commands can be either strings or objects with additional configuration:
 
 Object properties:
 - `command` (required): The command to execute
-- `runs_on`: `"host"` or `"docker"` (default: auto-detection — npm/npx run on host, everything else runs in Docker)
+- `runs_on`: `"host"` or `"docker"` (default: auto-detection; npm/npx run on host, everything else runs in Docker)
 - `timeout`: Command timeout in seconds (1-3600)
 - `continue_on_error`: Continue even if command fails (default: `false`)
 

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: "Global Setup"
-description: "Explains the globalSetup lifecycle phase — how each test package encapsulates its own environment setup (dismissing onboarding wizards, configuring API keys, setting defaults) so packages can be combined without coupling. Covers the execution model: globalSetup runs once for ALL packages before any tests, its changes persist to the database snapshot, and every subsequent package's tests see the combined setup state. Contrasts with the per-package setup phase which runs before each individual package."
+description: "Explains the globalSetup lifecycle phase: how each test package encapsulates its own environment setup (dismissing onboarding wizards, configuring API keys, setting defaults) so packages can be combined without coupling. Covers the execution model: globalSetup runs once for ALL packages before any tests, its changes persist to the database snapshot, and every subsequent package's tests see the combined setup state. Contrasts with the per-package setup phase which runs before each individual package."
 ---
 
 ### The globalSetup Phase: Purpose and Philosophy
@@ -50,7 +50,7 @@ This creates:
 
 #### Each Package Owns Its Setup Knowledge
 
-**woocommerce/minimal** — WooCommerce knows how to configure itself:
+**woocommerce/minimal**: WooCommerce knows how to configure itself:
 ```json
 {
   "package": "woocommerce/minimal",
@@ -65,7 +65,7 @@ This creates:
 }
 ```
 
-**stripe/checkout** — Stripe knows how to configure itself:
+**stripe/checkout**: Stripe knows how to configure itself:
 ```json
 {
   "package": "stripe/checkout",
@@ -202,4 +202,4 @@ This is why:
 
 ## What's Next
 
-globalSetup handles **Docker-side** composability — each package contributes environment configuration. For **runtime-level** composability between Playwright tests — like sharing page objects or iterating over payment gateways — see [Actions](./actions.md).
+globalSetup handles **Docker-side** composability, where each package contributes environment configuration. For **runtime-level** composability between Playwright tests (like sharing page objects or iterating over payment gateways), see [Actions](./actions.md).
