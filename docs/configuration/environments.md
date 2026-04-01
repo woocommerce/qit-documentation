@@ -131,6 +131,10 @@ Environments can extend other environments to reduce duplication:
       "extends": "base",
       "object_cache": true
     },
+    "debug": {
+      "extends": "base",
+      "xdebug": true
+    },
     "staging": {
       "extends": "base",
       "wp": "rc",

@@ -102,6 +102,7 @@ const sidebars = {
             items: [
                 'environment/introduction',
                 'environment/development-workflow',
+                'environment/xdebug',
                 'environment/tunnel',
                 'environment/persistent-tunnel',
                 'environment/environment-variables',

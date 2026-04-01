@@ -113,6 +113,7 @@ Define reusable WordPress/PHP/WooCommerce combinations:
 | `plugins` | Additional plugins | See below |
 | `themes` | Additional themes | Similar to plugins |
 | `object_cache` | Enable Redis | `true`, `false` |
+| `xdebug` | Enable [Xdebug](/docs/environment/xdebug) | `true`, `"profile"`, `"debug,develop"` |
 | `php_extensions` | PHP extensions | `["imagick", "redis"]` |
 | `volumes` | Docker volume mappings | `["/local/path:/container/path"]` |
 | `envs` | Environment variables | `{"WP_DEBUG": "true"}` |

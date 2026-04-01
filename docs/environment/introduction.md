@@ -48,6 +48,16 @@ qit env:up \
 
 This command creates an environment running PHP 8.3, the latest release candidate of WordPress, and includes Gutenberg and Contact Form 7 plugins by default.
 
+### Debugging with Xdebug
+
+Enable step debugging, profiling, or tracing with a single flag:
+
+```qitbash
+qit env:up --xdebug
+```
+
+See [Xdebug debugging](./xdebug.md) for IDE setup, profiling, and all available modes.
+
 ## Using configuration files
 
 Create a `qit.json` file in your project directory:
