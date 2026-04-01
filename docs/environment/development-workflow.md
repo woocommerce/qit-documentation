@@ -185,6 +185,10 @@ This will:
 
 ## Debugging Failed Tests
 
+### PHP step debugging with Xdebug
+
+For PHP-level debugging (breakpoints, variable inspection, profiling), see the [Xdebug guide](./xdebug.md). Start an environment with `qit env:up --xdebug` and your IDE will catch breakpoints on every request.
+
 ### Getting Context from Failed Tests
 
 When tests fail, get AI-friendly context:
