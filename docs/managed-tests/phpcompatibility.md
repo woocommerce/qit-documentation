@@ -1,5 +1,5 @@
 ---
-description: "Reference for the `run:phpcompatibility` managed test. Uses PHPCompatibility PHPCS rulesets to statically analyze your code for PHP version compatibility issues — deprecated functions, removed features, syntax incompatibilities. Supports --min_php_version and --max_php_version to test a specific range (e.g., 7.4 to 8.4). Covers how to interpret results, suppress false positives, and best practices for maintaining PHP version support. Includes auto-generated CLI usage."
+description: "Reference for the `run:phpcompatibility` managed test. Uses PHPCompatibility PHPCS rulesets to statically analyze your code for PHP version compatibility issues: deprecated functions, removed features, syntax incompatibilities. Supports --min_php_version and --max_php_version to test a specific range (e.g., 7.4 to 8.4). Covers how to interpret results, suppress false positives, and best practices for maintaining PHP version support. Includes auto-generated CLI usage."
 ---
 
 # PHPCompatibility tests
@@ -8,7 +8,7 @@ PHPCompatibility tests analyze your extension’s codebase against a range of PH
 
 ## What are PHPCompatibility tests?
 
-These tests use the [PHPCompatibility](https://github.com/PHPCompatibility/PHPCompatibility) rulesets—collections of sniffs for PHP CodeSniffer designed to detect PHP version-related coding issues. Running these tests can help you:
+These tests use the [PHPCompatibility](https://github.com/PHPCompatibility/PHPCompatibility) rulesets, collections of sniffs for PHP CodeSniffer designed to detect PHP version-related coding issues. Running these tests can help you:
 
 - Identify code that may fail on older or newer PHP versions.
 - Spot deprecated or removed functions that could lead to breakage.

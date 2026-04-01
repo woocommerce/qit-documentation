@@ -228,6 +228,8 @@ The orchestrator automatically generates CTRF for lifecycle phases:
 - Override with `host:` or `docker:` prefix, or `runs_on` in object command format
 - Phase timeouts: 30 minutes for run phase, 5 minutes for others
 
+In Playwright tests, use [`@woocommerce/qit-runtime`](./concepts/runtime.md) for typed access to environment info (`qit.env.siteUrl`) and WP-CLI execution (`qit.wp()`).
+
 ### Lifecycle CTRF
 Generated for:
 - globalSetup commands

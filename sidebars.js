@@ -64,6 +64,8 @@ const sidebars = {
                         'test-packages/concepts/global-setup',
                         'test-packages/concepts',
                         'test-packages/concepts/subpackages',
+                        'test-packages/concepts/runtime',
+                        'test-packages/concepts/actions',
                         'test-packages/lifecycle',
                         'test-packages/manifest',
                         'test-packages/utility-packages',

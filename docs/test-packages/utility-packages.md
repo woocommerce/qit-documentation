@@ -1,5 +1,5 @@
 ---
-description: "Complete guide to utility packages — test packages without a run phase, used for environment setup and configuration. Covers how to attach them to environments via the `utilities` array in qit.json, create them with `qit package:scaffold --package-type=utility`, publish to the registry, and discover available utilities with `qit package:list --type=utility`. Documents common patterns (disable onboarding wizards, configure payment gateways, seed test data, set plugin defaults), execution order within test runs (globalSetup runs for utilities too, but run phase is skipped), validation rules (must NOT have run phase or results), and debugging tips."
+description: "Complete guide to utility packages: test packages without a run phase, used for environment setup and configuration. Covers how to attach them to environments via the `utilities` array in qit.json, create them with `qit package:scaffold --package-type=utility`, publish to the registry, and discover available utilities with `qit package:list --type=utility`. Documents common patterns (disable onboarding wizards, configure payment gateways, seed test data, set plugin defaults), execution order within test runs (globalSetup runs for utilities too, but run phase is skipped), validation rules (must NOT have run phase or results), and debugging tips."
 ---
 
 # Utility Packages
@@ -671,7 +671,7 @@ This is **valid** for a utility package:
 ```
 
 :::note
-During `run:e2e`, only the `globalSetup` phase executes for utility packages — the entire package is skipped in the per-package loop. The `setup` and `teardown` phases are relevant when using `env:up --global-setup`, where the first package's `setup` phase also runs.
+During `run:e2e`, only the `globalSetup` phase executes for utility packages. The entire package is skipped in the per-package loop. The `setup` and `teardown` phases are relevant when using `env:up --global-setup`, where the first package's `setup` phase also runs.
 :::
 
 ## Debugging Utility Packages
@@ -777,3 +777,10 @@ Not:
   }
 }
 ```
+
+## Sharing JavaScript Code
+
+Beyond Docker-side setup, utility packages can share JavaScript code with other packages:
+
+- **Register [Actions](./concepts/actions.md)**: expose capabilities like `makePurchase` that other packages discover at runtime via `qit.actions()`
+- **Export modules**: add an `index.js`/`index.ts` with barrel exports that other packages access via `qit.package('your/utility')` (see [QIT Runtime](./concepts/runtime.md))

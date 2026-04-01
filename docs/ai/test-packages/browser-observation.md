@@ -67,7 +67,7 @@ Claude can see the current page state and compare it to what the test expected.
 
 ## What Claude Observes
 
-The `browser_snapshot` tool returns an **accessibility tree** — a structured representation of the page that includes:
+The `browser_snapshot` tool returns an **accessibility tree**, a structured representation of the page that includes:
 
 - Element roles (button, link, textbox, heading)
 - Accessible names (the text a screen reader would announce)
@@ -106,4 +106,4 @@ Based on what I observe, here are the high-value tests:
 - **Always explore before writing.** If Claude suggests writing tests without first navigating the site, ask it to observe the real UI first.
 - **Check both admin and frontend.** Most extensions have configuration in wp-admin and output on the storefront. Tests should cover both sides.
 - **Re-observe after environment changes.** If you reset the database or change settings, have Claude take a fresh snapshot.
-- **Use snapshots for debugging.** When a test fails, ask Claude to navigate to the failing page and snapshot it — the accessibility tree often reveals why a selector didn't match.
+- **Use snapshots for debugging.** When a test fails, ask Claude to navigate to the failing page and snapshot it. The accessibility tree often reveals why a selector didn't match.

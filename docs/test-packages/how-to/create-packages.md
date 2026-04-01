@@ -109,6 +109,12 @@ wp plugin activate my-plugin
 wp option set my_plugin_configured yes
 ```
 
+In Playwright tests, use `qit.wp()` from [`@woocommerce/qit-runtime`](../concepts/runtime.md) to run WP-CLI commands without writing shell scripts:
+
+```javascript
+await qit.wp('option set my_plugin_configured yes');
+```
+
 **Note:** Utility packages do NOT include:
 - `test_type` field
 - `run` phase

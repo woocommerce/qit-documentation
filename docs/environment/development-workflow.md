@@ -67,6 +67,8 @@ Now your terminal has access to:
 - `QIT_DB_PASS` - Database password
 - `QIT_DB_HOST` - Database host
 
+After sourcing, [`@woocommerce/qit-runtime`](/docs/test-packages/concepts/runtime) works automatically. `qit.env.siteUrl`, `qit.wp()`, `qit.actions()`, and `qit.package()` are all available in your Playwright tests.
+
 ### Running Tests Manually
 
 Navigate to your test package and run tests:

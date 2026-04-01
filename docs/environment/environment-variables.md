@@ -1,5 +1,5 @@
 ---
-description: "Guide to passing environment variables into QIT test environments. Covers the --env CLI flag (`--env KEY=VALUE`, multiple allowed), --env_file flag for loading from .env files, using environment variables in qit.json configuration, how variables are injected into Docker containers, and common patterns (WP_DEBUG, API keys, feature flags). All environment variable values must be strings — use \"true\" not true."
+description: "Guide to passing environment variables into QIT test environments. Covers the --env CLI flag (`--env KEY=VALUE`, multiple allowed), --env_file flag for loading from .env files, using environment variables in qit.json configuration, how variables are injected into Docker containers, and common patterns (WP_DEBUG, API keys, feature flags). All environment variable values must be strings (use \"true\" not true)."
 ---
 
 # Environment variables
@@ -60,11 +60,20 @@ $value = getenv("FOO");
 
 This allows your extension to adapt based on values you pass at test runtime, such as using a staging API endpoint instead of production.
 
-### QIT helpers
+### QIT Runtime
 
-If you're using QIT Helpers in your tests:
-- `qit.getEnv("MY_ENV_VAR")` retrieves an environment variable within the test script.
-- `qit.setEnv("MY_ENV_VAR", "my-value")` sets or overrides an environment variable dynamically.
+The [`@woocommerce/qit-runtime`](/docs/test-packages/concepts/runtime) package provides typed access to all QIT environment variables:
+
+```javascript
+import qit from '@woocommerce/qit-runtime';
+
+qit.env.siteUrl       // QIT_SITE_URL
+qit.env.db.host       // QIT_DB_HOST
+qit.env.wp.username   // QIT_WP_USERNAME
+qit.env.sut.slug      // QIT_SUT_SLUG
+```
+
+See the [full API reference](/docs/test-packages/concepts/runtime#qitenv-environment-info) for all available properties.
 
 ## Best practices
 
