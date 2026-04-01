@@ -777,3 +777,10 @@ Not:
   }
 }
 ```
+
+## Sharing JavaScript Code
+
+Beyond Docker-side setup, utility packages can share JavaScript code with other packages:
+
+- **Register [Actions](./concepts/actions.md)** — expose capabilities like `makePurchase` that other packages discover at runtime via `qit.actions()`
+- **Export modules** — add an `index.js`/`index.ts` with barrel exports that other packages access via `qit.package('your/utility')` (see [QIT Runtime](./concepts/runtime.md))

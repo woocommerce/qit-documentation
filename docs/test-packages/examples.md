@@ -6,6 +6,10 @@ description: "Collection of complete, working test package examples. Includes qi
 
 Complete, working examples of Test Packages for various scenarios.
 
+:::tip
+These examples use raw Playwright and `process.env` for simplicity. For production test packages, use [`@woocommerce/qit-runtime`](./concepts/runtime.md) for typed environment access (`qit.env.siteUrl`), WP-CLI execution (`qit.wp()`), and cross-package capabilities (`qit.actions()`).
+:::
+
 ## Basic E2E Test Package
 
 ### Playwright Checkout Tests

@@ -199,3 +199,7 @@ This is why:
 ---
 
 *This pattern is the foundation that enables the WordPress testing ecosystem to scale without exponential complexity.*
+
+## What's Next
+
+globalSetup handles **Docker-side** composability — each package contributes environment configuration. For **runtime-level** composability between Playwright tests — like sharing page objects or iterating over payment gateways — see [Actions](./actions.md).

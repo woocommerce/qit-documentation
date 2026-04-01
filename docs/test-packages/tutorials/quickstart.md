@@ -99,6 +99,18 @@ test('my plugin admin page loads', async ({ page }) => {
 });
 ```
 
+:::tip QIT Runtime
+The [`@woocommerce/qit-runtime`](../concepts/runtime.md) package (included in scaffolded packages) provides typed access to environment info, WP-CLI execution, and cross-package capabilities:
+
+```javascript
+import qit from '@woocommerce/qit-runtime';
+
+// qit.env.siteUrl, qit.env.wp.username, qit.env.wp.password
+// qit.wp('plugin list --format=json')
+// qit.actions('makePurchase') — discover capabilities from other packages
+```
+:::
+
 ## Step 4: Test Locally
 
 Run your test package against your extension:
