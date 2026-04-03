@@ -4,7 +4,11 @@ description: "Deep dive into AI-powered QIT workflows: what Claude can do with t
 
 # AI-Assisted Development
 
-Once you've [installed the QIT plugin](../getting-started.md), Claude can handle any QIT task autonomously. This page covers what's possible and how to get the most out of it.
+:::info Prerequisites
+This page assumes your AI agent already has QIT context. If not, see [Getting Started](../getting-started.md) to install the Claude Code plugin or point your agent to llms.txt.
+:::
+
+Once set up, your AI agent can handle any QIT task autonomously. This page covers what's possible and how to get the most out of it.
 
 ## What Claude Can Do
 
