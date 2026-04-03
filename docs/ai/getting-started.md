@@ -10,9 +10,9 @@ This page assumes your AI agent already has QIT context. If not, see [Getting St
 
 Once set up, your AI agent can handle any QIT task autonomously. This page covers what's possible and how to get the most out of it.
 
-## What Claude Can Do
+## What Your AI Agent Can Do
 
-With the QIT plugin, Claude can:
+With QIT documentation context, your AI agent can:
 
 - **Run any QIT test**: managed tests, test packages, or both
 - **Create test packages**: follows a [structured methodology](./test-packages/writing-with-agents.md) that includes user research, UI observation, and persona-based test design
@@ -23,10 +23,20 @@ With the QIT plugin, Claude can:
 
 ## How It Works
 
-The plugin uses **progressive disclosure** from QIT's live documentation:
+### Claude Code (Recommended)
 
-1. Claude fetches the [documentation index](https://qit.woo.com/docs/llms.txt) to find relevant pages
+The QIT plugin uses **progressive disclosure** from live documentation:
+
+1. The agent fetches the [documentation index](https://qit.woo.com/docs/llms.txt) to find relevant pages
 2. It reads the specific docs needed for your task
 3. It acts on what it learned: running commands, writing code, interpreting results
 
-This means Claude always has current information, even as QIT evolves. You don't need to paste docs or explain QIT concepts — the agent discovers what it needs on-demand.
+This happens automatically. You don't need to paste docs or explain QIT concepts.
+
+### Other AI Agents
+
+Provide your agent with the documentation URL once:
+
+> Read https://qit.woo.com/docs/llms.txt — I want to test my WooCommerce extension with QIT.
+
+Your agent reads the index, fetches the pages it needs, and has the same capabilities from there. The llms.txt index follows the [llmstxt.org](https://llmstxt.org) standard and stays current as QIT evolves.
