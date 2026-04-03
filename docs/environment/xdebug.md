@@ -12,6 +12,10 @@ QIT environments include Xdebug pre-installed but disabled by default. The `--xd
 - **Profiling** — generate cachegrind files to find performance bottlenecks
 - **Tracing** — log every function call for execution flow analysis
 
+:::tip AI-agent debugging
+Using an AI coding agent? It can drive Xdebug directly via [Xdebug MCP](https://github.com/kpanuragh/xdebug-mcp), setting breakpoints and inspecting variables conversationally with no IDE needed. See [Recommended Tools](/ai/recommended-tools) for the full AI toolkit.
+:::
+
 ## Quick start
 
 ```qitbash

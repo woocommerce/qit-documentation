@@ -114,6 +114,7 @@ const sidebars = {
             collapsed: true,
             items: [
                 'ai/getting-started',
+                'ai/recommended-tools',
                 {
                     type: 'category',
                     label: 'Test Packages',
