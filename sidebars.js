@@ -110,20 +110,6 @@ const sidebars = {
         },
         {
             type: 'category',
-            label: 'Test Configuration',
-            collapsed: true,
-            items: [
-                'configuration/index',
-                'configuration/qit-json',
-                'configuration/profiles',
-                'configuration/environments',
-                'configuration/groups',
-                'configuration/extension-sets',
-                'configuration/validation-rules',
-            ],
-        },
-        {
-            type: 'category',
             label: 'AI-Assisted Development',
             collapsed: true,
             items: [
@@ -137,6 +123,20 @@ const sidebars = {
                         'ai/test-packages/browser-observation',
                     ],
                 },
+            ],
+        },
+        {
+            type: 'category',
+            label: 'Test Configuration',
+            collapsed: true,
+            items: [
+                'configuration/index',
+                'configuration/qit-json',
+                'configuration/profiles',
+                'configuration/environments',
+                'configuration/groups',
+                'configuration/extension-sets',
+                'configuration/validation-rules',
             ],
         },
         {
