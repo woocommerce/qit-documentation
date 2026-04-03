@@ -122,3 +122,125 @@
   stroke: #4db6ac !important;
   color: #b2dfdb !important;
 }
+
+/* ── Intro page ── */
+
+.qit-hero-title {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+.qit-hero-sub {
+  font-size: 1.15rem;
+  color: var(--ifm-color-emphasis-600);
+  margin: 2rem 0 4rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.qit-diagram {
+  margin: 0 0 3rem;
+  text-align: center;
+  overflow-x: auto;
+}
+
+.qit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 0 0 2rem;
+}
+@media (max-width: 640px) {
+  .qit-grid { grid-template-columns: 1fr; }
+}
+.qit-card {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+  padding: 1.25rem 1.4rem;
+  background: var(--ifm-color-emphasis-100);
+  transition: border-color 0.15s ease;
+}
+.qit-card:hover {
+  border-color: var(--ifm-color-primary);
+}
+.qit-card-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.4rem;
+}
+.qit-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+}
+.qit-card p {
+  font-size: 0.88rem;
+  color: var(--ifm-color-emphasis-600);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.qit-ai-banner {
+  border: 1.5px solid var(--ifm-color-primary);
+  border-radius: 12px;
+  padding: 1.5rem 1.6rem;
+  margin: 0 0 2.5rem;
+  background: var(--ifm-color-emphasis-100);
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+}
+.qit-ai-banner-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.qit-ai-banner h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.3rem;
+}
+.qit-ai-banner p {
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0 0 0.75rem;
+  line-height: 1.5;
+}
+.qit-ai-banner code {
+  font-size: 0.82rem;
+  background: var(--ifm-color-emphasis-200);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+}
+
+.qit-cta {
+  display: inline-block;
+  background: var(--ifm-color-primary);
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: opacity 0.15s ease;
+  line-height: 1.2;
+  vertical-align: middle;
+}
+.qit-cta:hover { opacity: 0.85; }
+
+.qit-footer-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-500);
+  font-size: 0.82rem;
+}
+.qit-footer-badge img {
+  height: 20px;
+  opacity: 0.55;
+}

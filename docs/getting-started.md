@@ -1,19 +1,47 @@
 ---
 sidebar_position: 2
-description: "Step-by-step setup guide: install QIT CLI via Composer, authenticate with WooCommerce.com using `qit connect`, and run your first test with `qit run:security`. Includes troubleshooting for PATH issues and authentication problems. Links to managed tests, test packages, and configuration as next steps."
+description: "Get started with QIT — let your AI coding agent handle installation, authentication, and testing, or run the CLI commands yourself. Same tool, you choose who drives."
 ---
 
 # Getting Started
 
-## Installation
+QIT is a CLI that runs automated quality tests on WooCommerce extensions. Your AI coding agent can drive it for you, or you can run the commands yourself.
 
-Install QIT CLI globally with Composer:
+## Let Your AI Agent Drive (Recommended)
+
+Point your AI agent to QIT's documentation and ask it to handle the rest — installation, authentication, running tests, everything.
+
+**Claude Code** — install the plugin for automatic discovery:
+
+```
+/plugin marketplace add woocommerce/qit-cli
+/plugin install qit@woocommerce-qit
+```
+
+**Any other AI agent** — give it the documentation URL:
+
+> Read https://qit.woo.com/docs/llms.txt — I want to test my WooCommerce extension with QIT.
+
+Then just ask what you need:
+
+- *"Install QIT and run a security scan on my-plugin"*
+- *"Create E2E tests for this extension"*
+- *"My QIT tests are failing, help me debug"*
+- *"Set up qit.json for this project"*
+
+Learn more about AI workflows in [AI-Assisted Development](./ai/getting-started.md).
+
+---
+
+## The CLI
+
+Whether you or your agent is typing these commands, this is how QIT works.
+
+### Installation
 
 ```bash
 composer global require "woocommerce/qit-cli:*"
 ```
-
-Verify the installation:
 
 ```bash
 qit --version
@@ -43,25 +71,13 @@ After updating your PATH, open a new terminal window or reload your shell config
 
 </details>
 
-## Updating the QIT CLI
-
-Update to the latest version:
-
-```bash
-composer global update woocommerce/qit-cli
-```
-
-## Authentication
-
-Connect QIT to your WooCommerce.com account:
+### Authentication
 
 ```bash
 qit connect
 ```
 
 This opens your browser for authentication. Complete the flow and return to your terminal.
-
-Verify authentication:
 
 ```bash
 qit extensions
@@ -78,9 +94,7 @@ If still having issues, contact qit@woocommerce.com with your partner account em
 
 </details>
 
-## Run Your First Test
-
-Run a security scan. It works in the cloud with no local setup:
+### Running Tests
 
 ```bash
 qit run:security your-extension-slug
@@ -88,13 +102,13 @@ qit run:security your-extension-slug
 
 Replace `your-extension-slug` with the slug shown in `qit extensions` output.
 
-You'll see results in your terminal. To test a local development build instead of the marketplace version:
+Test a local build instead of the marketplace version:
 
 ```bash
 qit run:security your-extension-slug --zip=/path/to/your-plugin.zip
 ```
 
-## Try More Tests
+More test types:
 
 ```bash
 qit run:phpcompatibility your-extension-slug
@@ -102,18 +116,24 @@ qit run:woo-e2e your-extension-slug
 qit run:malware your-extension-slug
 ```
 
-Every command has detailed help showing all available options:
+Every command has detailed help:
 
 ```bash
 qit run:security --help
 ```
 
+### Updating
+
+```bash
+composer global update woocommerce/qit-cli
+```
+
 ## What's Next?
 
+- **[AI-Assisted Development](./ai/getting-started.md)**: Deep dive into AI-powered test creation, debugging, and the structured methodology for writing test packages with agents.
 - **[Managed Tests](./managed-tests/introduction.md)**: Learn what each test checks and how to interpret results.
 - **[Test Packages](./test-packages/index.md)**: Write custom E2E tests for your plugin and test compatibility with other plugins. Requires Docker.
 - **[Configuration](./configuration/index.md)**: Save your test settings in `qit.json` so you don't retype them.
-- **[AI-Assisted Development](/ai/getting-started/)**: Use QIT with Claude Code for AI-powered test development and debugging.
 
 ---
 
