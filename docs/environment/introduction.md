@@ -1,12 +1,12 @@
 ---
-description: "Introduction to the QIT local test environment — ephemeral Docker-based WordPress+WooCommerce environments created with `qit env:up` and removed with `qit env:down`. Covers prerequisites (Docker required, platform notes for Mac/Linux/Windows WSL), starting your first environment, accessing the site URL, environment management commands (env:list, env:source, env:exec, env:enter, env:reset), and how environments are stateless — every restart is a clean slate."
+description: "Introduction to the QIT local test environment. Ephemeral Docker-based WordPress+WooCommerce environments created with `qit env:up` and removed with `qit env:down`. Covers prerequisites (Docker required, platform notes for Mac/Linux/Windows WSL), starting your first environment, accessing the site URL, environment management commands (env:list, env:source, env:exec, env:enter, env:reset), and how environments are stateless (every restart is a clean slate)."
 ---
 
 # Local test environment introduction
 
 ## Introduction
 
-The QIT local test environment is designed with a single purpose: running automated tests in a clean, disposable WordPress environment. With one command, you can spin up a temporary WordPress and WooCommerce setup, perform tests, and tear it down—leaving no trace behind. This ensures consistency, reproducibility, and minimal clutter in your development workflow.
+The QIT local test environment is designed with a single purpose: running automated tests in a clean, disposable WordPress environment. With one command, you can spin up a temporary WordPress and WooCommerce setup, perform tests, and tear it down, leaving no trace behind. This ensures consistency, reproducibility, and minimal clutter in your development workflow.
 
 Every time you run `qit env:up`, a fresh environment is created. Any changes you make, such as deleting the database or modifying configurations, vanish once you stop and recreate the environment. This stateless approach frees you from environment drift and persistent data issues.
 
@@ -47,6 +47,16 @@ qit env:up \
 ```
 
 This command creates an environment running PHP 8.3, the latest release candidate of WordPress, and includes Gutenberg and Contact Form 7 plugins by default.
+
+### Debugging with Xdebug
+
+Enable step debugging, profiling, or tracing with a single flag:
+
+```qitbash
+qit env:up --xdebug
+```
+
+See [Xdebug debugging](./xdebug.md) for IDE setup, profiling, and all available modes.
 
 ## Using configuration files
 

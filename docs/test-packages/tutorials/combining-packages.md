@@ -205,3 +205,7 @@ Packages run sequentially, with each package adding to the total execution time.
 ---
 
 **You've learned:** How to combine Test Packages to test real-world plugin interactions. This is the true power of the Test Package ecosystem!
+
+## Next Level: Actions
+
+Combining packages runs each package's tests independently. For packages that actively exercise each other's functionality at runtime (like a product plugin testing checkout across multiple payment gateways), see [Actions](../concepts/actions.md).

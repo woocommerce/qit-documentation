@@ -1,5 +1,5 @@
 ---
-description: "Complete guide to utility packages — test packages without a run phase, used for environment setup and configuration. Covers how to attach them to environments via the `utilities` array in qit.json, create them with `qit package:scaffold --package-type=utility`, publish to the registry, and discover available utilities with `qit package:list --type=utility`. Documents common patterns (disable onboarding wizards, configure payment gateways, seed test data, set plugin defaults), execution order within test runs (globalSetup runs for utilities too, but run phase is skipped), validation rules (must NOT have run phase or results), and debugging tips."
+description: "Complete guide to utility packages: test packages without a run phase, used for environment setup and configuration. Covers how to attach them to environments via the `utilities` array in qit.json, create them with `qit package:scaffold --package-type=utility`, publish to the registry, and discover available utilities with `qit package:list --type=utility`. Documents common patterns (disable onboarding wizards, configure payment gateways, seed test data, set plugin defaults), execution order within test runs (globalSetup runs for utilities too, but run phase is skipped), validation rules (must NOT have run phase or results), and debugging tips."
 ---
 
 # Utility Packages
@@ -247,10 +247,11 @@ qit env:up --global-setup --config=utilities.json
 ### What Happens
 
 1. Environment starts (WordPress, WooCommerce, PHP)
-2. Each utility package's `globalSetup` runs in order
-3. Registry utilities are automatically downloaded and cached
-4. Environment stays running for manual testing
-5. **No test execution** (utility packages have no run phase)
+2. Each package's `globalSetup` runs in order
+3. The first package's `setup` phase also runs
+4. Registry utilities are automatically downloaded and cached
+5. Environment stays running for manual testing
+6. **No test execution** (utility packages have no run phase)
 
 ### Perfect for Development
 
@@ -327,16 +328,14 @@ qit run:e2e my-plugin --test-package=./tests/checkout
 │ [utilities/cleanup] (no globalSetup)
 └────────────────────────────────────────────────
 
-┌─ PACKAGE [1/4]: utilities/environment-setup ───
-│ ➤ Setup phase
-│ ✓ Setup completed
-│ ➤ Run phase - SKIPPED (utility package)
-│ ➤ Results - SKIPPED (utility package)
-│ ➤ Teardown phase
-│ ✓ Teardown completed
+┌─ DATABASE SNAPSHOT ────────────────────────────
+│ Exporting baseline database snapshot...
 └────────────────────────────────────────────────
 
-┌─ PACKAGE [2/4]: tests/checkout ────────────────
+  Skipping utilities/environment-setup (utility package)
+  Skipping utilities/cleanup (utility package)
+
+┌─ PACKAGE [1/2]: tests/checkout ────────────────
 │ ➤ Database restored
 │ ➤ Setup phase
 │ ➤ Run phase
@@ -487,8 +486,8 @@ Your utility package must have a valid `qit-test.json`:
 # List all utilities
 qit package:list --type=utility
 
-# Search for specific utilities
-qit package:list --type=utility --search=woocommerce
+# Filter by namespace
+qit package:list --type=utility --namespace=woocommerce
 
 # List only test packages
 qit package:list --type=test
@@ -671,6 +670,10 @@ This is **valid** for a utility package:
 }
 ```
 
+:::note
+During `run:e2e`, only the `globalSetup` phase executes for utility packages. The entire package is skipped in the per-package loop. The `setup` and `teardown` phases are relevant when using `env:up --global-setup`, where the first package's `setup` phase also runs.
+:::
+
 ## Debugging Utility Packages
 
 ### Test Individually
@@ -774,3 +777,10 @@ Not:
   }
 }
 ```
+
+## Sharing JavaScript Code
+
+Beyond Docker-side setup, utility packages can share JavaScript code with other packages:
+
+- **Register [Actions](./concepts/actions.md)**: expose capabilities like `makePurchase` that other packages discover at runtime via `qit.actions()`
+- **Export modules**: add an `index.js`/`index.ts` with barrel exports that other packages access via `qit.package('your/utility')` (see [QIT Runtime](./concepts/runtime.md))

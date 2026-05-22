@@ -64,6 +64,8 @@ const sidebars = {
                         'test-packages/concepts/global-setup',
                         'test-packages/concepts',
                         'test-packages/concepts/subpackages',
+                        'test-packages/concepts/runtime',
+                        'test-packages/concepts/actions',
                         'test-packages/lifecycle',
                         'test-packages/manifest',
                         'test-packages/utility-packages',
@@ -100,9 +102,28 @@ const sidebars = {
             items: [
                 'environment/introduction',
                 'environment/development-workflow',
+                'environment/xdebug',
                 'environment/tunnel',
                 'environment/persistent-tunnel',
                 'environment/environment-variables',
+            ],
+        },
+        {
+            type: 'category',
+            label: 'AI-Assisted Development',
+            collapsed: true,
+            items: [
+                'ai/getting-started',
+                'ai/recommended-tools',
+                {
+                    type: 'category',
+                    label: 'Test Packages',
+                    collapsed: true,
+                    items: [
+                        'ai/test-packages/writing-with-agents',
+                        'ai/test-packages/browser-observation',
+                    ],
+                },
             ],
         },
         {
@@ -117,23 +138,6 @@ const sidebars = {
                 'configuration/groups',
                 'configuration/extension-sets',
                 'configuration/validation-rules',
-            ],
-        },
-        {
-            type: 'category',
-            label: 'AI-Assisted Development',
-            collapsed: true,
-            items: [
-                'ai/getting-started',
-                {
-                    type: 'category',
-                    label: 'Test Packages',
-                    collapsed: true,
-                    items: [
-                        'ai/test-packages/writing-with-agents',
-                        'ai/test-packages/browser-observation',
-                    ],
-                },
             ],
         },
         {

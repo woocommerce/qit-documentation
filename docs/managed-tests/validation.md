@@ -1,5 +1,5 @@
 ---
-description: "Reference for the `run:validation` managed test. Checks extension metadata and WooCommerce feature declarations — readme.txt presence, required plugin headers (Requires PHP, WC requires, WC tested up to), WooCommerce feature compatibility declarations (HPOS, Cart/Checkout blocks), and theme template version currency. Supports --php_version to test against a specific PHP version. Includes auto-generated CLI usage."
+description: "Reference for the `run:validation` managed test. Checks extension metadata and WooCommerce feature declarations: readme.txt presence, required plugin headers (Requires PHP, WC requires, WC tested up to), WooCommerce feature compatibility declarations (HPOS, Cart/Checkout blocks), and theme template version currency. Supports --php_version to test against a specific PHP version. Includes auto-generated CLI usage."
 ---
 
 # Validation tests
@@ -21,7 +21,7 @@ Validation tests ensure that your extension’s metadata and WooCommerce feature
     - `License`
 
   Missing or incorrect versions will trigger a warning. Additionally, certain headers should **not** be included:
-    - `Woo` — As noted in the [WooCommerce plugin creation documentation](https://woocommerce.com/document/create-a-plugin/#section-14), this will be automatically added during deployment. Including it manually may cause issues and will be warned against.
+    - `Woo`: As noted in the [WooCommerce plugin creation documentation](https://woocommerce.com/document/create-a-plugin/#section-14), this will be automatically added during deployment. Including it manually may cause issues and will be warned against.
 
 - **WooCommerce feature compatibility:**
   The test checks if your extension declares incompatibility with key WooCommerce features:

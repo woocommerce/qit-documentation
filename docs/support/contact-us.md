@@ -8,7 +8,7 @@ If you have questions, need help with QIT, or want to share feedback, we encoura
 
 ## Email support
 
-Send an email to `qit@woocommerce.com` for inquiries related to QIT usage, troubleshooting, or feature requests. Provide as many details as possible—such as the test run ID, relevant logs, or steps to reproduce issues—to help us assist you more effectively.
+Send an email to `qit@woocommerce.com` for inquiries related to QIT usage, troubleshooting, or feature requests. Provide as many details as possible (such as the test run ID, relevant logs, or steps to reproduce issues) to help us assist you more effectively.
 
 ## GitHub issues
 

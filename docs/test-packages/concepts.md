@@ -136,6 +136,8 @@ Commands in phases are auto-detected for execution venue:
 
 Commands execute in the package directory and have access to environment variables, declared secrets, and QIT-provided variables like `$QIT_SITE_URL`.
 
+In Playwright tests, use [`@woocommerce/qit-runtime`](./concepts/runtime.md) for typed access to environment info (`qit.env.siteUrl`), WP-CLI execution (`qit.wp()`), and cross-package capabilities (`qit.actions()`).
+
 ## Running Test Packages
 
 Test packages are run via CLI flags or qit.json configuration:

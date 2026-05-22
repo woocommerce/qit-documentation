@@ -1,5 +1,5 @@
 ---
-description: "Reference for the `run:security` managed test. Required for all WooCommerce Marketplace submissions. Covers the five scanning tools used (PHPCS WordPress.Security rules, SemGrep, composer/npm audit, WPScan vulnerability database, gitleaks secret detection), how to interpret results, and how to suppress false positives (phpcs:ignore, nosemgrep, gitleaks:allow). Does not support version parameters — security tests are static analysis only. Includes auto-generated CLI usage."
+description: "Reference for the `run:security` managed test. Required for all WooCommerce Marketplace submissions. Covers the five scanning tools used (PHPCS WordPress.Security rules, SemGrep, composer/npm audit, WPScan vulnerability database, gitleaks secret detection), how to interpret results, and how to suppress false positives (phpcs:ignore, nosemgrep, gitleaks:allow). Does not support version parameters; security tests are static analysis only. Includes auto-generated CLI usage."
 ---
 
 # Security tests
@@ -135,7 +135,7 @@ Means that the product has successfully passed automated security checks that sc
 We use trusted auditing tools like `composer audit` and `npm audit` to:
 
 - Check the product’s own code for any known security issues.
-- Scan third-party packages and libraries the product depends on — for example, payment gateways, form handlers, or UI components — and ensure none are listed in public vulnerability databases (such as [GitHub Security Advisories](https://github.com/advisories) or the [National Vulnerability Database](https://nvd.nist.gov/)).
+- Scan third-party packages and libraries the product depends on (for example, payment gateways, form handlers, or UI components) and ensure none are listed in public vulnerability databases (such as [GitHub Security Advisories](https://github.com/advisories) or the [National Vulnerability Database](https://nvd.nist.gov/)).
 
 **What does “check passed” mean?** 
 

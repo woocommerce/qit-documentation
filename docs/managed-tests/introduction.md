@@ -1,5 +1,5 @@
 ---
-description: "Overview of managed tests — pre-built quality checks maintained by the QIT team that run remotely with zero setup. Lists all available test types (activation, security, woo-e2e, woo-api, phpstan, phpcompatibility, malware, validation, plugin-check) with brief descriptions. Explains when to use them (before release, in CI/CD), how to interpret results (success, warning, failed), and links to individual test type pages for details."
+description: "Overview of managed tests: pre-built quality checks maintained by the QIT team that run remotely with zero setup. Lists all available test types (activation, security, woo-e2e, woo-api, phpstan, phpcompatibility, malware, validation, plugin-check) with brief descriptions. Explains when to use them (before release, in CI/CD), how to interpret results (success, warning, failed), and links to individual test type pages for details."
 ---
 
 # Managed Tests

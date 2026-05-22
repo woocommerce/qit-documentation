@@ -1,5 +1,5 @@
 ---
-description: "Reference for all validation rules enforced by the qit.json schema. Covers naming constraints (alphanumeric, hyphens, underscores only — pattern ^[a-zA-Z0-9_-]+$), SUT validation (required fields, source type constraints), environment variable rules (all values must be strings), PHPStan level validation (integer 0-9), plugin/theme configuration formats, and profile/group structure requirements."
+description: "Reference for all validation rules enforced by the qit.json schema. Covers naming constraints (alphanumeric, hyphens, underscores only; pattern ^[a-zA-Z0-9_-]+$), SUT validation (required fields, source type constraints), environment variable rules (all values must be strings), PHPStan level validation (integer 0-9), plugin/theme configuration formats, and profile/group structure requirements."
 ---
 
 # Validation Rules

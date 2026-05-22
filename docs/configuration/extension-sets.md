@@ -1,5 +1,5 @@
 ---
-description: "Guide to extension sets — predefined collections of plugins and themes for common testing scenarios. Available sets include woocommerce-extensions, payment-gateways, and popular-plugins. Can be used in environments via the extension_set property, combined with additional plugins, or defined as custom sets. Used with managed tests via --extension_set CLI flag (supported by woo-e2e, woo-api, compatibility, performance)."
+description: "Guide to extension sets: predefined collections of plugins and themes for common testing scenarios. Available sets include woocommerce-extensions, payment-gateways, and popular-plugins. Can be used in environments via the extension_set property, combined with additional plugins, or defined as custom sets. Used with managed tests via --extension_set CLI flag (supported by woo-e2e, woo-api, compatibility, performance)."
 ---
 
 # Extension Sets

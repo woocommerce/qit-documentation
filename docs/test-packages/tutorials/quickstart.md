@@ -33,9 +33,9 @@ your-plugin/
 │       ├── package.json            # Node dependencies (Playwright, reporters)
 │       ├── playwright.config.js    # Pre-configured with CTRF + Allure reporters
 │       ├── bootstrap/
-│       │   ├── global-setup.sh     # Runs in Docker — one-time environment config
-│       │   ├── setup.sh            # Runs in Docker — per-package setup
-│       │   └── global-teardown.sh  # Runs in Docker — cleanup
+│       │   ├── global-setup.sh     # Runs in Docker: one-time environment config
+│       │   ├── setup.sh            # Runs in Docker: per-package setup
+│       │   └── global-teardown.sh  # Runs in Docker: cleanup
 │       └── tests/
 │           └── example.spec.js     # Starter test (verifies site loads)
 └── ...
@@ -98,6 +98,18 @@ test('my plugin admin page loads', async ({ page }) => {
   await expect(page.locator('h1')).toContainText('My Plugin');
 });
 ```
+
+:::tip QIT Runtime
+The [`@woocommerce/qit-runtime`](../concepts/runtime.md) package (included in scaffolded packages) provides typed access to environment info, WP-CLI execution, and cross-package capabilities:
+
+```javascript
+import qit from '@woocommerce/qit-runtime';
+
+// qit.env.siteUrl, qit.env.wp.username, qit.env.wp.password
+// qit.wp('plugin list --format=json')
+// qit.actions('makePurchase') - discover capabilities from other packages
+```
+:::
 
 ## Step 4: Test Locally
 

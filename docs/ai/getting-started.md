@@ -1,60 +1,42 @@
 ---
-description: "Install the QIT plugin for Claude Code to get AI-powered test creation, debugging, and quality automation. For other AI assistants, use the QIT documentation index at llms.txt to provide context."
+description: "Deep dive into AI-powered QIT workflows: what Claude can do with the QIT plugin, how progressive disclosure works, and the structured methodology for creating test packages with AI agents."
 ---
 
 # AI-Assisted Development
 
-QIT integrates with AI assistants to help you develop test packages, debug failures, and automate quality workflows.
+:::info Prerequisites
+This page assumes your AI agent already has QIT context. If not, see [Getting Started](../getting-started.md) to install the Claude Code plugin or point your agent to llms.txt.
+:::
 
-## Claude Code Plugin (Recommended)
+Once set up, your AI agent can handle any QIT task autonomously. This page covers what's possible and how to get the most out of it.
 
-The QIT CLI ships as a **Claude Code plugin**. Once installed, Claude can handle any QIT task autonomously — it fetches live documentation, runs commands, creates test packages, and debugs failures without you needing to provide manual context.
+## What Your AI Agent Can Do
 
-### Install
+With QIT documentation context, your AI agent can:
 
-In Claude Code, run:
+- **Run any QIT test**: managed tests, test packages, or both
+- **Create test packages**: follows a [structured methodology](./test-packages/writing-with-agents.md) that includes user research, UI observation, and persona-based test design
+- **Debug failures**: read CTRF reports, analyze artifacts, identify root causes
+- **Configure projects**: generate `qit.json` with profiles, environments, and groups
+- **Manage environments**: start, stop, and interact with Docker test environments
+- **Publish packages**: validate and publish test packages to the QIT registry
 
-```
-/plugin marketplace add woocommerce/qit-cli
-/plugin install qit@woocommerce-qit
-```
+## How It Works
 
-That's it. Claude now has QIT expertise. Try asking:
+### Claude Code (Recommended)
 
-- "Run a security scan on my plugin"
-- "Create E2E tests for this extension"
-- "My QIT tests are failing, help me debug"
-- "Set up qit.json for this project"
-- "What test packages are available for cross-compatibility testing?"
+The QIT plugin uses **progressive disclosure** from live documentation:
 
-### How It Works
-
-The plugin provides a skill that uses **progressive disclosure** from QIT's live documentation:
-
-1. Claude fetches the [documentation index](https://qit.woo.com/docs/llms.txt) to find relevant pages
+1. The agent fetches the [documentation index](https://qit.woo.com/docs/llms.txt) to find relevant pages
 2. It reads the specific docs needed for your task
-3. It acts on what it learned — running commands, writing code, interpreting results
+3. It acts on what it learned: running commands, writing code, interpreting results
 
-This means Claude always has current information, even as QIT evolves.
+This happens automatically. You don't need to paste docs or explain QIT concepts.
 
-### What Claude Can Do
+### Other AI Agents
 
-With the QIT plugin, Claude can:
+Provide your agent with the documentation URL once:
 
-- **Run any QIT test** — managed tests, test packages, or both
-- **Create test packages** — follows a [structured methodology](./test-packages/writing-with-agents.md) that includes user research, UI observation, and persona-based test design
-- **Debug failures** — read CTRF reports, analyze artifacts, identify root causes
-- **Configure projects** — generate `qit.json` with profiles, environments, and groups
-- **Manage environments** — start, stop, and interact with Docker test environments
-- **Publish packages** — validate and publish test packages to the QIT registry
+> Read https://qit.woo.com/docs/llms.txt — I want to test my WooCommerce extension with QIT.
 
----
-
-## Other AI Assistants
-
-If you're using GPT-4, GitHub Copilot, or another AI assistant, QIT provides two machine-readable documentation files you can feed to your AI:
-
-- **[llms.txt](https://qit.woo.com/docs/llms.txt)** — Documentation index with descriptions. Feed this to your AI and ask it to fetch the pages relevant to your task.
-- **[llms-full.txt](https://qit.woo.com/docs/llms-full.txt)** — Complete documentation in a single file. Use when your AI can accept large context.
-
-These follow the [llmstxt.org](https://llmstxt.org) standard and contain the same documentation that the Claude Code plugin accesses.
+Your agent reads the index, fetches the pages it needs, and has the same capabilities from there. The llms.txt index follows the [llmstxt.org](https://llmstxt.org) standard and stays current as QIT evolves.
