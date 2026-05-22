@@ -20,7 +20,7 @@ description: "QIT (Quality Insights Toolkit) is an automated testing platform fo
 graph TD
     Dev[🧑‍💻 Developer<br/>Creates/Updates Extension]
     Dev -->|Publishes| Gate[🛡️ QIT Gateway]
-    Gate --> MT[Managed Tests<br/>━━━━━━━━━<br/>Woo E2E Tests<br/>Woo API Tests<br/>Activation Tests<br/>Security Tests<br/>PHPStan Tests<br/>PHPCompatibility Tests<br/>Malware Tests<br/>Validation Tests<br/>Plugin Check Tests<br/>Performance Tests]
+    Gate --> MT[Managed Tests<br/>━━━━━━━━━<br/>Woo E2E Tests<br/>Woo API Tests<br/>Activation Tests<br/>Security Tests<br/>PHPStan Tests<br/>Code Compatibility Tests<br/>Malware Tests<br/>Validation Tests<br/>Plugin Check Tests<br/>Performance Tests]
     Gate --> TP[Test Packages<br/>━━━━━━━━━<br/>E2E Testing<br/>• Custom Plugin Behavior<br/>• Cross-Plugin Compatibility]
     MT --> Market[✅ Trusted Marketplaces]
     TP --> Market

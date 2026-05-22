@@ -26,7 +26,7 @@ Different managed tests address specific aspects of extension quality. Some exam
 - **Woo E2E test:** Simulates key WooCommerce customer journeys, verifying that your extension does not break core store flows.
 - **Woo API test:** Validates API endpoints and their responses under various conditions.
 - **Security test:** Checks for known security risks, vulnerabilities, and coding standards violations.
-- **PHPStan and PHPCompatibility tests:** Analyzes code quality and compatibility with supported PHP versions.
+- **PHPStan and Code Compatibility tests:** Analyzes code quality and compatibility with supported PHP versions and database environments.
 - **Validation, plugin check, and malware tests:** Confirm that your extension's metadata, codebase, and file structure adhere to guidelines and remain free of malicious code.
 
 ## Interpreting results
