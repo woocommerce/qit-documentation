@@ -1,5 +1,5 @@
 ---
-description: "Reference showing which test options are supported by which test types. Includes a matrix table: Activation, Woo E2E, and Woo API support WordPress/WooCommerce/PHP version selection, additional plugins, and extension sets. Security, PHPStan, Validation, and Plugin Check do NOT support version options. Covers WordPress/WooCommerce version values (stable, rc, specific), PHP versions (7.4-8.4), WooCommerce features (HPOS), additional plugin syntax, extension sets, and how to save options in a qit.json profile."
+description: "Reference showing which options are supported by each test type. Activation, Woo E2E, and Woo API support environment and extension options; the API fuzz beta uses a fixed stable WordPress/WooCommerce and PHP 8.3 environment. Covers version values, WooCommerce features, additional plugins, extension sets, and qit.json profiles."
 ---
 
 # Test options
@@ -8,21 +8,23 @@ When running tests with QIT, you can specify various options (like WordPress, Wo
 
 ## Overview of test options by test type
 
-|                              | Activation | Woo E2E | Woo API | Security | PHPStan | Validation | Plugin Check |
-| ---------------------------- | ---------- |---------|---------| -------- | ------- | ---------- | ------------ |
-| WordPress Versions           | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
-| WooCommerce Versions         | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
-| WooCommerce Features         | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
-| PHP Version                  | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
-| Additional Extensions        | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
-| Additional WordPress Plugins | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
-| [Extension sets](../configuration/extension-sets.md) | ✅         | ✅       | ✅       | ❌       | ❌      | ❌         | ❌           |
+|                              | Activation | Woo E2E | Woo API | API Fuzz (Beta) | Security | PHPStan | Validation | Plugin Check |
+| ---------------------------- | ---------- |---------|---------| ---------------- | -------- | ------- | ---------- | ------------ |
+| WordPress Versions           | ✅         | ✅       | ✅       | ❌               | ❌       | ❌      | ❌         | ❌           |
+| WooCommerce Versions         | ✅         | ✅       | ✅       | ❌               | ❌       | ❌      | ❌         | ❌           |
+| WooCommerce Features         | ✅         | ✅       | ✅       | ❌               | ❌       | ❌      | ❌         | ❌           |
+| PHP Version                  | ✅         | ✅       | ✅       | ❌               | ❌       | ❌      | ❌         | ❌           |
+| Additional Extensions        | ✅         | ✅       | ✅       | ❌               | ❌       | ❌      | ❌         | ❌           |
+| Additional WordPress Plugins | ✅         | ✅       | ✅       | ❌               | ❌       | ❌      | ❌         | ❌           |
+| [Extension sets](../configuration/extension-sets.md) | ✅         | ✅       | ✅       | ❌               | ❌       | ❌      | ❌         | ❌           |
 
 **Key:**
 - ✅: Option supported by that test type.
 - ❌: Option not supported by that test type.
 
 For example, the Activation test allows you to specify WordPress, WooCommerce, PHP versions, and optional features like HPOS. In contrast, Security or PHPStan tests do not currently support customizing these versions.
+
+API fuzz testing is a beta with a fixed environment: stable WordPress, stable WooCommerce, and PHP 8.3. It does not currently accept environment or extension-composition overrides.
 
 ## WordPress and WooCommerce versions
 

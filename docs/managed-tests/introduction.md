@@ -1,5 +1,5 @@
 ---
-description: "Overview of managed tests: pre-built quality checks maintained by the QIT team that run remotely with zero setup. Lists all available test types (activation, security, woo-e2e, woo-api, phpstan, phpcompatibility, malware, validation, plugin-check) with brief descriptions. Explains when to use them (before release, in CI/CD), how to interpret results (success, warning, failed), and links to individual test type pages for details."
+description: "Overview of managed tests: pre-built quality checks maintained by the QIT team that run remotely with zero setup. Lists all available test types, including the API fuzz beta, with brief descriptions. Explains when to use them, how to interpret results (success, warning, failed), and links to individual test type pages for details."
 ---
 
 # Managed Tests
@@ -25,6 +25,7 @@ Different managed tests address specific aspects of extension quality. Some exam
 - **Activation test:** Ensures that your plugin activates without errors.
 - **Woo E2E test:** Simulates key WooCommerce customer journeys, verifying that your extension does not break core store flows.
 - **Woo API test:** Validates API endpoints and their responses under various conditions.
+- **API fuzz test (Beta):** Generates anonymous and administrator requests for plugin-owned WordPress REST API routes to find reproducible server errors.
 - **Security test:** Checks for known security risks, vulnerabilities, and coding standards violations.
 - **PHPStan and Code Compatibility tests:** Analyzes code quality and compatibility with supported PHP versions and database environments.
 - **Validation, plugin check, and malware tests:** Confirm that your extension's metadata, codebase, and file structure adhere to guidelines and remain free of malicious code.
