@@ -124,11 +124,11 @@ There is no plugin-local suppression file or CLI suppression option for managed 
 
 ## Report URLs are sensitive
 
-QIT report URLs contain a secret token and should be treated like bearer links. Human-readable output hides them unless you explicitly request one:
+QIT report URLs contain a secret token and should be treated like bearer links. Interactive synchronous runs and `qit get` display the URL, matching other managed tests. Async and non-interactive output require an explicit request:
 
 ```qitbash
-qit run:api-fuzz my-plugin --print-report-url
-qit get <test-run-id> --print-report-url
+qit run:api-fuzz my-plugin --async --print-report-url
+qit run:api-fuzz my-plugin --print-report-url # non-interactive/CI output
 ```
 
 JSON output preserves the Manager response and includes the report URL when one is available. Avoid printing it in public CI logs, issue descriptions, or chat channels.
