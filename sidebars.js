@@ -22,6 +22,11 @@ const sidebars = {
                 'managed-tests/activation',
                 'managed-tests/woo-e2e',
                 'managed-tests/woo-api',
+                {
+                    type: 'doc',
+                    id: 'managed-tests/api-fuzz',
+                    label: 'API fuzz tests (Beta)',
+                },
                 'managed-tests/security',
                 'managed-tests/phpcompatibility',
                 'managed-tests/phpstan',
