@@ -31,50 +31,27 @@ The status of the test is determined by the following:
 
 ## Hook resilience check
 
-For plugins, the Activation test checks that activating your plugin does not break requests that have nothing to do with it. It runs by default on every `qit run:activation`, with no extra options, and a failure fails the test.
+For plugins, the Activation test checks that activating your plugin doesn't break requests unrelated to it. It runs by default, and a failure fails the test.
 
-It catches a class of bugs that is easy to ship and hard to see: a callback on a WordPress hook declares a strict PHP type for a value that another plugin, or WordPress itself, can legitimately pass as something else. For example, a `rest_pre_serve_request` callback that declares `bool $served` throws a `TypeError` as soon as another callback returns `null`, and that fatal error can break unrelated REST requests across the site, along with the admin screens that rely on them.
+The typical cause is a hook callback with a strict PHP type that another plugin can legally violate. For example, a `rest_pre_serve_request` callback declaring `bool $served` throws a `TypeError` when another callback returns `null`, and that breaks REST requests across the site.
 
-Right before and right after activating your plugin, QIT sends the same set of requests:
+Before and after activating your plugin, QIT requests the front page, wp-admin, several REST endpoints and the WooCommerce settings screen, and sends an email through `wp_mail()` that is never delivered. It also makes `rest_pre_serve_request` return `null`, and `pre_http_request` and `rest_authentication_errors` return a `WP_Error`, so make sure your callbacks on those hooks accept these values.
 
-- the front page, wp-admin and the REST API index;
-- a few WordPress and WooCommerce REST endpoints;
-- the WooCommerce settings screen; and
-- an email sent through `wp_mail()`, which is never delivered.
+The **Verify global request resilience** step reports one of these results:
 
-In both rounds, it also simulates three return values that other plugins can legally produce, on QIT's own requests only:
+- `QIT_ACTIVATION_SMOKE_PASSED`: every request still works after activation.
+- `QIT_ACTIVATION_SMOKE_REGRESSION`: after activation, a request hit a PHP fatal error, an HTTP 5xx or another unexpected response. Failures marked `sut-attributed` have your plugin's files in the error or its stack trace.
+- `QIT_ACTIVATION_SMOKE_BASELINE_INVALID`: QIT couldn't get a reliable reading. If every failure is in the `baseline` round, the site was unhealthy before your plugin was activated: run the test again, and email qit@woocommerce.com if it persists. Failures in the `post_activation` round can mean your plugin broke `admin-ajax.php` or the REST API.
 
-- `rest_pre_serve_request` returning `null`;
-- `pre_http_request` returning a `WP_Error`; and
-- `rest_authentication_errors` returning a `WP_Error`.
-
-If your plugin hooks into any of these, make sure its callbacks accept those values, for example by not declaring a strict native type for a parameter that can receive them.
-
-### Results
-
-The check appears as the **Verify global request resilience** step and ends with one of these codes:
-
-- `QIT_ACTIVATION_SMOKE_PASSED`: every request that worked before activation still works after it.
-- `QIT_ACTIVATION_SMOKE_REGRESSION`: after activation, at least one request hit a PHP fatal error, an HTTP 5xx response, a transport failure or an unexpected response. Ordinary 4xx responses are accepted on the front page, wp-admin and the regular REST requests; the mail, outbound HTTP and authentication probes expect one exact response. The message lists each failing request with its status and the reason, plus the PHP errors captured during it, with file and line. A request is marked `sut-attributed` when your plugin's files appear in the error or its stack trace. Unmarked failures still fail the check.
-- `QIT_ACTIVATION_SMOKE_BASELINE_INVALID`: QIT could not get a trustworthy reading. Either the site was already unhealthy before your plugin was activated, or QIT's own request instrumentation stopped working, which can also happen after activation if your plugin breaks `admin-ajax.php` or the REST API. The test still fails. The message lists each affected request and whether it was in the `baseline` (before activation) or `post_activation` round. If every failure is in the `baseline` round, the problem started before your plugin was activated, and the result cannot tell whether your plugin breaks anything: run the test again, and if it keeps happening, email us at qit@woocommerce.com.
-
-If QIT cannot confirm that it activated your plugin itself, for example because the plugin was already active, the step is skipped and does not affect the result.
-
-The Activation flows run in order, so when this check fails, the steps after it are skipped and show as skipped in the report.
-
-The test summary does not show this check. Open the **detailed test report** linked from the summary: the **Verify global request resilience** step holds the message above and the `global-surface-resilience.txt` and `global-surface-resilience.json` attachments, with every request made before and after activation and the PHP errors captured during them.
+When the check fails, the steps after it are skipped. The failing requests and PHP errors are in that step of the **detailed test report** linked from the test summary.
 
 ## Request footprint
 
-The request footprint is not part of the Activation test: it is a measurement QIT takes alongside it, for plugins, and never changes the test result. In a default Activation run, it appears as the **Request footprint** section of the test report. It shows what your plugin does on three requests where it should do almost nothing: `/wp-admin/admin-ajax.php?action=rest-nonce`, `/wp-admin/profile.php` and the front page. It points to work that runs on every request when it only needs to run on a few, such as database queries on `admin_init` that also run on every AJAX request.
+The request footprint is not part of the Activation test: QIT measures it alongside the test, for plugins, and it never changes the result. It appears as the **Request footprint** section of the test report.
 
-Each request is sent three times before and three times after activating your plugin. For each request, the report shows:
+It shows what your plugin does on three requests where it should do almost nothing: `/wp-admin/admin-ajax.php?action=rest-nonce`, `/wp-admin/profile.php` and the front page. For each one you get the database queries, writes and outbound HTTP calls your plugin made, and the main hooks and lines behind them. Use it to find work that runs on every request but only needs to run on a few, such as queries on `admin_init` that also run on every AJAX request.
 
-- the database queries your plugin ran, how many of them were writes, and its outbound HTTP calls through the WordPress HTTP API (QIT answers them with an error, so they never leave the test site);
-- the change in the total number of queries compared with before activation; and
-- up to ten call sites behind them, as hook and file and line. Only call sites seen on every repeat are listed, so the counts can include work that has no listed call site.
-
-Counts include work WordPress does on your plugin's behalf, such as the queries `update_option()` runs for it. The test site is a clean store with no persistent object cache, so code that only runs once your plugin is configured is not measured, and some reads that a production cache would serve count as queries.
+The site is a clean store with no object cache, so code that only runs once your plugin is configured isn't measured.
 
 ## Configurable options
 
