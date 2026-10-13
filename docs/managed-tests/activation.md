@@ -12,7 +12,6 @@ The Activation test type performs basic operations on a test site with your plug
 - Activate any dependencies that your plugin has (e.g., WooCommerce)
 - Activate your plugin
 - Check that your plugin does not break common requests across the site (see [Hook resilience check](#hook-resilience-check))
-- Measure what your plugin does on requests where it should do almost nothing (see [Request footprint](#request-footprint))
 - Visit and take screenshots of any pages added by your plugin to the wp-admin menu
 - Enable Cash on Delivery payment method
 - Enable Local Pickup shipping method
@@ -67,7 +66,7 @@ The test summary does not show this check. Open the **detailed test report** lin
 
 ## Request footprint
 
-For plugins, the test report of a default Activation run also includes a **Request footprint** section. It shows what your plugin does on three requests where it should do almost nothing: `/wp-admin/admin-ajax.php?action=rest-nonce`, `/wp-admin/profile.php` and the front page. It points to work that runs on every request when it only needs to run on a few, such as database queries on `admin_init` that also run on every AJAX request.
+The request footprint is not part of the Activation test: it is a measurement QIT takes alongside it, for plugins, and never changes the test result. In a default Activation run, it appears as the **Request footprint** section of the test report. It shows what your plugin does on three requests where it should do almost nothing: `/wp-admin/admin-ajax.php?action=rest-nonce`, `/wp-admin/profile.php` and the front page. It points to work that runs on every request when it only needs to run on a few, such as database queries on `admin_init` that also run on every AJAX request.
 
 Each request is sent three times before and three times after activating your plugin. For each request, the report shows:
 
@@ -76,8 +75,6 @@ Each request is sent three times before and three times after activating your pl
 - up to ten call sites behind them, as hook and file and line. Only call sites seen on every repeat are listed, so the counts can include work that has no listed call site.
 
 Counts include work WordPress does on your plugin's behalf, such as the queries `update_option()` runs for it. The test site is a clean store with no persistent object cache, so code that only runs once your plugin is configured is not measured, and some reads that a production cache would serve count as queries.
-
-The request footprint is informational: it never changes the result of the test.
 
 ## Configurable options
 
