@@ -28,13 +28,13 @@ The status of the test is determined by the following:
 
 - **Success:** All flows were completed, and no PHP notices, warnings, or errors were triggered.
 - **Warning:** All flows were completed, but a non-fatal PHP error was triggered.
-- **Failed:** One of the flows failed, a fatal PHP error was triggered, or the [hook resilience check](#hook-resilience-check) found a request that broke after your plugin was activated.
+- **Failed:** One of the flows failed, a fatal PHP error was triggered, or the [hook resilience check](#hook-resilience-check) failed.
 
 ## Hook resilience check
 
-For plugins, the Activation test checks that activating your plugin does not break requests that have nothing to do with it. It runs on every `qit run:activation`, with no extra options, and a failure fails the test.
+For plugins, the Activation test checks that activating your plugin does not break requests that have nothing to do with it. It runs by default on every `qit run:activation`, with no extra options, and a failure fails the test.
 
-It catches a class of bugs that is easy to ship and hard to see: a callback on a WordPress hook declares a strict PHP type for a value that another plugin, or WordPress itself, can legitimately pass as something else. For example, a `rest_pre_serve_request` callback that declares `bool $served` throws a `TypeError` as soon as another callback returns `null`, and that fatal error breaks admin and REST requests across the whole site.
+It catches a class of bugs that is easy to ship and hard to see: a callback on a WordPress hook declares a strict PHP type for a value that another plugin, or WordPress itself, can legitimately pass as something else. For example, a `rest_pre_serve_request` callback that declares `bool $served` throws a `TypeError` as soon as another callback returns `null`, and that fatal error can break unrelated REST requests across the site, along with the admin screens that rely on them.
 
 Right before and right after activating your plugin, QIT sends the same set of requests:
 
@@ -43,7 +43,7 @@ Right before and right after activating your plugin, QIT sends the same set of r
 - the WooCommerce settings screen; and
 - an email sent through `wp_mail()`, which is never delivered.
 
-It also simulates three return values that other plugins can legally produce, on QIT's own requests only:
+In both rounds, it also simulates three return values that other plugins can legally produce, on QIT's own requests only:
 
 - `rest_pre_serve_request` returning `null`;
 - `pre_http_request` returning a `WP_Error`; and
@@ -56,8 +56,10 @@ If your plugin hooks into any of these, make sure its callbacks accept those val
 The check appears as the **Verify global request resilience** step and ends with one of these codes:
 
 - `QIT_ACTIVATION_SMOKE_PASSED`: every request that worked before activation still works after it.
-- `QIT_ACTIVATION_SMOKE_REGRESSION`: after activation, at least one request hit a PHP fatal error, an HTTP 5xx response, a transport failure or an unexpected response. Ordinary 4xx responses are accepted. The message lists each failing request with the PHP error and its file and line, and marks it `sut-attributed` when the error came from your plugin's code.
-- `QIT_ACTIVATION_SMOKE_BASELINE_INVALID`: the site was already unhealthy before your plugin was activated, so the result says nothing about your plugin. The test still fails. Run it again, and if it keeps happening, email us at qit@woocommerce.com.
+- `QIT_ACTIVATION_SMOKE_REGRESSION`: after activation, at least one request hit a PHP fatal error, an HTTP 5xx response, a transport failure or an unexpected response. On the front page, wp-admin and REST requests, ordinary 4xx responses are accepted. The message lists each failing request with its status and the reason, plus the PHP errors captured during it, with file and line. A request is marked `sut-attributed` when your plugin's files appear in the error or its stack trace. Unmarked failures still fail the check.
+- `QIT_ACTIVATION_SMOKE_BASELINE_INVALID`: QIT could not get a trustworthy reading. Either the site was already unhealthy before your plugin was activated, or QIT's own request instrumentation stopped working, which can also happen after activation if your plugin breaks `admin-ajax.php` or the REST API. The test still fails. The message lists each affected request and whether it was in the `baseline` (before activation) or `post_activation` round. If every failure is in the `baseline` round, the problem is not your plugin: run the test again, and if it keeps happening, email us at qit@woocommerce.com.
+
+If QIT cannot confirm that it activated your plugin itself, for example because the plugin was already active, the step is skipped and does not affect the result.
 
 The Activation flows run in order, so when this check fails, the steps after it are skipped and show as skipped in the report.
 
@@ -65,13 +67,13 @@ The test summary does not show this check. Open the **detailed test report** lin
 
 ## Request footprint
 
-For plugins, the test report also includes a **Request footprint** section. It shows what your plugin does on three requests where it should do almost nothing: `/wp-admin/admin-ajax.php?action=rest-nonce`, `/wp-admin/profile.php` and the front page. It points to work that runs on every request when it only needs to run on a few, such as database queries on `admin_init` that also run on every AJAX request.
+For plugins, the test report of a default Activation run also includes a **Request footprint** section. It shows what your plugin does on three requests where it should do almost nothing: `/wp-admin/admin-ajax.php?action=rest-nonce`, `/wp-admin/profile.php` and the front page. It points to work that runs on every request when it only needs to run on a few, such as database queries on `admin_init` that also run on every AJAX request.
 
 Each request is sent three times before and three times after activating your plugin. For each request, the report shows:
 
-- the database queries your plugin ran, how many of them were writes, and its outbound HTTP calls (none of which leave the test site);
+- the database queries your plugin ran, how many of them were writes, and its outbound HTTP calls through the WordPress HTTP API (QIT answers them with an error, so they never leave the test site);
 - the change in the total number of queries compared with before activation; and
-- the call sites behind them, as hook and file and line.
+- up to ten call sites behind them, as hook and file and line. Only call sites seen on every repeat are listed, so the counts can include work that has no listed call site.
 
 Counts include work WordPress does on your plugin's behalf, such as the queries `update_option()` runs for it. The test site is a clean store with no persistent object cache, so code that only runs once your plugin is configured is not measured, and some reads that a production cache would serve count as queries.
 
