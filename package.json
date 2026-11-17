@@ -31,6 +31,17 @@
         "@docusaurus/module-type-aliases": "^3.9.2",
         "@docusaurus/types": "^3.9.2"
     },
+    "overrides": {
+        "chevrotain": {
+            "lodash-es": "^4.18.1"
+        },
+        "copy-webpack-plugin": {
+            "serialize-javascript": "^7.0.3"
+        },
+        "css-minimizer-webpack-plugin": {
+            "serialize-javascript": "^7.0.3"
+        }
+    },
     "browserslist": {
         "production": [
             ">0.5%",
