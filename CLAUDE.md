@@ -9,7 +9,7 @@ Documentation site for QIT (Quality Insights Toolkit), WooCommerce's automated t
 ## Commands
 
 ```bash
-# Install dependencies (requires Node 20, see .nvmrc)
+# Install dependencies (requires Node 24, see .nvmrc)
 npm install
 
 # Local dev server with hot reload (http://localhost:3000)
