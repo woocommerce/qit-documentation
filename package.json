@@ -43,6 +43,9 @@
         },
         "css-minimizer-webpack-plugin": {
             "serialize-javascript": "^7.0.3"
+        },
+        "docusaurus-plugin-llms": {
+            "minimatch": "11.0.1"
         }
     },
     "browserslist": {
