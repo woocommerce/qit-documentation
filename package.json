@@ -32,6 +32,9 @@
         "@docusaurus/types": "^3.9.2"
     },
     "overrides": {
+        "@docusaurus/core": {
+            "tinypool": "^2.1.2"
+        },
         "chevrotain": {
             "lodash-es": "^4.18.1"
         },
